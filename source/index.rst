@@ -17,6 +17,12 @@ Table of Contents
 
 
 
+
+See :cite:`1987:nelson` for an introduction to non-standard analysis.
+
+.. bibliography:: refs.bib
+		  
+
 Indices and tables
 ----------------------
 
