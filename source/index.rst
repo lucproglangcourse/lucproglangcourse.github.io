@@ -1,6 +1,3 @@
-Welcome to COMP 372/471 at Loyola University Chicago
-====================================================
-
 Lecture notes for `COMP 372/471: Theory (and Practice) of Programming Languages <http://courses.cs.luc.edu/html/comp372.html>`_ at `Loyola University Chicago's <http://luc.edu>`_ `Computer Science Department <http://luc.edu/cs>`_.
 This version of the course is normally taught by `Konstantin Läufer <https://github.com/klaeufer>`_ and focuses on functional languages with projects mostly in Scala.
 
@@ -10,7 +7,7 @@ This version of the course is normally taught by `Konstantin Läufer <https://gi
    edges. But we're getting closer!
 
 Table of Contents
--------------------------
+=================
 
 .. toctree::
    :maxdepth: 2
@@ -30,7 +27,7 @@ See :cite:`1987:nelson` for an introduction to non-standard analysis.
 		  
 
 Indices and tables
-----------------------
+==================
 
 * :ref:`genindex`
 * :ref:`modindex`
