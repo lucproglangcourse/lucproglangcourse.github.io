@@ -35,13 +35,13 @@ requests <https://help.github.com/articles/using-pull-requests>`_ with improveme
 Required text
 ~~~~~~~~~~~~~
 
-**Programming in Scala, Third Edition**
-*By: Martin Odersky; Lex Spoon; Bill Venners*
-Publisher: Artima Press
-Pub. Date: April 28, 2016
-ISBN-10: 0-9815316-8-7
-ISBN-13: 978-0-9815316-8-7
-`available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
+- **Programming in Scala, Third Edition**
+  *By: Martin Odersky; Lex Spoon; Bill Venners*
+  Publisher: Artima Press
+  Pub. Date: April 28, 2016
+  ISBN-10: 0-9815316-8-7
+  ISBN-13: 978-0-9815316-8-7
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
 
 Recommended/supplementary texts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

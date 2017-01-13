@@ -19,6 +19,7 @@ Table of Contents
    representationinterpretation
    concurrency
    summary
+   todo
 
 Indices and tables
 ==================
@@ -26,4 +27,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
