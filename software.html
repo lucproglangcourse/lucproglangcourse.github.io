@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Course software &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/lumen/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="functionalprogramming.html" />
+    <link rel="prev" title="Resources" href="resources.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          COMP 313/413</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">Key learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">Some starting points for functional programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-resources">Online resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Course software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#required-for-remote-participation">Required for remote participation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Course software</a><ul>
+<li><a class="reference internal" href="#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li><a class="reference internal" href="#locally-installed-development-environment">Locally installed development environment</a><ul>
+<li><a class="reference internal" href="#required">Required</a></li>
+<li><a class="reference internal" href="#optional-for-windows-users">Optional for Windows users</a></li>
+<li><a class="reference internal" href="#optional-for-mac-users">Optional for Mac users</a></li>
+<li><a class="reference internal" href="#optional-for-all-intellij-users">Optional for all IntelliJ users</a></li>
+<li><a class="reference internal" href="#optional-sbt-plugins">Optional sbt plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#required-for-remote-participation">Required for remote participation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="resources.html" title="Previous Chapter: Resources"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Resources</span>
+    </a>
+  </li>
+  <li>
+    <a href="functionalprogramming.html" title="Next Chapter: <no title>"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet"><no title> &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/software.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="course-software">
+<h1>Course software<a class="headerlink" href="#course-software" title="Permalink to this headline">¶</a></h1>
+<p>You can choose either or both of the following options.</p>
+<div class="section" id="cloud-based-development-environment">
+<h2>Cloud-based development environment<a class="headerlink" href="#cloud-based-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>This option is recommended if you have any problems with your local setup or if you prefer a basic cloud-based setup.</p>
+<ul>
+<li><p class="first">Create a <a class="reference external" href="https://github.com">GitHub</a> account if you don&#8217;t have one already.</p>
+</li>
+<li><p class="first">Use your GitHub account to log into <a class="reference external" href="https://codenvy.io">Codenvy</a>.</p>
+</li>
+<li><p class="first">Create a new workspace with the following settings:</p>
+<ul class="simple">
+<li>New from blank ...</li>
+<li>Create new workspace from stack &gt; BLANK</li>
+<li>Name: lucproglangcourse</li>
+<li>RAM: 3GB</li>
+</ul>
+</li>
+<li><p class="first">Wait for the workspace to become available. Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.</p>
+</li>
+<li><p class="first">In the resulting Linux terminal, run <a class="reference external" href="https://gist.github.com/klaeufer/c4040de09f51395b96be/raw">this gist</a> to install the Scala build tool (sbt):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">klaeufer</span><span class="o">/</span><span class="n">c4040de09f51395b96be</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">sbt</span><span class="o">-</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">sh</span> <span class="o">&amp;&amp;</span> <span class="n">sh</span> <span class="n">install</span><span class="o">-</span><span class="n">sbt</span><span class="o">-</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now you can check out existing projects using git or create a new one like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir -p hello/src/main/scala
+$ cd hello
+$ cat &gt; src/main/scala/Hello.scala
+object Hello extends App {
+  println(&quot;hello&quot;)
+}
+^D
+$ sbt run
+...
+hello
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="locally-installed-development-environment">
+<h2>Locally installed development environment<a class="headerlink" href="#locally-installed-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>This option will give you an advanced development environment with code completion, type info, etc.</p>
+<div class="section" id="required">
+<h3>Required<a class="headerlink" href="#required" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/">Java 8 and/or newer JDK</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://git-scm.com/">Git DSCM</a> (usually preinstalled on Mac OS and Linux)</p>
+<blockquote>
+<div><ul class="simple">
+<li>recommended installation option on Windows: <em>Use Git and optional Unix tools from the Windows Command Prompt</em></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="http://www.scala-sbt.org">sbt</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA CE</a></p>
+<blockquote>
+<div><ul class="simple">
+<li>check specific prerequisite details for your platform</li>
+<li>for the following steps, make sure you have no projects open and are looking at the welcome window as in the attached screenshot</li>
+<li><em>Scala plugin installation:</em> IntelliJ IDEA &gt; Configure (bottom right) &gt; Plugins &gt; Browse repositories &gt; find and right-click Scala &gt; download and install &gt; close repository browser &gt; OK to restart IDEA</li>
+<li><em>JDK configuration</em>: IntelliJ IDEA &gt; Configure &gt; Project Defaults &gt; Project Structure &gt; Platform Settings &gt; SDKs &gt; + &gt; JDK &gt; navigate to the installation directory of your most recent JDK &gt; OK</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="optional-for-windows-users">
+<h3>Optional for Windows users<a class="headerlink" href="#optional-for-windows-users" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a> (integration of Git with Windows Explorer)</li>
+<li><a class="reference external" href="https://www.sourcetreeapp.com/">SourceTree Git client</a></li>
+</ul>
+</div>
+<div class="section" id="optional-for-mac-users">
+<h3>Optional for Mac users<a class="headerlink" href="#optional-for-mac-users" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.sourcetreeapp.com/">SourceTree Git client</a></li>
+</ul>
+</div>
+<div class="section" id="optional-for-all-intellij-users">
+<h3>Optional for all IntelliJ users<a class="headerlink" href="#optional-for-all-intellij-users" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">These are useful Android Studio/Intellij IDEA plugins. (Installation procedure is the same as for the Scala plugin.)</p>
+<ul class="simple">
+<li>Key Promoter (helps you learn keyboard shortcuts)</li>
+<li>MultiMarkdown</li>
+</ul>
+</li>
+<li><p class="first">IntelliJ IDEA Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.</p>
+<p>Check out <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">this example</a>, especially the simple option and list examples.</p>
+<p>Worksheets can live in any folder and coexist with other code. So you can start exploring something in a worksheet and then move it into your production code.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="optional-sbt-plugins">
+<h3>Optional sbt plugins<a class="headerlink" href="#optional-sbt-plugins" title="Permalink to this headline">¶</a></h3>
+<p>These are useful additional sbt plugins. <a class="reference external" href="http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html">You can install them per project or globally.</a> Some of the example projects already come with one or more of these plugins.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt-scoverage</a>: uses Scoverage to produce a test code coverage report</li>
+<li><a class="reference external" href="https://github.com/rtimush/sbt-updates">sbt-updates</a>: checks central repos for dependency updates</li>
+<li><a class="reference external" href="https://github.com/softprops/ls">ls-sbt</a>:  browse available libraries on GitHub using ls.implicit.ly</li>
+<li><a class="reference external" href="https://github.com/jrudolph/sbt-dependency-graph">sbt-dependency-graph</a>: creates a visual representation of library dependency tree</li>
+<li><a class="reference external" href="https://github.com/sbt/cpd4sbt">cpd4sbt</a>: copy/paste detection for Scala</li>
+<li><a class="reference external" href="https://github.com/scalastyle/scalastyle-sbt-plugin">scalastyle</a>: static code checker for Scala</li>
+<li><a class="reference external" href="https://github.com/orrsella/sbt-stats">sbt-stats</a>: simple, extensible source code statistics/metrics</li>
+<li><a class="reference external" href="https://github.com/sbt/sbt-scalariform">sbt-scalariform</a>: automatic source code formatting using Scalariform</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="required-for-remote-participation">
+<h2>Required for remote participation<a class="headerlink" href="#required-for-remote-participation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://luc.edu/digitalmedia/trainingandsupport/adobeconnect/about.shtml">Adobe Connect</a> for holding class remotely in case of weather emergencies</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Konstantin Läufer.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/lumen/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resources" href="resources.html" />
+    <link rel="prev" title="Table of Contents" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          COMP 313/413</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-learning-outcomes">Key learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-starting-points-for-functional-programming">Some starting points for functional programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#course-outline">Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-resources">Online resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Course software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">Required for remote participation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#key-learning-outcomes">Key learning outcomes</a></li>
+<li><a class="reference internal" href="#some-starting-points-for-functional-programming">Some starting points for functional programming</a></li>
+<li><a class="reference internal" href="#course-outline">Course outline</a></li>
+<li><a class="reference internal" href="#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Table of Contents"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Table of Contents</span>
+    </a>
+  </li>
+  <li>
+    <a href="resources.html" title="Next Chapter: Resources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Resources &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/overview.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we provide an outline of the course, along with a brief motivation and key learning outcomes.</p>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of reasons why you would want to study programming languages. To name a few:</p>
+<ul class="simple">
+<li>Knowing several languages will help you solve more problems in better ways.</li>
+<li>The subject matter is exciting and intellectually challenging.</li>
+<li>Google, Meetup, and increasing numbers of local startups love it (from an employer&#8217;s point of view)!</li>
+</ul>
+</div>
+<div class="section" id="key-learning-outcomes">
+<h2>Key learning outcomes<a class="headerlink" href="#key-learning-outcomes" title="Permalink to this headline">¶</a></h2>
+<p>We deliberately chose the learning outcomes for this course to complement other courses in your computer science or software engineering curriculum. Upon entering this course, you will already be familiar with the imperative and object-oriented paradigms, coming from languages such as Java, C++, C#, or Python. Most likely, you will also be familiar with basic machine architecture and memory management using C or C++.</p>
+<p>In this course, we will pursue one overarching learning outcome and three more specific ones:</p>
+<ul class="simple">
+<li>an understanding of the programming language design space</li>
+<li>proficiency in functional programming</li>
+<li>an understanding of program representation and interpretation/execution</li>
+<li>basic competence in concurrent programming</li>
+</ul>
+<p>Given the widespread availability in multi-core hardware ranging from mobile devices to enterprise servers, there is a growing interest in programming paradigms and techniques that will take advantage of this hardware. Functional programming, which de-emphasizes mutable state, in conjunction with suitable concurrency constructs, is particularly useful. We will also &#8220;look under the hood&#8221; by studying how to represent programs and interpret, execute, or otherwise process those representations.</p>
+</div>
+<div class="section" id="some-starting-points-for-functional-programming">
+<h2>Some starting points for functional programming<a class="headerlink" href="#some-starting-points-for-functional-programming" title="Permalink to this headline">¶</a></h2>
+<p>You might find the following resources useful to get into the functional programming mindset:</p>
+<ul class="simple">
+<li>Presentation by Martin Odersky: Scala with Style <a class="reference external" href="http://www.youtube.com/watch?v=kkTFx3-duc8">(YouTube)</a></li>
+<li>Interview with Simon Peyton-Jones on Functional Programming and Haskell <a class="reference external" href="http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell">(SE Radio audio podcast)</a></li>
+<li>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison <a class="reference external" href="http://klaeufer.github.com/luc-amc.html">(visual presentation)</a></li>
+</ul>
+</div>
+<div class="section" id="course-outline">
+<h2>Course outline<a class="headerlink" href="#course-outline" title="Permalink to this headline">¶</a></h2>
+<p>Here is a more detailed course outline (subject to revision).</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>functional programming (6 weeks)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>defining algebraic data types</dt>
+<dd><ul class="first last">
+<li>scalars: enumerations</li>
+<li>sublinear structures: numbers, option</li>
+<li>linear structures: lists, maps</li>
+<li>nonlinear structures: trees</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>implementing behaviors on algebraic data types</dt>
+<dd><ul class="first last">
+<li>pattern matching</li>
+<li>recursion</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>higher-order functions</li>
+<li>predefined types and their behaviors</li>
+<li>recursion patterns</li>
+<li>higher-kinded types</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>programming language representation and interpretation/execution (5 weeks)</dt>
+<dd><ul class="first last">
+<li>language design space</li>
+<li>scanners (lexical analyzers)</li>
+<li>parsers (syntax analyzers)</li>
+<li>interpreters and compilers</li>
+<li>domain-specific languages</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>concurrent and parallel programming (4 weeks)</dt>
+<dd><ul class="first last">
+<li>parallel collections</li>
+<li>futures and promises</li>
+<li>progress reporting and cancelation</li>
+<li>asynchronous programming/reactive extensions (Rx)</li>
+<li><dl class="first docutils">
+<dt>advanced mechanisms</dt>
+<dd><ul class="first last">
+<li>explicit threads</li>
+<li>actors</li>
+<li>software-transactional memory</li>
+<li>task-parallel library</li>
+<li>functional data structures</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="bloom-s-taxonomy">
+<h2>Bloom&#8217;s taxonomy<a class="headerlink" href="#bloom-s-taxonomy" title="Permalink to this headline">¶</a></h2>
+<p>The letters refer to the successive levels of learning from the cognitive domain of <a class="reference external" href="http://en.wikipedia.org/wiki/Bloom's_taxonomy#Cognitive">Bloom&#8217;s taxonomy</a>:</p>
+<ul class="simple">
+<li>K: know/remember the term</li>
+<li>C: comprehend/understand the concept</li>
+<li>A: apply the technique</li>
+<li>analyze/evaluate/create (advanced levels)</li>
+</ul>
+<p>..todo:: map Bloom levels to course outline</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Konstantin Läufer.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
