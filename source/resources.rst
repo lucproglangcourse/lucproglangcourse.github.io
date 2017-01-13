@@ -35,13 +35,13 @@ requests <https://help.github.com/articles/using-pull-requests>`_ with improveme
 Required text
 ~~~~~~~~~~~~~
 
-**Programming in Scala, Third Edition**
-*By: Martin Odersky; Lex Spoon; Bill Venners*
-Publisher: Artima Press
-Pub. Date: April 28, 2016
-ISBN-10: 0-9815316-8-7
-ISBN-13: 978-0-9815316-8-7
-`available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
+- **Programming in Scala, Third Edition**
+  *By: Martin Odersky; Lex Spoon; Bill Venners*
+  Publisher: Artima Press
+  Pub. Date: April 28, 2016
+  ISBN-10: 0-9815316-8-7
+  ISBN-13: 978-0-9815316-8-7
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
 
 Recommended/supplementary texts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,6 +106,14 @@ Additional texts on Scala
   Web ISBN-13: 978-1-78328-364-4
   `available free on Safari <http://proquestcombo.safaribooksonline.com/book/programming/scala/9781783283637>`_
 
+- **Functional Programming in Scala** (advanced)
+  *By: Paul Chiusano and Rúnar Bjarnason*
+  Foreword by Martin Odersky
+  Publisher: Manning Publications
+  Pub. Date: August 2014
+  Print ISBN: 9781617290657
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781617290657>`_
+
 
 Online Scala resources
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -121,13 +129,6 @@ Online Scala resources
 - `parboiled2 parser generator <https://github.com/sirthias/parboiled2>`_
 - `scalaz API documentation (advanced) <http://docs.typelevel.org/api/scalaz/stable/7.1.0-M3/doc>`_
 - `scalaz cheat sheet (advanced) <http://eed3si9n.com/scalaz-cheat-sheet>`_
-- **Functional Programming in Scala** (advanced)
-  *By: Paul Chiusano and Rúnar Bjarnason*
-  Foreword by Martin Odersky
-  Publisher: Manning Publications
-  Pub. Date: August 2014
-  Print ISBN: 9781617290657
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781617290657>`_
 
 
 Resources on program representation and interpretation

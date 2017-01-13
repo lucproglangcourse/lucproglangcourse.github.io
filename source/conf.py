@@ -29,6 +29,8 @@ import sphinx_bootstrap_theme
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinxcontrib.bibtex']
 
+todo_include_todos = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -101,7 +103,7 @@ html_theme = 'bootstrap'
 #html_theme_options = {}
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "COMP 313/413",
+    'navbar_title': "COMP 372/471",
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
@@ -295,10 +297,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'COMP 313/413 Lecture Notes'
+epub_title = u'COMP 372/471 Lecture Notes'
 epub_author = u'Konstantin Läufer'
 epub_publisher = u'Konstantin Läufer'
-epub_copyright = u'2013, Konstantin Läufer'
+epub_copyright = u'2017, Konstantin Läufer'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

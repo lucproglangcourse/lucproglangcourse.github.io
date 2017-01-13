@@ -38,6 +38,7 @@ You might find the following resources useful to get into the functional program
 - Interview with Simon Peyton-Jones on Functional Programming and Haskell `(SE Radio audio podcast) <http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell>`_
 - Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison `(visual presentation) <http://klaeufer.github.com/luc-amc.html>`_
 
+.. todo:: incorporate visual presentation here
 
 Course outline
 ~~~~~~~~~~~~~~
@@ -45,35 +46,45 @@ Course outline
 Here is a more detailed course outline (subject to revision).
 
 - functional programming (6 weeks)
-   - defining algebraic data types
-      - scalars: enumerations
-      - sublinear structures: numbers, option
-      - linear structures: lists, maps
-      - nonlinear structures: trees
-   - implementing behaviors on algebraic data types
-      - pattern matching
-      - recursion
-   - higher-order functions
-   - predefined types and their behaviors
-   - recursion patterns
-   - higher-kinded types
+
+  - defining algebraic data types
+
+    - scalars: enumerations
+    - sublinear structures: numbers, option
+    - linear structures: lists, maps
+    - nonlinear structures: trees
+
+  - implementing behaviors on algebraic data types
+
+    - pattern matching
+    - recursion
+
+  - higher-order functions
+  - predefined types and their behaviors
+  - recursion patterns
+  - higher-kinded types
+
 - programming language representation and interpretation/execution (5 weeks)
-   - language design space
-   - scanners (lexical analyzers)
-   - parsers (syntax analyzers)
-   - interpreters and compilers
-   - domain-specific languages
+
+  - language design space
+  - scanners (lexical analyzers)
+  - parsers (syntax analyzers)
+  - interpreters and compilers
+  - domain-specific languages
+
 - concurrent and parallel programming (4 weeks)
-   - parallel collections
-   - futures and promises
-   - progress reporting and cancelation
-   - asynchronous programming/reactive extensions (Rx)
-   - advanced mechanisms
-      - explicit threads
-      - actors
-      - software-transactional memory
-      - task-parallel library
-      - functional data structures
+
+  - parallel collections
+  - futures and promises
+  - progress reporting and cancelation
+  - asynchronous programming/reactive extensions (Rx)
+  - advanced mechanisms
+
+    - explicit threads
+    - actors
+    - software-transactional memory
+    - task-parallel library
+    - functional data structures
 
 	
 Bloom's taxonomy
@@ -86,4 +97,4 @@ The letters refer to the successive levels of learning from the cognitive domain
 - A: apply the technique
 - analyze/evaluate/create (advanced levels)
 
-..todo:: map Bloom levels to course outline
+.. todo:: map Bloom levels to course outline
