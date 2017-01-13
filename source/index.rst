@@ -15,7 +15,13 @@ Table of Contents
 .. toctree::
    :maxdepth: 2
 
-
+   overview
+   resources
+   software
+   functionalprogramming
+   representationinterpretation
+   concurrency
+   summary
 
 
 See :cite:`1987:nelson` for an introduction to non-standard analysis.
