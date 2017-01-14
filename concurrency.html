@@ -32,7 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Summary" href="summary.html" />
+    <link rel="next" title="Programming Language Design Principles" href="principles.html" />
     <link rel="prev" title="Program Representation and Interpretation" href="representationinterpretation.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -82,9 +82,24 @@
 <li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">Detailed Course Outline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">Key Resources</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Course software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">Required for remote participation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">A simple imperative language with records</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">Programming Language Design Principles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">Key resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
@@ -96,15 +111,6 @@
 <li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">Course software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">Required for remote participation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Concurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">TODO</a></li>
 </ul>
@@ -134,7 +140,7 @@
     </a>
   </li>
   <li>
-    <a href="summary.html" title="Next Chapter: Summary"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Summary &raquo;</span>
+    <a href="principles.html" title="Next Chapter: Programming Language Design Principles"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Programming L... &raquo;</span>
     </a>
   </li>
               
@@ -170,7 +176,138 @@
       
   <div class="section" id="introduction-to-concurrency">
 <h1>Introduction to Concurrency<a class="headerlink" href="#introduction-to-concurrency" title="Permalink to this headline">¶</a></h1>
-<p>concurrency goes here</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">add relevant content from CDER chapter</p>
+</div>
+<ul>
+<li><p class="first">concurrency overview and foundations
+- why and when concurrency?</p>
+<blockquote>
+<div><ul class="simple">
+<li>when it is a natural fit for the problem domain
+- multiple autonomous behaviors/simulations
+- user interfaces: timed events, background activities</li>
+<li>when the technical solution domain requires it
+- more efficient use of available resources: asynchronous computing
+- graphical user interfaces: queuing of low-level input events
+- multi-core systems
+- network services/distributed systems</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>fundamentals of concurrency
+- physical (parallelism) versus logical concurrency
+- speedup and when to expect it</li>
+</ul>
+</li>
+</ul>
+<p># Lecture</p>
+<p>## fundamentals of concurrency</p>
+<blockquote>
+<div><ul class="simple">
+<li>physical (parallelism) versus logical concurrency</li>
+<li>speedup and when to expect it</li>
+<li>data parallelism versus task parallelism</li>
+</ul>
+</div></blockquote>
+<p>## activity terminology and concerns</p>
+<blockquote>
+<div><ul class="simple">
+<li>process: own memory</li>
+<li>thread: shared memory</li>
+<li>foreground versus background</li>
+<li>CPU-bound [example](<a class="reference external" href="https://gist.github.com/klaeufer/5409687">https://gist.github.com/klaeufer/5409687</a>) versus IO-bound [example](<a class="reference external" href="https://gist.github.com/klaeufer/5409800">https://gist.github.com/klaeufer/5409800</a>)</li>
+<li>run-to-completion versus coordination</li>
+<li>progress reporting</li>
+<li>cancelation</li>
+</ul>
+</div></blockquote>
+<p>## projects</p>
+<ul class="simple">
+<li>[project 4](<a class="reference external" href="https://trello.com/c/KTUBorWF/78-project-4">https://trello.com/c/KTUBorWF/78-project-4</a>)</li>
+<li>project 3c clinic</li>
+</ul>
+<p># Presentation</p>
+<p>According to this <a class="reference external" href="https://trello.com/c/a7vQg3qp/54-presentation-schedule">https://trello.com/c/a7vQg3qp/54-presentation-schedule</a>.</p>
+<p>## thread safety</p>
+<blockquote>
+<div><ul class="simple">
+<li>nondeterminism [example](<a class="reference external" href="https://gist.github.com/klaeufer/5409800">https://gist.github.com/klaeufer/5409800</a>)
+- extent of nondeterminism: see [CDER chapter](<a class="reference external" href="https://docs.google.com/document/d/1QbPEApea_spbemqluf7xPyaTEf_b2ZQYdBNMeiEOHuw">https://docs.google.com/document/d/1QbPEApea_spbemqluf7xPyaTEf_b2ZQYdBNMeiEOHuw</a>)</li>
+<li>race conditions [example](<a class="reference external" href="https://gist.github.com/klaeufer/5409867">https://gist.github.com/klaeufer/5409867</a>)</li>
+<li>root cause of thread safety problems</li>
+</ul>
+</div></blockquote>
+<p>## dealing with shared state</p>
+<blockquote>
+<div><ul class="simple">
+<li>mutual exclusion/locking</li>
+<li>confinement</li>
+<li>immutability</li>
+<li>case study: GUIs and the single-threaded rule</li>
+</ul>
+</div></blockquote>
+<p>## (conflicting) design forces</p>
+<blockquote>
+<div><ul class="simple">
+<li>correctness/(thread-)safety</li>
+<li>liveness/deadlock
+- dining philosophers [example](<a class="reference external" href="http://www.doc.ic.ac.uk/~jnm/book/book_applets/Diners.html">http://www.doc.ic.ac.uk/~jnm/book/book_applets/Diners.html</a>) &lt;- <em>run on Firefox or Safari with site added to Java security settings</em></li>
+<li>fairness/starvation</li>
+<li>performance
+- throughput
+- latency
+- jitter</li>
+</ul>
+</div></blockquote>
+<p>## specific concurrency mechanisms</p>
+<p>language constructs, patterns, building blocks</p>
+<blockquote>
+<div><ul class="simple">
+<li>threads (familiar from 313/413)</li>
+<li>monitors: synchronized/locks, wait/notify</li>
+<li>fully synchronized object (pattern/building blocks)</li>
+<li>Android
+- [AsyncTask](<a class="reference external" href="http://developer.android.com/reference/android/os/AsyncTask.html">http://developer.android.com/reference/android/os/AsyncTask.html</a>)
+- [ThreadPoolExecutor](<a class="reference external" href="http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html</a>)</li>
+<li>[java.util.concurrent](<a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html</a>)
+- atomic variables
+- thread-safe collections
+- FIFO locks
+- ...</li>
+<li>[Scala parallel collections](<a class="reference external" href="http://docs.scala-lang.org/overviews/parallel-collections/overview.html">http://docs.scala-lang.org/overviews/parallel-collections/overview.html</a>)</li>
+<li>[futures and promises intro](<a class="reference external" href="http://docs.scala-lang.org/overviews/core/futures.html">http://docs.scala-lang.org/overviews/core/futures.html</a>)</li>
+<li>[composable futures in Scala/Akka](<a class="reference external" href="http://doc.akka.io/docs/akka/current/scala/futures.html">http://doc.akka.io/docs/akka/current/scala/futures.html</a>)</li>
+<li>[example: concurrent web requests](<a class="reference external" href="https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97">https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97</a>)</li>
+<li>[actors](<a class="reference external" href="https://en.wikipedia.org/wiki/Actor_model">https://en.wikipedia.org/wiki/Actor_model</a>)</li>
+<li>[reactive streams](<a class="reference external" href="http://www.reactive-streams.org/">http://www.reactive-streams.org/</a>) - see also [Akka streams](<a class="reference external" href="http://doc.akka.io/docs/akka/2.4.4/scala/stream">http://doc.akka.io/docs/akka/2.4.4/scala/stream</a>)</li>
+<li>[software transactional memory](<a class="reference external" href="https://en.wikipedia.org/wiki/Software_transactional_memory">https://en.wikipedia.org/wiki/Software_transactional_memory</a>)</li>
+</ul>
+</div></blockquote>
+<p>## projects</p>
+<ul class="simple">
+<li>[project 4](<a class="reference external" href="https://trello.com/c/KTUBorWF/78-project-4">https://trello.com/c/KTUBorWF/78-project-4</a>)</li>
+<li>project 3c and 4 clinic</li>
+</ul>
+<p># Presentation</p>
+<p>According to this <a class="reference external" href="https://trello.com/c/a7vQg3qp/54-presentation-schedule">https://trello.com/c/a7vQg3qp/54-presentation-schedule</a>.</p>
+<p># References</p>
+<p>Concurrent and asynchronous computing</p>
+<ul class="simple">
+<li>Läufer and Thiruvathukal, [CDER chapter](<a class="reference external" href="https://docs.google.com/document/d/1QbPEApea_spbemqluf7xPyaTEf_b2ZQYdBNMeiEOHuw">https://docs.google.com/document/d/1QbPEApea_spbemqluf7xPyaTEf_b2ZQYdBNMeiEOHuw</a>) (especially the section on fundamentals of thread safety)</li>
+<li>Goetz et al., [JCIP](<a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com/">http://jcip.net.s3-website-us-east-1.amazonaws.com/</a>)</li>
+<li>Doug Lea, [CPJ](<a class="reference external" href="http://gee.cs.oswego.edu/dl/cpj">http://gee.cs.oswego.edu/dl/cpj</a>)</li>
+<li>Thiruvathukal and Christopher, [HPJPC](<a class="reference external" href="https://code.google.com/p/hpjpc/">https://code.google.com/p/hpjpc/</a>)</li>
+<li>[SE Radio episode on concurrency: part 1](<a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/lJLihLsyf0M/">http://feedproxy.google.com/~r/se-radio/~3/lJLihLsyf0M/</a>)</li>
+<li>[SE Radio episode on concurrency: part 2](<a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/Wh7E6YT1_JI/">http://feedproxy.google.com/~r/se-radio/~3/Wh7E6YT1_JI/</a>)</li>
+<li>[SE Radio episode on concurrency: part 3](<a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/WZ7h3kzRARY/">http://feedproxy.google.com/~r/se-radio/~3/WZ7h3kzRARY/</a>)</li>
+<li>[SE Radio episode on concurrency: part 4](<a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/bqICWnvwuGw/">http://feedproxy.google.com/~r/se-radio/~3/bqICWnvwuGw/</a>)</li>
+<li>[futures and promises overview](<a class="reference external" href="http://arild.github.io/scala-workshop/#/12">http://arild.github.io/scala-workshop/#/12</a>)</li>
+<li>[RxJava/RxScala](<a class="reference external" href="https://github.com/ReactiveX/RxScala">https://github.com/ReactiveX/RxScala</a>)</li>
+<li>[asynchronous programming video](<a class="reference external" href="https://www.youtube.com/watch?v=UKjcJ13bD3s">https://www.youtube.com/watch?v=UKjcJ13bD3s</a>)</li>
+<li>[reactive/asynchronous programming with RxJava/RxScala video](<a class="reference external" href="https://www.youtube.com/watch?v=_t06LRX0DV0">https://www.youtube.com/watch?v=_t06LRX0DV0</a>)</li>
+</ul>
 </div>
 
 

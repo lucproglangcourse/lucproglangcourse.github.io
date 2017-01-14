@@ -1,6 +1,18 @@
 The Functional Programming Paradigm
 -----------------------------------
 
+In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
+
+The orthogo
+
+processtree example in detail
+
+refer to "detailed outline"
+
+
+
+
+
 - project 0b and 1 clarifications 
   - [echotest-scala](https://github.com/lucproglangcourse/echotest-scala) example
   - TDD styles in Scala
