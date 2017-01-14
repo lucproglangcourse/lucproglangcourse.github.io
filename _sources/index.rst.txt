@@ -14,13 +14,16 @@ Table of Contents
 
    overview
    syllabus
-   resources
    software
    functionalprogramming
    representationinterpretation
    concurrency
+   principles
+   resources 
    summary
    todo
+
+.. todo:: add sample projects, activities, tests, and (tiered) master list for presentations
 
 Indices and tables
 ==================

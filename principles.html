@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
+    <title>Programming Language Design Principles &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,8 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="next" title="Resources" href="resources.html" />
+    <link rel="prev" title="Introduction to Concurrency" href="concurrency.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -50,7 +51,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           COMP 372/471</a>
         <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
       </div>
@@ -66,10 +67,10 @@
      id="dLabelGlobalToc"
      data-toggle="dropdown"
      data-target="#"
-     href="#">Site <b class="caret"></b></a>
+     href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">Key learning outcomes</a></li>
@@ -94,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concurrency.html">Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">Programming Language Design Principles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programming Language Design Principles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">Key resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
@@ -121,8 +122,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Table of Contents</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">Programming Language Design Principles</a></li>
 </ul>
 </ul>
 </li>
@@ -132,7 +132,11 @@
               
                 
   <li>
-    <a href="overview.html" title="Next Chapter: Overview"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Overview &raquo;</span>
+    <a href="concurrency.html" title="Previous Chapter: Introduction to Concurrency"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="resources.html" title="Next Chapter: Resources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Resources &raquo;</span>
     </a>
   </li>
               
@@ -142,7 +146,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/index.rst.txt"
+  <a href="_sources/principles.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -166,68 +170,26 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <p>Lecture notes for <a class="reference external" href="http://courses.cs.luc.edu/html/comp372.html">COMP 372/471</a>, <a class="reference external" href="http://luc.edu/cs">Dept. of Computer Science</a>, <a class="reference external" href="http://luc.edu">Loyola U. Chicago</a>.
-This version of the course is normally taught by <a class="reference external" href="https://github.com/klaeufer">Konstantin Läufer</a> and focuses on functional languages with examples and projects mostly in Scala.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">These notes are still being written, so expect a few rough
-edges. But we&#8217;re getting closer!</p>
-</div>
-<div class="section" id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">Key learning outcomes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">Some starting points for functional programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">Course outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">Key Resources</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">Course software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">Required for remote participation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">Key resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">Required text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">Recommended/supplementary texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">Additional texts on Scala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">Online Scala resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">Resources on program representation and interpretation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">TODO</a></li>
-</ul>
-</div>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">add sample projects, activities, tests, and (tiered) master list for presentations</p>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="programming-language-design-principles">
+<h1>Programming Language Design Principles<a class="headerlink" href="#programming-language-design-principles" title="Permalink to this headline">¶</a></h1>
+<p>This is the list of programming language design principles from Bruce MacLennan&#8217;s excellent Principles of Programming Languages (2nd edition, 1986, ISBN 0-03-005163-0, found on <a class="reference external" href="http://www.lshift.net/blog/2006/06/24/bruce-j-maclennans-programming-language-design-principles">Oliver Wyman&#8217;s blog</a>.</p>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><strong>Abstraction</strong>: Avoid requiring something to be stated more than once; factor out the recurring pattern.</li>
+<li><strong>Automation</strong>: Automate mechanical, tedious, or error-prone activities.</li>
+<li><strong>Defense in Depth</strong>: Have a series of defences so that if an error isn’t caught by one, it will probably be caught by another.</li>
+<li><strong>Information Hiding</strong>: The language should permit modules designed so that (1) the user has all of the information needed to use the module correctly, and nothing more; and (2) the implementor has all of the information needed to implement the module correctly, and nothing more.</li>
+<li><strong>Labeling</strong>: Avoid arbitrary sequences more than a few items long. Do not require the user to know the absolute position of an item in a list. Instead, associate a meaningful label with each item and allow the items to occur in any order.</li>
+<li><strong>Localized Cost</strong>: Users should only pay for what they use; avoid distributed costs.</li>
+<li><strong>Manifest Interface</strong>: All interfaces should be apparent (manifest) in the syntax.</li>
+<li><strong>Orthogonality</strong>: Independent functions should be controlled by independent mechanisms.</li>
+<li><strong>Portability</strong>: Avoid features or facilities that are dependent on a particular machine or a small class of machines.</li>
+<li><strong>Preservation of Information</strong>: The language should allow the representation of information that the user might know and that the compiler might need.</li>
+<li><strong>Regularity</strong>: Regular rules, without exceptions, are easier to learn, use, describe, and implement.</li>
+<li><strong>Security</strong>: No program that violates the definition of the language, or its own intended structure, should escape detection.</li>
+<li><strong>Simplicity</strong>: A language should be as simple as possible. There should be a minimum number of concepts, with simple rules for their combination.</li>
+<li><strong>Structure</strong>: The static structure of the program should correspond in a simple way to the dynamic structure of the corresponding computations.</li>
+<li><strong>Syntactic Consistency</strong>: Similar things should look similar; different things different.</li>
+<li><strong>Zero-One-Infinity</strong>: The only reasonable numbers are zero, one, and infinity.</li>
 </ul>
 </div>
 

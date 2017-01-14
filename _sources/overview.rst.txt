@@ -45,48 +45,9 @@ Course outline
 
 Here is a more detailed course outline (subject to revision).
 
-- functional programming (6 weeks)
+.. include:: detailedoutline.txt
 
-  - defining algebraic data types
-
-    - scalars: enumerations
-    - sublinear structures: numbers, option
-    - linear structures: lists, maps
-    - nonlinear structures: trees
-
-  - implementing behaviors on algebraic data types
-
-    - pattern matching
-    - recursion
-
-  - higher-order functions
-  - predefined types and their behaviors
-  - recursion patterns
-  - higher-kinded types
-
-- programming language representation and interpretation/execution (5 weeks)
-
-  - language design space
-  - scanners (lexical analyzers)
-  - parsers (syntax analyzers)
-  - interpreters and compilers
-  - domain-specific languages
-
-- concurrent and parallel programming (4 weeks)
-
-  - parallel collections
-  - futures and promises
-  - progress reporting and cancelation
-  - asynchronous programming/reactive extensions (Rx)
-  - advanced mechanisms
-
-    - explicit threads
-    - actors
-    - software-transactional memory
-    - task-parallel library
-    - functional data structures
-
-	
+	     
 Bloom's taxonomy
 ~~~~~~~~~~~~~~~~
 
