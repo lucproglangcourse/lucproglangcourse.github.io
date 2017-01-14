@@ -16,6 +16,14 @@ Section: 001 Spring 2017
 - *Instructor:* `Konstantin Läufer <http://klaeufer.github.io>`_
 - *Class time and location (Spring 2017)*: Tue 14:45-17:15, Mundelein Center 607, LSC
 - *Office hour:* Tue 17:15-18:00 in Mundelein Center 607, LSC, and by appointment
+- *Required text:*
+  **Programming in Scala, Third Edition**
+  *By: Martin Odersky; Lex Spoon; Bill Venners*
+  Publisher: Artima Press
+  Pub. Date: April 28, 2016
+  ISBN-10: 0-9815316-8-7
+  ISBN-13: 978-0-9815316-8-7
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
 - Grading (tentative): 
   - 45% quizzes & exams
   - 50% projects & presentations *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
@@ -24,7 +32,16 @@ Section: 001 Spring 2017
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_372_001_5616_1172>`_
 - `Slack team <https://lucproglangcourse.slack.com>`_ *(mandatory subscription)*
 
+Detailed Course Outline
+~~~~~~~~~~~~~~~~~~~~~~~
+  
+.. include:: detailedoutline.txt
+
+	     
 Key Resources
 ~~~~~~~~~~~~~
 
 .. include:: keyresources.txt
+
+
+	     
