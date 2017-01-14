@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Course Syllabus &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/lumen/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resources" href="resources.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          COMP 372/471</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="genindex.html">Index</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">Key learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">Some starting points for functional programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-001-spring-2017">Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-resources">Key Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">Key resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">Course software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">Required for remote participation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">TODO</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Course Syllabus</a><ul>
+<li><a class="reference internal" href="#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
+<li><a class="reference internal" href="#section-001-spring-2017">Section: 001 Spring 2017</a></li>
+<li><a class="reference internal" href="#key-resources">Key Resources</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="overview.html" title="Previous Chapter: Overview"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Overview</span>
+    </a>
+  </li>
+  <li>
+    <a href="resources.html" title="Next Chapter: Resources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Resources &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/syllabus.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="course-syllabus">
+<h1>Course Syllabus<a class="headerlink" href="#course-syllabus" title="Permalink to this headline">¶</a></h1>
+<p>This is the official course syllabus for the current section(s) of this course.</p>
+<div class="section" id="course-comp-372-471-programming-languages">
+<h2>Course: COMP 372/471 Programming Languages<a class="headerlink" href="#course-comp-372-471-programming-languages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Prerequisite: <a class="reference external" href="http://courses.cs.luc.edu/html/comp313.html">Comp 313</a></li>
+<li>Official course description: <a class="reference external" href="http://courses.cs.luc.edu/html/comp372.html">Comp 372</a> | <a class="reference external" href="http://courses.cs.luc.edu/html/comp471.html">Comp 471</a></li>
+</ul>
+</div>
+<div class="section" id="section-001-spring-2017">
+<h2>Section: 001 Spring 2017<a class="headerlink" href="#section-001-spring-2017" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><em>Instructor:</em> <a class="reference external" href="http://klaeufer.github.io">Konstantin Läufer</a></li>
+<li><em>Class time and location (Spring 2017)</em>: Tue 14:45-17:15, Mundelein Center 607, LSC</li>
+<li><em>Office hour:</em> Tue 17:15-18:00 in Mundelein Center 607, LSC, and by appointment</li>
+<li>Grading (tentative):
+- 45% quizzes &amp; exams
+- 50% projects &amp; presentations <em>(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)</em>
+- 5% participation (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)</li>
+<li><a class="reference external" href="http://laufer.cs.luc.edu/teaching/ground-rules">Ground rules</a></li>
+<li><a class="reference external" href="https://sakai.luc.edu/portal/site/COMP_372_001_5616_1172">Sakai site for this section (gradebook)</a></li>
+<li><a class="reference external" href="https://lucproglangcourse.slack.com">Slack team</a> <em>(mandatory subscription)</em></li>
+</ul>
+</div>
+<div class="section" id="key-resources">
+<h2>Key Resources<a class="headerlink" href="#key-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://github.com/lucproglangcourse">Code examples on GitHub</a></li>
+<li><a class="reference external" href="http://www.youtube.com/user/klaeufer">Instructor&#8217;s videos on YouTube</a></li>
+<li><a class="reference external" href="https://www.youtube.com/playlist?list=PL98UdUDU3OFHPMtFiGpknRE6QDSELC5Qf">External playlist on YouTube</a></li>
+<li><a class="reference external" href="http://diigo.com/user/laufer/cs372">External references/bookmarks on Diigo</a></li>
+<li><a class="reference external" href="http://laufer.cs.luc.edu/teaching/resources">General resources</a></li>
+<li><a class="reference external" href="http://laufer.cs.luc.edu/teaching/coding">Coding guidelines</a></li>
+<li><a class="reference external" href="https://trello.com/b/atKDaeNx/library-of-research-resources">Library of research resources (LRR)</a></li>
+<li><a class="reference external" href="http://libguides.luc.edu/compsci">Loyola library&#8217;s CS subject guide</a></li>
+<li><a class="reference external" href="http://www.meetup.com/members/6740341/groups">Some professional meetups around town</a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Konstantin Läufer.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
