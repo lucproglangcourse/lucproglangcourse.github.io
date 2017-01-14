@@ -25,6 +25,8 @@ Table of Contents
 
 .. todo:: add sample projects, activities, tests, and (tiered) master list for presentations
 
+.. todo:: add stuff from https://trello.com/c/kAMGZ4uf/28-add-in-next-iteration
+	  
 Indices and tables
 ==================
 
