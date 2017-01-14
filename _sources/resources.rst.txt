@@ -2,18 +2,10 @@ Resources
 ---------
 
 
-Online resources
-~~~~~~~~~~~~~~~~
+Key resources
+~~~~~~~~~~~~~
 
-- `Code examples on GitHub <http://github.com/lucproglangcourse>`_
-- `Instructor's videos on YouTube <http://www.youtube.com/user/klaeufer>`_
-- `External playlist on YouTube <https://www.youtube.com/playlist?list=PL98UdUDU3OFHPMtFiGpknRE6QDSELC5Qf>`_
-- `External references/bookmarks on Diigo <http://diigo.com/user/laufer/cs372>`_
-- `General resources <http://laufer.cs.luc.edu/teaching/resources>`_
-- `Coding guidelines <http://laufer.cs.luc.edu/teaching/coding>`_
-- `Library of research resources (LRR) <https://trello.com/b/atKDaeNx/library-of-research-resources>`_
-- `Loyola library's CS subject guide <http://libguides.luc.edu/compsci>`_
-- `Some professional meetups around town <http://www.meetup.com/members/6740341/groups>`_
+.. include:: keyresources.txt
 
 
 Code examples

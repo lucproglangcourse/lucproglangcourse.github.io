@@ -1,3 +1,6 @@
+The Functional Programming Paradigm
+-----------------------------------
+
 - project 0b and 1 clarifications 
   - [echotest-scala](https://github.com/lucproglangcourse/echotest-scala) example
   - TDD styles in Scala

@@ -13,6 +13,7 @@ Table of Contents
    :maxdepth: 2
 
    overview
+   syllabus
    resources
    software
    functionalprogramming
