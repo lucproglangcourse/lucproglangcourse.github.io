@@ -31,6 +31,8 @@ Appendix
    syllabus 
    todo
 
+.. todo:: add CI/CD using Travis
+   
 .. todo:: figure out why search isn't working
    
 .. todo:: add sample projects, activities, tests, and (tiered) master list for presentations
