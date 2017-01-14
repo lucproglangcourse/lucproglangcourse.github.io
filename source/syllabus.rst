@@ -1,0 +1,30 @@
+Course Syllabus
+---------------
+
+This is the official course syllabus for the current section(s) of this course.
+
+
+Course: COMP 372/471 Programming Languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Prerequisite: `Comp 313 <http://courses.cs.luc.edu/html/comp313.html>`_
+- Official course description: `Comp 372 <http://courses.cs.luc.edu/html/comp372.html>`_ | `Comp 471 <http://courses.cs.luc.edu/html/comp471.html>`_
+
+Section: 001 Spring 2017
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- *Instructor:* `Konstantin Läufer <http://klaeufer.github.io>`_
+- *Class time and location (Spring 2017)*: Tue 14:45-17:15, Mundelein Center 607, LSC
+- *Office hour:* Tue 17:15-18:00 in Mundelein Center 607, LSC, and by appointment
+- Grading (tentative): 
+  - 45% quizzes & exams
+  - 50% projects & presentations *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+  - 5% participation (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
+- `Ground rules <http://laufer.cs.luc.edu/teaching/ground-rules>`_
+- `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_372_001_5616_1172>`_
+- `Slack team <https://lucproglangcourse.slack.com>`_ *(mandatory subscription)*
+
+Key Resources
+~~~~~~~~~~~~~
+
+.. include:: keyresources.txt
