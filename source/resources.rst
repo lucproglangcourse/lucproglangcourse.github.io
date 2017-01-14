@@ -2,6 +2,9 @@ Resources
 ---------
 
 
+.. todo:: consider moving most of these into the corresponding
+	  chapters as "further reading"
+
 Key resources
 ~~~~~~~~~~~~~
 
@@ -185,3 +188,6 @@ Other resources
   Pub. Date: 2012
   Print ISBN-13: 9780201882957
   `online companion site <http://www.haskellcraft.com/craft3e>`_
+
+
+.. todo:: master list of languages for presentation

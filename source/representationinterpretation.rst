@@ -290,29 +290,27 @@ The entire code for the implementation of the simple imperative language with re
 
 
 
+Type systems
+~~~~~~~~~~~~
 
-- type systems
-  - [design space](http://en.wikipedia.org/wiki/Type_system), tradeoffs, [representative examples](http://en.wikipedia.org/wiki/Comparison_of_type_systems)
-  - [presentation slides 10-29](http://klaeufer.github.io/luc-amc.html#(10))
-  - performance implications/[shootout](http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php)
-
-
-
-    
-- domain-specific languages
-  - http://c2.com/cgi/wiki?DomainSpecificLanguage
-  - http://martinfowler.com/bliki/FluentInterface.html
-  - http://martinfowler.com/bliki/DomainSpecificLanguage.html
-  - http://martinfowler.com/books/dsl.html
-  - http://en.wikipedia.org/wiki/Domain-specific_language
-  - [SE Radio episode 182](http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/)
+- [design space](http://en.wikipedia.org/wiki/Type_system), tradeoffs, [representative examples](http://en.wikipedia.org/wiki/Comparison_of_type_systems)
+- [presentation slides 10-29](http://klaeufer.github.io/luc-amc.html#(10))
+- performance implications/[shootout](http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php)
 
 
-.. todo:: figure out how to include these photos of whiteboard
-    
+Domain-specific languages
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: source/images/APIvsDSL.jpg 
+- http://c2.com/cgi/wiki?DomainSpecificLanguage
+- http://martinfowler.com/bliki/FluentInterface.html
+- http://martinfowler.com/bliki/DomainSpecificLanguage.html
+- http://martinfowler.com/books/dsl.html
+- http://en.wikipedia.org/wiki/Domain-specific_language
+- [SE Radio episode 182](http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/)
 
-.. image:: source/images/DesignSpaceTypeSystems.jpg
 
-.. image:: source/images/DesignSpaceDSL.jpg
+.. image:: images/APIvsDSL.jpg 
+
+.. image:: images/DesignSpaceTypeSystems.jpg
+
+.. image:: images/DesignSpaceDSL.jpg
