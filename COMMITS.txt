@@ -1,3 +1,13 @@
+commit 93393cc
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor improvement to index
+
+commit 3a141bb
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor change to conf
+
 commit 356162e
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
