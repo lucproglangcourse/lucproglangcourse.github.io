@@ -38,6 +38,12 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
    syllabus 
    todo
 
+.. Indices and tables
+.. ==================
+
+* :ref:`genindex`
+* :ref:`search`
+
 .. todo:: add CI/CD using Travis
    
 .. todo:: figure out why search isn't working
@@ -46,8 +52,4 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
 
 .. todo:: add stuff from https://trello.com/c/kAMGZ4uf/28-add-in-next-iteration
 	  
-.. Indices and tables
-.. ==================
 
-* :ref:`genindex`
-* :ref:`search`
