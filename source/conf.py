@@ -27,7 +27,7 @@ import sphinx_bootstrap_theme
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinxcontrib.bibtex']
+extensions = ['sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinxcontrib.bibtex', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode']
 
 todo_include_todos = True
 
@@ -143,7 +143,7 @@ html_theme_options = {
     # such as "amelia" or "cosmo".
     #
     # Note that this is served off CDN, so won't be available offline.
-    'bootswatch_theme': "lumen",
+    'bootswatch_theme': "united",
 
     'bootstrap_version' : "3"
 
