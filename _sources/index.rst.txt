@@ -1,4 +1,6 @@
-| **Lecture Notes: Theory (and Practice) of Programming Languages**
+Lecture Notes: Theory (and Practice) of Programming Languages
+=============================================================
+
 | `COMP 372 <http://courses.cs.luc.edu/html/comp372.html>`_ / `COMP 471 <http://courses.cs.luc.edu/html/comp372.html>`_
 | `Department of Computer Science <http://luc.edu/cs>`_
 | `Loyola University Chicago <http://luc.edu>`_
@@ -16,8 +18,8 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
 
    These notes are still being written, so expect a few rough edges. But we're getting closer!
 
-Lecture Notes
-=============
+.. Contents
+.. ========
 
 .. toctree::
    :maxdepth: 2
@@ -44,8 +46,8 @@ Lecture Notes
 
 .. todo:: add stuff from https://trello.com/c/kAMGZ4uf/28-add-in-next-iteration
 	  
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
