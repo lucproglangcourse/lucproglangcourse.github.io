@@ -1,5 +1,5 @@
-Resources
----------
+Appendix: Resources
+-------------------
 
 
 .. todo:: consider moving most of these into the corresponding

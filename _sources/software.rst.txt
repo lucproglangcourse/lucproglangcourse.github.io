@@ -1,5 +1,5 @@
-Course Software
----------------
+Appendix: Course Software
+-------------------------
 
 
 You can choose either or both of the following options.

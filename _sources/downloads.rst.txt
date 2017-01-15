@@ -1,9 +1,0 @@
-Source and Downloads
---------------------
-
-.. _GitHub: https://github.com/LoyolaChicagoBooks/lucproglangcourse
-.. _PDF: http://lucproglangcourse.github.io/download/proglang.pdf
-.. _ePub: http://lucproglangcourse.github.io/download/proglang.epub
-
-- We maintain these lecture notes using `GitHub`_.
-- We also offer `PDF`_ and `ePub`_ formats for offline or tablet reading. These are regenerated whenever the source is changed.

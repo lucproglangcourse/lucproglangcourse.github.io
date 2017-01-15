@@ -1,3 +1,18 @@
+commit 5f42b85
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    converted images to PNG
+
+commit 930dccf
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    converted images to PNG
+
+commit 0184925
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    reorganized/simplified TOC
+
 commit 0090e58
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

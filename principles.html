@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Programming Language Design Principles &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
+    <title>7. Appendix: Programming Language Design Principles &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Resources" href="resources.html" />
+    <link rel="next" title="8. Appendix: Resources" href="resources.html" />
     <link rel="prev" title="6. Summary" href="summary.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,7 +70,7 @@
      href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">1.1. Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">1.2. Key learning outcomes</a></li>
@@ -90,35 +90,33 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="concurrency.html">5. Introduction to Concurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="summary.html">6. Summary</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">2. Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">2.1. Key resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">2.2. Code examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">2.3. Required text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">2.4. Recommended/supplementary texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">2.5. Additional texts on Scala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">2.6. Online Scala resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">2.7. Resources on program representation and interpretation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">2.8. Other resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">8. Appendix: Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">8.1. Key resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">8.2. Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">8.3. Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">8.4. Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">8.5. Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">8.6. Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">8.7. Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">8.8. Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">3. Course Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">3.1. Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">3.2. Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-tips-and-optional-plugins">3.3. sbt tips and optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">3.4. Required for remote participation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">9. Appendix: Course Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">9.4. Required for remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">4. Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">4.1. Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">4.2. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">4.3. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">4.4. Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">10. Appendix: Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">10.1. Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">10.2. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">10.3. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.4. Key Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">5. TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">11. Appendix: TODO</a></li>
 </ul>
 </ul>
 </li>
@@ -132,7 +130,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">1. Programming Language Design Principles</a></li>
+<li><a class="reference internal" href="#">7. Appendix: Programming Language Design Principles</a></li>
 </ul>
 </ul>
 </li>
@@ -146,7 +144,7 @@
     </a>
   </li>
   <li>
-    <a href="resources.html" title="Next Chapter: 2. Resources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">2. Resources &raquo;</span>
+    <a href="resources.html" title="Next Chapter: 8. Appendix: Resources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">8. Appendix: ... &raquo;</span>
     </a>
   </li>
               
@@ -180,8 +178,8 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="programming-language-design-principles">
-<h1>1. Programming Language Design Principles<a class="headerlink" href="#programming-language-design-principles" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="appendix-programming-language-design-principles">
+<h1>7. Appendix: Programming Language Design Principles<a class="headerlink" href="#appendix-programming-language-design-principles" title="Permalink to this headline">¶</a></h1>
 <p>This is the list of programming language design principles from Bruce MacLennan&#8217;s excellent Principles of Programming Languages (2nd edition, 1986, ISBN 0-03-005163-0, found on <a class="reference external" href="http://www.lshift.net/blog/2006/06/24/bruce-j-maclennans-programming-language-design-principles">Oliver Wyman&#8217;s blog</a>.</p>
 <ul class="simple">
 <li><strong>Abstraction</strong>: Avoid requiring something to be stated more than once; factor out the recurring pattern.</li>
