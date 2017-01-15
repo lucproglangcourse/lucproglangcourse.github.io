@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Course software &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
+    <title>Course Software &#8212; Loyola University Chicago COMP 372/471 Lecture Notes 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Functional Programming Paradigm" href="functionalprogramming.html" />
+    <link rel="next" title="Course Syllabus" href="syllabus.html" />
     <link rel="prev" title="Resources" href="resources.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -70,7 +70,7 @@
      href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
+      aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">Key learning outcomes</a></li>
@@ -79,12 +79,20 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">Domain-specific languages</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="principles.html">Programming Language Design Principles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">Key resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">Code examples</a></li>
@@ -96,16 +104,20 @@
 <li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Course software</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Course Software</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cloud-based-development-environment">Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sbt-tips-and-optional-plugins">sbt tips and optional plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#required-for-remote-participation">Required for remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">Program Representation and Interpretation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">Key Resources</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">TODO</a></li>
 </ul>
 </ul>
@@ -120,16 +132,23 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Course software</a><ul>
-<li><a class="reference internal" href="#cloud-based-development-environment">Cloud-based development environment</a></li>
+<li><a class="reference internal" href="#">Course Software</a><ul>
+<li><a class="reference internal" href="#cloud-based-development-environment">Cloud-based development environment</a><ul>
+<li><a class="reference internal" href="#pros">Pros</a></li>
+<li><a class="reference internal" href="#cons">Cons</a></li>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#locally-installed-development-environment">Locally installed development environment</a><ul>
-<li><a class="reference internal" href="#required">Required</a></li>
+<li><a class="reference internal" href="#id1">Pros</a></li>
+<li><a class="reference internal" href="#id2">Cons</a></li>
+<li><a class="reference internal" href="#required-components">Required components</a></li>
 <li><a class="reference internal" href="#optional-for-windows-users">Optional for Windows users</a></li>
 <li><a class="reference internal" href="#optional-for-mac-users">Optional for Mac users</a></li>
 <li><a class="reference internal" href="#optional-for-all-intellij-users">Optional for all IntelliJ users</a></li>
-<li><a class="reference internal" href="#optional-sbt-plugins">Optional sbt plugins</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#sbt-tips-and-optional-plugins">sbt tips and optional plugins</a></li>
 <li><a class="reference internal" href="#required-for-remote-participation">Required for remote participation</a></li>
 </ul>
 </li>
@@ -146,7 +165,7 @@
     </a>
   </li>
   <li>
-    <a href="functionalprogramming.html" title="Next Chapter: The Functional Programming Paradigm"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The Functiona... &raquo;</span>
+    <a href="syllabus.html" title="Next Chapter: Course Syllabus"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Course Syllabus &raquo;</span>
     </a>
   </li>
               
@@ -181,11 +200,26 @@
     <div class="col-md-12 content">
       
   <div class="section" id="course-software">
-<h1>Course software<a class="headerlink" href="#course-software" title="Permalink to this headline">¶</a></h1>
+<h1>Course Software<a class="headerlink" href="#course-software" title="Permalink to this headline">¶</a></h1>
 <p>You can choose either or both of the following options.</p>
 <div class="section" id="cloud-based-development-environment">
 <h2>Cloud-based development environment<a class="headerlink" href="#cloud-based-development-environment" title="Permalink to this headline">¶</a></h2>
 <p>This option is recommended if you have any problems with your local setup or if you prefer a basic cloud-based setup.</p>
+<div class="section" id="pros">
+<h3>Pros<a class="headerlink" href="#pros" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>consistent, cloud-based environment</li>
+</ul>
+</div>
+<div class="section" id="cons">
+<h3>Cons<a class="headerlink" href="#cons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>requires good network connection</li>
+<li>lacks code completion</li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Create a <a class="reference external" href="https://github.com">GitHub</a> account if you don&#8217;t have one already.</p>
 </li>
@@ -222,18 +256,33 @@ hello
 </li>
 </ul>
 </div>
+</div>
 <div class="section" id="locally-installed-development-environment">
 <h2>Locally installed development environment<a class="headerlink" href="#locally-installed-development-environment" title="Permalink to this headline">¶</a></h2>
 <p>This option will give you an advanced development environment with code completion, type info, etc.</p>
-<div class="section" id="required">
-<h3>Required<a class="headerlink" href="#required" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Pros<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>provides powerful capabilities, including code completion</li>
+<li>does not require network connection</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Cons<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>might be slow on older machines</li>
+<li>need to maintain on each machine you use</li>
+</ul>
+</div>
+<div class="section" id="required-components">
+<h3>Required components<a class="headerlink" href="#required-components" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/">Java 8 and/or newer JDK</a></li>
 <li><a class="reference external" href="http://git-scm.com/">Git DSCM</a> (usually preinstalled on Mac OS and Linux)<ul>
 <li>recommended installation option on Windows: <em>Use Git and optional Unix tools from the Windows Command Prompt</em></li>
 </ul>
 </li>
-<li><a class="reference external" href="http://www.scala-sbt.org">sbt</a></li>
+<li><a class="reference external" href="http://www.scala-sbt.org/0.13/docs/Setup.html">sbt</a></li>
 <li><a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA CE</a><ul>
 <li>check specific prerequisite details for your platform</li>
 <li>for the following steps, make sure you have no projects open and are looking at the welcome window as in the attached screenshot</li>
@@ -271,8 +320,11 @@ hello
 </li>
 </ul>
 </div>
-<div class="section" id="optional-sbt-plugins">
-<h3>Optional sbt plugins<a class="headerlink" href="#optional-sbt-plugins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sbt-tips-and-optional-plugins">
+<h2>sbt tips and optional plugins<a class="headerlink" href="#sbt-tips-and-optional-plugins" title="Permalink to this headline">¶</a></h2>
+<p>This section applies to all uses of sbt, whether cloud-based or on the local command line.</p>
+<p>In conjunction with a <a class="reference external" href="https://www.gnu.org/software/emacs">text editor</a>, sbt&#8217;s <a class="reference external" href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">triggered execution</a> for testing will significantly shorten the edit-compile-run/test cycle.</p>
 <p>These are useful additional sbt plugins. <a class="reference external" href="http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html">You can install them per project or globally.</a> Some of the example projects already come with one or more of these plugins.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt-scoverage</a>: uses Scoverage to produce a test code coverage report</li>
@@ -284,7 +336,6 @@ hello
 <li><a class="reference external" href="https://github.com/orrsella/sbt-stats">sbt-stats</a>: simple, extensible source code statistics/metrics</li>
 <li><a class="reference external" href="https://github.com/sbt/sbt-scalariform">sbt-scalariform</a>: automatic source code formatting using Scalariform</li>
 </ul>
-</div>
 </div>
 <div class="section" id="required-for-remote-participation">
 <h2>Required for remote participation<a class="headerlink" href="#required-for-remote-participation" title="Permalink to this headline">¶</a></h2>

@@ -1,4 +1,4 @@
-Course software
+Course Software
 ---------------
 
 
@@ -9,6 +9,23 @@ Cloud-based development environment
 
 
 This option is recommended if you have any problems with your local setup or if you prefer a basic cloud-based setup.
+
+
+Pros
+````
+
+- consistent, cloud-based environment
+
+Cons
+````
+
+- requires good network connection
+- lacks code completion
+
+
+Setup
+`````
+
 
 - Create a `GitHub <https://github.com>`_ account if you don't have one already.
 - Use your GitHub account to log into `Codenvy <https://codenvy.io>`_.
@@ -46,15 +63,30 @@ Locally installed development environment
 This option will give you an advanced development environment with code completion, type info, etc.
 
 
-Required
-````````
+Pros
+````
+
+- provides powerful capabilities, including code completion 
+- does not require network connection 
+
+  
+Cons
+````
+
+- might be slow on older machines
+- need to maintain on each machine you use 
+
+
+
+Required components
+```````````````````
 
 - `Java 8 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git DSCM <http://git-scm.com/>`_ (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*
 
-- `sbt <http://www.scala-sbt.org>`_
+- `sbt <http://www.scala-sbt.org/0.13/docs/Setup.html>`_
 - `IntelliJ IDEA CE <https://www.jetbrains.com/idea/download/>`_
 
   - check specific prerequisite details for your platform
@@ -91,8 +123,12 @@ Optional for all IntelliJ users
   Worksheets can live in any folder and coexist with other code. So you can start exploring something in a worksheet and then move it into your production code.
 
   
-Optional sbt plugins
-````````````````````
+sbt tips and optional plugins
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section applies to all uses of sbt, whether cloud-based or on the local command line.
+
+In conjunction with a `text editor <https://www.gnu.org/software/emacs>`_, sbt's `triggered execution <http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html>`_ for testing will significantly shorten the edit-compile-run/test cycle.
 
 These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Some of the example projects already come with one or more of these plugins. 
 

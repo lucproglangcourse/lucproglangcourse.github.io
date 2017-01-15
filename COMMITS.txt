@@ -1,0 +1,79 @@
+commit 0090e58
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added deploy script
+
+commit 3a11d8a
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded a bit on software chapter
+
+commit 8137f83
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added todo regarding CI/CD
+
+commit 601b6ad
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added todo regarding search
+
+commit f8e22e6
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added background section
+
+commit 8d1560b
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    reorganized into notes and appendix
+
+commit dd26816
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    pasted more content from Trello board including images
+
+commit cf4c377
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    factored out detailed outline
+
+commit eb63e1a
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added syllabus, added headings for remaining chapters
+
+commit cf1bac7
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added html-only build script and TODO list
+
+commit 330142d
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    cleaned up first few sections a bit
+
+commit f5d5cda
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    raw import of Trello cards for weeks 1-8 thru functional programming, converted overview and resources to RST
+
+commit 4fc235e
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    raw import of Trello cards for weeks 1-8 thru functional programming
+
+commit 46fcbb8
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added bibtex extension example
+
+commit 3aa4cf9
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor change to readme
+
+commit db0fb63
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    first commit
