@@ -46,3 +46,5 @@ Key Resources
 
 	     
 .. todo:: add important dates
+
+.. todo:: move ground rules here	  
