@@ -1,5 +1,5 @@
-Programming Language Design Principles
---------------------------------------
+Appendix: Programming Language Design Principles
+------------------------------------------------
 
 This is the list of programming language design principles from Bruce MacLennan's excellent Principles of Programming Languages (2nd edition, 1986, ISBN 0-03-005163-0, found on `Oliver Wyman's blog <http://www.lshift.net/blog/2006/06/24/bruce-j-maclennans-programming-language-design-principles>`_.
 

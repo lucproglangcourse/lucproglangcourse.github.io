@@ -1,5 +1,5 @@
-Course Syllabus
----------------
+Appendix: Course Syllabus
+-------------------------
 
 This is the official course syllabus for the current section(s) of this course.
 

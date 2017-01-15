@@ -155,6 +155,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
+html_title= "%(project)s v%(release)s" % vars()
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -297,7 +298,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'COMP 372/471 Lecture Notes'
+epub_title = u'Prog Lang'
 epub_author = u'Konstantin Läufer'
 epub_publisher = u'Konstantin Läufer'
 epub_copyright = u'2017, Konstantin Läufer'

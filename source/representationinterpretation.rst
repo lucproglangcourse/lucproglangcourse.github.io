@@ -111,7 +111,7 @@ The rules for evaluating expressions are quite simple.
 
 The evaluation rules are written out precisely in the following picture.
 
-.. image:: images/evaluation.gif
+.. image:: images/evaluation.png
 
 
 The rules for executing statements is as follows. In contrast to expression evaluation, statement execution does not yield a result. The primary consequence of executing a statement is the side effect on the store, ie. changes in the values of variables.
@@ -124,10 +124,10 @@ The rules for executing statements is as follows. In contrast to expression eval
 
 The execution rules are given in the following pictures:
 
-.. image:: images/execution1.gif
+.. image:: images/execution1.png
 
 
-.. image:: images/execution2.gif
+.. image:: images/execution2.png
 
 Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements "x = 2; y = x + 1", the second reference to x reflects the effect of the first assignment because of the (shared) store between the two assignment statements.
 
@@ -249,11 +249,11 @@ Recall that we viewed variables as objects with two capabilities:
 
 Records are thought of in a similar light.
 
-.. image:: images/records1.gif 
+.. image:: images/records1.png 
 
 As before, we think of the state of the program, which we write S, as a map that associates identifiers with variable objects. Furthermore, as before, we distinguish evaluation and execution. In evaluation, there are two subcases, evaluating to an L-value and evaluating to an R-value.
 
-.. image:: images/records2.gif 
+.. image:: images/records2.png 
 
 There are two ways of having L-values. One is via variables and the second is via field selection.
 
@@ -262,7 +262,7 @@ There are two ways of having L-values. One is via variables and the second is vi
 
 These evaluation rules are written out precisely in the following picture.
 
-.. image:: images/records3.gif 
+.. image:: images/records3.png 
 
 Our earlier rules for evaluating R-values are presented again below..
 
@@ -271,7 +271,7 @@ Our earlier rules for evaluating R-values are presented again below..
 - Evaluating e1 - e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 - v2.
 - Evaluating constant c. Every constant evaluates to itself.
 
-.. image:: images/records4.gif 
+.. image:: images/records4.png 
 
 The rules for executing statements are as follows. They are similar to the ones seen before. The primary consequence of executing a statement still is the side effect on the store, ie. changes in the values of variables.
 
@@ -280,7 +280,7 @@ The rules for executing statements are as follows. They are similar to the ones 
 
 The execution rules are given in the following pictures:
 
-.. image:: images/records5.gif 
+.. image:: images/records5.png 
 
 
 Implementation
