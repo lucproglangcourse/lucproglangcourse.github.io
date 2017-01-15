@@ -44,12 +44,9 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
 * :ref:`genindex`
 * :ref:`search`
 
-.. todo:: add CI/CD using Travis
-   
-.. todo:: figure out why search isn't working
-   
 .. todo:: add sample projects, activities, tests, and (tiered) master list for presentations
 
 .. todo:: add stuff from https://trello.com/c/kAMGZ4uf/28-add-in-next-iteration
-	  
 
+.. todo:: add CI/CD using Travis 
+   
