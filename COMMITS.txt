@@ -1,3 +1,13 @@
+commit 6f36278
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added Bitbucket and GitHub info to software chapter
+
+commit 000b02f
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    removed completed todo
+
 commit 93393cc
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
