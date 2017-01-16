@@ -1,3 +1,13 @@
+commit beedb61
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added important dates to syllabus
+
+commit f6a3d35
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed link in resources
+
 commit 6f36278
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

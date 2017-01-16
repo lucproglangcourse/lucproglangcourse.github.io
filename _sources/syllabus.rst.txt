@@ -39,14 +39,18 @@ Detailed Course Outline
   
 .. include:: detailedoutline.txt
 
+
+Important Dates
+~~~~~~~~~~~~~~~
+
+- Tue 7 February: quiz 1
+- Tue 28 February: test 1
+- Tue 7 March: NO CLASS - spring break
+- Tue 28 March: quiz 2
+- Tue 11 April: test 2
+- Tue 2 May: test 3
 	     
 Key Resources
 ~~~~~~~~~~~~~
 
 .. include:: keyresources.txt
-
-
-	     
-.. todo:: add important dates
-
-.. todo:: move ground rules here	  
