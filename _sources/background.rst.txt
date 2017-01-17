@@ -4,7 +4,7 @@ Background
 In this section, we establish a practical context for the study of programming languages.
 
 
-Overview of a Lightweight Development Process
+Overview of a lightweight development process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A successful development process usually comprises these minimal elements: 
@@ -38,7 +38,7 @@ A successful development process usually comprises these minimal elements:
 - `continuous integration <https://www.martinfowler.com/articles/continuousIntegration.html>`_
 
 
-Software Requirements
+Software requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
 In most cases, we develop software to provide some form of value:
@@ -89,7 +89,7 @@ The following figure by Kazman relates unit operations (high-level generalizatio
 .. figure:: images/KazmanQualityFactors.png
 
 
-Software Design Principles and Patterns
+Software design principles and patterns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The software development community has identified various principles intended to guide the design and development process, for example:
@@ -110,7 +110,7 @@ The community has also developed a body of `design patterns <https://sourcemakin
 
 We will recap these throughout the course as needed.
 
-Detailed Case Study
+Detailed case study
 ~~~~~~~~~~~~~~~~~~~
 
 The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates the various topics from this chapter.

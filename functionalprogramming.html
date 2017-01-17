@@ -80,12 +80,18 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">2. Background</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a Lightweight Development Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software Design Principles and Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.4. Detailed case study</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#content-below-under-construction">3.3. Content below under construction</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">4. Program Representation and Interpretation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">4.1. A simple imperative language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">4.2. A simple imperative language with records</a></li>
@@ -138,7 +144,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3. The Functional Programming Paradigm</a></li>
+<li><a class="reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
+<li><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
+<li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
+<li><a class="reference internal" href="#content-below-under-construction">3.3. Content below under construction</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -189,38 +200,76 @@
   <div class="section" id="the-functional-programming-paradigm">
 <h1>3. The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.</p>
-<p>processtree example in detail</p>
-<p>refer to &#8220;detailed outline&#8221;</p>
-<ul>
-<li><p class="first">COMP 170/271 recap: data abstraction
-- addressing: pointers, references
-- aggregation (product types): structs/records, arrays</p>
-<blockquote>
-<div><ul class="simple">
+<div class="section" id="defining-abstractions-in-imperative-and-object-oriented-languages">
+<h2>3.1. Defining abstractions in imperative and object-oriented languages<a class="headerlink" href="#defining-abstractions-in-imperative-and-object-oriented-languages" title="Permalink to this headline">¶</a></h2>
+<p>In imperative and object-oriented languages, the basic abstractions are</p>
+<ul class="simple">
+<li>addressing: pointers, references</li>
+<li>aggregation: structs/records, arrays<ul>
 <li>example: node in a linked list</li>
 </ul>
-</div></blockquote>
-<ul>
-<li><p class="first">variation (sum types): tagged unions, multiple implementations of an interface
-- example: mutable set abstraction</p>
-<blockquote>
-<div><ul class="simple">
+</li>
+<li>variation: tagged unions, multiple implementations of an interface<ul>
+<li>example: mutable set abstraction<ul>
 <li>add element</li>
 <li>remove element</li>
 <li>check whether an element is present</li>
 <li>check if empty</li>
 <li>how many elements</li>
 </ul>
-</div></blockquote>
+</li>
+<li>several possible implementations<ul>
+<li>reasonable: binary search tree, hash table, bit vector (for small underlying domains)</li>
+<li>less reasonable: array, linked list</li>
+<li>see also this <a class="reference external" href="http://docs.oracle.com/javase/tutorial/collections/implementations">table of collection implementations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:</p>
 <ul class="simple">
-<li>several possible implementations
-- reasonable: binary search tree, hash table, bit vector (for small underlying domains)
-- less reasonable: array, linked list
-- see also this [table of collection implementations](<a class="reference external" href="http://docs.oracle.com/javase/tutorial/collections/implementations">http://docs.oracle.com/javase/tutorial/collections/implementations</a>)</li>
+<li><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></li>
 </ul>
-</li>
+</div>
+<div class="section" id="defining-algebraic-data-types">
+<h2>3.2. Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Most abstractions fall into one of these categories:</p>
+<ul class="simple">
+<li>nonrecursive/scalars: boolean, finite enumerations (including numeric types), try</li>
+<li>sublinear structures: (infinite set of) natural numbers, option</li>
+<li>linear structures: lists, maps</li>
+<li>nonlinear structures: trees, graphs, many custom domain models</li>
 </ul>
-</li>
+<p>The fundamental building blocks of these <em>algebraic data types</em> are related to those discussed above:</p>
+<ul class="simple">
+<li>(disjoint) sum: variation</li>
+<li>product (tuple, record) of a given arity: aggregation</li>
+<li>recursion (at the type level)</li>
+<li>type parameters (genericity)</li>
+</ul>
+<p>Using these building blocks, we can express <cite>Shape</cite> from the examples above as an algebraic data type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Shape</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">Int</span><span class="p">)</span>
+      <span class="o">|</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
+      <span class="o">|</span> <span class="n">Group</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="n">Shape</span><span class="p">))</span>
+      <span class="o">|</span> <span class="n">Location</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></li>
+</ul>
+<p>We are able to achieve a separation of the following structural and behavioral concerns:</p>
+<ul class="simple">
+<li>structure</li>
+<li>content</li>
+<li>traversal</li>
+<li>processing</li>
+</ul>
+</div>
+<div class="section" id="content-below-under-construction">
+<h2>3.3. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>
+<ul>
 <li><p class="first">project 0b and 1 clarifications
 - [echotest-scala](<a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">https://github.com/lucproglangcourse/echotest-scala</a>) example
 - TDD styles in Scala</p>
@@ -267,37 +316,6 @@
 <ul class="simple">
 <li>we&#8217;ll study these features as we encounter them</li>
 <li>examples below after discussing the next topic</li>
-</ul>
-</li>
-<li><p class="first">algebraic data types
-- fundamental building blocks: (disjoint) sum, product, arity, recursion, type parameters</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="docutils">
-<dt>Shape = Circle(Int)</dt>
-<dd><div class="first last line-block">
-<div class="line">Rectangle(Int, Int)</div>
-<div class="line">Group(Seq(Shape))</div>
-<div class="line">Location(Int, Int, Shape)</div>
-</div>
-</dd>
-</dl>
-</div></blockquote>
-<ul class="simple">
-<li>nonrecursive, e.g. finite enumerations, boolean, option, try</li>
-<li>sublinear, e.g. natural numbers</li>
-<li>linear, e.g. list, map</li>
-<li>nonlinear, e.g. tree, many custom domain models</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>separation of concerns
-- structure
-- content
-- traversal
-- processing</li>
-<li>parametric polymorphism (genericitiy) as an orthogonal mechanism</li>
-<li>expressing algebraic data types in an object-oriented language</li>
 <li>key predefined collection data types <em>are</em> algebraic data types
 - [<cite>Option[_]</cite>](scala-lang.org/api/current/index.html#scala.Option) and [<cite>Try[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.util.Try">http://scala-lang.org/api/current/index.html#scala.util.Try</a>)
 - [<cite>List[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>) and [<cite>Map[_, _]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map">http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map</a>)</li>
@@ -557,6 +575,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 
 
