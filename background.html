@@ -79,7 +79,13 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a Lightweight Development Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-requirements">2.2. Software Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software Design Principles and Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-case-study">2.4. Detailed Case Study</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">3. The Functional Programming Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">4. Program Representation and Interpretation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">4.1. A simple imperative language</a></li>
@@ -106,14 +112,17 @@
 <li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#required-for-remote-participation">9.4. Required for remote participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">9.4. Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">9.6. Remote participation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="syllabus.html">10. Appendix: Course Syllabus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">10.1. Course: COMP 372/471 Programming Languages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">10.2. Section: 001 Spring 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">10.3. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.4. Key Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">10.4. Important Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.5. Key Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">11. Appendix: TODO</a></li>
@@ -130,7 +139,13 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">2. Background</a></li>
+<li><a class="reference internal" href="#">2. Background</a><ul>
+<li><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a Lightweight Development Process</a></li>
+<li><a class="reference internal" href="#software-requirements">2.2. Software Requirements</a></li>
+<li><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software Design Principles and Patterns</a></li>
+<li><a class="reference internal" href="#detailed-case-study">2.4. Detailed Case Study</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -180,11 +195,113 @@
       
   <div class="section" id="background">
 <h1>2. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we establish a practical context for the study of programming languages.</p>
+<div class="section" id="overview-of-a-lightweight-development-process">
+<h2>2.1. Overview of a Lightweight Development Process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Permalink to this headline">¶</a></h2>
+<p>A successful development process usually comprises these minimal elements:</p>
 <ul class="simple">
-<li>requirements</li>
-<li>key principles, including orthogonality/separation of concerns</li>
-<li>case study: processtree</li>
+<li><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a><ul>
+<li>tests represent expectations of how the software should behave</li>
+<li>when expressed as code, these are<ul>
+<li>fun to produce (like other coding)</li>
+<li>convenient to run frequently</li>
 </ul>
+</li>
+<li>fix subject-under-test (SUT) (not tests) until tests pass</li>
+<li>retest every time<ul>
+<li>a feature is added</li>
+<li>the code is refactored</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://www.refactoring.com/">refactoring</a><ul>
+<li>improve the quality of the code without changing its behavior<ul>
+<li>macro level: nonfunctional requirements (quality factors)</li>
+<li>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></li>
+</ul>
+</li>
+<li><cite>catalog of refactorings &lt;https://refactoring.com/catalog/</cite>&gt;_</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></li>
+</ul>
+</div>
+<div class="section" id="software-requirements">
+<h2>2.2. Software Requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
+<p>In most cases, we develop software to provide some form of value:</p>
+<ul class="simple">
+<li>learn a language, library, framework, platform, technique, or tool
+(see also the <a class="reference external" href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a>)</li>
+<li>solve a problem</li>
+<li>produce an asset</li>
+</ul>
+<p>There is usually some tension among these three activities.</p>
+<p>The basic categories of requirements are</p>
+<ul class="simple">
+<li>functional (FR)<ul>
+<li>output as function of input: <cite>y = f(x)</cite></li>
+<li>or some other description of observable behavior<ul>
+<li>batch</li>
+<li>interactive/event-based</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>nonfunctional (NFR): additional properties of <cite>f</cite>, e.g.<ul>
+<li>testability<ul>
+<li>most important nonfunctional requirement</li>
+<li>allows testing whether functional requirements are met</li>
+<li>good architecture often happens as a side-effect (APPP pp. 36-38)</li>
+</ul>
+</li>
+<li>performance</li>
+<li>scalability<ul>
+<li>e.g. performance for large data sets: asymptotic order of complexity</li>
+<li>(big-Oh) in terms of input size n</li>
+</ul>
+</li>
+<li>reliability</li>
+<li>maintainability</li>
+<li>static versus dynamic NFRs</li>
+</ul>
+</li>
+</ul>
+<p>Several common questions and issues related to requirements arise:</p>
+<ul class="simple">
+<li><em>how do requirements relate to the project development lifecycle?</em></li>
+<li><em>BUFD versus MVP</em></li>
+<li><em>how do testing and refactoring relate to requirements?</em></li>
+</ul>
+<p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) and software quality factors (nonfunctional requirements).</p>
+<div class="figure">
+<img alt="_images/KazmanQualityFactors.png" src="_images/KazmanQualityFactors.png" />
+</div>
+</div>
+<div class="section" id="software-design-principles-and-patterns">
+<h2>2.3. Software Design Principles and Patterns<a class="headerlink" href="#software-design-principles-and-patterns" title="Permalink to this headline">¶</a></h2>
+<p>The software development community has identified various principles intended to guide the design and development process, for example:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (don&#8217;t repeat yourself)</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">SoC</a> (separation of concerns)</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design">SOLID</a></li>
+</ul>
+<p>The community has also developed a body of <a class="reference external" href="https://sourcemaking.com/design_patterns">design patterns</a> that represent reusable solutions to recurring problems. Some key design patterns we will rely on in this course include</p>
+<ul class="simple">
+<li>Iterator</li>
+<li>Strategy</li>
+<li>Composite</li>
+<li>Decorator</li>
+<li>Visitor</li>
+<li>Abstract Factory</li>
+<li>Observer</li>
+</ul>
+<p>We will recap these throughout the course as needed.</p>
+</div>
+<div class="section" id="detailed-case-study">
+<h2>2.4. Detailed Case Study<a class="headerlink" href="#detailed-case-study" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates the various topics from this chapter.</p>
+</div>
 </div>
 
 

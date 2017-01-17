@@ -3,11 +3,30 @@ The Functional Programming Paradigm
 
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
-The orthogo
-
 processtree example in detail
 
 refer to "detailed outline"
+
+
+
+
+- COMP 170/271 recap: data abstraction
+  - addressing: pointers, references
+  - aggregation (product types): structs/records, arrays
+    - example: node in a linked list
+  - variation (sum types): tagged unions, multiple implementations of an interface
+    - example: mutable set abstraction
+      - add element
+      - remove element
+      - check whether an element is present
+      - check if empty
+      - how many elements
+    - several possible implementations
+      - reasonable: binary search tree, hash table, bit vector (for small underlying domains)
+      - less reasonable: array, linked list
+      - see also this [table of collection implementations](http://docs.oracle.com/javase/tutorial/collections/implementations)
+
+
 
 
 
