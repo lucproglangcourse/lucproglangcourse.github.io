@@ -1,3 +1,8 @@
+commit 26a73c1
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded section on sbt plugins
+
 commit 6a8ce47
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
