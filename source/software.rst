@@ -138,6 +138,7 @@ These are useful additional sbt plugins. `You can install them per project or gl
 - `sbt-dependency-graph <https://github.com/jrudolph/sbt-dependency-graph>`_: creates a visual representation of library dependency tree
 - `cpd4sbt <https://github.com/sbt/cpd4sbt>`_: copy/paste detection for Scala
 - `scalastyle <https://github.com/scalastyle/scalastyle-sbt-plugin>`_: static code checker for Scala
+- `wart remover <https://github.com/wartremover/wartremover>`_: code linting tool (another static checker)
 - `sbt-stats <https://github.com/orrsella/sbt-stats>`_: simple, extensible source code statistics/metrics
 
 
