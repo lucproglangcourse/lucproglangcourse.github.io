@@ -3,14 +3,78 @@ The Functional Programming Paradigm
 
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
-The orthogo
 
-processtree example in detail
+Defining abstractions in imperative and object-oriented languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-refer to "detailed outline"
+In imperative and object-oriented languages, the basic abstractions are
+
+- addressing: pointers, references
+- aggregation: structs/records, arrays
+
+  - example: node in a linked list
+
+- variation: tagged unions, multiple implementations of an interface
+
+  - example: mutable set abstraction
+
+    - add element
+    - remove element
+    - check whether an element is present
+    - check if empty
+    - how many elements
+  - several possible implementations
+
+    - reasonable: binary search tree, hash table, bit vector (for small underlying domains)
+    - less reasonable: array, linked list
+    - see also this `table of collection implementations <http://docs.oracle.com/javase/tutorial/collections/implementations>`_
+
+In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:
+
+- https://github.com/lucoodevcourse/shapes-android-java 
 
 
 
+Defining algebraic data types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Most abstractions fall into one of these categories:
+
+- nonrecursive/scalars: boolean, finite enumerations (including numeric types), try
+- sublinear structures: (infinite set of) natural numbers, option
+- linear structures: lists, maps
+- nonlinear structures: trees, graphs, many custom domain models
+
+The fundamental building blocks of these *algebraic data types* are related to those discussed above:
+
+- (disjoint) sum: variation
+- product (tuple, record) of a given arity: aggregation
+- recursion (at the type level)
+- type parameters (genericity)
+
+Using these building blocks, we can express `Shape` from the examples above as an algebraic data type::
+
+        Shape = Circle(Int)
+              | Rectangle(Int, Int)
+              | Group(Seq(Shape))
+              | Location(Int, Int, Shape)
+
+We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:
+
+- https://github.com/lucproglangcourse/shapes-oo-scala 
+
+
+We are able to achieve a separation of the following structural and behavioral concerns:
+
+- structure
+- content
+- traversal
+- processing
+
+
+
+Content below under construction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 - project 0b and 1 clarifications 
@@ -45,25 +109,8 @@ refer to "detailed outline"
     - package structure decoupled from folder hierarchy
   - we'll study these features as we encounter them
   - examples below after discussing the next topic
-- algebraic data types
-  - fundamental building blocks: (disjoint) sum, product, arity, recursion, type parameters
 
-        Shape = Circle(Int)
-              | Rectangle(Int, Int)
-              | Group(Seq(Shape))
-              | Location(Int, Int, Shape)
 
-    - nonrecursive, e.g. finite enumerations, boolean, option, try
-    - sublinear, e.g. natural numbers
-    - linear, e.g. list, map
-    - nonlinear, e.g. tree, many custom domain models
-  - separation of concerns
-    - structure
-    - content
-    - traversal
-    - processing
-  - parametric polymorphism (genericitiy) as an orthogonal mechanism
-  - expressing algebraic data types in an object-oriented language
   - key predefined collection data types *are* algebraic data types 
     - [`Option[_]`](scala-lang.org/api/current/index.html#scala.Option) and [`Try[_]`](http://scala-lang.org/api/current/index.html#scala.util.Try)
     - [`List[_]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.List) and [`Map[_, _]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map)

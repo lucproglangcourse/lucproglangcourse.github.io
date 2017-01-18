@@ -1,3 +1,18 @@
+commit 277b7aa
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed borken link
+
+commit ae6e868
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    started expanding chapter on functional programming
+
+commit ab82f52
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded background chapter
+
 commit beedb61
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
