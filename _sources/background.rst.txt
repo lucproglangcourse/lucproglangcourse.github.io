@@ -33,7 +33,7 @@ A successful development process usually comprises these minimal elements:
 
     - micro level: `code smells <https://refactoring.guru/smells/smells>`_
 
-  - `catalog of refactorings <https://refactoring.com/catalog/`>_
+  - `catalog of refactorings <https://refactoring.com/catalog/>`_
 
 - `continuous integration <https://www.martinfowler.com/articles/continuousIntegration.html>`_
 
