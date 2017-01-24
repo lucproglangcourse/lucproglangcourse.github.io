@@ -1,3 +1,8 @@
+commit ef5d616
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded background and functional prog a bit more
+
 commit 26a73c1
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
