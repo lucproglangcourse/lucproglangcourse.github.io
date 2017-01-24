@@ -32,7 +32,8 @@ In imperative and object-oriented languages, the basic abstractions are
 In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:
 
 - https://github.com/lucoodevcourse/shapes-android-java 
-
+- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
+- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
 
 
 Defining algebraic data types
@@ -62,6 +63,7 @@ Using these building blocks, we can express `Shape` from the examples above as a
 We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:
 
 - https://github.com/lucproglangcourse/shapes-oo-scala 
+- https://github.com/lucproglangcourse/expressions-scala 
 
 
 We are able to achieve a separation of the following structural and behavioral concerns:
@@ -72,6 +74,25 @@ We are able to achieve a separation of the following structural and behavioral c
 - processing
 
 
+Predefined algebraic data types
+```````````````````````````````
+
+Many important predefined collection data types *are* algebraic data types:
+
+- `Seq` / `List`
+- `Map`
+- `Option`
+- `Try` / `Either`
+
+We will study these later in more detail.
+
+  
+Behaviors on algebraic data types
+`````````````````````````````````
+
+- https://github.com/lucproglangcourse/misc-explorations-scala 
+  
+  
 
 Content below under construction
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

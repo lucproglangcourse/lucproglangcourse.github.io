@@ -5,7 +5,9 @@ Lecture Notes: Theory (and Practice) of Programming Languages
 | `Department of Computer Science <http://luc.edu/cs>`_
 | `Loyola University Chicago <http://luc.edu>`_
 
-Welcome! This version of the course is normally taught by `Konstantin Läufer <https://github.com/klaeufer>`_ and focuses on functional and concurrent programming languages with examples and projects mostly in Scala.
+Welcome!
+In this course, we study programming language concepts and paradigms in the context of contemporary software engineering practice. 
+This version of the course is normally taught by `Konstantin Läufer <https://github.com/klaeufer>`_ and focuses on functional and concurrent programming languages with examples and projects mostly in Scala.
 
 .. _GitHub: https://github.com/LoyolaChicagoBooks/lucproglangcourse
 .. _PDF: http://lucproglangcourse.github.io/download/proglang.pdf
