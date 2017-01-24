@@ -83,7 +83,10 @@
 <li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.4. Detailed case study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#the-importance-of-console-applications">2.4. The importance of console applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.5. Programming language history and paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#performance-and-popularity-indices">2.6. Performance and popularity indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.7. Detailed case study</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
@@ -146,7 +149,11 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
 <li><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
-<li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
+<li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a><ul>
+<li><a class="reference internal" href="#predefined-algebraic-data-types">3.2.1. Predefined algebraic data types</a></li>
+<li><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.2.2. Behaviors on algebraic data types</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#content-below-under-construction">3.3. Content below under construction</a></li>
 </ul>
 </li>
@@ -230,6 +237,8 @@
 <p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></li>
+<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></li>
+<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></li>
 </ul>
 </div>
 <div class="section" id="defining-algebraic-data-types">
@@ -258,6 +267,7 @@
 <p>We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a></li>
 </ul>
 <p>We are able to achieve a separation of the following structural and behavioral concerns:</p>
 <ul class="simple">
@@ -266,6 +276,23 @@
 <li>traversal</li>
 <li>processing</li>
 </ul>
+<div class="section" id="predefined-algebraic-data-types">
+<h3>3.2.1. Predefined algebraic data types<a class="headerlink" href="#predefined-algebraic-data-types" title="Permalink to this headline">¶</a></h3>
+<p>Many important predefined collection data types <em>are</em> algebraic data types:</p>
+<ul class="simple">
+<li><cite>Seq</cite> / <cite>List</cite></li>
+<li><cite>Map</cite></li>
+<li><cite>Option</cite></li>
+<li><cite>Try</cite> / <cite>Either</cite></li>
+</ul>
+<p>We will study these later in more detail.</p>
+</div>
+<div class="section" id="behaviors-on-algebraic-data-types">
+<h3>3.2.2. Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="content-below-under-construction">
 <h2>3.3. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>

@@ -110,8 +110,37 @@ The community has also developed a body of `design patterns <https://sourcemakin
 
 We will recap these throughout the course as needed.
 
+
+The importance of console applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- role as composable building blocks in Unix (using pipes)
+- relationship with functional programming
+- importance of constant-space complexity
+
+
+Programming language history and paradigms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `overview talk <http://klaeufer.github.com/luc-amc.html>`
+- `programming languages paradigms: diagram <https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg>`_ by Van Roy
+- `programming languages paradigms: book chapter <https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf>`_ by Van Roy
+- principles by MacLennan (see separate section)
+
+  
+Performance and popularity indices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before drawing any conclusions from these indices, it is important to understand their *methodology*. 
+
+- `PYPL PopularitY of Programming Language index <https://pypl.github.io>`_
+- `TIOBE programming community index <http://www.tiobe.com/tiobe-index>`_
+- `GitHub language popularity <https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html>`_
+- `Programming languages shootout benchmark <http://benchmarksgame.alioth.debian.org>`_
+
+
 Detailed case study
 ~~~~~~~~~~~~~~~~~~~
 
 The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates the various topics from this chapter.
-
+Examples in various other languages are `available <https://github.com/lucproglangcourse?q=processtree>`_ as well. 
