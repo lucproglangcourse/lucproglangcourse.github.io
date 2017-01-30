@@ -156,7 +156,10 @@
 </li>
 <li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
 <li><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.3. Behaviors on algebraic data types</a></li>
-<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a></li>
+<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a><ul>
+<li><a class="reference internal" href="#examples">3.4.1. Examples</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#content-below-under-construction">3.5. Content below under construction</a></li>
 </ul>
 </li>
@@ -346,8 +349,51 @@ The main building blocks in scripting-style Scala are the collection and utility
 <li>key methods <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> / <code class="docutils literal"><span class="pre">withFilter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">flatMap</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">fold</span></code>, <code class="docutils literal"><span class="pre">groupBy</span></code>, <code class="docutils literal"><span class="pre">collect</span></code></li>
 <li><code class="docutils literal"><span class="pre">for</span></code> comprehensions</li>
 </ul>
-<p>The more familiar one is with these, the more quickly and productively one can put together at least an initial solution to a problem.
+<div class="section" id="examples">
+<h3>3.4.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Loop over a finite collection or iterator using mutable state:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
+<span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">incoming</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
+  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">final</span> <span class="nb">float</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Immutable equivalent using <code class="docutils literal"><span class="pre">foldLeft</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">incoming</span> <span class="n">foldLeft</span> <span class="p">{</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span> <span class="p">{</span> <span class="n">case</span> <span class="p">((</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">),</span> <span class="nb">next</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="p">(</span><span class="nb">sum</span> <span class="o">+</span> <span class="nb">next</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>Unbounded loop until a condition is met:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">((</span><span class="o">/*</span> <span class="o">...</span> <span class="o">*/</span> <span class="p">;</span> <span class="n">line</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="n">null</span> <span class="p">;</span> <span class="n">line</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Immutable equivalent using <code class="docutils literal"><span class="pre">continually</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Iterator</span> <span class="n">continually</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="o">...</span>
+  <span class="n">reader</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
+<span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span>
+  <span class="n">Option</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="o">.</span><span class="n">isDefined</span>
+<span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span>
+  <span class="n">processExpr</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that we are using <code class="docutils literal"><span class="pre">foreach</span></code> when the body of the iteration produces a <em>side effect</em> such as output.
+If we wanted to compute a <em>result value</em>, we could instead use <code class="docutils literal"><span class="pre">continually</span></code> with <code class="docutils literal"><span class="pre">foldLeft</span></code>.</p>
+<p>Note also that all of these are methods but look like control structures because of Scala&#8217;s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
+<p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
+</div>
 </div>
 <div class="section" id="content-below-under-construction">
 <h2>3.5. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>

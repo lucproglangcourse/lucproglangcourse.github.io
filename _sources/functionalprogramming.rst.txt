@@ -145,7 +145,58 @@ The main building blocks in scripting-style Scala are the collection and utility
 - key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``groupBy``, ``collect``
 - ``for`` comprehensions
 
-The more familiar one is with these, the more quickly and productively one can put together at least an initial solution to a problem.
+
+Examples
+````````
+
+  
+Loop over a finite collection or iterator using mutable state::
+
+  final Iterator<String> incoming = ...;
+  int sum = 0;
+  int count = 0;
+  for (final String s: incoming) {
+    sum += s.length();
+    count += 1; 
+  }
+  final float result = (float) sum / count;
+
+
+Immutable equivalent using ``foldLeft``::
+
+  val (sum, count) = incoming foldLeft {
+    (0, 0)
+  } { case ((sum, count), next) =>
+    (sum + next.length, count + 1)
+  }
+  val result = sum.toFloat / count
+
+
+Unbounded loop until a condition is met::
+
+  while ((/* ... */ ; line = reader.readLine()) != null ; line) {
+    processExpr(line)
+  }
+
+
+Immutable equivalent using ``continually``::
+
+  Iterator continually {
+    // ...
+    reader.readLine()
+  } takeWhile {
+    Option(_).isDefined
+  } foreach {
+    processExpr
+  }
+
+
+Note that we are using ``foreach`` when the body of the iteration produces a *side effect* such as output.
+If we wanted to compute a *result value*, we could instead use ``continually`` with ``foldLeft``.
+
+Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
+  
+The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
   
 
