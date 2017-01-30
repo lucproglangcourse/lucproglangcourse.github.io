@@ -122,10 +122,12 @@ The importance of console applications
 Programming language history and paradigms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- `overview talk <http://klaeufer.github.com/luc-amc.html>`
+- `overview talk <http://klaeufer.github.com/luc-amc.html>`_ by Läufer and Thiruvathukal
 - `programming languages paradigms: diagram <https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg>`_ by Van Roy
 - `programming languages paradigms: book chapter <https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf>`_ by Van Roy
-- principles by MacLennan (see separate section)
+- :doc:`principles` by MacLennan
+- `Turing completeness <https://en.wikipedia.org/wiki/Turing_completeness>`_
+- `Church-Turing thesis <https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis>`_
 
   
 Performance and popularity indices
