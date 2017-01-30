@@ -1,3 +1,13 @@
+commit 2163c7c
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded OO and functional programming topics
+
+commit 51dda01
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded background chapter a bit
+
 commit ef5d616
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

@@ -92,7 +92,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#content-below-under-construction">3.3. Content below under construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.3. Behaviors on algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#content-below-under-construction">3.5. Content below under construction</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">4. Program Representation and Interpretation</a><ul>
@@ -148,13 +150,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
-<li><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
-<li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a><ul>
-<li><a class="reference internal" href="#predefined-algebraic-data-types">3.2.1. Predefined algebraic data types</a></li>
-<li><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.2.2. Behaviors on algebraic data types</a></li>
+<li><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a><ul>
+<li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.1.1. Object-oriented Scala as a &#8220;better Java&#8221;</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#content-below-under-construction">3.3. Content below under construction</a></li>
+<li><a class="reference internal" href="#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
+<li><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.3. Behaviors on algebraic data types</a></li>
+<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a></li>
+<li><a class="reference internal" href="#content-below-under-construction">3.5. Content below under construction</a></li>
 </ul>
 </li>
 </ul>
@@ -240,6 +243,29 @@
 <li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></li>
 <li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></li>
 </ul>
+<div class="section" id="object-oriented-scala-as-a-better-java">
+<h3>3.1.1. Object-oriented Scala as a &#8220;better Java&#8221;<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Permalink to this headline">¶</a></h3>
+<p>Scala offers various improvements over Java, including:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/unified-types.html">unified types</a></li>
+<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/higher-order-functions">standalone higher-order functions</a></li>
+<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/singleton-objects.html">standalone objects</a></li>
+<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/case-classes.html">case classes</a> and <a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/pattern-matching.html">pattern matching</a></li>
+<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/traits.html">traits</a>: generalization of interfaces and restricted form of abstract classes, can be combined/stacked</li>
+<li>package structure decoupled from folder hierarchy</li>
+<li><a class="reference external" href="https://earldouglas.com/posts/higher-kinded.html">higher-kinded types</a> (advanced topic)</li>
+</ul>
+<p>More recent versions of Java, however, have started to echo some these advances:</p>
+<ul class="simple">
+<li>lambda expressions</li>
+<li>default methods in interfaces</li>
+</ul>
+<p>We will study these features as we encounter them.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">examples below after discussing the next topic</p>
+</div>
+</div>
 </div>
 <div class="section" id="defining-algebraic-data-types">
 <h2>3.2. Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
@@ -276,148 +302,67 @@
 <li>traversal</li>
 <li>processing</li>
 </ul>
-<div class="section" id="predefined-algebraic-data-types">
-<h3>3.2.1. Predefined algebraic data types<a class="headerlink" href="#predefined-algebraic-data-types" title="Permalink to this headline">¶</a></h3>
-<p>Many important predefined collection data types <em>are</em> algebraic data types:</p>
-<ul class="simple">
-<li><cite>Seq</cite> / <cite>List</cite></li>
-<li><cite>Map</cite></li>
-<li><cite>Option</cite></li>
-<li><cite>Try</cite> / <cite>Either</cite></li>
-</ul>
-<p>We will study these later in more detail.</p>
 </div>
 <div class="section" id="behaviors-on-algebraic-data-types">
-<h3>3.2.2. Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline">¶</a></h3>
+<h2>3.3. Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
+<p>The following are additional examples of behaviors on algebraic types. For recursive types, the behaviors are typically recursive as well.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc</a></li>
 </ul>
 </div>
+<div class="section" id="solving-problems-using-built-in-types-and-type-constructors">
+<h2>3.4. Solving problems using built-in types and type constructors<a class="headerlink" href="#solving-problems-using-built-in-types-and-type-constructors" title="Permalink to this headline">¶</a></h2>
+<p>As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors. Many of these, especially collection types and certain utility types, <em>are</em> algebraic data types:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Seq</span></code> / <code class="docutils literal"><span class="pre">List</span></code><ul>
+<li><a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://scala-lang.org/api/current/index.html#scala.collection.immutable.List</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc</a></li>
+<li>note the difference between those and tuples</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Map</span></code><ul>
+<li><a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map">http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map</a></li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Option</span></code> / <code class="docutils literal"><span class="pre">Either</span></code><ul>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc</a></li>
+<li><a class="reference external" href="http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html">http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html</a></li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Try</span></code><ul>
+<li><a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.util.Try">http://scala-lang.org/api/current/index.html#scala.util.Try</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc</a></li>
+</ul>
+</li>
+</ul>
+<p>Using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with</p>
+<ul class="simple">
+<li>key methods <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> / <code class="docutils literal"><span class="pre">withFilter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">flatMap</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">fold</span></code>, <code class="docutils literal"><span class="pre">groupBy</span></code>, <code class="docutils literal"><span class="pre">collect</span></code></li>
+<li><code class="docutils literal"><span class="pre">for</span></code> comprehensions</li>
+</ul>
+<p>The more familiar one is with these, the more quickly and productively one can put together at least an initial solution to a problem.
+Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
 </div>
 <div class="section" id="content-below-under-construction">
-<h2>3.3. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>
+<h2>3.5. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">project 0b and 1 clarifications
-- [echotest-scala](<a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">https://github.com/lucproglangcourse/echotest-scala</a>) example
-- TDD styles in Scala</p>
-</li>
-<li><p class="first">project 0c and 0d reminders</p>
-</li>
-<li><p class="first">[overview talk on PL history and paradigms](<a class="reference external" href="http://klaeufer.github.com/luc-amc.html">http://klaeufer.github.com/luc-amc.html</a>)
-- Scala version of Haskell example from talk
-- [shootout benchmark](<a class="reference external" href="http://benchmarksgame.alioth.debian.org">http://benchmarksgame.alioth.debian.org</a>)
-- process tree [assignment](<a class="reference external" href="http://osdi.etl.luc.edu/homework/home-lab-assignment-1">http://osdi.etl.luc.edu/homework/home-lab-assignment-1</a>) and [examples in various languages](<a class="reference external" href="https://github.com/lucproglangcourse?q=processtree">https://github.com/lucproglangcourse?q=processtree</a>) including [Scala](<a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">https://github.com/lucproglangcourse/processtree-scala</a>) - also guiding example for project 1</p>
-</li>
-<li><p class="first">console applications
-- role as composable building blocks in Unix (using pipes)
-- relationship with functional programming
-- importance of constant-space complexity</p>
-</li>
-<li><p class="first">scripting-style Scala: solving problems using built-in types and type constructors
-- tuples
-- collections</p>
-<blockquote>
-<div><ul class="simple">
-<li>[<cite>Option[_]</cite>](scala-lang.org/api/current/index.html#scala.Option) and [<cite>Try[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.util.Try">http://scala-lang.org/api/current/index.html#scala.util.Try</a>)</li>
-<li>[<cite>List[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>) and [<cite>Map[_, _]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map">http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map</a>)</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>key methods: <cite>map</cite>, <cite>filter</cite>/<cite>withFilter</cite>, <cite>find</cite>, <cite>flatMap</cite>, <cite>sum</cite>, <cite>fold</cite>, <cite>groupBy</cite></li>
-<li><cite>for</cite> comprehensions</li>
-<li>[misc-explorations-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a>) examples</li>
-</ul>
-</li>
-<li><p class="first">object-oriented Scala (see also Swarts chapters 8 and 9)
-- can start by using Scala as a &#8220;better Java&#8221;
-- various improvements, including</p>
-<blockquote>
-<div><ul class="simple">
-<li>[unified types](<a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/unified-types.html">http://docs.scala-lang.org/tutorials/tour/unified-types.html</a>)</li>
-<li>[standalone objects](<a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/singleton-objects.html">http://docs.scala-lang.org/tutorials/tour/singleton-objects.html</a>)</li>
-<li>[case classes](<a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/case-classes.html">http://docs.scala-lang.org/tutorials/tour/case-classes.html</a>) and [pattern matching](<a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/pattern-matching.html">http://docs.scala-lang.org/tutorials/tour/pattern-matching.html</a>)</li>
-<li>[traits](<a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/traits.html">http://docs.scala-lang.org/tutorials/tour/traits.html</a>) (generalization of interfaces and restricted form of abstract classes, can be combined)</li>
-<li>package structure decoupled from folder hierarchy</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>we&#8217;ll study these features as we encounter them</li>
-<li>examples below after discussing the next topic</li>
-<li>key predefined collection data types <em>are</em> algebraic data types
-- [<cite>Option[_]</cite>](scala-lang.org/api/current/index.html#scala.Option) and [<cite>Try[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.util.Try">http://scala-lang.org/api/current/index.html#scala.util.Try</a>)
-- [<cite>List[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>) and [<cite>Map[_, _]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map">http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map</a>)</li>
-<li>examples
-- process tree [original assignment](<a class="reference external" href="http://osdi.etl.luc.edu/homework/home-lab-assignment-1">http://osdi.etl.luc.edu/homework/home-lab-assignment-1</a>) and [examples](<a class="reference external" href="https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree">https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree</a>)
-- [misc-explorations-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a>)</li>
-</ul>
-</li>
-<li><p class="first">project 1 discussion:
-- imperative/mutable versus pure functional/immutable
-- modularization
-- [processtree-scala](<a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">https://github.com/lucproglangcourse/processtree-scala</a>) guiding example</p>
-</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>algebraic data types (continued)</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>key predefined collection data types
-- [<cite>Option[_]</cite>](scala-lang.org/api/current/index.html#scala.Option) and [<cite>Try[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.util.Try">http://scala-lang.org/api/current/index.html#scala.util.Try</a>)
-- [<cite>List[_]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>) and [<cite>Map[_, _]</cite>](<a class="reference external" href="http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map">http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map</a>)
-- key methods: <cite>map</cite>, <cite>filter</cite>/<cite>withFilter</cite>, <cite>find</cite>, <cite>flatMap</cite>, <cite>sum</cite>, <cite>fold</cite>, <cite>groupBy</cite>
-- <cite>for</cite> comprehensions</li>
-<li>pattern matching in practice</li>
-<li>examples
-- [expressions-oo-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a>)
-- [expressions-visitor-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a>)
-- [expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>)
-- [shapes-android-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/shapes-android-java">https://github.com/LoyolaChicagoCode/shapes-android-java</a>)
-- [shapes-oo-scala project skeleton](<a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a>)
-- process tree [original assignment](<a class="reference external" href="http://osdi.etl.luc.edu/homework/home-lab-assignment-1">http://osdi.etl.luc.edu/homework/home-lab-assignment-1</a>) and [examples](<a class="reference external" href="https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree">https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree</a>)
-- [misc-explorations-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a>)</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-<ul class="simple">
-<li>project 2a discussion</li>
-<li>TDD styles in Scala and [echotest example](<a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">https://github.com/lucproglangcourse/echotest-scala</a>)</li>
-<li>(time permitting) brief heads-up on continuous integration/continuous delivery
+<li><p class="first">(time permitting) brief heads-up on continuous integration/continuous delivery
 - <a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">https://travis-ci.org/LoyolaChicagoCode/processtree-scala</a>
 - <a class="reference external" href="https://coveralls.io/github/LoyolaChicagoCode/processtree-scala">https://coveralls.io/github/LoyolaChicagoCode/processtree-scala</a>
 - <a class="reference external" href="https://github.com/LoyolaChicagoCode/scalamu">https://github.com/LoyolaChicagoCode/scalamu</a>
 - <a class="reference external" href="https://www.codacy.com/public/laufer/scalamu/dashboard">https://www.codacy.com/public/laufer/scalamu/dashboard</a>
-- <a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/scalamu">http://issuestats.com/github/LoyolaChicagoCode/scalamu</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>algebraic data types (continued)</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>algebraic data types in practice
-- case classes/objects
-- pattern matching
-- built-in methods
-- external behaviors ([Visitor pattern](<a class="reference external" href="https://sourcemaking.com/design_patterns/visitor">https://sourcemaking.com/design_patterns/visitor</a>))</li>
-<li>examples
-- [expressions-oo-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a>)
-- [expressions-visitor-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a>)
-- [expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>)
-- [shapes-android-java](<a class="reference external" href="https://github.com/LoyolaChicagoCode/shapes-android-java">https://github.com/LoyolaChicagoCode/shapes-android-java</a>)
-- [shapes-oo-scala project skeleton](<a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a>)
-- process tree [original assignment](<a class="reference external" href="http://osdi.etl.luc.edu/homework/home-lab-assignment-1">http://osdi.etl.luc.edu/homework/home-lab-assignment-1</a>) and [examples](<a class="reference external" href="https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree">https://github.com/lucproglangcourse?utf8=%E2%9C%93&amp;query=processtree</a>)
-- [misc-explorations-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">https://github.com/lucproglangcourse/misc-explorations-scala</a>) org chart examples</li>
-<li>tuple versus sequence/list</li>
+- <a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/scalamu">http://issuestats.com/github/LoyolaChicagoCode/scalamu</a></p>
+<ul class="simple">
 <li><cite>map</cite> versus <cite>flatMap</cite></li>
 <li><cite>for</cite> comprehensions</li>
-<li>console applications as composable building blocks in Unix (using pipes)</li>
-<li>importance of constant-space complexity for scalability</li>
 </ul>
-</div></blockquote>
-</div></blockquote>
-<ul>
+</li>
 <li><p class="first">recap of predefined list operations
 - keep in mind that [lists are head/tail-optimized](<a class="reference external" href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>)
 - observations</p>

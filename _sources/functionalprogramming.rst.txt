@@ -36,6 +36,29 @@ In an object-oriented language, we commonly use a combination of design patterns
 - https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
 
 
+Object-oriented Scala as a "better Java"
+````````````````````````````````````````
+
+Scala offers various improvements over Java, including:
+
+- `unified types <http://docs.scala-lang.org/tutorials/tour/unified-types.html>`_
+- `standalone higher-order functions <http://docs.scala-lang.org/tutorials/tour/higher-order-functions>`_
+- `standalone objects <http://docs.scala-lang.org/tutorials/tour/singleton-objects.html>`_
+- `case classes <http://docs.scala-lang.org/tutorials/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tutorials/tour/pattern-matching.html>`_
+- `traits <http://docs.scala-lang.org/tutorials/tour/traits.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
+- package structure decoupled from folder hierarchy
+- `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
+
+More recent versions of Java, however, have started to echo some these advances:
+
+- lambda expressions
+- default methods in interfaces
+
+We will study these features as we encounter them. 
+
+.. todo:: examples below after discussing the next topic
+
+  
 Defining algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -53,6 +76,7 @@ The fundamental building blocks of these *algebraic data types* are related to t
 - recursion (at the type level)
 - type parameters (genericity)
 
+  
 Using these building blocks, we can express `Shape` from the examples above as an algebraic data type::
 
         Shape = Circle(Int)
@@ -74,93 +98,61 @@ We are able to achieve a separation of the following structural and behavioral c
 - processing
 
 
-Predefined algebraic data types
-```````````````````````````````
-
-Many important predefined collection data types *are* algebraic data types:
-
-- `Seq` / `List`
-- `Map`
-- `Option`
-- `Try` / `Either`
-
-We will study these later in more detail.
-
   
 Behaviors on algebraic data types
-`````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- https://github.com/lucproglangcourse/misc-explorations-scala 
+The following are additional examples of behaviors on algebraic types. For recursive types, the behaviors are typically recursive as well.
+
+
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc 
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc
   
+
+
+Solving problems using built-in types and type constructors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors. Many of these, especially collection types and certain utility types, *are* algebraic data types:
+
+- ``Seq`` / ``List``
+
+  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc
+  - note the difference between those and tuples
+
+- ``Map``
+
+  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map
+
+- ``Option`` / ``Either``
+
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc 
+  - http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html 
+
+- ``Try``
+
+  - http://scala-lang.org/api/current/index.html#scala.util.Try
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc
+
+Using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
+
+- key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``groupBy``, ``collect``
+- ``for`` comprehensions
+
+The more familiar one is with these, the more quickly and productively one can put together at least an initial solution to a problem.
+Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
   
+
 
 Content below under construction
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-- project 0b and 1 clarifications 
-  - [echotest-scala](https://github.com/lucproglangcourse/echotest-scala) example
-  - TDD styles in Scala
-- project 0c and 0d reminders
-- [overview talk on PL history and paradigms](http://klaeufer.github.com/luc-amc.html)
-  - Scala version of Haskell example from talk
-  - [shootout benchmark](http://benchmarksgame.alioth.debian.org)
-  - process tree [assignment](http://osdi.etl.luc.edu/homework/home-lab-assignment-1) and [examples in various languages](https://github.com/lucproglangcourse?q=processtree) including [Scala](https://github.com/lucproglangcourse/processtree-scala) - also guiding example for project 1
-- console applications
-  - role as composable building blocks in Unix (using pipes)
-  - relationship with functional programming
-  - importance of constant-space complexity
-- scripting-style Scala: solving problems using built-in types and type constructors
-  - tuples
-  - collections
-    - [`Option[_]`](scala-lang.org/api/current/index.html#scala.Option) and [`Try[_]`](http://scala-lang.org/api/current/index.html#scala.util.Try)
-    - [`List[_]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.List) and [`Map[_, _]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map)
-  - key methods: `map`, `filter`/`withFilter`, `find`, `flatMap`, `sum`, `fold`, `groupBy`
-  - `for` comprehensions
-  - [misc-explorations-scala](https://github.com/lucproglangcourse/misc-explorations-scala) examples
-
-
-- object-oriented Scala (see also Swarts chapters 8 and 9)
-  - can start by using Scala as a "better Java"
-  - various improvements, including
-    - [unified types](http://docs.scala-lang.org/tutorials/tour/unified-types.html)
-    - [standalone objects](http://docs.scala-lang.org/tutorials/tour/singleton-objects.html)
-    - [case classes](http://docs.scala-lang.org/tutorials/tour/case-classes.html) and [pattern matching](http://docs.scala-lang.org/tutorials/tour/pattern-matching.html)
-    - [traits](http://docs.scala-lang.org/tutorials/tour/traits.html) (generalization of interfaces and restricted form of abstract classes, can be combined)
-    - package structure decoupled from folder hierarchy
-  - we'll study these features as we encounter them
-  - examples below after discussing the next topic
-
-
-  - key predefined collection data types *are* algebraic data types 
-    - [`Option[_]`](scala-lang.org/api/current/index.html#scala.Option) and [`Try[_]`](http://scala-lang.org/api/current/index.html#scala.util.Try)
-    - [`List[_]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.List) and [`Map[_, _]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map)
-  - examples
-    - process tree [original assignment](http://osdi.etl.luc.edu/homework/home-lab-assignment-1) and [examples](https://github.com/lucproglangcourse?utf8=%E2%9C%93&query=processtree)
-    - [misc-explorations-scala](https://github.com/lucproglangcourse/misc-explorations-scala)
-- project 1 discussion: 
-  - imperative/mutable versus pure functional/immutable
-  - modularization 
-  - [processtree-scala](https://github.com/lucproglangcourse/processtree-scala) guiding example
-
-
- - algebraic data types (continued)
-  - key predefined collection data types
-    - [`Option[\_]`](scala-lang.org/api/current/index.html#scala.Option) and [`Try[_]`](http://scala-lang.org/api/current/index.html#scala.util.Try)
-    - [`List[\_]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.List) and [`Map[\_, \_]`](http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map)
-    - key methods: `map`, `filter`/`withFilter`, `find`, `flatMap`, `sum`, `fold`, `groupBy`
-    - `for` comprehensions
-  - pattern matching in practice
-  - examples
-    - [expressions-oo-java](https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java)
-    - [expressions-visitor-java](https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java)
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala)
-    - [shapes-android-java](https://github.com/LoyolaChicagoCode/shapes-android-java)
-    - [shapes-oo-scala project skeleton](https://github.com/lucproglangcourse/shapes-oo-scala)
-    - process tree [original assignment](http://osdi.etl.luc.edu/homework/home-lab-assignment-1) and [examples](https://github.com/lucproglangcourse?utf8=%E2%9C%93&query=processtree)
-    - [misc-explorations-scala](https://github.com/lucproglangcourse/misc-explorations-scala)
-- project 2a discussion
-- TDD styles in Scala and [echotest example](https://github.com/lucproglangcourse/echotest-scala) 
 
 - (time permitting) brief heads-up on continuous integration/continuous delivery
   - https://travis-ci.org/LoyolaChicagoCode/processtree-scala
@@ -171,27 +163,9 @@ Content below under construction
 
 
 
- - algebraic data types (continued)
-  - algebraic data types in practice
-    - case classes/objects
-    - pattern matching
-    - built-in methods
-    - external behaviors ([Visitor pattern](https://sourcemaking.com/design_patterns/visitor))
-  - examples
-    - [expressions-oo-java](https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java)
-    - [expressions-visitor-java](https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java)
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala)
-    - [shapes-android-java](https://github.com/LoyolaChicagoCode/shapes-android-java)
-    - [shapes-oo-scala project skeleton](https://github.com/lucproglangcourse/shapes-oo-scala)
-    - process tree [original assignment](http://osdi.etl.luc.edu/homework/home-lab-assignment-1) and [examples](https://github.com/lucproglangcourse?utf8=%E2%9C%93&query=processtree)
-    - [misc-explorations-scala](https://github.com/lucproglangcourse/misc-explorations-scala) org chart examples
-
-
-  - tuple versus sequence/list
   - `map` versus `flatMap`
   - `for` comprehensions
-  - console applications as composable building blocks in Unix (using pipes)
-  - importance of constant-space complexity for scalability
+
 
 - recap of predefined list operations
   - keep in mind that [lists are head/tail-optimized](http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List)
