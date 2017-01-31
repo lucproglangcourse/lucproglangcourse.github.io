@@ -164,7 +164,7 @@ Loop over a finite collection or iterator using mutable state::
 
 Immutable equivalent using ``foldLeft``::
 
-  val (sum, count) = incoming foldLeft {
+  val (sum, count) = incoming.foldLeft {
     (0, 0)
   } { case ((sum, count), next) =>
     (sum + next.length, count + 1)

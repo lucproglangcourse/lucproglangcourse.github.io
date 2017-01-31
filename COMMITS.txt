@@ -1,3 +1,13 @@
+commit 4cb7624
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added missing dot
+
+commit 7cc8061
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added some examples of functional idioms
+
 commit 2163c7c
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
