@@ -168,6 +168,10 @@ GitHub (optional/recommended)
 Remote participation
 ~~~~~~~~~~~~~~~~~~~~
 
-For participating in class remotely in case of weather emergencies, install this software:
+This application enables you to grant others remote access to your desktop. This is helpful for diagnosing and overcoming obstacles without having to pair with the instructor in person. The application is free for personal use and does not require registration.
+
+- `TeamViewer <https://www.teamviewer.com>`_
+
+This software allows you to participating in class remotely in case of weather emergencies.
 
 - `Adobe Connect <http://luc.edu/digitalmedia/trainingandsupport/adobeconnect/about.shtml>`_ 
