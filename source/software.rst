@@ -132,7 +132,7 @@ These are useful additional sbt plugins. `You can install them per project or gl
 
 - `sbt-scoverage <https://github.com/scoverage/sbt-scoverage>`_: uses Scoverage to produce a test code coverage report
 - `sbt-updates <https://github.com/rtimush/sbt-updates>`_: checks central repos for dependency updates
-- `sbt-scalariform <https://github.com/sbt/sbt-scalariform>`_: automatic source code formatting using Scalariform 
+- `sbt-scalariform <https://github.com/sbt/sbt-scalariform>`_: automatic source code formatting using Scalariform (see also `this Gist <https://gist.github.com/klaeufer/8981fcdebc8573b06f3d611d049839d3>`_)
 - `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_: creates a script for running your app outside sbt 
 - `ls-sbt <https://github.com/softprops/ls>`_:  browse available libraries on GitHub using ls.implicit.ly
 - `sbt-dependency-graph <https://github.com/jrudolph/sbt-dependency-graph>`_: creates a visual representation of library dependency tree
