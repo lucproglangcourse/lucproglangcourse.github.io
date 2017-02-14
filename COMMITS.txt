@@ -1,3 +1,13 @@
+commit fbaad86
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved Iterator.continually example
+
+commit eb9e58f
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved Iterator.continually example
+
 commit 76b5474
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

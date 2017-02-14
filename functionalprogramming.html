@@ -286,7 +286,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 </pre></div>
 </div>
 <p>Note that we are using <code class="docutils literal"><span class="pre">foreach</span></code> when the body of the iteration produces a <em>side effect</em> such as output.
-If we wanted to compute a <em>result value</em>, we could instead use <code class="docutils literal"><span class="pre">continually</span></code> with <code class="docutils literal"><span class="pre">foldLeft</span></code>.</p>
+If we wanted to compute a <em>result value</em>, we could use <code class="docutils literal"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal"><span class="pre">foreach</span></code>.</p>
 <p>Note also that all of these are methods but look like control structures because of Scala&#8217;s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
 <p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
