@@ -4,6 +4,94 @@ The Functional Programming Paradigm
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
 
+Solving problems using built-in types and behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
+Many of these, especially collection types and certain utility types, are *algebraic data types*, discussed below in more detail:
+
+- ``Seq`` / ``List``
+
+  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc
+  - note the difference between those and tuples
+
+- ``Map``
+
+  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map
+
+- ``Option`` / ``Either``
+
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc 
+  - http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html 
+
+- ``Try``
+
+  - http://scala-lang.org/api/current/index.html#scala.util.Try
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc
+
+By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
+
+- key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``groupBy``, ``collect``
+- ``for`` comprehensions
+
+
+Examples
+````````
+
+  
+Loop over a finite collection or iterator using mutable state::
+
+  final Iterator<String> incoming = ...;
+  int sum = 0;
+  int count = 0;
+  for (final String s: incoming) {
+    sum += s.length();
+    count += 1; 
+  }
+  final float result = (float) sum / count;
+
+
+Immutable equivalent using ``foldLeft``::
+
+  val (sum, count) = incoming.foldLeft {
+    (0, 0)
+  } { case ((sum, count), next) =>
+    (sum + next.length, count + 1)
+  }
+  val result = sum.toFloat / count
+
+
+Unbounded loop until a condition is met::
+
+  while ((/* ... */ ; line = reader.readLine()) != null ; line) {
+    processExpr(line)
+  }
+
+
+Immutable equivalent using ``continually``::
+
+  Iterator continually {
+    // ...
+    reader.readLine()
+  } takeWhile {
+    Option(_).isDefined
+  } foreach {
+    processExpr
+  }
+
+
+Note that we are using ``foreach`` when the body of the iteration produces a *side effect* such as output.
+If we wanted to compute a *result value*, we could instead use ``continually`` with ``foldLeft``.
+
+Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
+  
+The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
+Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
+
+
 Defining abstractions in imperative and object-oriented languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -110,94 +198,6 @@ The following are additional examples of behaviors on algebraic types. For recur
 - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
 - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc 
 - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc
-  
-
-
-Solving problems using built-in types and type constructors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors. Many of these, especially collection types and certain utility types, *are* algebraic data types:
-
-- ``Seq`` / ``List``
-
-  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.List
-  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc
-  - note the difference between those and tuples
-
-- ``Map``
-
-  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map
-
-- ``Option`` / ``Either``
-
-  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc
-  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc 
-  - http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html 
-
-- ``Try``
-
-  - http://scala-lang.org/api/current/index.html#scala.util.Try
-  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc
-
-Using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
-The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
-
-- key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``groupBy``, ``collect``
-- ``for`` comprehensions
-
-
-Examples
-````````
-
-  
-Loop over a finite collection or iterator using mutable state::
-
-  final Iterator<String> incoming = ...;
-  int sum = 0;
-  int count = 0;
-  for (final String s: incoming) {
-    sum += s.length();
-    count += 1; 
-  }
-  final float result = (float) sum / count;
-
-
-Immutable equivalent using ``foldLeft``::
-
-  val (sum, count) = incoming.foldLeft {
-    (0, 0)
-  } { case ((sum, count), next) =>
-    (sum + next.length, count + 1)
-  }
-  val result = sum.toFloat / count
-
-
-Unbounded loop until a condition is met::
-
-  while ((/* ... */ ; line = reader.readLine()) != null ; line) {
-    processExpr(line)
-  }
-
-
-Immutable equivalent using ``continually``::
-
-  Iterator continually {
-    // ...
-    reader.readLine()
-  } takeWhile {
-    Option(_).isDefined
-  } foreach {
-    processExpr
-  }
-
-
-Note that we are using ``foreach`` when the body of the iteration produces a *side effect* such as output.
-If we wanted to compute a *result value*, we could instead use ``continually`` with ``foldLeft``.
-
-Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
-  
-The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
-Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
   
 
 
