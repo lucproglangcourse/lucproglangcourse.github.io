@@ -79,7 +79,7 @@ Immutable equivalent using ``continually``::
   } takeWhile { line =>
     line != null
   } foreach { line =>
-    process(line)
+    processExpr(line)
   }
 
 
