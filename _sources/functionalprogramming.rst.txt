@@ -76,10 +76,10 @@ Immutable equivalent using ``continually``::
   Iterator continually {
     // ...
     reader.readLine()
-  } takeWhile {
-    Option(_).isDefined
-  } foreach {
-    processExpr
+  } takeWhile { line =>
+    line != null
+  } foreach { line =>
+    process(line)
   }
 
 

@@ -278,10 +278,10 @@ The main building blocks in scripting-style Scala are the collection and utility
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Iterator</span> <span class="n">continually</span> <span class="p">{</span>
   <span class="o">//</span> <span class="o">...</span>
   <span class="n">reader</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
-<span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span>
-  <span class="n">Option</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="o">.</span><span class="n">isDefined</span>
-<span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span>
-  <span class="n">processExpr</span>
+<span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
+  <span class="n">line</span> <span class="o">!=</span> <span class="n">null</span>
+<span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
+  <span class="n">process</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
