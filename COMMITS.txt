@@ -1,3 +1,13 @@
+commit 5bc60d3
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added TeamViewer to software chapter
+
+commit 5d6891c
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to scalariform gist
+
 commit 4cb7624
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
