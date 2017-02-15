@@ -83,17 +83,18 @@
 <li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#the-importance-of-console-applications">2.4. The importance of console applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.5. Programming language history and paradigms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#performance-and-popularity-indices">2.6. Performance and popularity indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.7. Detailed case study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#options-for-running-scala-code">2.4. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#the-importance-of-console-applications">2.5. The importance of console applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.6. Programming language history and paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#performance-and-popularity-indices">2.7. Performance and popularity indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.8. Detailed case study</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">3. The Functional Programming Paradigm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">3.3. Behaviors on algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-behaviors">3.1. Solving problems using built-in types and behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-abstractions-in-imperative-and-object-oriented-languages">3.2. Defining abstractions in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">3.3. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">3.4. Behaviors on algebraic data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">3.5. Content below under construction</a></li>
 </ul>
 </li>
@@ -121,7 +122,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">9. Appendix: Course Software</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sbt-optional-plugins">9.3. sbt optional plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bitbucket">9.4. Bitbucket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remote-participation">9.6. Remote participation</a></li>
@@ -165,7 +166,7 @@
 <li><a class="reference internal" href="#optional-for-all-intellij-users">9.2.6. Optional for all IntelliJ users</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
+<li><a class="reference internal" href="#sbt-optional-plugins">9.3. sbt optional plugins</a></li>
 <li><a class="reference internal" href="#bitbucket">9.4. Bitbucket</a></li>
 <li><a class="reference internal" href="#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
 <li><a class="reference internal" href="#remote-participation">9.6. Remote participation</a></li>
@@ -326,24 +327,18 @@ hello
 </div>
 <div class="section" id="optional-for-all-intellij-users">
 <h3>9.2.6. Optional for all IntelliJ users<a class="headerlink" href="#optional-for-all-intellij-users" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">These are useful Android Studio/Intellij IDEA plugins. (Installation procedure is the same as for the Scala plugin.)</p>
 <ul class="simple">
+<li>These are useful Android Studio/Intellij IDEA plugins. (Installation procedure is the same as for the Scala plugin.)<ul>
 <li>Key Promoter (helps you learn keyboard shortcuts)</li>
 <li>MultiMarkdown</li>
 </ul>
 </li>
-<li><p class="first">IntelliJ IDEA Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.</p>
-<p>Check out <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">this example</a>, especially the simple option and list examples.</p>
-<p>Worksheets can live in any folder and coexist with other code. So you can start exploring something in a worksheet and then move it into your production code.</p>
-</li>
 </ul>
 </div>
 </div>
-<div class="section" id="sbt-tips-and-optional-plugins">
-<h2>9.3. sbt tips and optional plugins<a class="headerlink" href="#sbt-tips-and-optional-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sbt-optional-plugins">
+<h2>9.3. sbt optional plugins<a class="headerlink" href="#sbt-optional-plugins" title="Permalink to this headline">¶</a></h2>
 <p>This section applies to all uses of sbt, whether cloud-based or on the local command line.</p>
-<p>In conjunction with a <a class="reference external" href="https://www.gnu.org/software/emacs">text editor</a>, sbt&#8217;s <a class="reference external" href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">triggered execution</a> for testing will significantly shorten the edit-compile-run/test cycle.</p>
 <p>These are useful additional sbt plugins. <a class="reference external" href="http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html">You can install them per project or globally.</a> Some of the example projects already come with one or more of these plugins.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt-scoverage</a>: uses Scoverage to produce a test code coverage report</li>

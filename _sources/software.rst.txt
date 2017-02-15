@@ -114,19 +114,11 @@ Optional for all IntelliJ users
   - Key Promoter (helps you learn keyboard shortcuts)
   - MultiMarkdown
 
-- IntelliJ IDEA Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.
-
-  Check out `this example <https://github.com/lucproglangcourse/misc-explorations-scala>`_, especially the simple option and list examples.
-
-  Worksheets can live in any folder and coexist with other code. So you can start exploring something in a worksheet and then move it into your production code.
-
-  
-sbt tips and optional plugins
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+sbt optional plugins
+~~~~~~~~~~~~~~~~~~~~
 
 This section applies to all uses of sbt, whether cloud-based or on the local command line.
-
-In conjunction with a `text editor <https://www.gnu.org/software/emacs>`_, sbt's `triggered execution <http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html>`_ for testing will significantly shorten the edit-compile-run/test cycle.
 
 These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Some of the example projects already come with one or more of these plugins. 
 

@@ -1,3 +1,13 @@
+commit e4fad90
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added various key sections to background chapter
+
+commit 3024186
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved Iterator.continually example
+
 commit fbaad86
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
