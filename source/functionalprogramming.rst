@@ -92,65 +92,10 @@ The more familiar one becomes with the various predefined building blocks, the m
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
 
-Defining abstractions in imperative and object-oriented languages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In imperative and object-oriented languages, the basic abstractions are
-
-- addressing: pointers, references
-- aggregation: structs/records, arrays
-
-  - example: node in a linked list
-
-- variation: tagged unions, multiple implementations of an interface
-
-  - example: mutable set abstraction
-
-    - add element
-    - remove element
-    - check whether an element is present
-    - check if empty
-    - how many elements
-  - several possible implementations
-
-    - reasonable: binary search tree, hash table, bit vector (for small underlying domains)
-    - less reasonable: array, linked list
-    - see also this `table of collection implementations <http://docs.oracle.com/javase/tutorial/collections/implementations>`_
-
-In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:
-
-- https://github.com/lucoodevcourse/shapes-android-java 
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
-
-
-Object-oriented Scala as a "better Java"
-````````````````````````````````````````
-
-Scala offers various improvements over Java, including:
-
-- `unified types <http://docs.scala-lang.org/tutorials/tour/unified-types.html>`_
-- `standalone higher-order functions <http://docs.scala-lang.org/tutorials/tour/higher-order-functions>`_
-- `standalone objects <http://docs.scala-lang.org/tutorials/tour/singleton-objects.html>`_
-- `case classes <http://docs.scala-lang.org/tutorials/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tutorials/tour/pattern-matching.html>`_
-- `traits <http://docs.scala-lang.org/tutorials/tour/traits.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
-- package structure decoupled from folder hierarchy
-- `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
-
-More recent versions of Java, however, have started to echo some these advances:
-
-- lambda expressions
-- default methods in interfaces
-
-We will study these features as we encounter them. 
-
-.. todo:: examples below after discussing the next topic
-
-  
 Defining algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most abstractions fall into one of these categories:
+Most structures fall into one of these categories:
 
 - nonrecursive/scalars: boolean, finite enumerations (including numeric types), try
 - sublinear structures: (infinite set of) natural numbers, option
@@ -165,7 +110,7 @@ The fundamental building blocks of these *algebraic data types* are related to t
 - type parameters (genericity)
 
   
-Using these building blocks, we can express `Shape` from the examples above as an algebraic data type::
+Using these building blocks, we can express the `Shape` domain model from the examples above as an algebraic data type::
 
         Shape = Circle(Int)
               | Rectangle(Int, Int)
