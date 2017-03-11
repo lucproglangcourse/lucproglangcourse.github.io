@@ -237,7 +237,7 @@ For more details on space complexity and tail recursion, please take a look at t
 
 
       
-Separation of Concerns at the Type Level
+Separation of concerns at the type level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The overall approach is to formalize algebraic data types as initial F-algebras.
