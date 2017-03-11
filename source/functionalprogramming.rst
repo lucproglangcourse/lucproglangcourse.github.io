@@ -38,6 +38,9 @@ The main building blocks in scripting-style Scala are the collection and utility
 - ``for`` comprehensions
 
 
+.. todo:: elaborate more on ``for`` comprehensions and ``flatMap``
+
+  
 Examples
 ````````
 
@@ -92,6 +95,21 @@ The more familiar one becomes with the various predefined building blocks, the m
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
 
+Challenges
+``````````
+
+Can we write (efficiently or not)
+
+- ``length``, ``sum``, ``reverse``, ``filter``, ``find``, ``map`` as a fold, i.e., ``foldLeft`` or ``foldRight``? 
+- ``foldLeft`` or ``foldRight`` as ``map``?!?
+- ``reverse`` or ``filter`` as a ``map``?
+
+Some hints:
+
+- Look carefully at the respective domains and codomains (argument and result types). Can they fit?
+- Which is more general, ``map`` or ``fold``?
+
+
 Defining algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,7 +120,8 @@ Most structures fall into one of these categories:
 - linear structures: lists, maps
 - nonlinear structures: trees, graphs, many custom domain models
 
-The fundamental building blocks of these *algebraic data types* are related to those discussed above:
+The fundamental building blocks of these *algebraic data types* are
+related to those discussed in :ref:`secDomainModelsOO`:
 
 - (disjoint) sum: variation
 - product (tuple, record) of a given arity: aggregation
@@ -122,183 +141,169 @@ We can separately define behaviors on Shapes as functions. Here is an example th
 - https://github.com/lucproglangcourse/shapes-oo-scala 
 - https://github.com/lucproglangcourse/expressions-scala 
 
-
-We are able to achieve a separation of the following structural and behavioral concerns:
+We identify the following structural and behavioral concerns:
 
 - structure
 - content
 - traversal
 - processing
 
+So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type. 
+
+
+Separation of structural concerns
+`````````````````````````````````
+  
+We can, however, achieve a separation between structure and content with the help of *parametric polymorphism*, that is, making the algebraic data type *generic* in terms of the content.
+The predefined collections are an example of this separation, as well as the `generic org chart <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_ example.
 
   
 Behaviors on algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following are additional examples of behaviors on algebraic types. For recursive types, the behaviors are typically recursive as well.
+The following are additional examples of behaviors on algebraic data types.
+As expected, for recursive types, the behaviors are typically recursive as well.
+
+- `simple org charts <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc>`_
+- `generic org charts <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_
+- `simple natural numbers <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc>`_
+- `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_
+
+In these examples, the traversal and processing concerns identified above remain combined. 
 
 
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc 
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc
-  
+Separation of behavioral concerns
+`````````````````````````````````
+
+A question that comes to mind is whether they can be separated, similarly to the predefined higher-order methods on collections, such as ``foldLeft``, ``foldRight``, ``map``, etc.
+These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
+They handle the *traversal* concern for us and separate it from the *processing* concern, which we handle by providing a suitable argument function.
+
+- `functions on lists (reverse) <https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc>`_
+- `functions on streams (potentially infinite lists with memoization) <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc>`_
+
+This question has a two-part answer:  
+Yes, we can define custom implementations of such higher-order behaviors for our own algebraic data types.
+In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a ``map`` method.  
+
+Another, seemingly esoteric, question is whether we can pull out recursion itself as a functional pattern.
+Yes, we can.
+In `this factorial example <https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc>`_,
+the ``Y``-combinator handles the *recursion* concern *for behaviors* and separates it from the concern of what should happen in each step of the recursion.
+
+We will soon study the equivalent idea at the type level.
 
 
-Content below under construction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A closer look at predefined behaviors on lists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In this section, we take a look "under the hood" of some key predefined behaviors on lists.
 
-- (time permitting) brief heads-up on continuous integration/continuous delivery
-  - https://travis-ci.org/LoyolaChicagoCode/processtree-scala
-  - https://coveralls.io/github/LoyolaChicagoCode/processtree-scala
-  - https://github.com/LoyolaChicagoCode/scalamu
-  - https://www.codacy.com/public/laufer/scalamu/dashboard
-  - http://issuestats.com/github/LoyolaChicagoCode/scalamu
+In terms of performance, we must keep in mind that `lists are head/tail-optimized <http://www.scala-lang.org/api/current/scala/collection/immutable/List.html>`_.
+In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
+In practice, acceptable performance usually means linear time for behavior where we process the entire list.
 
+In addition, we need to be aware of *space complexity*.
+Clearly, we are already using space for the arguments we are about to pass to the behavior and are willing to dedicate space to the result we are getting back, so the focus is on *additional* temporary space on the stack, which we like to keep constant if possible.
+(This discussion is closely related to :ref:`subsecConstantSpace`, where the assumption is that the arguments and the result are stored *externally*.)
 
+*Tail recursion*, where the very last step in a method or function body is the recursive invocation of the method itself, is an effective technique for achieving constant-space complexity as long the behavior can be expressed in a tail-recursive way.
+In some cases, we can rewrite an implementation in a tail-recursive way by introducing an *accumulator* argument, where we essentially build up the result in the accumulator and then return that result once we reach the base case of the recursion.
+A tail-recursive implementation can easily be transformed to a ``while`` loop by introducing a mutable variable to represent the progress into the list structure.
+This `reverse example <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc>`_ illustrates these concepts and techniques in more detail.
 
-  - `map` versus `flatMap`
-  - `for` comprehensions
+Here are some observations:
 
+- ``foldLeft`` is usually what we want: *linear-time* and *constant-space* (naturally tail-recursive).
+- ``foldRight`` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list. 
+- `xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)` where `g` is `f` with the arguments switched.
 
-- recap of predefined list operations
-  - keep in mind that [lists are head/tail-optimized](http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List)
-  - observations
-    - `foldLeft` is usually what we want: *linear-time* and *constant-space* (tail-recursive)
-    - `foldRight` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list
-    - `xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)` where `g` is `f` with the arguments switched
-  - Scala library implementations of these functions 
-    - find desired method in documentation, expand, and look at *definition classes*
-    - these tend to appear more complex than expected for performance reasons
-    - [`foreach`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L378)
-    - [`foldLeft`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/TraversableOnce.scala#L153)
-    - [`reverse`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L386)
-    - [`foldRight`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L396)
-    - [`map`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L270)
-    - [`length`](https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/LinearSeqOptimized.scala#L49)
-  - *challenge*: can we write (efficiently or not)
-    - `length`, `sum`, `reverse`, `filter`, `find`, `map` as fold?
-    - fold as `map`?!?
-  - efficiency considerations in more detail -> next week
-    - [space complexity, tail recursion, and accumulators](http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/)
-    - [tail recursion, trampolines, and continuations](http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html) (advanced) 
-  - observations
-    - *fold* handles the *traversal* concern and separates it from the *processing* concern (goes a step further than the visitor pattern)
-    - domain and codomain of *fold*?
-    - domain and codomain of *map*?
+To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for *definition classes*, follow the link to the leftmost definition class, then the link to that class's Scala source, and finally look for the actual method.
+For performance reasons, these professional implementations tend to appear more complex than we might expect.
+Here are some examples:
 
-- writing our own (recursive) functions on options, lists, streams, and other algebraic data types -> next week
-  - examples
-    - [factorial](https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc)
-    - [functions on lists](https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc)
-    - [functions on streams](https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc)
-    - [functions on simple natural numbers](https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc)
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala)
-  - observations
-    - the `Y`-combinator handles the *recursion* concern *for behaviors* and separates it from the concern of what should happen in each step of the recursion
-
-- formalizing algebraic data types as initial F-algebras
-  - concepts -> next week
-    - [(endo)functor](https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala)
-    - [F-algebra](https://www.fpcomplete.com/user/bartosz/understanding-algebras)
-    - fold = catamorphism
-    - the `µ`-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself
-    - F-coalgebra
-    - unfold = anamorphism
-  - practical applications -> next week
-  - examples
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala) versus [expressions-algebraic-scala](https://github.com/lucproglangcourse/expressions-algebraic-scala)
-    - [Scalaµ library](https://github.com/lucproglangcourse/scalamu) and [examples](https://github.com/lucproglangcourse/scalamu/examples)
-
-- project 2b discussion
-
-(time permitting) 
-
-- TDD styles in Scala and [echotest example](https://github.com/lucproglangcourse/echotest-scala) 
-- brief heads-up on continuous integration/continuous delivery -> probably next week
-  - https://travis-ci.org/LoyolaChicagoCode/processtree-scala
-  - https://coveralls.io/github/LoyolaChicagoCode/processtree-scala
-  - https://github.com/LoyolaChicagoCode/scalamu
-  - https://www.codacy.com/public/laufer/scalamu/dashboard
-  - http://issuestats.com/github/LoyolaChicagoCode/scalamu
-
-# References
-
-- [Understanding F-Algebras](https://www.fpcomplete.com/user/bartosz/understanding-algebras)
-- [Gibbons](https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf) (advanced)
-- [Oliveira & Cook](http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf) (advanced)
-
-
+- `foreach <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L375>`_
+- `foldLeft <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L118>`_
+- `reverse <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L383>`_
+- `foldRight <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L393>`_
+- `map <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L269>`_
+- `length <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
   
-- efficiency considerations for predefined list operations in more detail
-  - [space complexity, tail recursion, and accumulators](http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/)
-  - [tail recursion, trampolines, and continuations](http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html) (advanced) 
+For more details on space complexity and tail recursion, please take a look at these references:
 
-- writing our own (recursive) functions on options, lists, streams, and other algebraic data types
-  - examples
-    - [factorial](https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc)
-    - [functions on lists](https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc)
-    - [functions on streams](https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc)
-    - [functions on simple natural numbers](https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc)
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala)
-  - observations
-    - the `Y`-combinator handles the *recursion* concern *for behaviors* and separates it from the concern of what should happen in each step of the recursion
-
-- formalizing algebraic data types as initial F-algebras
-  - concepts
-    - [(endo)functor](https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala): type constructor that satisfies *identity* and *composition* laws
-    - the `µ`-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself
-    - fold = catamorphism `cata` for breaking down a data structure to a result value
-    - [F-algebra](https://www.fpcomplete.com/user/bartosz/understanding-algebras): argument to fold, has functor `F` and carrier object (= result type of the fold)
-    - `unfold` = anamorphism for building up a data structure
-    - F-coalgebra: argument to unfold (generator), also has functor `F` and carrier object (= type of seed and generated values wrapped in functor)
-  - practical applications
-  - examples
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala) versus [expressions-algebraic-scala](https://github.com/lucproglangcourse/expressions-algebraic-scala)
-    - [Scalaµ library](https://github.com/lucproglangcourse/scalamu) and [examples](https://github.com/lucproglangcourse/scalamu/examples)
-
-- [project 2b](https://trello.com/c/EihkYkGP/59-project-2b) clinic
-- project 3a overview
-- 16:30-16:45 student presentation on C++
-- 16:45-17:15 presentation by alumna and part-time faculty member María Sáenz
-
-(time permitting) 
-
-- TDD styles in Scala and [echotest example](https://github.com/lucproglangcourse/echotest-scala) 
-- brief heads-up on continuous integration/continuous delivery -> probably next week
-  - https://travis-ci.org/LoyolaChicagoCode/processtree-scala
-  - https://coveralls.io/github/LoyolaChicagoCode/processtree-scala
-  - https://github.com/LoyolaChicagoCode/scalamu
-  - https://www.codacy.com/public/laufer/scalamu/dashboard
-  - http://issuestats.com/github/LoyolaChicagoCode/scalamu
+- `space complexity, tail recursion, and accumulators <http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/>`_
+- `tail recursion, trampolines, and continuations <http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html>`_ (advanced)
 
 
+      
+Separation of Concerns at the Type Level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- recap: formalizing algebraic data types as initial F-algebras
-  - concepts
-    - [(endo)functor](https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala): type constructor that satisfies *identity* and *composition* laws
-    - the `µ`-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself
-    - fold = catamorphism `cata` for breaking down a data structure to a result value
-    - [F-algebra](https://www.fpcomplete.com/user/bartosz/understanding-algebras): argument to fold, has functor `F` and carrier object (= result type of the fold)
-    - `unfold` = anamorphism for building up a data structure
-    - F-coalgebra: argument to unfold (generator), also has functor `F` and carrier object (= type of seed and generated values wrapped in functor)
-  - practical applications
-  - examples
-    - [expressions-scala](https://github.com/lucproglangcourse/expressions-scala) versus [expressions-algebraic-scala](https://github.com/lucproglangcourse/expressions-algebraic-scala)
-    -  [project 2a](https://trello.com/c/nPaqQAJf/58-project-2a) versus [project 2b](https://trello.com/c/EihkYkGP/59-project-2b)
-  - key insights
-    - commonalities among recursive types
-      -  `µ`-based: `Nat`, `Expr`, `Shape`, etc.
-      -  `Cofree`-based: `List`, `Tree`, `OrgChart`, etc.
-      - how are, say, `Option`, `List`, and `Tree` related?
-      - structural
-      - behavioral
-      - potential for code reuse 
-        - [Scalaµ library](https://github.com/lucproglangcourse/scalamu)
-        - [Scalaz library](https://github.com/scalaz/scalaz)
+The overall approach is to formalize algebraic data types as initial F-algebras.
 
 
+Key concepts
+````````````
 
+We first need to define some key concepts:
+
+- `(endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws.
+- The ``Fix``-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself.
+- Generalized ``fold`` = *catamorphism* (``cata``) for *breaking down* a data structure to a result value.
+- `F-algebra <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_: This is the argument to ``fold``, which has a functor ``F`` and a carrier object, i.e., the result type of the fold.
+- ``unfold`` = *anamorphism* for *building up* a data structure from some other value.
+- *F-coalgebra*: This is the argument to ``unfold`` (generator), which also has a functor ``F`` and a carrier object, i.e., type of seed and generated values wrapped in the functor.
+- *Initial F-algebra*: This is the least fixpoint of our functor ``F`` and equivalent to our original recursive type.
+  We obtain this by applying the ``Fix``-combinator to ``F``.
+- We get our original recursive behaviors back by combining ``cata`` and our specific F-algebraic version of the behavior.
+  
+.. todo:: Practical applications
+
+	  
+Examples
+````````
+
+It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:
+
+- `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_
+-  `project 2a <https://trello.com/c/nPaqQAJf/58-project-2a>`_ versus `project 2b <https://trello.com/c/EihkYkGP/59-project-2b>`_
+
+
+Key insights
+````````````
+
+By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.
+
+- non-generic:  ``Nat``, ``Expr``, ``Shape``, etc.
+- generic: ``List``, ``Tree``, ``OrgChart``, etc.
+
+Still on the structural side, it also helps to study these questions:
+
+- How are, say, ``Option``, ``List``, and ``Tree`` related? 
+- How does
+  - ``Option`` relate to ``List``
+  - ``List`` relate to ``Tree``
+  - ``Tree`` relate to ?!?
+  - ...
+
+On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:
+
+- `Scalaz library <https://github.com/scalaz/scalaz>`_
+- `Matryoshka library <https://github.com/slamdata/matryoshka>`_
+- The various `Typelevel.scala projects <http://typelevel.org/projects>`_
+
+For more details on F-algebras and datatype-generic programming, please take a look at these references:
+
+- `Understanding F-Algebras <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_
+- `Gibbons: origami programming <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf>`_ (advanced)
+- `Oliveira & Cook: F-algebras in Java <http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf>`_ (advanced)
+
+If you want to dig a bit deeper, check out a generalization of ``map`` called `traverse <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf>`_.
+Some of our examples include implementations of ``traverse``.
+
+  
+References 
+~~~~~~~~~~
+
+.. todo:: put chapter-level references here

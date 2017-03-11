@@ -1,7 +1,7 @@
 The Imperative and Object-Oriented Paradigms in Scala
 -----------------------------------------------------
 
-In this section, we discuss the imperative and object-oriented programming paradigms with examples in Scala.
+In this chapter, we discuss the imperative and object-oriented programming paradigms with examples in Scala.
 
 Options for running Scala code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,6 +166,7 @@ In Scala, ``print`` and ``println`` print to stdout.
 Console applications written in this way can be part of a Unix pipeline only to a limited extent.
 Unfortunately, the Java virtual machine ignores the ``SIGPIPE`` error signal, so we cannot use Scala (or Java) console applications as upstream components that produce an infinite output sequence and depend on this signal.
 
+.. _subsecConstantSpace:
 
 The importance of constant-space complexity
 ```````````````````````````````````````````
@@ -218,6 +219,8 @@ For faster turnaround, we can combine these techniques with triggered execution.
 
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
+
+.. _secDomainModelsOO:
 
 Defining domain models in imperative and object-oriented languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
 Context and Background
 ----------------------
 
-In this section, we establish a practical context and provide some background information for the study of programming languages.
+In this chapter, we establish a practical context and provide some background information for the study of programming languages.
 
 
 Overview of a lightweight development process
@@ -37,8 +37,15 @@ A successful development process usually comprises these minimal elements:
 
 - `continuous integration <https://www.martinfowler.com/articles/continuousIntegration.html>`_
 
-The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates continuous integration using various hosted services.
-  
+The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates continuous integration using various hosted services:
+
+- `Travis CI <https://travis-ci.org/LoyolaChicagoCode/processtree-scala>`_: continuous integration
+- `Codecov <https://codecov.io/gh/LoyolaChicagoCode/processtree-scala>`_: test coverage
+- `Codacy <https://www.codacy.com/app/laufer/processtree-scala>`_: automated code review
+- `IssueStats <http://issuestats.com/github/LoyolaChicagoCode/processtree-scala>`_ and `IsItMaintained <http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala>`_: stats on issues and pull requests
+
+The `click counter <https://github.com/LoyolaChicagoCode/clickcounter-android-java>`_ example includes additional hosted continuous integration and delivery targets suitable for mobile app development.
+
 
 Software requirements
 ~~~~~~~~~~~~~~~~~~~~~
