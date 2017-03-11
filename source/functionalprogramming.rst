@@ -295,6 +295,7 @@ On the behavioral side, we recognize the great potential for code reuse resultin
 
 For more details on F-algebras and datatype-generic programming, please take a look at these references:
 
+- `Advanced Functional Programming with Scala <https://gist.github.com/jdegoes/97459c0045f373f4eaf126998d8f65dc>`_
 - `Understanding F-Algebras <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_
 - `Gibbons: origami programming <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf>`_ (advanced)
 - `Oliveira & Cook: F-algebras in Java <http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf>`_ (advanced)
