@@ -19,6 +19,9 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
 .. warning::
 
    These notes are still being written, so expect a few rough edges. But we're getting closer!
+   Your contributions are *highly welcome!*
+   Please submit `issues <https://github.com/LoyolaChicagoBooks/lucproglangcourse/issues>`_
+   and `pull requests <https://github.com/LoyolaChicagoBooks/lucproglangcourse/pulls>`_.
 
 .. Contents
 .. ========
