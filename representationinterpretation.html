@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. Program Representation and Interpretation &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
+    <title>5. Program Representation and Interpretation &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,8 +32,8 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Introduction to Concurrency" href="concurrency.html" />
-    <link rel="prev" title="3. The Functional Programming Paradigm" href="functionalprogramming.html" />
+    <link rel="next" title="6. Introduction to Concurrency" href="concurrency.html" />
+    <link rel="prev" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -79,63 +79,68 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="background.html">2. Background</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#the-importance-of-console-applications">2.4. The importance of console applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.5. Programming language history and paradigms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#performance-and-popularity-indices">2.6. Performance and popularity indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.7. Detailed case study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">3. The Functional Programming Paradigm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-abstractions-in-imperative-and-object-oriented-languages">3.1. Defining abstractions in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">3.2. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">3.3. Behaviors on algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-type-constructors">3.4. Solving problems using built-in types and type constructors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">3.5. Content below under construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. Scala as an Object-Oriented and Scripting Language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-console-applications">3.2. The role of console applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-testing-scala-code">3.3. Options for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#detailed-case-study">3.4. Detailed case study</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Program Representation and Interpretation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language">4.1. A simple imperative language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language-with-records">4.2. A simple imperative language with records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#type-systems">4.3. Type systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#domain-specific-languages">4.4. Domain-specific languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-domain-models-in-imperative-and-object-oriented-languages">4.2. Defining domain models in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">4.3. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">4.4. Behaviors on algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">4.5. Content below under construction</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">5. Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">6. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">7. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">8. Appendix: Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">8.1. Key resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">8.2. Code examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">8.3. Required text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">8.4. Recommended/supplementary texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">8.5. Additional texts on Scala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">8.6. Online Scala resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">8.7. Resources on program representation and interpretation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">8.8. Other resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language">5.1. A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-systems">5.3. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-specific-languages">5.4. Domain-specific languages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">9. Appendix: Course Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">9.4. Bitbucket</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">9.6. Remote participation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">9.1. Key resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">9.2. Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">9.3. Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">9.4. Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">9.5. Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">9.6. Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">9.7. Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">9.8. Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">10. Appendix: Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">10.1. Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">10.2. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">10.3. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">10.4. Important Dates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.5. Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">10.4. Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">10.5. GitHub (optional/recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.6. Remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">11. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">11.1. Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.2. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.3. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">11.4. Important Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.5. Key Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
 </ul>
 </ul>
 </li>
@@ -149,22 +154,22 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">4. Program Representation and Interpretation</a><ul>
-<li><a class="reference internal" href="#a-simple-imperative-language">4.1. A simple imperative language</a><ul>
-<li><a class="reference internal" href="#objectives">4.1.1. Objectives</a></li>
-<li><a class="reference internal" href="#syntax">4.1.2. Syntax</a></li>
-<li><a class="reference internal" href="#structured-operational-semantics-sos">4.1.3. Structured operational semantics (SOS)</a></li>
-<li><a class="reference internal" href="#the-interpreter-program">4.1.4. The interpreter program</a></li>
+<li><a class="reference internal" href="#">5. Program Representation and Interpretation</a><ul>
+<li><a class="reference internal" href="#a-simple-imperative-language">5.1. A simple imperative language</a><ul>
+<li><a class="reference internal" href="#objectives">5.1.1. Objectives</a></li>
+<li><a class="reference internal" href="#syntax">5.1.2. Syntax</a></li>
+<li><a class="reference internal" href="#structured-operational-semantics-sos">5.1.3. Structured operational semantics (SOS)</a></li>
+<li><a class="reference internal" href="#the-interpreter-program">5.1.4. The interpreter program</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#a-simple-imperative-language-with-records">4.2. A simple imperative language with records</a><ul>
-<li><a class="reference internal" href="#id1">4.2.1. Objectives</a></li>
-<li><a class="reference internal" href="#id2">4.2.2. Syntax</a></li>
-<li><a class="reference internal" href="#implementation">4.2.3. Implementation</a></li>
+<li><a class="reference internal" href="#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a><ul>
+<li><a class="reference internal" href="#id1">5.2.1. Objectives</a></li>
+<li><a class="reference internal" href="#id2">5.2.2. Syntax</a></li>
+<li><a class="reference internal" href="#implementation">5.2.3. Implementation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#type-systems">4.3. Type systems</a></li>
-<li><a class="reference internal" href="#domain-specific-languages">4.4. Domain-specific languages</a></li>
+<li><a class="reference internal" href="#type-systems">5.3. Type systems</a></li>
+<li><a class="reference internal" href="#domain-specific-languages">5.4. Domain-specific languages</a></li>
 </ul>
 </li>
 </ul>
@@ -176,11 +181,11 @@
               
                 
   <li>
-    <a href="functionalprogramming.html" title="Previous Chapter: 3. The Functional Programming Paradigm"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. The Functi...</span>
+    <a href="functionalprogramming.html" title="Previous Chapter: 4. The Functional Programming Paradigm"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 4. The Functi...</span>
     </a>
   </li>
   <li>
-    <a href="concurrency.html" title="Next Chapter: 5. Introduction to Concurrency"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Introducti... &raquo;</span>
+    <a href="concurrency.html" title="Next Chapter: 6. Introduction to Concurrency"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">6. Introducti... &raquo;</span>
     </a>
   </li>
               
@@ -215,7 +220,7 @@
     <div class="col-md-12 content">
       
   <div class="section" id="program-representation-and-interpretation">
-<h1>4. Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Permalink to this headline">¶</a></h1>
+<h1>5. Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li>programming language [compilation](<a class="reference external" href="http://en.wikipedia.org/wiki/Compiler)/[interpretation](http://en.wikipedia.org/wiki/Interpreter_(computing">http://en.wikipedia.org/wiki/Compiler)/[interpretation](http://en.wikipedia.org/wiki/Interpreter_(computing</a>)) toolchain phases overview
 - source code (string stored in file)
@@ -267,7 +272,7 @@
 </li>
 </ul>
 <div class="section" id="a-simple-imperative-language">
-<h2>4.1. A simple imperative language<a class="headerlink" href="#a-simple-imperative-language" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. A simple imperative language<a class="headerlink" href="#a-simple-imperative-language" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language.</p>
 <p>The accompanying lecture is available as a set of screencasts:</p>
 <ul class="simple">
@@ -275,7 +280,7 @@
 <li>[implementation](<a class="reference external" href="https://youtu.be/mj-tq_kdeFU">https://youtu.be/mj-tq_kdeFU</a>)</li>
 </ul>
 <div class="section" id="objectives">
-<h3>4.1.1. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.1. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
@@ -283,7 +288,7 @@
 </ul>
 </div>
 <div class="section" id="syntax">
-<h3>4.1.2. Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.2. Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p>Our language has the following features:</p>
 <p>Integer expressions given by the BNF grammar:</p>
 <blockquote>
@@ -311,7 +316,7 @@
 <p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like &#8220;x + 3&#8221;, whereas earlier we could only write expressions such as &#8220;4 + 3&#8221;. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
 </div>
 <div class="section" id="structured-operational-semantics-sos">
-<h3>4.1.3. Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.3. Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline">¶</a></h3>
 <p>We first formalize the intuitive execution semantics of the toy language. The point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. Since our toy language has variables, we need to keep track of the state of variables. We view variables as objects with two capabilities:</p>
 <ul class="simple">
 <li><cite>v.get()</cite> returns the current value of the variable</li>
@@ -339,15 +344,15 @@
 <p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements &#8220;x = 2; y = x + 1&#8221;, the second reference to x reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
 </div>
 <div class="section" id="the-interpreter-program">
-<h3>4.1.4. The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline">¶</a></h3>
+<h3>5.1.4. The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline">¶</a></h3>
 <p>We now go ahead and write the interpreter program. The entire code is available as part of the [misc-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative">https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative</a>) example. A similar example but based on F-algebras and with better runtime error handling is also available: [simpleimperative-algebraic-scala](<a class="reference external" href="https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala">https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala</a>).</p>
 </div>
 </div>
 <div class="section" id="a-simple-imperative-language-with-records">
-<h2>4.2. A simple imperative language with records<a class="headerlink" href="#a-simple-imperative-language-with-records" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. A simple imperative language with records<a class="headerlink" href="#a-simple-imperative-language-with-records" title="Permalink to this headline">¶</a></h2>
 <p>In this handout, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).</p>
 <div class="section" id="id1">
-<h3>4.2.1. Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
@@ -362,7 +367,7 @@
 </ul>
 </div>
 <div class="section" id="id2">
-<h3>4.2.2. Syntax<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.2. Syntax<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Our language has the following features:</p>
 <p>The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
 <blockquote>
@@ -492,12 +497,12 @@ public StudentCourseRecord course2;</dd>
 <img alt="_images/records5.png" src="_images/records5.png" />
 </div>
 <div class="section" id="implementation">
-<h3>4.2.3. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.3. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>The entire code for the implementation of the simple imperative language with records is available [here](<a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records">https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records</a>).</p>
 </div>
 </div>
 <div class="section" id="type-systems">
-<h2>4.3. Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[design space](<a class="reference external" href="http://en.wikipedia.org/wiki/Type_system">http://en.wikipedia.org/wiki/Type_system</a>), tradeoffs, [representative examples](<a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_type_systems">http://en.wikipedia.org/wiki/Comparison_of_type_systems</a>)</li>
 <li>[presentation slides 10-29](<a class="reference external" href="http://klaeufer.github.io/luc-amc.html#(10">http://klaeufer.github.io/luc-amc.html#(10</a>))</li>
@@ -505,7 +510,7 @@ public StudentCourseRecord course2;</dd>
 </ul>
 </div>
 <div class="section" id="domain-specific-languages">
-<h2>4.4. Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://c2.com/cgi/wiki?DomainSpecificLanguage">http://c2.com/cgi/wiki?DomainSpecificLanguage</a></li>
 <li><a class="reference external" href="http://martinfowler.com/bliki/FluentInterface.html">http://martinfowler.com/bliki/FluentInterface.html</a></li>

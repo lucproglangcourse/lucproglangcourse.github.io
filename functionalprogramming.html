@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. The Functional Programming Paradigm &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
+    <title>4. The Functional Programming Paradigm &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,8 +32,8 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Program Representation and Interpretation" href="representationinterpretation.html" />
-    <link rel="prev" title="2. Background" href="background.html" />
+    <link rel="next" title="5. Program Representation and Interpretation" href="representationinterpretation.html" />
+    <link rel="prev" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -79,63 +79,70 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="background.html">2. Background</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="background.html#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-requirements">2.2. Software requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#the-importance-of-console-applications">2.4. The importance of console applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.5. Programming language history and paradigms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#performance-and-popularity-indices">2.6. Performance and popularity indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="background.html#detailed-case-study">2.7. Detailed case study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">3.1. Solving problems using built-in types and behaviors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.2. Defining abstractions in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">3.3. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.4. Behaviors on algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#content-below-under-construction">3.5. Content below under construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-console-applications">3.2. The role of console applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#defining-domain-models-in-imperative-and-object-oriented-languages">3.4. Defining domain models in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#using-scala-traits-for-modularity-and-dependency-injection">3.5. Using Scala traits for modularity and dependency injection</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">4. Program Representation and Interpretation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">4.1. A simple imperative language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">4.2. A simple imperative language with records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">4.3. Type systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">4.4. Domain-specific languages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. The Functional Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">4.2. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of Concerns at the Type Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">4.6. References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">5. Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">6. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">7. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">8. Appendix: Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">8.1. Key resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">8.2. Code examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">8.3. Required text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">8.4. Recommended/supplementary texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">8.5. Additional texts on Scala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">8.6. Online Scala resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">8.7. Resources on program representation and interpretation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">8.8. Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">5.1. A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">5.3. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">5.4. Domain-specific languages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">9. Appendix: Course Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-tips-and-optional-plugins">9.3. sbt tips and optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">9.4. Bitbucket</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">9.6. Remote participation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">9.1. Key resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">9.2. Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">9.3. Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">9.4. Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">9.5. Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">9.6. Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">9.7. Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">9.8. Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">10. Appendix: Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">10.1. Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">10.2. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">10.3. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">10.4. Important Dates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.5. Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">10.4. Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">10.5. GitHub (optional/recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.6. Remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">11. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">11.1. Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.2. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.3. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">11.4. Important Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.5. Key Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
 </ul>
 </ul>
 </li>
@@ -149,18 +156,28 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3. The Functional Programming Paradigm</a><ul>
-<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">3.1. Solving problems using built-in types and behaviors</a><ul>
-<li><a class="reference internal" href="#examples">3.1.1. Examples</a></li>
+<li><a class="reference internal" href="#">4. The Functional Programming Paradigm</a><ul>
+<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a><ul>
+<li><a class="reference internal" href="#examples">4.1.1. Examples</a></li>
+<li><a class="reference internal" href="#challenges">4.1.2. Challenges</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#defining-abstractions-in-imperative-and-object-oriented-languages">3.2. Defining abstractions in imperative and object-oriented languages</a><ul>
-<li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.2.1. Object-oriented Scala as a &#8220;better Java&#8221;</a></li>
+<li><a class="reference internal" href="#defining-algebraic-data-types">4.2. Defining algebraic data types</a><ul>
+<li><a class="reference internal" href="#separation-of-structural-concerns">4.2.1. Separation of structural concerns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#defining-algebraic-data-types">3.3. Defining algebraic data types</a></li>
-<li><a class="reference internal" href="#behaviors-on-algebraic-data-types">3.4. Behaviors on algebraic data types</a></li>
-<li><a class="reference internal" href="#content-below-under-construction">3.5. Content below under construction</a></li>
+<li><a class="reference internal" href="#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a><ul>
+<li><a class="reference internal" href="#separation-of-behavioral-concerns">4.3.1. Separation of behavioral concerns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
+<li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of Concerns at the Type Level</a><ul>
+<li><a class="reference internal" href="#key-concepts">4.5.1. Key concepts</a></li>
+<li><a class="reference internal" href="#id1">4.5.2. Examples</a></li>
+<li><a class="reference internal" href="#key-insights">4.5.3. Key insights</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">4.6. References</a></li>
 </ul>
 </li>
 </ul>
@@ -172,11 +189,11 @@
               
                 
   <li>
-    <a href="background.html" title="Previous Chapter: 2. Background"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 2. Background</span>
+    <a href="imperative.html" title="Previous Chapter: 3. The Imperative and Object-Oriented Paradigms in Scala"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 3. The Impera...</span>
     </a>
   </li>
   <li>
-    <a href="representationinterpretation.html" title="Next Chapter: 4. Program Representation and Interpretation"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">4. Program Re... &raquo;</span>
+    <a href="representationinterpretation.html" title="Next Chapter: 5. Program Representation and Interpretation"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">5. Program Re... &raquo;</span>
     </a>
   </li>
               
@@ -211,10 +228,10 @@
     <div class="col-md-12 content">
       
   <div class="section" id="the-functional-programming-paradigm">
-<h1>3. The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Permalink to this headline">¶</a></h1>
+<h1>4. The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.</p>
 <div class="section" id="solving-problems-using-built-in-types-and-behaviors">
-<h2>3.1. Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Permalink to this headline">¶</a></h2>
 <p>As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
 Many of these, especially collection types and certain utility types, are <em>algebraic data types</em>, discussed below in more detail:</p>
 <ul class="simple">
@@ -246,8 +263,12 @@ The main building blocks in scripting-style Scala are the collection and utility
 <li>key methods <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> / <code class="docutils literal"><span class="pre">withFilter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">flatMap</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">fold</span></code>, <code class="docutils literal"><span class="pre">groupBy</span></code>, <code class="docutils literal"><span class="pre">collect</span></code></li>
 <li><code class="docutils literal"><span class="pre">for</span></code> comprehensions</li>
 </ul>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">elaborate more on <code class="docutils literal"><span class="pre">for</span></code> comprehensions and <code class="docutils literal"><span class="pre">flatMap</span></code></p>
+</div>
 <div class="section" id="examples">
-<h3>3.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<h3>4.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>Loop over a finite collection or iterator using mutable state:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
 <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -291,81 +312,39 @@ If we wanted to compute a <em>result value</em>, we could use <code class="docut
 <p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
 </div>
-</div>
-<div class="section" id="defining-abstractions-in-imperative-and-object-oriented-languages">
-<h2>3.2. Defining abstractions in imperative and object-oriented languages<a class="headerlink" href="#defining-abstractions-in-imperative-and-object-oriented-languages" title="Permalink to this headline">¶</a></h2>
-<p>In imperative and object-oriented languages, the basic abstractions are</p>
+<div class="section" id="challenges">
+<h3>4.1.2. Challenges<a class="headerlink" href="#challenges" title="Permalink to this headline">¶</a></h3>
+<p>Can we write (efficiently or not)</p>
 <ul class="simple">
-<li>addressing: pointers, references</li>
-<li>aggregation: structs/records, arrays<ul>
-<li>example: node in a linked list</li>
+<li><code class="docutils literal"><span class="pre">length</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">reverse</span></code>, <code class="docutils literal"><span class="pre">filter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">map</span></code> as a fold, i.e., <code class="docutils literal"><span class="pre">foldLeft</span></code> or <code class="docutils literal"><span class="pre">foldRight</span></code>?</li>
+<li><code class="docutils literal"><span class="pre">foldLeft</span></code> or <code class="docutils literal"><span class="pre">foldRight</span></code> as <code class="docutils literal"><span class="pre">map</span></code>?!?</li>
+<li><code class="docutils literal"><span class="pre">reverse</span></code> or <code class="docutils literal"><span class="pre">filter</span></code> as a <code class="docutils literal"><span class="pre">map</span></code>?</li>
 </ul>
-</li>
-<li>variation: tagged unions, multiple implementations of an interface<ul>
-<li>example: mutable set abstraction<ul>
-<li>add element</li>
-<li>remove element</li>
-<li>check whether an element is present</li>
-<li>check if empty</li>
-<li>how many elements</li>
-</ul>
-</li>
-<li>several possible implementations<ul>
-<li>reasonable: binary search tree, hash table, bit vector (for small underlying domains)</li>
-<li>less reasonable: array, linked list</li>
-<li>see also this <a class="reference external" href="http://docs.oracle.com/javase/tutorial/collections/implementations">table of collection implementations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent structures and associated behaviors:</p>
+<p>Some hints:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></li>
-<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></li>
-<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></li>
+<li>Look carefully at the respective domains and codomains (argument and result types). Can they fit?</li>
+<li>Which is more general, <code class="docutils literal"><span class="pre">map</span></code> or <code class="docutils literal"><span class="pre">fold</span></code>?</li>
 </ul>
-<div class="section" id="object-oriented-scala-as-a-better-java">
-<h3>3.2.1. Object-oriented Scala as a &#8220;better Java&#8221;<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Permalink to this headline">¶</a></h3>
-<p>Scala offers various improvements over Java, including:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/unified-types.html">unified types</a></li>
-<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/higher-order-functions">standalone higher-order functions</a></li>
-<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/singleton-objects.html">standalone objects</a></li>
-<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/case-classes.html">case classes</a> and <a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/pattern-matching.html">pattern matching</a></li>
-<li><a class="reference external" href="http://docs.scala-lang.org/tutorials/tour/traits.html">traits</a>: generalization of interfaces and restricted form of abstract classes, can be combined/stacked</li>
-<li>package structure decoupled from folder hierarchy</li>
-<li><a class="reference external" href="https://earldouglas.com/posts/higher-kinded.html">higher-kinded types</a> (advanced topic)</li>
-</ul>
-<p>More recent versions of Java, however, have started to echo some these advances:</p>
-<ul class="simple">
-<li>lambda expressions</li>
-<li>default methods in interfaces</li>
-</ul>
-<p>We will study these features as we encounter them.</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">examples below after discussing the next topic</p>
-</div>
 </div>
 </div>
 <div class="section" id="defining-algebraic-data-types">
-<h2>3.3. Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
-<p>Most abstractions fall into one of these categories:</p>
+<h2>4.2. Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Most structures fall into one of these categories:</p>
 <ul class="simple">
 <li>nonrecursive/scalars: boolean, finite enumerations (including numeric types), try</li>
 <li>sublinear structures: (infinite set of) natural numbers, option</li>
 <li>linear structures: lists, maps</li>
 <li>nonlinear structures: trees, graphs, many custom domain models</li>
 </ul>
-<p>The fundamental building blocks of these <em>algebraic data types</em> are related to those discussed above:</p>
+<p>The fundamental building blocks of these <em>algebraic data types</em> are
+related to those discussed in <a class="reference internal" href="imperative.html#secdomainmodelsoo"><span class="std std-ref">Defining domain models in imperative and object-oriented languages</span></a>:</p>
 <ul class="simple">
 <li>(disjoint) sum: variation</li>
 <li>product (tuple, record) of a given arity: aggregation</li>
 <li>recursion (at the type level)</li>
 <li>type parameters (genericity)</li>
 </ul>
-<p>Using these building blocks, we can express <cite>Shape</cite> from the examples above as an algebraic data type:</p>
+<p>Using these building blocks, we can express the <cite>Shape</cite> domain model from the examples above as an algebraic data type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Shape</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">Int</span><span class="p">)</span>
       <span class="o">|</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
       <span class="o">|</span> <span class="n">Group</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="n">Shape</span><span class="p">))</span>
@@ -377,223 +356,154 @@ Earlier versions of the <a class="reference external" href="https://github.com/l
 <li><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></li>
 <li><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a></li>
 </ul>
-<p>We are able to achieve a separation of the following structural and behavioral concerns:</p>
+<p>We identify the following structural and behavioral concerns:</p>
 <ul class="simple">
 <li>structure</li>
 <li>content</li>
 <li>traversal</li>
 <li>processing</li>
 </ul>
+<p>So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type.</p>
+<div class="section" id="separation-of-structural-concerns">
+<h3>4.2.1. Separation of structural concerns<a class="headerlink" href="#separation-of-structural-concerns" title="Permalink to this headline">¶</a></h3>
+<p>We can, however, achieve a separation between structure and content with the help of <em>parametric polymorphism</em>, that is, making the algebraic data type <em>generic</em> in terms of the content.
+The predefined collections are an example of this separation, as well as the <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">generic org chart</a> example.</p>
+</div>
 </div>
 <div class="section" id="behaviors-on-algebraic-data-types">
-<h2>3.4. Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
-<p>The following are additional examples of behaviors on algebraic types. For recursive types, the behaviors are typically recursive as well.</p>
+<h2>4.3. Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline">¶</a></h2>
+<p>The following are additional examples of behaviors on algebraic data types.
+As expected, for recursive types, the behaviors are typically recursive as well.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc</a></li>
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc</a></li>
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc</a></li>
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc</a></li>
-<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">simple org charts</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">generic org charts</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">simple natural numbers</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a></li>
+</ul>
+<p>In these examples, the traversal and processing concerns identified above remain combined.</p>
+<div class="section" id="separation-of-behavioral-concerns">
+<h3>4.3.1. Separation of behavioral concerns<a class="headerlink" href="#separation-of-behavioral-concerns" title="Permalink to this headline">¶</a></h3>
+<p>A question that comes to mind is whether they can be separated, similarly to the predefined higher-order methods on collections, such as <code class="docutils literal"><span class="pre">foldLeft</span></code>, <code class="docutils literal"><span class="pre">foldRight</span></code>, <code class="docutils literal"><span class="pre">map</span></code>, etc.
+These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
+They handle the <em>traversal</em> concern for us and separate it from the <em>processing</em> concern, which we handle by providing a suitable argument function.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc">functions on lists (reverse)</a></li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc">functions on streams (potentially infinite lists with memoization)</a></li>
+</ul>
+<p>This question has a two-part answer:
+Yes, we can define custom implementations of such higher-order behaviors for our own algebraic data types.
+In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a <code class="docutils literal"><span class="pre">map</span></code> method.</p>
+<p>Another, seemingly esoteric, question is whether we can pull out recursion itself as a functional pattern.
+Yes, we can.
+In <a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc">this factorial example</a>,
+the <code class="docutils literal"><span class="pre">Y</span></code>-combinator handles the <em>recursion</em> concern <em>for behaviors</em> and separates it from the concern of what should happen in each step of the recursion.</p>
+<p>We will soon study the equivalent idea at the type level.</p>
+</div>
+</div>
+<div class="section" id="a-closer-look-at-predefined-behaviors-on-lists">
+<h2>4.4. A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we take a look &#8220;under the hood&#8221; of some key predefined behaviors on lists.</p>
+<p>In terms of performance, we must keep in mind that <a class="reference external" href="http://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
+In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
+In practice, acceptable performance usually means linear time for behavior where we process the entire list.</p>
+<p>In addition, we need to be aware of <em>space complexity</em>.
+Clearly, we are already using space for the arguments we are about to pass to the behavior and are willing to dedicate space to the result we are getting back, so the focus is on <em>additional</em> temporary space on the stack, which we like to keep constant if possible.
+(This discussion is closely related to <a class="reference internal" href="imperative.html#subsecconstantspace"><span class="std std-ref">The importance of constant-space complexity</span></a>, where the assumption is that the arguments and the result are stored <em>externally</em>.)</p>
+<p><em>Tail recursion</em>, where the very last step in a method or function body is the recursive invocation of the method itself, is an effective technique for achieving constant-space complexity as long the behavior can be expressed in a tail-recursive way.
+In some cases, we can rewrite an implementation in a tail-recursive way by introducing an <em>accumulator</em> argument, where we essentially build up the result in the accumulator and then return that result once we reach the base case of the recursion.
+A tail-recursive implementation can easily be transformed to a <code class="docutils literal"><span class="pre">while</span></code> loop by introducing a mutable variable to represent the progress into the list structure.
+This <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">reverse example</a> illustrates these concepts and techniques in more detail.</p>
+<p>Here are some observations:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">foldLeft</span></code> is usually what we want: <em>linear-time</em> and <em>constant-space</em> (naturally tail-recursive).</li>
+<li><code class="docutils literal"><span class="pre">foldRight</span></code> is <em>linear-time</em> and <em>linear-space</em> (<em>not</em> tail-recursive) but goes with the natural head-tail structure of the list.</li>
+<li><cite>xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)</cite> where <cite>g</cite> is <cite>f</cite> with the arguments switched.</li>
+</ul>
+<p>To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for <em>definition classes</em>, follow the link to the leftmost definition class, then the link to that class&#8217;s Scala source, and finally look for the actual method.
+For performance reasons, these professional implementations tend to appear more complex than we might expect.
+Here are some examples:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L375">foreach</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L118">foldLeft</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L383">reverse</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L393">foldRight</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L269">map</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L47">length</a></li>
+</ul>
+<p>For more details on space complexity and tail recursion, please take a look at these references:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/">space complexity, tail recursion, and accumulators</a></li>
+<li><a class="reference external" href="http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html">tail recursion, trampolines, and continuations</a> (advanced)</li>
 </ul>
 </div>
-<div class="section" id="content-below-under-construction">
-<h2>3.5. Content below under construction<a class="headerlink" href="#content-below-under-construction" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">(time permitting) brief heads-up on continuous integration/continuous delivery
-- <a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">https://travis-ci.org/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://coveralls.io/github/LoyolaChicagoCode/processtree-scala">https://coveralls.io/github/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://github.com/LoyolaChicagoCode/scalamu">https://github.com/LoyolaChicagoCode/scalamu</a>
-- <a class="reference external" href="https://www.codacy.com/public/laufer/scalamu/dashboard">https://www.codacy.com/public/laufer/scalamu/dashboard</a>
-- <a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/scalamu">http://issuestats.com/github/LoyolaChicagoCode/scalamu</a></p>
+<div class="section" id="separation-of-concerns-at-the-type-level">
+<h2>4.5. Separation of Concerns at the Type Level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this headline">¶</a></h2>
+<p>The overall approach is to formalize algebraic data types as initial F-algebras.</p>
+<div class="section" id="key-concepts">
+<h3>4.5.1. Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">¶</a></h3>
+<p>We first need to define some key concepts:</p>
 <ul class="simple">
-<li><cite>map</cite> versus <cite>flatMap</cite></li>
-<li><cite>for</cite> comprehensions</li>
+<li><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws.</li>
+<li>The <code class="docutils literal"><span class="pre">Fix</span></code>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself.</li>
+<li>Generalized <code class="docutils literal"><span class="pre">fold</span></code> = <em>catamorphism</em> (<code class="docutils literal"><span class="pre">cata</span></code>) for <em>breaking down</em> a data structure to a result value.</li>
+<li><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">F-algebra</a>: This is the argument to <code class="docutils literal"><span class="pre">fold</span></code>, which has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., the result type of the fold.</li>
+<li><code class="docutils literal"><span class="pre">unfold</span></code> = <em>anamorphism</em> for <em>building up</em> a data structure from some other value.</li>
+<li><em>F-coalgebra</em>: This is the argument to <code class="docutils literal"><span class="pre">unfold</span></code> (generator), which also has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., type of seed and generated values wrapped in the functor.</li>
+<li><em>Initial F-algebra</em>: This is the least fixpoint of our functor <code class="docutils literal"><span class="pre">F</span></code> and equivalent to our original recursive type.
+We obtain this by applying the <code class="docutils literal"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal"><span class="pre">F</span></code>.</li>
+<li>We get our original recursive behaviors back by combining <code class="docutils literal"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</li>
 </ul>
-</li>
-<li><p class="first">recap of predefined list operations
-- keep in mind that [lists are head/tail-optimized](<a class="reference external" href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List">http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List</a>)
-- observations</p>
-<blockquote>
-<div><ul class="simple">
-<li><cite>foldLeft</cite> is usually what we want: <em>linear-time</em> and <em>constant-space</em> (tail-recursive)</li>
-<li><cite>foldRight</cite> is <em>linear-time</em> and <em>linear-space</em> (<em>not</em> tail-recursive) but goes with the natural head-tail structure of the list</li>
-<li><cite>xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)</cite> where <cite>g</cite> is <cite>f</cite> with the arguments switched</li>
-</ul>
-</div></blockquote>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Practical applications</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>4.5.2. Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:</p>
 <ul class="simple">
-<li>Scala library implementations of these functions
-- find desired method in documentation, expand, and look at <em>definition classes</em>
-- these tend to appear more complex than expected for performance reasons
-- [<cite>foreach</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L378">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L378</a>)
-- [<cite>foldLeft</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/TraversableOnce.scala#L153">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/TraversableOnce.scala#L153</a>)
-- [<cite>reverse</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L386">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L386</a>)
-- [<cite>foldRight</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L396">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L396</a>)
-- [<cite>map</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L270">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/immutable/List.scala#L270</a>)
-- [<cite>length</cite>](<a class="reference external" href="https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/LinearSeqOptimized.scala#L49">https://github.com/scala/scala/blob/v2.11.7/src/library/scala/collection/LinearSeqOptimized.scala#L49</a>)</li>
-<li><em>challenge</em>: can we write (efficiently or not)
-- <cite>length</cite>, <cite>sum</cite>, <cite>reverse</cite>, <cite>filter</cite>, <cite>find</cite>, <cite>map</cite> as fold?
-- fold as <cite>map</cite>?!?</li>
-<li>efficiency considerations in more detail -&gt; next week
-- [space complexity, tail recursion, and accumulators](<a class="reference external" href="http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/">http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/</a>)
-- [tail recursion, trampolines, and continuations](<a class="reference external" href="http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html">http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html</a>) (advanced)</li>
-<li>observations
-- <em>fold</em> handles the <em>traversal</em> concern and separates it from the <em>processing</em> concern (goes a step further than the visitor pattern)
-- domain and codomain of <em>fold</em>?
-- domain and codomain of <em>map</em>?</li>
+<li><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></li>
+<li><a class="reference external" href="https://trello.com/c/nPaqQAJf/58-project-2a">project 2a</a> versus <a class="reference external" href="https://trello.com/c/EihkYkGP/59-project-2b">project 2b</a></li>
 </ul>
-</li>
-<li><p class="first">writing our own (recursive) functions on options, lists, streams, and other algebraic data types -&gt; next week
-- examples</p>
-<blockquote>
-<div><ul class="simple">
-<li>[factorial](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc">https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc</a>)</li>
-<li>[functions on lists](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc">https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc</a>)</li>
-<li>[functions on streams](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc</a>)</li>
-<li>[functions on simple natural numbers](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc</a>)</li>
-<li>[expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>)</li>
-</ul>
-</div></blockquote>
+</div>
+<div class="section" id="key-insights">
+<h3>4.5.3. Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline">¶</a></h3>
+<p>By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.</p>
 <ul class="simple">
-<li>observations
-- the <cite>Y</cite>-combinator handles the <em>recursion</em> concern <em>for behaviors</em> and separates it from the concern of what should happen in each step of the recursion</li>
+<li>non-generic:  <code class="docutils literal"><span class="pre">Nat</span></code>, <code class="docutils literal"><span class="pre">Expr</span></code>, <code class="docutils literal"><span class="pre">Shape</span></code>, etc.</li>
+<li>generic: <code class="docutils literal"><span class="pre">List</span></code>, <code class="docutils literal"><span class="pre">Tree</span></code>, <code class="docutils literal"><span class="pre">OrgChart</span></code>, etc.</li>
 </ul>
-</li>
-<li><p class="first">formalizing algebraic data types as initial F-algebras
-- concepts -&gt; next week</p>
-<blockquote>
-<div><ul class="simple">
-<li>[(endo)functor](<a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala</a>)</li>
-<li>[F-algebra](<a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">https://www.fpcomplete.com/user/bartosz/understanding-algebras</a>)</li>
-<li>fold = catamorphism</li>
-<li>the <cite>µ</cite>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself</li>
-<li>F-coalgebra</li>
-<li>unfold = anamorphism</li>
-</ul>
-</div></blockquote>
+<p>Still on the structural side, it also helps to study these questions:</p>
 <ul class="simple">
-<li>practical applications -&gt; next week</li>
-<li>examples
-- [expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>) versus [expressions-algebraic-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">https://github.com/lucproglangcourse/expressions-algebraic-scala</a>)
-- [Scalaµ library](<a class="reference external" href="https://github.com/lucproglangcourse/scalamu">https://github.com/lucproglangcourse/scalamu</a>) and [examples](<a class="reference external" href="https://github.com/lucproglangcourse/scalamu/examples">https://github.com/lucproglangcourse/scalamu/examples</a>)</li>
+<li>How are, say, <code class="docutils literal"><span class="pre">Option</span></code>, <code class="docutils literal"><span class="pre">List</span></code>, and <code class="docutils literal"><span class="pre">Tree</span></code> related?</li>
+<li>How does
+- <code class="docutils literal"><span class="pre">Option</span></code> relate to <code class="docutils literal"><span class="pre">List</span></code>
+- <code class="docutils literal"><span class="pre">List</span></code> relate to <code class="docutils literal"><span class="pre">Tree</span></code>
+- <code class="docutils literal"><span class="pre">Tree</span></code> relate to ?!?
+- ...</li>
 </ul>
-</li>
-<li><p class="first">project 2b discussion</p>
-</li>
-</ul>
-<p>(time permitting)</p>
+<p>On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:</p>
 <ul class="simple">
-<li>TDD styles in Scala and [echotest example](<a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">https://github.com/lucproglangcourse/echotest-scala</a>)</li>
-<li>brief heads-up on continuous integration/continuous delivery -&gt; probably next week
-- <a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">https://travis-ci.org/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://coveralls.io/github/LoyolaChicagoCode/processtree-scala">https://coveralls.io/github/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://github.com/LoyolaChicagoCode/scalamu">https://github.com/LoyolaChicagoCode/scalamu</a>
-- <a class="reference external" href="https://www.codacy.com/public/laufer/scalamu/dashboard">https://www.codacy.com/public/laufer/scalamu/dashboard</a>
-- <a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/scalamu">http://issuestats.com/github/LoyolaChicagoCode/scalamu</a></li>
+<li><a class="reference external" href="https://github.com/scalaz/scalaz">Scalaz library</a></li>
+<li><a class="reference external" href="https://github.com/slamdata/matryoshka">Matryoshka library</a></li>
+<li>The various <a class="reference external" href="http://typelevel.org/projects">Typelevel.scala projects</a></li>
 </ul>
-<p># References</p>
-<ul>
-<li><p class="first">[Understanding F-Algebras](<a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">https://www.fpcomplete.com/user/bartosz/understanding-algebras</a>)</p>
-</li>
-<li><p class="first">[Gibbons](<a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf">https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf</a>) (advanced)</p>
-</li>
-<li><p class="first">[Oliveira &amp; Cook](<a class="reference external" href="http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf">http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf</a>) (advanced)</p>
-</li>
-<li><p class="first">efficiency considerations for predefined list operations in more detail
-- [space complexity, tail recursion, and accumulators](<a class="reference external" href="http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/">http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/</a>)
-- [tail recursion, trampolines, and continuations](<a class="reference external" href="http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html">http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html</a>) (advanced)</p>
-</li>
-<li><p class="first">writing our own (recursive) functions on options, lists, streams, and other algebraic data types
-- examples</p>
-<blockquote>
-<div><ul class="simple">
-<li>[factorial](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc">https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc</a>)</li>
-<li>[functions on lists](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc">https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc</a>)</li>
-<li>[functions on streams](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc</a>)</li>
-<li>[functions on simple natural numbers](<a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc</a>)</li>
-<li>[expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>)</li>
-</ul>
-</div></blockquote>
+<p>For more details on F-algebras and datatype-generic programming, please take a look at these references:</p>
 <ul class="simple">
-<li>observations
-- the <cite>Y</cite>-combinator handles the <em>recursion</em> concern <em>for behaviors</em> and separates it from the concern of what should happen in each step of the recursion</li>
+<li><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">Understanding F-Algebras</a></li>
+<li><a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf">Gibbons: origami programming</a> (advanced)</li>
+<li><a class="reference external" href="http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf">Oliveira &amp; Cook: F-algebras in Java</a> (advanced)</li>
 </ul>
-</li>
-<li><p class="first">formalizing algebraic data types as initial F-algebras
-- concepts</p>
-<blockquote>
-<div><ul class="simple">
-<li>[(endo)functor](<a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala</a>): type constructor that satisfies <em>identity</em> and <em>composition</em> laws</li>
-<li>the <cite>µ</cite>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself</li>
-<li>fold = catamorphism <cite>cata</cite> for breaking down a data structure to a result value</li>
-<li>[F-algebra](<a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">https://www.fpcomplete.com/user/bartosz/understanding-algebras</a>): argument to fold, has functor <cite>F</cite> and carrier object (= result type of the fold)</li>
-<li><cite>unfold</cite> = anamorphism for building up a data structure</li>
-<li>F-coalgebra: argument to unfold (generator), also has functor <cite>F</cite> and carrier object (= type of seed and generated values wrapped in functor)</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>practical applications</li>
-<li>examples
-- [expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>) versus [expressions-algebraic-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">https://github.com/lucproglangcourse/expressions-algebraic-scala</a>)
-- [Scalaµ library](<a class="reference external" href="https://github.com/lucproglangcourse/scalamu">https://github.com/lucproglangcourse/scalamu</a>) and [examples](<a class="reference external" href="https://github.com/lucproglangcourse/scalamu/examples">https://github.com/lucproglangcourse/scalamu/examples</a>)</li>
-</ul>
-</li>
-<li><p class="first">[project 2b](<a class="reference external" href="https://trello.com/c/EihkYkGP/59-project-2b">https://trello.com/c/EihkYkGP/59-project-2b</a>) clinic</p>
-</li>
-<li><p class="first">project 3a overview</p>
-</li>
-<li><p class="first">16:30-16:45 student presentation on C++</p>
-</li>
-<li><p class="first">16:45-17:15 presentation by alumna and part-time faculty member María Sáenz</p>
-</li>
-</ul>
-<p>(time permitting)</p>
-<ul>
-<li><p class="first">TDD styles in Scala and [echotest example](<a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">https://github.com/lucproglangcourse/echotest-scala</a>)</p>
-</li>
-<li><p class="first">brief heads-up on continuous integration/continuous delivery -&gt; probably next week
-- <a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">https://travis-ci.org/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://coveralls.io/github/LoyolaChicagoCode/processtree-scala">https://coveralls.io/github/LoyolaChicagoCode/processtree-scala</a>
-- <a class="reference external" href="https://github.com/LoyolaChicagoCode/scalamu">https://github.com/LoyolaChicagoCode/scalamu</a>
-- <a class="reference external" href="https://www.codacy.com/public/laufer/scalamu/dashboard">https://www.codacy.com/public/laufer/scalamu/dashboard</a>
-- <a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/scalamu">http://issuestats.com/github/LoyolaChicagoCode/scalamu</a></p>
-</li>
-<li><p class="first">recap: formalizing algebraic data types as initial F-algebras
-- concepts</p>
-<blockquote>
-<div><ul class="simple">
-<li>[(endo)functor](<a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala</a>): type constructor that satisfies <em>identity</em> and <em>composition</em> laws</li>
-<li>the <cite>µ</cite>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself</li>
-<li>fold = catamorphism <cite>cata</cite> for breaking down a data structure to a result value</li>
-<li>[F-algebra](<a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">https://www.fpcomplete.com/user/bartosz/understanding-algebras</a>): argument to fold, has functor <cite>F</cite> and carrier object (= result type of the fold)</li>
-<li><cite>unfold</cite> = anamorphism for building up a data structure</li>
-<li>F-coalgebra: argument to unfold (generator), also has functor <cite>F</cite> and carrier object (= type of seed and generated values wrapped in functor)</li>
-</ul>
-</div></blockquote>
-<ul>
-<li><p class="first">practical applications</p>
-</li>
-<li><p class="first">examples
-- [expressions-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a>) versus [expressions-algebraic-scala](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">https://github.com/lucproglangcourse/expressions-algebraic-scala</a>)
--  [project 2a](<a class="reference external" href="https://trello.com/c/nPaqQAJf/58-project-2a">https://trello.com/c/nPaqQAJf/58-project-2a</a>) versus [project 2b](<a class="reference external" href="https://trello.com/c/EihkYkGP/59-project-2b">https://trello.com/c/EihkYkGP/59-project-2b</a>)</p>
-</li>
-<li><p class="first">key insights
-- commonalities among recursive types</p>
-<blockquote>
-<div><ul class="simple">
-<li><cite>µ</cite>-based: <cite>Nat</cite>, <cite>Expr</cite>, <cite>Shape</cite>, etc.</li>
-<li><cite>Cofree</cite>-based: <cite>List</cite>, <cite>Tree</cite>, <cite>OrgChart</cite>, etc.</li>
-<li>how are, say, <cite>Option</cite>, <cite>List</cite>, and <cite>Tree</cite> related?</li>
-<li>structural</li>
-<li>behavioral</li>
-<li>potential for code reuse
-- [Scalaµ library](<a class="reference external" href="https://github.com/lucproglangcourse/scalamu">https://github.com/lucproglangcourse/scalamu</a>)
-- [Scalaz library](<a class="reference external" href="https://github.com/scalaz/scalaz">https://github.com/scalaz/scalaz</a>)</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</li>
-</ul>
+<p>If you want to dig a bit deeper, check out a generalization of <code class="docutils literal"><span class="pre">map</span></code> called <a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf">traverse</a>.
+Some of our examples include implementations of <code class="docutils literal"><span class="pre">traverse</span></code>.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>4.6. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">put chapter-level references here</p>
+</div>
 </div>
 </div>
 

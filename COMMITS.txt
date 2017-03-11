@@ -1,3 +1,23 @@
+commit 14a48c5
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added links to issues and PRs
+
+commit b18d769
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded and tightened up the chapter on functional programming
+
+commit 0c05911
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    from background, split off new section on imperative/OO in Scala
+
+commit cbbffc5
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated spring 2017 test dates
+
 commit e4fad90
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

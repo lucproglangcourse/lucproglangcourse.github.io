@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Background &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
+    <title>2. Context and Background &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. The Functional Programming Paradigm" href="functionalprogramming.html" />
+    <link rel="next" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" />
     <link rel="prev" title="1. Overview" href="overview.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -79,65 +79,70 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Background</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Context and Background</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#software-requirements">2.2. Software requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#options-for-running-scala-code">2.6. Options for running Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-role-of-console-applications">2.7. The role of console applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#options-for-testing-scala-code">2.8. Options for testing Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#detailed-case-study">2.9. Detailed case study</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">3. The Functional Programming Paradigm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-behaviors">3.1. Solving problems using built-in types and behaviors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-abstractions-in-imperative-and-object-oriented-languages">3.2. Defining abstractions in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">3.3. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">3.4. Behaviors on algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">3.5. Content below under construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-console-applications">3.2. The role of console applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#defining-domain-models-in-imperative-and-object-oriented-languages">3.4. Defining domain models in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#using-scala-traits-for-modularity-and-dependency-injection">3.5. Using Scala traits for modularity and dependency injection</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">4. Program Representation and Interpretation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">4.1. A simple imperative language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">4.2. A simple imperative language with records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">4.3. Type systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">4.4. Domain-specific languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">4.2. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">4.5. Content below under construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#references">4.6. References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">5. Introduction to Concurrency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">6. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">7. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">8. Appendix: Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">8.1. Key resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">8.2. Code examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">8.3. Required text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">8.4. Recommended/supplementary texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">8.5. Additional texts on Scala</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">8.6. Online Scala resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">8.7. Resources on program representation and interpretation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">8.8. Other resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">5.1. A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">5.3. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">5.4. Domain-specific languages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">9. Appendix: Course Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">9.1. Cloud-based development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">9.2. Locally installed development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">9.3. sbt optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">9.4. Bitbucket</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">9.5. GitHub (optional/recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">9.6. Remote participation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. Introduction to Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#key-resources">9.1. Key resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#code-examples">9.2. Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#required-text">9.3. Required text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#recommended-supplementary-texts">9.4. Recommended/supplementary texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#additional-texts-on-scala">9.5. Additional texts on Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#online-scala-resources">9.6. Online Scala resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#resources-on-program-representation-and-interpretation">9.7. Resources on program representation and interpretation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources.html#other-resources">9.8. Other resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">10. Appendix: Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">10.1. Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">10.2. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">10.3. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">10.4. Important Dates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">10.5. Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#bitbucket">10.4. Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#github-optional-recommended">10.5. GitHub (optional/recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.6. Remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">11. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">11.1. Course: COMP 372/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.2. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.3. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#important-dates">11.4. Important Dates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.5. Key Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
 </ul>
 </ul>
 </li>
@@ -151,20 +156,12 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">2. Background</a><ul>
+<li><a class="reference internal" href="#">2. Context and Background</a><ul>
 <li><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
 <li><a class="reference internal" href="#software-requirements">2.2. Software requirements</a></li>
 <li><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
 <li><a class="reference internal" href="#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
 <li><a class="reference internal" href="#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
-<li><a class="reference internal" href="#options-for-running-scala-code">2.6. Options for running Scala code</a></li>
-<li><a class="reference internal" href="#the-role-of-console-applications">2.7. The role of console applications</a><ul>
-<li><a class="reference internal" href="#console-applications-in-scala">2.7.1. Console applications in Scala</a></li>
-<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">2.7.2. The importance of constant-space complexity</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#options-for-testing-scala-code">2.8. Options for testing Scala code</a></li>
-<li><a class="reference internal" href="#detailed-case-study">2.9. Detailed case study</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +177,7 @@
     </a>
   </li>
   <li>
-    <a href="functionalprogramming.html" title="Next Chapter: 3. The Functional Programming Paradigm"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. The Functi... &raquo;</span>
+    <a href="imperative.html" title="Next Chapter: 3. The Imperative and Object-Oriented Paradigms in Scala"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">3. The Impera... &raquo;</span>
     </a>
   </li>
               
@@ -214,9 +211,9 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="background">
-<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we establish a practical context for the study of programming languages.</p>
+  <div class="section" id="context-and-background">
+<h1>2. Context and Background<a class="headerlink" href="#context-and-background" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we establish a practical context and provide some background information for the study of programming languages.</p>
 <div class="section" id="overview-of-a-lightweight-development-process">
 <h2>2.1. Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Permalink to this headline">¶</a></h2>
 <p>A successful development process usually comprises these minimal elements:</p>
@@ -247,6 +244,14 @@
 </li>
 <li><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></li>
 </ul>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates continuous integration using various hosted services:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</li>
+<li><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</li>
+<li><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</li>
+<li><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
 </div>
 <div class="section" id="software-requirements">
 <h2>2.2. Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
@@ -318,6 +323,10 @@
 <li>Observer</li>
 </ul>
 <p>We will recap these throughout the course as needed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Language-specific design patterns are called <em>idioms</em>.</p>
+</div>
 </div>
 <div class="section" id="programming-language-history-and-paradigms">
 <h2>2.4. Programming language history and paradigms<a class="headerlink" href="#programming-language-history-and-paradigms" title="Permalink to this headline">¶</a></h2>
@@ -345,208 +354,6 @@ Before drawing any conclusions from these indices, it is important to understand
 <li><a class="reference external" href="https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html">GitHub language popularity</a></li>
 <li><a class="reference external" href="http://benchmarksgame.alioth.debian.org">Programming languages shootout benchmark</a></li>
 </ul>
-</div>
-<div class="section" id="options-for-running-scala-code">
-<h2>2.6. Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we discuss the different options for running Scala code, including applications and tests.</p>
-<ul>
-<li><p class="first">The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
-We can launch the Scala REPL and then evaluate definitions and expressions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ scala
-Welcome to Scala 2.12.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102).
-Type in expressions for evaluation. Or try :help.
-
-scala&gt; 3 + 4
-res0: Int = 7
-
-scala&gt; def f(x: Int) = x + 2
-f: (x: Int)Int
-
-scala&gt; f(3)
-res1: Int = 5
-
-scala&gt; val z = f(4)
-z: Int = 6
-
-scala&gt; Seq(1, 2, 3).map(f)
-res2: Seq[Int] = List(3, 4, 5)
-</pre></div>
-</div>
-<p>This is a very effective, painless way to conduct initial explorations.
-The drawback of this approach is a lack of support for <em>managed dependencies</em>, which are required for more advanced work.
-In that case, starting the Scala REPL through sbt as discussed below is a much better choice.
-Managing the Scala/Java classpath manually is discouraged.</p>
-<p>You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cat &gt; blah.scala
-println(args.toList)
-$ scala blah.scala 1 2 3
-List(1, 2, 3)
-</pre></div>
-</div>
-</li>
-<li><p class="first">In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a <code class="docutils literal"><span class="pre">main</span></code> method or objects extending the <code class="docutils literal"><span class="pre">App</span></code> trait) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.</p>
-</li>
-<li><p class="first">In IntelliJ IDEA, Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.
-Check out <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala">this example</a>, especially the simple option and list examples. For simple testing, you can intersperse assertions within your code.
-Worksheets can live in any folder and coexist with other code.
-So you can start exploring something in a worksheet and then move it into your production code when appropriate.
-The Eclipse Scala IDE has a similar feature.</p>
-</li>
-<li><p class="first">It is best to use <a class="reference external" href="https://www.scala-sbt.org/">sbt</a> (the Scala Build Tool) for projects with one or more external dependencies because of sbt&#8217;s (and similar build tools&#8217;) ability to manage these dependencies in a declarative way:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt test
-$ sbt run
-$ sbt &quot;run arg1 arg2 ...&quot;
-$ sbt &quot;runMain my.pkg.Main arg1 arg2 ...&quot;
-$ sbt test:run
-</pre></div>
-</div>
-<p>In addition, sbt allows you to start a REPL that exposes the code in your project and its managed dependencies.
-This is the preferred way to explore existing libraries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt console
-</pre></div>
-</div>
-<p>You can also pull in the additional dependencies from the test scope:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt test:console
-</pre></div>
-</div>
-<p>If you want to bypass your own code in case of, say, compile-time errors, you can use one of these tasks:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt consoleQuick
-$ sbt test:consoleQuick
-</pre></div>
-</div>
-<p>In conjunction with a <a class="reference external" href="https://www.gnu.org/software/emacs">text editor</a>, sbt&#8217;s <a class="reference external" href="http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html">triggered execution</a> for testing will significantly shorten the edit-compile-run/test cycle, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt
-...
-&gt; ~ test
-</pre></div>
-</div>
-</li>
-<li><p class="first">Finally, to turn an sbt-based Scala application into a script you can run outside sbt, you can use the <a class="reference external" href="https://github.com/sbt/sbt-native-packager">sbt-native-packager</a> plugin.
-To use this plugin, add this line to the end of <code class="docutils literal"><span class="pre">build.sbt</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">enablePlugins</span><span class="p">(</span><span class="n">JavaAppPackaging</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>and this one to <code class="docutils literal"><span class="pre">project/plugins.sbt</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s2">&quot;com.typesafe.sbt&quot;</span> <span class="o">%</span> <span class="s2">&quot;sbt-native-packager&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.1.4&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Then, after any change to your sources, you can create/update the script and run it from the command line like so:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ sbt stage
-...
-$ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
-</pre></div>
-</div>
-</li>
-</ul>
-</div>
-<div class="section" id="the-role-of-console-applications">
-<h2>2.7. The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Permalink to this headline">¶</a></h2>
-<p>Console applications have always been an important part of the Unix command-line environment.
-The typical console application interacts with its environment in the following ways:</p>
-<ul class="simple">
-<li>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></li>
-<li><em>standard input</em> (stdin) for reading the input data</li>
-<li><em>standard output</em> (stdout) for writing the output data</li>
-<li><em>standard error</em> (stderr) for displaying error messages separately from the output data</li>
-</ul>
-<p>Applications written in this way can function as composable building blocks using Unix pipes.
-Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
-<p>E.g., the <code class="docutils literal"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
-the <code class="docutils literal"><span class="pre">head</span></code> command outputs a finite prefix of its input,
-and the <code class="docutils literal"><span class="pre">wc</span></code> command counts the number of characters, words, or lines:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yes</span> <span class="n">hello</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
-</pre></div>
-</div>
-<p>You may wonder how the upstream (left) stages in the pipeline know when to terminate.
-Concretely, how does the <code class="docutils literal"><span class="pre">yes</span></code> command know to terminate after <code class="docutils literal"><span class="pre">head</span></code> reads the first ten lines.
-When <code class="docutils literal"><span class="pre">head</span></code> is done, it closes its input stream, and <code class="docutils literal"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
-The default response to this error signal is termination.</p>
-<p>We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done
-</pre></div>
-</div>
-<p>These techniques are useful for producing test data for our own applications.
-To this end, we can redirect output to a newly created file using this syntax:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done &gt; testdata.txt
-</pre></div>
-</div>
-<p>If <code class="docutils literal"><span class="pre">testdata.txt</span></code> already exists, it will be overwritten when using this syntax.
-We can also append to an existing file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="o">&gt;&gt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>Similarly, we can redirect input from a file using this notation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>There is a close relationship between Unix pipes and functional programming: When viewing a console application as a function that transforms its input to its output, Unix pipes correspond to function composition. The pipeline <code class="docutils literal"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
-<div class="section" id="console-applications-in-scala">
-<h3>2.7.1. Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Permalink to this headline">¶</a></h3>
-<p>The following techniques are useful for creating console applications in Scala.
-As in Java, command-line arguments are available to a Scala application as <code class="docutils literal"><span class="pre">args</span></code> of type <code class="docutils literal"><span class="pre">Array[String]</span></code>.</p>
-<p>We can read the standard input as lines using this iterator:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span>
-</pre></div>
-</div>
-<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)</p>
-<p>To break the standard input down further into words, we can use this recipe:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">W+&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>In Scala, <code class="docutils literal"><span class="pre">print</span></code> and <code class="docutils literal"><span class="pre">println</span></code> print to stdout.</p>
-<p>Console applications written in this way can be part of a Unix pipeline only to a limited extent.
-Unfortunately, the Java virtual machine ignores the <code class="docutils literal"><span class="pre">SIGPIPE</span></code> error signal, so we cannot use Scala (or Java) console applications as upstream components that produce an infinite output sequence and depend on this signal.</p>
-</div>
-<div class="section" id="the-importance-of-constant-space-complexity">
-<h3>2.7.2. The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Permalink to this headline">¶</a></h3>
-<p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
-To achieve reliability and scalability of such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.</p>
-<p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="p">}</span>
-<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>By contrast, this version has linear-space complexity and may run out of space on a large volume of input data:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">val</span> <span class="n">listOfLines</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">toList</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">listOfLines</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="p">}</span>
-<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
-Iterators support most of the same behaviors as in-memory collections.</p>
-</div>
-</div>
-<div class="section" id="options-for-testing-scala-code">
-<h2>2.8. Options for testing Scala code<a class="headerlink" href="#options-for-testing-scala-code" title="Permalink to this headline">¶</a></h2>
-<p>There are various basic techniques and libraries/frameworks for testing Scala code.</p>
-<p>The simplest way is to intersperse assertions within your code.
-This is particularly effective for scripts and worksheets:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">l</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="k">assert</span> <span class="p">{</span> <span class="n">l</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
-</pre></div>
-</div>
-<p>The following testing libraries/frameworks work well with Scala.</p>
-<ul class="simple">
-<li>The familiar <a class="reference external" href="http://junit.org">JUnit</a> can be used directly.</li>
-<li><a class="reference external" href="http://scalacheck.org">ScalaCheck</a> is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as &#8220;for all lists <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, the <code class="docutils literal"><span class="pre">(x</span> <span class="pre">++</span> <span class="pre">y).length</span></code> is equal to <code class="docutils literal"><span class="pre">x.length</span> <span class="pre">+</span> <span class="pre">y.length</span></code>&#8220;</li>
-<li><a class="reference external" href="http://scalatest.org">ScalaTest</a> is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.</li>
-<li><a class="reference external" href="http://etorreborre.github.io/specs2/">specs2</a> is a specification-based testing library that also supports integration with ScalaCheck.</li>
-</ul>
-<p>For faster turnaround, we can combine these techniques with triggered execution.</p>
-<p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
-</div>
-<div class="section" id="detailed-case-study">
-<h2>2.9. Detailed case study<a class="headerlink" href="#detailed-case-study" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates the various topics from this chapter.
-Examples in various other languages are <a class="reference external" href="https://github.com/lucproglangcourse?q=processtree">available</a> as well.</p>
 </div>
 </div>
 
