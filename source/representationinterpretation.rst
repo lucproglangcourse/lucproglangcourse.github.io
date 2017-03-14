@@ -290,6 +290,27 @@ The entire code for the implementation of the simple imperative language with re
 
 
 
+Project 3a References
+`````````````````````
+
+- [simple expression combinator parser example](https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala)
+- [regular expressions in Java](http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf)
+- [regular expressions](http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf)
+- [parser combinators](https://en.wikipedia.org/wiki/Parser_combinator)
+- Scala parser combinators: [API](http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started)
+
+Alternative approaches to parsing
+
+- [parser generator](https://en.wikipedia.org/wiki/Compiler-compiler)
+- [scala-bison](https://github.com/djspiewak/scala-bison)
+- [parsing expression grammar](http://en.wikipedia.org/wiki/Parsing_expression_grammar)
+- [parboiled2 documentation](https://github.com/sirthias/parboiled2)
+- [parboiled2 JSON parser example](https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala)
+- [From EBNF to PEG](http://ceur-ws.org/Vol-928/0324.pdf)
+
+
+
+
 Type systems
 ~~~~~~~~~~~~
 
