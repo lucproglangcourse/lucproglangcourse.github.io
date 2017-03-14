@@ -248,7 +248,12 @@ Key concepts
 
 We first need to define some key concepts:
 
-- `(endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws.
+- `(Endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws::
+
+    c.map(identity) == c
+    c.map(g compose f) == c.map(f).map(g)
+
+    
 - The ``Fix``-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself.
 - Generalized ``fold`` = *catamorphism* (``cata``) for *breaking down* a data structure to a result value.
 - `F-algebra <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_: This is the argument to ``fold``, which has a functor ``F`` and a carrier object, i.e., the result type of the fold.
@@ -282,6 +287,7 @@ Still on the structural side, it also helps to study these questions:
 
 - How are, say, ``Option``, ``List``, and ``Tree`` related? 
 - How does
+
   - ``Option`` relate to ``List``
   - ``List`` relate to ``Tree``
   - ``Tree`` relate to ?!?
@@ -303,7 +309,61 @@ For more details on F-algebras and datatype-generic programming, please take a l
 If you want to dig a bit deeper, check out a generalization of ``map`` called `traverse <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf>`_.
 Some of our examples include implementations of ``traverse``.
 
+
+Other useful abstractions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this subsection, we will discuss a few more useful yet relatively simple abstractions.
+
+
+Monoid
+``````
+
+A `Monoid <https://en.wikipedia.org/wiki/Monoid_(disambiguation)>`_ is a type with an associative binary operation and an identity element.
+(This is equivalent to a semigroup with an identity element.)
+Examples include:
+
+- integers with addition and zero
+- integers with multiplication one
+- lists with append and the empty list
+- strings with concatenation and the empty string
+
+The *monoid laws* arise from the monoid's definition: the operation must be associative, and the identity element must be a left and right identity.
+
+Examples of monoids using the Scalaz library are available here:
   
+- https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc
+
+
+Monad
+`````
+
+A `Monad <https://en.wikipedia.org/wiki/Monad_(functional_programming)>`_ is a type constructor (generic collection) with two operations, ``point`` (also called ``return`` or ``unit``) and ``flatMap`` (also called ``bind``).
+Monads are an effective way to represent the *context* of a computation in which the computation is "wrapped".
+The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
+Examples include:
+
+- ``Option`` and ``Try``: potential failure in a computation
+- ``List``: nondeterminism in a computation, meaning that the computation might have multiple results
+- ``Id``: the identity monad, a wrapper that doesn't actually do anything
+- ``Future``: the computation takes place asynchronously (in the background)
+
+Examples of monads using the Scalaz library are available here:
+  
+- https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc
+
+
+Observations
+````````````
+    
+- The Scala library includes various structures that are effectively monads, especially those just mentioned.
+  What Scala does not define is a monad abstraction itself.
+- This is where libraries like Scalaz or Cats come in:
+  They define these abstractions in such a way that we can retrofit existing types or our own types to become instances of the desired abstractions, using the *Typeclass pattern*, a technique for representing Haskell-style typeclasses.
+- Examples of the Typeclass pattern are the ``Functor`` and ``Traverse`` instances in our expressions and shapes examples.
+- A good reference for learning Scalaz, a library that defines these various abstractions, is available `here <http://eed3si9n.com/learning-scalaz>`_.
+
+
 References 
 ~~~~~~~~~~
 
