@@ -87,19 +87,22 @@
 <li class="toctree-l2"><a class="reference internal" href="background.html#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. Scala as an Object-Oriented and Scripting Language</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-console-applications">3.2. The role of console applications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-testing-scala-code">3.3. Options for testing Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imperative.html#detailed-case-study">3.4. Detailed case study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#defining-domain-models-in-imperative-and-object-oriented-languages">3.4. Defining domain models in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#using-scala-traits-for-modularity-and-dependency-injection">3.5. Using Scala traits for modularity and dependency injection</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-domain-models-in-imperative-and-object-oriented-languages">4.2. Defining domain models in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">4.3. Defining algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">4.4. Behaviors on algebraic data types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#content-below-under-construction">4.5. Content below under construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#defining-algebraic-data-types">4.2. Defining algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#separation-of-concerns-at-the-type-level">4.5. Separation of concerns at the type level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#other-useful-abstractions">4.6. Other useful abstractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalprogramming.html#references">4.7. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Program Representation and Interpretation</a><ul>
@@ -166,6 +169,7 @@
 <li><a class="reference internal" href="#id1">5.2.1. Objectives</a></li>
 <li><a class="reference internal" href="#id2">5.2.2. Syntax</a></li>
 <li><a class="reference internal" href="#implementation">5.2.3. Implementation</a></li>
+<li><a class="reference internal" href="#project-3a-references">5.2.4. Project 3a References</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#type-systems">5.3. Type systems</a></li>
@@ -499,6 +503,25 @@ public StudentCourseRecord course2;</dd>
 <div class="section" id="implementation">
 <h3>5.2.3. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>The entire code for the implementation of the simple imperative language with records is available [here](<a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records">https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records</a>).</p>
+</div>
+<div class="section" id="project-3a-references">
+<h3>5.2.4. Project 3a References<a class="headerlink" href="#project-3a-references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>[simple expression combinator parser example](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala">https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala</a>)</li>
+<li>[regular expressions in Java](<a class="reference external" href="http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf">http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf</a>)</li>
+<li>[regular expressions](<a class="reference external" href="http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf">http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf</a>)</li>
+<li>[parser combinators](<a class="reference external" href="https://en.wikipedia.org/wiki/Parser_combinator">https://en.wikipedia.org/wiki/Parser_combinator</a>)</li>
+<li>Scala parser combinators: [API](<a class="reference external" href="http://www.scala-lang.org/api/current/scala-parser-combinators">http://www.scala-lang.org/api/current/scala-parser-combinators</a>) [tutorial](<a class="reference external" href="https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started">https://wiki.scala-lang.org/display/SW/Parser+Combinators&#8211;Getting+Started</a>)</li>
+</ul>
+<p>Alternative approaches to parsing</p>
+<ul class="simple">
+<li>[parser generator](<a class="reference external" href="https://en.wikipedia.org/wiki/Compiler-compiler">https://en.wikipedia.org/wiki/Compiler-compiler</a>)</li>
+<li>[scala-bison](<a class="reference external" href="https://github.com/djspiewak/scala-bison">https://github.com/djspiewak/scala-bison</a>)</li>
+<li>[parsing expression grammar](<a class="reference external" href="http://en.wikipedia.org/wiki/Parsing_expression_grammar">http://en.wikipedia.org/wiki/Parsing_expression_grammar</a>)</li>
+<li>[parboiled2 documentation](<a class="reference external" href="https://github.com/sirthias/parboiled2">https://github.com/sirthias/parboiled2</a>)</li>
+<li>[parboiled2 JSON parser example](<a class="reference external" href="https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala">https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala</a>)</li>
+<li>[From EBNF to PEG](<a class="reference external" href="http://ceur-ws.org/Vol-928/0324.pdf">http://ceur-ws.org/Vol-928/0324.pdf</a>)</li>
+</ul>
 </div>
 </div>
 <div class="section" id="type-systems">

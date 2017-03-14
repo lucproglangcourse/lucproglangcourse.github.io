@@ -1,3 +1,23 @@
+commit 3d08d97
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    pasted references from project 3a
+
+commit 6488755
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added section on other abstractions
+
+commit da08133
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added reference
+
+commit 1cb32fa
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed minor typo
+
 commit 14a48c5
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

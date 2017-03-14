@@ -100,8 +100,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">4.2. Defining algebraic data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of Concerns at the Type Level</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">4.6. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of concerns at the type level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-useful-abstractions">4.6. Other useful abstractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">4.7. References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a><ul>
@@ -171,13 +172,19 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
-<li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of Concerns at the Type Level</a><ul>
+<li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of concerns at the type level</a><ul>
 <li><a class="reference internal" href="#key-concepts">4.5.1. Key concepts</a></li>
 <li><a class="reference internal" href="#id1">4.5.2. Examples</a></li>
 <li><a class="reference internal" href="#key-insights">4.5.3. Key insights</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#references">4.6. References</a></li>
+<li><a class="reference internal" href="#other-useful-abstractions">4.6. Other useful abstractions</a><ul>
+<li><a class="reference internal" href="#monoid">4.6.1. Monoid</a></li>
+<li><a class="reference internal" href="#monad">4.6.2. Monad</a></li>
+<li><a class="reference internal" href="#observations">4.6.3. Observations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">4.7. References</a></li>
 </ul>
 </li>
 </ul>
@@ -437,21 +444,33 @@ Here are some examples:</p>
 </ul>
 </div>
 <div class="section" id="separation-of-concerns-at-the-type-level">
-<h2>4.5. Separation of Concerns at the Type Level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this headline">¶</a></h2>
+<h2>4.5. Separation of concerns at the type level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this headline">¶</a></h2>
 <p>The overall approach is to formalize algebraic data types as initial F-algebras.</p>
 <div class="section" id="key-concepts">
 <h3>4.5.1. Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">¶</a></h3>
 <p>We first need to define some key concepts:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws.</li>
-<li>The <code class="docutils literal"><span class="pre">Fix</span></code>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself.</li>
-<li>Generalized <code class="docutils literal"><span class="pre">fold</span></code> = <em>catamorphism</em> (<code class="docutils literal"><span class="pre">cata</span></code>) for <em>breaking down</em> a data structure to a result value.</li>
-<li><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">F-algebra</a>: This is the argument to <code class="docutils literal"><span class="pre">fold</span></code>, which has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., the result type of the fold.</li>
-<li><code class="docutils literal"><span class="pre">unfold</span></code> = <em>anamorphism</em> for <em>building up</em> a data structure from some other value.</li>
-<li><em>F-coalgebra</em>: This is the argument to <code class="docutils literal"><span class="pre">unfold</span></code> (generator), which also has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., type of seed and generated values wrapped in the functor.</li>
-<li><em>Initial F-algebra</em>: This is the least fixpoint of our functor <code class="docutils literal"><span class="pre">F</span></code> and equivalent to our original recursive type.
-We obtain this by applying the <code class="docutils literal"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal"><span class="pre">F</span></code>.</li>
-<li>We get our original recursive behaviors back by combining <code class="docutils literal"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</li>
+<ul>
+<li><p class="first"><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(Endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span>
+<span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span> <span class="n">compose</span> <span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">Fix</span></code>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself.</p>
+</li>
+<li><p class="first">Generalized <code class="docutils literal"><span class="pre">fold</span></code> = <em>catamorphism</em> (<code class="docutils literal"><span class="pre">cata</span></code>) for <em>breaking down</em> a data structure to a result value.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">F-algebra</a>: This is the argument to <code class="docutils literal"><span class="pre">fold</span></code>, which has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., the result type of the fold.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">unfold</span></code> = <em>anamorphism</em> for <em>building up</em> a data structure from some other value.</p>
+</li>
+<li><p class="first"><em>F-coalgebra</em>: This is the argument to <code class="docutils literal"><span class="pre">unfold</span></code> (generator), which also has a functor <code class="docutils literal"><span class="pre">F</span></code> and a carrier object, i.e., type of seed and generated values wrapped in the functor.</p>
+</li>
+<li><p class="first"><em>Initial F-algebra</em>: This is the least fixpoint of our functor <code class="docutils literal"><span class="pre">F</span></code> and equivalent to our original recursive type.
+We obtain this by applying the <code class="docutils literal"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal"><span class="pre">F</span></code>.</p>
+</li>
+<li><p class="first">We get our original recursive behaviors back by combining <code class="docutils literal"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</p>
+</li>
 </ul>
 <div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
@@ -476,11 +495,13 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 <p>Still on the structural side, it also helps to study these questions:</p>
 <ul class="simple">
 <li>How are, say, <code class="docutils literal"><span class="pre">Option</span></code>, <code class="docutils literal"><span class="pre">List</span></code>, and <code class="docutils literal"><span class="pre">Tree</span></code> related?</li>
-<li>How does
-- <code class="docutils literal"><span class="pre">Option</span></code> relate to <code class="docutils literal"><span class="pre">List</span></code>
-- <code class="docutils literal"><span class="pre">List</span></code> relate to <code class="docutils literal"><span class="pre">Tree</span></code>
-- <code class="docutils literal"><span class="pre">Tree</span></code> relate to ?!?
-- ...</li>
+<li>How does<ul>
+<li><code class="docutils literal"><span class="pre">Option</span></code> relate to <code class="docutils literal"><span class="pre">List</span></code></li>
+<li><code class="docutils literal"><span class="pre">List</span></code> relate to <code class="docutils literal"><span class="pre">Tree</span></code></li>
+<li><code class="docutils literal"><span class="pre">Tree</span></code> relate to ?!?</li>
+<li>...</li>
+</ul>
+</li>
 </ul>
 <p>On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:</p>
 <ul class="simple">
@@ -490,6 +511,7 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 </ul>
 <p>For more details on F-algebras and datatype-generic programming, please take a look at these references:</p>
 <ul class="simple">
+<li><a class="reference external" href="https://gist.github.com/jdegoes/97459c0045f373f4eaf126998d8f65dc">Advanced Functional Programming with Scala</a></li>
 <li><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">Understanding F-Algebras</a></li>
 <li><a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf">Gibbons: origami programming</a> (advanced)</li>
 <li><a class="reference external" href="http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf">Oliveira &amp; Cook: F-algebras in Java</a> (advanced)</li>
@@ -498,8 +520,57 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 Some of our examples include implementations of <code class="docutils literal"><span class="pre">traverse</span></code>.</p>
 </div>
 </div>
+<div class="section" id="other-useful-abstractions">
+<h2>4.6. Other useful abstractions<a class="headerlink" href="#other-useful-abstractions" title="Permalink to this headline">¶</a></h2>
+<p>In this subsection, we will discuss a few more useful yet relatively simple abstractions.</p>
+<div class="section" id="monoid">
+<h3>4.6.1. Monoid<a class="headerlink" href="#monoid" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monoid_(disambiguation)">Monoid</a> is a type with an associative binary operation and an identity element.
+(This is equivalent to a semigroup with an identity element.)
+Examples include:</p>
+<ul class="simple">
+<li>integers with addition and zero</li>
+<li>integers with multiplication one</li>
+<li>lists with append and the empty list</li>
+<li>strings with concatenation and the empty string</li>
+</ul>
+<p>The <em>monoid laws</em> arise from the monoid&#8217;s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
+<p>Examples of monoids using the Scalaz library are available here:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc">https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc</a></li>
+</ul>
+</div>
+<div class="section" id="monad">
+<h3>4.6.2. Monad<a class="headerlink" href="#monad" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic collection) with two operations, <code class="docutils literal"><span class="pre">point</span></code> (also called <code class="docutils literal"><span class="pre">return</span></code> or <code class="docutils literal"><span class="pre">unit</span></code>) and <code class="docutils literal"><span class="pre">flatMap</span></code> (also called <code class="docutils literal"><span class="pre">bind</span></code>).
+Monads are an effective way to represent the <em>context</em> of a computation in which the computation is &#8220;wrapped&#8221;.
+The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
+Examples include:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Option</span></code> and <code class="docutils literal"><span class="pre">Try</span></code>: potential failure in a computation</li>
+<li><code class="docutils literal"><span class="pre">List</span></code>: nondeterminism in a computation, meaning that the computation might have multiple results</li>
+<li><code class="docutils literal"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn&#8217;t actually do anything</li>
+<li><code class="docutils literal"><span class="pre">Future</span></code>: the computation takes place asynchronously (in the background)</li>
+</ul>
+<p>Examples of monads using the Scalaz library are available here:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc">https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc</a></li>
+</ul>
+</div>
+<div class="section" id="observations">
+<h3>4.6.3. Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The Scala library includes various structures that are effectively monads, especially those just mentioned.
+What Scala does not define is a monad abstraction itself.</li>
+<li>This is where libraries like Scalaz or Cats come in:
+They define these abstractions in such a way that we can retrofit existing types or our own types to become instances of the desired abstractions, using the <em>Typeclass pattern</em>, a technique for representing Haskell-style typeclasses.</li>
+<li>Examples of the Typeclass pattern are the <code class="docutils literal"><span class="pre">Functor</span></code> and <code class="docutils literal"><span class="pre">Traverse</span></code> instances in our expressions and shapes examples.</li>
+<li>A good reference for learning Scalaz, a library that defines these various abstractions, is available <a class="reference external" href="http://eed3si9n.com/learning-scalaz">here</a>.</li>
+</ul>
+</div>
+</div>
 <div class="section" id="references">
-<h2>4.6. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2>4.7. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <p class="last">put chapter-level references here</p>
