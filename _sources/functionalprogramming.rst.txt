@@ -240,7 +240,7 @@ For more details on space complexity and tail recursion, please take a look at t
 Separation of concerns at the type level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The overall approach is to formalize algebraic data types as initial F-algebras.
+The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.
 
 
 Key concepts
@@ -253,6 +253,11 @@ We first need to define some key concepts:
     c.map(identity) == c
     c.map(g compose f) == c.map(f).map(g)
 
+  Some familiar examples of endofunctors are
+
+  - ``Option``
+  - ``List``
+  - generic trees such as `org chart <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_
     
 - The ``Fix``-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself.
 - Generalized ``fold`` = *catamorphism* (``cata``) for *breaking down* a data structure to a result value.
@@ -273,6 +278,8 @@ It is perhaps best to look at some conventional and F-algebra-based examples sid
 
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_
 -  `project 2a <https://trello.com/c/nPaqQAJf/58-project-2a>`_ versus `project 2b <https://trello.com/c/EihkYkGP/59-project-2b>`_
+
+Some other examples are available `here <https://github.com/lucproglangcourse/matryoshka-examples-scala/tree/master/src/test/scala>`_.
 
 
 Key insights
@@ -330,9 +337,7 @@ Examples include:
 
 The *monoid laws* arise from the monoid's definition: the operation must be associative, and the identity element must be a left and right identity.
 
-Examples of monoids using the Scalaz library are available here:
-  
-- https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc
+Examples of monoids using the Scalaz library are available `here <https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc>`_
 
 
 Monad
@@ -348,9 +353,7 @@ Examples include:
 - ``Id``: the identity monad, a wrapper that doesn't actually do anything
 - ``Future``: the computation takes place asynchronously (in the background)
 
-Examples of monads using the Scalaz library are available here:
-  
-- https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc
+Examples of monads using the Scalaz library are available `here <https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc>`_.
 
 
 Observations

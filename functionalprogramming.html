@@ -445,7 +445,7 @@ Here are some examples:</p>
 </div>
 <div class="section" id="separation-of-concerns-at-the-type-level">
 <h2>4.5. Separation of concerns at the type level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this headline">¶</a></h2>
-<p>The overall approach is to formalize algebraic data types as initial F-algebras.</p>
+<p>The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.</p>
 <div class="section" id="key-concepts">
 <h3>4.5.1. Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">¶</a></h3>
 <p>We first need to define some key concepts:</p>
@@ -455,6 +455,12 @@ Here are some examples:</p>
 <span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span> <span class="n">compose</span> <span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Some familiar examples of endofunctors are</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Option</span></code></li>
+<li><code class="docutils literal"><span class="pre">List</span></code></li>
+<li>generic trees such as <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">org chart</a></li>
+</ul>
 </li>
 <li><p class="first">The <code class="docutils literal"><span class="pre">Fix</span></code>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself.</p>
 </li>
@@ -484,6 +490,7 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 <li><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></li>
 <li><a class="reference external" href="https://trello.com/c/nPaqQAJf/58-project-2a">project 2a</a> versus <a class="reference external" href="https://trello.com/c/EihkYkGP/59-project-2b">project 2b</a></li>
 </ul>
+<p>Some other examples are available <a class="reference external" href="https://github.com/lucproglangcourse/matryoshka-examples-scala/tree/master/src/test/scala">here</a>.</p>
 </div>
 <div class="section" id="key-insights">
 <h3>4.5.3. Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline">¶</a></h3>
@@ -535,10 +542,7 @@ Examples include:</p>
 <li>strings with concatenation and the empty string</li>
 </ul>
 <p>The <em>monoid laws</em> arise from the monoid&#8217;s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
-<p>Examples of monoids using the Scalaz library are available here:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc">https://github.com/lucproglangcourse/scalaz-explorations-scala/monoid.sc</a></li>
-</ul>
+<p>Examples of monoids using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc">here</a></p>
 </div>
 <div class="section" id="monad">
 <h3>4.6.2. Monad<a class="headerlink" href="#monad" title="Permalink to this headline">¶</a></h3>
@@ -552,10 +556,7 @@ Examples include:</p>
 <li><code class="docutils literal"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn&#8217;t actually do anything</li>
 <li><code class="docutils literal"><span class="pre">Future</span></code>: the computation takes place asynchronously (in the background)</li>
 </ul>
-<p>Examples of monads using the Scalaz library are available here:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc">https://github.com/lucproglangcourse/scalaz-explorations-scala/monad.sc</a></li>
-</ul>
+<p>Examples of monads using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc">here</a>.</p>
 </div>
 <div class="section" id="observations">
 <h3>4.6.3. Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
