@@ -175,7 +175,9 @@
 <li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of concerns at the type level</a><ul>
 <li><a class="reference internal" href="#key-concepts">4.5.1. Key concepts</a></li>
 <li><a class="reference internal" href="#id1">4.5.2. Examples</a></li>
-<li><a class="reference internal" href="#key-insights">4.5.3. Key insights</a></li>
+<li><a class="reference internal" href="#what-fix-does">4.5.3. What <code class="docutils literal"><span class="pre">Fix</span></code> does</a></li>
+<li><a class="reference internal" href="#generalized-fold-catamorphism">4.5.4. Generalized fold (catamorphism)</a></li>
+<li><a class="reference internal" href="#key-insights">4.5.5. Key insights</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#other-useful-abstractions">4.6. Other useful abstractions</a><ul>
@@ -492,14 +494,65 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 </ul>
 <p>Some other examples are available <a class="reference external" href="https://github.com/lucproglangcourse/matryoshka-examples-scala/tree/master/src/test/scala">here</a>.</p>
 </div>
+<div class="section" id="what-fix-does">
+<h3>4.5.3. What <code class="docutils literal"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">Fix[F]</span></code> basically ties the &#8220;recursive knot&#8221; by applying the functor <code class="docutils literal"><span class="pre">F</span></code>  to itself.
+This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
+<p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
+This enables  us to define linked lists:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>The problem is that the types of these lists are nested:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
+<span class="n">res0</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="kc">None</span><span class="o">.</span><span class="n">type</span><span class="p">)])])</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>so that lists of different lengths have different types.</p>
+<p>By using a suitable <code class="docutils literal"><span class="pre">Fix</span></code> over our functor, they all end up having the <em>same</em> type, namely <code class="docutils literal"><span class="pre">Fix</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">]))</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))))))</span>
+<span class="n">res1</span><span class="p">:</span> <span class="n">Fix</span> <span class="o">=</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">))))))))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generalized-fold-catamorphism">
+<h3>4.5.4. Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Permalink to this headline">¶</a></h3>
+<p>The next question is what the implementation of the universal fold method, also known as the <em>catamorphism</em>, for <code class="docutils literal"><span class="pre">Fix</span></code> looks like.
+Continuing with our <code class="docutils literal"><span class="pre">Fix</span></code> over <code class="docutils literal"><span class="pre">(Int,</span> <span class="pre">Option[A])</span></code> example, we use <code class="docutils literal"><span class="pre">map</span></code> to perform recursion over this functor, which preserves the first component and applies <code class="docutils literal"><span class="pre">map</span></code> to the second component:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="p">((</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]))</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">((</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_1</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">))))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can define <em>algebras</em> on our functor, such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Int</span><span class="p">])):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">arg</span> <span class="n">match</span> <span class="p">{</span>
+  <span class="n">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">i</span>
+  <span class="n">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">=&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">s</span>
+<span class="p">}</span>
+
+<span class="n">res1</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> <span class="o">//</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>These are very similar to visitors without the responsibility to traverse the structure.
+That is why they are not recursive.
+Instead, the catamorphism takes care of the recursion.</p>
+<p>For an arbitrary functor <code class="docutils literal"><span class="pre">F</span></code>, the code looks like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">Fix</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="key-insights">
-<h3>4.5.3. Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.5. Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline">¶</a></h3>
 <p>By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.</p>
 <ul class="simple">
 <li>non-generic:  <code class="docutils literal"><span class="pre">Nat</span></code>, <code class="docutils literal"><span class="pre">Expr</span></code>, <code class="docutils literal"><span class="pre">Shape</span></code>, etc.</li>
 <li>generic: <code class="docutils literal"><span class="pre">List</span></code>, <code class="docutils literal"><span class="pre">Tree</span></code>, <code class="docutils literal"><span class="pre">OrgChart</span></code>, etc.</li>
 </ul>
-<p>Still on the structural side, it also helps to study these questions:</p>
+<p>It also helps to study these questions:</p>
 <ul class="simple">
 <li>How are, say, <code class="docutils literal"><span class="pre">Option</span></code>, <code class="docutils literal"><span class="pre">List</span></code>, and <code class="docutils literal"><span class="pre">Tree</span></code> related?</li>
 <li>How does<ul>
@@ -509,6 +562,10 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 <li>...</li>
 </ul>
 </li>
+<li>How do we represent an <em>empty</em> structure?</li>
+<li>Why aren&#8217;t there multiple branches in the definition of <code class="docutils literal"><span class="pre">cata</span></code> above?
+When does the recursion terminate?</li>
+<li>Is <code class="docutils literal"><span class="pre">cata</span></code> tail-recursive? Can or should it be?</li>
 </ul>
 <p>On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:</p>
 <ul class="simple">
