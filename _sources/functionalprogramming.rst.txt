@@ -310,11 +310,14 @@ By using a suitable ``Fix`` over our functor, they all end up having the *same* 
   res1: Fix = Fix((1,Some(Fix((2,Some(Fix((3,None))))))))
 
 
+That's why we usually define such types recursively to begin with.  
+
+  
 Generalized fold (catamorphism)
 ```````````````````````````````
 
-The next question is what the implementation of the universal fold method, also known as the *catamorphism*, for ``Fix`` looks like.
-Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we use ``map`` to perform recursion over this functor, which preserves the first component and applies ``map`` to the second component::
+The next question is what the implementation of the universal fold method for ``Fix`` looks like, also known as the *catamorphism*.
+Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we perform recursion over this functor by using ``map``, which preserves the first component and invokes a suitable ``map`` on the second component of the pair::
 
   case class Fix(unFix: (Int, Option[Fix])) {
     def cata[B](f: ((Int, Option[B])) => B): B = f((this.unFix._1, this.unFix._2.map(_.cata(f))))
@@ -341,6 +344,10 @@ For an arbitrary functor ``F``, the code looks like this::
   case class Fix(unFix: F[Fix]) {
     def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))  
   }
+
+
+For an arbitrary *carrier type* ``B``, the argument ``f`` of type ``F[B] => B`` is an ``F``-algebra.
+``Fix`` is the *initial* ``F``-algebra, and the catamorphism ``cata`` produces the unique structure-preserving mapping (homomorphism) between ``Fix`` and ``f``.
 
 
 Key insights
