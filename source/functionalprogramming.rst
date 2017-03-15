@@ -282,6 +282,67 @@ It is perhaps best to look at some conventional and F-algebra-based examples sid
 Some other examples are available `here <https://github.com/lucproglangcourse/matryoshka-examples-scala/tree/master/src/test/scala>`_.
 
 
+What ``Fix`` does
+`````````````````
+
+``Fix[F]`` basically ties the "recursive knot" by applying the functor ``F``  to itself.
+This forms the *fixpoint* of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.
+
+For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor ``F[A] = (Int, Option[A])``.
+This enables  us to define linked lists::
+
+  (1, Some((2, Some((3, None)))))
+
+
+The problem is that the types of these lists are nested::
+
+  scala> (1, Some((2, Some((3, None)))))
+  res0: (Int, Some[(Int, Some[(Int, None.type)])]) = (1,Some((2,Some((3,None)))))
+
+
+so that lists of different lengths have different types.
+
+By using a suitable ``Fix`` over our functor, they all end up having the *same* type, namely ``Fix``::
+
+  case class Fix(unFix: (Int, Option[Fix]))
+
+  scala> Fix((1, Some(Fix((2, Some(Fix((3, None))))))))
+  res1: Fix = Fix((1,Some(Fix((2,Some(Fix((3,None))))))))
+
+
+Generalized fold (catamorphism)
+```````````````````````````````
+
+The next question is what the implementation of the universal fold method, also known as the *catamorphism*, for ``Fix`` looks like.
+Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we use ``map`` to perform recursion over this functor, which preserves the first component and applies ``map`` to the second component::
+
+  case class Fix(unFix: (Int, Option[Fix])) {
+    def cata[B](f: ((Int, Option[B])) => B): B = f((this.unFix._1, this.unFix._2.map(_.cata(f))))
+  }
+
+
+Now we can define *algebras* on our functor, such as::
+  
+  def sum(arg: (Int, Option[Int])): Int = arg match {
+    case (i, None) => i
+    case (i, Some(s)) => i + s
+  }
+
+  res1.cata(sum) // 6
+
+
+These are very similar to visitors without the responsibility to traverse the structure.
+That is why they are not recursive.
+Instead, the catamorphism takes care of the recursion.
+
+  
+For an arbitrary functor ``F``, the code looks like this::
+
+  case class Fix(unFix: F[Fix]) {
+    def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))  
+  }
+
+
 Key insights
 ````````````
 
@@ -290,7 +351,7 @@ By taking an F-algebraic perspective on recursive algebraic data types, we are a
 - non-generic:  ``Nat``, ``Expr``, ``Shape``, etc.
 - generic: ``List``, ``Tree``, ``OrgChart``, etc.
 
-Still on the structural side, it also helps to study these questions:
+It also helps to study these questions:
 
 - How are, say, ``Option``, ``List``, and ``Tree`` related? 
 - How does
@@ -299,6 +360,12 @@ Still on the structural side, it also helps to study these questions:
   - ``List`` relate to ``Tree``
   - ``Tree`` relate to ?!?
   - ...
+
+- How do we represent an *empty* structure?
+- Why aren't there multiple branches in the definition of ``cata`` above?
+  When does the recursion terminate?
+- Is ``cata`` tail-recursive? Can or should it be?  
+  
 
 On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:
 
