@@ -106,10 +106,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Program Representation and Interpretation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language">5.1. A simple imperative language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#type-systems">5.3. Type systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#domain-specific-languages">5.4. Domain-specific languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-language-toolchains">5.1. Programming language toolchains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language">5.2. A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-imperative-language-with-records">5.3. A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-systems">5.4. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-specific-languages">5.5. Domain-specific languages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. Introduction to Concurrency</a></li>
@@ -158,22 +159,27 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">5. Program Representation and Interpretation</a><ul>
-<li><a class="reference internal" href="#a-simple-imperative-language">5.1. A simple imperative language</a><ul>
-<li><a class="reference internal" href="#objectives">5.1.1. Objectives</a></li>
-<li><a class="reference internal" href="#syntax">5.1.2. Syntax</a></li>
-<li><a class="reference internal" href="#structured-operational-semantics-sos">5.1.3. Structured operational semantics (SOS)</a></li>
-<li><a class="reference internal" href="#the-interpreter-program">5.1.4. The interpreter program</a></li>
+<li><a class="reference internal" href="#programming-language-toolchains">5.1. Programming language toolchains</a><ul>
+<li><a class="reference internal" href="#compiler-front-end-techniques">5.1.1. Compiler front-end techniques</a></li>
+<li><a class="reference internal" href="#overview-of-programming-language-semantics">5.1.2. Overview of programming language semantics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a><ul>
-<li><a class="reference internal" href="#id1">5.2.1. Objectives</a></li>
-<li><a class="reference internal" href="#id2">5.2.2. Syntax</a></li>
-<li><a class="reference internal" href="#implementation">5.2.3. Implementation</a></li>
-<li><a class="reference internal" href="#project-3a-references">5.2.4. Project 3a References</a></li>
+<li><a class="reference internal" href="#a-simple-imperative-language">5.2. A simple imperative language</a><ul>
+<li><a class="reference internal" href="#objectives">5.2.1. Objectives</a></li>
+<li><a class="reference internal" href="#syntax">5.2.2. Syntax</a></li>
+<li><a class="reference internal" href="#structured-operational-semantics-sos">5.2.3. Structured operational semantics (SOS)</a></li>
+<li><a class="reference internal" href="#the-interpreter-program">5.2.4. The interpreter program</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#type-systems">5.3. Type systems</a></li>
-<li><a class="reference internal" href="#domain-specific-languages">5.4. Domain-specific languages</a></li>
+<li><a class="reference internal" href="#a-simple-imperative-language-with-records">5.3. A simple imperative language with records</a><ul>
+<li><a class="reference internal" href="#id1">5.3.1. Objectives</a></li>
+<li><a class="reference internal" href="#id2">5.3.2. Syntax</a></li>
+<li><a class="reference internal" href="#id3">5.3.3. Implementation</a></li>
+<li><a class="reference internal" href="#project-3a-references">5.3.4. Project 3a References</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#type-systems">5.4. Type systems</a></li>
+<li><a class="reference internal" href="#domain-specific-languages">5.5. Domain-specific languages</a></li>
 </ul>
 </li>
 </ul>
@@ -225,66 +231,71 @@
       
   <div class="section" id="program-representation-and-interpretation">
 <h1>5. Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we discuss how we can represent and ultimately execute or interpret programs in a particular language.
+To this end, we need to talk about the toolchain required to do so, as well as techniques for defining the meaning (semantics) of programs in our language.</p>
+<div class="section" id="programming-language-toolchains">
+<h2>5.1. Programming language toolchains<a class="headerlink" href="#programming-language-toolchains" title="Permalink to this headline">¶</a></h2>
+<p>We will start with an overview of the phases of programming language <a class="reference external" href="http://en.wikipedia.org/wiki/Compiler">compilation</a>/<a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_(computing)">interpretation</a> toolchain:</p>
 <ul class="simple">
-<li>programming language [compilation](<a class="reference external" href="http://en.wikipedia.org/wiki/Compiler)/[interpretation](http://en.wikipedia.org/wiki/Interpreter_(computing">http://en.wikipedia.org/wiki/Compiler)/[interpretation](http://en.wikipedia.org/wiki/Interpreter_(computing</a>)) toolchain phases overview
-- source code (string stored in file)
-- <em>lexical analysis</em>
-- sequence of tokens
-- <em>syntax analysis (parsing)</em>
-- abstract syntax tree
-- <em>static checks</em>
-- <em>optimization</em>
-- transformed abstract syntax tree
-- <em>code generation</em>
-- machine code or byte code
-- <em>execution</em>
-- alternative: <em>direct interpretation of abstract syntax trees</em></li>
-<li>[project 3a](<a class="reference external" href="https://trello.com/c/1Eq8r4vs/27-project-3a">https://trello.com/c/1Eq8r4vs/27-project-3a</a>) discussion</li>
+<li>source code (string stored in file)</li>
+<li><em>lexical analysis</em></li>
+<li>sequence of tokens</li>
+<li><em>syntax analysis (parsing)</em></li>
+<li>abstract syntax tree &lt;- interface between front end and back end</li>
+<li><em>static checks</em></li>
+<li><em>optimization</em></li>
+<li>transformed abstract syntax tree</li>
+<li><em>code generation</em></li>
+<li>machine code or byte code</li>
+<li><em>execution</em></li>
+<li>alternative: <em>direct interpretation of abstract syntax trees</em></li>
 </ul>
-<p># Presentation</p>
-<p>According to this <a class="reference external" href="https://trello.com/c/a7vQg3qp/54-presentation-schedule">https://trello.com/c/a7vQg3qp/54-presentation-schedule</a>.</p>
-<p># References</p>
-<ul>
-<li><p class="first">[Mogensen](<a class="reference external" href="http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics">http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics</a>)</p>
-</li>
-<li><p class="first">compiler front-end in more detail
-- lexical analysis: regular expressions, NFA, DFA (Mogensen ch. 2)
-- syntax analysis: context-free grammars, EBNF, parsing (Mogensen ch. 3)</p>
-</li>
-<li><p class="first">programming language semantics
-- [static semantics](<a class="reference external" href="http://en.wikipedia.org/wiki/Programming_language#Semantics">http://en.wikipedia.org/wiki/Programming_language#Semantics</a>) - compile-time</p>
-<blockquote>
-<div><ul class="simple">
+<p>Reference: <a class="reference external" href="http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics">Mogensen</a></p>
+<div class="section" id="compiler-front-end-techniques">
+<h3>5.1.1. Compiler front-end techniques<a class="headerlink" href="#compiler-front-end-techniques" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>lexical analysis: regular expressions, NFA, DFA (Mogensen ch. 2)</li>
+<li>syntax analysis: context-free grammars, EBNF, parsing (Mogensen ch. 3)</li>
+</ul>
+</div>
+<div class="section" id="overview-of-programming-language-semantics">
+<h3>5.1.2. Overview of programming language semantics<a class="headerlink" href="#overview-of-programming-language-semantics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Programming_language#Semantics">static semantics</a> - compile-time<ul>
 <li>flow analysis</li>
 <li>typing</li>
 </ul>
+</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Semantics_of_programming_languages">dynamic semantics</a> - run-time<ul>
+<li>denotational</li>
+<li>operational, e.g. our interpreters</li>
+<li>axiomatic</li>
+</ul>
+</li>
+</ul>
+<p>The Interpreter pattern is related to this discussion.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://c2.com/cgi/wiki?InterpreterPattern">http://c2.com/cgi/wiki?InterpreterPattern</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_pattern">http://en.wikipedia.org/wiki/Interpreter_pattern</a></li>
+</ul>
 </div></blockquote>
-<ul class="simple">
-<li>[dynamic semantics](<a class="reference external" href="http://en.wikipedia.org/wiki/Semantics_of_programming_languages">http://en.wikipedia.org/wiki/Semantics_of_programming_languages</a>) - run-time
-- denotational
-- operational, e.g. our interpreters
-- axiomatic</li>
-<li>simple imperative language example
-- [operational semantics](<a class="reference external" href="http://plone.cs.luc.edu/laufer-archived/teaching/473/handouts/SimpleImperative.html">http://plone.cs.luc.edu/laufer-archived/teaching/473/handouts/SimpleImperative.html</a>)
-- [Java implementation](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java</a>)
-- [Scala implementation](<a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/">https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/</a>)</li>
-</ul>
-</li>
-<li><p class="first">interpreter pattern
-- <a class="reference external" href="http://c2.com/cgi/wiki?InterpreterPattern">http://c2.com/cgi/wiki?InterpreterPattern</a>
-- <a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_pattern">http://en.wikipedia.org/wiki/Interpreter_pattern</a></p>
-</li>
-</ul>
+</div>
+</div>
 <div class="section" id="a-simple-imperative-language">
-<h2>5.1. A simple imperative language<a class="headerlink" href="#a-simple-imperative-language" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. A simple imperative language<a class="headerlink" href="#a-simple-imperative-language" title="Permalink to this headline">¶</a></h2>
 <p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java">Java implementation</a></li>
+<li><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/">Scala implementation</a></li>
+</ul>
 <p>The accompanying lecture is available as a set of screencasts:</p>
 <ul class="simple">
-<li>[foundations](<a class="reference external" href="https://youtu.be/-bDcsvlY5oA">https://youtu.be/-bDcsvlY5oA</a>)</li>
-<li>[implementation](<a class="reference external" href="https://youtu.be/mj-tq_kdeFU">https://youtu.be/mj-tq_kdeFU</a>)</li>
+<li><a class="reference external" href="https://youtu.be/-bDcsvlY5oA">foundations</a></li>
+<li><a class="reference external" href="https://youtu.be/mj-tq_kdeF">implementation</a></li>
 </ul>
 <div class="section" id="objectives">
-<h3>5.1.1. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
@@ -292,35 +303,25 @@
 </ul>
 </div>
 <div class="section" id="syntax">
-<h3>5.1.2. Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.2. Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p>Our language has the following features:</p>
 <p>Integer expressions given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>e ::= variable</dt>
-<dd><div class="first last line-block">
-<div class="line">const</div>
-<div class="line">e1 + e2</div>
-<div class="line">e1 - e2</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="p">::</span><span class="o">=</span> <span class="n">variable</span>
+  <span class="o">|</span>   <span class="n">const</span>
+  <span class="o">|</span>   <span class="n">e1</span> <span class="o">+</span> <span class="n">e2</span>
+  <span class="o">|</span>   <span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 <p>Statements given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>S ::= x = e</dt>
-<dd><div class="first last line-block">
-<div class="line">S1 ; S2</div>
-<div class="line">while (e) S</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="p">::</span><span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+  <span class="o">|</span>   <span class="n">S1</span> <span class="p">;</span> <span class="n">S2</span>
+  <span class="o">|</span>   <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">S</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 <p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like &#8220;x + 3&#8221;, whereas earlier we could only write expressions such as &#8220;4 + 3&#8221;. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
 </div>
 <div class="section" id="structured-operational-semantics-sos">
-<h3>5.1.3. Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.3. Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline">¶</a></h3>
 <p>We first formalize the intuitive execution semantics of the toy language. The point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. Since our toy language has variables, we need to keep track of the state of variables. We view variables as objects with two capabilities:</p>
 <ul class="simple">
 <li><cite>v.get()</cite> returns the current value of the variable</li>
@@ -348,15 +349,15 @@
 <p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements &#8220;x = 2; y = x + 1&#8221;, the second reference to x reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
 </div>
 <div class="section" id="the-interpreter-program">
-<h3>5.1.4. The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.4. The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline">¶</a></h3>
 <p>We now go ahead and write the interpreter program. The entire code is available as part of the [misc-scala](<a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative">https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative</a>) example. A similar example but based on F-algebras and with better runtime error handling is also available: [simpleimperative-algebraic-scala](<a class="reference external" href="https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala">https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala</a>).</p>
 </div>
 </div>
 <div class="section" id="a-simple-imperative-language-with-records">
-<h2>5.2. A simple imperative language with records<a class="headerlink" href="#a-simple-imperative-language-with-records" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. A simple imperative language with records<a class="headerlink" href="#a-simple-imperative-language-with-records" title="Permalink to this headline">¶</a></h2>
 <p>In this handout, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).</p>
 <div class="section" id="id1">
-<h3>5.2.1. Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>5.3.1. Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
@@ -371,102 +372,78 @@
 </ul>
 </div>
 <div class="section" id="id2">
-<h3>5.2.2. Syntax<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>5.3.2. Syntax<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Our language has the following features:</p>
 <p>The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>StudentCourseRecord = record</dt>
-<dd>int firstExamScore;
-int secondExamScore;
-int totalScore;</dd>
-</dl>
-<p>end;</p>
-<dl class="docutils">
-<dt>StudentSemRecord = record</dt>
-<dd>StudentCourseRecord course1;
-StudentCourseRecord course2;</dd>
-</dl>
-<p>end;</p>
-<p>StudentSemRecord r = new StudentSemRecord();
-r.course1 = new StudentCourseRecord();
-r.course1.firstExamScore = 25;
-r.course1.secondExamScore = 35;
-r.course1.totalScore = r.course1.firstExamScore + r.course1.secondExamScore;</p>
-<p>r.course2 = r.course1;</p>
-</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">StudentCourseRecord</span> <span class="o">=</span> <span class="n">record</span>
+    <span class="nb">int</span> <span class="n">firstExamScore</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">secondExamScore</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">totalScore</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+
+<span class="n">StudentSemRecord</span> <span class="o">=</span> <span class="n">record</span>
+    <span class="n">StudentCourseRecord</span> <span class="n">course1</span><span class="p">;</span>
+    <span class="n">StudentCourseRecord</span> <span class="n">course2</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+
+<span class="n">StudentSemRecord</span> <span class="n">r</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StudentSemRecord</span><span class="p">();</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StudentCourseRecord</span><span class="p">();</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">firstExamScore</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">secondExamScore</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">totalScore</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">firstExamScore</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">secondExamScore</span><span class="p">;</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">course2</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>In the C language, such things are known as structs. In familiar object-oriented terminology, we can think about them in this way:</p>
 <ul class="simple">
 <li>record types are classes whose only members are public member variables</li>
 <li>records are objects</li>
 <li>fields are public member variables</li>
 </ul>
-<p>The record type definitions in the previous example would look as follows in Java, and the rest of program would look the same.</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>class StudentCourseRecord {</dt>
-<dd>public int firstExamScore;
-public int secondExamScore;
-public int totalScore;</dd>
-</dl>
-<p>}</p>
-<dl class="docutils">
-<dt>class StudentSemRecord {</dt>
-<dd>public StudentCourseRecord course1;
-public StudentCourseRecord course2;</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<p>The record type definitions in the previous example would look as follows in Java, and the rest of program would look the same:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StudentCourseRecord</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">firstExamScore</span><span class="p">;</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">secondExamScore</span><span class="p">;</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">totalScore</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">StudentSemRecord</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">StudentCourseRecord</span> <span class="n">course1</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">StudentCourseRecord</span> <span class="n">course2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Formally, we proceed via the following BNF grammars. To simplify life for us, we will ignore type information. In this BNF grammar, we are a little bit more careful to separate L(eft) values and R(ight) values. L-values are those that can appear on the left hand side of an assignment statement, and R-values are those that appear on the right hand side of an assignment.</p>
 <p>Record definitions are given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Defn ::= record</dt>
-<dd><blockquote class="first">
-<div>FieldList</div></blockquote>
-<p class="last">end</p>
-</dd>
-<dt>FieldList ::= fieldName, FieldList</dt>
-<dd><div class="first last line-block">
-<div class="line">fieldName</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Defn</span> <span class="p">::</span><span class="o">=</span> <span class="n">record</span>
+             <span class="n">FieldList</span>
+         <span class="n">end</span>
+
+
+<span class="n">FieldList</span> <span class="p">::</span><span class="o">=</span> <span class="n">fieldName</span><span class="p">,</span> <span class="n">FieldList</span>
+          <span class="o">|</span> <span class="n">fieldName</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 <p>L-values (fields selected from records, as well as variables) are given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>Lval ::= e.fieldName</dt>
-<dd><div class="first last line-block">
-<div class="line">variable</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Lval</span> <span class="p">::</span><span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">fieldName</span>
+     <span class="o">|</span> <span class="n">variable</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 <p>Expressions (R-values) are given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>e   ::=     new C</dt>
-<dd><div class="first last line-block">
-<div class="line">Lval</div>
-<div class="line">const</div>
-<div class="line">e1 + e2</div>
-<div class="line">e1 - e2</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">e</span>   <span class="p">::</span><span class="o">=</span>     <span class="n">new</span> <span class="n">C</span>
+    <span class="o">|</span>       <span class="n">Lval</span>
+    <span class="o">|</span>       <span class="n">const</span>
+    <span class="o">|</span>       <span class="n">e1</span> <span class="o">+</span> <span class="n">e2</span>
+    <span class="o">|</span>       <span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
-<p>Statements given by the BNF grammar:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>S   ::=     Lval = e</dt>
-<dd><div class="first last line-block">
-<div class="line">S1; S2</div>
-<div class="line">while (e) do S</div>
+<p>Statements are given by the BNF grammar:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span>   <span class="p">::</span><span class="o">=</span>     <span class="n">Lval</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="o">|</span>       <span class="n">S1</span><span class="p">;</span> <span class="n">S2</span>
+    <span class="o">|</span>       <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">do</span> <span class="n">S</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
 <p>We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation</p>
 <p>Recall that we viewed variables as objects with two capabilities:</p>
 <ul class="simple">
@@ -500,12 +477,12 @@ public StudentCourseRecord course2;</dd>
 <p>The execution rules are given in the following pictures:</p>
 <img alt="_images/records5.png" src="_images/records5.png" />
 </div>
-<div class="section" id="implementation">
-<h3>5.2.3. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>5.3.3. Implementation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>The entire code for the implementation of the simple imperative language with records is available [here](<a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records">https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records</a>).</p>
 </div>
 <div class="section" id="project-3a-references">
-<h3>5.2.4. Project 3a References<a class="headerlink" href="#project-3a-references" title="Permalink to this headline">¶</a></h3>
+<h3>5.3.4. Project 3a References<a class="headerlink" href="#project-3a-references" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>[simple expression combinator parser example](<a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala">https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala</a>)</li>
 <li>[regular expressions in Java](<a class="reference external" href="http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf">http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf</a>)</li>
@@ -525,7 +502,7 @@ public StudentCourseRecord course2;</dd>
 </div>
 </div>
 <div class="section" id="type-systems">
-<h2>5.3. Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline">¶</a></h2>
+<h2>5.4. Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[design space](<a class="reference external" href="http://en.wikipedia.org/wiki/Type_system">http://en.wikipedia.org/wiki/Type_system</a>), tradeoffs, [representative examples](<a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_type_systems">http://en.wikipedia.org/wiki/Comparison_of_type_systems</a>)</li>
 <li>[presentation slides 10-29](<a class="reference external" href="http://klaeufer.github.io/luc-amc.html#(10">http://klaeufer.github.io/luc-amc.html#(10</a>))</li>
@@ -533,7 +510,7 @@ public StudentCourseRecord course2;</dd>
 </ul>
 </div>
 <div class="section" id="domain-specific-languages">
-<h2>5.4. Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this headline">¶</a></h2>
+<h2>5.5. Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://c2.com/cgi/wiki?DomainSpecificLanguage">http://c2.com/cgi/wiki?DomainSpecificLanguage</a></li>
 <li><a class="reference external" href="http://martinfowler.com/bliki/FluentInterface.html">http://martinfowler.com/bliki/FluentInterface.html</a></li>

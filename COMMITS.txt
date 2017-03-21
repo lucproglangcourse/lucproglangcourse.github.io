@@ -1,3 +1,8 @@
+commit e7ab0c5
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+     cleaned up section on interpretation
+
 commit 8d38bb1
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
