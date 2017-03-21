@@ -347,7 +347,7 @@ For an arbitrary functor ``F``, the code looks like this::
 
 
 For an arbitrary *carrier type* ``B``, the argument ``f`` of type ``F[B] => B`` is an ``F``-algebra.
-``Fix`` is the *initial* ``F``-algebra, and the catamorphism ``cata`` produces the unique structure-preserving mapping (homomorphism) between ``Fix`` and ``f``.
+``Fix[F]`` is the *initial* ``F``-algebra, and the catamorphism ``cata`` produces the unique structure-preserving mapping (homomorphism) between ``Fix[F]`` and ``f``.
 
 
 Key insights

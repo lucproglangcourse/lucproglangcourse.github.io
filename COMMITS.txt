@@ -1,3 +1,8 @@
+commit efcf44e
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed minor typos
+
 commit e7ab0c5
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

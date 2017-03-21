@@ -106,10 +106,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">5.1. A simple imperative language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">5.2. A simple imperative language with records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">5.3. Type systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">5.4. Domain-specific languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#programming-language-toolchains">5.1. Programming language toolchains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language">5.2. A simple imperative language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#a-simple-imperative-language-with-records">5.3. A simple imperative language with records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#type-systems">5.4. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representationinterpretation.html#domain-specific-languages">5.5. Domain-specific languages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. Introduction to Concurrency</a></li>
@@ -546,7 +547,7 @@ Instead, the catamorphism takes care of the recursion.</p>
 </pre></div>
 </div>
 <p>For an arbitrary <em>carrier type</em> <code class="docutils literal"><span class="pre">B</span></code>, the argument <code class="docutils literal"><span class="pre">f</span></code> of type <code class="docutils literal"><span class="pre">F[B]</span> <span class="pre">=&gt;</span> <span class="pre">B</span></code> is an <code class="docutils literal"><span class="pre">F</span></code>-algebra.
-<code class="docutils literal"><span class="pre">Fix</span></code> is the <em>initial</em> <code class="docutils literal"><span class="pre">F</span></code>-algebra, and the catamorphism <code class="docutils literal"><span class="pre">cata</span></code> produces the unique structure-preserving mapping (homomorphism) between <code class="docutils literal"><span class="pre">Fix</span></code> and <code class="docutils literal"><span class="pre">f</span></code>.</p>
+<code class="docutils literal"><span class="pre">Fix[F]</span></code> is the <em>initial</em> <code class="docutils literal"><span class="pre">F</span></code>-algebra, and the catamorphism <code class="docutils literal"><span class="pre">cata</span></code> produces the unique structure-preserving mapping (homomorphism) between <code class="docutils literal"><span class="pre">Fix[F]</span></code> and <code class="docutils literal"><span class="pre">f</span></code>.</p>
 </div>
 <div class="section" id="key-insights">
 <h3>4.5.5. Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline">¶</a></h3>
