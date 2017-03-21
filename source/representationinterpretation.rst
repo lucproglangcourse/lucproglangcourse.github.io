@@ -1,57 +1,57 @@
 Program Representation and Interpretation
 -----------------------------------------
 
-
-- programming language [compilation](http://en.wikipedia.org/wiki/Compiler)/[interpretation](http://en.wikipedia.org/wiki/Interpreter_(computing)) toolchain phases overview
-  - source code (string stored in file)
-  - *lexical analysis*
-  - sequence of tokens
-  - *syntax analysis (parsing)*
-  - abstract syntax tree
-  - *static checks*
-  - *optimization*
-  - transformed abstract syntax tree
-  - *code generation*
-  - machine code or byte code
-  - *execution*
-  - alternative: *direct interpretation of abstract syntax trees*
-- [project 3a](https://trello.com/c/1Eq8r4vs/27-project-3a) discussion
-
-# Presentation
-
-According to this https://trello.com/c/a7vQg3qp/54-presentation-schedule. 
-
-# References
-
-- [Mogensen](http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics)
+In this chapter, we discuss how we can represent and ultimately execute or interpret programs in a particular language.
+To this end, we need to talk about the toolchain required to do so, as well as techniques for defining the meaning (semantics) of programs in our language.
 
 
+Programming language toolchains
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We will start with an overview of the phases of programming language `compilation <http://en.wikipedia.org/wiki/Compiler>`_/`interpretation <http://en.wikipedia.org/wiki/Interpreter_(computing)>`_ toolchain:
+
+- source code (string stored in file)
+- *lexical analysis*
+- sequence of tokens
+- *syntax analysis (parsing)*
+- abstract syntax tree <- interface between front end and back end
+- *static checks*
+- *optimization*
+- transformed abstract syntax tree
+- *code generation*
+- machine code or byte code
+- *execution*
+- alternative: *direct interpretation of abstract syntax trees*
 
 
-- compiler front-end in more detail
-  - lexical analysis: regular expressions, NFA, DFA (Mogensen ch. 2)
-  - syntax analysis: context-free grammars, EBNF, parsing (Mogensen ch. 3)
+Reference: `Mogensen <http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics>`_
 
 
-- programming language semantics
-  - [static semantics](http://en.wikipedia.org/wiki/Programming_language#Semantics) - compile-time
-    - flow analysis
-    - typing
-  - [dynamic semantics](http://en.wikipedia.org/wiki/Semantics_of_programming_languages) - run-time
-    - denotational
-    - operational, e.g. our interpreters
-    - axiomatic
-  - simple imperative language example
-    - [operational semantics](http://plone.cs.luc.edu/laufer-archived/teaching/473/handouts/SimpleImperative.html)
-    - [Java implementation](https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java)
-    - [Scala implementation](https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/)
-- interpreter pattern
+Compiler front-end techniques
+`````````````````````````````
+
+- lexical analysis: regular expressions, NFA, DFA (Mogensen ch. 2)
+- syntax analysis: context-free grammars, EBNF, parsing (Mogensen ch. 3)
+
+
+Overview of programming language semantics
+``````````````````````````````````````````
+
+- `static semantics <http://en.wikipedia.org/wiki/Programming_language#Semantics>`_ - compile-time
+
+  - flow analysis
+  - typing
+
+- `dynamic semantics <http://en.wikipedia.org/wiki/Semantics_of_programming_languages>`_ - run-time
+
+  - denotational
+  - operational, e.g. our interpreters
+  - axiomatic
+
+The Interpreter pattern is related to this discussion.
+
   - http://c2.com/cgi/wiki?InterpreterPattern
   - http://en.wikipedia.org/wiki/Interpreter_pattern
-
-
- 
-
 
 
 A simple imperative language
@@ -59,10 +59,13 @@ A simple imperative language
 
 In this section, we discuss the design of an interpreter and programming environment for a simple imperative language. 
 
+- `Java implementation <https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java>`_
+- `Scala implementation <https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/>`_
+
 The accompanying lecture is available as a set of screencasts: 
 
-- [foundations](https://youtu.be/-bDcsvlY5oA)
-- [implementation](https://youtu.be/mj-tq_kdeFU)
+- `foundations <https://youtu.be/-bDcsvlY5oA>`_
+- `implementation <https://youtu.be/mj-tq_kdeF>`_
 
 Objectives
 ``````````
@@ -77,18 +80,20 @@ Syntax
 
 Our language has the following features:
 
-Integer expressions given by the BNF grammar:
+Integer expressions given by the BNF grammar::
 
     e ::= variable
       |   const
       |   e1 + e2
       |   e1 - e2
 
-Statements given by the BNF grammar:
+
+Statements given by the BNF grammar::
 
     S ::= x = e
       |   S1 ; S2
       |   while (e) S
+
 
 In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like "x + 3", whereas earlier we could only write expressions such as "4 + 3". We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.
 
@@ -166,7 +171,7 @@ Our language has the following features:
 
 
 
-The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:
+The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by::
 
     StudentCourseRecord = record 
         int firstExamScore;
@@ -194,7 +199,7 @@ In the C language, such things are known as structs. In familiar object-oriented
 - records are objects
 - fields are public member variables
 
-The record type definitions in the previous example would look as follows in Java, and the rest of program would look the same.
+The record type definitions in the previous example would look as follows in Java, and the rest of program would look the same::
 
     class StudentCourseRecord {
         public int firstExamScore;
@@ -210,7 +215,7 @@ The record type definitions in the previous example would look as follows in Jav
     
 Formally, we proceed via the following BNF grammars. To simplify life for us, we will ignore type information. In this BNF grammar, we are a little bit more careful to separate L(eft) values and R(ight) values. L-values are those that can appear on the left hand side of an assignment statement, and R-values are those that appear on the right hand side of an assignment.
 
-Record definitions are given by the BNF grammar:
+Record definitions are given by the BNF grammar::
 
     Defn ::= record
                  FieldList
@@ -221,12 +226,14 @@ Record definitions are given by the BNF grammar:
               |	fieldName
 
 	      
-L-values (fields selected from records, as well as variables) are given by the BNF grammar:
+
+L-values (fields selected from records, as well as variables) are given by the BNF grammar::
 
     Lval ::= e.fieldName
          | variable
 
-Expressions (R-values) are given by the BNF grammar:
+
+Expressions (R-values) are given by the BNF grammar::
 
     e	::=	new C
      	|	Lval
@@ -234,12 +241,14 @@ Expressions (R-values) are given by the BNF grammar:
      	|	e1 + e2
      	|	e1 - e2
 
-Statements given by the BNF grammar:
+
+Statements are given by the BNF grammar::
 
     S	::=	Lval = e
      	|	S1; S2
      	|	while (e) do S
 
+	
 We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation
 
 Recall that we viewed variables as objects with two capabilities:
