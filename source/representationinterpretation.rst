@@ -50,8 +50,8 @@ Overview of programming language semantics
 
 The Interpreter pattern is related to this discussion.
 
-  - http://c2.com/cgi/wiki?InterpreterPattern
-  - http://en.wikipedia.org/wiki/Interpreter_pattern
+- http://c2.com/cgi/wiki?InterpreterPattern
+- http://en.wikipedia.org/wiki/Interpreter_pattern
 
 
 A simple imperative language
