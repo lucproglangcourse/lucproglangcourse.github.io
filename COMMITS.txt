@@ -1,3 +1,13 @@
+commit b205c69
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated chapter on representation and interpretation
+
+commit 341d367
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated test dates
+
 commit efcf44e
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

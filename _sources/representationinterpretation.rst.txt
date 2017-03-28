@@ -27,35 +27,71 @@ We will start with an overview of the phases of programming language `compilatio
 Reference: `Mogensen <http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics>`_
 
 
-Compiler front-end techniques
-`````````````````````````````
+Compiler front-end concepts and techniques
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- lexical analysis: regular expressions, NFA, DFA (Mogensen ch. 2)
-- syntax analysis: context-free grammars, EBNF, parsing (Mogensen ch. 3)
+In this section, we will discuss the key front-end stages, lexical analysis and syntax analysis, and related concepts and techniques.
 
 
-Overview of programming language semantics
-``````````````````````````````````````````
+Lexical analysis
+````````````````
 
-- `static semantics <http://en.wikipedia.org/wiki/Programming_language#Semantics>`_ - compile-time
+- regular expressions, NFA, DFA (Mogensen ch. 2)
+- `regular expressions <http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf>`_
+- `regular expressions in Java <http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf>`_
+
+Syntax analysis
+```````````````
+  
+- context-free grammars, EBNF, parsing (Mogensen ch. 3)
+- `parser generator <https://en.wikipedia.org/wiki/Compiler-compiler>`_
+- `scala-bison <https://github.com/djspiewak/scala-bison>`_
+
+
+  
+Alternative front-end approaches
+````````````````````````````````
+  
+- `parser combinators <https://en.wikipedia.org/wiki/Parser_combinator>`_
+- Scala parser combinators
+
+  - `Odersky et al. ch. 33 <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687/combinator-parsing/combinator_parsing_html>`_
+  -  `API <http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started>`_
+  - `simple expression combinator parser example <https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala>`_
+
+- `parsing expression grammars <http://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
+- `From EBNF to PEG <http://ceur-ws.org/Vol-928/0324.pdf>`_
+- Parboiled 2 PEG library
+
+  - `parboiled2 documentation <https://github.com/sirthias/parboiled2>`_
+  - `parboiled2 JSON parser example <https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala>`_
+
+    
+
+Programming language semantics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Semantics, a formalization of the *meaning* of programs in a particular language, includes *static* and *dynamic* semantics.
+
+- `static semantics <http://en.wikipedia.org/wiki/Programming_language#Semantics>`_ (compile-time)
 
   - flow analysis
   - typing
 
-- `dynamic semantics <http://en.wikipedia.org/wiki/Semantics_of_programming_languages>`_ - run-time
+- `dynamic semantics <http://en.wikipedia.org/wiki/Semantics_of_programming_languages>`_ (run-time)
 
   - denotational
   - operational, e.g. our interpreters
   - axiomatic
 
-The Interpreter pattern is related to this discussion.
+The Interpreter pattern is related to the discussion of dynamic semantics.
 
 - http://c2.com/cgi/wiki?InterpreterPattern
 - http://en.wikipedia.org/wiki/Interpreter_pattern
 
 
-A simple imperative language
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Case study: a simple imperative language
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this section, we discuss the design of an interpreter and programming environment for a simple imperative language. 
 
@@ -67,6 +103,7 @@ The accompanying lecture is available as a set of screencasts:
 - `foundations <https://youtu.be/-bDcsvlY5oA>`_
 - `implementation <https://youtu.be/mj-tq_kdeF>`_
 
+  
 Objectives
 ``````````
 
@@ -140,14 +177,16 @@ Note that the connection between the various statements is that they share a sin
 The interpreter program
 ```````````````````````
 
-We now go ahead and write the interpreter program. The entire code is available as part of the [misc-scala](https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative) example. A similar example but based on F-algebras and with better runtime error handling is also available: [simpleimperative-algebraic-scala](https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala).
+We now go ahead and write the interpreter program.
+The entire code is available as part of the `misc-scala <https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative`>_ example.
+A similar example but based on F-algebras and with better runtime error handling is also available: `simpleimperative-algebraic-scala <https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala>`_.
 
 
 
-A simple imperative language with records
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Case study: a simple imperative language with records
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this handout, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).
+In this section, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).
 
 Objectives
 ``````````
@@ -295,52 +334,52 @@ The execution rules are given in the following pictures:
 Implementation
 ``````````````
 
-The entire code for the implementation of the simple imperative language with records is available [here](https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records).
-
-
-
-Project 3a References
-`````````````````````
-
-- [simple expression combinator parser example](https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala)
-- [regular expressions in Java](http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf)
-- [regular expressions](http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf)
-- [parser combinators](https://en.wikipedia.org/wiki/Parser_combinator)
-- Scala parser combinators: [API](http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started)
-
-Alternative approaches to parsing
-
-- [parser generator](https://en.wikipedia.org/wiki/Compiler-compiler)
-- [scala-bison](https://github.com/djspiewak/scala-bison)
-- [parsing expression grammar](http://en.wikipedia.org/wiki/Parsing_expression_grammar)
-- [parboiled2 documentation](https://github.com/sirthias/parboiled2)
-- [parboiled2 JSON parser example](https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala)
-- [From EBNF to PEG](http://ceur-ws.org/Vol-928/0324.pdf)
-
+The entire code for the implementation of the simple imperative language with records is available `here <https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records>`_.
 
 
 
 Type systems
 ~~~~~~~~~~~~
 
-- [design space](http://en.wikipedia.org/wiki/Type_system), tradeoffs, [representative examples](http://en.wikipedia.org/wiki/Comparison_of_type_systems)
-- [presentation slides 10-29](http://klaeufer.github.io/luc-amc.html#(10))
-- performance implications/[shootout](http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php)
+Type systems are an important aspect of programming languages.
+We identify the following dimensions:
+
+- static versus dynamic
+- strong versus weak
+- implicit versus explicit
+
+.. image:: images/DesignSpaceTypeSystems.jpg 
+
+Additional information is available here:	   
+
+- `design space and tradeoffs <http://en.wikipedia.org/wiki/Type_system>`_
+- `representative examples <http://en.wikipedia.org/wiki/Comparison_of_type_systems>`_
+- `presentation slides 10-29 <http://klaeufer.github.io/luc-amc.html#(10)>`_
+- `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
 
 
 Domain-specific languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Domain-specific languages are special-purpose languages for solving problems in particular domains.
+We identify the following dimensions:
+
+- internal/embedded language versus external language
+- business domain versus technical domain
+
+.. image:: images/DesignSpaceDSL.jpg 
+
+In addition, there is a continuum between APIs and internal DSLs.
+
+.. image:: images/APIvsDSL.jpg 
+
+Additional information is available here:	   
 
 - http://c2.com/cgi/wiki?DomainSpecificLanguage
 - http://martinfowler.com/bliki/FluentInterface.html
 - http://martinfowler.com/bliki/DomainSpecificLanguage.html
 - http://martinfowler.com/books/dsl.html
 - http://en.wikipedia.org/wiki/Domain-specific_language
-- [SE Radio episode 182](http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/)
+- `SE Radio episode 182 <http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/>`_
 
 
-.. image:: images/APIvsDSL.jpg 
-
-.. image:: images/DesignSpaceTypeSystems.jpg
-
-.. image:: images/DesignSpaceDSL.jpg
