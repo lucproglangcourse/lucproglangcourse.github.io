@@ -1,3 +1,8 @@
+commit a867d92
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added ref - Scala tutorial for Java programmers
+
 commit b205c69
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
