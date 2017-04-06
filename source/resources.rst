@@ -118,6 +118,7 @@ Online Scala resources
 - `Twitter Scala School <http://twitter.github.io/scala_school/>`_
 - `Scala resources from an Applied Text Analysis course <http://ata-s12.utcompling.com/links>`_
 - `Scala documentation site <http://docs.scala-lang.org>`_
+- `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_
 - `Scala API documentation <http://www.scala-lang.org/api/current/#package>`_
 - `Scala style guide <http://docs.scala-lang.org/style>`_
 - `Scala parser combinator tutorial <http://www.dontbreakthebuild.com/2013/07/30/basic-parsing-in-scala-using-parsing-combinators>`_
