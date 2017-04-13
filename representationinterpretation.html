@@ -353,7 +353,7 @@ To this end, we need to talk about the toolchain required to do so, as well as t
   <span class="o">|</span>   <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">S</span>
 </pre></div>
 </div>
-<p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like &#8220;x + 3&#8221;, whereas earlier we could only write expressions such as &#8220;4 + 3&#8221;. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
+<p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like <cite>x + 3</cite>, whereas earlier we could only write expressions such as <cite>4 + 3</cite>. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
 </div>
 <div class="section" id="structured-operational-semantics-sos">
 <h3>5.4.3. Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline">¶</a></h3>
@@ -381,7 +381,7 @@ To this end, we need to talk about the toolchain required to do so, as well as t
 <p>The execution rules are given in the following pictures:</p>
 <img alt="_images/execution1.png" src="_images/execution1.png" />
 <img alt="_images/execution2.png" src="_images/execution2.png" />
-<p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements &#8220;x = 2; y = x + 1&#8221;, the second reference to x reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
+<p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements <cite>x = 2; y = x + 1</cite>, the second reference to <cite>x</cite> reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
 </div>
 <div class="section" id="the-interpreter-program">
 <h3>5.4.4. The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline">¶</a></h3>
