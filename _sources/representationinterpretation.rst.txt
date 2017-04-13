@@ -178,7 +178,7 @@ The interpreter program
 ```````````````````````
 
 We now go ahead and write the interpreter program.
-The entire code is available as part of the `misc-scala <https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative`>_ example.
+The entire code is available as part of the `misc-scala <https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative>`_ example.
 A similar example but based on F-algebras and with better runtime error handling is also available: `simpleimperative-algebraic-scala <https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala>`_.
 
 
