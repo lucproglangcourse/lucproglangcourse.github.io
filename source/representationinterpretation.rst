@@ -132,7 +132,7 @@ Statements given by the BNF grammar::
       |   while (e) S
 
 
-In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like "x + 3", whereas earlier we could only write expressions such as "4 + 3". We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.
+In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like `x + 3`, whereas earlier we could only write expressions such as `4 + 3`. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.
 
 Structured operational semantics (SOS)
 ``````````````````````````````````````
@@ -171,7 +171,7 @@ The execution rules are given in the following pictures:
 
 .. image:: images/execution2.png
 
-Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements "x = 2; y = x + 1", the second reference to x reflects the effect of the first assignment because of the (shared) store between the two assignment statements.
+Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements `x = 2; y = x + 1`, the second reference to `x` reflects the effect of the first assignment because of the (shared) store between the two assignment statements.
 
 
 The interpreter program
