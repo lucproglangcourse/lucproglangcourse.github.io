@@ -161,7 +161,10 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">5. Program Representation and Interpretation</a><ul>
-<li><a class="reference internal" href="#programming-language-toolchains">5.1. Programming language toolchains</a></li>
+<li><a class="reference internal" href="#programming-language-toolchains">5.1. Programming language toolchains</a><ul>
+<li><a class="reference internal" href="#cross-compilation">5.1.1. Cross-compilation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#compiler-front-end-concepts-and-techniques">5.2. Compiler front-end concepts and techniques</a><ul>
 <li><a class="reference internal" href="#lexical-analysis">5.2.1. Lexical analysis</a></li>
 <li><a class="reference internal" href="#syntax-analysis">5.2.2. Syntax analysis</a></li>
@@ -251,10 +254,40 @@ To this end, we need to talk about the toolchain required to do so, as well as t
 <li>transformed abstract syntax tree</li>
 <li><em>code generation</em></li>
 <li>machine code or byte code</li>
-<li><em>execution</em></li>
+<li><em>execution</em> on physical hardware, virtual hardware, or virtual machine</li>
 <li>alternative: <em>direct interpretation of abstract syntax trees</em></li>
 </ul>
 <p>Reference: <a class="reference external" href="http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics">Mogensen</a></p>
+<div class="section" id="cross-compilation">
+<h3>5.1.1. Cross-compilation<a class="headerlink" href="#cross-compilation" title="Permalink to this headline">¶</a></h3>
+<p>Cross-compilation is a useful technique when the target environment does not provide sufficient computational resources to compile software in the target environment itself.
+Common examples include mobile phones and other embedded devices.
+For example, one usually develops Android apps on a development machine, tests them on an Android virtual device (emulator), and deploys them to an actual phone or tablet.</p>
+<p>The following example shows cross-compilation of a small C program on a development machine and execution in the target environment.</p>
+<ol class="arabic">
+<li><p class="first">First, we compile the source on our development machine, in this case, a hosted Linux VM using the <a class="reference external" href="http://openwrt.org">OpenWrt</a> embedded Linux toolchain:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[laufer@boole:~/Work/hello] 130 $ cat hello.c
+main() {
+  puts(&quot;hello ETL!&quot;);
+}
+[laufer@boole:~/Work/hello] $ ~/Work/OpenWrt-SDK-15.05.1-ramips-rt305x_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-uclibc-gcc hello.c
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now we deploy the resulting executable to the target environment using, say, <code class="docutils literal"><span class="pre">scp</span></code>.</p>
+</li>
+<li><p class="first">Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a &#8220;portable travel router&#8221;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>root@ExPodNano:~# ldd ./a.out
+libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x770d5000)
+libc.so.0 =&gt; /lib/libc.so.0 (0x77069000)
+ld-uClibc.so.0 =&gt; /lib/ld-uClibc.so.0 (0x770f9000)
+root@ExPodNano:~# ./a.out
+hello ETL!
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="section" id="compiler-front-end-concepts-and-techniques">
 <h2>5.2. Compiler front-end concepts and techniques<a class="headerlink" href="#compiler-front-end-concepts-and-techniques" title="Permalink to this headline">¶</a></h2>

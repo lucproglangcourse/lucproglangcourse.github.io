@@ -1,3 +1,13 @@
+commit 588b4dc
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added cross-compilation example
+
+commit f1139e7
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor cosmetic fixes
+
 commit 9dc85f7
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
