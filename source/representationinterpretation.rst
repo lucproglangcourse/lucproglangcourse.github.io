@@ -20,11 +20,40 @@ We will start with an overview of the phases of programming language `compilatio
 - transformed abstract syntax tree
 - *code generation*
 - machine code or byte code
-- *execution*
+- *execution* on physical hardware, virtual hardware, or virtual machine
 - alternative: *direct interpretation of abstract syntax trees*
 
-
 Reference: `Mogensen <http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics>`_
+
+
+Cross-compilation
+`````````````````
+
+Cross-compilation is a useful technique when the target environment does not provide sufficient computational resources to compile software in the target environment itself.
+Common examples include mobile phones and other embedded devices.
+For example, one usually develops Android apps on a development machine, tests them on an Android virtual device (emulator), and deploys them to an actual phone or tablet.
+
+The following example shows cross-compilation of a small C program on a development machine and execution in the target environment.
+
+#. First, we compile the source on our development machine, in this case, a hosted Linux VM using the `OpenWrt <http://openwrt.org>`_ embedded Linux toolchain::
+
+    [laufer@boole:~/Work/hello] 130 $ cat hello.c
+    main() {
+      puts("hello ETL!");
+    }
+    [laufer@boole:~/Work/hello] $ ~/Work/OpenWrt-SDK-15.05.1-ramips-rt305x_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-uclibc-gcc hello.c
+
+    
+#. Now we deploy the resulting executable to the target environment using, say, ``scp``.
+    
+#. Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a "portable travel router"::
+
+    root@ExPodNano:~# ldd ./a.out
+    libgcc_s.so.1 => /lib/libgcc_s.so.1 (0x770d5000)
+    libc.so.0 => /lib/libc.so.0 (0x77069000)
+    ld-uClibc.so.0 => /lib/ld-uClibc.so.0 (0x770f9000)
+    root@ExPodNano:~# ./a.out
+    hello ETL!
 
 
 Compiler front-end concepts and techniques
