@@ -48,7 +48,7 @@ Important Dates
 - Tue 14 March: test 1 
 - Tue 4 April: quiz 2
 - Tue 18 April: test 2
-- Tue 2 May: test 3
+- Tue 2 May **16:15-18:15**: test 3
 	     
 Key Resources
 ~~~~~~~~~~~~~
