@@ -1,3 +1,13 @@
+commit 82c0d4a
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to comparison of type systems
+
+commit 9621868
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated syllabus
+
 commit 588b4dc
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

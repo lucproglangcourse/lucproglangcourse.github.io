@@ -383,6 +383,7 @@ Additional information is available here:
 
 - `design space and tradeoffs <http://en.wikipedia.org/wiki/Type_system>`_
 - `representative examples <http://en.wikipedia.org/wiki/Comparison_of_type_systems>`_
+- `comprehensive list <https://en.wikipedia.org/wiki/Comparison_of_programming_languages_by_type_system>`_
 - `presentation slides 10-29 <http://klaeufer.github.io/luc-amc.html#(10)>`_
 - `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
 
