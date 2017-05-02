@@ -32,7 +32,7 @@ Activity terminology and concerns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - process: own memory
-- thread: shared memory
+- thread: shared memory *and* "thread-local" state
 - foreground versus background
 - CPU-bound versus IO-bound
 
