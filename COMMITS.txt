@@ -1,3 +1,8 @@
+commit a2d200e
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated concurrency chapter
+
 commit 82c0d4a
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
