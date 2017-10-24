@@ -21,9 +21,7 @@ Section: 001 Spring 2018
   Publisher: Addison-Wesley Professional
   Pub. Date: December 15, 2016
   Web ISBN-13: 978-0-13-454062-7
-  Web ISBN-10: 0-13-454062-X
   Print ISBN-13: 978-0-13-454056-6
-  Print ISBN-10: 0-13-454056-5
   `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627>`_
   
 Section: 001 Spring 2017
