@@ -1,3 +1,8 @@
+commit d980b2d
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added spring 2018 textbook info
+
 commit e827498
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
