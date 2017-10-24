@@ -16,7 +16,7 @@ Section: 001 Spring 2018
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 - *Required text:*
-  **Scala for the Impatient (2nd ed.)**
+  **Scala for the Impatient, Second Edition**
   *By: Cay S. Horstmann*
   Publisher: Addison-Wesley Professional
   Pub. Date: December 15, 2016

@@ -1,3 +1,8 @@
+commit d75cb57
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor cosmetic edit
+
 commit d980b2d
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
