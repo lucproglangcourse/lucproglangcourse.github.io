@@ -95,6 +95,10 @@ The more familiar one becomes with the various predefined building blocks, the m
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
 
+.. todo:: add more recent idioms including successive ``Try`` and
+	  ``for`` with blocks for embedding stateful steps such as logging
+
+
 Challenges
 ``````````
 
