@@ -93,13 +93,51 @@ Note that we are using ``foreach`` when the body of the iteration produces a *si
 If we wanted to compute a *result value*, we could use ``foldLeft`` instead of ``foreach``.
 
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
+
+Trying successive choices until either one succeeds or there is none left and we have to give up. 
+Nested ``try``-``catch`` statements are often used to achieve this::
+
+  AuthorizeRequestStrategy authorizeRequest = null;
+  try {
+    logger.debug("looking for access token");
+    ...
+    logger.debug("found access token");
+    authorizeRequest = (request) -> request.addHttpHeaders(authHeader);
+  } catch (final FileNotFoundException ex) {
+    try {
+      logger.debug("looking for API key in environment");
+      final String apiKey = sys.env("API_KEY");
+      logger.debug("found API key");
+      authorizeRequest = (request) -> request.addQueryStringParameter("key", apiKey);
+    } catch (final NoSuchElementException ex) {
+      logger.debug("no authorization information found, exiting");
+      System.exit(401);
+    }
+  }
+
+Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orElse``::
+
+   val authorizeRequest = Try {
+      logger.debug("looking for access token in property file")
+      ...
+      logger.debug("found access token")
+      val authHeader = KeyAuthorization -> s"Bearer $accessToken"
+      (request: WSRequest) => request.addHttpHeaders(authHeader)
+    } orElse Try {
+      logger.debug("looking for API key in environment")
+      val apiKey = sys.env("API_KEY")
+      logger.debug("found API key")
+      (request: WSRequest) => request.addQueryStringParameters("key" -> apiKey)
+    } getOrElse {
+      logger.debug("no authorization information found, exiting")
+      sys.exit(401)
+    }
+
   
 The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
-
-.. todo:: add more recent idioms including successive ``Try`` and
-	  ``for`` with blocks for embedding stateful steps such as logging
+.. todo:: ``for`` with blocks for embedding stateful steps such as logging
 
 
 Challenges
