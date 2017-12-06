@@ -335,12 +335,50 @@ The main building blocks in scripting-style Scala are the collection and utility
 <p>Note that we are using <code class="docutils literal"><span class="pre">foreach</span></code> when the body of the iteration produces a <em>side effect</em> such as output.
 If we wanted to compute a <em>result value</em>, we could use <code class="docutils literal"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal"><span class="pre">foreach</span></code>.</p>
 <p>Note also that all of these are methods but look like control structures because of Scala&#8217;s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
+<p>Trying successive choices until either one succeeds or there is none left and we have to give up.
+Nested <code class="docutils literal"><span class="pre">try</span></code>-<code class="docutils literal"><span class="pre">catch</span></code> statements are often used to achieve this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AuthorizeRequestStrategy</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token&quot;</span><span class="p">);</span>
+  <span class="o">...</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">);</span>
+  <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">FileNotFoundException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">);</span>
+    <span class="n">final</span> <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">);</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">);</span>
+    <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameter</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">);</span>
+  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">NoSuchElementException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Immutable equivalent using successive <code class="docutils literal"><span class="pre">Try</span></code> blocks, flat-chained using <code class="docutils literal"><span class="pre">orElse</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">Try</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token in property file&quot;</span><span class="p">)</span>
+   <span class="o">...</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">)</span>
+   <span class="n">val</span> <span class="n">authHeader</span> <span class="o">=</span> <span class="n">KeyAuthorization</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="s2">&quot;Bearer $accessToken&quot;</span>
+   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">)</span>
+ <span class="p">}</span> <span class="n">orElse</span> <span class="n">Try</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">)</span>
+   <span class="n">val</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">)</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameters</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">-&gt;</span> <span class="n">apiKey</span><span class="p">)</span>
+ <span class="p">}</span> <span class="n">getOrElse</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">)</span>
+   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
 <p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
 <div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
-<p class="last">add more recent idioms including successive <code class="docutils literal"><span class="pre">Try</span></code> and
-<code class="docutils literal"><span class="pre">for</span></code> with blocks for embedding stateful steps such as logging</p>
+<p class="last"><code class="docutils literal"><span class="pre">for</span></code> with blocks for embedding stateful steps such as logging</p>
 </div>
 </div>
 <div class="section" id="challenges">

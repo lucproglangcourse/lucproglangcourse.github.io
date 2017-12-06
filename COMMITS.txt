@@ -1,3 +1,8 @@
+commit 145c360
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added Try-orElse example
+
 commit 072519a
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
