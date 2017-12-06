@@ -45,7 +45,7 @@ Examples
 ````````
 
   
-Loop over a finite collection or iterator using mutable state::
+Loop over all items in a finite collection or iterator using mutable state::
 
   final Iterator<String> incoming = ...;
   int sum = 0;
@@ -69,16 +69,19 @@ Immutable equivalent using ``foldLeft``::
 
 Unbounded loop until a condition is met::
 
-  while ((/* ... */ ; line = reader.readLine()) != null ; line) {
+  final Scanner input = new Scanner(System.in);
+  System.out.print("enter next expression: ");
+  while (input.hasNextLine()) {
+    final String line = input.nextLine();
     processExpr(line)
+    System.out.print("enter next expression: ");
   }
-
 
 Immutable equivalent using ``continually``::
 
   Iterator continually {
-    // ...
-    reader.readLine()
+    print("enter next expression: ")
+    StdIn.readLine()
   } takeWhile { line =>
     line != null
   } foreach { line =>
