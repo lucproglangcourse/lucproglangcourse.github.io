@@ -291,7 +291,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 </div>
 <div class="section" id="examples">
 <h3>4.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p>Loop over a finite collection or iterator using mutable state:</p>
+<p>Loop over all items in a finite collection or iterator using mutable state:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
 <span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nb">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -312,15 +312,19 @@ The main building blocks in scripting-style Scala are the collection and utility
 </pre></div>
 </div>
 <p>Unbounded loop until a condition is met:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">((</span><span class="o">/*</span> <span class="o">...</span> <span class="o">*/</span> <span class="p">;</span> <span class="n">line</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="n">null</span> <span class="p">;</span> <span class="n">line</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Scanner</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
+<span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
   <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Immutable equivalent using <code class="docutils literal"><span class="pre">continually</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Iterator</span> <span class="n">continually</span> <span class="p">{</span>
-  <span class="o">//</span> <span class="o">...</span>
-  <span class="n">reader</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">)</span>
+  <span class="n">StdIn</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
 <span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
   <span class="n">line</span> <span class="o">!=</span> <span class="n">null</span>
 <span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
