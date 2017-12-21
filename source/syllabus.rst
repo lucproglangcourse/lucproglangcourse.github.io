@@ -48,22 +48,21 @@ Section: 001 Spring 2017
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_372_001_5616_1172>`_
 - `Slack team <https://lucproglangcourse.slack.com>`_ *(mandatory subscription)*
 
+- Important Dates
+
+  - Tue 7 February: quiz 1
+  - Tue 7 March: NO CLASS - spring break
+  - Tue 14 March: test 1 
+  - Tue 4 April: quiz 2
+  - Tue 18 April: test 2
+  - Tue 2 May **16:15-18:15**: test 3
+
+  
 Detailed Course Outline
 ~~~~~~~~~~~~~~~~~~~~~~~
   
 .. include:: detailedoutline.txt
 
-
-Important Dates
-~~~~~~~~~~~~~~~
-
-- Tue 7 February: quiz 1
-- Tue 7 March: NO CLASS - spring break
-- Tue 14 March: test 1 
-- Tue 4 April: quiz 2
-- Tue 18 April: test 2
-- Tue 2 May **16:15-18:15**: test 3
-	     
 Key Resources
 ~~~~~~~~~~~~~
 
