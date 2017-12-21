@@ -1,6 +1,7 @@
+.. _appendix-resources:  
+
 Appendix: Resources
 -------------------
-
 
 .. todo:: consider moving most of these into the corresponding
 	  chapters as "further reading"
@@ -30,14 +31,16 @@ requests <https://help.github.com/articles/using-pull-requests>`_ with improveme
 Required text
 ~~~~~~~~~~~~~
 
-- **Programming in Scala, Third Edition**
-  *By: Martin Odersky; Lex Spoon; Bill Venners*
-  Publisher: Artima Press
-  Pub. Date: April 28, 2016
-  ISBN-10: 0-9815316-8-7
-  ISBN-13: 978-0-9815316-8-7
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
+- *Required text:*
+  **Scala for the Impatient, Second Edition**
+  *By: Cay S. Horstmann*
+  Publisher: Addison-Wesley Professional
+  Pub. Date: December 15, 2016
+  Web ISBN-13: 978-0-13-454062-7
+  Print ISBN-13: 978-0-13-454056-6
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627>`_
 
+  
 Recommended/supplementary texts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -72,6 +75,14 @@ Recommended/supplementary texts
 Additional texts on Scala
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Programming in Scala, Third Edition**
+  *By: Martin Odersky; Lex Spoon; Bill Venners*
+  Publisher: Artima Press
+  Pub. Date: April 28, 2016
+  ISBN-10: 0-9815316-8-7
+  ISBN-13: 978-0-9815316-8-7
+  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
+
 - **Learning Scala**
   *By: Jason Swartz*
   Publisher: O'Reilly Media, Inc.
@@ -82,16 +93,6 @@ Additional texts on Scala
 - **A Concise Introduction to Scala**
   *By: David Matuszek*
   `available online <https://www.cis.upenn.edu/~matuszek/Concise%20Guides/Concise%20Scala.html>`_
-
-- **Scala for the Impatient**
-  *By: Cay S. Horstmann*
-  Publisher: Addison-Wesley Professional
-  Pub. Date: March 06, 2012
-  Print ISBN-10: 0-321-77409-4
-  Print ISBN-13: 978-0-321-77409-5
-  Web ISBN-10: 0-13-276177-7
-  Web ISBN-13: 978-0-13-276177-2
-  `first half available free from Typesafe <http://typesafe.com/resources/e-book/scala-for-the-impatient>`_
 
 - **Scala for Java Developers**
   *By: Thomas Alexandre*

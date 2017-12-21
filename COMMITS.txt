@@ -1,3 +1,13 @@
+commit 0014d61
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated syllabus and resources for spring 2018
+
+commit f9c11c9
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    moved previous important dates under spring 2017
+
 commit 145c360
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
