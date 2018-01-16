@@ -122,6 +122,7 @@ Online Scala resources
 - `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_
 - `Scala API documentation <http://www.scala-lang.org/api/current/#package>`_
 - `Scala style guide <http://docs.scala-lang.org/style>`_
+- `Scala Cookbook <http://scalacookbook.com/>`_
 - `Scala parser combinator tutorial <http://www.dontbreakthebuild.com/2013/07/30/basic-parsing-in-scala-using-parsing-combinators>`_
 - `parboiled2 parser generator <https://github.com/sirthias/parboiled2>`_
 - `scalaz API documentation (advanced) <http://docs.typelevel.org/api/scalaz/stable/7.1.0-M3/doc>`_
