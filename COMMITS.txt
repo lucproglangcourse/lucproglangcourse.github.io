@@ -1,3 +1,8 @@
+commit 14676ec
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to Scala cookbook
+
 commit 0014d61
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
