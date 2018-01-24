@@ -37,7 +37,7 @@ Section: 001 Spring 2018
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_372_001_6273_1182>`_
 - `Slack team <https://lucproglangcourse.slack.com>`_ *(mandatory subscription)*
 
-- Important dates: TBD
+- Important dates: 
 
   - Thu 8 February: quiz 1
   - Thu 22 February: test 1 
