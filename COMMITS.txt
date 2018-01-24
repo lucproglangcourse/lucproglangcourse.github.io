@@ -1,3 +1,8 @@
+commit 6c6dda6
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed scripts for cross-platform use
+
 commit 45d14a6
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
