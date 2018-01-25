@@ -1,3 +1,8 @@
+commit ad9cf07
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to office location in current syllabus
+
 commit 265c657
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
