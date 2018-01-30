@@ -40,7 +40,7 @@ Section: 001 Spring 2018
 - Important dates: 
 
   - Thu 8 February: quiz 1
-  - Thu 22 February: test 1 
+  - Tue 20 February: test 1 
   - Tue 6 March: NO CLASS - spring break
   - Thu 8 March: NO CLASS - spring break
   - Thu 22 March: quiz 2
