@@ -163,8 +163,12 @@ To break the standard input down further into words, we can use this recipe::
 
 In Scala, ``print`` and ``println`` print to stdout.
 
-Console applications written in this way can be part of a Unix pipeline only to a limited extent.
-Unfortunately, the Java virtual machine ignores the ``SIGPIPE`` error signal, so we cannot use Scala (or Java) console applications as upstream components that produce an infinite output sequence and depend on this signal.
+By default, the Java virtual machine ignores the ``SIGPIPE`` error signal.
+Therefore, to use a Scala (or Java) console applications as an upstream component that produces an infinite output sequence, we have to configure a signal handler for it that terminates on SIGPIPE::
+
+    import sun.misc.Signal
+    Signal.handle(new Signal("PIPE"), _ => scala.sys.exit())
+
 
 .. _subsecConstantSpace:
 

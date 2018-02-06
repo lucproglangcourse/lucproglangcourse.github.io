@@ -1,3 +1,8 @@
+commit a79d4b3
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added info on handling SIGPIPE
+
 commit 4ea3a67
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
