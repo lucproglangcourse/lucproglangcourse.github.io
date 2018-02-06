@@ -382,6 +382,10 @@ Therefore, to use a Scala (or Java) console applications as an upstream componen
 <span class="n">Signal</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="n">new</span> <span class="n">Signal</span><span class="p">(</span><span class="s2">&quot;PIPE&quot;</span><span class="p">),</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">())</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal"><span class="pre">sun.misc.Signal</span></code> is a less widely known feature of Java and may be removed or replaced in the future.</p>
+</div>
 </div>
 <div class="section" id="the-importance-of-constant-space-complexity">
 <span id="subsecconstantspace"></span><h3>3.2.2. The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Permalink to this headline">¶</a></h3>

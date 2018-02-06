@@ -170,6 +170,9 @@ Therefore, to use a Scala (or Java) console applications as an upstream componen
     Signal.handle(new Signal("PIPE"), _ => scala.sys.exit())
 
 
+.. warning:: ``sun.misc.Signal`` is a less widely known feature of Java and may be removed or replaced in the future.
+    
+
 .. _subsecConstantSpace:
 
 The importance of constant-space complexity
