@@ -1,3 +1,8 @@
+commit c409245
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added scanLeft to list of key methods
+
 commit 0903329
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
