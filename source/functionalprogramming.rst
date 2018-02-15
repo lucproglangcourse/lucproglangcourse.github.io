@@ -261,7 +261,7 @@ Here are some observations:
 
 - ``foldLeft`` is usually what we want: *linear-time* and *constant-space* (naturally tail-recursive).
 - ``foldRight`` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list. 
-- `xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)` where `g` is `f` with the arguments switched.
+- ``xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)`` where ``g`` is ``f`` with the arguments switched.
 
 To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for *definition classes*, follow the link to the leftmost definition class, then the link to that class's Scala source, and finally look for the actual method.
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
