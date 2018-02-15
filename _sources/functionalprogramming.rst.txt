@@ -34,7 +34,7 @@ Many of these, especially collection types and certain utility types, are *algeb
 By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
 The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
 
-- key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``groupBy``, ``collect``
+- key methods ``map``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``fold``, ``scanLeft``, ``groupBy``, ``collect``
 - ``for`` comprehensions
 
 
@@ -261,18 +261,18 @@ Here are some observations:
 
 - ``foldLeft`` is usually what we want: *linear-time* and *constant-space* (naturally tail-recursive).
 - ``foldRight`` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list. 
-- `xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)` where `g` is `f` with the arguments switched.
+- ``xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)`` where ``g`` is ``f`` with the arguments switched.
 
 To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for *definition classes*, follow the link to the leftmost definition class, then the link to that class's Scala source, and finally look for the actual method.
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
 Here are some examples:
 
-- `foreach <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L375>`_
-- `foldLeft <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L118>`_
-- `reverse <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L383>`_
-- `foldRight <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L393>`_
-- `map <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L269>`_
-- `length <https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
+- `foreach <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L375>`_
+- `foldLeft <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L118>`_
+- `reverse <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L383>`_
+- `foldRight <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L393>`_
+- `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269>`_
+- `length <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
   
 For more details on space complexity and tail recursion, please take a look at these references:

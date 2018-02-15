@@ -275,7 +275,7 @@ Many of these, especially collection types and certain utility types, are <em>al
 <p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
 The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with</p>
 <ul class="simple">
-<li>key methods <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> / <code class="docutils literal"><span class="pre">withFilter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">flatMap</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">fold</span></code>, <code class="docutils literal"><span class="pre">groupBy</span></code>, <code class="docutils literal"><span class="pre">collect</span></code></li>
+<li>key methods <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> / <code class="docutils literal"><span class="pre">withFilter</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">flatMap</span></code>, <code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">fold</span></code>, <code class="docutils literal"><span class="pre">scanLeft</span></code>, <code class="docutils literal"><span class="pre">groupBy</span></code>, <code class="docutils literal"><span class="pre">collect</span></code></li>
 <li><code class="docutils literal"><span class="pre">for</span></code> comprehensions</li>
 </ul>
 <div class="admonition-todo admonition" id="index-0">
@@ -479,18 +479,18 @@ This <a class="reference external" href="https://github.com/lucproglangcourse/mi
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">foldLeft</span></code> is usually what we want: <em>linear-time</em> and <em>constant-space</em> (naturally tail-recursive).</li>
 <li><code class="docutils literal"><span class="pre">foldRight</span></code> is <em>linear-time</em> and <em>linear-space</em> (<em>not</em> tail-recursive) but goes with the natural head-tail structure of the list.</li>
-<li><cite>xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)</cite> where <cite>g</cite> is <cite>f</cite> with the arguments switched.</li>
+<li><code class="docutils literal"><span class="pre">xs.foldRight(z)(f)</span> <span class="pre">==</span> <span class="pre">xs.reverse.foldLeft(z)(g)</span></code> where <code class="docutils literal"><span class="pre">g</span></code> is <code class="docutils literal"><span class="pre">f</span></code> with the arguments switched.</li>
 </ul>
 <p>To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for <em>definition classes</em>, follow the link to the leftmost definition class, then the link to that class’s Scala source, and finally look for the actual method.
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
 Here are some examples:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L375">foreach</a></li>
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L118">foldLeft</a></li>
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L383">reverse</a></li>
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L393">foldRight</a></li>
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/immutable/List.scala#L269">map</a></li>
-<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.1/src/library/scala/collection/LinearSeqOptimized.scala#L47">length</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L375">foreach</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L118">foldLeft</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L383">reverse</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L393">foldRight</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269">map</a></li>
+<li><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47">length</a></li>
 </ul>
 <p>For more details on space complexity and tail recursion, please take a look at these references:</p>
 <ul class="simple">

@@ -1,3 +1,8 @@
+commit ea5bd99
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed markup for fold equivalence
+
 commit 1cb9db1
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
