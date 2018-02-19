@@ -1,3 +1,8 @@
+commit af9ecfd
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added zip to list of key methods
+
 commit ea5bd99
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
