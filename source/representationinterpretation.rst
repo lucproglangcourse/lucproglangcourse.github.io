@@ -370,13 +370,14 @@ The entire code for the implementation of the simple imperative language with re
 Type systems
 ~~~~~~~~~~~~
 
-Type systems are an important aspect of programming languages.
-We identify the following dimensions:
+Type systems are an important aspect of programming languages. We identify the following dimensions:
 
-- static versus dynamic
-- strong versus weak
-- implicit versus explicit
+- static versus dynamic typing
+- strong versus weak type safety
+- implicit versus explicit type information
+- nominal versus structural type equivalence
 
+  
 .. image:: images/DesignSpaceTypeSystems.jpg 
 
 Additional information is available here:	   
