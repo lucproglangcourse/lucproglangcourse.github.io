@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>5. Program Representation and Interpretation &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -19,10 +25,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -34,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -70,7 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">1.2. Key learning outcomes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">1.3. Some starting points for functional programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">1.4. Course outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom’s taxonomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a><ul>
@@ -279,7 +285,7 @@ main() {
 </li>
 <li><p class="first">Now we deploy the resulting executable to the target environment using, say, <code class="docutils literal"><span class="pre">scp</span></code>.</p>
 </li>
-<li><p class="first">Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a “portable travel router”:</p>
+<li><p class="first">Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a &#8220;portable travel router&#8221;:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>root@ExPodNano:~# ldd ./a.out
 libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x770d5000)
 libc.so.0 =&gt; /lib/libc.so.0 (0x77069000)
@@ -369,7 +375,7 @@ hello ETL!
 <h3>5.4.1. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
-<li>To understand an object-oriented programming language from the “inside”.</li>
+<li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
 <li>To understand better the object-oriented and functional design patterns that we have learned by using them in the context of a small but somewhat sophisticated program.</li>
 </ul>
 </div>
@@ -433,7 +439,7 @@ A similar example but based on F-algebras and with better runtime error handling
 <h3>5.5.1. Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
-<li>To understand an object-oriented programming language from the “inside”.</li>
+<li>To understand an object-oriented programming language from the &#8220;inside&#8221;.</li>
 <li>To understand better the object-oriented and functional design patterns that we have learned by using them in the context of a small but somewhat sophisticated program.</li>
 </ul>
 <p>We now consider the changes that arise from the addition of records. Thus, we permit:</p>
@@ -545,7 +551,7 @@ A similar example but based on F-algebras and with better runtime error handling
 <p>The rules for executing statements are as follows. They are similar to the ones seen before. The primary consequence of executing a statement still is the side effect on the store, ie. changes in the values of variables.</p>
 <ul class="simple">
 <li>Executing an assignment statement L = e. Here L is an L-valued expression and e is an R-valued expression. The steps are as follows. First, evaluate the expression L to yield an L-value, say l. Next, evaluate the expression e to yield an R-value, say v. Next, use l.set(v) to change the value of the variable object.</li>
-<li>Executing a sequence of statements “S1; S2” and a “while” loop are as before.</li>
+<li>Executing a sequence of statements &#8220;S1; S2&#8221; and a &#8220;while&#8221; loop are as before.</li>
 </ul>
 <p>The execution rules are given in the following pictures:</p>
 <img alt="_images/records5.png" src="_images/records5.png" />
@@ -557,12 +563,12 @@ A similar example but based on F-algebras and with better runtime error handling
 </div>
 <div class="section" id="type-systems">
 <h2>5.6. Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline">¶</a></h2>
-<p>Type systems are an important aspect of programming languages.
-We identify the following dimensions:</p>
+<p>Type systems are an important aspect of programming languages. We identify the following dimensions:</p>
 <ul class="simple">
-<li>static versus dynamic</li>
-<li>strong versus weak</li>
-<li>implicit versus explicit</li>
+<li>static versus dynamic typing</li>
+<li>strong versus weak type safety</li>
+<li>implicit versus explicit type information</li>
+<li>nominal versus structural type equivalence</li>
 </ul>
 <img alt="_images/DesignSpaceTypeSystems.jpg" src="_images/DesignSpaceTypeSystems.jpg" />
 <p>Additional information is available here:</p>
@@ -610,7 +616,7 @@ We identify the following dimensions:</p>
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>
