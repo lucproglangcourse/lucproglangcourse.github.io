@@ -134,8 +134,8 @@ These are useful additional sbt plugins. `You can install them per project or gl
 - `sbt-stats <https://github.com/orrsella/sbt-stats>`_: simple, extensible source code statistics/metrics
 
 
-Bitbucket 
-~~~~~~~~~
+GitLab
+~~~~~~
 
 `GitLab <https://gitlab.com>`_ is a provider of hosted Git repositories. We use it for project submission and collaboration on team projects.
 
