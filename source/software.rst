@@ -137,11 +137,10 @@ These are useful additional sbt plugins. `You can install them per project or gl
 Bitbucket 
 ~~~~~~~~~
 
-`Bitbucket <https://bitbucket.org>`_ is a provider of hosted Git repositories. We use it for project submission and collaboration on team projects.
+`GitLab <https://gitlab.com>`_ is a provider of hosted Git repositories. We use it for project submission and collaboration on team projects.
 
-- Create an account on if you do not yet have one.
-- To get upgraded to the top plan for free, associate your account with your official LUC email address.
-- Use `this excellent documentation <https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html>`_ to set up public key authentication for your environment. This will allow you to use Git on the command line without having to enter your password.
+- Create an account if you do not yet have one. (You can also log in using your existing Google or GitHub account.)
+- Use `this excellent documentation <https://gitlab.com/help/ssh/README.md>`_ to set up public key authentication for your environment. This will allow you to use Git on the command line without having to enter your password.
 
   
 GitHub (optional/recommended)
@@ -166,4 +165,4 @@ This application enables you to grant others remote access to your desktop. This
 
 This software allows you to participating in class remotely in case of weather emergencies.
 
-- `Adobe Connect <http://luc.edu/digitalmedia/trainingandsupport/adobeconnect/about.shtml>`_ 
+- `Zoom <https://luc.zoom.us>`_
