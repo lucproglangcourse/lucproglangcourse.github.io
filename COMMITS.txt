@@ -1,3 +1,13 @@
+commit 6c9c0d5
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated software chapter to refer to GitLab
+
+commit d055ccf
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved discussion of type system design space
+
 commit 660af64
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
