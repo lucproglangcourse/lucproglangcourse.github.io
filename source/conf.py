@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Loyola University Chicago COMP 372/471 Lecture Notes'
+project = u'Loyola University Chicago COMP 371/471 Lecture Notes'
 copyright = u'2017, Konstantin Läufer'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -103,7 +103,7 @@ html_theme = 'bootstrap'
 #html_theme_options = {}
 html_theme_options = {
     # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': "COMP 372/471",
+    'navbar_title': "COMP 371/471",
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
@@ -236,7 +236,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'proglang.tex', u'COMP 372/471 Lecture Notes',
+  ('index', 'proglang.tex', u'COMP 371/471 Lecture Notes',
    u'Konstantin Läufer', 'manual'),
 ]
 
@@ -266,7 +266,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'proglang', u'COMP 372/471 Lecture Notes',
+    ('index', 'proglang', u'COMP 371/471 Lecture Notes',
      [u'Konstantin Läufer'], 1)
 ]
 
@@ -280,8 +280,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'proglang', u'COMP 372/471 Lecture Notes',
-   u'Konstantin Läufer', 'proglang', 'COMP 372/471 Lecture Notes.',
+  ('index', 'proglang', u'COMP 371/471 Lecture Notes',
+   u'Konstantin Läufer', 'proglang', 'COMP 371/471 Lecture Notes.',
    'Miscellaneous'),
 ]
 

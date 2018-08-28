@@ -52,7 +52,10 @@ Setup
 	...
 	hello
 
+- For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace)::
 
+        workspaces > settings for desired workspace (gear) > agents > git credentials
+	
 
 Locally installed development environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,21 +137,13 @@ These are useful additional sbt plugins. `You can install them per project or gl
 - `sbt-stats <https://github.com/orrsella/sbt-stats>`_: simple, extensible source code statistics/metrics
 
 
-GitLab
+GitHub
 ~~~~~~
-
-`GitLab <https://gitlab.com>`_ is a provider of hosted Git repositories. We use it for project submission and collaboration on team projects.
-
-- Create an account if you do not yet have one. (You can also log in using your existing Google or GitHub account.)
-- Use `this excellent documentation <https://gitlab.com/help/ssh/README.md>`_ to set up public key authentication for your environment. This will allow you to use Git on the command line without having to enter your password.
-
-  
-GitHub (optional/recommended)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `GitHub <https://github.com>`_ is another provider of hosted Git repositories, which emphasizes community and collaboration. For this reason, we use it to host our course examples.
 
 - Create a GitHub account if you don't already have one.
+- Get the `GitHub Student Developer Pack <https://education.github.com/pack/join>`_ using your official ``@luc.edu`` address. This will give you free unlimited private repositories.
 - Find and follow a few practitioners you respect. For example, I follow `these developers <https://github.com/klaeufer/following>`_. You'll probably recognize a number of them.
 - Review `these notes <https://guides.github.com/activities/contributing-to-open-source>`_ to understand the community-based development process.
 - For credit toward class participation, create some meaningful `GitHub issues <https://guides.github.com/features/issues>`_ and/or `GitHub pull requests <https://help.github.com/articles/using-pull-requests>`_ for one or more of our `course examples <https://github.com/lucproglangcourse>`_. (Make sure to navigate to the original repos as these forks do not have their own issue trackers). These can be functional or nonfunctional enhancements, requests for clarification, etc.

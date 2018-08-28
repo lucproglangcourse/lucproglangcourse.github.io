@@ -1,8 +1,7 @@
-Appendix: Course Syllabus
--------------------------
+Appendix: Course Syllabi
+------------------------
 
-This is the official course syllabus for the current section(s) of this course.
-Under construction for spring 2018.
+These are the official course syllabi for the most recent section(s) of this course.
 
 
 Course: COMP 371/471 Programming Languages
@@ -12,7 +11,10 @@ Course: COMP 371/471 Programming Languages
 - Official course description: `Comp 371 <http://courses.cs.luc.edu/html/comp371.html>`_ | `Comp 471 <http://courses.cs.luc.edu/html/comp471.html>`_
 
 
-.. include:: syllabi/*.rst
+
+.. include:: syllabi/2018Fall.rst
+.. include:: syllabi/2018spring.rst
+.. include:: syllabi/2017spring.rst
 
   
 Detailed Course Outline
