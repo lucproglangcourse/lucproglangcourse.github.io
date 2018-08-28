@@ -1,7 +1,7 @@
 Lecture Notes: Theory (and Practice) of Programming Languages
 =============================================================
 
-| `COMP 372 <http://courses.cs.luc.edu/html/comp372.html>`_ | `COMP 471 <http://courses.cs.luc.edu/html/comp372.html>`_
+| `COMP 371 <http://courses.cs.luc.edu/html/comp371.html>`_ | `COMP 471 <http://courses.cs.luc.edu/html/comp471.html>`_
 | `Department of Computer Science <http://luc.edu/cs>`_
 | `Loyola University Chicago <http://luc.edu>`_
 
