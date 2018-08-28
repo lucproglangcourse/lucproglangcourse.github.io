@@ -3,7 +3,7 @@ Section: 001 Fall 2018
 
 - *Instructor:* `Konstantin Läufer <http://klaeufer.github.io>`_
 - *Class time and location (Fall 2018)*: Tue and Thu 13:00-14:15 in Cuneo Hall 202, LSC
-- *Office hour:* Tue/Thu 14:30-15:30 and Thu 10:00-11:00 in Doyle Hall Room 202 (building #6 on `this map of Lake Shore Campus <https://www.luc.edu/media/lucedu/pdfs-campusmaps/lsc.pdf>`_), and by appointment
+- *Office hour:* Tue/Thu 14:30-15:30 and Thu 10:00-11:00 in Doyle Hall Room 201 (building #6 on `this map of Lake Shore Campus <https://www.luc.edu/media/lucedu/pdfs-campusmaps/lsc.pdf>`_), and by appointment
 - *Required text:*
   **Scala for the Impatient, Second Edition**
   *By: Cay S. Horstmann*
