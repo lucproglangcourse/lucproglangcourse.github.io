@@ -12,7 +12,7 @@ Course: COMP 371/471 Programming Languages
 - Official course description: `Comp 371 <http://courses.cs.luc.edu/html/comp371.html>`_ | `Comp 471 <http://courses.cs.luc.edu/html/comp471.html>`_
 
 
-.. include:: syllabus/*.rst
+.. include:: syllabi/*.rst
 
   
 Detailed Course Outline

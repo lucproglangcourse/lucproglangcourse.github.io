@@ -41,7 +41,7 @@ We maintain these lecture notes using `GitHub`_. We also offer `PDF`_ and `ePub`
    principles
    resources
    software 
-   syllabus 
+   syllabus
    todo
 
 .. Indices and tables
