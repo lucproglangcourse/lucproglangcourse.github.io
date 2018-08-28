@@ -148,7 +148,11 @@ GitHub
 - Review `these notes <https://guides.github.com/activities/contributing-to-open-source>`_ to understand the community-based development process.
 - For credit toward class participation, create some meaningful `GitHub issues <https://guides.github.com/features/issues>`_ and/or `GitHub pull requests <https://help.github.com/articles/using-pull-requests>`_ for one or more of our `course examples <https://github.com/lucproglangcourse>`_. (Make sure to navigate to the original repos as these forks do not have their own issue trackers). These can be functional or nonfunctional enhancements, requests for clarification, etc.
 - To enhance your visibility in the professional community, start doing the same for some open-source projects you are interested in.
-- Consider getting the `GitHub Student Developer Pack <https://education.github.com/pack>`_, which includes µ account with five private repos.
+
+You may find both of these cheat sheets useful:
+
+- `GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`_
+- `GitLab <https://about.gitlab.com/images/press/git-cheat-sheet.pdf>`_ (includes useful diagrams)
 
   
 Remote participation

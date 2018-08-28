@@ -1,3 +1,8 @@
+commit bf18a2a
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved section on GitHub
+
 commit 6811681
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
