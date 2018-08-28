@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>10. Appendix: Course Software &#8212; Loyola University Chicago COMP 372/471 Lecture Notes v1.0</title>
+    <title>10. Appendix: Course Software &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. Appendix: Course Syllabus" href="syllabus.html" />
+    <link rel="next" title="11. Appendix: Course Syllabi" href="syllabus.html" />
     <link rel="prev" title="9. Appendix: Resources" href="resources.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -46,7 +46,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.html">
-          COMP 372/471</a>
+          COMP 371/471</a>
         <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
       </div>
 
@@ -136,17 +136,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gitlab">10.4. GitLab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#github-optional-recommended">10.5. GitHub (optional/recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#remote-participation">10.6. Remote participation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">10.4. GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remote-participation">10.5. Remote participation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-372-471-programming-languages">11.1. Course: COMP 372/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2018">11.2. Section: 001 Spring 2018</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.3. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.4. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.5. Key Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-371-471-programming-languages">11.1. Course: COMP 371/471 Programming Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-fall-2018">11.2. Section: 001 Fall 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2018">11.3. Section: 001 Spring 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.4. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.5. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.6. Key Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
@@ -180,9 +180,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
-<li><a class="reference internal" href="#gitlab">10.4. GitLab</a></li>
-<li><a class="reference internal" href="#github-optional-recommended">10.5. GitHub (optional/recommended)</a></li>
-<li><a class="reference internal" href="#remote-participation">10.6. Remote participation</a></li>
+<li><a class="reference internal" href="#id5">10.4. GitHub</a></li>
+<li><a class="reference internal" href="#remote-participation">10.5. Remote participation</a></li>
 </ul>
 </li>
 </ul>
@@ -198,7 +197,7 @@
     </a>
   </li>
   <li>
-    <a href="syllabus.html" title="Next Chapter: 11. Appendix: Course Syllabus"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">11. Appendix:... &raquo;</span>
+    <a href="syllabus.html" title="Next Chapter: 11. Appendix: Course Syllabi"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">11. Appendix:... &raquo;</span>
     </a>
   </li>
               
@@ -287,6 +286,11 @@ hello
 </pre></div>
 </div>
 </li>
+<li><p class="first">For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">workspaces</span> <span class="o">&gt;</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">desired</span> <span class="n">workspace</span> <span class="p">(</span><span class="n">gear</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">agents</span> <span class="o">&gt;</span> <span class="n">git</span> <span class="n">credentials</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -366,19 +370,12 @@ hello
 <li><a class="reference external" href="https://github.com/orrsella/sbt-stats">sbt-stats</a>: simple, extensible source code statistics/metrics</li>
 </ul>
 </div>
-<div class="section" id="gitlab">
-<h2>10.4. GitLab<a class="headerlink" href="#gitlab" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://gitlab.com">GitLab</a> is a provider of hosted Git repositories. We use it for project submission and collaboration on team projects.</p>
-<ul class="simple">
-<li>Create an account if you do not yet have one. (You can also log in using your existing Google or GitHub account.)</li>
-<li>Use <a class="reference external" href="https://gitlab.com/help/ssh/README.md">this excellent documentation</a> to set up public key authentication for your environment. This will allow you to use Git on the command line without having to enter your password.</li>
-</ul>
-</div>
-<div class="section" id="github-optional-recommended">
-<h2>10.5. GitHub (optional/recommended)<a class="headerlink" href="#github-optional-recommended" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>10.4. GitHub<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com">GitHub</a> is another provider of hosted Git repositories, which emphasizes community and collaboration. For this reason, we use it to host our course examples.</p>
 <ul class="simple">
 <li>Create a GitHub account if you don’t already have one.</li>
+<li>Get the <a class="reference external" href="https://education.github.com/pack/join">GitHub Student Developer Pack</a> using your official <code class="docutils literal"><span class="pre">&#64;luc.edu</span></code> address. This will give you free unlimited private repositories.</li>
 <li>Find and follow a few practitioners you respect. For example, I follow <a class="reference external" href="https://github.com/klaeufer/following">these developers</a>. You’ll probably recognize a number of them.</li>
 <li>Review <a class="reference external" href="https://guides.github.com/activities/contributing-to-open-source">these notes</a> to understand the community-based development process.</li>
 <li>For credit toward class participation, create some meaningful <a class="reference external" href="https://guides.github.com/features/issues">GitHub issues</a> and/or <a class="reference external" href="https://help.github.com/articles/using-pull-requests">GitHub pull requests</a> for one or more of our <a class="reference external" href="https://github.com/lucproglangcourse">course examples</a>. (Make sure to navigate to the original repos as these forks do not have their own issue trackers). These can be functional or nonfunctional enhancements, requests for clarification, etc.</li>
@@ -387,7 +384,7 @@ hello
 </ul>
 </div>
 <div class="section" id="remote-participation">
-<h2>10.6. Remote participation<a class="headerlink" href="#remote-participation" title="Permalink to this headline">¶</a></h2>
+<h2>10.5. Remote participation<a class="headerlink" href="#remote-participation" title="Permalink to this headline">¶</a></h2>
 <p>This application enables you to grant others remote access to your desktop. This is helpful for diagnosing and overcoming obstacles without having to pair with the instructor in person. The application is free for personal use and does not require registration.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.teamviewer.com">TeamViewer</a></li>

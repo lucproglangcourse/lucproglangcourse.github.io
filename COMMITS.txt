@@ -1,3 +1,18 @@
+commit 6811681
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    replaced 372 with 371 everywhere
+
+commit 451e093
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    renamed subdir for syllabi
+
+commit f7a5ad1
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added fall 2018 syllabus and made syllabi modular
+
 commit 34644a3
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
