@@ -1,3 +1,8 @@
+commit 8f9d611
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed a couple of details in the imperative chapter
+
 commit 947755d
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

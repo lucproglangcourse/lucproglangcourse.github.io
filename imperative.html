@@ -372,7 +372,7 @@ As in Java, command-line arguments are available to a Scala application as <code
 </div>
 <p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)</p>
 <p>To break the standard input down further into words, we can use this recipe:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">W+&quot;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In Scala, <code class="docutils literal"><span class="pre">print</span></code> and <code class="docutils literal"><span class="pre">println</span></code> print to stdout.</p>
@@ -426,7 +426,7 @@ This is particularly effective for scripts and worksheets:</p>
 <p>The following testing libraries/frameworks work well with Scala.</p>
 <ul class="simple">
 <li>The familiar <a class="reference external" href="http://junit.org">JUnit</a> can be used directly.</li>
-<li><a class="reference external" href="http://scalacheck.org">ScalaCheck</a> is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as “for all lists <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, the <code class="docutils literal"><span class="pre">(x</span> <span class="pre">++</span> <span class="pre">y).length</span></code> is equal to <code class="docutils literal"><span class="pre">x.length</span> <span class="pre">+</span> <span class="pre">y.length</span></code>”</li>
+<li><a class="reference external" href="http://scalacheck.org">ScalaCheck</a> is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as “for all lists <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, the value of <code class="docutils literal"><span class="pre">(x</span> <span class="pre">++</span> <span class="pre">y).length</span></code> is equal to <code class="docutils literal"><span class="pre">x.length</span> <span class="pre">+</span> <span class="pre">y.length</span></code>”</li>
 <li><a class="reference external" href="http://scalatest.org">ScalaTest</a> is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.</li>
 <li><a class="reference external" href="http://etorreborre.github.io/specs2/">specs2</a> is a specification-based testing library that also supports integration with ScalaCheck.</li>
 </ul>
