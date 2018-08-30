@@ -159,7 +159,7 @@ This gives you an iterator of strings with each item representing one line. When
 
 To break the standard input down further into words, we can use this recipe::
 
-    val words = lines.flatMap(_.split("\\W+"))
+    val words = lines.flatMap(_.split("(?U)[^\\p{Alpha}0-9']+"))
 
 In Scala, ``print`` and ``println`` print to stdout.
 
@@ -218,7 +218,7 @@ This is particularly effective for scripts and worksheets::
 The following testing libraries/frameworks work well with Scala.
     
 - The familiar `JUnit <http://junit.org>`_ can be used directly.
-- `ScalaCheck <http://scalacheck.org>`_ is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as "for all lists ``x`` and ``y``, the ``(x ++ y).length`` is equal to ``x.length + y.length``"
+- `ScalaCheck <http://scalacheck.org>`_ is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as "for all lists ``x`` and ``y``, the value of ``(x ++ y).length`` is equal to ``x.length + y.length``"
 - `ScalaTest <http://scalatest.org>`_ is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.
 - `specs2 <http://etorreborre.github.io/specs2/>`_ is a specification-based testing library that also supports integration with ScalaCheck.
 
