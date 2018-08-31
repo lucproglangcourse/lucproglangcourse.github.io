@@ -227,6 +227,36 @@ For faster turnaround, we can combine these techniques with triggered execution.
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
 
+Logging in Scala
+~~~~~~~~~~~~~~~~
+
+Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
+Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
+
+In its simplest form, logging can consist of ordinary print statements.
+But this approach makes it very painful to configure logging centrally, such as setting the desired log level, configuring the destination of the log messages, or disable logging altogether.
+
+*Logging frameworks* have arisen to address this need.
+For example, the `log4s <https://github.com/Log4s/log4s>`_ wrapper provides a convenient logging mechanism for Scala.
+To use log4s minimally, the following steps are required:
+
+- Add external dependencies for log4s and a simple slf4j backend implementation::
+
+    "org.log4s" %% "log4s" % "1.6.1",
+    "org.slf4j" % "slf4j-simple" % "1.7.25"
+
+- If you require a more verbose log level than ``INFO``, such as ``DEBUG``, add a configuration file ``src/main/resources/simplelogger.properties`` with contents::
+
+    org.slf4j.simpleLogger.defaultLogLevel = debug
+
+- Now you are ready to access and use your logger::
+    
+    private val logger = org.log4s.getLogger
+    logger.debug(f"howMany = $howMany minLength = $minLength lastNWords = $lastNWords")
+
+Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
+    
+
 .. _secDomainModelsOO:
 
 Defining domain models in imperative and object-oriented languages
