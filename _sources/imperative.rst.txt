@@ -247,7 +247,7 @@ To use log4s minimally, the following steps are required:
     "org.log4s" %% "log4s" % "1.6.1",
     "org.slf4j" % "slf4j-simple" % "1.7.25"
 
-- If you require a more verbose log level than ``INFO``, such as ``DEBUG``, add a configuration file ``src/main/resources/simplelogger.properties`` with contents::
+- If you require a more verbose log level than the default of ``INFO``, such as ``DEBUG``, add a configuration file ``src/main/resources/simplelogger.properties`` with contents::
 
     org.slf4j.simpleLogger.defaultLogLevel = debug
 
