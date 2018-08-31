@@ -1,3 +1,8 @@
+commit df96640
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added section on simple logging
+
 commit 8f9d611
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
