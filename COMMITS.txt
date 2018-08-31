@@ -1,3 +1,8 @@
+commit a0f540d
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved section on simple logging
+
 commit 6a06023
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
