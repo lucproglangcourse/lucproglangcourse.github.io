@@ -234,7 +234,7 @@ Logging is a common dynamic nonfunctional requirement that is useful throughout 
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
 
 In its simplest form, logging can consist of ordinary print statements.
-But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disable logging altogether.
+But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.
 
 *Logging frameworks* have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
