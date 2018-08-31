@@ -234,9 +234,11 @@ Logging is a common dynamic nonfunctional requirement that is useful throughout 
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
 
 In its simplest form, logging can consist of ordinary print statements.
-But this approach makes it very painful to configure logging centrally, such as setting the desired log level, configuring the destination of the log messages, or disable logging altogether.
+But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.
 
 *Logging frameworks* have arisen to address this need.
+Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
+
 For example, the `log4s <https://github.com/Log4s/log4s>`_ wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:
 
@@ -258,10 +260,7 @@ To use log4s minimally, the following steps are required:
   This produces informative debugging output such as::
 
     [main] DEBUG edu.luc.cs.cs371.topwords.TopWords - howMany = 10 minLength = 6 lastNWords = 1000
-
-    
-Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
-    
+  
 
 .. _secDomainModelsOO:
 
