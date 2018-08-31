@@ -254,6 +254,12 @@ To use log4s minimally, the following steps are required:
     private val logger = org.log4s.getLogger
     logger.debug(f"howMany = $howMany minLength = $minLength lastNWords = $lastNWords")
 
+
+  This produces informative debugging output such as::
+
+    [main] DEBUG edu.luc.cs.cs371.topwords.TopWords - howMany = 10 minLength = 6 lastNWords = 1000
+
+    
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
     
 
