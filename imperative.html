@@ -440,9 +440,10 @@ This is particularly effective for scripts and worksheets:</p>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements.
-But this approach makes it very painful to configure logging centrally, such as setting the desired log level, configuring the destination of the log messages, or disable logging altogether.</p>
+But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disable logging altogether.</p>
 <p><em>Logging frameworks</em> have arisen to address this need.
-For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
+Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
+<p>For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
 <li><p class="first">Add external dependencies for log4s and a simple slf4j backend implementation:</p>
@@ -467,7 +468,6 @@ To use log4s minimally, the following steps are required:</p>
 </div>
 </li>
 </ul>
-<p>Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
 </div>
 <div class="section" id="defining-domain-models-in-imperative-and-object-oriented-languages">
 <span id="secdomainmodelsoo"></span><h2>3.5. Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Permalink to this headline">¶</a></h2>
