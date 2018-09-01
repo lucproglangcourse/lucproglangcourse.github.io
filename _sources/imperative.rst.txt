@@ -227,8 +227,8 @@ For faster turnaround, we can combine these techniques with triggered execution.
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
 
-Logging in Scala
-~~~~~~~~~~~~~~~~
+The importance of logging
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
@@ -238,6 +238,10 @@ But this approach makes it very painful to configure logging centrally, such as 
 
 *Logging frameworks* have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.
+
+
+Logging in Scala
+````````````````
 
 For example, the `log4s <https://github.com/Log4s/log4s>`_ wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:

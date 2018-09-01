@@ -85,7 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-role-of-console-applications">3.2. The role of console applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logging-in-scala">3.4. Logging in Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-importance-of-logging">3.4. The importance of logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-scala-traits-for-modularity-and-dependency-injection">3.6. Using Scala traits for modularity and dependency injection</a></li>
 </ul>
@@ -172,7 +172,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
-<li><a class="reference internal" href="#logging-in-scala">3.4. Logging in Scala</a></li>
+<li><a class="reference internal" href="#the-importance-of-logging">3.4. The importance of logging</a><ul>
+<li><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a><ul>
 <li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.5.1. Object-oriented Scala as a “better Java”</a></li>
 </ul>
@@ -435,14 +438,16 @@ This is particularly effective for scripts and worksheets:</p>
 <p>For faster turnaround, we can combine these techniques with triggered execution.</p>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
 </div>
-<div class="section" id="logging-in-scala">
-<h2>3.4. Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-importance-of-logging">
+<h2>3.4. The importance of logging<a class="headerlink" href="#the-importance-of-logging" title="Permalink to this headline">¶</a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements.
 But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.</p>
 <p><em>Logging frameworks</em> have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
+<div class="section" id="logging-in-scala">
+<h3>3.4.1. Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Permalink to this headline">¶</a></h3>
 <p>For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
@@ -468,6 +473,7 @@ To use log4s minimally, the following steps are required:</p>
 </div>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="defining-domain-models-in-imperative-and-object-oriented-languages">
 <span id="secdomainmodelsoo"></span><h2>3.5. Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Permalink to this headline">¶</a></h2>
