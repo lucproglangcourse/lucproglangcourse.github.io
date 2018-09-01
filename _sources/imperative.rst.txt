@@ -227,8 +227,8 @@ For faster turnaround, we can combine these techniques with triggered execution.
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
 
-The importance of logging
-~~~~~~~~~~~~~~~~~~~~~~~~~
+The role of logging
+~~~~~~~~~~~~~~~~~~~
 
 Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
