@@ -334,7 +334,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 </div>
 <p>Note that we are using <code class="docutils literal"><span class="pre">foreach</span></code> when the body of the iteration produces a <em>side effect</em> such as output.
 If we wanted to compute a <em>result value</em>, we could use <code class="docutils literal"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal"><span class="pre">foreach</span></code>.
-If we wanted to compute a <em>sequence of result values</em>, one for each item, we could use <code class="docutils literal"><span class="pre">scanLeft</span></code> (examples are available <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">here</a>).</p>
+If we wanted to compute a <em>sequence of result values</em>, one for each original item, we could use <code class="docutils literal"><span class="pre">scanLeft</span></code> (examples are available <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">here</a>).</p>
 <p>Note also that all of these are methods but look like control structures because of Scala&#8217;s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
 <p>Trying successive choices until either one succeeds or there is none left and we have to give up.
 Nested <code class="docutils literal"><span class="pre">try</span></code>-<code class="docutils literal"><span class="pre">catch</span></code> statements are often used to achieve this:</p>
