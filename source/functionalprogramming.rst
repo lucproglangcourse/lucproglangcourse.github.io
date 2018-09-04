@@ -91,7 +91,7 @@ Immutable equivalent using ``continually``::
 
 Note that we are using ``foreach`` when the body of the iteration produces a *side effect* such as output.
 If we wanted to compute a *result value*, we could use ``foldLeft`` instead of ``foreach``.
-If we wanted to compute a *sequence of result values*, one for each item, we could use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
+If we wanted to compute a *sequence of result values*, one for each original item, we could use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
 
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
 
