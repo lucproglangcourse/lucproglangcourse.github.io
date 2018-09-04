@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>6. Introduction to Concurrency &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -19,10 +25,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -34,7 +40,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -70,7 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">1.2. Key learning outcomes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">1.3. Some starting points for functional programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">1.4. Course outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom’s taxonomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a><ul>
@@ -85,8 +91,9 @@
 <li class="toctree-l2"><a class="reference internal" href="imperative.html#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-console-applications">3.2. The role of console applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imperative.html#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imperative.html#defining-domain-models-in-imperative-and-object-oriented-languages">3.4. Defining domain models in imperative and object-oriented languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imperative.html#using-scala-traits-for-modularity-and-dependency-injection">3.5. Using Scala traits for modularity and dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#the-role-of-logging">3.4. The role of logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative.html#using-scala-traits-for-modularity-and-dependency-injection">3.6. Using Scala traits for modularity and dependency injection</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a><ul>
@@ -253,7 +260,7 @@
 <h2>6.2. Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>process: own memory</li>
-<li>thread: shared memory <em>and</em> “thread-local” state</li>
+<li>thread: shared memory <em>and</em> &#8220;thread-local&#8221; state</li>
 <li>foreground versus background</li>
 <li>CPU-bound versus IO-bound<ul>
 <li><a class="reference external" href="https://gist.github.com/klaeufer/5409687">CPU-bound example</a></li>
@@ -355,7 +362,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 <li>atomic variables</li>
 <li>thread-safe collections</li>
 <li>FIFO locks</li>
-<li>…</li>
+<li>...</li>
 </ul>
 </li>
 <li><a class="reference external" href="http://docs.scala-lang.org/overviews/parallel-collections/overview.html">Scala parallel collections</a></li>
@@ -401,7 +408,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
 </footer>

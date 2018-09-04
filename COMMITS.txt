@@ -1,3 +1,8 @@
+commit 1e71f28
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added sentence about scanLeft with link to pertinent example
+
 commit 19926ea
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
