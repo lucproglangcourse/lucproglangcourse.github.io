@@ -233,8 +233,13 @@ The role of logging
 Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.
 
-In its simplest form, logging can consist of ordinary print statements.
-But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.
+In its simplest form, logging can consist of ordinary print statements, preferably to the *standard error* stream (``stderr``)::
+
+    System.err.println("something went wrong: " + anObject)
+
+This allows displaying (or redirecting) error messages separately from output data.
+    
+For more complex projects, it is advantageous to be able to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.
 
 *Logging frameworks* have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade `separation of concerns <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ with respect to logging.

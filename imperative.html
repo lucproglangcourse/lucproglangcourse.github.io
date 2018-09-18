@@ -448,8 +448,12 @@ This is particularly effective for scripts and worksheets:</p>
 <h2>3.4. The role of logging<a class="headerlink" href="#the-role-of-logging" title="Permalink to this headline">¶</a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
-<p>In its simplest form, logging can consist of ordinary print statements.
-But this approach makes it very painful to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.</p>
+<p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal"><span class="pre">stderr</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;something went wrong: &quot;</span> <span class="o">+</span> <span class="n">anObject</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows displaying (or redirecting) error messages separately from output data.</p>
+<p>For more complex projects, it is advantageous to be able to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.</p>
 <p><em>Logging frameworks</em> have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
 <div class="section" id="logging-in-scala">
