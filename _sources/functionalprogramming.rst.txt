@@ -89,11 +89,54 @@ Immutable equivalent using ``continually``::
   }
 
 
-Note that we are using ``foreach`` when the body of the iteration produces a *side effect* such as output.
-If we wanted to compute a *result value*, we could use ``foldLeft`` instead of ``foreach``.
-If we wanted to compute a *sequence of result values*, one for each original item, we could use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
+Other important operations on collections
+`````````````````````````````````````````
+  
+- When the body of the iteration produces a *side effect* such as output, we can use ``foreach`` instead of ``continually``.
+- If we want to compute a *result value*, we can use ``foldLeft`` instead of ``foreach``.
+- If we want to compute a *sequence of result values*, one for each original item, we can use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
+- If we want to transform a *collection of result values* by independently applying the same function to each item while preserving the collection's skeletal structure, we can use ``map``.
+- If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the subsection on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
 
+The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective::
+
+   // map - the result is a nested collection
+  
+   scala> Seq("hello world what up", "hola mundo", "hallo welt")
+   res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
+
+   scala> val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
+   resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
+
+   scala> res0.foreach { line =>
+	|   val words = line.split("\\s+")
+	|   resultNested += words
+	| }
+
+   scala> resultNested
+   res12: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+
+   // flatMap - the result is a flat collection - this requires nested loops!
+   
+   scala> val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
+   resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
+
+   scala> res0.foreach { line =>
+	|   val words = line.split("\\s+")
+	|   words.foreach { word =>
+	|     resultFlat += word
+	|   }
+	| }
+
+   scala> resultFlat
+   res14: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
+
+  
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
+
+
+Dealing with successive failures
+````````````````````````````````
 
 Trying successive choices until either one succeeds or there is none left and we have to give up. 
 Nested ``try``-``catch`` statements are often used to achieve this::
