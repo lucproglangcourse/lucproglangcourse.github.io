@@ -34,7 +34,7 @@ Many of these, especially collection types and certain utility types, are *algeb
 By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
 The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
 
-- key methods ``map``, ``take`` / ``drop``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``foldLeft`` / ``foldRight``, ``scanLeft``, ``zip``, ``groupBy``, ``collect``
+- important methods ``map``, ``take`` / ``drop``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``foldLeft`` / ``foldRight``, ``scanLeft``, ``zip``, ``groupBy``, ``collect``
 - ``for`` comprehensions
 
 
