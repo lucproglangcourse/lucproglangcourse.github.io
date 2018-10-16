@@ -1,3 +1,19 @@
+commit 2625681
+Merge: 0865a3b b76cdf4
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    Merge branch 'master' of github.com:LoyolaChicagoBooks/lucproglangcourse
+
+commit 0865a3b
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added Horstmann combinator parser reference
+
+commit b76cdf4
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    improved wording
+
 commit 9ce6996
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
