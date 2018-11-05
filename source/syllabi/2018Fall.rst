@@ -30,4 +30,5 @@ Section: 001 Fall 2018
   - Tue 9 October: NO CLASS - fall break
   - Thu 25 October: quiz 2
   - Thu 15 November: test 2
+  - Tue 20 November: remote lecture/office hour
   - Fri 14 December **13:00-14:00**: test 3
