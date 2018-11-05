@@ -1,3 +1,8 @@
+commit c8db22d
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added an important date
+
 commit 2625681
 Merge: 0865a3b b76cdf4
 Author: Konstantin Läufer <klaeufer@gmail.com>
