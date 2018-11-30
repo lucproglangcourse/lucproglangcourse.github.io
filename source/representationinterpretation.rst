@@ -371,7 +371,7 @@ The entire code for the implementation of the simple imperative language with re
 Type systems
 ~~~~~~~~~~~~
 
-Type systems are an important aspect of programming languages. We identify the following dimensions:
+Type systems are an important aspect of programming languages. We identify the following dimensions in the type system design space:
 
 - static versus dynamic typing
 - strong versus weak type safety
@@ -389,6 +389,10 @@ Additional information is available here:
 - `presentation slides 10-29 <http://klaeufer.github.io/luc-amc.html#(10)>`_
 - `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
 
+
+.. todo:: elaborate on the design space for polymorphism (Cardelli/Wegner)
+
+  
 
 Domain-specific languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~
