@@ -129,7 +129,7 @@ Dealing with shared state
 - correctness/(thread-)safety
 - liveness/deadlock
 
-  - `dining philosophers example <http://www.doc.ic.ac.uk/~jnm/book/book_applets/Diners.html>`_ <- *run on Firefox or Safari with site added to Java security settings*
+  - `dining philosophers example <https://gist.github.com/klaeufer/39d03158c4b766ce3c1c669f0d8ab930>`_
 
 - fairness/starvation
 - performance
