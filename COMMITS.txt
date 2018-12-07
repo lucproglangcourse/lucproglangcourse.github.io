@@ -1,3 +1,14 @@
+commit e3d9092
+Merge: f3b86ff 4cc7da9
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    Merge branch 'master' of github.com:LoyolaChicagoBooks/lucproglangcourse
+
+commit f3b86ff
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    replaced philosophers example with own gist
+
 commit 4cc7da9
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
