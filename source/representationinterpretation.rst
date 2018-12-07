@@ -84,6 +84,7 @@ Alternative front-end approaches
 - `parser combinators <https://en.wikipedia.org/wiki/Parser_combinator>`_
 - Scala parser combinators
 
+  - `Horstmann ch. 20 <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627/chapter-20dot-parsing/ch20_html>`_
   - `Odersky et al. ch. 33 <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687/combinator-parsing/combinator_parsing_html>`_
   -  `API <http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started>`_
   - `simple expression combinator parser example <https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala>`_
@@ -370,7 +371,7 @@ The entire code for the implementation of the simple imperative language with re
 Type systems
 ~~~~~~~~~~~~
 
-Type systems are an important aspect of programming languages. We identify the following dimensions:
+Type systems are an important aspect of programming languages. We identify the following dimensions in the type system design space:
 
 - static versus dynamic typing
 - strong versus weak type safety
@@ -388,6 +389,10 @@ Additional information is available here:
 - `presentation slides 10-29 <http://klaeufer.github.io/luc-amc.html#(10)>`_
 - `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
 
+
+.. todo:: elaborate on the design space for polymorphism (Cardelli/Wegner)
+
+  
 
 Domain-specific languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~
