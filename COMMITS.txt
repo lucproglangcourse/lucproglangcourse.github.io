@@ -1,3 +1,8 @@
+commit 45bb99a
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added fall 2019 syllabus
+
 commit e3d9092
 Merge: f3b86ff 4cc7da9
 Author: Konstantin Läufer <klaeufer@gmail.com>

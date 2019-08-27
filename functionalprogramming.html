@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>4. The Functional Programming Paradigm &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -25,10 +19,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,7 +34,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -76,7 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#key-learning-outcomes">1.2. Key learning outcomes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#some-starting-points-for-functional-programming">1.3. Some starting points for functional programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#course-outline">1.4. Course outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom&#8217;s taxonomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#bloom-s-taxonomy">1.5. Bloom’s taxonomy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a><ul>
@@ -149,11 +143,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="syllabus.html#course-comp-371-471-programming-languages">11.1. Course: COMP 371/471 Programming Languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-fall-2018">11.2. Section: 001 Fall 2018</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2018">11.3. Section: 001 Spring 2018</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.4. Section: 001 Spring 2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.5. Detailed Course Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.6. Key Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-fall-2019">11.2. Section: 001 Fall 2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-fall-2018">11.3. Section: 001 Fall 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2018">11.4. Section: 001 Spring 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#section-001-spring-2017">11.5. Section: 001 Spring 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#detailed-course-outline">11.6. Detailed Course Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syllabus.html#key-resources">11.7. Key Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
@@ -341,7 +336,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 <li>When the body of the iteration produces a <em>side effect</em> such as output, we can use <code class="docutils literal"><span class="pre">foreach</span></code> instead of <code class="docutils literal"><span class="pre">continually</span></code>.</li>
 <li>If we want to compute a <em>result value</em>, we can use <code class="docutils literal"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal"><span class="pre">foreach</span></code>.</li>
 <li>If we want to compute a <em>sequence of result values</em>, one for each original item, we can use <code class="docutils literal"><span class="pre">scanLeft</span></code> (examples are available <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">here</a>).</li>
-<li>If we want to transform a <em>collection of result values</em> by independently applying the same function to each item while preserving the collection&#8217;s skeletal structure, we can use <code class="docutils literal"><span class="pre">map</span></code>.</li>
+<li>If we want to transform a <em>collection of result values</em> by independently applying the same function to each item while preserving the collection’s skeletal structure, we can use <code class="docutils literal"><span class="pre">map</span></code>.</li>
 <li>If we want to do the same as <code class="docutils literal"><span class="pre">map</span></code> but without introducing an additional level of structural nesting even though the function does so, we can use <code class="docutils literal"><span class="pre">flatMap</span></code>, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the subsection on console applications. <code class="docutils literal"><span class="pre">flatMap</span></code> is equivalent to <code class="docutils literal"><span class="pre">map</span></code> followed by <code class="docutils literal"><span class="pre">flatten</span></code>.</li>
 </ul>
 <p>The following example illustrates the difference between <code class="docutils literal"><span class="pre">map</span></code> and <code class="docutils literal"><span class="pre">flatMap</span></code> from an imperative perspective:</p>
@@ -377,7 +372,7 @@ scala&gt; resultFlat
 res14: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
 </pre></div>
 </div>
-<p>Note also that all of these are methods but look like control structures because of Scala&#8217;s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
+<p>Note also that all of these are methods but look like control structures because of Scala’s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
 </div>
 <div class="section" id="dealing-with-successive-failures">
 <h3>4.1.3. Dealing with successive failures<a class="headerlink" href="#dealing-with-successive-failures" title="Permalink to this headline">¶</a></h3>
@@ -517,7 +512,7 @@ the <code class="docutils literal"><span class="pre">Y</span></code>-combinator 
 </div>
 <div class="section" id="a-closer-look-at-predefined-behaviors-on-lists">
 <h2>4.4. A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we take a look &#8220;under the hood&#8221; of some key predefined behaviors on lists.</p>
+<p>In this section, we take a look “under the hood” of some key predefined behaviors on lists.</p>
 <p>In terms of performance, we must keep in mind that <a class="reference external" href="http://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
 In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
 In practice, acceptable performance usually means linear time for behavior where we process the entire list.</p>
@@ -534,7 +529,7 @@ This <a class="reference external" href="https://github.com/lucproglangcourse/mi
 <li><code class="docutils literal"><span class="pre">foldRight</span></code> is <em>linear-time</em> and <em>linear-space</em> (<em>not</em> tail-recursive) but goes with the natural head-tail structure of the list.</li>
 <li><code class="docutils literal"><span class="pre">xs.foldRight(z)(f)</span> <span class="pre">==</span> <span class="pre">xs.reverse.foldLeft(z)(g)</span></code> where <code class="docutils literal"><span class="pre">g</span></code> is <code class="docutils literal"><span class="pre">f</span></code> with the arguments switched.</li>
 </ul>
-<p>To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for <em>definition classes</em>, follow the link to the leftmost definition class, then the link to that class&#8217;s Scala source, and finally look for the actual method.
+<p>To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for <em>definition classes</em>, follow the link to the leftmost definition class, then the link to that class’s Scala source, and finally look for the actual method.
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
 Here are some examples:</p>
 <ul class="simple">
@@ -602,7 +597,7 @@ We obtain this by applying the <code class="docutils literal"><span class="pre">
 </div>
 <div class="section" id="what-fix-does">
 <h3>4.5.3. What <code class="docutils literal"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">Fix[F]</span></code> basically ties the &#8220;recursive knot&#8221; by applying the functor <code class="docutils literal"><span class="pre">F</span></code>  to itself.
+<p><code class="docutils literal"><span class="pre">Fix[F]</span></code> basically ties the “recursive knot” by applying the functor <code class="docutils literal"><span class="pre">F</span></code>  to itself.
 This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
 <p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
 This enables  us to define linked lists:</p>
@@ -622,7 +617,7 @@ This enables  us to define linked lists:</p>
 <span class="n">res1</span><span class="p">:</span> <span class="n">Fix</span> <span class="o">=</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">))))))))</span>
 </pre></div>
 </div>
-<p>That&#8217;s why we usually define such types recursively to begin with.</p>
+<p>That’s why we usually define such types recursively to begin with.</p>
 </div>
 <div class="section" id="generalized-fold-catamorphism">
 <h3>4.5.4. Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Permalink to this headline">¶</a></h3>
@@ -668,11 +663,11 @@ Instead, the catamorphism takes care of the recursion.</p>
 <li><code class="docutils literal"><span class="pre">Option</span></code> relate to <code class="docutils literal"><span class="pre">List</span></code></li>
 <li><code class="docutils literal"><span class="pre">List</span></code> relate to <code class="docutils literal"><span class="pre">Tree</span></code></li>
 <li><code class="docutils literal"><span class="pre">Tree</span></code> relate to ?!?</li>
-<li>...</li>
+<li>…</li>
 </ul>
 </li>
 <li>How do we represent an <em>empty</em> structure?</li>
-<li>Why aren&#8217;t there multiple branches in the definition of <code class="docutils literal"><span class="pre">cata</span></code> above?
+<li>Why aren’t there multiple branches in the definition of <code class="docutils literal"><span class="pre">cata</span></code> above?
 When does the recursion terminate?</li>
 <li>Is <code class="docutils literal"><span class="pre">cata</span></code> tail-recursive? Can or should it be?</li>
 </ul>
@@ -707,19 +702,19 @@ Examples include:</p>
 <li>lists with append and the empty list</li>
 <li>strings with concatenation and the empty string</li>
 </ul>
-<p>The <em>monoid laws</em> arise from the monoid&#8217;s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
+<p>The <em>monoid laws</em> arise from the monoid’s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
 <p>Examples of monoids using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc">here</a></p>
 </div>
 <div class="section" id="monad">
 <h3>4.6.2. Monad<a class="headerlink" href="#monad" title="Permalink to this headline">¶</a></h3>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic collection) with two operations, <code class="docutils literal"><span class="pre">point</span></code> (also called <code class="docutils literal"><span class="pre">return</span></code> or <code class="docutils literal"><span class="pre">unit</span></code>) and <code class="docutils literal"><span class="pre">flatMap</span></code> (also called <code class="docutils literal"><span class="pre">bind</span></code>).
-Monads are an effective way to represent the <em>context</em> of a computation in which the computation is &#8220;wrapped&#8221;.
+Monads are an effective way to represent the <em>context</em> of a computation in which the computation is “wrapped”.
 The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
 Examples include:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">Option</span></code> and <code class="docutils literal"><span class="pre">Try</span></code>: potential failure in a computation</li>
 <li><code class="docutils literal"><span class="pre">List</span></code>: nondeterminism in a computation, meaning that the computation might have multiple results</li>
-<li><code class="docutils literal"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn&#8217;t actually do anything</li>
+<li><code class="docutils literal"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn’t actually do anything</li>
 <li><code class="docutils literal"><span class="pre">Future</span></code>: the computation takes place asynchronously (in the background)</li>
 </ul>
 <p>Examples of monads using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc">here</a>.</p>
@@ -758,7 +753,7 @@ They define these abstractions in such a way that we can retrofit existing types
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
 </footer>
