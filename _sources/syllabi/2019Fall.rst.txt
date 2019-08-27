@@ -30,4 +30,4 @@ Section: 001 Fall 2019
   - Tue 8 October: NO CLASS - fall break
   - Tue 22 October: quiz 2
   - Tue 12 November: test 2
-  - Tue 10 December **16:15-15:15**: test 3
+  - Tue 10 December **16:15-17:15**: test 3

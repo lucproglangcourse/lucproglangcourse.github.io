@@ -1,3 +1,8 @@
+commit bc5f2d8
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added fall 2019 syllabus
+
 commit 1dbdbea
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
