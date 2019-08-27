@@ -7,8 +7,8 @@ These are the official course syllabi for the most recent section(s) of this cou
 Course: COMP 371/471 Programming Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Prerequisite: `Comp 313 <http://courses.cs.luc.edu/html/comp313.html>`_
-- Official course description: `Comp 371 <http://courses.cs.luc.edu/html/comp371.html>`_ | `Comp 471 <http://courses.cs.luc.edu/html/comp471.html>`_
+- Prerequisite: `Comp 313 <https://academics.cs.luc.edu/courses/comp313.html>`_
+- Official course description: `Comp 371 <https://academics.cs.luc.edu/courses/comp371.html>`_ | `Comp 471 <https://academics.cs.luc.edu/courses/comp471.html>`_
 
 
 
