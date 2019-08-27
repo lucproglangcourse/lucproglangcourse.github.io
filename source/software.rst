@@ -55,7 +55,16 @@ Setup
 - For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace)::
 
         workspaces > settings for desired workspace (gear) > agents > git credentials
-	
+
+
+Zero-install alternative
+````````````````````````
+
+Scastie is an interactive playground for Scala with support for sbt configuration.
+It allows you to save code snippets to your GitHub account.
+To launch, visit https://scastie.scala-lang.org.
+
+
 
 Locally installed development environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
