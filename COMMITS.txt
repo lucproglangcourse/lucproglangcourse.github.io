@@ -1,3 +1,8 @@
+commit d3d9000
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added TA office hour
+
 commit e3cfb0d
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
