@@ -149,7 +149,7 @@ These are useful additional sbt plugins. `You can install them per project or gl
 GitHub
 ~~~~~~
 
-`GitHub <https://github.com>`_ is another provider of hosted Git repositories, which emphasizes community and collaboration. For this reason, we use it to host our course examples.
+`GitHub <https://github.com>`_ is a provider of hosted Git repositories, which emphasizes community and collaboration. For this reason, we use it to host our course examples.
 
 - Create a GitHub account if you don't already have one.
 - Get the `GitHub Student Developer Pack <https://education.github.com/pack/join>`_ using your official ``@luc.edu`` address. This will give you free unlimited private repositories.
