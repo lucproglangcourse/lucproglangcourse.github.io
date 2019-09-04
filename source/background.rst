@@ -146,4 +146,4 @@ Before drawing any conclusions from these indices, it is important to understand
 - `PYPL PopularitY of Programming Language index <https://pypl.github.io>`_
 - `TIOBE programming community index <http://www.tiobe.com/tiobe-index>`_
 - `GitHub language popularity <https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html>`_
-- `Programming languages shootout benchmark <http://benchmarksgame.alioth.debian.org>`_
+- `Programming languages shootout benchmark <https://benchmarksgame-team.pages.debian.net/benchmarksgame/>`_
