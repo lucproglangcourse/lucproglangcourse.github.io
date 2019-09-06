@@ -114,6 +114,7 @@ Additional texts on Scala
 Online Scala resources
 ~~~~~~~~~~~~~~~~~~~~~~
 
+- `Scala Exercises by 47 Degrees (interactive tutorial, recommended) <https://www.scala-exercises.org>`_
 - `SIGCSE Scala workshop <http://scalaworkshop.com/html>`_
 - `The Neophyte's Guide to Scala <http://danielwestheide.com/scala/neophytes.html>`_
 - `Twitter Scala School <http://twitter.github.io/scala_school/>`_
