@@ -95,6 +95,8 @@ Required components
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*
+  - optional on any platform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
+
 
 - `sbt <http://www.scala-sbt.org/0.13/docs/Setup.html>`_ Scala build tool
 - `IntelliJ IDEA CE <https://www.jetbrains.com/idea/download/>`_ integrated development environment
@@ -105,19 +107,6 @@ Required components
   - *JDK configuration*: IntelliJ IDEA > Configure > Project Defaults > Project Structure > Platform Settings > SDKs > + > JDK > navigate to the installation directory of your most recent JDK > OK
 
     
-Optional for Windows users
-``````````````````````````
-
-- `TortoiseGit <https://code.google.com/p/tortoisegit/>`_ integration of Git with Windows Explorer
-- `SourceTree <https://www.sourcetreeapp.com/>`_ Git client
-
-  
-Optional for Mac users
-``````````````````````
-
-- `SourceTree <https://www.sourcetreeapp.com/>`_ Git client
-
-
 Optional for all IntelliJ users
 ```````````````````````````````
 
