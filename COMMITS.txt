@@ -1,3 +1,8 @@
+commit c669adc
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated Mogensen link
+
 commit 7e8ed74
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
