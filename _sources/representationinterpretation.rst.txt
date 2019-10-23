@@ -23,7 +23,7 @@ We will start with an overview of the phases of programming language `compilatio
 - *execution* on physical hardware, virtual hardware, or virtual machine
 - alternative: *direct interpretation of abstract syntax trees*
 
-Reference: `Mogensen <http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics>`_
+Reference: `Mogensen <http://hjemmesider.diku.dk/~torbenm/Basics/>`_
 
 
 Cross-compilation

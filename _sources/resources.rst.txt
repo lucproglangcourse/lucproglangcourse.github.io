@@ -54,7 +54,7 @@ Recommended/supplementary texts
 
 - **Basics of Compiler Design**
   *By: Torben Mogensen*
-  `available online <http://www.diku.dk/hjemmesider/ansatte/torbenm/Basics>`_
+  `available online <http://hjemmesider.diku.dk/~torbenm/Basics/>`_
 
 - **Learning Concurrent Programming in Scala**
   *By: Aleksandar Prokopec*
