@@ -1,3 +1,8 @@
+commit c009049
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated links to books on O'Reilly site, fixes #10
+
 commit c669adc
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
