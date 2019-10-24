@@ -84,8 +84,8 @@ Alternative front-end approaches
 - `parser combinators <https://en.wikipedia.org/wiki/Parser_combinator>`_
 - Scala parser combinators
 
-  - `Horstmann ch. 20 <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627/chapter-20dot-parsing/ch20_html>`_
-  - `Odersky et al. ch. 33 <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687/combinator-parsing/combinator_parsing_html>`_
+  - `Horstmann ch. 20 <https://learning.oreilly.com/library/view/scala-for-the/9780134540627/ch20.html>`_
+  - `Odersky et al. ch. 33 <https://learning.oreilly.com/library/view/programming-in-scala/9780981531687/combinator-parsing.html>`_
   -  `API <http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started>`_
   - `simple expression combinator parser example <https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala>`_
 

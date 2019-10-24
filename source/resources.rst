@@ -38,7 +38,7 @@ Required text
   Pub. Date: December 15, 2016
   Web ISBN-13: 978-0-13-454062-7
   Print ISBN-13: 978-0-13-454056-6
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_
 
   
 Recommended/supplementary texts
@@ -50,7 +50,7 @@ Recommended/supplementary texts
   Pub. Date: October 27, 2016
   Web ISBN-13: 978-1-78646-302-9
   Print ISBN-13: 978-1-78646-467-5
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781786464675>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/scala-test-driven-development/9781786464675>`_
 
 - **Basics of Compiler Design**
   *By: Torben Mogensen*
@@ -62,14 +62,14 @@ Recommended/supplementary texts
   Pub. Date: November 28, 2014
   Print ISBN-13: 978-1-78328-141-1
   Web ISBN-13: 978-1-78328-142-8
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781783281411>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/learning-concurrent-programming/9781783281411>`_
 
 - **Seven Concurrency Models in Seven Weeks**
   *By: Paul Butcher*
   Publisher: Pragmatic Bookshelf
   Pub. Date: June 30, 2014
   Print ISBN-13: 978-1-937785-65-9
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/9781941222737>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/seven-concurrency-models/9781941222737>`_
 
 
 Additional texts on Scala
@@ -81,26 +81,18 @@ Additional texts on Scala
   Pub. Date: April 28, 2016
   ISBN-10: 0-9815316-8-7
   ISBN-13: 978-0-9815316-8-7
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780981531687>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/programming-in-scala/9780981531687>`_
 
 - **Learning Scala**
   *By: Jason Swartz*
   Publisher: O'Reilly Media, Inc.
   Pub. Date: December 24, 2014
   Print ISBN-13: 978-1-4493-6793-0
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781449368814>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/learning-scala/9781449368814>`_
 
 - **A Concise Introduction to Scala**
   *By: David Matuszek*
   `available online <https://www.cis.upenn.edu/~matuszek/Concise%20Guides/Concise%20Scala.html>`_
-
-- **Scala for Java Developers**
-  *By: Thomas Alexandre*
-  Publisher: Packt Publishing
-  Pub. Date: April 25, 2014
-  Print ISBN-13: 978-1-78328-363-7
-  Web ISBN-13: 978-1-78328-364-4
-  `available free on Safari <http://proquestcombo.safaribooksonline.com/book/programming/scala/9781783283637>`_
 
 - **Functional Programming in Scala** (advanced)
   *By: Paul Chiusano and Rúnar Bjarnason*
@@ -108,7 +100,7 @@ Additional texts on Scala
   Publisher: Manning Publications
   Pub. Date: August 2014
   Print ISBN: 9781617290657
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9781617290657>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/functional-programming-in/9781617290657>`_
 
 
 Online Scala resources
@@ -123,8 +115,7 @@ Online Scala resources
 - `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_
 - `Scala API documentation <http://www.scala-lang.org/api/current/#package>`_
 - `Scala style guide <http://docs.scala-lang.org/style>`_
-- `Scala Cookbook <http://scalacookbook.com/>`_
-- `Scala parser combinator tutorial <http://www.dontbreakthebuild.com/2013/07/30/basic-parsing-in-scala-using-parsing-combinators>`_
+- `Scala Cookbook (recommended) <http://scalacookbook.com/>`_
 - `parboiled2 parser generator <https://github.com/sirthias/parboiled2>`_
 - `scalaz API documentation (advanced) <http://docs.typelevel.org/api/scalaz/stable/7.1.0-M3/doc>`_
 - `scalaz cheat sheet (advanced) <http://eed3si9n.com/scalaz-cheat-sheet>`_
@@ -176,7 +167,7 @@ Other resources
   Publisher: O'Reilly Media, Inc.
   Pub. Date: July 10, 2014
   Print ISBN-13: 978-1-4493-6551-6
-  `available free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/9781449365509>`_
+  `available free on Safari <https://learning.oreilly.com/library/view/functional-thinking/9781449365509>`_
 
 - **Real World Haskell**
   *By: Bryan O'Sullivan, Don Stewart, and John Goerzen*
