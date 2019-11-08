@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Loyola University Chicago COMP 371/471 Lecture Notes'
-copyright = u'2017, Konstantin Läufer'
+copyright = u'2017-2017, Konstantin Läufer'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
