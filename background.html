@@ -2,28 +2,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>2. Context and Background &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" />
@@ -32,9 +20,12 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -137,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#id5">10.4. GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#id4">10.4. GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.5. Remote participation</a></li>
 </ul>
 </li>
@@ -218,7 +209,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="context-and-background">
 <h1>2. Context and Background<a class="headerlink" href="#context-and-background" title="Permalink to this headline">¶</a></h1>
@@ -227,38 +218,43 @@
 <h2>2.1. Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Permalink to this headline">¶</a></h2>
 <p>A successful development process usually comprises these minimal elements:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a><ul>
-<li>tests represent expectations of how the software should behave</li>
-<li>when expressed as code, these are<ul>
-<li>fun to produce (like other coding)</li>
-<li>convenient to run frequently</li>
+<li><p><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a></p>
+<ul>
+<li><p>tests represent expectations of how the software should behave</p></li>
+<li><p>when expressed as code, these are</p>
+<ul>
+<li><p>fun to produce (like other coding)</p></li>
+<li><p>convenient to run frequently</p></li>
 </ul>
 </li>
-<li>fix subject-under-test (SUT) (not tests) until tests pass</li>
-<li>retest every time<ul>
-<li>a feature is added</li>
-<li>the code is refactored</li>
+<li><p>fix subject-under-test (SUT) (not tests) until tests pass</p></li>
+<li><p>retest every time</p>
+<ul>
+<li><p>a feature is added</p></li>
+<li><p>the code is refactored</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference external" href="https://www.refactoring.com/">refactoring</a><ul>
-<li>improve the quality of the code without changing its behavior<ul>
-<li>macro level: nonfunctional requirements (quality factors)</li>
-<li>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></li>
+<li><p><a class="reference external" href="https://www.refactoring.com/">refactoring</a></p>
+<ul>
+<li><p>improve the quality of the code without changing its behavior</p>
+<ul>
+<li><p>macro level: nonfunctional requirements (quality factors)</p></li>
+<li><p>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="https://refactoring.com/catalog/">catalog of refactorings</a></li>
+<li><p><a class="reference external" href="https://refactoring.com/catalog/">catalog of refactorings</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></li>
+<li><p><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></p></li>
 </ul>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates continuous integration using various hosted services:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</li>
-<li><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</li>
-<li><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</li>
-<li><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</li>
+<li><p><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</p></li>
+<li><p><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</p></li>
+<li><p><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</p></li>
+<li><p><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</p></li>
 </ul>
 <p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
 </div>
@@ -266,50 +262,55 @@
 <h2>2.2. Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
 <p>In most cases, we develop software to provide some form of value:</p>
 <ul class="simple">
-<li>learn a language, library, framework, platform, technique, or tool
-(see also the <a class="reference external" href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a>)</li>
-<li>solve a problem</li>
-<li>produce an asset</li>
+<li><p>learn a language, library, framework, platform, technique, or tool
+(see also the <a class="reference external" href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a>)</p></li>
+<li><p>solve a problem</p></li>
+<li><p>produce an asset</p></li>
 </ul>
 <p>There is usually some tension among these three activities.</p>
 <p>The basic categories of requirements are</p>
 <ul class="simple">
-<li>functional (FR)<ul>
-<li>output as function of input: <cite>y = f(x)</cite></li>
-<li>or some other description of observable behavior<ul>
-<li>batch</li>
-<li>interactive/event-based</li>
+<li><p>functional (FR)</p>
+<ul>
+<li><p>output as function of input: <cite>y = f(x)</cite></p></li>
+<li><p>or some other description of observable behavior</p>
+<ul>
+<li><p>batch</p></li>
+<li><p>interactive/event-based</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>nonfunctional (NFR): additional properties of <cite>f</cite>, e.g.<ul>
-<li>testability<ul>
-<li>most important nonfunctional requirement</li>
-<li>allows testing whether functional requirements are met</li>
-<li>good architecture often happens as a side-effect (APPP pp. 36-38), such as separating I/O from core functionality</li>
+<li><p>nonfunctional (NFR): additional properties of <cite>f</cite>, e.g.</p>
+<ul>
+<li><p>testability</p>
+<ul>
+<li><p>most important nonfunctional requirement</p></li>
+<li><p>allows testing whether functional requirements are met</p></li>
+<li><p>good architecture often happens as a side-effect (APPP pp. 36-38), such as separating I/O from core functionality</p></li>
 </ul>
 </li>
-<li>performance</li>
-<li>scalability<ul>
-<li>e.g. performance for large data sets: asymptotic order of complexity</li>
-<li>(big-Oh) in terms of input size n</li>
+<li><p>performance</p></li>
+<li><p>scalability</p>
+<ul>
+<li><p>e.g. performance for large data sets: asymptotic order of complexity</p></li>
+<li><p>(big-Oh) in terms of input size n</p></li>
 </ul>
 </li>
-<li>reliability</li>
-<li>maintainability</li>
-<li>static versus dynamic NFRs</li>
+<li><p>reliability</p></li>
+<li><p>maintainability</p></li>
+<li><p>static versus dynamic NFRs</p></li>
 </ul>
 </li>
 </ul>
 <p>Several common questions and issues related to requirements arise:</p>
 <ul class="simple">
-<li><em>how do requirements relate to the project development lifecycle?</em></li>
-<li><em>BUFD versus MVP</em></li>
-<li><em>how do testing and refactoring relate to requirements?</em></li>
+<li><p><em>how do requirements relate to the project development lifecycle?</em></p></li>
+<li><p><em>BUFD versus MVP</em></p></li>
+<li><p><em>how do testing and refactoring relate to requirements?</em></p></li>
 </ul>
 <p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) and software quality factors (nonfunctional requirements).</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="_images/KazmanQualityFactors.png" src="_images/KazmanQualityFactors.png" />
 </div>
 </div>
@@ -317,40 +318,40 @@
 <h2>2.3. Software design principles and patterns<a class="headerlink" href="#software-design-principles-and-patterns" title="Permalink to this headline">¶</a></h2>
 <p>The software development community has identified various principles intended to guide the design and development process, for example:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (don’t repeat yourself)</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">SoC</a> (separation of concerns)</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design">SOLID</a></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (don’t repeat yourself)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">SoC</a> (separation of concerns)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design">SOLID</a></p></li>
 </ul>
 <p>The community has also developed a body of <a class="reference external" href="https://sourcemaking.com/design_patterns">design patterns</a> that represent reusable solutions to recurring problems. Some key design patterns we will rely on in this course include</p>
 <ul class="simple">
-<li>Iterator</li>
-<li>Strategy</li>
-<li>Composite</li>
-<li>Decorator</li>
-<li>Visitor</li>
-<li>Abstract Factory</li>
-<li>Observer</li>
+<li><p>Iterator</p></li>
+<li><p>Strategy</p></li>
+<li><p>Composite</p></li>
+<li><p>Decorator</p></li>
+<li><p>Visitor</p></li>
+<li><p>Abstract Factory</p></li>
+<li><p>Observer</p></li>
 </ul>
 <p>We will recap these throughout the course as needed.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Language-specific design patterns are called <em>idioms</em>.</p>
+<p class="admonition-title">Note</p>
+<p>Language-specific design patterns are called <em>idioms</em>.</p>
 </div>
 </div>
 <div class="section" id="programming-language-history-and-paradigms">
 <h2>2.4. Programming language history and paradigms<a class="headerlink" href="#programming-language-history-and-paradigms" title="Permalink to this headline">¶</a></h2>
 <p>The resources in this section cover fundamental models of computation, language paradigms, and language principles.</p>
 <ul class="simple">
-<li><a class="reference external" href="http://klaeufer.github.com/luc-amc.html">overview talk</a> by Läufer and Thiruvathukal</li>
-<li><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg">programming languages paradigms: diagram</a> by Van Roy</li>
-<li><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf">programming languages paradigms: book chapter</a> by Van Roy</li>
-<li><a class="reference internal" href="principles.html"><span class="doc">Appendix: Programming Language Design Principles</span></a> by MacLennan</li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing completeness</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a></li>
+<li><p><a class="reference external" href="http://klaeufer.github.com/luc-amc.html">overview talk</a> by Läufer and Thiruvathukal</p></li>
+<li><p><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg">programming languages paradigms: diagram</a> by Van Roy</p></li>
+<li><p><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf">programming languages paradigms: book chapter</a> by Van Roy</p></li>
+<li><p><a class="reference internal" href="principles.html"><span class="doc">Appendix: Programming Language Design Principles</span></a> by MacLennan</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing completeness</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a></p></li>
 </ul>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">expand into a proper section</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>expand into a proper section</p>
 </div>
 </div>
 <div class="section" id="popularity-indices-and-performance-comparisons">
@@ -358,10 +359,10 @@
 <p>There are a number of programming language popularity indices and performance comparisons.
 Before drawing any conclusions from these indices, it is important to understand their <em>methodology</em>.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://pypl.github.io">PYPL PopularitY of Programming Language index</a></li>
-<li><a class="reference external" href="http://www.tiobe.com/tiobe-index">TIOBE programming community index</a></li>
-<li><a class="reference external" href="https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html">GitHub language popularity</a></li>
-<li><a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/">Programming languages shootout benchmark</a></li>
+<li><p><a class="reference external" href="https://pypl.github.io">PYPL PopularitY of Programming Language index</a></p></li>
+<li><p><a class="reference external" href="http://www.tiobe.com/tiobe-index">TIOBE programming community index</a></p></li>
+<li><p><a class="reference external" href="https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html">GitHub language popularity</a></p></li>
+<li><p><a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/">Programming languages shootout benchmark</a></p></li>
 </ul>
 </div>
 </div>
@@ -379,7 +380,7 @@ Before drawing any conclusions from these indices, it is important to understand
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>

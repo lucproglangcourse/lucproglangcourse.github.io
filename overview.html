@@ -2,28 +2,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>1. Overview &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Context and Background" href="background.html" />
@@ -32,9 +20,12 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -137,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#id5">10.4. GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#id4">10.4. GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.5. Remote participation</a></li>
 </ul>
 </li>
@@ -218,7 +209,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="overview">
 <h1>1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
@@ -227,9 +218,9 @@
 <h2>1.1. Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of reasons why you would want to study programming languages. To name a few:</p>
 <ul class="simple">
-<li>Knowing several languages will help you solve more problems in better ways.</li>
-<li>The subject matter is exciting and intellectually challenging.</li>
-<li>Google, Meetup, and increasing numbers of local startups love it (from an employer’s point of view)!</li>
+<li><p>Knowing several languages will help you solve more problems in better ways.</p></li>
+<li><p>The subject matter is exciting and intellectually challenging.</p></li>
+<li><p>Google, Meetup, and increasing numbers of local startups love it (from an employer’s point of view)!</p></li>
 </ul>
 </div>
 <div class="section" id="key-learning-outcomes">
@@ -237,10 +228,10 @@
 <p>We deliberately chose the learning outcomes for this course to complement other courses in your computer science or software engineering curriculum. Upon entering this course, you will already be familiar with the imperative and object-oriented paradigms, coming from languages such as Java, C++, C#, or Python. Most likely, you will also be familiar with basic machine architecture and memory management using C or C++.</p>
 <p>In this course, we will pursue one overarching learning outcome and three more specific ones:</p>
 <ul class="simple">
-<li>an understanding of the programming language design space</li>
-<li>proficiency in functional programming</li>
-<li>an understanding of program representation and interpretation/execution</li>
-<li>basic competence in concurrent programming</li>
+<li><p>an understanding of the programming language design space</p></li>
+<li><p>proficiency in functional programming</p></li>
+<li><p>an understanding of program representation and interpretation/execution</p></li>
+<li><p>basic competence in concurrent programming</p></li>
 </ul>
 <p>Given the widespread availability in multi-core hardware ranging from mobile devices to enterprise servers, there is a growing interest in programming paradigms and techniques that will take advantage of this hardware. Functional programming, which de-emphasizes mutable state, in conjunction with suitable concurrency constructs, is particularly useful. We will also “look under the hood” by studying how to represent programs and interpret, execute, or otherwise process those representations.</p>
 </div>
@@ -248,57 +239,63 @@
 <h2>1.3. Some starting points for functional programming<a class="headerlink" href="#some-starting-points-for-functional-programming" title="Permalink to this headline">¶</a></h2>
 <p>You might find the following resources useful to get into the functional programming mindset:</p>
 <ul class="simple">
-<li>Presentation by Martin Odersky: Scala with Style <a class="reference external" href="http://www.youtube.com/watch?v=kkTFx3-duc8">(YouTube)</a></li>
-<li>Interview with Simon Peyton-Jones on Functional Programming and Haskell <a class="reference external" href="http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell">(SE Radio audio podcast)</a></li>
-<li>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison <a class="reference external" href="http://klaeufer.github.com/luc-amc.html">(visual presentation)</a></li>
+<li><p>Presentation by Martin Odersky: Scala with Style <a class="reference external" href="http://www.youtube.com/watch?v=kkTFx3-duc8">(YouTube)</a></p></li>
+<li><p>Interview with Simon Peyton-Jones on Functional Programming and Haskell <a class="reference external" href="http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell">(SE Radio audio podcast)</a></p></li>
+<li><p>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison <a class="reference external" href="http://klaeufer.github.com/luc-amc.html">(visual presentation)</a></p></li>
 </ul>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">incorporate visual presentation here</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>incorporate visual presentation here</p>
 </div>
 </div>
 <div class="section" id="course-outline">
 <h2>1.4. Course outline<a class="headerlink" href="#course-outline" title="Permalink to this headline">¶</a></h2>
 <p>Here is a more detailed course outline (subject to revision).</p>
 <ul class="simple">
-<li>functional programming (6 weeks)<ul>
-<li>defining algebraic data types<ul>
-<li>scalars: enumerations</li>
-<li>sublinear structures: numbers, option</li>
-<li>linear structures: lists, maps</li>
-<li>nonlinear structures: trees</li>
+<li><p>functional programming (6 weeks)</p>
+<ul>
+<li><p>defining algebraic data types</p>
+<ul>
+<li><p>scalars: enumerations</p></li>
+<li><p>sublinear structures: numbers, option</p></li>
+<li><p>linear structures: lists, maps</p></li>
+<li><p>nonlinear structures: trees</p></li>
 </ul>
 </li>
-<li>implementing behaviors on algebraic data types<ul>
-<li>pattern matching</li>
-<li>recursion</li>
+<li><p>implementing behaviors on algebraic data types</p>
+<ul>
+<li><p>pattern matching</p></li>
+<li><p>recursion</p></li>
 </ul>
 </li>
-<li>higher-order functions</li>
-<li>predefined types and their behaviors</li>
-<li>recursion patterns</li>
-<li>higher-kinded types</li>
+<li><p>higher-order functions</p></li>
+<li><p>predefined types and their behaviors</p></li>
+<li><p>recursion patterns</p></li>
+<li><p>higher-kinded types</p></li>
 </ul>
 </li>
-<li>programming language representation and interpretation/execution (5 weeks)<ul>
-<li>language design space</li>
-<li>scanners (lexical analyzers)</li>
-<li>parsers (syntax analyzers)</li>
-<li>interpreters and compilers</li>
-<li>domain-specific languages</li>
+<li><p>programming language representation and interpretation/execution (5 weeks)</p>
+<ul>
+<li><p>language design space</p></li>
+<li><p>scanners (lexical analyzers)</p></li>
+<li><p>parsers (syntax analyzers)</p></li>
+<li><p>interpreters and compilers</p></li>
+<li><p>domain-specific languages</p></li>
 </ul>
 </li>
-<li>concurrent and parallel programming (4 weeks)<ul>
-<li>parallel collections</li>
-<li>futures and promises</li>
-<li>progress reporting and cancelation</li>
-<li>asynchronous programming/reactive extensions (Rx)</li>
-<li>advanced mechanisms<ul>
-<li>explicit threads</li>
-<li>actors</li>
-<li>software-transactional memory</li>
-<li>task-parallel library</li>
-<li>functional data structures</li>
+<li><p>concurrent and parallel programming (4 weeks)</p>
+<ul>
+<li><p>parallel collections</p></li>
+<li><p>futures and promises</p></li>
+<li><p>progress reporting and cancelation</p></li>
+<li><p>asynchronous programming/reactive extensions (Rx)</p></li>
+<li><p>advanced mechanisms</p>
+<ul>
+<li><p>explicit threads</p></li>
+<li><p>actors</p></li>
+<li><p>software-transactional memory</p></li>
+<li><p>task-parallel library</p></li>
+<li><p>functional data structures</p></li>
 </ul>
 </li>
 </ul>
@@ -309,14 +306,14 @@
 <h2>1.5. Bloom’s taxonomy<a class="headerlink" href="#bloom-s-taxonomy" title="Permalink to this headline">¶</a></h2>
 <p>The letters refer to the successive levels of learning from the cognitive domain of <a class="reference external" href="http://en.wikipedia.org/wiki/Bloom's_taxonomy#Cognitive">Bloom’s taxonomy</a>:</p>
 <ul class="simple">
-<li>K: know/remember the term</li>
-<li>C: comprehend/understand the concept</li>
-<li>A: apply the technique</li>
-<li>analyze/evaluate/create (advanced levels)</li>
+<li><p>K: know/remember the term</p></li>
+<li><p>C: comprehend/understand the concept</p></li>
+<li><p>A: apply the technique</p></li>
+<li><p>analyze/evaluate/create (advanced levels)</p></li>
 </ul>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">map Bloom levels to course outline</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>map Bloom levels to course outline</p>
 </div>
 </div>
 </div>
@@ -334,7 +331,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>

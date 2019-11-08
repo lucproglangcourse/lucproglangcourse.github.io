@@ -2,28 +2,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>6. Introduction to Concurrency &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. Summary" href="summary.html" />
@@ -32,9 +20,12 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -137,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="software.html#cloud-based-development-environment">10.1. Cloud-based development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#locally-installed-development-environment">10.2. Locally installed development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#sbt-optional-plugins">10.3. sbt optional plugins</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html#id5">10.4. GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html#id4">10.4. GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software.html#remote-participation">10.5. Remote participation</a></li>
 </ul>
 </li>
@@ -223,7 +214,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="introduction-to-concurrency">
 <h1>6. Introduction to Concurrency<a class="headerlink" href="#introduction-to-concurrency" title="Permalink to this headline">¶</a></h1>
@@ -231,80 +222,85 @@
 <h2>6.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Why and when do we need concurrency?</p>
 <ul class="simple">
-<li>When it is a natural fit for the problem domain<ul>
-<li>multiple autonomous behaviors/simulations</li>
-<li>user interfaces: timed events, background activities</li>
+<li><p>When it is a natural fit for the problem domain</p>
+<ul>
+<li><p>multiple autonomous behaviors/simulations</p></li>
+<li><p>user interfaces: timed events, background activities</p></li>
 </ul>
 </li>
-<li>When the technical solution domain requires it<ul>
-<li>more efficient use of available resources: asynchronous computing</li>
-<li>graphical user interfaces: queuing of low-level input events</li>
-<li>multi-core systems</li>
-<li>network services/distributed systems</li>
+<li><p>When the technical solution domain requires it</p>
+<ul>
+<li><p>more efficient use of available resources: asynchronous computing</p></li>
+<li><p>graphical user interfaces: queuing of low-level input events</p></li>
+<li><p>multi-core systems</p></li>
+<li><p>network services/distributed systems</p></li>
 </ul>
 </li>
 </ul>
 <p>Key considerations:</p>
 <ul class="simple">
-<li>physical (parallelism) versus logical concurrency</li>
-<li>speedup and when to expect it</li>
-<li>data parallelism versus task parallelism</li>
+<li><p>physical (parallelism) versus logical concurrency</p></li>
+<li><p>speedup and when to expect it</p></li>
+<li><p>data parallelism versus task parallelism</p></li>
 </ul>
 </div>
 <div class="section" id="activity-terminology-and-concerns">
 <h2>6.2. Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>process: own memory</li>
-<li>thread: shared memory <em>and</em> “thread-local” state</li>
-<li>foreground versus background</li>
-<li>CPU-bound versus IO-bound<ul>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/5409687">CPU-bound example</a></li>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/5409800">IO-bound example</a></li>
+<li><p>process: own memory</p></li>
+<li><p>thread: shared memory <em>and</em> “thread-local” state</p></li>
+<li><p>foreground versus background</p></li>
+<li><p>CPU-bound versus IO-bound</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/5409687">CPU-bound example</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/5409800">IO-bound example</a></p></li>
 </ul>
 </li>
-<li>run-to-completion versus coordination</li>
-<li>progress reporting</li>
-<li>cancelation</li>
+<li><p>run-to-completion versus coordination</p></li>
+<li><p>progress reporting</p></li>
+<li><p>cancelation</p></li>
 </ul>
 </div>
 <div class="section" id="thread-safety">
 <h2>6.3. Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>nondeterminism<ul>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/5409800">example</a></li>
+<li><p>nondeterminism</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/5409800">example</a></p></li>
 </ul>
 </li>
-<li>extent of nondeterminism: see subsection below</li>
-<li>race conditions<ul>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/5409867">example</a></li>
+<li><p>extent of nondeterminism: see subsection below</p></li>
+<li><p>race conditions</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/5409867">example</a></p></li>
 </ul>
 </li>
-<li>root cause of thread safety problems</li>
+<li><p>root cause of thread safety problems</p></li>
 </ul>
 <div class="section" id="understanding-the-extent-of-nondeterminism">
 <h3>6.3.1. Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Permalink to this headline">¶</a></h3>
 <p>Consider this small example of two concurrent increment operations:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
 <span class="o">/*</span><span class="n">s1</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>          <span class="o">/*</span><span class="n">s2</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>When analyzing race conditions, we might be tempted to enumerate the different possible interleavings.
 While it seems reasonable for this example, this quickly becomes impractical because of the combinatorial explosion for larger number of threads with more steps. (Please see the CDER chapter for more details.)</p>
-<p>To appreciate this combinatorial explosion, let’s count the possible interleavings for the case of <span class="math">\(k\)</span> threads with <span class="math">\(n\)</span> steps each. We recall the binomial coefficient <span class="math">\(i\)</span> choose <span class="math">\(j\)</span> defined as</p>
-<div class="math">
+<p>To appreciate this combinatorial explosion, let’s count the possible interleavings for the case of <span class="math notranslate nohighlight">\(k\)</span> threads with <span class="math notranslate nohighlight">\(n\)</span> steps each. We recall the binomial coefficient <span class="math notranslate nohighlight">\(i\)</span> choose <span class="math notranslate nohighlight">\(j\)</span> defined as</p>
+<div class="math notranslate nohighlight">
 \[\binom{i}{j} = \frac{i!}{j!(i-j)!} \text{ for } 0 \leq j \leq i\]</div>
-<p>In our case, there are <span class="math">\(kn\)</span> steps, of which the first thread chooses <span class="math">\(n\)</span>; there are <span class="math">\(\binom{kn}{n}\)</span> possibilities for this.
-This leaves <span class="math">\((k-1)n\)</span> steps, of which the second thread chooses <span class="math">\(n\)</span>, and so on.
-At the end, there are <span class="math">\(n\)</span> steps left, which are the only choice for the last thread.
+<p>In our case, there are <span class="math notranslate nohighlight">\(kn\)</span> steps, of which the first thread chooses <span class="math notranslate nohighlight">\(n\)</span>; there are <span class="math notranslate nohighlight">\(\binom{kn}{n}\)</span> possibilities for this.
+This leaves <span class="math notranslate nohighlight">\((k-1)n\)</span> steps, of which the second thread chooses <span class="math notranslate nohighlight">\(n\)</span>, and so on.
+At the end, there are <span class="math notranslate nohighlight">\(n\)</span> steps left, which are the only choice for the last thread.
 The total number of choices is the product of choices for each thread:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\binom{kn}{n} \binom{(k-1)n}{n} \dots \binom{2n}{n} \binom{n}{n} =
 \frac{(kn)!}{n!(kn-n)!} \frac{((k-1)n)!}{n!((k-1)n-n)!} \dots \frac{(2n)!}{n!(2n-n)!} \frac{(n)!}{n!(n-n)!}\]</div>
-<p>Here the second factor in each denominator cancels out against the numerator of the next top-level factor and the second factor in the last denominator is <span class="math">\(1\)</span>, leaving</p>
-<div class="math">
+<p>Here the second factor in each denominator cancels out against the numerator of the next top-level factor and the second factor in the last denominator is <span class="math notranslate nohighlight">\(1\)</span>, leaving</p>
+<div class="math notranslate nohighlight">
 \[\frac{(kn)!}{{n!}^k}\]</div>
 <p>As the number of threads and/or their number of steps grow beyond two, the number interleavings gets very large.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{matrix}
 n / k  &amp; k = 2 &amp; k = 3 &amp; k = 4 \\
 n = 2 &amp; 6  &amp; 90 &amp; 2520 \\
@@ -312,31 +308,33 @@ n = 3 &amp; 20 &amp; 1680 &amp; 369600 \\
 n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 \end{matrix}\end{split}\]</div>
 <p>Therefore, we cannot attempt to comprehend, let alone enumerate, all possible interleavings. Instead, we need to think in terms of constraints, e.g., f1 always happens before s1, and f2 always happens before s2.</p>
-<p>Once we make each thread atomic, however, the number of interleavings shrinks dramatically to <span class="math">\(k!\)</span>.</p>
+<p>Once we make each thread atomic, however, the number of interleavings shrinks dramatically to <span class="math notranslate nohighlight">\(k!\)</span>.</p>
 </div>
 </div>
 <div class="section" id="dealing-with-shared-state">
 <h2>6.4. Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>mutual exclusion/locking</li>
-<li>confinement</li>
-<li>immutability</li>
-<li>case study: GUIs and the single-threaded rule</li>
+<li><p>mutual exclusion/locking</p></li>
+<li><p>confinement</p></li>
+<li><p>immutability</p></li>
+<li><p>case study: GUIs and the single-threaded rule</p></li>
 </ul>
 </div>
 <div class="section" id="conflicting-design-forces">
 <h2>6.5. (Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>correctness/(thread-)safety</li>
-<li>liveness/deadlock<ul>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/39d03158c4b766ce3c1c669f0d8ab930">dining philosophers example</a></li>
+<li><p>correctness/(thread-)safety</p></li>
+<li><p>liveness/deadlock</p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/39d03158c4b766ce3c1c669f0d8ab930">dining philosophers example</a></p></li>
 </ul>
 </li>
-<li>fairness/starvation</li>
-<li>performance<ul>
-<li>throughput</li>
-<li>latency</li>
-<li>jitter</li>
+<li><p>fairness/starvation</p></li>
+<li><p>performance</p>
+<ul>
+<li><p>throughput</p></li>
+<li><p>latency</p></li>
+<li><p>jitter</p></li>
 </ul>
 </li>
 </ul>
@@ -345,47 +343,50 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 <h2>6.6. Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Permalink to this headline">¶</a></h2>
 <p>Language constructs, patterns, building blocks:</p>
 <ul class="simple">
-<li>threads (familiar from 313/413)</li>
-<li>monitors: synchronized/locks, wait/notify</li>
-<li>fully synchronized object (pattern/building blocks)</li>
-<li>Android (also familiar from 313/413)<ul>
-<li><a class="reference external" href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a></li>
-<li><a class="reference external" href="http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></li>
+<li><p>threads (familiar from 313/413)</p></li>
+<li><p>monitors: synchronized/locks, wait/notify</p></li>
+<li><p>fully synchronized object (pattern/building blocks)</p></li>
+<li><p>Android (also familiar from 313/413)</p>
+<ul>
+<li><p><a class="reference external" href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a></p></li>
+<li><p><a class="reference external" href="http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html">java.util.concurrent</a><ul>
-<li>atomic variables</li>
-<li>thread-safe collections</li>
-<li>FIFO locks</li>
-<li>…</li>
+<li><p><a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html">java.util.concurrent</a></p>
+<ul>
+<li><p>atomic variables</p></li>
+<li><p>thread-safe collections</p></li>
+<li><p>FIFO locks</p></li>
+<li><p>…</p></li>
 </ul>
 </li>
-<li><a class="reference external" href="http://docs.scala-lang.org/overviews/parallel-collections/overview.html">Scala parallel collections</a></li>
-<li><a class="reference external" href="http://docs.scala-lang.org/overviews/core/futures.html">futures and promises intro</a></li>
-<li><a class="reference external" href="http://doc.akka.io/docs/akka/current/scala/futures.html">composable futures in Scala/Akka</a><ul>
-<li><a class="reference external" href="https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97">example: concurrent web requests</a></li>
+<li><p><a class="reference external" href="http://docs.scala-lang.org/overviews/parallel-collections/overview.html">Scala parallel collections</a></p></li>
+<li><p><a class="reference external" href="http://docs.scala-lang.org/overviews/core/futures.html">futures and promises intro</a></p></li>
+<li><p><a class="reference external" href="http://doc.akka.io/docs/akka/current/scala/futures.html">composable futures in Scala/Akka</a></p>
+<ul>
+<li><p><a class="reference external" href="https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97">example: concurrent web requests</a></p></li>
 </ul>
 </li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Actor_model">actors</a></li>
-<li><a class="reference external" href="http://www.reactive-streams.org">reactive streams</a> including <a class="reference external" href="http://doc.akka.io/docs/akka/2.4.4/scala/stream">Akka streams</a></li>
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Software_transactional_memory">software transactional memory</a></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Actor_model">actors</a></p></li>
+<li><p><a class="reference external" href="http://www.reactive-streams.org">reactive streams</a> including <a class="reference external" href="http://doc.akka.io/docs/akka/2.4.4/scala/stream">Akka streams</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Software_transactional_memory">software transactional memory</a></p></li>
 </ul>
 </div>
 <div class="section" id="references-concurrent-and-asynchronous-computing">
 <h2>6.7. References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Läufer and Thiruvathukal, CDER chapter (shared on Slack)</li>
-<li>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></li>
-<li>Doug Lea, <a class="reference external" href="http://gee.cs.oswego.edu/dl/cpj">CPJ</a></li>
-<li>Thiruvathukal and Christopher, <a class="reference external" href="https://code.google.com/p/hpjpc/">HPJPC</a></li>
-<li><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/lJLihLsyf0M/">SE Radio episode on concurrency: part 1</a></li>
-<li><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/Wh7E6YT1_JI/">SE Radio episode on concurrency: part 2</a></li>
-<li><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/WZ7h3kzRARY/">SE Radio episode on concurrency: part 3</a></li>
-<li><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/bqICWnvwuGw/">SE Radio episode on concurrency: part 4</a></li>
-<li><a class="reference external" href="http://arild.github.io/scala-workshop/#/12">futures and promises overview</a></li>
-<li><a class="reference external" href="https://github.com/ReactiveX/RxScala">RxJava/RxScala</a></li>
-<li><a class="reference external" href="https://www.youtube.com/watch?v=UKjcJ13bD3s">asynchronous programming video</a></li>
-<li><a class="reference external" href="https://www.youtube.com/watch?v=_t06LRX0DV0">reactive/asynchronous programming with RxJava/RxScala video</a></li>
+<li><p>Läufer and Thiruvathukal, CDER chapter (shared on Slack)</p></li>
+<li><p>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></p></li>
+<li><p>Doug Lea, <a class="reference external" href="http://gee.cs.oswego.edu/dl/cpj">CPJ</a></p></li>
+<li><p>Thiruvathukal and Christopher, <a class="reference external" href="https://code.google.com/p/hpjpc/">HPJPC</a></p></li>
+<li><p><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/lJLihLsyf0M/">SE Radio episode on concurrency: part 1</a></p></li>
+<li><p><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/Wh7E6YT1_JI/">SE Radio episode on concurrency: part 2</a></p></li>
+<li><p><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/WZ7h3kzRARY/">SE Radio episode on concurrency: part 3</a></p></li>
+<li><p><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/bqICWnvwuGw/">SE Radio episode on concurrency: part 4</a></p></li>
+<li><p><a class="reference external" href="http://arild.github.io/scala-workshop/#/12">futures and promises overview</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ReactiveX/RxScala">RxJava/RxScala</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=UKjcJ13bD3s">asynchronous programming video</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=_t06LRX0DV0">reactive/asynchronous programming with RxJava/RxScala video</a></p></li>
 </ul>
 </div>
 </div>
@@ -403,7 +404,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
     </p>
     <p>
         &copy; Copyright 2017, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
     </p>
   </div>
 </footer>
