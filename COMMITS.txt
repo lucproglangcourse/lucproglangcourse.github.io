@@ -1,3 +1,8 @@
+commit cc7253e
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated copyright year
+
 commit c095c99
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
