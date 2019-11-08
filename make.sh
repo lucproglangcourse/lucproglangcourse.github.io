@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -f ~/.env/sphinx/bin/activate ] && . ~/.env/sphinx/bin/activate
+[ -f ~/.venv/sphinx/bin/activate ] && . ~/.venv/sphinx/bin/activate
 
 make html
 make LATEXOPTS=' -interaction=batchmode ' latexpdf

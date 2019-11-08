@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -f ~/.env/sphinx/bin/activate ]; then
-	. ~/.env/sphinx/bin/activate
+if [ -f ~/.venv/sphinx/bin/activate ]; then
+	. ~/.venv/sphinx/bin/activate
 fi
 
 python get-examples.py
