@@ -1,3 +1,8 @@
+commit c095c99
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated path to venv
+
 commit e11949c
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
