@@ -45,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Loyola University Chicago COMP 371/471 Lecture Notes'
-copyright = u'2017-2017, Konstantin Läufer'
+copyright = u'2017-2019, Konstantin Läufer'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -301,7 +301,7 @@ texinfo_documents = [
 epub_title = u'Prog Lang'
 epub_author = u'Konstantin Läufer'
 epub_publisher = u'Konstantin Läufer'
-epub_copyright = u'2017, Konstantin Läufer'
+epub_copyright = u'2017-2019, Konstantin Läufer'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
