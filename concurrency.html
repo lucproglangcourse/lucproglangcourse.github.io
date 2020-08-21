@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6. Introduction to Concurrency &#8212; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. Summary" href="summary.html" />
@@ -217,9 +218,9 @@
     <div class="body col-md-12 content" role="main">
       
   <div class="section" id="introduction-to-concurrency">
-<h1>6. Introduction to Concurrency<a class="headerlink" href="#introduction-to-concurrency" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Introduction to Concurrency<a class="headerlink" href="#introduction-to-concurrency" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>6.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Why and when do we need concurrency?</p>
 <ul class="simple">
 <li><p>When it is a natural fit for the problem domain</p>
@@ -245,7 +246,7 @@
 </ul>
 </div>
 <div class="section" id="activity-terminology-and-concerns">
-<h2>6.2. Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>process: own memory</p></li>
 <li><p>thread: shared memory <em>and</em> “thread-local” state</p></li>
@@ -262,7 +263,7 @@
 </ul>
 </div>
 <div class="section" id="thread-safety">
-<h2>6.3. Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>nondeterminism</p>
 <ul>
@@ -278,7 +279,7 @@
 <li><p>root cause of thread safety problems</p></li>
 </ul>
 <div class="section" id="understanding-the-extent-of-nondeterminism">
-<h3>6.3.1. Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Permalink to this headline">¶</a></h3>
 <p>Consider this small example of two concurrent increment operations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
 <span class="o">/*</span><span class="n">s1</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>          <span class="o">/*</span><span class="n">s2</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -312,7 +313,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </div>
 </div>
 <div class="section" id="dealing-with-shared-state">
-<h2>6.4. Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>mutual exclusion/locking</p></li>
 <li><p>confinement</p></li>
@@ -321,7 +322,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </div>
 <div class="section" id="conflicting-design-forces">
-<h2>6.5. (Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>correctness/(thread-)safety</p></li>
 <li><p>liveness/deadlock</p>
@@ -340,7 +341,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </div>
 <div class="section" id="specific-concurrency-mechanisms">
-<h2>6.6. Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Permalink to this headline">¶</a></h2>
 <p>Language constructs, patterns, building blocks:</p>
 <ul class="simple">
 <li><p>threads (familiar from 313/413)</p></li>
@@ -373,7 +374,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </div>
 <div class="section" id="references-concurrent-and-asynchronous-computing">
-<h2>6.7. References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Läufer and Thiruvathukal, CDER chapter (shared on Slack)</p></li>
 <li><p>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></p></li>
@@ -404,7 +405,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
     </p>
     <p>
         &copy; Copyright 2017-2019, Konstantin Läufer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
     </p>
   </div>
 </footer>
