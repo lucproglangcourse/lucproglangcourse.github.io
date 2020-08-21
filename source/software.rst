@@ -91,7 +91,7 @@ Cons
 Required components
 ```````````````````
 
-- `Java 8 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
+- `Java 11 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*
