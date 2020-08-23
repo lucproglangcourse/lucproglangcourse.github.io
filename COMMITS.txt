@@ -1,3 +1,8 @@
+commit 1b1ac46
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added syllabus for fall 2020
+
 commit 40d331c
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
