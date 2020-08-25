@@ -10,7 +10,7 @@ Sections: COMP 371/471-001/002 Fall 2020
   Zoom links will be available on MS Teams shortly.
 
   - main synchronous session: Tue 19:00-20:00 on Zoom
-  - alternate synchronous session: Wed 15:00-16:00 on Zoom
+  - alternate synchronous session: Tue 14:00-15:00 on Zoom
 
 - *Communication:* All communication regarding this class takes place in Zoom (verbal) and MS Teams (written). Most will be in the team-level channel specific to this term. For individual or group-level concerns, you may use direct individual or group messages in MS Teams; my user ID is **klaufer@luc.edu**. *(Please DO NOT use email!)*
 - *Instructor:* `Konstantin Läufer <http://laufer.cs.luc.edu>`_
