@@ -1,3 +1,8 @@
+commit b4bbdae
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    updated fall 2020 alternate session time
+
 commit 336a27d
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
