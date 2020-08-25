@@ -24,33 +24,19 @@ Cons
 Setup
 `````
 
-- Use your GitHub, Visual Studio Team Services, or Google+ account to log into `Codenvy <https://codenvy.io>`_.
+.. todo:: Update this entire subsection based on OpenShift CHE
+
+- Use your GitHub, Google, Microsoft, or similar account to log into ` <https://codenvy.io>`_.
 - If you do not have any of these accounts, create a `GitHub <https://github.com>`_ account. Please see below for more information on GitHub.
 
 - Create a new workspace with the following settings:
 
-  - New from blank ...
-  - Create new workspace from stack > BLANK
-  - Name: lucproglangcourse
-  - RAM: 3GB
+  - Create new workspace from stack > Scala SBT
+  - Name: myproject-scala
+  - Project URL: paste existing GitHub URL into the configuration file
 
-- Wait for the workspace to become available. Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.
-- In the resulting Linux terminal, run `this gist <https://gist.github.com/klaeufer/c4040de09f51395b96be/raw>`_ to install the Scala build tool (sbt)::
-
-        wget https://gist.github.com/klaeufer/c4040de09f51395b96be/raw/install-sbt-ubuntu.sh && sh install-sbt-ubuntu.sh
-
-- Now you can check out existing projects using git or create a new one like so::
-
-	$ mkdir -p hello/src/main/scala
-	$ cd hello
-	$ cat > src/main/scala/Hello.scala
-	object Hello extends App {
-	  println("hello")
-	}
-	^D
-	$ sbt run
-	...
-	hello
+- Wait for the workspace to become available.
+  Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.
 
 - For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace)::
 
@@ -76,15 +62,15 @@ This option will give you an advanced development environment with code completi
 Pros
 ````
 
-- provides powerful capabilities, including code completion 
-- does not require network connection 
+- provides powerful capabilities, including code completion
+- does not require network connection
 
-  
+
 Cons
 ````
 
 - might be slow on older machines
-- need to maintain on each machine you use 
+- need to maintain on each machine you use
 
 
 
@@ -106,7 +92,7 @@ Required components
   - *Scala plugin installation:* IntelliJ IDEA > Configure (bottom right) > Plugins > Browse repositories > find and right-click Scala > download and install > close repository browser > OK to restart IDEA
   - *JDK configuration*: IntelliJ IDEA > Configure > Project Defaults > Project Structure > Platform Settings > SDKs > + > JDK > navigate to the installation directory of your most recent JDK > OK
 
-    
+
 Optional for all IntelliJ users
 ```````````````````````````````
 
@@ -115,18 +101,18 @@ Optional for all IntelliJ users
   - Key Promoter (helps you learn keyboard shortcuts)
   - MultiMarkdown
 
- 
+
 sbt optional plugins
 ~~~~~~~~~~~~~~~~~~~~
 
 This section applies to all uses of sbt, whether cloud-based or on the local command line.
 
-These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Some of the example projects already come with one or more of these plugins. 
+These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Some of the example projects already come with one or more of these plugins.
 
 - `sbt-scoverage <https://github.com/scoverage/sbt-scoverage>`_: uses Scoverage to produce a test code coverage report
 - `sbt-updates <https://github.com/rtimush/sbt-updates>`_: checks central repos for dependency updates
 - `sbt-scalariform <https://github.com/sbt/sbt-scalariform>`_: automatic source code formatting using Scalariform (see also `this Gist <https://gist.github.com/klaeufer/8981fcdebc8573b06f3d611d049839d3>`_)
-- `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_: creates a script for running your app outside sbt 
+- `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_: creates a script for running your app outside sbt
 - `ls-sbt <https://github.com/softprops/ls>`_:  browse available libraries on GitHub using ls.implicit.ly
 - `sbt-dependency-graph <https://github.com/jrudolph/sbt-dependency-graph>`_: creates a visual representation of library dependency tree
 - `cpd4sbt <https://github.com/sbt/cpd4sbt>`_: copy/paste detection for Scala
@@ -152,14 +138,17 @@ You may find both of these cheat sheets useful:
 - `GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`_
 - `GitLab <https://about.gitlab.com/images/press/git-cheat-sheet.pdf>`_ (includes useful diagrams)
 
-  
+
 Remote participation
 ~~~~~~~~~~~~~~~~~~~~
+
+This software allows you to participating in class remotely in case of weather emergencies, pandemics, etc.
+For security and privacy reasons, be sure to update it frequently.
+
+- `Zoom <https://luc.zoom.us>`_
+
+In case of a Zoom outage, we will fall back to MS Teams chat and reorganize from there.
 
 This application enables you to grant others remote access to your desktop. This is helpful for diagnosing and overcoming obstacles without having to pair with the instructor in person. The application is free for personal use and does not require registration.
 
 - `TeamViewer <https://www.teamviewer.com>`_
-
-This software allows you to participating in class remotely in case of weather emergencies.
-
-- `Zoom <https://luc.zoom.us>`_

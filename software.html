@@ -106,8 +106,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">10.2. Locally installed development environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">10.2.1. Pros</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">10.2.2. Cons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">10.2.1. Pros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">10.2.2. Cons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#required-components">10.2.3. Required components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optional-for-all-intellij-users">10.2.4. Optional for all IntelliJ users</a></li>
 </ul>
@@ -205,37 +205,22 @@
 </div>
 <div class="section" id="setup">
 <h3><span class="section-number">10.1.3. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Update this entire subsection based on OpenShift CHE</p>
+</div>
 <ul>
-<li><p>Use your GitHub, Visual Studio Team Services, or Google+ account to log into <a class="reference external" href="https://codenvy.io">Codenvy</a>.</p></li>
+<li><p>Use your GitHub, Google, Microsoft, or similar account to log into ` &lt;<a class="reference external" href="https://codenvy.io">https://codenvy.io</a>&gt;`_.</p></li>
 <li><p>If you do not have any of these accounts, create a <a class="reference external" href="https://github.com">GitHub</a> account. Please see below for more information on GitHub.</p></li>
 <li><p>Create a new workspace with the following settings:</p>
 <ul class="simple">
-<li><p>New from blank …</p></li>
-<li><p>Create new workspace from stack &gt; BLANK</p></li>
-<li><p>Name: lucproglangcourse</p></li>
-<li><p>RAM: 3GB</p></li>
+<li><p>Create new workspace from stack &gt; Scala SBT</p></li>
+<li><p>Name: myproject-scala</p></li>
+<li><p>Project URL: paste existing GitHub URL into the configuration file</p></li>
 </ul>
 </li>
-<li><p>Wait for the workspace to become available. Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.</p></li>
-<li><p>In the resulting Linux terminal, run <a class="reference external" href="https://gist.github.com/klaeufer/c4040de09f51395b96be/raw">this gist</a> to install the Scala build tool (sbt):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">klaeufer</span><span class="o">/</span><span class="n">c4040de09f51395b96be</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">sbt</span><span class="o">-</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">sh</span> <span class="o">&amp;&amp;</span> <span class="n">sh</span> <span class="n">install</span><span class="o">-</span><span class="n">sbt</span><span class="o">-</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-</li>
-<li><p>Now you can check out existing projects using git or create a new one like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p hello/src/main/scala
-$ cd hello
-$ cat &gt; src/main/scala/Hello.scala
-object Hello extends App {
-  println(&quot;hello&quot;)
-}
-^D
-$ sbt run
-...
-hello
-</pre></div>
-</div>
-</li>
+<li><p>Wait for the workspace to become available.
+Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.</p></li>
 <li><p>For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workspaces</span> <span class="o">&gt;</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">desired</span> <span class="n">workspace</span> <span class="p">(</span><span class="n">gear</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">agents</span> <span class="o">&gt;</span> <span class="n">git</span> <span class="n">credentials</span>
 </pre></div>
@@ -253,15 +238,15 @@ To launch, visit <a class="reference external" href="https://scastie.scala-lang.
 <div class="section" id="locally-installed-development-environment">
 <h2><span class="section-number">10.2. </span>Locally installed development environment<a class="headerlink" href="#locally-installed-development-environment" title="Permalink to this headline">¶</a></h2>
 <p>This option will give you an advanced development environment with code completion, type info, etc.</p>
-<div class="section" id="id1">
-<h3><span class="section-number">10.2.1. </span>Pros<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3><span class="section-number">10.2.1. </span>Pros<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>provides powerful capabilities, including code completion</p></li>
 <li><p>does not require network connection</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3><span class="section-number">10.2.2. </span>Cons<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3><span class="section-number">10.2.2. </span>Cons<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>might be slow on older machines</p></li>
 <li><p>need to maintain on each machine you use</p></li>
@@ -336,13 +321,15 @@ To launch, visit <a class="reference external" href="https://scastie.scala-lang.
 </div>
 <div class="section" id="remote-participation">
 <h2><span class="section-number">10.5. </span>Remote participation<a class="headerlink" href="#remote-participation" title="Permalink to this headline">¶</a></h2>
+<p>This software allows you to participating in class remotely in case of weather emergencies, pandemics, etc.
+For security and privacy reasons, be sure to update it frequently.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://luc.zoom.us">Zoom</a></p></li>
+</ul>
+<p>In case of a Zoom outage, we will fall back to MS Teams chat and reorganize from there.</p>
 <p>This application enables you to grant others remote access to your desktop. This is helpful for diagnosing and overcoming obstacles without having to pair with the instructor in person. The application is free for personal use and does not require registration.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.teamviewer.com">TeamViewer</a></p></li>
-</ul>
-<p>This software allows you to participating in class remotely in case of weather emergencies.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://luc.zoom.us">Zoom</a></p></li>
 </ul>
 </div>
 </div>
