@@ -1,5 +1,5 @@
-Sections: COMP 371/471-001/002 Fall 2020
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sections: 001/002 Fall 2020
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - *General format:* This is an *online* *"flipped"* class.
 
