@@ -1,5 +1,5 @@
 Section: 001 Fall 2019
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 - *Class time and location (Fall 2019)*: Tue 16:15-18:45 in Cuneo Hall 302, LSC
 - *Instructor:* `Konstantin Läufer <http://klaeufer.github.io>`_

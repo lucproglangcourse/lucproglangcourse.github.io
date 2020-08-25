@@ -1,3 +1,8 @@
+commit e4bd84c
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor fix
+
 commit b4bbdae
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
