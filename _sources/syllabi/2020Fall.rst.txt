@@ -17,14 +17,24 @@ Sections: 001/002 Fall 2020
 - *Office hour:* Wed 13:45-14:45 and Fri 10:30-11:45 on Zoom (appointment recommended), other times available on request
 - *TA:* Maya Gocal-Kappos
 - *Office hour:* Tue 10-11:15 and Wed 10:15-11:30
-- *Required text:*
-  **Scala for the Impatient, Second Edition**
-  *By: Cay S. Horstmann*
-  Publisher: Addison-Wesley Professional
-  Pub. Date: December 15, 2016
-  Web ISBN-13: 978-0-13-454062-7
-  Print ISBN-13: 978-0-13-454056-6
-  `access free on Safari <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_ and/or `download from Lightbend <https://www.lightbend.com/resources/e-book/scala-for-the-impatient>`_
+- *Required texts:*
+
+  | **Scala for the Impatient, Second Edition**
+  | *By: Cay S. Horstmann*
+  | Publisher: Addison-Wesley Professional
+  | Pub. Date: December 15, 2016
+  | Web ISBN-13: 978-0-13-454062-7
+  | Print ISBN-13: 978-0-13-454056-6
+  | `access free on Safari <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_ and/or `download from Lightbend <https://www.lightbend.com/resources/e-book/scala-for-the-impatient>`_
+
+  | **Managing Concurrency in Mobile User Interfaces with Examples in Android**
+  | *by Konstantin Läufer, George K Thiruvathukal*
+  | Publisher: Springer
+  | Release Date: 2018
+  | ISBN: 978-3-319-93109-8
+  | `access free preprint on arXiv <https://arxiv.org/abs/1705.02899>`_
+
+
 - *Additional resources:* :ref:`appendix-resources`
 - Grading (tentative):
 
