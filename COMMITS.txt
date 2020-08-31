@@ -1,3 +1,8 @@
+commit a250047
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed typo in background
+
 commit 13a9e19
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

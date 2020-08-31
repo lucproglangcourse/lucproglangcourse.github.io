@@ -7,7 +7,7 @@ In this chapter, we establish a practical context and provide some background in
 Overview of a lightweight development process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A successful development process usually comprises these minimal elements: 
+A successful development process usually comprises these minimal elements:
 
 - `automated regression testing <https://martinfowler.com/bliki/SelfTestingCode.html>`_
 
@@ -17,7 +17,7 @@ A successful development process usually comprises these minimal elements:
     - fun to produce (like other coding)
     - convenient to run frequently
 
-  - fix subject-under-test (SUT) (not tests) until tests pass
+  - fix system-under-test (SUT) (not tests themselves) until tests pass
 
   - retest every time
 
@@ -80,7 +80,7 @@ The basic categories of requirements are
   - performance
   - scalability
 
-    - e.g. performance for large data sets: asymptotic order of complexity 
+    - e.g. performance for large data sets: asymptotic order of complexity
     - (big-Oh) in terms of input size n
 
   - reliability
@@ -103,9 +103,9 @@ Software design principles and patterns
 
 The software development community has identified various principles intended to guide the design and development process, for example:
 
-- `DRY <http://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`_ (don't repeat yourself) 
+- `DRY <http://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`_ (don't repeat yourself)
 - `SoC <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ (separation of concerns)
-- `SOLID <https://en.wikipedia.org/wiki/SOLID_(object-oriented_design>`_ 
+- `SOLID <https://en.wikipedia.org/wiki/SOLID_(object-oriented_design>`_
 
 The community has also developed a body of `design patterns <https://sourcemaking.com/design_patterns>`_ that represent reusable solutions to recurring problems. Some key design patterns we will rely on in this course include
 
@@ -134,14 +134,14 @@ The resources in this section cover fundamental models of computation, language 
 - `Turing completeness <https://en.wikipedia.org/wiki/Turing_completeness>`_
 - `Church-Turing thesis <https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis>`_
 
-.. todo:: expand into a proper section  
+.. todo:: expand into a proper section
 
-  
+
 Popularity indices and performance comparisons
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are a number of programming language popularity indices and performance comparisons.
-Before drawing any conclusions from these indices, it is important to understand their *methodology*. 
+Before drawing any conclusions from these indices, it is important to understand their *methodology*.
 
 - `PYPL PopularitY of Programming Language index <https://pypl.github.io>`_
 - `TIOBE programming community index <http://www.tiobe.com/tiobe-index>`_
