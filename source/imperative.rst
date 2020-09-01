@@ -14,7 +14,7 @@ In this section, we discuss the different options for running Scala code, includ
     $ scala
     Welcome to Scala 2.12.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102).
     Type in expressions for evaluation. Or try :help.
-    
+
     scala> 3 + 4
     res0: Int = 7
 
@@ -29,7 +29,7 @@ In this section, we discuss the different options for running Scala code, includ
 
     scala> Seq(1, 2, 3).map(f)
     res2: Seq[Int] = List(3, 4, 5)
-    
+
 
   This is a very effective, painless way to conduct initial explorations.
   The drawback of this approach is a lack of support for *managed dependencies*, which are required for more advanced work.
@@ -43,7 +43,7 @@ In this section, we discuss the different options for running Scala code, includ
     $ scala blah.scala 1 2 3
     List(1, 2, 3)
 
-    
+
 - In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a ``main`` method or objects extending the ``App`` trait) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.
 
 - In IntelliJ IDEA, Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.
@@ -54,27 +54,27 @@ In this section, we discuss the different options for running Scala code, includ
 
 - It is best to use `sbt <https://www.scala-sbt.org/>`_ (the Scala Build Tool) for projects with one or more external dependencies because of sbt's (and similar build tools') ability to manage these dependencies in a declarative way::
 
-    $ sbt test 
+    $ sbt test
     $ sbt run
     $ sbt "run arg1 arg2 ..."
     $ sbt "runMain my.pkg.Main arg1 arg2 ..."
     $ sbt test:run
-    
-    
+
+
   In addition, sbt allows you to start a REPL that exposes the code in your project and its managed dependencies.
   This is the preferred way to explore existing libraries::
 
     $ sbt console
 
-    
+
   You can also pull in the additional dependencies from the test scope::
 
     $ sbt test:console
 
   If you want to bypass your own code in case of, say, compile-time errors, you can use one of these tasks::
 
-    $ sbt consoleQuick 
-    $ sbt test:consoleQuick 
+    $ sbt consoleQuick
+    $ sbt test:consoleQuick
 
   In conjunction with a `text editor <https://www.gnu.org/software/emacs>`_, sbt's `triggered execution <http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html>`_ for testing will significantly shorten the edit-compile-run/test cycle, for example::
 
@@ -86,11 +86,11 @@ In this section, we discuss the different options for running Scala code, includ
 - Finally, to turn an sbt-based Scala application into a script you can run outside sbt, you can use the `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_ plugin.
   To use this plugin, add this line to the end of ``build.sbt``::
 
-    enablePlugins(JavaAppPackaging) 
+    enablePlugins(JavaAppPackaging)
 
   and this one to ``project/plugins.sbt``::
 
-    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.4") 
+    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.4")
 
   Then, after any change to your sources, you can create/update the script and run it from the command line like so::
 
@@ -123,7 +123,7 @@ You may wonder how the upstream (left) stages in the pipeline know when to termi
 Concretely, how does the ``yes`` command know to terminate after ``head`` reads the first ten lines.
 When ``head`` is done, it closes its input stream, and ``yes`` will receive an error signal called ``SIGPIPE`` when it tries to write further data to that stream.
 The default response to this error signal is termination.
-    
+
 We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0::
 
     n=0 ; while :; do echo $n ; ((n=n+1)) ; done
@@ -143,7 +143,7 @@ Similarly, we can redirect input from a file using this notation::
     wc -l < testdata.txt
 
 There is a close relationship between Unix pipes and functional programming: When viewing a console application as a function that transforms its input to its output, Unix pipes correspond to function composition. The pipeline ``p | q`` corresponds to the function composition ``q o p``.
-  
+
 
 Console applications in Scala
 `````````````````````````````
@@ -153,7 +153,7 @@ As in Java, command-line arguments are available to a Scala application as ``arg
 
 We can read the standard input as lines using this iterator::
 
-    val lines = scala.io.Source.stdin.getLines 
+    val lines = scala.io.Source.stdin.getLines
 
 This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)
 
@@ -171,7 +171,7 @@ Therefore, to use a Scala (or Java) console applications as an upstream componen
 
 
 .. warning:: ``sun.misc.Signal`` is a less widely known feature of Java and may be removed or replaced in the future.
-    
+
 
 .. _subsecConstantSpace:
 
@@ -199,7 +199,7 @@ By contrast, this version has linear-space complexity and may run out of space o
       count += 1
     }
     println(line + " lines counted")
-  
+
 In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
 Iterators support most of the same behaviors as in-memory collections.
 
@@ -216,13 +216,13 @@ This is particularly effective for scripts and worksheets::
     assert { l.contains(2) }
 
 The following testing libraries/frameworks work well with Scala.
-    
+
 - The familiar `JUnit <http://junit.org>`_ can be used directly.
 - `ScalaCheck <http://scalacheck.org>`_ is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as "for all lists ``x`` and ``y``, the value of ``(x ++ y).length`` is equal to ``x.length + y.length``"
 - `ScalaTest <http://scalatest.org>`_ is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.
 - `specs2 <http://etorreborre.github.io/specs2/>`_ is a specification-based testing library that also supports integration with ScalaCheck.
 
-For faster turnaround, we can combine these techniques with triggered execution. 
+For faster turnaround, we can combine these techniques with triggered execution.
 
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
@@ -238,7 +238,7 @@ In its simplest form, logging can consist of ordinary print statements, preferab
     System.err.println("something went wrong: " + anObject)
 
 This allows displaying (or redirecting) error messages separately from output data.
-    
+
 For more complex projects, it is advantageous to be able to configure logging centrally, such as suppressing log messages below a certain `log level <https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels>`_ indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.
 
 *Logging frameworks* have arisen to address this need.
@@ -261,7 +261,7 @@ To use log4s minimally, the following steps are required:
     org.slf4j.simpleLogger.defaultLogLevel = debug
 
 - Now you are ready to access and use your logger::
-    
+
     private val logger = org.log4s.getLogger
     logger.debug(f"howMany = $howMany minLength = $minLength lastNWords = $lastNWords")
 
@@ -269,7 +269,7 @@ To use log4s minimally, the following steps are required:
   This produces informative debugging output such as::
 
     [main] DEBUG edu.luc.cs.cs371.topwords.TopWords - howMany = 10 minLength = 6 lastNWords = 1000
-  
+
 
 .. _secDomainModelsOO:
 
@@ -298,9 +298,17 @@ In imperative and object-oriented languages, the basic type abstractions are
     - less reasonable: array, linked list
     - see also this `table of collection implementations <http://docs.oracle.com/javase/tutorial/collections/implementations>`_
 
+- recursion: defining a type in terms of itself, usually involves aggregation and variation
+
+  - example: a tree interface with implementation classes for leaves and interior nodes
+
+- parameterization (genericity): when a type is parametric in terms of one or more type parameters
+
+  - example: collections parametric in their element type
+
 In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:
 
-- https://github.com/lucoodevcourse/shapes-android-java 
+- https://github.com/lucoodevcourse/shapes-android-java
 - https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
 - https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
 
@@ -323,11 +331,11 @@ More recent versions of Java, however, have started to echo some these advances:
 - lambda expressions
 - default methods in interfaces
 
-We will study these features as we encounter them. 
+We will study these features as we encounter them.
 
 .. todo:: examples below after discussing the next topic
 
-  
+
 Using Scala traits for modularity and dependency injection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -338,7 +346,7 @@ The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-m
 - testability
 - avoidance of code duplication ("DRY")
 
-.. note:: We deliberately call *Thin Cake* an *idiom* as opposed to a pattern because it is *language-specific*.  
+.. note:: We deliberately call *Thin Cake* an *idiom* as opposed to a pattern because it is *language-specific*.
 
 We will draw examples for this section from the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example.
 
@@ -363,8 +371,8 @@ Some building blocks have more than one role. E.g., ``common.Main`` is a client 
 Similarly, ``TreeBuilderSpec`` also depends on ``TreeBuilder`` but provides the test code that the concrete test classes (``Spec``) need.
 This arrangement enables us to mix-and-match the desired ``TreeBuilder`` implementation with either ``common.Main`` for production or ``TreeBuilderSpec`` for testing.
 
-  
-The following figure shows the roles of and relationships among the various building blocks of the process tree example. 
+
+The following figure shows the roles of and relationships among the various building blocks of the process tree example.
 
 .. figure:: images/ProcessTreeTypeHierarchy.png
 
