@@ -1,3 +1,13 @@
+commit 3c9c1c9
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    expanded section on type abstractions
+
+commit 98d30fb
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed broken link
+
 commit a250047
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

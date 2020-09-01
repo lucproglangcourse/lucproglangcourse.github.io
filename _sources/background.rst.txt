@@ -105,7 +105,7 @@ The software development community has identified various principles intended to
 
 - `DRY <http://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`_ (don't repeat yourself)
 - `SoC <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ (separation of concerns)
-- `SOLID <https://en.wikipedia.org/wiki/SOLID_(object-oriented_design>`_
+- `SOLID <https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)>`_
 
 The community has also developed a body of `design patterns <https://sourcemaking.com/design_patterns>`_ that represent reusable solutions to recurring problems. Some key design patterns we will rely on in this course include
 
