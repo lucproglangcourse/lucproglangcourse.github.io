@@ -43,9 +43,9 @@ The following example shows cross-compilation of a small C program on a developm
     }
     [laufer@boole:~/Work/hello] $ ~/Work/OpenWrt-SDK-15.05.1-ramips-rt305x_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-uclibc-gcc hello.c
 
-    
+
 #. Now we deploy the resulting executable to the target environment using, say, ``scp``.
-    
+
 #. Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a "portable travel router"::
 
     root@ExPodNano:~# ldd ./a.out
@@ -71,16 +71,16 @@ Lexical analysis
 
 Syntax analysis
 ```````````````
-  
+
 - context-free grammars, EBNF, parsing (Mogensen ch. 3)
 - `parser generator <https://en.wikipedia.org/wiki/Compiler-compiler>`_
 - `scala-bison <https://github.com/djspiewak/scala-bison>`_
 
 
-  
+
 Alternative front-end approaches
 ````````````````````````````````
-  
+
 - `parser combinators <https://en.wikipedia.org/wiki/Parser_combinator>`_
 - Scala parser combinators
 
@@ -96,7 +96,7 @@ Alternative front-end approaches
   - `parboiled2 documentation <https://github.com/sirthias/parboiled2>`_
   - `parboiled2 JSON parser example <https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala>`_
 
-    
+
 
 Programming language semantics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -123,17 +123,17 @@ The Interpreter pattern is related to the discussion of dynamic semantics.
 Case study: a simple imperative language
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this section, we discuss the design of an interpreter and programming environment for a simple imperative language. 
+In this section, we discuss the design of an interpreter and programming environment for a simple imperative language.
 
 - `Java implementation <https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java>`_
-- `Scala implementation <https://github.com/LoyolaChicagoCode/misc-scala/blob/master/src/main/scala/imperative/>`_
+- `Scala implementation <https://github.com/lucproglangcourse/misc-scala/blob/master/src/main/scala/imperative/>`_
 
-The accompanying lecture is available as a set of screencasts: 
+The accompanying lecture is available as a set of screencasts:
 
 - `foundations <https://youtu.be/-bDcsvlY5oA>`_
 - `implementation <https://youtu.be/mj-tq_kdeF>`_
 
-  
+
 Objectives
 ``````````
 
@@ -209,7 +209,7 @@ The interpreter program
 
 We now go ahead and write the interpreter program.
 The entire code is available as part of the `misc-scala <https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative>`_ example.
-A similar example but based on F-algebras and with better runtime error handling is also available: `simpleimperative-algebraic-scala <https://github.com/LoyolaChicagoCode/simpleimperative-algebraic-scala>`_.
+A similar example but based on F-algebras and with better runtime error handling is also available: `simpleimperative-algebraic-scala <https://github.com/lucproglangcourse/simpleimperative-algebraic-scala>`_.
 
 
 
@@ -242,13 +242,13 @@ Our language has the following features:
 
 The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by::
 
-    StudentCourseRecord = record 
+    StudentCourseRecord = record
         int firstExamScore;
         int secondExamScore;
         int totalScore;
     end;
 
-    StudentSemRecord = record 
+    StudentSemRecord = record
         StudentCourseRecord course1;
         StudentCourseRecord course2;
     end;
@@ -261,7 +261,7 @@ The syntactic feautures of our language are captured by the following grammar. F
 
     r.course2 = r.course1;
 
-    
+
 In the C language, such things are known as structs. In familiar object-oriented terminology, we can think about them in this way:
 
 - record types are classes whose only members are public member variables
@@ -281,7 +281,7 @@ The record type definitions in the previous example would look as follows in Jav
         public StudentCourseRecord course2;
     }
 
-    
+
 Formally, we proceed via the following BNF grammars. To simplify life for us, we will ignore type information. In this BNF grammar, we are a little bit more careful to separate L(eft) values and R(ight) values. L-values are those that can appear on the left hand side of an assignment statement, and R-values are those that appear on the right hand side of an assignment.
 
 Record definitions are given by the BNF grammar::
@@ -294,7 +294,7 @@ Record definitions are given by the BNF grammar::
     FieldList ::= fieldName, FieldList
               |	fieldName
 
-	      
+
 
 L-values (fields selected from records, as well as variables) are given by the BNF grammar::
 
@@ -317,7 +317,7 @@ Statements are given by the BNF grammar::
      	|	S1; S2
      	|	while (e) do S
 
-	
+
 We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation
 
 Recall that we viewed variables as objects with two capabilities:
@@ -327,11 +327,11 @@ Recall that we viewed variables as objects with two capabilities:
 
 Records are thought of in a similar light.
 
-.. image:: images/records1.png 
+.. image:: images/records1.png
 
 As before, we think of the state of the program, which we write S, as a map that associates identifiers with variable objects. Furthermore, as before, we distinguish evaluation and execution. In evaluation, there are two subcases, evaluating to an L-value and evaluating to an R-value.
 
-.. image:: images/records2.png 
+.. image:: images/records2.png
 
 There are two ways of having L-values. One is via variables and the second is via field selection.
 
@@ -340,7 +340,7 @@ There are two ways of having L-values. One is via variables and the second is vi
 
 These evaluation rules are written out precisely in the following picture.
 
-.. image:: images/records3.png 
+.. image:: images/records3.png
 
 Our earlier rules for evaluating R-values are presented again below..
 
@@ -349,7 +349,7 @@ Our earlier rules for evaluating R-values are presented again below..
 - Evaluating e1 - e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 - v2.
 - Evaluating constant c. Every constant evaluates to itself.
 
-.. image:: images/records4.png 
+.. image:: images/records4.png
 
 The rules for executing statements are as follows. They are similar to the ones seen before. The primary consequence of executing a statement still is the side effect on the store, ie. changes in the values of variables.
 
@@ -358,7 +358,7 @@ The rules for executing statements are as follows. They are similar to the ones 
 
 The execution rules are given in the following pictures:
 
-.. image:: images/records5.png 
+.. image:: images/records5.png
 
 
 Implementation
@@ -378,10 +378,10 @@ Type systems are an important aspect of programming languages. We identify the f
 - implicit versus explicit type information
 - nominal versus structural type equivalence
 
-  
-.. image:: images/DesignSpaceTypeSystems.jpg 
 
-Additional information is available here:	   
+.. image:: images/DesignSpaceTypeSystems.jpg
+
+Additional information is available here:
 
 - `design space and tradeoffs <http://en.wikipedia.org/wiki/Type_system>`_
 - `representative examples <http://en.wikipedia.org/wiki/Comparison_of_type_systems>`_
@@ -392,7 +392,7 @@ Additional information is available here:
 
 .. todo:: elaborate on the design space for polymorphism (Cardelli/Wegner)
 
-  
+
 
 Domain-specific languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -403,13 +403,13 @@ We identify the following dimensions:
 - internal/embedded language versus external language
 - business domain versus technical domain
 
-.. image:: images/DesignSpaceDSL.jpg 
+.. image:: images/DesignSpaceDSL.jpg
 
 In addition, there is a continuum between APIs and internal DSLs.
 
-.. image:: images/APIvsDSL.jpg 
+.. image:: images/APIvsDSL.jpg
 
-Additional information is available here:	   
+Additional information is available here:
 
 - http://c2.com/cgi/wiki?DomainSpecificLanguage
 - http://martinfowler.com/bliki/FluentInterface.html
@@ -417,5 +417,3 @@ Additional information is available here:
 - http://martinfowler.com/books/dsl.html
 - http://en.wikipedia.org/wiki/Domain-specific_language
 - `SE Radio episode 182 <http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/>`_
-
-

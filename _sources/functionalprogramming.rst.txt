@@ -23,8 +23,8 @@ Many of these, especially collection types and certain utility types, are *algeb
 - ``Option`` / ``Either``
 
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc
-  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc 
-  - http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html 
+  - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc
+  - http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html
 
 - ``Try``
 
@@ -40,11 +40,11 @@ The main building blocks in scripting-style Scala are the collection and utility
 
 .. todo:: elaborate more on ``for`` comprehensions and ``flatMap``
 
-  
+
 Examples
 ````````
 
-  
+
 Loop over all items in a finite collection or iterator using mutable state::
 
   final Iterator<String> incoming = ...;
@@ -52,7 +52,7 @@ Loop over all items in a finite collection or iterator using mutable state::
   int count = 0;
   for (final String s: incoming) {
     sum += s.length();
-    count += 1; 
+    count += 1;
   }
   final float result = (float) sum / count;
 
@@ -91,7 +91,7 @@ Immutable equivalent using ``continually``::
 
 Other important operations on collections
 `````````````````````````````````````````
-  
+
 - When the body of the iteration produces a *side effect* such as output, we can use ``foreach`` instead of ``continually``.
 - If we want to compute a *result value*, we can use ``foldLeft`` instead of ``foreach``.
 - If we want to compute a *sequence of result values*, one for each original item, we can use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
@@ -101,7 +101,7 @@ Other important operations on collections
 The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective::
 
    // map - the result is a nested collection
-  
+
    scala> Seq("hello world what up", "hola mundo", "hallo welt")
    res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
 
@@ -117,7 +117,7 @@ The following example illustrates the difference between ``map`` and ``flatMap``
    res12: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
 
    // flatMap - the result is a flat collection - this requires nested loops!
-   
+
    scala> val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
    resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
 
@@ -131,14 +131,14 @@ The following example illustrates the difference between ``map`` and ``flatMap``
    scala> resultFlat
    res14: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
 
-  
+
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
 
 
 Dealing with successive failures
 ````````````````````````````````
 
-Trying successive choices until either one succeeds or there is none left and we have to give up. 
+Trying successive choices until either one succeeds or there is none left and we have to give up.
 Nested ``try``-``catch`` statements are often used to achieve this::
 
   AuthorizeRequestStrategy authorizeRequest = null;
@@ -177,7 +177,7 @@ Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orEls
       sys.exit(401)
     }
 
-  
+
 The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
@@ -189,7 +189,7 @@ Challenges
 
 Can we write (efficiently or not)
 
-- ``length``, ``sum``, ``reverse``, ``filter``, ``find``, ``map`` as a fold, i.e., ``foldLeft`` or ``foldRight``? 
+- ``length``, ``sum``, ``reverse``, ``filter``, ``find``, ``map`` as a fold, i.e., ``foldLeft`` or ``foldRight``?
 - ``foldLeft`` or ``foldRight`` as ``map``?!?
 - ``reverse`` or ``filter`` as a ``map``?
 
@@ -217,7 +217,7 @@ related to those discussed in :ref:`secDomainModelsOO`:
 - recursion (at the type level)
 - type parameters (genericity)
 
-  
+
 Using these building blocks, we can express the `Shape` domain model from the examples above as an algebraic data type::
 
         Shape = Circle(Int)
@@ -227,8 +227,8 @@ Using these building blocks, we can express the `Shape` domain model from the ex
 
 We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:
 
-- https://github.com/lucproglangcourse/shapes-oo-scala 
-- https://github.com/lucproglangcourse/expressions-scala 
+- https://github.com/lucproglangcourse/shapes-oo-scala
+- https://github.com/lucproglangcourse/expressions-scala
 
 We identify the following structural and behavioral concerns:
 
@@ -237,16 +237,16 @@ We identify the following structural and behavioral concerns:
 - traversal
 - processing
 
-So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type. 
+So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type.
 
 
 Separation of structural concerns
 `````````````````````````````````
-  
+
 We can, however, achieve a separation between structure and content with the help of *parametric polymorphism*, that is, making the algebraic data type *generic* in terms of the content.
 The predefined collections are an example of this separation, as well as the `generic org chart <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_ example.
 
-  
+
 Behaviors on algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -258,7 +258,7 @@ As expected, for recursive types, the behaviors are typically recursive as well.
 - `simple natural numbers <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc>`_
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_
 
-In these examples, the traversal and processing concerns identified above remain combined. 
+In these examples, the traversal and processing concerns identified above remain combined.
 
 
 Separation of behavioral concerns
@@ -268,16 +268,16 @@ A question that comes to mind is whether they can be separated, similarly to the
 These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
 They handle the *traversal* concern for us and separate it from the *processing* concern, which we handle by providing a suitable argument function.
 
-- `functions on lists (reverse) <https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc>`_
+- `functions on lists (reverse) <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc>`_
 - `functions on streams (potentially infinite lists with memoization) <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc>`_
 
-This question has a two-part answer:  
+This question has a two-part answer:
 Yes, we can define custom implementations of such higher-order behaviors for our own algebraic data types.
-In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a ``map`` method.  
+In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a ``map`` method.
 
 Another, seemingly esoteric, question is whether we can pull out recursion itself as a functional pattern.
 Yes, we can.
-In `this factorial example <https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc>`_,
+In `this factorial example <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc>`_,
 the ``Y``-combinator handles the *recursion* concern *for behaviors* and separates it from the concern of what should happen in each step of the recursion.
 
 We will soon study the equivalent idea at the type level.
@@ -304,7 +304,7 @@ This `reverse example <https://github.com/lucproglangcourse/misc-explorations-sc
 Here are some observations:
 
 - ``foldLeft`` is usually what we want: *linear-time* and *constant-space* (naturally tail-recursive).
-- ``foldRight`` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list. 
+- ``foldRight`` is *linear-time* and *linear-space* (*not* tail-recursive) but goes with the natural head-tail structure of the list.
 - ``xs.foldRight(z)(f) == xs.reverse.foldLeft(z)(g)`` where ``g`` is ``f`` with the arguments switched.
 
 To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for *definition classes*, follow the link to the leftmost definition class, then the link to that class's Scala source, and finally look for the actual method.
@@ -318,14 +318,14 @@ Here are some examples:
 - `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269>`_
 - `length <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
-  
+
 For more details on space complexity and tail recursion, please take a look at these references:
 
 - `space complexity, tail recursion, and accumulators <http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/>`_
 - `tail recursion, trampolines, and continuations <http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html>`_ (advanced)
 
 
-      
+
 Separation of concerns at the type level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -347,7 +347,7 @@ We first need to define some key concepts:
   - ``Option``
   - ``List``
   - generic trees such as `org chart <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_
-    
+
 - The ``Fix``-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself.
 - Generalized ``fold`` = *catamorphism* (``cata``) for *breaking down* a data structure to a result value.
 - `F-algebra <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_: This is the argument to ``fold``, which has a functor ``F`` and a carrier object, i.e., the result type of the fold.
@@ -356,10 +356,10 @@ We first need to define some key concepts:
 - *Initial F-algebra*: This is the least fixpoint of our functor ``F`` and equivalent to our original recursive type.
   We obtain this by applying the ``Fix``-combinator to ``F``.
 - We get our original recursive behaviors back by combining ``cata`` and our specific F-algebraic version of the behavior.
-  
+
 .. todo:: Practical applications
 
-	  
+
 Examples
 ````````
 
@@ -399,9 +399,9 @@ By using a suitable ``Fix`` over our functor, they all end up having the *same* 
   res1: Fix = Fix((1,Some(Fix((2,Some(Fix((3,None))))))))
 
 
-That's why we usually define such types recursively to begin with.  
+That's why we usually define such types recursively to begin with.
 
-  
+
 Generalized fold (catamorphism)
 ```````````````````````````````
 
@@ -414,7 +414,7 @@ Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we perform recurs
 
 
 Now we can define *algebras* on our functor, such as::
-  
+
   def sum(arg: (Int, Option[Int])): Int = arg match {
     case (i, None) => i
     case (i, Some(s)) => i + s
@@ -427,11 +427,11 @@ These are very similar to visitors without the responsibility to traverse the st
 That is why they are not recursive.
 Instead, the catamorphism takes care of the recursion.
 
-  
+
 For an arbitrary functor ``F``, the code looks like this::
 
   case class Fix(unFix: F[Fix]) {
-    def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))  
+    def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))
   }
 
 
@@ -449,7 +449,7 @@ By taking an F-algebraic perspective on recursive algebraic data types, we are a
 
 It also helps to study these questions:
 
-- How are, say, ``Option``, ``List``, and ``Tree`` related? 
+- How are, say, ``Option``, ``List``, and ``Tree`` related?
 - How does
 
   - ``Option`` relate to ``List``
@@ -460,8 +460,8 @@ It also helps to study these questions:
 - How do we represent an *empty* structure?
 - Why aren't there multiple branches in the definition of ``cata`` above?
   When does the recursion terminate?
-- Is ``cata`` tail-recursive? Can or should it be?  
-  
+- Is ``cata`` tail-recursive? Can or should it be?
+
 
 On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:
 
@@ -521,7 +521,7 @@ Examples of monads using the Scalaz library are available `here <https://github.
 
 Observations
 ````````````
-    
+
 - The Scala library includes various structures that are effectively monads, especially those just mentioned.
   What Scala does not define is a monad abstraction itself.
 - This is where libraries like Scalaz or Cats come in:
@@ -530,7 +530,7 @@ Observations
 - A good reference for learning Scalaz, a library that defines these various abstractions, is available `here <http://eed3si9n.com/learning-scalaz>`_.
 
 
-References 
+References
 ~~~~~~~~~~
 
 .. todo:: put chapter-level references here

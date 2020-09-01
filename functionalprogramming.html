@@ -453,7 +453,7 @@ As expected, for recursive types, the behaviors are typically recursive as well.
 These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
 They handle the <em>traversal</em> concern for us and separate it from the <em>processing</em> concern, which we handle by providing a suitable argument function.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/functionsOnLists.sc">functions on lists (reverse)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">functions on lists (reverse)</a></p></li>
 <li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc">functions on streams (potentially infinite lists with memoization)</a></p></li>
 </ul>
 <p>This question has a two-part answer:
@@ -461,7 +461,7 @@ Yes, we can define custom implementations of such higher-order behaviors for our
 In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a <code class="docutils literal notranslate"><span class="pre">map</span></code> method.</p>
 <p>Another, seemingly esoteric, question is whether we can pull out recursion itself as a functional pattern.
 Yes, we can.
-In <a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-explorations-scala/blob/master/factorial.sc">this factorial example</a>,
+In <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc">this factorial example</a>,
 the <code class="docutils literal notranslate"><span class="pre">Y</span></code>-combinator handles the <em>recursion</em> concern <em>for behaviors</em> and separates it from the concern of what should happen in each step of the recursion.</p>
 <p>We will soon study the equivalent idea at the type level.</p>
 </div>
