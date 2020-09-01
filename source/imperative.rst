@@ -298,11 +298,11 @@ In imperative and object-oriented languages, the basic type abstractions are
     - less reasonable: array, linked list
     - see also this `table of collection implementations <http://docs.oracle.com/javase/tutorial/collections/implementations>`_
 
-- recursion: defining a type in terms of itself, usually involves aggregation and variation
+- (structural) recursion: defining a type in terms of itself, usually involves aggregation and variation
 
   - example: a tree interface with implementation classes for leaves and interior nodes
 
-- parameterization (genericity): when a type is parametric in terms of one or more type parameters
+- genericity (type parameterization): when a type is parametric in terms of one or more type parameters
 
   - example: collections parametric in their element type
 
