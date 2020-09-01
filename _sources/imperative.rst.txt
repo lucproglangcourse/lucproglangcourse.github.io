@@ -359,8 +359,9 @@ The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-m
 
 We will rely on the following examples for this section:
 
-- `iterators <https://github.com/lucproglangcourse/iterators-scala>`_
-- `process tree <https://github.com/lucproglangcourse/processtree-scala>`_
+- https://github.com/lucproglangcourse/consoleapp-java-sbt
+- https://github.com/lucproglangcourse/iterators-scala
+- https://github.com/lucproglangcourse/processtree-scala
 
 First, to achieve testability, we can define the desired functionality, such as ``common.IO``, as its own trait instead of a concrete class or part of some other trait such as ``common.Main``.
 Such traits are *providers* of some functionality, while building blocks that use this functionality are *clients*, such as``common.Main`` (on the production side) and ``PrintSpec`` (on the testing side).

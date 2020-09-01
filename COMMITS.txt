@@ -1,3 +1,8 @@
+commit 48b47d2
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to Java SoC example
+
 commit 0ced266
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
