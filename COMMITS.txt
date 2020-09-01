@@ -1,3 +1,8 @@
+commit 6f0164e
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added link to generic Java tree example
+
 commit 448127e
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

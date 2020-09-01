@@ -311,7 +311,7 @@ In an object-oriented language, we commonly use a combination of design patterns
 - https://github.com/lucoodevcourse/shapes-android-java
 - https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
 - https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
-
+- https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch
 
 Object-oriented Scala as a "better Java"
 ````````````````````````````````````````
