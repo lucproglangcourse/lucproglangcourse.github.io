@@ -76,7 +76,7 @@ In this section, we discuss the different options for running Scala code, includ
     $ sbt consoleQuick
     $ sbt test:consoleQuick
 
-  In conjunction with a `text editor <https://www.gnu.org/software/emacs>`_, sbt's `triggered execution <http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html>`_ for testing will significantly shorten the edit-compile-run/test cycle, for example::
+  In conjunction with a `text editor <https://www.gnu.org/software/emacs>`_, sbt's `triggered execution <https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html>`_ for testing will significantly shorten the edit-compile-run/test cycle, for example::
 
     $ sbt
     ...
