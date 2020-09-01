@@ -193,7 +193,7 @@
 <li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
 We can launch the Scala REPL and then evaluate definitions and expressions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scala
-Welcome to Scala 2.12.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102).
+Welcome to Scala 2.13.3 (OpenJDK 64-Bit Server VM, Java 11.0.8).
 Type in expressions for evaluation. Or try :help.
 
 scala&gt; 3 + 4
@@ -265,7 +265,7 @@ To use this plugin, add this line to the end of <code class="docutils literal no
 </pre></div>
 </div>
 <p>and this one to <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s2">&quot;com.typesafe.sbt&quot;</span> <span class="o">%</span> <span class="s2">&quot;sbt-native-packager&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.1.4&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s2">&quot;com.typesafe.sbt&quot;</span> <span class="o">%</span> <span class="s2">&quot;sbt-native-packager&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, after any change to your sources, you can create/update the script and run it from the command line like so:</p>
@@ -407,8 +407,8 @@ Modern logging frameworks have very low performance overhead and are a convenien
 To use log4s minimally, the following steps are required:</p>
 <ul>
 <li><p>Add external dependencies for log4s and a simple slf4j backend implementation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;org.log4s&quot;</span> <span class="o">%%</span> <span class="s2">&quot;log4s&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.6.1&quot;</span><span class="p">,</span>
-<span class="s2">&quot;org.slf4j&quot;</span> <span class="o">%</span> <span class="s2">&quot;slf4j-simple&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.25&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;org.log4s&quot;</span> <span class="o">%%</span> <span class="s2">&quot;log4s&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.8.2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;org.slf4j&quot;</span> <span class="o">%</span> <span class="s2">&quot;slf4j-simple&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.30&quot;</span>
 </pre></div>
 </div>
 </li>

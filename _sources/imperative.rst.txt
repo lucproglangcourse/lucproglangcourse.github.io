@@ -12,7 +12,7 @@ In this section, we discuss the different options for running Scala code, includ
   We can launch the Scala REPL and then evaluate definitions and expressions::
 
     $ scala
-    Welcome to Scala 2.12.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102).
+    Welcome to Scala 2.13.3 (OpenJDK 64-Bit Server VM, Java 11.0.8).
     Type in expressions for evaluation. Or try :help.
 
     scala> 3 + 4
@@ -90,7 +90,7 @@ In this section, we discuss the different options for running Scala code, includ
 
   and this one to ``project/plugins.sbt``::
 
-    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.4")
+    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.7.5")
 
   Then, after any change to your sources, you can create/update the script and run it from the command line like so::
 
@@ -253,8 +253,8 @@ To use log4s minimally, the following steps are required:
 
 - Add external dependencies for log4s and a simple slf4j backend implementation::
 
-    "org.log4s" %% "log4s" % "1.6.1",
-    "org.slf4j" % "slf4j-simple" % "1.7.25"
+    "org.log4s" %% "log4s" % "1.8.2",
+    "org.slf4j" % "slf4j-simple" % "1.7.30"
 
 - If you require a more verbose (lower severity) log level than the default of ``INFO``, such as ``DEBUG``, add a configuration file ``src/main/resources/simplelogger.properties`` with contents::
 
