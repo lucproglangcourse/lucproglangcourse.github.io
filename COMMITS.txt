@@ -1,3 +1,8 @@
+commit c495c58
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added links to Scala examples
+
 commit 259a240
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
