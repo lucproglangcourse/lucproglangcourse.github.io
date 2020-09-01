@@ -222,9 +222,9 @@ The following testing libraries/frameworks work well with Scala.
 - `ScalaTest <http://scalatest.org>`_ is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.
 - `specs2 <http://etorreborre.github.io/specs2/>`_ is a specification-based testing library that also supports integration with ScalaCheck.
 
-For faster turnaround, we can combine these techniques with triggered execution.
-
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
+
+For faster turnaround during development, we can combine these techniques with `triggered execution <https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html>`_.
 
 
 The role of logging
