@@ -335,6 +335,13 @@ More recent versions of Java, however, have started to echo some these advances:
 
 We will study these features as we encounter them.
 
+The following examples illustrate the use of Scala as a "better Java" and the transition to some of the above-mentioned improvements:
+
+- https://github.com/lucproglangcourse/shapes-oo-scala
+- https://github.com/lucproglangcourse/expressions-scala
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
+- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc
+
 .. todo:: examples below after discussing the next topic
 
 
