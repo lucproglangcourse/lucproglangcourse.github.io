@@ -121,7 +121,7 @@ and the ``wc`` command counts the number of characters, words, or lines::
 
 You may wonder how the upstream (left) stages in the pipeline know when to terminate.
 Concretely, how does the ``yes`` command know to terminate after ``head`` reads the first ten lines.
-When ``head`` is done, it closes its input stream, and ``yes`` will receive an error signal called ``SIGPIPE`` when it tries to write further data to that stream.
+When ``head`` is done after reading and passing through the specified number of lines, it closes its input stream, and ``yes`` will receive an error signal called ``SIGPIPE`` when it tries to write further data to that stream.
 The default response to this error signal is termination.
 
 We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0::

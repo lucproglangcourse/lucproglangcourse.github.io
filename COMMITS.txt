@@ -1,3 +1,8 @@
+commit 95502a5
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    clarified SIGPIPE handling in head
+
 commit 81dea38
 Author: Konstantin Läufer <klaeufer@gmail.com>
 

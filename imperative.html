@@ -297,7 +297,7 @@ and the <code class="docutils literal notranslate"><span class="pre">wc</span></
 </div>
 <p>You may wonder how the upstream (left) stages in the pipeline know when to terminate.
 Concretely, how does the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command know to terminate after <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first ten lines.
-When <code class="docutils literal notranslate"><span class="pre">head</span></code> is done, it closes its input stream, and <code class="docutils literal notranslate"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
+When <code class="docutils literal notranslate"><span class="pre">head</span></code> is done after reading and passing through the specified number of lines, it closes its input stream, and <code class="docutils literal notranslate"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
 The default response to this error signal is termination.</p>
 <p>We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done
