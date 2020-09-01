@@ -330,6 +330,8 @@ More recent versions of Java, however, have started to echo some these advances:
 
 - lambda expressions
 - default methods in interfaces
+- local type inference
+- streams
 
 We will study these features as we encounter them.
 
