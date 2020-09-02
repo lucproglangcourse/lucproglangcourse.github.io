@@ -69,7 +69,7 @@ Immutable equivalent using ``foldLeft``::
   val result = sum.toFloat / count
 
 Note that you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
-On the other hand, if ``incoming`` were a collection (always finite) instead of an iterator (potentially unbounded), you could use ``map`` and ``sum``, a specialized fold, for a more terse equivalent::
+On the other hand, if ``incoming`` is a collection (always finite) instead of an iterator (potentially unbounded), you can use ``map`` and ``sum``, a specialized fold, for a terser equivalent::
 
   val sum = incoming.map(s => s.length).sum
   val count = incoming.size
