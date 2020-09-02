@@ -255,6 +255,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 <span class="n">final</span> <span class="nb">float</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
 </pre></div>
 </div>
+<p><em>What does this code compute?</em></p>
 <p>Immutable equivalent using <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">foldLeft</span> <span class="p">{</span>
   <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -264,6 +265,14 @@ The main building blocks in scripting-style Scala are the collection and utility
 <span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
 </pre></div>
 </div>
+<p>Note that you cannot <code class="docutils literal notranslate"><span class="pre">un-fuse''</span> <span class="pre">this</span> <span class="pre">loop</span> <span class="pre">equivalent</span> <span class="pre">because</span> <span class="pre">the</span> <span class="pre">iterator</span> <span class="pre">is</span> <span class="pre">stateful</span> <span class="pre">and</span> <span class="pre">you</span> <span class="pre">can</span> <span class="pre">iterate</span> <span class="pre">through</span> <span class="pre">it</span> <span class="pre">only</span> <span class="pre">once.</span>
+<span class="pre">On</span> <span class="pre">the</span> <span class="pre">other</span> <span class="pre">hand,</span> <span class="pre">if</span> <span class="pre">``incoming</span></code> were a collection (always finite) instead of an iterator (potentially unbounded), you could use <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>, a specialized fold, for a more terse equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">s</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span>
+<span class="n">val</span> <span class="n">count</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">size</span>
+<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>This is equivalent to two consecutive loops, one for <code class="docutils literal notranslate"><span class="pre">map</span></code> and one for <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
 <p>Unbounded loop until a condition is met:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Scanner</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
 <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
