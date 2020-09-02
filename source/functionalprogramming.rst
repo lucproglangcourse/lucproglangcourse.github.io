@@ -56,6 +56,8 @@ Loop over all items in a finite collection or iterator using mutable state::
   }
   final float result = (float) sum / count;
 
+*What does this code compute?*
+
 
 Immutable equivalent using ``foldLeft``::
 
@@ -65,6 +67,15 @@ Immutable equivalent using ``foldLeft``::
     (sum + next.length, count + 1)
   }
   val result = sum.toFloat / count
+
+Note that you cannot ``un-fuse'' this loop equivalent because the iterator is stateful and you can iterate through it only once.
+On the other hand, if ``incoming`` were a collection (always finite) instead of an iterator (potentially unbounded), you could use ``map`` and ``sum``, a specialized fold, for a more terse equivalent::
+
+  val sum = incoming.map(s => s.length).sum
+  val count = incoming.size
+  val result = sum.toFloat / count
+
+This is equivalent to two consecutive loops, one for ``map`` and one for ``sum``.
 
 
 Unbounded loop until a condition is met::
