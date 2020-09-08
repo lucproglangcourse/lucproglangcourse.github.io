@@ -84,7 +84,7 @@ Required components
   - optional on any platform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
 
 
-- `sbt <http://www.scala-sbt.org/0.13/docs/Setup.html>`_ Scala build tool
+- `sbt <https://www.scala-sbt.org/1.x/docs/Setup.html>`_ Scala build tool
 - `IntelliJ IDEA CE <https://www.jetbrains.com/idea/download/>`_ integrated development environment
 
   - check specific prerequisite details for your platform
