@@ -117,6 +117,9 @@ The following example illustrates the difference between ``map`` and ``flatMap``
    scala> Seq("hello world what up", "hola mundo", "hallo welt")
    res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
 
+   scala> res0.map(s => s.split("\\s+"))
+   val res1: Seq[Array[String]] = List(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+
    scala> val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
    resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
 
@@ -126,9 +129,12 @@ The following example illustrates the difference between ``map`` and ``flatMap``
 	| }
 
    scala> resultNested
-   res12: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+   res2: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
 
    // flatMap - the result is a flat collection - this requires nested loops!
+
+   scala> res0.flatMap(s => s.split("\\s+"))
+   val res3: Seq[String] = List(hello, world, what, up, hola, mundo, hallo, welt)
 
    scala> val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
    resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
@@ -141,7 +147,7 @@ The following example illustrates the difference between ``map`` and ``flatMap``
 	| }
 
    scala> resultFlat
-   res14: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
+   res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
 
 
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.

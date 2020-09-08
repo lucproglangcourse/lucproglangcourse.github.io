@@ -311,6 +311,9 @@ On the other hand, if <code class="docutils literal notranslate"><span class="pr
 scala&gt; Seq(&quot;hello world what up&quot;, &quot;hola mundo&quot;, &quot;hallo welt&quot;)
 res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
 
+scala&gt; res0.map(s =&gt; s.split(&quot;\\s+&quot;))
+val res1: Seq[Array[String]] = List(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+
 scala&gt; val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
 resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
 
@@ -320,9 +323,12 @@ scala&gt; res0.foreach { line =&gt;
      | }
 
 scala&gt; resultNested
-res12: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+res2: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
 
 // flatMap - the result is a flat collection - this requires nested loops!
+
+scala&gt; res0.flatMap(s =&gt; s.split(&quot;\\s+&quot;))
+val res3: Seq[String] = List(hello, world, what, up, hola, mundo, hallo, welt)
 
 scala&gt; val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
 resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
@@ -335,7 +341,7 @@ scala&gt; res0.foreach { line =&gt;
      | }
 
 scala&gt; resultFlat
-res14: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
+res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
 </pre></div>
 </div>
 <p>Note also that all of these are methods but look like control structures because of Scala’s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
