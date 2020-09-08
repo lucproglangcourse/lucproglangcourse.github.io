@@ -1,3 +1,8 @@
+commit 74aaae2
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    added Scala tuples link
+
 commit 2e81cda
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
