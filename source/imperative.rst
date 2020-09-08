@@ -367,7 +367,8 @@ First, to achieve testability, we can define the desired functionality, such as 
 Such traits are *providers* of some functionality, while building blocks that use this functionality are *clients*, such as``common.Main`` (on the production side) and ``PrintSpec`` (on the testing side).
 Specifically, in the process tree example, we use ``PrintSpec`` to test ``common.IO`` in isolation, independently of ``common.Main``.
 
-To manage the growing complexity of a system, we usually try to decompose it into its design dimensions. In the process tree example, we recognize these design dimensions:
+To manage the growing complexity of a system, we usually try to decompose it into its design dimensions.
+In many situations, including the examples listed above, we recognize these design dimensions:
 
 - mutable versus immutable implementation
 - run in production versus testing
