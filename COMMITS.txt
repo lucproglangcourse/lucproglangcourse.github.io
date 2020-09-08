@@ -1,3 +1,8 @@
+commit f5e4e2b
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    minor clarification
+
 commit 70e5e2d
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
