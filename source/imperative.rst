@@ -318,11 +318,12 @@ Object-oriented Scala as a "better Java"
 
 Scala offers various improvements over Java, including:
 
-- `unified types <http://docs.scala-lang.org/tutorials/tour/unified-types.html>`_
-- `standalone higher-order functions <http://docs.scala-lang.org/tutorials/tour/higher-order-functions>`_
-- `standalone objects <http://docs.scala-lang.org/tutorials/tour/singleton-objects.html>`_
-- `case classes <http://docs.scala-lang.org/tutorials/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tutorials/tour/pattern-matching.html>`_
-- `traits <http://docs.scala-lang.org/tutorials/tour/traits.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
+- `unified types <http://docs.scala-lang.org/tour/unified-types.html>`_
+- `standalone higher-order functions <http://docs.scala-lang.org/tour/higher-order-functions>`_
+- `standalone objects <http://docs.scala-lang.org/tour/singleton-objects.html>`_
+- `tuples <https://docs.scala-lang.org/tour/tuples.html>`_
+- `case classes <http://docs.scala-lang.org/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tour/pattern-matching.html>`_
+- `traits <http://docs.scala-lang.org/tour/traits.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
 - package structure decoupled from folder hierarchy
 - `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
 
