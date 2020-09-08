@@ -1,3 +1,8 @@
+commit 40af3de
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed HOF link
+
 commit 74aaae2
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
