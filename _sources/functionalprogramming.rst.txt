@@ -12,13 +12,14 @@ Many of these, especially collection types and certain utility types, are *algeb
 
 - ``Seq`` / ``List``
 
-  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.List
+  - https://www.scala-lang.org/api/current/scala/collection/Seq.html
+  - https://www.scala-lang.org/api/current/scala/collection/immutable/List.html
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc
   - note the difference between those and tuples
 
 - ``Map``
 
-  - http://scala-lang.org/api/current/index.html#scala.collection.immutable.Map
+  - https://www.scala-lang.org/api/current/scala/collection/Map.html
 
 - ``Option`` / ``Either``
 
@@ -28,7 +29,7 @@ Many of these, especially collection types and certain utility types, are *algeb
 
 - ``Try``
 
-  - http://scala-lang.org/api/current/index.html#scala.util.Try
+  - https://www.scala-lang.org/api/current/scala/util/Try.html
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc
 
 By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
