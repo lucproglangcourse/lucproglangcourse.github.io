@@ -1,3 +1,8 @@
+commit 35dac35
+Author: Konstantin Läufer <klaeufer@gmail.com>
+
+    fixed sbt link
+
 commit 40af3de
 Author: Konstantin Läufer <klaeufer@gmail.com>
 
