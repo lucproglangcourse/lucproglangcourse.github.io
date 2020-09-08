@@ -319,7 +319,7 @@ Object-oriented Scala as a "better Java"
 Scala offers various improvements over Java, including:
 
 - `unified types <http://docs.scala-lang.org/tour/unified-types.html>`_
-- `standalone higher-order functions <http://docs.scala-lang.org/tour/higher-order-functions>`_
+- `standalone higher-order functions <https://docs.scala-lang.org/tour/higher-order-functions.html>`_
 - `standalone objects <http://docs.scala-lang.org/tour/singleton-objects.html>`_
 - `tuples <https://docs.scala-lang.org/tour/tuples.html>`_
 - `case classes <http://docs.scala-lang.org/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tour/pattern-matching.html>`_
