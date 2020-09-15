@@ -323,7 +323,7 @@ We can also append to an existing file:</p>
 <p>The following techniques are useful for creating console applications in Scala.
 As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
 <p>We can read the standard input as lines using this iterator:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)</p>
