@@ -153,7 +153,7 @@ As in Java, command-line arguments are available to a Scala application as ``arg
 
 We can read the standard input as lines using this iterator::
 
-    val lines = scala.io.Source.stdin.getLines
+    val lines = scala.io.Source.stdin.getLines()
 
 This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)
 
