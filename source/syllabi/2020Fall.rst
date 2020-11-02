@@ -53,7 +53,7 @@ Sections: 001/002 Fall 2020
   - Week 7 - Mon 5 October: test 1
   - Week 10 - Mon 26 October: quiz 2
   - Week 13 - Mon 16 November: test 2
-  - Week 16 (finals week) - Mon 7 December: test 3
+  - Week 16 (finals week) - available Fri 4 December, due Wed 9 December: quiz 3
 
 
 - *Recording of Zoom class meetings:* In this class software will be used to record live class discussions. As a student in this class, your participation in live class discussions will be recorded. These recordings will be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
