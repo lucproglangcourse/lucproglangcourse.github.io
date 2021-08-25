@@ -111,6 +111,7 @@ The community has also developed a body of `design patterns <https://sourcemakin
 
 - Iterator
 - Strategy
+- Command
 - Composite
 - Decorator
 - Visitor
@@ -127,7 +128,7 @@ Programming language history and paradigms
 
 The resources in this section cover fundamental models of computation, language paradigms, and language principles.
 
-- `overview talk <http://klaeufer.github.com/luc-amc.html>`_ by Läufer and Thiruvathukal
+- `overview talk <http://klaeufer.github.io/luc-amc.html>`_ by Läufer and Thiruvathukal
 - `programming languages paradigms: diagram <https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg>`_ by Van Roy
 - `programming languages paradigms: book chapter <https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf>`_ by Van Roy
 - :doc:`principles` by MacLennan
