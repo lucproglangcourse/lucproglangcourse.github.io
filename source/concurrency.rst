@@ -1,5 +1,5 @@
-Introduction to Concurrency
----------------------------
+The Concurrent Programming Paradigm
+-----------------------------------
 
 
 Overview
@@ -20,14 +20,14 @@ Why and when do we need concurrency?
   - multi-core systems
   - network services/distributed systems
 
-    
+
 Key considerations:
 
 - physical (parallelism) versus logical concurrency
 - speedup and when to expect it
 - data parallelism versus task parallelism
 
-  
+
 Activity terminology and concerns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -43,7 +43,7 @@ Activity terminology and concerns
 - progress reporting
 - cancelation
 
-  
+
 Thread safety
 ~~~~~~~~~~~~~
 
@@ -62,22 +62,22 @@ Thread safety
 Understanding the extent of nondeterminism
 ``````````````````````````````````````````
 
-Consider this small example of two concurrent increment operations:: 
+Consider this small example of two concurrent increment operations::
 
   /*f1*/ final int local1 = shared;    /*f2*/ final int local2 = shared;
   /*s1*/ shared = local1 + 1;          /*s2*/ shared = local2 + 1;
 
-  
-When analyzing race conditions, we might be tempted to enumerate the different possible interleavings. 
+
+When analyzing race conditions, we might be tempted to enumerate the different possible interleavings.
 While it seems reasonable for this example, this quickly becomes impractical because of the combinatorial explosion for larger number of threads with more steps. (Please see the CDER chapter for more details.)
 
 To appreciate this combinatorial explosion, let’s count the possible interleavings for the case of :math:`k` threads with :math:`n` steps each. We recall the binomial coefficient :math:`i` choose :math:`j` defined as
 
 .. math::
 
-   \binom{i}{j} = \frac{i!}{j!(i-j)!} \text{ for } 0 \leq j \leq i 
+   \binom{i}{j} = \frac{i!}{j!(i-j)!} \text{ for } 0 \leq j \leq i
 
-   
+
 In our case, there are :math:`kn` steps, of which the first thread chooses :math:`n`; there are :math:`\binom{kn}{n}` possibilities for this.
 This leaves :math:`(k-1)n` steps, of which the second thread chooses :math:`n`, and so on.
 At the end, there are :math:`n` steps left, which are the only choice for the last thread.
@@ -86,9 +86,9 @@ The total number of choices is the product of choices for each thread:
 .. math::
 
   \binom{kn}{n} \binom{(k-1)n}{n} \dots \binom{2n}{n} \binom{n}{n} =
-  \frac{(kn)!}{n!(kn-n)!} \frac{((k-1)n)!}{n!((k-1)n-n)!} \dots \frac{(2n)!}{n!(2n-n)!} \frac{(n)!}{n!(n-n)!} 
+  \frac{(kn)!}{n!(kn-n)!} \frac{((k-1)n)!}{n!((k-1)n-n)!} \dots \frac{(2n)!}{n!(2n-n)!} \frac{(n)!}{n!(n-n)!}
 
-  
+
 Here the second factor in each denominator cancels out against the numerator of the next top-level factor and the second factor in the last denominator is :math:`1`, leaving
 
 .. math::
@@ -100,7 +100,7 @@ As the number of threads and/or their number of steps grow beyond two, the numbe
 
 .. math::
 
-  \begin{matrix}   
+  \begin{matrix}
   n / k  & k = 2 & k = 3 & k = 4 \\
   n = 2 & 6  & 90 & 2520 \\
   n = 3 & 20 & 1680 & 369600 \\
@@ -185,4 +185,3 @@ References: concurrent and asynchronous computing
 - `RxJava/RxScala <https://github.com/ReactiveX/RxScala>`_
 - `asynchronous programming video <https://www.youtube.com/watch?v=UKjcJ13bD3s>`_
 - `reactive/asynchronous programming with RxJava/RxScala video <https://www.youtube.com/watch?v=_t06LRX0DV0>`_
-
