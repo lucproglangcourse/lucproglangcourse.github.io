@@ -23,6 +23,7 @@
   - console applications
   - constant-space complexity
   - logging
+  - domain modeling
   - using traits for modularity and dependency injection
 
 
