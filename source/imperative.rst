@@ -318,13 +318,15 @@ Object-oriented Scala as a "better Java"
 
 Scala offers various improvements over Java, including:
 
-- `unified types <http://docs.scala-lang.org/tour/unified-types.html>`_
-- `standalone higher-order functions <https://docs.scala-lang.org/tour/higher-order-functions.html>`_
-- `standalone objects <http://docs.scala-lang.org/tour/singleton-objects.html>`_
-- `tuples <https://docs.scala-lang.org/tour/tuples.html>`_
-- `case classes <http://docs.scala-lang.org/tour/case-classes.html>`_ and `pattern matching <http://docs.scala-lang.org/tour/pattern-matching.html>`_
-- `traits <http://docs.scala-lang.org/tour/traits.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
+- `unified types <https://docs.scala-lang.org/scala3/book/first-look-at-types.html>`_
+- `standalone higher-order functions (lambdas) <https://docs.scala-lang.org/scala3/book/taste-functions.html>`_
+- `standalone objects <https://docs.scala-lang.org/scala3/book/taste-objects.html>`_
+- `tuples <https://docs.scala-lang.org/scala3/book/taste-collections.html#tuples>`_
+- `advanced enums <https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums>`, `case classes <https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes>`_ and `pattern matching <https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations>`_
+- `traits <https://docs.scala-lang.org/scala3/book/domain-modeling-oop.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
 - package structure decoupled from folder hierarchy
+- `null safety <https://docs.scala-lang.org/scala3/reference/other-new-features/explicit-nulls.html>`_: ensuring at compile-time that an expression cannot be null
+- `multiversal equality <https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html>`_: making sure apples are compared only with other apples
 - `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
 
 More recent versions of Java, however, have started to echo some these advances:
