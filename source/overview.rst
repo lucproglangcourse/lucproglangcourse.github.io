@@ -9,9 +9,10 @@ Motivation
 
 There are a number of reasons why you would want to study programming languages. To name a few:
 
-- Knowing several languages will help you solve more problems in better ways.
+- Knowing several programming *paradigms* will help you think about more problems in better ways.
+- Knowing several programming *languages* will help you implement your solutions in better ways.
 - The subject matter is exciting and intellectually challenging.
-- Google, Meetup, and increasing numbers of local startups love it (from an employer's point of view)!
+- Increasing numbers of local, national, and global employers love it!
 
 
 Key learning outcomes
@@ -19,8 +20,9 @@ Key learning outcomes
 
 We deliberately chose the learning outcomes for this course to complement other courses in your computer science or software engineering curriculum. Upon entering this course, you will already be familiar with the imperative and object-oriented paradigms, coming from languages such as Java, C++, C#, or Python. Most likely, you will also be familiar with basic machine architecture and memory management using C or C++.
 
-In this course, we will pursue one overarching learning outcome and three more specific ones:
+In this course, we will pursue two overarching learning outcomes and three more specific ones:
 
+- an overview of programming paradigms
 - an understanding of the programming language design space
 - proficiency in functional programming
 - an understanding of program representation and interpretation/execution
@@ -47,7 +49,7 @@ Here is a more detailed course outline (subject to revision).
 
 .. include:: detailedoutline.txt
 
-	     
+
 Bloom's taxonomy
 ~~~~~~~~~~~~~~~~
 

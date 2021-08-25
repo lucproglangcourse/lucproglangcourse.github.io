@@ -1,4 +1,32 @@
-- functional programming (6 weeks)
+- business and software engineering contexts (1 week)
+
+  - software requirements
+
+    - functional requirements
+    - nonfunctional requirements
+
+  - development process
+
+    - testing
+    - refactoring
+    - automation
+
+  - design principles and patterns
+
+    - separation of concerns
+    - parametricity
+    - SOLID
+    - GoF/POSA
+
+- imperative and object-oriented programming (2 weeks)
+
+  - console applications
+  - constant-space complexity
+  - logging
+  - using traits for modularity and dependency injection
+
+
+- functional programming (4 weeks)
 
   - defining algebraic data types
 
@@ -17,7 +45,7 @@
   - recursion patterns
   - higher-kinded types
 
-- programming language representation and interpretation/execution (5 weeks)
+- programming language representation and interpretation/execution (4 weeks)
 
   - language design space
   - scanners (lexical analyzers)
@@ -25,7 +53,7 @@
   - interpreters and compilers
   - domain-specific languages
 
-- concurrent and parallel programming (4 weeks)
+- concurrent and parallel programming (3 weeks)
 
   - parallel collections
   - futures and promises
