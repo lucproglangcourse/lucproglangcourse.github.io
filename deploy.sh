@@ -13,5 +13,5 @@ git log main --pretty=short --abbrev-commit > $DEST/COMMITS.txt
 
 pushd $DEST
 git add -A
-git commit -m "Generated site for $(git log master -1 --pretty=reference)" && git push
+git commit -m "Generated site for $(git log master -1 --pretty=oneline --abbrev-commit)" && git push
 popd
