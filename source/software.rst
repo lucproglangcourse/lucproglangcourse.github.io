@@ -5,6 +5,7 @@ Appendix: Course Software
 
 You can choose either or both of the following options.
 
+
 Cloud-based development environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -16,47 +17,31 @@ Pros
 
 - consistent, cloud-based environment
 
+
 Cons
 ````
 
 - requires good network connection
-- lacks code completion
+- might lack code completion
 
-
-Setup
-`````
-
-.. todo:: Update this entire subsection based on OpenShift CHE
-
-- Use your GitHub, Google, Microsoft, or similar account to log into ` <https://codenvy.io>`_.
-- If you do not have any of these accounts, create a `GitHub <https://github.com>`_ account. Please see below for more information on GitHub.
-
-- Create a new workspace with the following settings:
-
-  - Create new workspace from stack > Scala SBT
-  - Name: myproject-scala
-  - Project URL: paste existing GitHub URL into the configuration file
-
-- Wait for the workspace to become available.
-  Now you have a persistent, cloud-based, standard Ubuntu/Linux command-line environment that you can work in and come back to from any computer.
-
-- For highly convenient integration of git username and email and SSH keys between IDE profile and console, enable the git agent (this will restart your workspace)::
-
-        workspaces > settings for desired workspace (gear) > agents > git credentials
-
-
-Zero-install alternative
-````````````````````````
+Zero-install option
+```````````````````
 
 Scastie is an interactive playground for Scala with support for sbt configuration.
 It allows you to save code snippets to your GitHub account.
 To launch, visit https://scastie.scala-lang.org.
 
+Be sure to
+
+- choose target Scala 3 and Scala version 3.0.1
+- add the following `scalacOptions` under build settings::
+
+    "-Yexplicit-nulls",
+    "-language:strictEquality"
 
 
 Locally installed development environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 This option will give you an advanced development environment with code completion, type info, etc.
 
@@ -73,7 +58,6 @@ Cons
 
 - might be slow on older machines
 - need to maintain on each machine you use
-
 
 
 Required components
@@ -94,14 +78,7 @@ Required components
   - *Scala plugin installation:* IntelliJ IDEA > Configure (bottom right) > Plugins > Browse repositories > find and right-click Scala > download and install > close repository browser > OK to restart IDEA
   - *JDK configuration*: IntelliJ IDEA > Configure > Project Defaults > Project Structure > Platform Settings > SDKs > + > JDK > navigate to the installation directory of your most recent JDK > OK
 
-
-Optional for all IntelliJ users
-```````````````````````````````
-
-- These are useful Android Studio/Intellij IDEA plugins. (Installation procedure is the same as for the Scala plugin.)
-
-  - Key Promoter (helps you learn keyboard shortcuts)
-  - MultiMarkdown
+- Mac and Linux users are encouraged to use `SDKMAN! <https://sdkman.io/>`_ to manage theirJava, sbt, and other command-line development tools.
 
 
 sbt optional plugins
@@ -150,7 +127,3 @@ For security and privacy reasons, be sure to update it frequently.
 - `Zoom <https://luc.zoom.us>`_
 
 In case of a Zoom outage, we will fall back to MS Teams chat and reorganize from there.
-
-This application enables you to grant others remote access to your desktop. This is helpful for diagnosing and overcoming obstacles without having to pair with the instructor in person. The application is free for personal use and does not require registration.
-
-- `TeamViewer <https://www.teamviewer.com>`_
