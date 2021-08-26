@@ -12,16 +12,17 @@ Course: COMP 371/471 Programming Languages
 
 
 
+.. include:: syllabi/2021Fall.rst
 .. include:: syllabi/2020Fall.rst
 .. include:: syllabi/2019Fall.rst
 .. include:: syllabi/2018Fall.rst
 .. include:: syllabi/2018spring.rst
 .. include:: syllabi/2017spring.rst
 
-  
+
 Detailed Course Outline
 ~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 .. include:: detailedoutline.txt
 
 
