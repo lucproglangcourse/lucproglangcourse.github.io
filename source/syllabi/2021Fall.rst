@@ -42,7 +42,7 @@ Sections: 001/002 Fall 2021
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_371_001_4379_1216>`_
 - `MS Team <https://teams.microsoft.com/l/team/19%3aaec55a5b5500469185bc3b2d87072760%40thread.tacv2/conversations?groupId=c4cd990e-f10c-4279-8e11-cd8f44b1a408&tenantId=021f4fe3-2b9c-4824-8378-bbcf9ec5accb>`_ *(mandatory subscription and participation)*
 
-- Important dates (tentative) for take-home quizzes and tests:
+- Important dates (tentative) for quizzes and tests:
 
   - Week 2 - Tue 7 September: quiz 0
   - Week 4 - Tue 21 September: quiz 1
