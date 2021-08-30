@@ -27,7 +27,7 @@ Cons
 Zero-install option
 ```````````````````
 
-Scastie is an interactive playground for Scala with support for sbt configuration.
+Scastie is an interactive playground for Scala with support for Scala 3 and sbt (Scala Build Tool) configuration.
 It allows you to save code snippets to your GitHub account.
 To launch, visit https://scastie.scala-lang.org.
 
@@ -50,7 +50,7 @@ Pros
 ````
 
 - provides powerful capabilities, including code completion
-- does not require network connection
+- does not require network connection once installed
 
 
 Cons
@@ -58,27 +58,45 @@ Cons
 
 - might be slow on older machines
 - need to maintain on each machine you use
+- it can be challenging to match the versions of the various packages
 
 
-Required components
-```````````````````
+Required packages
+`````````````````
 
 - `Java 11 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*
-  - optional on any platform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
+  - optional on any plaDecimaltform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
 
 
 - `sbt <https://www.scala-sbt.org/1.x/docs/Setup.html>`_ Scala build tool
-- `IntelliJ IDEA CE <https://www.jetbrains.com/idea/download/>`_ integrated development environment
+- `VisualVM <https://visualvm.github.io/>`_ visual heap profiling tool
+- *Mac and Linux users are strongly encouraged to use `SDKMAN! <https://sdkman.io/>`_ to manage their Java, sbt, VisualVM, and other command-line development tools.*
+
+
+Choices of development environments
+```````````````````````````````````
+
+- `IntelliJ IDEA CE <https://www.jetbrains.com/idea/download/>`_ integrated development environment (recommended)
 
   - check specific prerequisite details for your platform
   - for the following steps, make sure you have no projects open and are looking at the welcome window as in the attached screenshot
   - *Scala plugin installation:* IntelliJ IDEA > Configure (bottom right) > Plugins > Browse repositories > find and right-click Scala > download and install > close repository browser > OK to restart IDEA
+    Because Scala 3 is still evolving, JetBrains recommend setting the IntelliJ Scala plugin to the nightly channel for more frequent updates. For details, visit `this blog post <https://blog.jetbrains.com/scala/2020/03/17/scala-3-support-in-intellij-scala-plugin/>`_.
   - *JDK configuration*: IntelliJ IDEA > Configure > Project Defaults > Project Structure > Platform Settings > SDKs > + > JDK > navigate to the installation directory of your most recent JDK > OK
 
-- Mac and Linux users are encouraged to use `SDKMAN! <https://sdkman.io/>`_ to manage theirJava, sbt, and other command-line development tools.
+- `Visual Studio Code <https://code.visualstudio.com/>`_ alternative based on your preference and/or experience
+
+  - it should offer to install Scala support when you open a Scala project folder for the first time
+  - `discussion of IDEA vs VS Code for Scala development <https://stackoverflow.com/a/61156424>`_
+
+- conventional text editor
+
+  - Emacs
+  - vim
+  - etc.
 
 
 sbt optional plugins
@@ -86,18 +104,14 @@ sbt optional plugins
 
 This section applies to all uses of sbt, whether cloud-based or on the local command line.
 
-These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Some of the example projects already come with one or more of these plugins.
+These are useful additional sbt plugins. `You can install them per project or globally. <http://www.scala-sbt.org/0.13/tutorial/Using-Plugins.html>`_ Many of the example projects already come with one or more of these plugins (especially the first two).
 
+- `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_: creates a script for running your app outside sbt
 - `sbt-scoverage <https://github.com/scoverage/sbt-scoverage>`_: uses Scoverage to produce a test code coverage report
 - `sbt-updates <https://github.com/rtimush/sbt-updates>`_: checks central repos for dependency updates
-- `sbt-scalariform <https://github.com/sbt/sbt-scalariform>`_: automatic source code formatting using Scalariform (see also `this Gist <https://gist.github.com/klaeufer/8981fcdebc8573b06f3d611d049839d3>`_)
-- `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_: creates a script for running your app outside sbt
-- `ls-sbt <https://github.com/softprops/ls>`_:  browse available libraries on GitHub using ls.implicit.ly
-- `sbt-dependency-graph <https://github.com/jrudolph/sbt-dependency-graph>`_: creates a visual representation of library dependency tree
-- `cpd4sbt <https://github.com/sbt/cpd4sbt>`_: copy/paste detection for Scala
+- `sbt-scalafmt <https://github.com/scalameta/sbt-scalafmt>`_: automatic source code formatting using `Scalafmt <https://scalameta.org/scalafmt/>`_
 - `scalastyle <https://github.com/scalastyle/scalastyle-sbt-plugin>`_: static code checker for Scala
 - `wart remover <https://github.com/wartremover/wartremover>`_: code linting tool (another static checker)
-- `sbt-stats <https://github.com/orrsella/sbt-stats>`_: simple, extensible source code statistics/metrics
 
 
 GitHub
