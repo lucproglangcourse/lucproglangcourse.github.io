@@ -217,6 +217,15 @@ Some hints:
 - Which is more general, ``map`` or ``fold``?
 
 
+
+Modularity and dependency injection for functional programs
+```````````````````````````````````````````````````````````
+
+In the functional programming paradigm, first-class functions, i.e., the ability to pass functions as argument values to other functions, methods, and constructors, provides an alternative modular composition mechanism to the object-oriented ones discussed previously.
+
+The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ illustrates functional modularity in its ``functional/modular`` package.
+
+
 Defining algebraic data types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -384,9 +393,9 @@ Examples
 It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:
 
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_
--  `project 2a <https://trello.com/c/nPaqQAJf/58-project-2a>`_ versus `project 2b <https://trello.com/c/EihkYkGP/59-project-2b>`_
+-  `project 2a _ versus `project 2b on Sakai`_
 
-Some other examples are available `here <https://github.com/lucproglangcourse/matryoshka-examples-scala/tree/master/src/test/scala>`_.
+Some other examples are available `here <https://github.com/lucproglangcourse/droste-explorations-scala/>`_.
 
 
 What ``Fix`` does
@@ -483,9 +492,9 @@ It also helps to study these questions:
 
 On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:
 
-- `Scalaz library <https://github.com/scalaz/scalaz>`_
-- `Matryoshka library <https://github.com/slamdata/matryoshka>`_
-- The various `Typelevel.scala projects <http://typelevel.org/projects>`_
+- `Cats library of high-level abstractions <https://typelevel.org/cats>`_
+- `Droste library of recursion schemes <https://github.com/higherkindness/droste>`_
+-  Various other `Typelevel.scala projects <http://typelevel.org/projects>`_
 
 For more details on F-algebras and datatype-generic programming, please take a look at these references:
 
@@ -493,6 +502,8 @@ For more details on F-algebras and datatype-generic programming, please take a l
 - `Understanding F-Algebras <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_
 - `Gibbons: origami programming <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf>`_ (advanced)
 - `Oliveira & Cook: F-algebras in Java <http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf>`_ (advanced)
+- `Joe Warren's four ways to make change in Scala <http://www.doscienceto.it/blog/posts/2020-09-16-change.html>`_
+- `Patrick Thomson's blog post series on recursion schemes <https://blog.sumtypeofway.com/archive.html>`_
 
 If you want to dig a bit deeper, check out a generalization of ``map`` called `traverse <https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf>`_.
 Some of our examples include implementations of ``traverse``.
