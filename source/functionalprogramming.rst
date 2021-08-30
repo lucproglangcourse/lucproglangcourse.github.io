@@ -218,7 +218,7 @@ Some hints:
 
 
 
-Modularity and dependency injection for functional programs
+Modularity and dependency injection in the functional style
 ```````````````````````````````````````````````````````````
 
 In the functional programming paradigm, first-class functions, i.e., the ability to pass functions as argument values to other functions, methods, and constructors, provides an alternative modular composition mechanism to the object-oriented ones discussed previously.
@@ -284,8 +284,79 @@ As expected, for recursive types, the behaviors are typically recursive as well.
 - `generic org charts <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_
 - `simple natural numbers <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc>`_
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_
+- `shapes-oo-scala <https://github.com/lucproglangcourse/shapes-oo-scala>`_
 
 In these examples, the traversal and processing concerns identified above remain combined.
+
+
+Behaviors based on recursive thinking
+`````````````````````````````````````
+
+To understand recursive thinking, let us explore the familiar `shapes example <https://github.com/lucproglangcourse/shapes-oo-scala>`_.
+We'll start with a suitable algebraic type definition and some sample instances::
+
+    enum Shape {
+      case Rectangle(width: Int, height: Int)
+      // ...
+      case Location(x: Int, y: Int, shape: Shape)
+      case Group(shapes: Shape*)
+    }
+
+    val r = Rectangle(20, 40)
+    val q = Rectangle(20, 40)
+    val p = Rectangle(20, 30)
+
+    val g = Group(r, Group(q, p), Location(10, 15, r))
+
+
+Let's now try to implement a ``countGroup`` behavior.
+This is incomplete but should compile;
+``???`` is a convenient placeholder for "not yet implemented" (NYI)::
+
+    def countGroup(s: Shape): Int = s match
+      case Rectangle(w, h) => 0
+      case Location(x, y, c) => ???
+      case Group(shapes @ _*) => ???
+
+As expected, ``countGroup`` returns 0 for rectangles but would raise a ``NYI`` exception for group or location nodes.
+
+Now we need to apply recursive thinking:
+
+- For location, the child might have group nodes.
+- For group, the current node is a group node, plus the children might have group nodes.
+
+Accordingly::
+
+    def countGroup(s: Shape): Int = s match
+      case Rectangle(w, h) => 0
+      case Location(x, y, c) => countGroup(c)
+      case Group(shapes @ _*) =>
+        var sum = 1
+        for c <- shapes do
+          sum += countGroup(c)
+        sum
+
+Now ``countGroup(g)`` returns 2 as expected, though this is a Java-style, imperative implementation.
+Equivalently, we can use the ``foreach`` method instead of the so-called for comprehension::
+
+    case Group(shapes @ _``*``) =>
+      var sum = 1
+      shapes.foreach { c =>
+        sum += countGroup(c)
+      }
+      sum
+
+Now...drum roll...we have an opportunity to convert this code into functional, applicative, immutable style::
+
+    case Group(shapes @ _``*``) =>
+      1 + shapes.map { c => countGroup(c) } .sum
+
+where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.
+
+Some points to think about:
+
+- Which design pattern describes the function we pass to the ``map`` method?
+- How would you compare these three implementations in terms of whatever functional and/or nonfunctional criteria you can think of?
 
 
 Separation of behavioral concerns
