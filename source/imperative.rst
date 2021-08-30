@@ -44,13 +44,7 @@ In this section, we discuss the different options for running Scala code, includ
     List(1, 2, 3)
 
 
-- In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a ``main`` method or objects extending the ``App`` trait) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.
-
-- In IntelliJ IDEA, Scala worksheets are a convenient way to do REPL-style exploratory programming while being able to modify and save all your code.
-  Check out `this example <https://github.com/lucproglangcourse/misc-explorations-scala>`_, especially the simple option and list examples. For simple testing, you can intersperse assertions within your code.
-  Worksheets can live in any folder and coexist with other code.
-  So you can start exploring something in a worksheet and then move it into your production code when appropriate.
-  The Eclipse Scala IDE has a similar feature.
+- In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a ``main`` method) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.
 
 - It is best to use `sbt <https://www.scala-sbt.org/>`_ (the Scala Build Tool) for projects with one or more external dependencies because of sbt's (and similar build tools') ability to manage these dependencies in a declarative way::
 
@@ -83,7 +77,14 @@ In this section, we discuss the different options for running Scala code, includ
     > ~ test
 
 
-- Finally, to turn an sbt-based Scala application into a script you can run outside sbt, you can use the `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_ plugin.
+- In general, irrespective of your choice of development environment, a convenient way to do exploratory programming beyond the basic REPL is to start with a single test.
+  There, you can develop your ideas and interact with the library APIs you want to explore.
+  For simple testing, you can intersperse assertions within your code or use the testing support provided by the chosen testing framework, e.g., `JUnit <https://junit.org/>`_ or `ScalaTest <https://www.scalatest.org/>`_.
+  So you can start exploring something in a test and then move it into your production code (`main` folder) when appropriate.
+  `The list performance example <https://github.com/lucproglangcourse/cs2-listperformance-scala/blob/main/src/test/scala/cs271/lab/list/TestList.scala>`_ illustrates this approach.
+
+
+- Finally, to turn an sbt-based Scala application into a script (console application) you can run outside sbt, you can use the `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_ plugin.
   To use this plugin, add this line to the end of ``build.sbt``::
 
     enablePlugins(JavaAppPackaging)
