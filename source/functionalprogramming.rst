@@ -108,7 +108,7 @@ Other important operations on collections
 - If we want to compute a *result value*, we can use ``foldLeft`` instead of ``foreach``.
 - If we want to compute a *sequence of result values*, one for each original item, we can use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
 - If we want to transform a *collection of result values* by independently applying the same function to each item while preserving the collection's skeletal structure, we can use ``map``.
-- If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the subsection on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
+- If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
 
 The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective::
 
@@ -427,6 +427,8 @@ For more details on space complexity and tail recursion, please take a look at t
 Separation of concerns at the type level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note:: This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.
+
 The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.
 
 
@@ -583,7 +585,9 @@ Some of our examples include implementations of ``traverse``.
 Other useful abstractions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this subsection, we will discuss a few more useful yet relatively simple abstractions.
+.. note:: This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.
+
+In this section, we will discuss a few more useful yet relatively simple abstractions.
 
 
 Monoid
