@@ -73,7 +73,7 @@ Required packages
 
 - `sbt <https://www.scala-sbt.org/1.x/docs/Setup.html>`_ Scala build tool
 - `VisualVM <https://visualvm.github.io/>`_ visual heap profiling tool
-- *Mac and Linux users are strongly encouraged to use `SDKMAN! <https://sdkman.io/>`_ to manage their Java, sbt, VisualVM, and other command-line development tools.*
+- *Mac and Linux users are strongly encouraged to use* `SDKMAN! <https://sdkman.io/>`_ *to manage their Java, sbt, VisualVM, and other command-line development tools.*
 
 
 Choices of development environments
