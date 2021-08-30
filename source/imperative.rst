@@ -421,7 +421,7 @@ The following figure shows the roles of and relationships among the various buil
 
 .. figure:: images/ProcessTreeTypeHierarchy.png
 
-The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity and dependency injection in its `imperative/modular` package.
+The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity and dependency injection in its ``imperative/modular`` package.
 
 
 Trait-based dependency injection
