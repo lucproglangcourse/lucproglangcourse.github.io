@@ -179,7 +179,7 @@ The importance of constant-space complexity
 ```````````````````````````````````````````
 
 Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
-To achieve reliability and scalability of such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
+To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
 
 Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity::
 
@@ -202,6 +202,14 @@ By contrast, this version has linear-space complexity and may run out of space o
 
 In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
 Iterators support most of the same behaviors as in-memory collections.
+
+To observe a program's memory footprint over time, we would typically use a heap profiler.
+For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.
+
+For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
+By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.
+
+.. image:: images/heapprofile.png
 
 
 Choices for testing Scala code
