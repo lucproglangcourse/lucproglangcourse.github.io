@@ -332,7 +332,7 @@ Scala offers various improvements over Java, including:
 - `standalone higher-order functions (lambdas) <https://docs.scala-lang.org/scala3/book/taste-functions.html>`_
 - `standalone objects <https://docs.scala-lang.org/scala3/book/taste-objects.html>`_
 - `tuples <https://docs.scala-lang.org/scala3/book/taste-collections.html#tuples>`_
-- `advanced enums <https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums>`, `case classes <https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes>`_ and `pattern matching <https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations>`_
+- `advanced enums <https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums>`_, `case classes <https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes>`_ and `pattern matching <https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations>`_
 - `traits <https://docs.scala-lang.org/scala3/book/domain-modeling-oop.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
 - package structure decoupled from folder hierarchy
 - `null safety <https://docs.scala-lang.org/scala3/reference/other-new-features/explicit-nulls.html>`_: ensuring at compile-time that an expression cannot be null
