@@ -1,4 +1,4 @@
-.. _appendix-resources:  
+.. _appendix-resources:
 
 Appendix: Resources
 -------------------
@@ -22,84 +22,79 @@ your own GitHub account. Please create `issues
 <https://guides.github.com/features/issues>`_ and/or submit `pull
 requests <https://help.github.com/articles/using-pull-requests>`_ with improvements or corrections.
 
-**It is important for you to receive notifications of changes to the key examples.** 
+**It is important for you to receive notifications of changes to the key examples.**
 
-- These will automatically appear on `this Slack channel <https://lucproglangcourse.slack.com/archives/github>`_, which you can join.
-- If you have a GitHub account, you can instead receive notifications within GitHub by watching and/or starring the repositories of interest directly.
+- The best way to achieve this is to receive notifications through your GitHub account by watching and/or starring the repositories of interest directly.
 
 
-Required text
-~~~~~~~~~~~~~
-
-- *Required text:*
-  **Scala for the Impatient, Second Edition**
-  *By: Cay S. Horstmann*
-  Publisher: Addison-Wesley Professional
-  Pub. Date: December 15, 2016
-  Web ISBN-13: 978-0-13-454062-7
-  Print ISBN-13: 978-0-13-454056-6
-  `available free on Safari <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_
-
-  
 Recommended/supplementary texts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Scala Test-Driven Development**
-  *By: Gaurav Sood*
-  Publisher: Packt Publishing
-  Pub. Date: October 27, 2016
-  Web ISBN-13: 978-1-78646-302-9
-  Print ISBN-13: 978-1-78646-467-5
-  `available free on Safari <https://learning.oreilly.com/library/view/scala-test-driven-development/9781786464675>`_
+
+- **Scala for the Impatient, Second Edition**
+  *By: Cay S. Horstmann*
+  Publisher: Addison-Wesley Professional
+  Pub. Date: December 15, 2016
+  `available free on Safari <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_
+
 
 - **Basics of Compiler Design**
   *By: Torben Mogensen*
   `available online <http://hjemmesider.diku.dk/~torbenm/Basics/>`_
 
+
 - **Learning Concurrent Programming in Scala**
   *By: Aleksandar Prokopec*
   Publisher: Packt Publishing
   Pub. Date: November 28, 2014
-  Print ISBN-13: 978-1-78328-141-1
-  Web ISBN-13: 978-1-78328-142-8
   `available free on Safari <https://learning.oreilly.com/library/view/learning-concurrent-programming/9781783281411>`_
+
 
 - **Seven Concurrency Models in Seven Weeks**
   *By: Paul Butcher*
   Publisher: Pragmatic Bookshelf
   Pub. Date: June 30, 2014
-  Print ISBN-13: 978-1-937785-65-9
   `available free on Safari <https://learning.oreilly.com/library/view/seven-concurrency-models/9781941222737>`_
 
 
 Additional texts on Scala
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Programming in Scala, Third Edition**
+- **Hands-On Scala**
+  *By: Li Haoyi*
+  https://www.handsonscala.com/
+  `Chapters 1-5 available free <https://www.handsonscala.com/hands-on-scala-programming-compact-sample.pdf>`_
+
+- **Programming in Scala, Fifth Edition**
   *By: Martin Odersky; Lex Spoon; Bill Venners*
   Publisher: Artima Press
-  Pub. Date: April 28, 2016
-  ISBN-10: 0-9815316-8-7
-  ISBN-13: 978-0-9815316-8-7
-  `available free on Safari <https://learning.oreilly.com/library/view/programming-in-scala/9780981531687>`_
+  Pub. Date: June 2021
+  https://www.artima.com/shop/programming_in_scala_5ed
 
-- **Learning Scala**
-  *By: Jason Swartz*
+- **Programming Scala, 3rd Edition**
+  *By Dean Wampler*
   Publisher: O'Reilly Media, Inc.
-  Pub. Date: December 24, 2014
-  Print ISBN-13: 978-1-4493-6793-0
-  `available free on Safari <https://learning.oreilly.com/library/view/learning-scala/9781449368814>`_
+  Pub. Date: June 2021
+  `available free on Safari <https://learning.oreilly.com/library/view/programming-scala-3rd/9781492077886/>`_
 
-- **A Concise Introduction to Scala**
-  *By: David Matuszek*
-  `available online <https://www.cis.upenn.edu/~matuszek/Concise%20Guides/Concise%20Scala.html>`_
+- **Scala Cookbook, 2nd Edition**
+  *By: Alvin Alexander*
+  Publisher: O'Reilly Media, Inc.
+  Pub. Date: August 2021
+  `available free on Safari <https://learning.oreilly.com/library/view/scala-cookbook-2nd/9781492051534>`_
+  `companion site <https://alvinalexander.com/scala/>`_
+
+- **Scala Test-Driven Development**
+  *By: Gaurav Sood*
+  Publisher: Packt Publishing
+  Pub. Date: October 27, 2016
+  `available free on Safari <https://learning.oreilly.com/library/view/scala-test-driven-development/9781786464675>`_
 
 - **Functional Programming in Scala** (advanced)
   *By: Paul Chiusano and Rúnar Bjarnason*
   Foreword by Martin Odersky
   Publisher: Manning Publications
   Pub. Date: August 2014
-  Print ISBN: 9781617290657
   `available free on Safari <https://learning.oreilly.com/library/view/functional-programming-in/9781617290657>`_
 
 
@@ -120,7 +115,6 @@ Online Scala resources
 - `scalaz API documentation (advanced) <http://docs.typelevel.org/api/scalaz/stable/7.1.0-M3/doc>`_
 - `scalaz cheat sheet (advanced) <http://eed3si9n.com/scalaz-cheat-sheet>`_
 
-
 Resources on program representation and interpretation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -134,7 +128,6 @@ Resources on program representation and interpretation
 - `Parsing expression grammars (PEGs) <http://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
 - `Interpreters <https://en.wikipedia.org/wiki/Interpreter_(computing)>`_
 
-  
 Other resources
 ~~~~~~~~~~~~~~~
 
@@ -152,12 +145,10 @@ Other resources
   *By: Federico Biancuzzi; Shane Warden*
   Publisher: O'Reilly Media, Inc.
   Pub. Date: March 27, 2009
-  Print ISBN-13: 978-0-596-51517-1
   `available free on EBL <http://www.luc.eblib.com.flagship.luc.edu/patron/FullRecord.aspx?p=443225>`_
 
 - **Programming Language Pragmatics** (3rd ed.)
   *By: Michael L. Scott*
-  ISBN: 978-0-12-374514-9
   Pub date: Mar 23, 2009
   Elsevier Science & Technology
   `companion site <http://www.cs.rochester.edu/~scott/pragmatics>`_
@@ -166,20 +157,16 @@ Other resources
   *By: Neal Ford*
   Publisher: O'Reilly Media, Inc.
   Pub. Date: July 10, 2014
-  Print ISBN-13: 978-1-4493-6551-6
   `available free on Safari <https://learning.oreilly.com/library/view/functional-thinking/9781449365509>`_
 
 - **Real World Haskell**
   *By: Bryan O'Sullivan, Don Stewart, and John Goerzen*
-  Publisher: O'Reilly Media. 
+  Publisher: O'Reilly Media.
   Pub. Date: November 2008
-  Print ISBN-10: 0596514980
-  Print ISBN-13: 978-0596514983
   `available online for free <http://book.realworldhaskell.org/read>`_
 
 - **Haskell: The Craft of Functional Programming (3rd Edition)**
   *By: Simon Thompson*
   Publisher Addison-Wesley Professional
   Pub. Date: 2012
-  Print ISBN-13: 9780201882957
   `online companion site <http://www.haskellcraft.com/craft3e>`_
