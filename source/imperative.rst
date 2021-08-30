@@ -355,11 +355,9 @@ The following examples illustrate the use of Scala as a "better Java" and the tr
 - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
 - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc
 
-.. todo:: examples below after discussing the next topic
 
-
-Using Scala traits for modularity and dependency injection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Modularity and dependency injection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: To wrap your head around this section, you may want to start by recalling/reviewing the `stopwatch example <https://github.com/lucoodevcourse/stopwatch-android-java>`_ from COMP 313/413 (intermediate object-oriented programming).
   In that app, the model is rather complex and has three or four components that depend on each other.
@@ -368,32 +366,45 @@ Using Scala traits for modularity and dependency injection
   In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.
 
 
+Design goals
+````````````
+
+We pursue following design goals tied to the nonfunctional code quality requirements:
+
+- *testability*
+- *modularity* for separation of concerns
+- *reusability* for avoidance of code duplication ("DRY")
+
+In particular, to manage the growing complexity of a system, we usually try to decompose it into its design dimensions, e.g.,
+
+- mixing and matching interfaces with multiple implementations
+- running code in production versus testing
+
+We can recognize these in many common situations, including the examples listed below.
+
+In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.
+
+
+Scala traits
+````````````
+
 Scala traits are *abstract* types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
-The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/>`_ shows how traits can help us achieve the following two design goals:
-
-- testability
-- avoidance of code duplication ("DRY")
+The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/>`_ shows how traits can help us achieve our design goals.
 
 .. note:: We deliberately call *Thin Cake* an *idiom* as opposed to a pattern because it is *language-specific*.
 
 We will rely on the following examples for this section:
 
 - https://github.com/lucproglangcourse/consoleapp-java-sbt
-- https://github.com/lucproglangcourse/iterators-scala
 - https://github.com/lucproglangcourse/processtree-scala
+- https://github.com/lucproglangcourse/iterators-scala
 
 First, to achieve testability, we can define the desired functionality, such as ``common.IO``, as its own trait instead of a concrete class or part of some other trait such as ``common.Main``.
 Such traits are *providers* of some functionality, while building blocks that use this functionality are *clients*, such as``common.Main`` (on the production side) and ``PrintSpec`` (on the testing side).
 Specifically, in the process tree example, we use ``PrintSpec`` to test ``common.IO`` in isolation, independently of ``common.Main``.
 
-To manage the growing complexity of a system, we usually try to decompose it into its design dimensions.
-In many situations, including the examples listed above, we recognize these design dimensions:
-
-- mutable versus immutable implementation
-- run in production versus testing
-
-To avoid code duplication in the presence of multiple design dimensions, we can again leverage Scala traits as building blocks.
+To avoid code duplication in the presence of the design dimensions mentioned above, we can again leverage Scala traits as building blocks.
 Along some of the dimensions, there are three possible roles:
 
 - *provider*, e.g., the specific implementations `MutableTreeBuilder`, `FoldTreeBuilder`, etc.
@@ -410,7 +421,13 @@ The following figure shows the roles of and relationships among the various buil
 
 .. figure:: images/ProcessTreeTypeHierarchy.png
 
-`Dependency injection <https://en.wikipedia.org/wiki/Dependency_injection>`_ (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of "finding" its dependency, i.e., performing *dependency lookup*.
+The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity and dependency injection in its `imperative/modular` package.
+
+
+Trait-based dependency injection
+````````````````````````````````
+
+In the presence of modularity, `dependency injection <https://en.wikipedia.org/wiki/Dependency_injection>`_ (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of "finding" its dependency, i.e., performing *dependency lookup*.
 In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.
 
 The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
