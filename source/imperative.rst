@@ -361,6 +361,13 @@ The following examples illustrate the use of Scala as a "better Java" and the tr
 Using Scala traits for modularity and dependency injection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note:: To wrap your head around this section, you may want to start by recalling/reviewing the `stopwatch example <https://github.com/lucoodevcourse/stopwatch-android-java>`_ from COMP 313/413 (intermediate object-oriented programming).
+  In that app, the model is rather complex and has three or four components that depend on each other.
+  After creating the instances of those components, you had to connect them to each other using setters.
+  *Does that ring a bell?*
+  In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.
+
+
 Scala traits are *abstract* types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
 The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/>`_ shows how traits can help us achieve the following two design goals:
