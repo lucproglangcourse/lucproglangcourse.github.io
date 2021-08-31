@@ -26,7 +26,7 @@ Sections: 001 Fall 2021
 
   - :ref:`appendix-software`
   - `These lecture notes <https://lucproglangcourse.github.io>`_
-  - 'Prerecorded lecture videos on Panopto <https://luc.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?embedded=1#folderID=%22eed1f68e-518b-4dc4-80f1-ad8d016c5f4e%22>`_
+  - `Prerecorded lecture videos in Panopto <https://luc.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?embedded=1#folderID=%22eed1f68e-518b-4dc4-80f1-ad8d016c5f4e%22>`_
   - `Läufer and Thiruvathukal's book chapter on concurrency <https://arxiv.org/abs/1705.02899>`_
   - `Scala 3 book <https://docs.scala-lang.org/scala3/book/introduction.html>`_
   - `Horstmann's Scala for the Impatient book (selected chapters) <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_
