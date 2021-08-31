@@ -1,5 +1,5 @@
-Sections: 001/002 Fall 2021
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sections: 001 Fall 2021
+~~~~~~~~~~~~~~~~~~~~~~~
 
 - *General format:*
 
@@ -13,21 +13,20 @@ Sections: 001/002 Fall 2021
 
 - *Instructor:* `Konstantin Läufer <http://laufer.cs.luc.edu>`_
 
-- *Office hour:* Wed 13:45-14:45 and Fri 10:30-11:45 on Zoom (appointment recommended), other times available on request
-
 - *TA:* Monica Sieklucki
 
 - *Office hours:*
 
   - Tue 20:00-20:30 in Cuneo Hall 217
-  - Thu 20:00-20:30 in Crown Center105
-  - `by appointment <https://calendly.com/laufer>`_ (Tue, Thu, Fri afternoons)
+  - Thu 20:00-20:30 in Crown Center 105
+  - `by appointment via Calendly <https://calendly.com/laufer>`_ (Tue, Thu, Fri afternoons)
   - TA office hours TBD
 
 - *Required materials:*
 
   - :ref:`appendix-software`
   - `These lecture notes <https://lucproglangcourse.github.io>`_
+  - 'Prerecorded lecture videos on Panopto <https://luc.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?embedded=1#folderID=%22eed1f68e-518b-4dc4-80f1-ad8d016c5f4e%22>`_
   - `Läufer and Thiruvathukal's book chapter on concurrency <https://arxiv.org/abs/1705.02899>`_
   - `Scala 3 book <https://docs.scala-lang.org/scala3/book/introduction.html>`_
   - `Horstmann's Scala for the Impatient book (selected chapters) <https://learning.oreilly.com/library/view/scala-for-the/9780134540627>`_
