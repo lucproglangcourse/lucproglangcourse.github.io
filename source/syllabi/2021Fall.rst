@@ -37,7 +37,7 @@ Sections: 001 Fall 2021
 
 - *Additional resources:* :ref:`appendix-resources`
 
-- Grading:
+- *Grading:*
 
   Additive point system:
 
