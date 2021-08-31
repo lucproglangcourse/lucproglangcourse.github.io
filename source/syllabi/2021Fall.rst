@@ -6,6 +6,7 @@ Sections: 001 Fall 2021
   - This is a *on-campus*, face-to-face class involving lectures, group activities, etc.
   - I will make an effort to record all lectures for later viewing through Sakai/Panopto. In addition, some prerecorded videos are available through Panopto.
   - To earn points for group activities or other in-class activities, you are required to participate in class or make up for the work outside of class.
+  - *Estimated workload: 9 to 12 hours per week including class time.*
 
 - *Class time and location (fall 2021):* Tue 17:30-20:00 in Cuneo Hall 217, LSC
 
