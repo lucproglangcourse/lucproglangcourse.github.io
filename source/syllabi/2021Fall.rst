@@ -4,7 +4,7 @@ Sections: 001 Fall 2021
 - *General format:*
 
   - This is a *on-campus*, face-to-face class involving lectures, group activities, etc.
-  - I will make an effort to record all lectures for later viewing through Sakai/Panopto. In addition, some prerecorded videos are available.
+  - I will make an effort to record all lectures for later viewing through Sakai/Panopto. In addition, some prerecorded videos are available through Panopto.
   - To earn points for group activities or other in-class activities, you are required to participate in class or make up for the work outside of class.
 
 - *Class time and location (fall 2021):* Tue 17:30-20:00 in Cuneo Hall 217, LSC
@@ -37,14 +37,49 @@ Sections: 001 Fall 2021
 
 - *Additional resources:* :ref:`appendix-resources`
 
-- Grading (tentative):
+- Grading:
 
-  - additive point system - details TBD
-  - 45% quizzes & tests
-  - 50% projects & presentations *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
-  - 5% participation (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
+  Additive point system:
 
-- `Ground rules <http://laufer.cs.luc.edu/teaching/ground-rules>`_
+  - 21 points: *quizzes* 0 3,  1-3 6 each
+  - 24 points: two *tests*, 12 each
+  - 44 points ug / 50 grad: *projects* 0a 2, 0b 3, 1a and 2a/b 6 each, 3a-c 7 each, 1b 6 *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+  - 6 points: two *group activities*, 3 each
+  - 5 points: *presentation*
+  - 5 points: *participation* (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
+  - various extra credit opportunities
+
+  **Max total: 105 undergraduate / 111 graduate**
+
+  *Undergraduate grading schema:*
+
+  - A 93
+  - A- 90
+  - B+ 87
+  - B 83
+  - B- 80
+  - C+ 75
+  - C 70
+  - C- 65
+  - D+ 60
+  - D 50
+  - F < 50
+
+  *Graduate grading schema:*
+
+  - A 98
+  - A- 95
+  - B+ 92
+  - B 88
+  - B- 85
+  - C+ 80
+  - C 75
+  - C- 70
+  - D+ 65
+  - D 55
+  - F < 55
+
+- *Academic integrity:* `LUC <https://www.luc.edu/academics/catalog/undergrad/reg_academicintegrity.shtml>`_ | `CAS <https://www.luc.edu/cas/advising/academicintegritystatement/>`_ | `Grad <https://www.luc.edu/gradschool/academics_policies.shtml>`_
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_371_001_4379_1216>`_
 - `MS Team <https://teams.microsoft.com/l/team/19%3aaec55a5b5500469185bc3b2d87072760%40thread.tacv2/conversations?groupId=c4cd990e-f10c-4279-8e11-cd8f44b1a408&tenantId=021f4fe3-2b9c-4824-8378-bbcf9ec5accb>`_ *(mandatory subscription and participation)*
 
