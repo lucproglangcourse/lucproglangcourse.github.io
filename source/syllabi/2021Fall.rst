@@ -11,7 +11,7 @@ Sections: 001 Fall 2021
 
 - *Communication:* All communication regarding this class takes place in the classroom (verbal) and MS Teams (written). Most will be in the team-level channel specific to this term. For individual or group-level concerns, you may use direct individual or group messages in MS Teams; my user ID is **klaufer@luc.edu**. *(To help me prioritize your class-related communication, please DO NOT use email!)*
 
-- *Instructor:* `Konstantin Läufer <http://laufer.cs.luc.edu>`_
+- *Instructor:* `Konstantin Läufer <http://laufer.cs.luc.edu>`_ | `GitHub <https://github.com/klaeufer>`_ | `Google Scholar <http://scholar.google.com/citations?user=Rs0f_nMAAAAJ>`_ | `Rate My Prof <https://www.ratemyprofessors.com/ShowRatings.jsp?tid=287274>`_
 
 - *TA:* Monica Sieklucki
 
