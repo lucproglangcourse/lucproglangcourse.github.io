@@ -28,9 +28,10 @@ Zero-install option
 ```````````````````
 
 Scastie is an interactive playground for Scala with support for Scala 3 and sbt (Scala Build Tool) configuration.
-It allows you to save code snippets to your GitHub account.
-To launch, visit https://scastie.scala-lang.org.
+It allows you to save code snippets to your GitHub account, which you can access later.
+It is not suitable for working on full-fledged Scala projects, however.
 
+To launch, visit https://scastie.scala-lang.org.
 Be sure to
 
 - choose target Scala 3 and Scala version 3.0.1
