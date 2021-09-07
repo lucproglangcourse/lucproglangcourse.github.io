@@ -86,12 +86,15 @@ Sections: 001 Fall 2021
 
 - Important dates (tentative) for quizzes and tests:
 
-  - Week 2 - Tue 7 September: quiz 0
-  - Week 4 - Tue 21 September: quiz 1
-  - Week 7 - Tue 12 October: test 1
+  - Week 3 - Tue 12 September: quiz 0
+  - Week 5 - Tue 26 September: quiz 1
+  - Week 7 - Tue 12 October: **NO CLASS (fall break)**
+  - Week 8 - Tue 19 October: test 1
   - Week 10 - Tue 2 November: quiz 2
-  - Week 13 - Tue 23 November: test 2
-  - Week 16 (finals week) - Tue 14 December: quiz 3
+  - Week 10 - Fri 5 November: *last day to withdraw with W instead of WF*
+  - Week 12 - Tue 16 November: test 2
+  - Week 13 - Tue 23 November: **ONLINE CLASS (Thanksgiving break), details TBA**
+  - Week 16 (finals week) - Tue 14 December: *quiz 3 followed by class session*
 
 - *Recording of class meetings:* In this class, software will be used to record live class discussions. As a student in this class, your participation in live class discussions will be recorded. These recordings will be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
 
