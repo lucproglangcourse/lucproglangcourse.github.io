@@ -86,8 +86,8 @@ Sections: 001 Fall 2021
 
 - Important dates (tentative) for quizzes and tests:
 
-  - Week 3 - Tue 12 September: quiz 0
-  - Week 5 - Tue 26 September: quiz 1
+  - Week 3 - Tue 14 September: quiz 0
+  - Week 5 - Tue 28 September: quiz 1
   - Week 7 - Tue 12 October: **NO CLASS (fall break)**
   - Week 8 - Tue 19 October: test 1
   - Week 10 - Tue 2 November: quiz 2
