@@ -91,7 +91,7 @@ Sections: 001 Fall 2021
   - Week 7 - Tue 12 October: **NO CLASS (fall break)**
   - Week 8 - Tue 19 October: test 1
   - Week 10 - Tue 2 November: quiz 2
-  - Week 10 - Fri 5 November: *last day to withdraw with W instead of WF*
+  - Week 11 - Fri 12 November: *last day to withdraw with W instead of WF*
   - Week 12 - Tue 16 November: test 2
   - Week 13 - Tue 23 November: **ONLINE CLASS (Thanksgiving break), details TBA**
   - Week 16 (finals week) - Tue 14 December: *quiz 3 followed by class session*
