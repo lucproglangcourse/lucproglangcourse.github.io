@@ -173,7 +173,7 @@ Language constructs, patterns, building blocks:
 References: concurrent and asynchronous computing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Läufer and Thiruvathukal, CDER chapter
+- Läufer and Thiruvathukal, `CDER book chapter <https://arxiv.org/abs/1705.02899>`_
 - Goetz et al., `JCIP <http://jcip.net.s3-website-us-east-1.amazonaws.com>`_
 - Doug Lea, `CPJ <http://gee.cs.oswego.edu/dl/cpj>`_
 - Thiruvathukal and Christopher, `HPJPC <https://code.google.com/p/hpjpc/>`_

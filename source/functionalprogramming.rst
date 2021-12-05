@@ -466,7 +466,7 @@ Examples
 It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:
 
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_
--  `project 2a _ versus `project 2b on Sakai`_
+-  Project 1a (shapes) versus Project 1b (shapes redone using F-algebras) on Sakai
 
 Some other examples are available `here <https://github.com/lucproglangcourse/droste-explorations-scala/>`_.
 
