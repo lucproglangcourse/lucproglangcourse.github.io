@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. The Functional Programming Paradigm &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Program Representation and Interpretation" href="representationinterpretation.html" />
+    <link rel="prev" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. The Functional Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">4.1. Solving problems using built-in types and behaviors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">4.1.1. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-important-operations-on-collections">4.1.2. Other important operations on collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dealing-with-successive-failures">4.1.3. Dealing with successive failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#challenges">4.1.4. Challenges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modularity-and-dependency-injection-in-the-functional-style">4.1.5. Modularity and dependency injection in the functional style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-algebraic-data-types">4.2. Defining algebraic data types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#separation-of-structural-concerns">4.2.1. Separation of structural concerns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#behaviors-on-algebraic-data-types">4.3. Behaviors on algebraic data types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#behaviors-based-on-recursive-thinking">4.3.1. Behaviors based on recursive thinking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#separation-of-behavioral-concerns">4.3.2. Separation of behavioral concerns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">4.4. A closer look at predefined behaviors on lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation-of-concerns-at-the-type-level">4.5. Separation of concerns at the type level</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-concepts">4.5.1. Key concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.5.2. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-fix-does">4.5.3. What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalized-fold-catamorphism">4.5.4. Generalized fold (catamorphism)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-insights">4.5.5. Key insights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-useful-abstractions">4.6. Other useful abstractions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#monoid">4.6.1. Monoid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monad">4.6.2. Monad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#observations">4.6.3. Observations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">4.7. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyola University Chicago COMP 371/471 Lecture Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">4. </span>The Functional Programming Paradigm</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/functionalprogramming.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-functional-programming-paradigm">
+<h1><span class="section-number">4. </span>The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Permalink to this headline"></a></h1>
+<p>In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.</p>
+<section id="solving-problems-using-built-in-types-and-behaviors">
+<h2><span class="section-number">4.1. </span>Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Permalink to this headline"></a></h2>
+<p>As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
+Many of these, especially collection types and certain utility types, are <em>algebraic data types</em>, discussed below in more detail:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Seq</span></code> / <code class="docutils literal notranslate"><span class="pre">List</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://www.scala-lang.org/api/current/scala/collection/Seq.html">https://www.scala-lang.org/api/current/scala/collection/Seq.html</a></p></li>
+<li><p><a class="reference external" href="https://www.scala-lang.org/api/current/scala/collection/immutable/List.html">https://www.scala-lang.org/api/current/scala/collection/immutable/List.html</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/lists.sc</a></p></li>
+<li><p>note the difference between those and tuples</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Map</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://www.scala-lang.org/api/current/scala/collection/Map.html">https://www.scala-lang.org/api/current/scala/collection/Map.html</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Option</span></code> / <code class="docutils literal notranslate"><span class="pre">Either</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc</a></p></li>
+<li><p><a class="reference external" href="http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html">http://robsscala.blogspot.com/2012/06/fixing-scalaeither-unbiased-vs-biased.html</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Try</span></code></p>
+<ul>
+<li><p><a class="reference external" href="https://www.scala-lang.org/api/current/scala/util/Try.html">https://www.scala-lang.org/api/current/scala/util/Try.html</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc</a></p></li>
+</ul>
+</li>
+</ul>
+<p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with</p>
+<ul class="simple">
+<li><p>important methods <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code> / <code class="docutils literal notranslate"><span class="pre">drop</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> / <code class="docutils literal notranslate"><span class="pre">withFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> / <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">scanLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">collect</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
+</div>
+<section id="examples">
+<h3><span class="section-number">4.1.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h3>
+<p>Loop over all items in a finite collection or iterator using mutable state:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
+<span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">final</span> <span class="n">String</span> <span class="n">s</span><span class="p">:</span> <span class="n">incoming</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
+  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">final</span> <span class="nb">float</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><em>What does this code compute?</em></p>
+<p>Immutable equivalent using <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">foldLeft</span> <span class="p">{</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span> <span class="p">{</span> <span class="n">case</span> <span class="p">((</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">),</span> <span class="nb">next</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="p">(</span><span class="nb">sum</span> <span class="o">+</span> <span class="nb">next</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>Note that you cannot “un-fuse” this loop equivalent because the iterator is stateful and you can iterate through it only once.
+On the other hand, if <code class="docutils literal notranslate"><span class="pre">incoming</span></code> is a collection (always finite) instead of an iterator (potentially unbounded), you can use <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>, a specialized fold, for a terser equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">s</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span>
+<span class="n">val</span> <span class="n">count</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">size</span>
+<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+</pre></div>
+</div>
+<p>This is equivalent to two consecutive loops, one for <code class="docutils literal notranslate"><span class="pre">map</span></code> and one for <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
+<p>Unbounded loop until a condition is met:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Scanner</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
+<span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
+  <span class="n">final</span> <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
+  <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Immutable equivalent using <code class="docutils literal notranslate"><span class="pre">continually</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Iterator</span> <span class="n">continually</span> <span class="p">{</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">)</span>
+  <span class="n">StdIn</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
+<span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
+  <span class="n">line</span> <span class="o">!=</span> <span class="n">null</span>
+<span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
+  <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="other-important-operations-on-collections">
+<h3><span class="section-number">4.1.2. </span>Other important operations on collections<a class="headerlink" href="#other-important-operations-on-collections" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>When the body of the iteration produces a <em>side effect</em> such as output, we can use <code class="docutils literal notranslate"><span class="pre">foreach</span></code> instead of <code class="docutils literal notranslate"><span class="pre">continually</span></code>.</p></li>
+<li><p>If we want to compute a <em>result value</em>, we can use <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal notranslate"><span class="pre">foreach</span></code>.</p></li>
+<li><p>If we want to compute a <em>sequence of result values</em>, one for each original item, we can use <code class="docutils literal notranslate"><span class="pre">scanLeft</span></code> (examples are available <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">here</a>).</p></li>
+<li><p>If we want to transform a <em>collection of result values</em> by independently applying the same function to each item while preserving the collection’s skeletal structure, we can use <code class="docutils literal notranslate"><span class="pre">map</span></code>.</p></li>
+<li><p>If we want to do the same as <code class="docutils literal notranslate"><span class="pre">map</span></code> but without introducing an additional level of structural nesting even though the function does so, we can use <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">map</span></code> followed by <code class="docutils literal notranslate"><span class="pre">flatten</span></code>.</p></li>
+</ul>
+<p>The following example illustrates the difference between <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> from an imperative perspective:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// map - the result is a nested collection
+
+scala&gt; Seq(&quot;hello world what up&quot;, &quot;hola mundo&quot;, &quot;hallo welt&quot;)
+res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
+
+scala&gt; res0.map(s =&gt; s.split(&quot;\\s+&quot;))
+val res1: Seq[Array[String]] = List(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+
+scala&gt; val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
+resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
+
+scala&gt; res0.foreach { line =&gt;
+     |   val words = line.split(&quot;\\s+&quot;)
+     |   resultNested += words
+     | }
+
+scala&gt; resultNested
+res2: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+
+// flatMap - the result is a flat collection - this requires nested loops!
+
+scala&gt; res0.flatMap(s =&gt; s.split(&quot;\\s+&quot;))
+val res3: Seq[String] = List(hello, world, what, up, hola, mundo, hallo, welt)
+
+scala&gt; val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
+resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
+
+scala&gt; res0.foreach { line =&gt;
+     |   val words = line.split(&quot;\\s+&quot;)
+     |   words.foreach { word =&gt;
+     |     resultFlat += word
+     |   }
+     | }
+
+scala&gt; resultFlat
+res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
+</pre></div>
+</div>
+<p>Note also that all of these are methods but look like control structures because of Scala’s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
+</section>
+<section id="dealing-with-successive-failures">
+<h3><span class="section-number">4.1.3. </span>Dealing with successive failures<a class="headerlink" href="#dealing-with-successive-failures" title="Permalink to this headline"></a></h3>
+<p>Trying successive choices until either one succeeds or there is none left and we have to give up.
+Nested <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statements are often used to achieve this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorizeRequestStrategy</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token&quot;</span><span class="p">);</span>
+  <span class="o">...</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">);</span>
+  <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">FileNotFoundException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">);</span>
+    <span class="n">final</span> <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">);</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">);</span>
+    <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameter</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">);</span>
+  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">NoSuchElementException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Immutable equivalent using successive <code class="docutils literal notranslate"><span class="pre">Try</span></code> blocks, flat-chained using <code class="docutils literal notranslate"><span class="pre">orElse</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">Try</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token in property file&quot;</span><span class="p">)</span>
+   <span class="o">...</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">)</span>
+   <span class="n">val</span> <span class="n">authHeader</span> <span class="o">=</span> <span class="n">KeyAuthorization</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="s2">&quot;Bearer $accessToken&quot;</span>
+   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">)</span>
+ <span class="p">}</span> <span class="n">orElse</span> <span class="n">Try</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">)</span>
+   <span class="n">val</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">)</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameters</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">-&gt;</span> <span class="n">apiKey</span><span class="p">)</span>
+ <span class="p">}</span> <span class="n">getOrElse</span> <span class="p">{</span>
+   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">)</span>
+   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
+Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code> with blocks for embedding stateful steps such as logging</p>
+</div>
+</section>
+<section id="challenges">
+<h3><span class="section-number">4.1.4. </span>Challenges<a class="headerlink" href="#challenges" title="Permalink to this headline"></a></h3>
+<p>Can we write (efficiently or not)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">length</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code> as a fold, i.e., <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> or <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> or <code class="docutils literal notranslate"><span class="pre">foldRight</span></code> as <code class="docutils literal notranslate"><span class="pre">map</span></code>?!?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reverse</span></code> or <code class="docutils literal notranslate"><span class="pre">filter</span></code> as a <code class="docutils literal notranslate"><span class="pre">map</span></code>?</p></li>
+</ul>
+<p>Some hints:</p>
+<ul class="simple">
+<li><p>Look carefully at the respective domains and codomains (argument and result types). Can they fit?</p></li>
+<li><p>Which is more general, <code class="docutils literal notranslate"><span class="pre">map</span></code> or <code class="docutils literal notranslate"><span class="pre">fold</span></code>?</p></li>
+</ul>
+</section>
+<section id="modularity-and-dependency-injection-in-the-functional-style">
+<h3><span class="section-number">4.1.5. </span>Modularity and dependency injection in the functional style<a class="headerlink" href="#modularity-and-dependency-injection-in-the-functional-style" title="Permalink to this headline"></a></h3>
+<p>In the functional programming paradigm, first-class functions, i.e., the ability to pass functions as argument values to other functions, methods, and constructors, provides an alternative modular composition mechanism to the object-oriented ones discussed previously.</p>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators example</a> illustrates functional modularity in its <code class="docutils literal notranslate"><span class="pre">functional/modular</span></code> package.</p>
+</section>
+</section>
+<section id="defining-algebraic-data-types">
+<h2><span class="section-number">4.2. </span>Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this headline"></a></h2>
+<p>Most structures fall into one of these categories:</p>
+<ul class="simple">
+<li><p>nonrecursive/scalars: boolean, finite enumerations (including numeric types), try</p></li>
+<li><p>sublinear structures: (infinite set of) natural numbers, option</p></li>
+<li><p>linear structures: lists, maps</p></li>
+<li><p>nonlinear structures: trees, graphs, many custom domain models</p></li>
+</ul>
+<p>The fundamental building blocks of these <em>algebraic data types</em> are
+related to those discussed in <a class="reference internal" href="imperative.html#secdomainmodelsoo"><span class="std std-ref">Defining domain models in imperative and object-oriented languages</span></a>:</p>
+<ul class="simple">
+<li><p>(disjoint) sum: variation</p></li>
+<li><p>product (tuple, record) of a given arity: aggregation</p></li>
+<li><p>recursion (at the type level)</p></li>
+<li><p>type parameters (genericity)</p></li>
+</ul>
+<p>Using these building blocks, we can express the <cite>Shape</cite> domain model from the examples above as an algebraic data type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shape</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">Int</span><span class="p">)</span>
+      <span class="o">|</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
+      <span class="o">|</span> <span class="n">Group</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="n">Shape</span><span class="p">))</span>
+      <span class="o">|</span> <span class="n">Location</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a></p></li>
+</ul>
+<p>We identify the following structural and behavioral concerns:</p>
+<ul class="simple">
+<li><p>structure</p></li>
+<li><p>content</p></li>
+<li><p>traversal</p></li>
+<li><p>processing</p></li>
+</ul>
+<p>So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type.</p>
+<section id="separation-of-structural-concerns">
+<h3><span class="section-number">4.2.1. </span>Separation of structural concerns<a class="headerlink" href="#separation-of-structural-concerns" title="Permalink to this headline"></a></h3>
+<p>We can, however, achieve a separation between structure and content with the help of <em>parametric polymorphism</em>, that is, making the algebraic data type <em>generic</em> in terms of the content.
+The predefined collections are an example of this separation, as well as the <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">generic org chart</a> example.</p>
+</section>
+</section>
+<section id="behaviors-on-algebraic-data-types">
+<h2><span class="section-number">4.3. </span>Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this headline"></a></h2>
+<p>The following are additional examples of behaviors on algebraic data types.
+As expected, for recursive types, the behaviors are typically recursive as well.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">simple org charts</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">generic org charts</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/nat.sc">simple natural numbers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">shapes-oo-scala</a></p></li>
+</ul>
+<p>In these examples, the traversal and processing concerns identified above remain combined.</p>
+<section id="behaviors-based-on-recursive-thinking">
+<h3><span class="section-number">4.3.1. </span>Behaviors based on recursive thinking<a class="headerlink" href="#behaviors-based-on-recursive-thinking" title="Permalink to this headline"></a></h3>
+<p>To understand recursive thinking, let us explore the familiar <a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">shapes example</a>.
+We’ll start with a suitable algebraic type definition and some sample instances:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">Shape</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
+  <span class="o">//</span> <span class="o">...</span>
+  <span class="k">case</span> <span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">)</span>
+  <span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span><span class="p">:</span> <span class="n">Shape</span><span class="o">*</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">val</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">val</span> <span class="n">q</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">val</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">val</span> <span class="n">g</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">Group</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">Location</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Let’s now try to implement a <code class="docutils literal notranslate"><span class="pre">countGroup</span></code> behavior.
+This is incomplete but should compile;
+<code class="docutils literal notranslate"><span class="pre">???</span></code> is a convenient placeholder for “not yet implemented” (NYI):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>def countGroup(s: Shape): Int = s match
+  case Rectangle(w, h) =&gt; 0
+  case Location(x, y, c) =&gt; ???
+  case Group(shapes @ _*) =&gt; ???
+</pre></div>
+</div>
+<p>As expected, <code class="docutils literal notranslate"><span class="pre">countGroup</span></code> returns 0 for rectangles but would raise a <code class="docutils literal notranslate"><span class="pre">NYI</span></code> exception for group or location nodes.</p>
+<p>Now we need to apply recursive thinking:</p>
+<ul class="simple">
+<li><p>For location, the child might have group nodes.</p></li>
+<li><p>For group, the current node is a group node, plus the children might have group nodes.</p></li>
+</ul>
+<p>Accordingly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countGroup</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">Shape</span><span class="p">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">s</span> <span class="n">match</span>
+  <span class="k">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+  <span class="k">case</span> <span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+  <span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="n">shapes</span> <span class="n">do</span>
+      <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="nb">sum</span>
+</pre></div>
+</div>
+<p>Now <code class="docutils literal notranslate"><span class="pre">countGroup(g)</span></code> returns 2 as expected, though this is a Java-style, imperative implementation.
+Equivalently, we can use the <code class="docutils literal notranslate"><span class="pre">foreach</span></code> method instead of the so-called for comprehension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case Group(shapes @ _``*``) =&gt;
+  var sum = 1
+  shapes.foreach { c =&gt;
+    sum += countGroup(c)
+  }
+  sum
+</pre></div>
+</div>
+<p>Now…drum roll…we have an opportunity to convert this code into functional, applicative, immutable style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case Group(shapes @ _``*``) =&gt;
+  1 + shapes.map { c =&gt; countGroup(c) } .sum
+</pre></div>
+</div>
+<p>where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.</p>
+<p>Some points to think about:</p>
+<ul class="simple">
+<li><p>Which design pattern describes the function we pass to the <code class="docutils literal notranslate"><span class="pre">map</span></code> method?</p></li>
+<li><p>How would you compare these three implementations in terms of whatever functional and/or nonfunctional criteria you can think of?</p></li>
+</ul>
+</section>
+<section id="separation-of-behavioral-concerns">
+<h3><span class="section-number">4.3.2. </span>Separation of behavioral concerns<a class="headerlink" href="#separation-of-behavioral-concerns" title="Permalink to this headline"></a></h3>
+<p>A question that comes to mind is whether they can be separated, similarly to the predefined higher-order methods on collections, such as <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, etc.
+These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
+They handle the <em>traversal</em> concern for us and separate it from the <em>processing</em> concern, which we handle by providing a suitable argument function.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">functions on lists (reverse)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnStreams.sc">functions on streams (potentially infinite lists with memoization)</a></p></li>
+</ul>
+<p>This question has a two-part answer:
+Yes, we can define custom implementations of such higher-order behaviors for our own algebraic data types.
+In addition, and this is where it gets really interesting, we can have a single, universal implementation that works for all algebraic data types where the children of any node are either fixed in number or stored in a collection that has a <code class="docutils literal notranslate"><span class="pre">map</span></code> method.</p>
+<p>Another, seemingly esoteric, question is whether we can pull out recursion itself as a functional pattern.
+Yes, we can.
+In <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/factorial.sc">this factorial example</a>,
+the <code class="docutils literal notranslate"><span class="pre">Y</span></code>-combinator handles the <em>recursion</em> concern <em>for behaviors</em> and separates it from the concern of what should happen in each step of the recursion.</p>
+<p>We will soon study the equivalent idea at the type level.</p>
+</section>
+</section>
+<section id="a-closer-look-at-predefined-behaviors-on-lists">
+<h2><span class="section-number">4.4. </span>A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Permalink to this headline"></a></h2>
+<p>In this section, we take a look “under the hood” of some key predefined behaviors on lists.</p>
+<p>In terms of performance, we must keep in mind that <a class="reference external" href="http://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
+In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
+In practice, acceptable performance usually means linear time for behavior where we process the entire list.</p>
+<p>In addition, we need to be aware of <em>space complexity</em>.
+Clearly, we are already using space for the arguments we are about to pass to the behavior and are willing to dedicate space to the result we are getting back, so the focus is on <em>additional</em> temporary space on the stack, which we like to keep constant if possible.
+(This discussion is closely related to <a class="reference internal" href="imperative.html#subsecconstantspace"><span class="std std-ref">The importance of constant-space complexity</span></a>, where the assumption is that the arguments and the result are stored <em>externally</em>.)</p>
+<p><em>Tail recursion</em>, where the very last step in a method or function body is the recursive invocation of the method itself, is an effective technique for achieving constant-space complexity as long the behavior can be expressed in a tail-recursive way.
+In some cases, we can rewrite an implementation in a tail-recursive way by introducing an <em>accumulator</em> argument, where we essentially build up the result in the accumulator and then return that result once we reach the base case of the recursion.
+A tail-recursive implementation can easily be transformed to a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop by introducing a mutable variable to represent the progress into the list structure.
+This <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/functionsOnLists.sc">reverse example</a> illustrates these concepts and techniques in more detail.</p>
+<p>Here are some observations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> is usually what we want: <em>linear-time</em> and <em>constant-space</em> (naturally tail-recursive).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">foldRight</span></code> is <em>linear-time</em> and <em>linear-space</em> (<em>not</em> tail-recursive) but goes with the natural head-tail structure of the list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xs.foldRight(z)(f)</span> <span class="pre">==</span> <span class="pre">xs.reverse.foldLeft(z)(g)</span></code> where <code class="docutils literal notranslate"><span class="pre">g</span></code> is <code class="docutils literal notranslate"><span class="pre">f</span></code> with the arguments switched.</p></li>
+</ul>
+<p>To look at the actual Scala library implementations of these functions, first find desired method in the API documentation, expand, look for <em>definition classes</em>, follow the link to the leftmost definition class, then the link to that class’s Scala source, and finally look for the actual method.
+For performance reasons, these professional implementations tend to appear more complex than we might expect.
+Here are some examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L375">foreach</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L118">foldLeft</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L383">reverse</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L393">foldRight</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269">map</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47">length</a></p></li>
+</ul>
+<p>For more details on space complexity and tail recursion, please take a look at these references:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/">space complexity, tail recursion, and accumulators</a></p></li>
+<li><p><a class="reference external" href="http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html">tail recursion, trampolines, and continuations</a> (advanced)</p></li>
+</ul>
+</section>
+<section id="separation-of-concerns-at-the-type-level">
+<h2><span class="section-number">4.5. </span>Separation of concerns at the type level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.</p>
+</div>
+<p>The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.</p>
+<section id="key-concepts">
+<h3><span class="section-number">4.5.1. </span>Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline"></a></h3>
+<p>We first need to define some key concepts:</p>
+<ul>
+<li><p><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(Endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal notranslate"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span>
+<span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span> <span class="n">compose</span> <span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Some familiar examples of endofunctors are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Option</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span></code></p></li>
+<li><p>generic trees such as <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">org chart</a></p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Fix</span></code>-combinator handles the <em>recursion</em> concern <em>for structures</em> and separates it from the nature of the structure itself.</p></li>
+<li><p>Generalized <code class="docutils literal notranslate"><span class="pre">fold</span></code> = <em>catamorphism</em> (<code class="docutils literal notranslate"><span class="pre">cata</span></code>) for <em>breaking down</em> a data structure to a result value.</p></li>
+<li><p><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">F-algebra</a>: This is the argument to <code class="docutils literal notranslate"><span class="pre">fold</span></code>, which has a functor <code class="docutils literal notranslate"><span class="pre">F</span></code> and a carrier object, i.e., the result type of the fold.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unfold</span></code> = <em>anamorphism</em> for <em>building up</em> a data structure from some other value.</p></li>
+<li><p><em>F-coalgebra</em>: This is the argument to <code class="docutils literal notranslate"><span class="pre">unfold</span></code> (generator), which also has a functor <code class="docutils literal notranslate"><span class="pre">F</span></code> and a carrier object, i.e., type of seed and generated values wrapped in the functor.</p></li>
+<li><p><em>Initial F-algebra</em>: This is the least fixpoint of our functor <code class="docutils literal notranslate"><span class="pre">F</span></code> and equivalent to our original recursive type.
+We obtain this by applying the <code class="docutils literal notranslate"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal notranslate"><span class="pre">F</span></code>.</p></li>
+<li><p>We get our original recursive behaviors back by combining <code class="docutils literal notranslate"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Practical applications</p>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.5.2. </span>Examples<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></p></li>
+<li><p>Project 1a (shapes) versus Project 1b (shapes redone using F-algebras) on Sakai</p></li>
+</ul>
+<p>Some other examples are available <a class="reference external" href="https://github.com/lucproglangcourse/droste-explorations-scala/">here</a>.</p>
+</section>
+<section id="what-fix-does">
+<h3><span class="section-number">4.5.3. </span>What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> basically ties the “recursive knot” by applying the functor <code class="docutils literal notranslate"><span class="pre">F</span></code>  to itself.
+This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
+<p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal notranslate"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
+This enables  us to define linked lists:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>The problem is that the types of these lists are nested:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
+<span class="n">res0</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="kc">None</span><span class="o">.</span><span class="n">type</span><span class="p">)])])</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">)))))</span>
+</pre></div>
+</div>
+<p>so that lists of different lengths have different types.</p>
+<p>By using a suitable <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over our functor, they all end up having the <em>same</em> type, namely <code class="docutils literal notranslate"><span class="pre">Fix</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">]))</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))))))</span>
+<span class="n">res1</span><span class="p">:</span> <span class="n">Fix</span> <span class="o">=</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">))))))))</span>
+</pre></div>
+</div>
+<p>That’s why we usually define such types recursively to begin with.</p>
+</section>
+<section id="generalized-fold-catamorphism">
+<h3><span class="section-number">4.5.4. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Permalink to this headline"></a></h3>
+<p>The next question is what the implementation of the universal fold method for <code class="docutils literal notranslate"><span class="pre">Fix</span></code> looks like, also known as the <em>catamorphism</em>.
+Continuing with our <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over <code class="docutils literal notranslate"><span class="pre">(Int,</span> <span class="pre">Option[A])</span></code> example, we perform recursion over this functor by using <code class="docutils literal notranslate"><span class="pre">map</span></code>, which preserves the first component and invokes a suitable <code class="docutils literal notranslate"><span class="pre">map</span></code> on the second component of the pair:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="p">((</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]))</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">((</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_1</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">))))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can define <em>algebras</em> on our functor, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Int</span><span class="p">])):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">arg</span> <span class="n">match</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">i</span>
+  <span class="k">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">=&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">s</span>
+<span class="p">}</span>
+
+<span class="n">res1</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> <span class="o">//</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>These are very similar to visitors without the responsibility to traverse the structure.
+That is why they are not recursive.
+Instead, the catamorphism takes care of the recursion.</p>
+<p>For an arbitrary functor <code class="docutils literal notranslate"><span class="pre">F</span></code>, the code looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">Fix</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For an arbitrary <em>carrier type</em> <code class="docutils literal notranslate"><span class="pre">B</span></code>, the argument <code class="docutils literal notranslate"><span class="pre">f</span></code> of type <code class="docutils literal notranslate"><span class="pre">F[B]</span> <span class="pre">=&gt;</span> <span class="pre">B</span></code> is an <code class="docutils literal notranslate"><span class="pre">F</span></code>-algebra.
+<code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> is the <em>initial</em> <code class="docutils literal notranslate"><span class="pre">F</span></code>-algebra, and the catamorphism <code class="docutils literal notranslate"><span class="pre">cata</span></code> produces the unique structure-preserving mapping (homomorphism) between <code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> and <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+</section>
+<section id="key-insights">
+<h3><span class="section-number">4.5.5. </span>Key insights<a class="headerlink" href="#key-insights" title="Permalink to this headline"></a></h3>
+<p>By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.</p>
+<ul class="simple">
+<li><p>non-generic:  <code class="docutils literal notranslate"><span class="pre">Nat</span></code>, <code class="docutils literal notranslate"><span class="pre">Expr</span></code>, <code class="docutils literal notranslate"><span class="pre">Shape</span></code>, etc.</p></li>
+<li><p>generic: <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Tree</span></code>, <code class="docutils literal notranslate"><span class="pre">OrgChart</span></code>, etc.</p></li>
+</ul>
+<p>It also helps to study these questions:</p>
+<ul class="simple">
+<li><p>How are, say, <code class="docutils literal notranslate"><span class="pre">Option</span></code>, <code class="docutils literal notranslate"><span class="pre">List</span></code>, and <code class="docutils literal notranslate"><span class="pre">Tree</span></code> related?</p></li>
+<li><p>How does</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Option</span></code> relate to <code class="docutils literal notranslate"><span class="pre">List</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span></code> relate to <code class="docutils literal notranslate"><span class="pre">Tree</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tree</span></code> relate to ?!?</p></li>
+<li><p>…</p></li>
+</ul>
+</li>
+<li><p>How do we represent an <em>empty</em> structure?</p></li>
+<li><p>Why aren’t there multiple branches in the definition of <code class="docutils literal notranslate"><span class="pre">cata</span></code> above?
+When does the recursion terminate?</p></li>
+<li><p>Is <code class="docutils literal notranslate"><span class="pre">cata</span></code> tail-recursive? Can or should it be?</p></li>
+</ul>
+<p>On the behavioral side, we recognize the great potential for code reuse resulting from common abstractions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://typelevel.org/cats">Cats library of high-level abstractions</a></p></li>
+<li><p><a class="reference external" href="https://github.com/higherkindness/droste">Droste library of recursion schemes</a></p></li>
+<li><p>Various other <a class="reference external" href="http://typelevel.org/projects">Typelevel.scala projects</a></p></li>
+</ul>
+<p>For more details on F-algebras and datatype-generic programming, please take a look at these references:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gist.github.com/jdegoes/97459c0045f373f4eaf126998d8f65dc">Advanced Functional Programming with Scala</a></p></li>
+<li><p><a class="reference external" href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">Understanding F-Algebras</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/origami.pdf">Gibbons: origami programming</a> (advanced)</p></li>
+<li><p><a class="reference external" href="http://www.cs.utexas.edu/~wcook/Drafts/2012/ecoop2012.pdf">Oliveira &amp; Cook: F-algebras in Java</a> (advanced)</p></li>
+<li><p><a class="reference external" href="http://www.doscienceto.it/blog/posts/2020-09-16-change.html">Joe Warren’s four ways to make change in Scala</a></p></li>
+<li><p><a class="reference external" href="https://blog.sumtypeofway.com/archive.html">Patrick Thomson’s blog post series on recursion schemes</a></p></li>
+</ul>
+<p>If you want to dig a bit deeper, check out a generalization of <code class="docutils literal notranslate"><span class="pre">map</span></code> called <a class="reference external" href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf">traverse</a>.
+Some of our examples include implementations of <code class="docutils literal notranslate"><span class="pre">traverse</span></code>.</p>
+</section>
+</section>
+<section id="other-useful-abstractions">
+<h2><span class="section-number">4.6. </span>Other useful abstractions<a class="headerlink" href="#other-useful-abstractions" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.</p>
+</div>
+<p>In this section, we will discuss a few more useful yet relatively simple abstractions.</p>
+<section id="monoid">
+<h3><span class="section-number">4.6.1. </span>Monoid<a class="headerlink" href="#monoid" title="Permalink to this headline"></a></h3>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monoid_(disambiguation)">Monoid</a> is a type with an associative binary operation and an identity element.
+(This is equivalent to a semigroup with an identity element.)
+Examples include:</p>
+<ul class="simple">
+<li><p>integers with addition and zero</p></li>
+<li><p>integers with multiplication one</p></li>
+<li><p>lists with append and the empty list</p></li>
+<li><p>strings with concatenation and the empty string</p></li>
+</ul>
+<p>The <em>monoid laws</em> arise from the monoid’s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
+<p>Examples of monoids using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc">here</a></p>
+</section>
+<section id="monad">
+<h3><span class="section-number">4.6.2. </span>Monad<a class="headerlink" href="#monad" title="Permalink to this headline"></a></h3>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic collection) with two operations, <code class="docutils literal notranslate"><span class="pre">point</span></code> (also called <code class="docutils literal notranslate"><span class="pre">return</span></code> or <code class="docutils literal notranslate"><span class="pre">unit</span></code>) and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> (also called <code class="docutils literal notranslate"><span class="pre">bind</span></code>).
+Monads are an effective way to represent the <em>context</em> of a computation in which the computation is “wrapped”.
+The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
+Examples include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Option</span></code> and <code class="docutils literal notranslate"><span class="pre">Try</span></code>: potential failure in a computation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span></code>: nondeterminism in a computation, meaning that the computation might have multiple results</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn’t actually do anything</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Future</span></code>: the computation takes place asynchronously (in the background)</p></li>
+</ul>
+<p>Examples of monads using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc">here</a>.</p>
+</section>
+<section id="observations">
+<h3><span class="section-number">4.6.3. </span>Observations<a class="headerlink" href="#observations" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>The Scala library includes various structures that are effectively monads, especially those just mentioned.
+What Scala does not define is a monad abstraction itself.</p></li>
+<li><p>This is where libraries like Scalaz or Cats come in:
+They define these abstractions in such a way that we can retrofit existing types or our own types to become instances of the desired abstractions, using the <em>Typeclass pattern</em>, a technique for representing Haskell-style typeclasses.</p></li>
+<li><p>Examples of the Typeclass pattern are the <code class="docutils literal notranslate"><span class="pre">Functor</span></code> and <code class="docutils literal notranslate"><span class="pre">Traverse</span></code> instances in our expressions and shapes examples.</p></li>
+<li><p>A good reference for learning Scalaz, a library that defines these various abstractions, is available <a class="reference external" href="http://eed3si9n.com/learning-scalaz">here</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
+<div class="admonition-todo admonition" id="id12">
+<p class="admonition-title">Todo</p>
+<p>put chapter-level references here</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="imperative.html" class="btn btn-neutral float-left" title="3. The Imperative and Object-Oriented Paradigms in Scala" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="representationinterpretation.html" class="btn btn-neutral float-right" title="5. Program Representation and Interpretation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2019, Konstantin Läufer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

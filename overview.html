@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Overview &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Context and Background" href="background.html" />
+    <link rel="prev" title="Lecture Notes: Theory (and Practice) of Programming Languages" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">1.1. Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-learning-outcomes">1.2. Key learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#some-starting-points-for-functional-programming">1.3. Some starting points for functional programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#course-outline">1.4. Course outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bloom-s-taxonomy">1.5. Bloom’s taxonomy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyola University Chicago COMP 371/471 Lecture Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">1. </span>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1><span class="section-number">1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h1>
+<p>In this chapter, we provide an outline of the course, along with a brief motivation and key learning outcomes.</p>
+<section id="motivation">
+<h2><span class="section-number">1.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline"></a></h2>
+<p>There are a number of reasons why you would want to study programming languages. To name a few:</p>
+<ul class="simple">
+<li><p>Knowing several programming <em>paradigms</em> will help you think about more problems in better ways.</p></li>
+<li><p>Knowing several programming <em>languages</em> will help you implement your solutions in better ways.</p></li>
+<li><p>The subject matter is exciting and intellectually challenging.</p></li>
+<li><p>Increasing numbers of local, national, and global employers love it!</p></li>
+</ul>
+</section>
+<section id="key-learning-outcomes">
+<h2><span class="section-number">1.2. </span>Key learning outcomes<a class="headerlink" href="#key-learning-outcomes" title="Permalink to this headline"></a></h2>
+<p>We deliberately chose the learning outcomes for this course to complement other courses in your computer science or software engineering curriculum. Upon entering this course, you will already be familiar with the imperative and object-oriented paradigms, coming from languages such as Java, C++, C#, or Python. Most likely, you will also be familiar with basic machine architecture and memory management using C or C++.</p>
+<p>In this course, we will pursue two overarching learning outcomes and three more specific ones:</p>
+<ul class="simple">
+<li><p>an overview of programming paradigms</p></li>
+<li><p>an understanding of the programming language design space</p></li>
+<li><p>proficiency in functional programming</p></li>
+<li><p>an understanding of program representation and interpretation/execution</p></li>
+<li><p>basic competence in concurrent programming</p></li>
+</ul>
+<p>Given the widespread availability in multi-core hardware ranging from mobile devices to enterprise servers, there is a growing interest in programming paradigms and techniques that will take advantage of this hardware. Functional programming, which de-emphasizes mutable state, in conjunction with suitable concurrency constructs, is particularly useful. We will also “look under the hood” by studying how to represent programs and interpret, execute, or otherwise process those representations.</p>
+</section>
+<section id="some-starting-points-for-functional-programming">
+<h2><span class="section-number">1.3. </span>Some starting points for functional programming<a class="headerlink" href="#some-starting-points-for-functional-programming" title="Permalink to this headline"></a></h2>
+<p>You might find the following resources useful to get into the functional programming mindset:</p>
+<ul class="simple">
+<li><p>Presentation by Martin Odersky: Scala with Style <a class="reference external" href="http://www.youtube.com/watch?v=kkTFx3-duc8">(YouTube)</a></p></li>
+<li><p>Interview with Simon Peyton-Jones on Functional Programming and Haskell <a class="reference external" href="http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell">(SE Radio audio podcast)</a></p></li>
+<li><p>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison <a class="reference external" href="http://klaeufer.github.com/luc-amc.html">(visual presentation)</a></p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>incorporate visual presentation here</p>
+</div>
+</section>
+<section id="course-outline">
+<h2><span class="section-number">1.4. </span>Course outline<a class="headerlink" href="#course-outline" title="Permalink to this headline"></a></h2>
+<p>Here is a more detailed course outline (subject to revision).</p>
+<ul class="simple">
+<li><p>business and software engineering contexts (1 week)</p>
+<ul>
+<li><p>software requirements</p>
+<ul>
+<li><p>functional requirements</p></li>
+<li><p>nonfunctional requirements</p></li>
+</ul>
+</li>
+<li><p>development process</p>
+<ul>
+<li><p>testing</p></li>
+<li><p>refactoring</p></li>
+<li><p>automation</p></li>
+</ul>
+</li>
+<li><p>design principles and patterns</p>
+<ul>
+<li><p>separation of concerns</p></li>
+<li><p>parametricity</p></li>
+<li><p>SOLID</p></li>
+<li><p>GoF/POSA</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>imperative and object-oriented programming (2 weeks)</p>
+<ul>
+<li><p>console applications</p></li>
+<li><p>constant-space complexity</p></li>
+<li><p>logging</p></li>
+<li><p>domain modeling</p></li>
+<li><p>using traits for modularity and dependency injection</p></li>
+</ul>
+</li>
+<li><p>functional programming (4 weeks)</p>
+<ul>
+<li><p>defining algebraic data types</p>
+<ul>
+<li><p>scalars: enumerations</p></li>
+<li><p>sublinear structures: numbers, option</p></li>
+<li><p>linear structures: lists, maps</p></li>
+<li><p>nonlinear structures: trees</p></li>
+</ul>
+</li>
+<li><p>implementing behaviors on algebraic data types</p>
+<ul>
+<li><p>pattern matching</p></li>
+<li><p>recursion</p></li>
+</ul>
+</li>
+<li><p>higher-order functions</p></li>
+<li><p>predefined types and their behaviors</p></li>
+<li><p>recursion patterns</p></li>
+<li><p>higher-kinded types</p></li>
+</ul>
+</li>
+<li><p>programming language representation and interpretation/execution (4 weeks)</p>
+<ul>
+<li><p>language design space</p></li>
+<li><p>scanners (lexical analyzers)</p></li>
+<li><p>parsers (syntax analyzers)</p></li>
+<li><p>interpreters and compilers</p></li>
+<li><p>domain-specific languages</p></li>
+</ul>
+</li>
+<li><p>concurrent and parallel programming (3 weeks)</p>
+<ul>
+<li><p>parallel collections</p></li>
+<li><p>futures and promises</p></li>
+<li><p>progress reporting and cancelation</p></li>
+<li><p>asynchronous programming/reactive extensions (Rx)</p></li>
+<li><p>advanced mechanisms</p>
+<ul>
+<li><p>explicit threads</p></li>
+<li><p>actors</p></li>
+<li><p>software-transactional memory</p></li>
+<li><p>task-parallel library</p></li>
+<li><p>functional data structures</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="bloom-s-taxonomy">
+<h2><span class="section-number">1.5. </span>Bloom’s taxonomy<a class="headerlink" href="#bloom-s-taxonomy" title="Permalink to this headline"></a></h2>
+<p>The letters refer to the successive levels of learning from the cognitive domain of <a class="reference external" href="http://en.wikipedia.org/wiki/Bloom's_taxonomy#Cognitive">Bloom’s taxonomy</a>:</p>
+<ul class="simple">
+<li><p>K: know/remember the term</p></li>
+<li><p>C: comprehend/understand the concept</p></li>
+<li><p>A: apply the technique</p></li>
+<li><p>analyze/evaluate/create (advanced levels)</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>map Bloom levels to course outline</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Lecture Notes: Theory (and Practice) of Programming Languages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="background.html" class="btn btn-neutral float-right" title="2. Context and Background" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2019, Konstantin Läufer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

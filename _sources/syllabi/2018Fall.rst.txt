@@ -1,0 +1,34 @@
+Section: 001 Fall 2018
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- *Instructor:* `Konstantin Läufer <http://klaeufer.github.io>`_
+- *Class time and location (Fall 2018)*: Tue and Thu 13:00-14:15 in Cuneo Hall 202, LSC
+- *Office hour:* Tue/Thu 14:30-15:30 and Thu 10:00-11:00 in Doyle Hall Room 201 (building #6 on `this map of Lake Shore Campus <https://www.luc.edu/media/lucedu/pdfs-campusmaps/lsc.pdf>`_), and by appointment
+- *Required text:*
+  **Scala for the Impatient, Second Edition**
+  *By: Cay S. Horstmann*
+  Publisher: Addison-Wesley Professional
+  Pub. Date: December 15, 2016
+  Web ISBN-13: 978-0-13-454062-7
+  Print ISBN-13: 978-0-13-454056-6
+  `access free on Safari <http://proquestcombo.safaribooksonline.com.flagship.luc.edu/book/programming/scala/9780134540627>`_ and/or `download from Lightbend <https://www.lightbend.com/resources/e-book/scala-for-the-impatient>`_
+- *Additional resources:* :ref:`appendix-resources`
+- Grading (tentative): 
+
+  - 45% quizzes & exams
+  - 50% projects & presentations *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+  - 5% participation (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, course evaluation, etc.)
+
+- `Ground rules <http://laufer.cs.luc.edu/teaching/ground-rules>`_
+- `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_371_001_6323_1186>`_
+- `Slack team <https://lucproglangcourse.slack.com>`_ *(mandatory subscription)*
+
+- Important dates: 
+
+  - Thu 20 September: quiz 1
+  - Thu 4 October: test 1 
+  - Tue 9 October: NO CLASS - fall break
+  - Thu 25 October: quiz 2
+  - Thu 15 November: test 2
+  - Tue 20 November: remote lecture/office hour
+  - Fri 14 December **13:00-14:00**: test 3

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Program Representation and Interpretation &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. The Concurrent Programming Paradigm" href="concurrency.html" />
+    <link rel="prev" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Program Representation and Interpretation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#programming-language-toolchains">5.1. Programming language toolchains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cross-compilation">5.1.1. Cross-compilation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#compiler-front-end-concepts-and-techniques">5.2. Compiler front-end concepts and techniques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lexical-analysis">5.2.1. Lexical analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syntax-analysis">5.2.2. Syntax analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-front-end-approaches">5.2.3. Alternative front-end approaches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-language-semantics">5.3. Programming language semantics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#case-study-a-simple-imperative-language">5.4. Case study: a simple imperative language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#objectives">5.4.1. Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syntax">5.4.2. Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structured-operational-semantics-sos">5.4.3. Structured operational semantics (SOS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-interpreter-program">5.4.4. The interpreter program</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#case-study-a-simple-imperative-language-with-records">5.5. Case study: a simple imperative language with records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">5.5.1. Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.5.2. Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">5.5.3. Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#type-systems">5.6. Type systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#domain-specific-languages">5.7. Domain-specific languages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyola University Chicago COMP 371/471 Lecture Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">5. </span>Program Representation and Interpretation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/representationinterpretation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-representation-and-interpretation">
+<h1><span class="section-number">5. </span>Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Permalink to this headline"></a></h1>
+<p>In this chapter, we discuss how we can represent and ultimately execute or interpret programs in a particular language.
+To this end, we need to talk about the toolchain required to do so, as well as techniques for defining the meaning (semantics) of programs in our language.</p>
+<section id="programming-language-toolchains">
+<h2><span class="section-number">5.1. </span>Programming language toolchains<a class="headerlink" href="#programming-language-toolchains" title="Permalink to this headline"></a></h2>
+<p>We will start with an overview of the phases of programming language <a class="reference external" href="http://en.wikipedia.org/wiki/Compiler">compilation</a>/<a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_(computing)">interpretation</a> toolchain:</p>
+<ul class="simple">
+<li><p>source code (string stored in file)</p></li>
+<li><p><em>lexical analysis</em></p></li>
+<li><p>sequence of tokens</p></li>
+<li><p><em>syntax analysis (parsing)</em></p></li>
+<li><p>abstract syntax tree &lt;- interface between front end and back end</p></li>
+<li><p><em>static checks</em></p></li>
+<li><p><em>optimization</em></p></li>
+<li><p>transformed abstract syntax tree</p></li>
+<li><p><em>code generation</em></p></li>
+<li><p>machine code or byte code</p></li>
+<li><p><em>execution</em> on physical hardware, virtual hardware, or virtual machine</p></li>
+<li><p>alternative: <em>direct interpretation of abstract syntax trees</em></p></li>
+</ul>
+<p>Reference: <a class="reference external" href="http://hjemmesider.diku.dk/~torbenm/Basics/">Mogensen</a></p>
+<section id="cross-compilation">
+<h3><span class="section-number">5.1.1. </span>Cross-compilation<a class="headerlink" href="#cross-compilation" title="Permalink to this headline"></a></h3>
+<p>Cross-compilation is a useful technique when the target environment does not provide sufficient computational resources to compile software in the target environment itself.
+Common examples include mobile phones and other embedded devices.
+For example, one usually develops Android apps on a development machine, tests them on an Android virtual device (emulator), and deploys them to an actual phone or tablet.</p>
+<p>The following example shows cross-compilation of a small C program on a development machine and execution in the target environment.</p>
+<ol class="arabic">
+<li><p>First, we compile the source on our development machine, in this case, a hosted Linux VM using the <a class="reference external" href="http://openwrt.org">OpenWrt</a> embedded Linux toolchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[laufer@boole:~/Work/hello] 130 $ cat hello.c
+main() {
+  puts(&quot;hello ETL!&quot;);
+}
+[laufer@boole:~/Work/hello] $ ~/Work/OpenWrt-SDK-15.05.1-ramips-rt305x_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mipsel-openwrt-linux-uclibc-gcc hello.c
+</pre></div>
+</div>
+</li>
+<li><p>Now we deploy the resulting executable to the target environment using, say, <code class="docutils literal notranslate"><span class="pre">scp</span></code>.</p></li>
+<li><p>Finally, we run this executable natively on a MIPS-based embedded Linux device sold as a “portable travel router”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>root@ExPodNano:~# ldd ./a.out
+libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x770d5000)
+libc.so.0 =&gt; /lib/libc.so.0 (0x77069000)
+ld-uClibc.so.0 =&gt; /lib/ld-uClibc.so.0 (0x770f9000)
+root@ExPodNano:~# ./a.out
+hello ETL!
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="compiler-front-end-concepts-and-techniques">
+<h2><span class="section-number">5.2. </span>Compiler front-end concepts and techniques<a class="headerlink" href="#compiler-front-end-concepts-and-techniques" title="Permalink to this headline"></a></h2>
+<p>In this section, we will discuss the key front-end stages, lexical analysis and syntax analysis, and related concepts and techniques.</p>
+<section id="lexical-analysis">
+<h3><span class="section-number">5.2.1. </span>Lexical analysis<a class="headerlink" href="#lexical-analysis" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>regular expressions, NFA, DFA (Mogensen ch. 2)</p></li>
+<li><p><a class="reference external" href="http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf">regular expressions</a></p></li>
+<li><p><a class="reference external" href="http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf">regular expressions in Java</a></p></li>
+</ul>
+</section>
+<section id="syntax-analysis">
+<h3><span class="section-number">5.2.2. </span>Syntax analysis<a class="headerlink" href="#syntax-analysis" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>context-free grammars, EBNF, parsing (Mogensen ch. 3)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Compiler-compiler">parser generator</a></p></li>
+<li><p><a class="reference external" href="https://github.com/djspiewak/scala-bison">scala-bison</a></p></li>
+</ul>
+</section>
+<section id="alternative-front-end-approaches">
+<h3><span class="section-number">5.2.3. </span>Alternative front-end approaches<a class="headerlink" href="#alternative-front-end-approaches" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Parser_combinator">parser combinators</a></p></li>
+<li><p>Scala parser combinators</p>
+<ul>
+<li><p><a class="reference external" href="https://learning.oreilly.com/library/view/scala-for-the/9780134540627/ch20.html">Horstmann ch. 20</a></p></li>
+<li><p><a class="reference external" href="https://learning.oreilly.com/library/view/programming-in-scala/9780981531687/combinator-parsing.html">Odersky et al. ch. 33</a></p></li>
+<li><p><a class="reference external" href="http://www.scala-lang.org/api/current/scala-parser-combinators)[tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started">API</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala">simple expression combinator parser example</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Parsing_expression_grammar">parsing expression grammars</a></p></li>
+<li><p><a class="reference external" href="http://ceur-ws.org/Vol-928/0324.pdf">From EBNF to PEG</a></p></li>
+<li><p>Parboiled 2 PEG library</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/sirthias/parboiled2">parboiled2 documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sirthias/parboiled2/blob/master/examples/src/main/scala/org/parboiled2/examples/JsonParser.scala">parboiled2 JSON parser example</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="programming-language-semantics">
+<h2><span class="section-number">5.3. </span>Programming language semantics<a class="headerlink" href="#programming-language-semantics" title="Permalink to this headline"></a></h2>
+<p>Semantics, a formalization of the <em>meaning</em> of programs in a particular language, includes <em>static</em> and <em>dynamic</em> semantics.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Programming_language#Semantics">static semantics</a> (compile-time)</p>
+<ul>
+<li><p>flow analysis</p></li>
+<li><p>typing</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Semantics_of_programming_languages">dynamic semantics</a> (run-time)</p>
+<ul>
+<li><p>denotational</p></li>
+<li><p>operational, e.g. our interpreters</p></li>
+<li><p>axiomatic</p></li>
+</ul>
+</li>
+</ul>
+<p>The Interpreter pattern is related to the discussion of dynamic semantics.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://c2.com/cgi/wiki?InterpreterPattern">http://c2.com/cgi/wiki?InterpreterPattern</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_pattern">http://en.wikipedia.org/wiki/Interpreter_pattern</a></p></li>
+</ul>
+</section>
+<section id="case-study-a-simple-imperative-language">
+<h2><span class="section-number">5.4. </span>Case study: a simple imperative language<a class="headerlink" href="#case-study-a-simple-imperative-language" title="Permalink to this headline"></a></h2>
+<p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java">Java implementation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/blob/master/src/main/scala/imperative/">Scala implementation</a></p></li>
+</ul>
+<p>The accompanying lecture is available as a set of screencasts:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/-bDcsvlY5oA">foundations</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/mj-tq_kdeF">implementation</a></p></li>
+</ul>
+<section id="objectives">
+<h3><span class="section-number">5.4.1. </span>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline"></a></h3>
+<p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
+<ul class="simple">
+<li><p>To understand an object-oriented programming language from the “inside”.</p></li>
+<li><p>To understand better the object-oriented and functional design patterns that we have learned by using them in the context of a small but somewhat sophisticated program.</p></li>
+</ul>
+</section>
+<section id="syntax">
+<h3><span class="section-number">5.4.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline"></a></h3>
+<p>Our language has the following features:</p>
+<p>Integer expressions given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="p">:</span><span class="o">:=</span> <span class="n">variable</span>
+  <span class="o">|</span>   <span class="n">const</span>
+  <span class="o">|</span>   <span class="n">e1</span> <span class="o">+</span> <span class="n">e2</span>
+  <span class="o">|</span>   <span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span>
+</pre></div>
+</div>
+<p>Statements given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="p">:</span><span class="o">:=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+  <span class="o">|</span>   <span class="n">S1</span> <span class="p">;</span> <span class="n">S2</span>
+  <span class="o">|</span>   <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">S</span>
+</pre></div>
+</div>
+<p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like <cite>x + 3</cite>, whereas earlier we could only write expressions such as <cite>4 + 3</cite>. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
+</section>
+<section id="structured-operational-semantics-sos">
+<h3><span class="section-number">5.4.3. </span>Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this headline"></a></h3>
+<p>We first formalize the intuitive execution semantics of the toy language. The point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. Since our toy language has variables, we need to keep track of the state of variables. We view variables as objects with two capabilities:</p>
+<ul class="simple">
+<li><p><cite>v.get()</cite> returns the current value of the variable</p></li>
+<li><p><cite>v.set(int i)</cite> changes the current value of the variable to that of <cite>i</cite></p></li>
+</ul>
+<p>We think of the state of the program (memory store), which we write <cite>M</cite>, as a map that associates identifiers with variable objects.</p>
+<p>The rules for evaluating expressions are quite simple.</p>
+<ul class="simple">
+<li><p>Evaluating constant <cite>c</cite>. Every constant evaluates to itself.</p></li>
+<li><p>Evaluating a variable whose name is <cite>x</cite>: Retrieve the variable object (say <cite>v</cite>) associated with <cite>x</cite> from the memory store <cite>M</cite>, by using <cite>M(x)</cite>. The required result is computed by invoking <cite>v.get()</cite>.</p></li>
+<li><p>Evaluating <cite>e1 + e2</cite>: Evaluate <cite>e1</cite> first, say to yield value <cite>r1</cite>. Evaluate <cite>e2</cite> next, say to yield value <cite>r2</cite>. The required result is the numeric value <cite>r1 + r2</cite>.</p></li>
+<li><p>Evaluating <cite>e1 - e2</cite>: Evaluate <cite>e1</cite> first, say to yield value <cite>r1</cite>. Evaluate <cite>e2</cite> next, say to yield value <cite>r2</cite>. The required result is the numeric value <cite>r1 - r2</cite>.</p></li>
+</ul>
+<p>The evaluation rules are written out precisely in the following picture.</p>
+<img alt="_images/evaluation.png" src="_images/evaluation.png" />
+<p>The rules for executing statements is as follows. In contrast to expression evaluation, statement execution does not yield a result. The primary consequence of executing a statement is the side effect on the store, ie. changes in the values of variables.</p>
+<ul class="simple">
+<li><p>Executing an assignment statement: Consider the assignment statement <cite>x = e</cite>. Here <cite>e</cite> is an expression. The steps are as follows:  First, evaluate the expression <cite>e</cite> to yield a result, say <cite>r</cite>.  Next, retrieve the variable object (say <cite>v</cite>) associated with <cite>x</cite> from the memory store <cite>M</cite>, by using <cite>M(x)</cite>.  Perform <cite>v.set(r)</cite> to change the value of the variable object.</p></li>
+<li><p>Executing a sequence of statements <cite>S1; S2</cite>: Execute <cite>S1</cite> first. When that terminates, execute <cite>S2</cite>.</p></li>
+<li><p>Executing <cite>while (e) do S</cite>: Evaluate the condition <cite>e</cite> to yield a result <cite>r</cite>. If <cite>r</cite> is zero, the execution terminates. Otherwise, execute <cite>S</cite> and repeat the process.</p></li>
+</ul>
+<p>The execution rules are given in the following pictures:</p>
+<img alt="_images/execution1.png" src="_images/execution1.png" />
+<img alt="_images/execution2.png" src="_images/execution2.png" />
+<p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements <cite>x = 2; y = x + 1</cite>, the second reference to <cite>x</cite> reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
+</section>
+<section id="the-interpreter-program">
+<h3><span class="section-number">5.4.4. </span>The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this headline"></a></h3>
+<p>We now go ahead and write the interpreter program.
+The entire code is available as part of the <a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative">misc-scala</a> example.
+A similar example but based on F-algebras and with better runtime error handling is also available: <a class="reference external" href="https://github.com/lucproglangcourse/simpleimperative-algebraic-scala">simpleimperative-algebraic-scala</a>.</p>
+</section>
+</section>
+<section id="case-study-a-simple-imperative-language-with-records">
+<h2><span class="section-number">5.5. </span>Case study: a simple imperative language with records<a class="headerlink" href="#case-study-a-simple-imperative-language-with-records" title="Permalink to this headline"></a></h2>
+<p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).</p>
+<section id="id1">
+<h3><span class="section-number">5.5.1. </span>Objectives<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
+<ul class="simple">
+<li><p>To understand an object-oriented programming language from the “inside”.</p></li>
+<li><p>To understand better the object-oriented and functional design patterns that we have learned by using them in the context of a small but somewhat sophisticated program.</p></li>
+</ul>
+<p>We now consider the changes that arise from the addition of records. Thus, we permit:</p>
+<ul class="simple">
+<li><p>declaration of record types</p></li>
+<li><p>creation of new records of a given record type</p></li>
+<li><p>selection of record fields</p></li>
+<li><p>use of records on the left and right hand side of expressions</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3><span class="section-number">5.5.2. </span>Syntax<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Our language has the following features:</p>
+<p>The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StudentCourseRecord</span> <span class="o">=</span> <span class="n">record</span>
+    <span class="nb">int</span> <span class="n">firstExamScore</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">secondExamScore</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">totalScore</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+
+<span class="n">StudentSemRecord</span> <span class="o">=</span> <span class="n">record</span>
+    <span class="n">StudentCourseRecord</span> <span class="n">course1</span><span class="p">;</span>
+    <span class="n">StudentCourseRecord</span> <span class="n">course2</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+
+<span class="n">StudentSemRecord</span> <span class="n">r</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StudentSemRecord</span><span class="p">();</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StudentCourseRecord</span><span class="p">();</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">firstExamScore</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">secondExamScore</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span>
+<span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">totalScore</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">firstExamScore</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="o">.</span><span class="n">secondExamScore</span><span class="p">;</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">course2</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">course1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In the C language, such things are known as structs. In familiar object-oriented terminology, we can think about them in this way:</p>
+<ul class="simple">
+<li><p>record types are classes whose only members are public member variables</p></li>
+<li><p>records are objects</p></li>
+<li><p>fields are public member variables</p></li>
+</ul>
+<p>The record type definitions in the previous example would look as follows in Java, and the rest of program would look the same:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StudentCourseRecord</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">firstExamScore</span><span class="p">;</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">secondExamScore</span><span class="p">;</span>
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">totalScore</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">StudentSemRecord</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">StudentCourseRecord</span> <span class="n">course1</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">StudentCourseRecord</span> <span class="n">course2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Formally, we proceed via the following BNF grammars. To simplify life for us, we will ignore type information. In this BNF grammar, we are a little bit more careful to separate L(eft) values and R(ight) values. L-values are those that can appear on the left hand side of an assignment statement, and R-values are those that appear on the right hand side of an assignment.</p>
+<p>Record definitions are given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Defn</span> <span class="p">:</span><span class="o">:=</span> <span class="n">record</span>
+             <span class="n">FieldList</span>
+         <span class="n">end</span>
+
+
+<span class="n">FieldList</span> <span class="p">:</span><span class="o">:=</span> <span class="n">fieldName</span><span class="p">,</span> <span class="n">FieldList</span>
+          <span class="o">|</span> <span class="n">fieldName</span>
+</pre></div>
+</div>
+<p>L-values (fields selected from records, as well as variables) are given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lval</span> <span class="p">:</span><span class="o">:=</span> <span class="n">e</span><span class="o">.</span><span class="n">fieldName</span>
+     <span class="o">|</span> <span class="n">variable</span>
+</pre></div>
+</div>
+<p>Expressions (R-values) are given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span>   <span class="p">:</span><span class="o">:=</span>     <span class="n">new</span> <span class="n">C</span>
+    <span class="o">|</span>       <span class="n">Lval</span>
+    <span class="o">|</span>       <span class="n">const</span>
+    <span class="o">|</span>       <span class="n">e1</span> <span class="o">+</span> <span class="n">e2</span>
+    <span class="o">|</span>       <span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span>
+</pre></div>
+</div>
+<p>Statements are given by the BNF grammar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span>   <span class="p">:</span><span class="o">:=</span>     <span class="n">Lval</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="o">|</span>       <span class="n">S1</span><span class="p">;</span> <span class="n">S2</span>
+    <span class="o">|</span>       <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">do</span> <span class="n">S</span>
+</pre></div>
+</div>
+<p>We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation</p>
+<p>Recall that we viewed variables as objects with two capabilities:</p>
+<ul class="simple">
+<li><p>get() returns the current value of the variable</p></li>
+<li><p>set(int x) changes the current value of the variable to that of x</p></li>
+</ul>
+<p>Records are thought of in a similar light.</p>
+<img alt="_images/records1.png" src="_images/records1.png" />
+<p>As before, we think of the state of the program, which we write S, as a map that associates identifiers with variable objects. Furthermore, as before, we distinguish evaluation and execution. In evaluation, there are two subcases, evaluating to an L-value and evaluating to an R-value.</p>
+<img alt="_images/records2.png" src="_images/records2.png" />
+<p>There are two ways of having L-values. One is via variables and the second is via field selection.</p>
+<ul class="simple">
+<li><p>The L-value associated with a variable name is the associated variable object.</p></li>
+<li><p>The L-value associated with a selection e.f is obtained by first evaluating the expression e to an R-value, say r. Next, lookup on the record r with field name f is used to get the desired L-value.</p></li>
+</ul>
+<p>These evaluation rules are written out precisely in the following picture.</p>
+<img alt="_images/records3.png" src="_images/records3.png" />
+<p>Our earlier rules for evaluating R-values are presented again below..</p>
+<ul class="simple">
+<li><p>Evaluating an L-value. In our setup, every L-value (say l) is a variable object that is obtained from the store M. Execute l.get() to compute the return value. This rule subsumes the earlier case for variables.</p></li>
+<li><p>Evaluating e1 + e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 + v2.</p></li>
+<li><p>Evaluating e1 - e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 - v2.</p></li>
+<li><p>Evaluating constant c. Every constant evaluates to itself.</p></li>
+</ul>
+<img alt="_images/records4.png" src="_images/records4.png" />
+<p>The rules for executing statements are as follows. They are similar to the ones seen before. The primary consequence of executing a statement still is the side effect on the store, ie. changes in the values of variables.</p>
+<ul class="simple">
+<li><p>Executing an assignment statement L = e. Here L is an L-valued expression and e is an R-valued expression. The steps are as follows. First, evaluate the expression L to yield an L-value, say l. Next, evaluate the expression e to yield an R-value, say v. Next, use l.set(v) to change the value of the variable object.</p></li>
+<li><p>Executing a sequence of statements “S1; S2” and a “while” loop are as before.</p></li>
+</ul>
+<p>The execution rules are given in the following pictures:</p>
+<img alt="_images/records5.png" src="_images/records5.png" />
+</section>
+<section id="id3">
+<h3><span class="section-number">5.5.3. </span>Implementation<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>The entire code for the implementation of the simple imperative language with records is available <a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records">here</a>.</p>
+</section>
+</section>
+<section id="type-systems">
+<h2><span class="section-number">5.6. </span>Type systems<a class="headerlink" href="#type-systems" title="Permalink to this headline"></a></h2>
+<p>Type systems are an important aspect of programming languages. We identify the following dimensions in the type system design space:</p>
+<ul class="simple">
+<li><p>static versus dynamic typing</p></li>
+<li><p>strong versus weak type safety</p></li>
+<li><p>implicit versus explicit type information</p></li>
+<li><p>nominal versus structural type equivalence</p></li>
+</ul>
+<img alt="_images/DesignSpaceTypeSystems.jpg" src="_images/DesignSpaceTypeSystems.jpg" />
+<p>Additional information is available here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Type_system">design space and tradeoffs</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_type_systems">representative examples</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_programming_languages_by_type_system">comprehensive list</a></p></li>
+<li><p><a class="reference external" href="http://klaeufer.github.io/luc-amc.html#(10)">presentation slides 10-29</a></p></li>
+<li><p><a class="reference external" href="http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php">performance implications/shootout</a></p></li>
+</ul>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>elaborate on the design space for polymorphism (Cardelli/Wegner)</p>
+</div>
+</section>
+<section id="domain-specific-languages">
+<h2><span class="section-number">5.7. </span>Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this headline"></a></h2>
+<p>Domain-specific languages are special-purpose languages for solving problems in particular domains.
+We identify the following dimensions:</p>
+<ul class="simple">
+<li><p>internal/embedded language versus external language</p></li>
+<li><p>business domain versus technical domain</p></li>
+</ul>
+<img alt="_images/DesignSpaceDSL.jpg" src="_images/DesignSpaceDSL.jpg" />
+<p>In addition, there is a continuum between APIs and internal DSLs.</p>
+<img alt="_images/APIvsDSL.jpg" src="_images/APIvsDSL.jpg" />
+<p>Additional information is available here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://c2.com/cgi/wiki?DomainSpecificLanguage">http://c2.com/cgi/wiki?DomainSpecificLanguage</a></p></li>
+<li><p><a class="reference external" href="http://martinfowler.com/bliki/FluentInterface.html">http://martinfowler.com/bliki/FluentInterface.html</a></p></li>
+<li><p><a class="reference external" href="http://martinfowler.com/bliki/DomainSpecificLanguage.html">http://martinfowler.com/bliki/DomainSpecificLanguage.html</a></p></li>
+<li><p><a class="reference external" href="http://martinfowler.com/books/dsl.html">http://martinfowler.com/books/dsl.html</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Domain-specific_language">http://en.wikipedia.org/wiki/Domain-specific_language</a></p></li>
+<li><p><a class="reference external" href="http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/">SE Radio episode 182</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="functionalprogramming.html" class="btn btn-neutral float-left" title="4. The Functional Programming Paradigm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="concurrency.html" class="btn btn-neutral float-right" title="6. The Concurrent Programming Paradigm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2019, Konstantin Läufer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

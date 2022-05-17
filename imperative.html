@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. The Imperative and Object-Oriented Paradigms in Scala &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" />
+    <link rel="prev" title="2. Context and Background" href="background.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-role-of-console-applications">3.2. The role of console applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#console-applications-in-scala">3.2.1. Console applications in Scala</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.2.2. The importance of constant-space complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-role-of-logging">3.4. The role of logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.5.1. Object-oriented Scala as a “better Java”</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modularity-and-dependency-injection">3.6. Modularity and dependency injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#design-goals">3.6.1. Design goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scala-traits">3.6.2. Scala traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trait-based-dependency-injection">3.6.3. Trait-based dependency injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyola University Chicago COMP 371/471 Lecture Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">3. </span>The Imperative and Object-Oriented Paradigms in Scala</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/imperative.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-imperative-and-object-oriented-paradigms-in-scala">
+<h1><span class="section-number">3. </span>The Imperative and Object-Oriented Paradigms in Scala<a class="headerlink" href="#the-imperative-and-object-oriented-paradigms-in-scala" title="Permalink to this headline"></a></h1>
+<p>In this chapter, we discuss the imperative and object-oriented programming paradigms with examples in Scala.</p>
+<section id="options-for-running-scala-code">
+<h2><span class="section-number">3.1. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Permalink to this headline"></a></h2>
+<p>In this section, we discuss the different options for running Scala code, including applications and tests.</p>
+<ul>
+<li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
+We can launch the Scala REPL and then evaluate definitions and expressions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scala
+Welcome to Scala 2.13.3 (OpenJDK 64-Bit Server VM, Java 11.0.8).
+Type in expressions for evaluation. Or try :help.
+
+scala&gt; 3 + 4
+res0: Int = 7
+
+scala&gt; def f(x: Int) = x + 2
+f: (x: Int)Int
+
+scala&gt; f(3)
+res1: Int = 5
+
+scala&gt; val z = f(4)
+z: Int = 6
+
+scala&gt; Seq(1, 2, 3).map(f)
+res2: Seq[Int] = List(3, 4, 5)
+</pre></div>
+</div>
+<p>This is a very effective, painless way to conduct initial explorations.
+The drawback of this approach is a lack of support for <em>managed dependencies</em>, which are required for more advanced work.
+In that case, starting the Scala REPL through sbt as discussed below is a much better choice.
+Managing the Scala/Java classpath manually is discouraged.</p>
+<p>You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &gt; blah.scala
+println(args.toList)
+$ scala blah.scala 1 2 3
+List(1, 2, 3)
+</pre></div>
+</div>
+</li>
+<li><p>In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a <code class="docutils literal notranslate"><span class="pre">main</span></code> method) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.</p></li>
+<li><p>It is best to use <a class="reference external" href="https://www.scala-sbt.org/">sbt</a> (the Scala Build Tool) for projects with one or more external dependencies because of sbt’s (and similar build tools’) ability to manage these dependencies in a declarative way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt test
+$ sbt run
+$ sbt &quot;run arg1 arg2 ...&quot;
+$ sbt &quot;runMain my.pkg.Main arg1 arg2 ...&quot;
+$ sbt test:run
+</pre></div>
+</div>
+<p>In addition, sbt allows you to start a REPL that exposes the code in your project and its managed dependencies.
+This is the preferred way to explore existing libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt console
+</pre></div>
+</div>
+<p>You can also pull in the additional dependencies from the test scope:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt test:console
+</pre></div>
+</div>
+<p>If you want to bypass your own code in case of, say, compile-time errors, you can use one of these tasks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt consoleQuick
+$ sbt test:consoleQuick
+</pre></div>
+</div>
+<p>In conjunction with a <a class="reference external" href="https://www.gnu.org/software/emacs">text editor</a>, sbt’s <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a> for testing will significantly shorten the edit-compile-run/test cycle, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt
+...
+&gt; ~ test
+</pre></div>
+</div>
+</li>
+<li><p>In general, irrespective of your choice of development environment, a convenient way to do exploratory programming beyond the basic REPL is to start with a single test.
+There, you can develop your ideas and interact with the library APIs you want to explore.
+For simple testing, you can intersperse assertions within your code or use the testing support provided by the chosen testing framework, e.g., <a class="reference external" href="https://junit.org/">JUnit</a> or <a class="reference external" href="https://www.scalatest.org/">ScalaTest</a>.
+So you can start exploring something in a test and then move it into your production code (<cite>main</cite> folder) when appropriate.
+<a class="reference external" href="https://github.com/lucproglangcourse/cs2-listperformance-scala/blob/main/src/test/scala/cs271/lab/list/TestList.scala">The list performance example</a> illustrates this approach.</p></li>
+<li><p>Finally, to turn an sbt-based Scala application into a script (console application) you can run outside sbt, you can use the <a class="reference external" href="https://github.com/sbt/sbt-native-packager">sbt-native-packager</a> plugin.
+To use this plugin, add this line to the end of <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enablePlugins</span><span class="p">(</span><span class="n">JavaAppPackaging</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and this one to <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s2">&quot;com.typesafe.sbt&quot;</span> <span class="o">%</span> <span class="s2">&quot;sbt-native-packager&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, after any change to your sources, you can create/update the script and run it from the command line like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt stage
+...
+$ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="the-role-of-console-applications">
+<h2><span class="section-number">3.2. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Permalink to this headline"></a></h2>
+<p>Console applications have always been an important part of the Unix command-line environment.
+The typical console application interacts with its environment in the following ways:</p>
+<ul class="simple">
+<li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
+<li><p><em>standard input</em> (stdin) for reading the input data</p></li>
+<li><p><em>standard output</em> (stdout) for writing the output data</p></li>
+<li><p><em>standard error</em> (stderr) for displaying error messages separately from the output data</p></li>
+</ul>
+<p>Applications written in this way can function as composable building blocks using Unix pipes.
+Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
+<p>E.g., the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
+the <code class="docutils literal notranslate"><span class="pre">head</span></code> command outputs a finite prefix of its input,
+and the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command counts the number of characters, words, or lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yes</span> <span class="n">hello</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>You may wonder how the upstream (left) stages in the pipeline know when to terminate.
+Concretely, how does the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command know to terminate after <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first ten lines.
+When <code class="docutils literal notranslate"><span class="pre">head</span></code> is done after reading and passing through the specified number of lines, it closes its input stream, and <code class="docutils literal notranslate"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
+The default response to this error signal is termination.
+For more details on <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code>, see <a class="reference external" href="https://unix.stackexchange.com/a/84828">this StackExchange response</a>.</p>
+<p>We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done
+</pre></div>
+</div>
+<p>These techniques are useful for producing test data for our own applications.
+To this end, we can redirect output to a newly created file using this syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done &gt; testdata.txt
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">testdata.txt</span></code> already exists, it will be overwritten when using this syntax.
+We can also append to an existing file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="o">&gt;&gt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Similarly, we can redirect input from a file using this notation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>There is a close relationship between Unix pipes and functional programming: When viewing a console application as a function that transforms its input to its output, Unix pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
+<section id="console-applications-in-scala">
+<h3><span class="section-number">3.2.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Permalink to this headline"></a></h3>
+<p>The following techniques are useful for creating console applications in Scala.
+As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
+<p>We can read the standard input as lines using this iterator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)</p>
+<p>To break the standard input down further into words, we can use this recipe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout.</p>
+<p>By default, the Java virtual machine ignores the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal.
+Therefore, to use a Scala (or Java) console applications as an upstream component that produces an infinite output sequence, we have to configure a signal handler for it that terminates on SIGPIPE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sun.misc.Signal</span>
+<span class="n">Signal</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="n">new</span> <span class="n">Signal</span><span class="p">(</span><span class="s2">&quot;PIPE&quot;</span><span class="p">),</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">sun.misc.Signal</span></code> is a less widely known feature of Java and may be removed or replaced in the future.</p>
+</div>
+</section>
+<section id="the-importance-of-constant-space-complexity">
+<span id="subsecconstantspace"></span><h3><span class="section-number">3.2.2. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Permalink to this headline"></a></h3>
+<p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
+To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.</p>
+<p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By contrast, this version has linear-space complexity and may run out of space on a large volume of input data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">val</span> <span class="n">listOfLines</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">toList</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">listOfLines</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
+Iterators support most of the same behaviors as in-memory collections.</p>
+<p>To observe a program’s memory footprint over time, we would typically use a heap profiler.
+For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
+<p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
+By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
+<img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
+</section>
+</section>
+<section id="choices-for-testing-scala-code">
+<h2><span class="section-number">3.3. </span>Choices for testing Scala code<a class="headerlink" href="#choices-for-testing-scala-code" title="Permalink to this headline"></a></h2>
+<p>There are various basic techniques and libraries/frameworks for testing Scala code.</p>
+<p>The simplest way is to intersperse assertions within your code.
+This is particularly effective for scripts and worksheets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">l</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">{</span> <span class="n">l</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The following testing libraries/frameworks work well with Scala.</p>
+<ul class="simple">
+<li><p>The familiar <a class="reference external" href="http://junit.org">JUnit</a> can be used directly.</p></li>
+<li><p><a class="reference external" href="http://scalacheck.org">ScalaCheck</a> is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as “for all lists <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">++</span> <span class="pre">y).length</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">x.length</span> <span class="pre">+</span> <span class="pre">y.length</span></code>”</p></li>
+<li><p><a class="reference external" href="http://scalatest.org">ScalaTest</a> is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.</p></li>
+<li><p><a class="reference external" href="http://etorreborre.github.io/specs2/">specs2</a> is a specification-based testing library that also supports integration with ScalaCheck.</p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
+<p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>
+</section>
+<section id="the-role-of-logging">
+<h2><span class="section-number">3.4. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Permalink to this headline"></a></h2>
+<p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
+Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
+<p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;something went wrong: &quot;</span> <span class="o">+</span> <span class="n">anObject</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows displaying (or redirecting) error messages separately from output data.</p>
+<p>For more complex projects, it is advantageous to be able to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.</p>
+<p><em>Logging frameworks</em> have arisen to address this need.
+Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
+<section id="logging-in-scala">
+<h3><span class="section-number">3.4.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Permalink to this headline"></a></h3>
+<p>For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
+To use log4s minimally, the following steps are required:</p>
+<ul>
+<li><p>Add external dependencies for log4s and a simple slf4j backend implementation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;org.log4s&quot;</span> <span class="o">%%</span> <span class="s2">&quot;log4s&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.8.2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;org.slf4j&quot;</span> <span class="o">%</span> <span class="s2">&quot;slf4j-simple&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.30&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you require a more verbose (lower severity) log level than the default of <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, such as <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, add a configuration file <code class="docutils literal notranslate"><span class="pre">src/main/resources/simplelogger.properties</span></code> with contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">org</span><span class="o">.</span><span class="n">slf4j</span><span class="o">.</span><span class="n">simpleLogger</span><span class="o">.</span><span class="n">defaultLogLevel</span> <span class="o">=</span> <span class="n">debug</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now you are ready to access and use your logger:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">val</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="n">log4s</span><span class="o">.</span><span class="n">getLogger</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;howMany = $howMany minLength = $minLength lastNWords = $lastNWords&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces informative debugging output such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span><span class="p">]</span> <span class="n">DEBUG</span> <span class="n">edu</span><span class="o">.</span><span class="n">luc</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">cs371</span><span class="o">.</span><span class="n">topwords</span><span class="o">.</span><span class="n">TopWords</span> <span class="o">-</span> <span class="n">howMany</span> <span class="o">=</span> <span class="mi">10</span> <span class="n">minLength</span> <span class="o">=</span> <span class="mi">6</span> <span class="n">lastNWords</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="defining-domain-models-in-imperative-and-object-oriented-languages">
+<span id="secdomainmodelsoo"></span><h2><span class="section-number">3.5. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Permalink to this headline"></a></h2>
+<p>In imperative and object-oriented languages, the basic type abstractions are</p>
+<ul class="simple">
+<li><p>addressing: pointers, references</p></li>
+<li><p>aggregation: structs/records, arrays</p>
+<ul>
+<li><p>example: node in a linked list</p></li>
+</ul>
+</li>
+<li><p>variation: tagged unions, multiple implementations of an interface</p>
+<ul>
+<li><p>example: mutable set abstraction</p>
+<ul>
+<li><p>add element</p></li>
+<li><p>remove element</p></li>
+<li><p>check whether an element is present</p></li>
+<li><p>check if empty</p></li>
+<li><p>how many elements</p></li>
+</ul>
+</li>
+<li><p>several possible implementations</p>
+<ul>
+<li><p>reasonable: binary search tree, hash table, bit vector (for small underlying domains)</p></li>
+<li><p>less reasonable: array, linked list</p></li>
+<li><p>see also this <a class="reference external" href="http://docs.oracle.com/javase/tutorial/collections/implementations">table of collection implementations</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>(structural) recursion: defining a type in terms of itself, usually involves aggregation and variation</p>
+<ul>
+<li><p>example: a tree interface with implementation classes for leaves and interior nodes</p></li>
+</ul>
+</li>
+<li><p>genericity (type parameterization): when a type is parametric in terms of one or more type parameters</p>
+<ul>
+<li><p>example: collections parametric in their element type</p></li>
+</ul>
+</li>
+</ul>
+<p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java</a></p></li>
+</ul>
+<section id="object-oriented-scala-as-a-better-java">
+<h3><span class="section-number">3.5.1. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Permalink to this headline"></a></h3>
+<p>Scala offers various improvements over Java, including:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/first-look-at-types.html">unified types</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-functions.html">standalone higher-order functions (lambdas)</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-objects.html">standalone objects</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-collections.html#tuples">tuples</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums">advanced enums</a>, <a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes">case classes</a> and <a class="reference external" href="https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations">pattern matching</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/domain-modeling-oop.html">traits</a>: generalization of interfaces and restricted form of abstract classes, can be combined/stacked</p></li>
+<li><p>package structure decoupled from folder hierarchy</p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/reference/other-new-features/explicit-nulls.html">null safety</a>: ensuring at compile-time that an expression cannot be null</p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html">multiversal equality</a>: making sure apples are compared only with other apples</p></li>
+<li><p><a class="reference external" href="https://earldouglas.com/posts/higher-kinded.html">higher-kinded types</a> (advanced topic)</p></li>
+</ul>
+<p>More recent versions of Java, however, have started to echo some these advances:</p>
+<ul class="simple">
+<li><p>lambda expressions</p></li>
+<li><p>default methods in interfaces</p></li>
+<li><p>local type inference</p></li>
+<li><p>streams</p></li>
+</ul>
+<p>We will study these features as we encounter them.</p>
+<p>The following examples illustrate the use of Scala as a “better Java” and the transition to some of the above-mentioned improvements:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc</a></p></li>
+</ul>
+</section>
+</section>
+<section id="modularity-and-dependency-injection">
+<h2><span class="section-number">3.6. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To wrap your head around this section, you may want to start by recalling/reviewing the <a class="reference external" href="https://github.com/lucoodevcourse/stopwatch-android-java">stopwatch example</a> from COMP 313/413 (intermediate object-oriented programming).
+In that app, the model is rather complex and has three or four components that depend on each other.
+After creating the instances of those components, you had to connect them to each other using setters.
+<em>Does that ring a bell?</em>
+In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.</p>
+</div>
+<section id="design-goals">
+<h3><span class="section-number">3.6.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Permalink to this headline"></a></h3>
+<p>We pursue following design goals tied to the nonfunctional code quality requirements:</p>
+<ul class="simple">
+<li><p><em>testability</em></p></li>
+<li><p><em>modularity</em> for separation of concerns</p></li>
+<li><p><em>reusability</em> for avoidance of code duplication (“DRY”)</p></li>
+</ul>
+<p>In particular, to manage the growing complexity of a system, we usually try to decompose it into its design dimensions, e.g.,</p>
+<ul class="simple">
+<li><p>mixing and matching interfaces with multiple implementations</p></li>
+<li><p>running code in production versus testing</p></li>
+</ul>
+<p>We can recognize these in many common situations, including the examples listed below.</p>
+<p>In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.</p>
+</section>
+<section id="scala-traits">
+<h3><span class="section-number">3.6.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Permalink to this headline"></a></h3>
+<p>Scala traits are <em>abstract</em> types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
+Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
+The <a class="reference external" href="http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/">Thin Cake idiom</a> shows how traits can help us achieve our design goals.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We deliberately call <em>Thin Cake</em> an <em>idiom</em> as opposed to a pattern because it is <em>language-specific</em>.</p>
+</div>
+<p>We will rely on the following examples for this section:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java-sbt">https://github.com/lucproglangcourse/consoleapp-java-sbt</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">https://github.com/lucproglangcourse/processtree-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">https://github.com/lucproglangcourse/iterators-scala</a></p></li>
+</ul>
+<p>First, to achieve testability, we can define the desired functionality, such as <code class="docutils literal notranslate"><span class="pre">common.IO</span></code>, as its own trait instead of a concrete class or part of some other trait such as <code class="docutils literal notranslate"><span class="pre">common.Main</span></code>.
+Such traits are <em>providers</em> of some functionality, while building blocks that use this functionality are <em>clients</em>, such as``common.Main`` (on the production side) and <code class="docutils literal notranslate"><span class="pre">PrintSpec</span></code> (on the testing side).
+Specifically, in the process tree example, we use <code class="docutils literal notranslate"><span class="pre">PrintSpec</span></code> to test <code class="docutils literal notranslate"><span class="pre">common.IO</span></code> in isolation, independently of <code class="docutils literal notranslate"><span class="pre">common.Main</span></code>.</p>
+<p>To avoid code duplication in the presence of the design dimensions mentioned above, we can again leverage Scala traits as building blocks.
+Along some of the dimensions, there are three possible roles:</p>
+<ul class="simple">
+<li><p><em>provider</em>, e.g., the specific implementations <cite>MutableTreeBuilder</cite>, <cite>FoldTreeBuilder</cite>, etc.</p></li>
+<li><p><em>client</em>, e.g., the various main objects on the production side, and the <cite>TreeBuilderSpec</cite> on the testing side</p></li>
+<li><p><em>contract</em>, the common abstraction between provider and client, e.g., <cite>TreeBuilder</cite></p></li>
+</ul>
+<p>Usually, when there is a common contract, a provider <em>overrides</em> some or all of the abstract behaviors declared in the contract.
+Some building blocks have more than one role. E.g., <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> is a client of (depends on) <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> but provides the main application behavior that the concrete main objects need.
+Similarly, <code class="docutils literal notranslate"><span class="pre">TreeBuilderSpec</span></code> also depends on <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> but provides the test code that the concrete test classes (<code class="docutils literal notranslate"><span class="pre">Spec</span></code>) need.
+This arrangement enables us to mix-and-match the desired <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> implementation with either <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> for production or <code class="docutils literal notranslate"><span class="pre">TreeBuilderSpec</span></code> for testing.</p>
+<p>The following figure shows the roles of and relationships among the various building blocks of the process tree example.</p>
+<figure class="align-default">
+<img alt="_images/ProcessTreeTypeHierarchy.png" src="_images/ProcessTreeTypeHierarchy.png" />
+</figure>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators example</a> includes additional instances of trait-based modularity in its <code class="docutils literal notranslate"><span class="pre">imperative/modular</span></code> package.</p>
+</section>
+<section id="trait-based-dependency-injection">
+<h3><span class="section-number">3.6.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Permalink to this headline"></a></h3>
+<p>In the presence of modularity, <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of “finding” its dependency, i.e., performing <em>dependency lookup</em>.
+In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.</p>
+<p>The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
+To recap, <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> cannot run on its own but declares by extending <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> that it requires an implementation of the <code class="docutils literal notranslate"><span class="pre">buildTree</span></code> method.
+One of the <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> implementation traits, such as <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> can satisfy this dependency.
+The actual “injection” takes place when we inject, say, <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> into <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> in the definition of the concrete main object <code class="docutils literal notranslate"><span class="pre">fold.Main</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="background.html" class="btn btn-neutral float-left" title="2. Context and Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functionalprogramming.html" class="btn btn-neutral float-right" title="4. The Functional Programming Paradigm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2019, Konstantin Läufer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

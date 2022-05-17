@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Context and Background &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" />
+    <link rel="prev" title="1. Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Context and Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-requirements">2.2. Software requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Loyola University Chicago COMP 371/471 Lecture Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><span class="section-number">2. </span>Context and Background</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/background.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="context-and-background">
+<h1><span class="section-number">2. </span>Context and Background<a class="headerlink" href="#context-and-background" title="Permalink to this headline"></a></h1>
+<p>In this chapter, we establish a practical context and provide some background information for the study of programming languages.</p>
+<section id="overview-of-a-lightweight-development-process">
+<h2><span class="section-number">2.1. </span>Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Permalink to this headline"></a></h2>
+<p>A successful development process usually comprises these minimal elements:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a></p>
+<ul>
+<li><p>tests represent expectations of how the software should behave</p></li>
+<li><p>when expressed as code, these are</p>
+<ul>
+<li><p>fun to produce (like other coding)</p></li>
+<li><p>convenient to run frequently</p></li>
+</ul>
+</li>
+<li><p>fix system-under-test (SUT) (not tests themselves) until tests pass</p></li>
+<li><p>retest every time</p>
+<ul>
+<li><p>a feature is added</p></li>
+<li><p>the code is refactored</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.refactoring.com/">refactoring</a></p>
+<ul>
+<li><p>improve the quality of the code without changing its behavior</p>
+<ul>
+<li><p>macro level: nonfunctional requirements (quality factors)</p></li>
+<li><p>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://refactoring.com/catalog/">catalog of refactorings</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates continuous integration using various hosted services:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</p></li>
+<li><p><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</p></li>
+<li><p><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</p></li>
+<li><p><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
+</section>
+<section id="software-requirements">
+<h2><span class="section-number">2.2. </span>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline"></a></h2>
+<p>In most cases, we develop software to provide some form of value:</p>
+<ul class="simple">
+<li><p>learn a language, library, framework, platform, technique, or tool
+(see also the <a class="reference external" href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a>)</p></li>
+<li><p>solve a problem</p></li>
+<li><p>produce an asset</p></li>
+</ul>
+<p>There is usually some tension among these three activities.</p>
+<p>The basic categories of requirements are</p>
+<ul class="simple">
+<li><p>functional (FR)</p>
+<ul>
+<li><p>output as function of input: <cite>y = f(x)</cite></p></li>
+<li><p>or some other description of observable behavior</p>
+<ul>
+<li><p>batch</p></li>
+<li><p>interactive/event-based</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>nonfunctional (NFR): additional properties of <cite>f</cite>, e.g.</p>
+<ul>
+<li><p>testability</p>
+<ul>
+<li><p>most important nonfunctional requirement</p></li>
+<li><p>allows testing whether functional requirements are met</p></li>
+<li><p>good architecture often happens as a side-effect (APPP pp. 36-38), such as separating I/O from core functionality</p></li>
+</ul>
+</li>
+<li><p>performance</p></li>
+<li><p>scalability</p>
+<ul>
+<li><p>e.g. performance for large data sets: asymptotic order of complexity</p></li>
+<li><p>(big-Oh) in terms of input size n</p></li>
+</ul>
+</li>
+<li><p>reliability</p></li>
+<li><p>maintainability</p></li>
+<li><p>static versus dynamic NFRs</p></li>
+</ul>
+</li>
+</ul>
+<p>Several common questions and issues related to requirements arise:</p>
+<ul class="simple">
+<li><p><em>how do requirements relate to the project development lifecycle?</em></p></li>
+<li><p><em>BUFD versus MVP</em></p></li>
+<li><p><em>how do testing and refactoring relate to requirements?</em></p></li>
+</ul>
+<p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) and software quality factors (nonfunctional requirements).</p>
+<figure class="align-default">
+<img alt="_images/KazmanQualityFactors.png" src="_images/KazmanQualityFactors.png" />
+</figure>
+</section>
+<section id="software-design-principles-and-patterns">
+<h2><span class="section-number">2.3. </span>Software design principles and patterns<a class="headerlink" href="#software-design-principles-and-patterns" title="Permalink to this headline"></a></h2>
+<p>The software development community has identified various principles intended to guide the design and development process, for example:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> (don’t repeat yourself)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">SoC</a> (separation of concerns)</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID</a></p></li>
+</ul>
+<p>The community has also developed a body of <a class="reference external" href="https://sourcemaking.com/design_patterns">design patterns</a> that represent reusable solutions to recurring problems. Some key design patterns we will rely on in this course include</p>
+<ul class="simple">
+<li><p>Iterator</p></li>
+<li><p>Strategy</p></li>
+<li><p>Command</p></li>
+<li><p>Composite</p></li>
+<li><p>Decorator</p></li>
+<li><p>Visitor</p></li>
+<li><p>Abstract Factory</p></li>
+<li><p>Observer</p></li>
+</ul>
+<p>We will recap these throughout the course as needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Language-specific design patterns are called <em>idioms</em>.</p>
+</div>
+</section>
+<section id="programming-language-history-and-paradigms">
+<h2><span class="section-number">2.4. </span>Programming language history and paradigms<a class="headerlink" href="#programming-language-history-and-paradigms" title="Permalink to this headline"></a></h2>
+<p>The resources in this section cover fundamental models of computation, language paradigms, and language principles.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://klaeufer.github.io/luc-amc.html">overview talk</a> by Läufer and Thiruvathukal</p></li>
+<li><p><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg">programming languages paradigms: diagram</a> by Van Roy</p></li>
+<li><p><a class="reference external" href="https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf">programming languages paradigms: book chapter</a> by Van Roy</p></li>
+<li><p><a class="reference internal" href="principles.html"><span class="doc">Appendix: Programming Language Design Principles</span></a> by MacLennan</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing completeness</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a></p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>expand into a proper section</p>
+</div>
+</section>
+<section id="popularity-indices-and-performance-comparisons">
+<h2><span class="section-number">2.5. </span>Popularity indices and performance comparisons<a class="headerlink" href="#popularity-indices-and-performance-comparisons" title="Permalink to this headline"></a></h2>
+<p>There are a number of programming language popularity indices and performance comparisons.
+Before drawing any conclusions from these indices, it is important to understand their <em>methodology</em>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypl.github.io">PYPL PopularitY of Programming Language index</a></p></li>
+<li><p><a class="reference external" href="http://www.tiobe.com/tiobe-index">TIOBE programming community index</a></p></li>
+<li><p><a class="reference external" href="https://www.techworm.net/2016/09/top-10-popular-programming-languages-github.html">GitHub language popularity</a></p></li>
+<li><p><a class="reference external" href="https://insights.stackoverflow.com/survey">Stack Overflow developer survey</a></p></li>
+<li><p><a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/">Programming languages shootout benchmark</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="1. Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="imperative.html" class="btn btn-neutral float-right" title="3. The Imperative and Object-Oriented Paradigms in Scala" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2019, Konstantin Läufer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
