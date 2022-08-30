@@ -23,9 +23,10 @@ Cons
 
 - requires good network connection
 - might lack code completion
+- free plan might be underresourced (CPUs, RAM, disk space, etc.)
 
-Zero-install option
-```````````````````
+Zero-install option: Scastie
+````````````````````````````
 
 Scastie is an interactive playground for Scala with support for Scala 3 and sbt (Scala Build Tool) configuration.
 It allows you to save code snippets to your GitHub account, which you can access later.
@@ -39,6 +40,27 @@ Be sure to
 
     "-Yexplicit-nulls",
     "-language:strictEquality"
+
+
+Gitpod (recommended)
+````````````````````
+
+Gitpod is a cloud-based development environment based on Visual Studio
+Code running on Ubuntu LTS.
+
+To launch, visit https://gitpod.io and log in using your GitHub
+account.
+
+- The first time around, create a new workspace and select the GitHub
+  project you want to work on in the new workspace.
+- After that, your GitHub landing page will show your workspace(s).
+- For each new workspace, using the installed `SDKMAN!
+  <https://sdkman.io>`_, perform a one-time installation of java and `sbt
+  <https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html>`_.
+- Optionally, install the VS Code Scala and Metals extensions, as well
+  as any other desired extensions.
+- Now you should be able to work on the project by following the
+  instructions in the readme.
 
 
 Locally installed development environment
@@ -65,7 +87,7 @@ Cons
 Required packages
 `````````````````
 
-- `Java 11 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
+- `Java 17 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*

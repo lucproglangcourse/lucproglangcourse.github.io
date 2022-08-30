@@ -55,7 +55,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#cloud-based-development-environment">10.1. Cloud-based development environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pros">10.1.1. Pros</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cons">10.1.2. Cons</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#zero-install-option">10.1.3. Zero-install option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zero-install-option-scastie">10.1.3. Zero-install option: Scastie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gitpod-recommended">10.1.4. Gitpod (recommended)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#locally-installed-development-environment">10.2. Locally installed development environment</a><ul>
@@ -115,10 +116,11 @@
 <ul class="simple">
 <li><p>requires good network connection</p></li>
 <li><p>might lack code completion</p></li>
+<li><p>free plan might be underresourced (CPUs, RAM, disk space, etc.)</p></li>
 </ul>
 </section>
-<section id="zero-install-option">
-<h3><span class="section-number">10.1.3. </span>Zero-install option<a class="headerlink" href="#zero-install-option" title="Permalink to this heading"></a></h3>
+<section id="zero-install-option-scastie">
+<h3><span class="section-number">10.1.3. </span>Zero-install option: Scastie<a class="headerlink" href="#zero-install-option-scastie" title="Permalink to this heading"></a></h3>
 <p>Scastie is an interactive playground for Scala with support for Scala 3 and sbt (Scala Build Tool) configuration.
 It allows you to save code snippets to your GitHub account, which you can access later.
 It is not suitable for working on full-fledged Scala projects, however.</p>
@@ -132,6 +134,23 @@ Be sure to</p>
 </pre></div>
 </div>
 </li>
+</ul>
+</section>
+<section id="gitpod-recommended">
+<h3><span class="section-number">10.1.4. </span>Gitpod (recommended)<a class="headerlink" href="#gitpod-recommended" title="Permalink to this heading"></a></h3>
+<p>Gitpod is a cloud-based development environment based on Visual Studio
+Code running on Ubuntu LTS.</p>
+<p>To launch, visit <a class="reference external" href="https://gitpod.io">https://gitpod.io</a> and log in using your GitHub
+account.</p>
+<ul class="simple">
+<li><p>The first time around, create a new workspace and select the GitHub
+project you want to work on in the new workspace.</p></li>
+<li><p>After that, your GitHub landing page will show your workspace(s).</p></li>
+<li><p>For each new workspace, using the installed <a class="reference external" href="https://sdkman.io">SDKMAN!</a>, perform a one-time installation of java and <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html">sbt</a>.</p></li>
+<li><p>Optionally, install the VS Code Scala and Metals extensions, as well
+as any other desired extensions.</p></li>
+<li><p>Now you should be able to work on the project by following the
+instructions in the readme.</p></li>
 </ul>
 </section>
 </section>
@@ -156,7 +175,7 @@ Be sure to</p>
 <section id="required-packages">
 <h3><span class="section-number">10.2.3. </span>Required packages<a class="headerlink" href="#required-packages" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/">Java 11 and/or newer JDK</a></p></li>
+<li><p><a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/">Java 17 and/or newer JDK</a></p></li>
 <li><p><a class="reference external" href="http://git-scm.com/">Git</a> distributed version control system (usually preinstalled on Mac OS and Linux)</p>
 <ul>
 <li><p>recommended installation option on Windows: <em>Use Git and optional Unix tools from the Windows Command Prompt</em></p></li>
