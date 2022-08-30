@@ -35,7 +35,7 @@ It is not suitable for working on full-fledged Scala projects, however.
 To launch, visit https://scastie.scala-lang.org.
 Be sure to
 
-- choose target Scala 3 and Scala version 3.0.1
+- choose target Scala 3 and Scala version 3.1.3
 - add the following `scalacOptions` under build settings::
 
     "-Yexplicit-nulls",
