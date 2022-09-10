@@ -103,7 +103,7 @@ In this section, we discuss the different options for running Scala code, includ
 The role of console applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Console applications have always been an important part of the Unix command-line environment.
+Console applications have always been an important part of the UNIX command-line environment.
 The typical console application interacts with its environment in the following ways:
 
 - zero or more application-specific *command-line arguments* for passing options to the application: ``app arg1 arg2 ...``
@@ -111,7 +111,7 @@ The typical console application interacts with its environment in the following 
 - *standard output* (stdout) for writing the output data
 - *standard error* (stderr) for displaying error messages separately from the output data
 
-Applications written in this way can function as composable building blocks using Unix pipes.
+Applications written in this way can function as composable building blocks using UNIX pipes.
 Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.
 
 E.g., the ``yes`` command outputs its arguments forever on consecutive output lines,
@@ -144,7 +144,7 @@ Similarly, we can redirect input from a file using this notation::
 
     wc -l < testdata.txt
 
-There is a close relationship between Unix pipes and functional programming: When viewing a console application as a function that transforms its input to its output, Unix pipes correspond to function composition. The pipeline ``p | q`` corresponds to the function composition ``q o p``.
+There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline ``p | q`` corresponds to the function composition ``q o p``.
 
 
 Console applications in Scala
@@ -157,22 +157,27 @@ We can read the standard input as lines using this iterator::
 
     val lines = scala.io.Source.stdin.getLines()
 
-This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)
+This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this `concise reference <https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples>`_.)
 
 To break the standard input down further into words, we can use this recipe::
 
     val words = lines.flatMap(_.split("(?U)[^\\p{Alpha}0-9']+"))
 
-In Scala, ``print`` and ``println`` print to stdout.
+By default, the Java virtual machine converts the ``SIGPIPE`` error signal to an ``IOException``.
+In Scala, ``print`` and ``println`` print to stdout, which is is an instance of ``PrintStream``.
+This class converts any ``IOException`` to a boolean flag accessible through its ``checkError()`` method.
+(See also `this discussion <https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe>`_ for more details.)
 
-By default, the Java virtual machine ignores the ``SIGPIPE`` error signal.
-Therefore, to use a Scala (or Java) console applications as an upstream component that produces an infinite output sequence, we have to configure a signal handler for it that terminates on SIGPIPE::
+Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.
 
-    import sun.misc.Signal
-    Signal.handle(new Signal("PIPE"), _ => scala.sys.exit())
+For example, this program reads one line at a time and prints the line count along with the line read.
+After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program::
 
-
-.. warning:: ``sun.misc.Signal`` is a less widely known feature of Java and may be removed or replaced in the future.
+    var count = 0
+    for line <- lines do
+      count += 1
+      println((count, line))
+      if scala.sys.process.stdout.checkError() then sys.exit(1)
 
 
 .. _subsecConstantSpace:
@@ -186,20 +191,20 @@ To achieve the nonfunctional requirements of reliability/availability and scalab
 Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity::
 
     var count = 0
-    for (line <- lines) {
+    for line <- lines do
+      count += 1 
       println(line)
-      count += 1
-    }
+      if scala.sys.process.stdout.checkError() then sys.exit(1)
     println(line + " lines counted")
 
 By contrast, this version has linear-space complexity and may run out of space on a large volume of input data::
 
     var count = 0
     val listOfLines = lines.toList
-    for (line <- listOfLines) {
+    for line <- listOfLines do
+      count += 1 
       println(line)
-      count += 1
-    }
+      if scala.sys.process.stdout.checkError() then sys.exit(1)
     println(line + " lines counted")
 
 In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
@@ -230,7 +235,8 @@ The following testing libraries/frameworks work well with Scala.
 - The familiar `JUnit <http://junit.org>`_ can be used directly.
 - `ScalaCheck <http://scalacheck.org>`_ is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as "for all lists ``x`` and ``y``, the value of ``(x ++ y).length`` is equal to ``x.length + y.length``"
 - `ScalaTest <http://scalatest.org>`_ is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.
-- `specs2 <http://etorreborre.github.io/specs2/>`_ is a specification-based testing library that also supports integration with ScalaCheck.
+- `specs2 <http://etorreborre.github.io/specs2>`_ is a specification-based testing library that also supports integration with ScalaCheck.
+- `MUnit <https://github.com/scalameta/munit>`_ is a newer testing library for Scala.
 
 The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example shows some of these libraries in action.
 
