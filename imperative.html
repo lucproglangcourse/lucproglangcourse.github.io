@@ -199,7 +199,7 @@ $ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
 </section>
 <section id="the-role-of-console-applications">
 <h2><span class="section-number">3.2. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Permalink to this heading"></a></h2>
-<p>Console applications have always been an important part of the Unix command-line environment.
+<p>Console applications have always been an important part of the UNIX command-line environment.
 The typical console application interacts with its environment in the following ways:</p>
 <ul class="simple">
 <li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
@@ -207,7 +207,7 @@ The typical console application interacts with its environment in the following 
 <li><p><em>standard output</em> (stdout) for writing the output data</p></li>
 <li><p><em>standard error</em> (stderr) for displaying error messages separately from the output data</p></li>
 </ul>
-<p>Applications written in this way can function as composable building blocks using Unix pipes.
+<p>Applications written in this way can function as composable building blocks using UNIX pipes.
 Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
 <p>E.g., the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
 the <code class="docutils literal notranslate"><span class="pre">head</span></code> command outputs a finite prefix of its input,
@@ -238,7 +238,7 @@ We can also append to an existing file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>There is a close relationship between Unix pipes and functional programming: When viewing a console application as a function that transforms its input to its output, Unix pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
+<p>There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
 <section id="console-applications-in-scala">
 <h3><span class="section-number">3.2.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Permalink to this heading"></a></h3>
 <p>The following techniques are useful for creating console applications in Scala.
@@ -247,21 +247,24 @@ As in Java, command-line arguments are available to a Scala application as <code
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this concise reference.)</p>
+<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
 <p>To break the standard input down further into words, we can use this recipe:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout.</p>
-<p>By default, the Java virtual machine ignores the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal.
-Therefore, to use a Scala (or Java) console applications as an upstream component that produces an infinite output sequence, we have to configure a signal handler for it that terminates on SIGPIPE:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sun.misc.Signal</span>
-<span class="n">Signal</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="n">new</span> <span class="n">Signal</span><span class="p">(</span><span class="s2">&quot;PIPE&quot;</span><span class="p">),</span> <span class="n">_</span> <span class="o">=&gt;</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">())</span>
+<p>By default, the Java virtual machine converts the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal to an <code class="docutils literal notranslate"><span class="pre">IOException</span></code>.
+In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout, which is is an instance of <code class="docutils literal notranslate"><span class="pre">PrintStream</span></code>.
+This class converts any <code class="docutils literal notranslate"><span class="pre">IOException</span></code> to a boolean flag accessible through its <code class="docutils literal notranslate"><span class="pre">checkError()</span></code> method.
+(See also <a class="reference external" href="https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe">this discussion</a> for more details.)</p>
+<p>Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.</p>
+<p>For example, this program reads one line at a time and prints the line count along with the line read.
+After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span> <span class="n">do</span>
+  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="n">println</span><span class="p">((</span><span class="n">count</span><span class="p">,</span> <span class="n">line</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">sun.misc.Signal</span></code> is a less widely known feature of Java and may be removed or replaced in the future.</p>
 </div>
 </section>
 <section id="the-importance-of-constant-space-complexity">
@@ -270,20 +273,20 @@ Therefore, to use a Scala (or Java) console applications as an upstream componen
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.</p>
 <p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span> <span class="n">do</span>
   <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="p">}</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>By contrast, this version has linear-space complexity and may run out of space on a large volume of input data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">val</span> <span class="n">listOfLines</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">toList</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">line</span> <span class="o">&lt;-</span> <span class="n">listOfLines</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">listOfLines</span> <span class="n">do</span>
   <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="p">}</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -310,7 +313,8 @@ This is particularly effective for scripts and worksheets:</p>
 <li><p>The familiar <a class="reference external" href="http://junit.org">JUnit</a> can be used directly.</p></li>
 <li><p><a class="reference external" href="http://scalacheck.org">ScalaCheck</a> is a testing framework for Scala that emphasizes property-based testing, including universally quantified properties, such as “for all lists <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">++</span> <span class="pre">y).length</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">x.length</span> <span class="pre">+</span> <span class="pre">y.length</span></code>”</p></li>
 <li><p><a class="reference external" href="http://scalatest.org">ScalaTest</a> is a testing framework for Scala that supports a broad range of test styles including behavior-driven design, including integration with ScalaCheck.</p></li>
-<li><p><a class="reference external" href="http://etorreborre.github.io/specs2/">specs2</a> is a specification-based testing library that also supports integration with ScalaCheck.</p></li>
+<li><p><a class="reference external" href="http://etorreborre.github.io/specs2">specs2</a> is a specification-based testing library that also supports integration with ScalaCheck.</p></li>
+<li><p><a class="reference external" href="https://github.com/scalameta/munit">MUnit</a> is a newer testing library for Scala.</p></li>
 </ul>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
 <p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>

@@ -295,12 +295,11 @@ Behaviors based on recursive thinking
 To understand recursive thinking, let us explore the familiar `shapes example <https://github.com/lucproglangcourse/shapes-oo-scala>`_.
 We'll start with a suitable algebraic type definition and some sample instances::
 
-    enum Shape {
+    enum Shape:
       case Rectangle(width: Int, height: Int)
       // ...
       case Location(x: Int, y: Int, shape: Shape)
       case Group(shapes: Shape*)
-    }
 
     val r = Rectangle(20, 40)
     val q = Rectangle(20, 40)
@@ -508,17 +507,15 @@ Generalized fold (catamorphism)
 The next question is what the implementation of the universal fold method for ``Fix`` looks like, also known as the *catamorphism*.
 Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we perform recursion over this functor by using ``map``, which preserves the first component and invokes a suitable ``map`` on the second component of the pair::
 
-  case class Fix(unFix: (Int, Option[Fix])) {
+  case class Fix(unFix: (Int, Option[Fix])):
     def cata[B](f: ((Int, Option[B])) => B): B = f((this.unFix._1, this.unFix._2.map(_.cata(f))))
-  }
 
 
 Now we can define *algebras* on our functor, such as::
 
-  def sum(arg: (Int, Option[Int])): Int = arg match {
+  def sum(arg: (Int, Option[Int])): Int = arg match
     case (i, None) => i
     case (i, Some(s)) => i + s
-  }
 
   res1.cata(sum) // 6
 
@@ -530,9 +527,8 @@ Instead, the catamorphism takes care of the recursion.
 
 For an arbitrary functor ``F``, the code looks like this::
 
-  case class Fix(unFix: F[Fix]) {
+  case class Fix(unFix: F[Fix]):
     def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))
-  }
 
 
 For an arbitrary *carrier type* ``B``, the argument ``f`` of type ``F[B] => B`` is an ``F``-algebra.
