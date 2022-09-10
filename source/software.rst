@@ -90,7 +90,7 @@ Required packages
 - `Java 17 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
-  - recommended installation option on Windows: *Use Git and optional Unix tools from the Windows Command Prompt*
+  - recommended installation option on Windows: *Use Git and optional UNIX tools from the Windows Command Prompt*
   - optional on any plaDecimaltform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
 
 
