@@ -51,10 +51,10 @@ Loop over all items in a finite collection or iterator using mutable state::
   final Iterator<String> incoming = ...;
   int sum = 0;
   int count = 0;
-  for (final String s: incoming) {
+  incoming.forEachRemaining(s -> {
     sum += s.length();
     count += 1;
-  }
+  });
   final float result = (float) sum / count;
 
 *What does this code compute?*
