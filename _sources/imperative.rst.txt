@@ -12,7 +12,7 @@ In this section, we discuss the different options for running Scala code, includ
   We can launch the Scala REPL and then evaluate definitions and expressions::
 
     $ scala
-    Welcome to Scala 2.13.3 (OpenJDK 64-Bit Server VM, Java 11.0.8).
+    Welcome to Scala 3.2.0 (17.0.4.1, Java OpenJDK 64-Bit Server VM).
     Type in expressions for evaluation. Or try :help.
 
     scala> 3 + 4
