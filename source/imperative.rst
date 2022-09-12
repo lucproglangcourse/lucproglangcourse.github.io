@@ -36,10 +36,10 @@ In this section, we discuss the different options for running Scala code, includ
   In that case, starting the Scala REPL through sbt as discussed below is a much better choice.
   Managing the Scala/Java classpath manually is discouraged.
 
-  You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter::
+  You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter. A ``main`` method or ``@main`` annotation is required, e.g.::
 
     $ cat > blah.scala
-    println(args.toList)
+    def main(args: Array[String]) = println(args.toList)
     $ scala blah.scala 1 2 3
     List(1, 2, 3)
 
