@@ -136,9 +136,9 @@ res2: Seq[Int] = List(3, 4, 5)
 The drawback of this approach is a lack of support for <em>managed dependencies</em>, which are required for more advanced work.
 In that case, starting the Scala REPL through sbt as discussed below is a much better choice.
 Managing the Scala/Java classpath manually is discouraged.</p>
-<p>You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter:</p>
+<p>You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter. A <code class="docutils literal notranslate"><span class="pre">main</span></code> method or <code class="docutils literal notranslate"><span class="pre">&#64;main</span></code> annotation is required, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &gt; blah.scala
-println(args.toList)
+def main(args: Array[String]) = println(args.toList)
 $ scala blah.scala 1 2 3
 List(1, 2, 3)
 </pre></div>
