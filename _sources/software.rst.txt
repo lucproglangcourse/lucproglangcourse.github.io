@@ -24,6 +24,7 @@ Cons
 - requires good network connection
 - might lack code completion
 - free plan might be underresourced (CPUs, RAM, disk space, etc.)
+- won't support GUI or mobile development out of the box
 
 Zero-install option: Scastie
 ````````````````````````````
