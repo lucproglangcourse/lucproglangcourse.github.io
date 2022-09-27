@@ -161,8 +161,15 @@ This gives you an iterator of strings with each item representing one line. When
 
 To break the standard input down further into words, we can use this recipe::
 
-    val words = lines.flatMap(_.split("(?U)[^\\p{Alpha}0-9']+"))
+    val words = {
+      import scala.language.unsafeNulls
+      lines.flatMap(l => l.split("(?U)[^\\p{Alpha}0-9']+"))
+    }    
 
+The result of ``l.split(regex)`` is an array of strings, where some of the strings or the entire array could possibly be ``null``. 
+While ``flatMap`` is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce ``null`` references.
+Because we require explicit typing of null references (by adding ``"-Yexplicit-nulls"`` to the compiler options in ``build.sbt``), the Scala compiler considers this code incorrect and indicates an error unless we locally enable this potentially unsafe use of implicit null references.
+    
 By default, the Java virtual machine converts the ``SIGPIPE`` error signal to an ``IOException``.
 In Scala, ``print`` and ``println`` print to stdout, which is is an instance of ``PrintStream``.
 This class converts any ``IOException`` to a boolean flag accessible through its ``checkError()`` method.

@@ -16,6 +16,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -249,9 +250,15 @@ As in Java, command-line arguments are available to a Scala application as <code
 </div>
 <p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
 <p>To break the standard input down further into words, we can use this recipe:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kn">import</span> <span class="nn">scala.language.unsafeNulls</span>
+  <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span> <span class="o">=&gt;</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 </div>
+<p>The result of <code class="docutils literal notranslate"><span class="pre">l.split(regex)</span></code> is an array of strings, where some of the strings or the entire array could possibly be <code class="docutils literal notranslate"><span class="pre">null</span></code>.
+While <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce <code class="docutils literal notranslate"><span class="pre">null</span></code> references.
+Because we require explicit typing of null references (by adding <code class="docutils literal notranslate"><span class="pre">&quot;-Yexplicit-nulls&quot;</span></code> to the compiler options in <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>), the Scala compiler considers this code incorrect and indicates an error unless we locally enable this potentially unsafe use of implicit null references.</p>
 <p>By default, the Java virtual machine converts the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal to an <code class="docutils literal notranslate"><span class="pre">IOException</span></code>.
 In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout, which is is an instance of <code class="docutils literal notranslate"><span class="pre">PrintStream</span></code>.
 This class converts any <code class="docutils literal notranslate"><span class="pre">IOException</span></code> to a boolean flag accessible through its <code class="docutils literal notranslate"><span class="pre">checkError()</span></code> method.
