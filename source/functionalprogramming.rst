@@ -338,7 +338,7 @@ Accordingly::
 Now ``countGroup(g)`` returns 2 as expected, though this is a Java-style, imperative implementation.
 Equivalently, we can use the ``foreach`` method instead of the so-called for comprehension::
 
-    case Group(shapes @ _``*``) =>
+    case Group(shapes @ _*) =>
       var sum = 1
       shapes.foreach { c =>
         sum += countGroup(c)
@@ -347,7 +347,7 @@ Equivalently, we can use the ``foreach`` method instead of the so-called for com
 
 Now...drum roll...we have an opportunity to convert this code into functional, applicative, immutable style::
 
-    case Group(shapes @ _``*``) =>
+    case Group(shapes @ _*) =>
       1 + shapes.map { c => countGroup(c) } .sum
 
 where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.
