@@ -432,17 +432,17 @@ This is incomplete but should compile;
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">countGroup(g)</span></code> returns 2 as expected, though this is a Java-style, imperative implementation.
 Equivalently, we can use the <code class="docutils literal notranslate"><span class="pre">foreach</span></code> method instead of the so-called for comprehension:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case Group(shapes @ _``*``) =&gt;
-  var sum = 1
-  shapes.foreach { c =&gt;
-    sum += countGroup(c)
-  }
-  sum
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">shapes</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span>
+    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nb">sum</span>
 </pre></div>
 </div>
 <p>Now…drum roll…we have an opportunity to convert this code into functional, applicative, immutable style:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>case Group(shapes @ _``*``) =&gt;
-  1 + shapes.map { c =&gt; countGroup(c) } .sum
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="mi">1</span> <span class="o">+</span> <span class="n">shapes</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">}</span> <span class="o">.</span><span class="n">sum</span>
 </pre></div>
 </div>
 <p>where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.</p>
