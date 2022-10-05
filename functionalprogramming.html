@@ -165,8 +165,8 @@ The main building blocks in scripting-style Scala are the collection and utility
 <h3><span class="section-number">4.1.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
 <p>Loop over all items in a finite collection or iterator using mutable state:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
-<span class="nb">int</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nb">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">incoming</span><span class="o">.</span><span class="n">forEachRemaining</span><span class="p">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="p">{</span>
   <span class="nb">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
   <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -193,7 +193,7 @@ On the other hand, if <code class="docutils literal notranslate"><span class="pr
 </div>
 <p>This is equivalent to two consecutive loops, one for <code class="docutils literal notranslate"><span class="pre">map</span></code> and one for <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
 <p>Unbounded loop until a condition is met:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Scanner</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">var</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
 <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
 <span class="k">while</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
   <span class="n">final</span> <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
