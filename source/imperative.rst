@@ -441,7 +441,7 @@ The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ 
 	  To increase confidence in the functional correctness of our code, we should test it;
 	  this requires testability, which drives the modularity we are seeing in these examples.
 	  In other words, the resulting design complexity is the cost of testability.
-	  On the other hand, a more realistic system would likely already have substantial design complexity for separation of concerns, maintainability, and other nonfunctional quality reasons;
+	  On the other hand, a more realistic system would likely already have substantial design complexity in its core functionality for separation of concerns, maintainability, and other nonfunctional quality reasons;
 	  in this case, the additional complexity introduced to achieve testability would be comparatively small.
 
 
