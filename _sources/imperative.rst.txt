@@ -437,6 +437,14 @@ The following figure shows the roles of and relationships among the various buil
 The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity in its ``imperative/modular`` package.
 
 
+.. note:: For pedagogical reasons, the process tree and iterators examples are overengineered relative to their simple functionality:
+	  To increase confidence in the functional correctness of our code, we should test it;
+	  this requires testability, which drives the modularity we are seeing in these examples.
+	  In other words, the resulting design complexity is the cost of testability.
+	  On the other hand, a more realistic system would likely already have substantial design complexity for separation of concerns, maintainability, and other nonfunctional quality reasons;
+	  in this case, the additional complexity introduced to achieve testability would be comparatively small.
+
+
 Trait-based dependency injection
 ````````````````````````````````
 

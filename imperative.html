@@ -507,6 +507,15 @@ This arrangement enables us to mix-and-match the desired <code class="docutils l
 <img alt="_images/ProcessTreeTypeHierarchy.png" src="_images/ProcessTreeTypeHierarchy.png" />
 </figure>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators example</a> includes additional instances of trait-based modularity in its <code class="docutils literal notranslate"><span class="pre">imperative/modular</span></code> package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For pedagogical reasons, the process tree and iterators examples are overengineered relative to their simple functionality:
+To increase confidence in the functional correctness of our code, we should test it;
+this requires testability, which drives the modularity we are seeing in these examples.
+In other words, the resulting design complexity is the cost of testability.
+On the other hand, a more realistic system would likely already have substantial design complexity for separation of concerns, maintainability, and other nonfunctional quality reasons;
+in this case, the additional complexity introduced to achieve testability would be comparatively small.</p>
+</div>
 </section>
 <section id="trait-based-dependency-injection">
 <h3><span class="section-number">3.6.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Permalink to this heading"></a></h3>
