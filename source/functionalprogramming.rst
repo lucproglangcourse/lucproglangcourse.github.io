@@ -49,8 +49,8 @@ Examples
 Loop over all items in a finite collection or iterator using mutable state::
 
   final Iterator<String> incoming = ...;
-  int sum = 0;
-  int count = 0;
+  var sum = 0;
+  var count = 0;
   incoming.forEachRemaining(s -> {
     sum += s.length();
     count += 1;
@@ -81,7 +81,7 @@ This is equivalent to two consecutive loops, one for ``map`` and one for ``sum``
 
 Unbounded loop until a condition is met::
 
-  final Scanner input = new Scanner(System.in);
+  final var input = new Scanner(System.in);
   System.out.print("enter next expression: ");
   while (input.hasNextLine()) {
     final String line = input.nextLine();
