@@ -171,7 +171,7 @@ The main building blocks in scripting-style Scala are the collection and utility
   <span class="nb">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
   <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
-<span class="n">final</span> <span class="nb">float</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
+<span class="n">final</span> <span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><em>What does this code compute?</em></p>
@@ -196,7 +196,7 @@ On the other hand, if <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">var</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
 <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
 <span class="k">while</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
+  <span class="n">final</span> <span class="n">var</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
   <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
   <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -277,7 +277,7 @@ Nested <code class="docutils literal notranslate"><span class="pre">try</span></
 <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">FileNotFoundException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">);</span>
-    <span class="n">final</span> <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">);</span>
+    <span class="n">final</span> <span class="n">var</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">);</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">);</span>
     <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameter</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">);</span>
   <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">NoSuchElementException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>

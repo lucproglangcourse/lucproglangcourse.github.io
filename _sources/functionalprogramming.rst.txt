@@ -55,7 +55,7 @@ Loop over all items in a finite collection or iterator using mutable state::
     sum += s.length();
     count += 1;
   });
-  final float result = (float) sum / count;
+  final var result = (float) sum / count;
 
 *What does this code compute?*
 
@@ -84,7 +84,7 @@ Unbounded loop until a condition is met::
   final var input = new Scanner(System.in);
   System.out.print("enter next expression: ");
   while (input.hasNextLine()) {
-    final String line = input.nextLine();
+    final var line = input.nextLine();
     processExpr(line)
     System.out.print("enter next expression: ");
   }
@@ -168,7 +168,7 @@ Nested ``try``-``catch`` statements are often used to achieve this::
   } catch (final FileNotFoundException ex) {
     try {
       logger.debug("looking for API key in environment");
-      final String apiKey = sys.env("API_KEY");
+      final var apiKey = sys.env("API_KEY");
       logger.debug("found API key");
       authorizeRequest = (request) -> request.addQueryStringParameter("key", apiKey);
     } catch (final NoSuchElementException ex) {
