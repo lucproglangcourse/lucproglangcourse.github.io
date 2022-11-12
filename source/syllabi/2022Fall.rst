@@ -47,7 +47,7 @@ Sections: 001 Fall 2022
 
 - *Grading:*
 
-  Additive point system:
+  Additive **point** system:
 
   - 21 points: *quizzes* 0 3,  1-3 6 each
   - 24 points: two *tests*, 12 each
@@ -63,7 +63,7 @@ Sections: 001 Fall 2022
 
   *Grading schema:*
 
-  - A 100
+  - A 100 points
   - A- 96
   - B+ 92
   - B 88
