@@ -418,7 +418,8 @@ Here are some examples:
 
 For more details on space complexity and tail recursion, please take a look at these references:
 
-- `space complexity, tail recursion, and accumulators <http://blog.emielhollander.nl/tail-recursion-and-the-accumulator-in-scala/>`_
+- `Tail Recursion in Scala <https://kartikiyer.com/2020/08/04/tail-recursion-in-scala>`_
+- `Functional Programming Recursion Styles, Correctness, and Efficiency <https://john.cs.olemiss.edu/~hcc/csci555/notes/RecursionStyles/RecursionStylesScala.html>`_
 - `tail recursion, trampolines, and continuations <http://blog.richdougherty.com/2009/04/tail-calls-tailrec-and-trampolines.html>`_ (advanced)
 
 
