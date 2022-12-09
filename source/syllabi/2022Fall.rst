@@ -9,7 +9,7 @@ Sections: 001 Fall 2022
     you are required to participate during class time (in person or remotely) or make up for the work outside of class.
   - *Estimated workload: 9 to 12 hours per week including class time.*
 
-- *Class time and location (fall 2022):* Tue 16:15-18:45 in Cuneo Hall 103, LSC
+- *Class time and location (fall 2022):* Tue 16:15-18:45 in SES 122, LSC
 
 - *Communication:* All communication regarding this class takes place in the classroom (verbal) and MS Teams (written). Most will be in the team-level channel specific to this term. For individual or group-level concerns, you may use direct individual or group messages in MS Teams; my user ID is **klaufer@luc.edu**. *(To help me prioritize your class-related communication, please DO NOT use email!)*
 
@@ -19,7 +19,7 @@ Sections: 001 Fall 2022
 
 - *Office hours:*
 
-  - Tue 18:45-19:15 in Cuneo Hall 103 (after class, no appointment required)
+  - Tue 18:45-19:15 in SES 122 (after class, no appointment required)
   - Thu 18:45-18:55 in Cuneo Hall 104 (after class, no appointment required)
   - Wed and Fri 13:30-15:30 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
   - TA office hours TBD
