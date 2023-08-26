@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4. The Functional Programming Paradigm &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
@@ -11,12 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Loyola University Chicago COMP 371/471 Lecture Notes
           </a>
               <div class="version">
                 1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -105,7 +108,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">4. </span>The Functional Programming Paradigm</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/functionalprogramming.rst.txt" rel="nofollow"> View page source</a>
@@ -117,10 +120,10 @@
            <div itemprop="articleBody">
              
   <section id="the-functional-programming-paradigm">
-<h1><span class="section-number">4. </span>The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4. </span>The Functional Programming Paradigm<a class="headerlink" href="#the-functional-programming-paradigm" title="Link to this heading"></a></h1>
 <p>In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.</p>
 <section id="solving-problems-using-built-in-types-and-behaviors">
-<h2><span class="section-number">4.1. </span>Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Link to this heading"></a></h2>
 <p>As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
 Many of these, especially collection types and certain utility types, are <em>algebraic data types</em>, discussed below in more detail:</p>
 <ul class="simple">
@@ -162,7 +165,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 <p>elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
 </div>
 <section id="examples">
-<h3><span class="section-number">4.1.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.1. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>Loop over all items in a finite collection or iterator using mutable state:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
 <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -215,7 +218,7 @@ On the other hand, if <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="other-important-operations-on-collections">
-<h3><span class="section-number">4.1.2. </span>Other important operations on collections<a class="headerlink" href="#other-important-operations-on-collections" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.2. </span>Other important operations on collections<a class="headerlink" href="#other-important-operations-on-collections" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>When the body of the iteration produces a <em>side effect</em> such as output, we can use <code class="docutils literal notranslate"><span class="pre">foreach</span></code> instead of <code class="docutils literal notranslate"><span class="pre">continually</span></code>.</p></li>
 <li><p>If we want to compute a <em>result value</em>, we can use <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> instead of <code class="docutils literal notranslate"><span class="pre">foreach</span></code>.</p></li>
@@ -265,7 +268,7 @@ res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, w
 <p>Note also that all of these are methods but look like control structures because of Scala’s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
 </section>
 <section id="dealing-with-successive-failures">
-<h3><span class="section-number">4.1.3. </span>Dealing with successive failures<a class="headerlink" href="#dealing-with-successive-failures" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.3. </span>Dealing with successive failures<a class="headerlink" href="#dealing-with-successive-failures" title="Link to this heading"></a></h3>
 <p>Trying successive choices until either one succeeds or there is none left and we have to give up.
 Nested <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statements are often used to achieve this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorizeRequestStrategy</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
@@ -313,7 +316,7 @@ Earlier versions of the <a class="reference external" href="https://github.com/l
 </div>
 </section>
 <section id="challenges">
-<h3><span class="section-number">4.1.4. </span>Challenges<a class="headerlink" href="#challenges" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.4. </span>Challenges<a class="headerlink" href="#challenges" title="Link to this heading"></a></h3>
 <p>Can we write (efficiently or not)</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">length</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code> as a fold, i.e., <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> or <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>?</p></li>
@@ -327,13 +330,13 @@ Earlier versions of the <a class="reference external" href="https://github.com/l
 </ul>
 </section>
 <section id="modularity-and-dependency-injection-in-the-functional-style">
-<h3><span class="section-number">4.1.5. </span>Modularity and dependency injection in the functional style<a class="headerlink" href="#modularity-and-dependency-injection-in-the-functional-style" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.1.5. </span>Modularity and dependency injection in the functional style<a class="headerlink" href="#modularity-and-dependency-injection-in-the-functional-style" title="Link to this heading"></a></h3>
 <p>In the functional programming paradigm, first-class functions, i.e., the ability to pass functions as argument values to other functions, methods, and constructors, provides an alternative modular composition mechanism to the object-oriented ones discussed previously.</p>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators example</a> illustrates functional modularity in its <code class="docutils literal notranslate"><span class="pre">functional/modular</span></code> package.</p>
 </section>
 </section>
 <section id="defining-algebraic-data-types">
-<h2><span class="section-number">4.2. </span>Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>Defining algebraic data types<a class="headerlink" href="#defining-algebraic-data-types" title="Link to this heading"></a></h2>
 <p>Most structures fall into one of these categories:</p>
 <ul class="simple">
 <li><p>nonrecursive/scalars: boolean, finite enumerations (including numeric types), try</p></li>
@@ -370,13 +373,13 @@ related to those discussed in <a class="reference internal" href="imperative.htm
 </ul>
 <p>So far, structure and content are combined within the definition of an algebraic data type, while traversal and processing are combined within the definition of a behavior on that algebraic data type.</p>
 <section id="separation-of-structural-concerns">
-<h3><span class="section-number">4.2.1. </span>Separation of structural concerns<a class="headerlink" href="#separation-of-structural-concerns" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.2.1. </span>Separation of structural concerns<a class="headerlink" href="#separation-of-structural-concerns" title="Link to this heading"></a></h3>
 <p>We can, however, achieve a separation between structure and content with the help of <em>parametric polymorphism</em>, that is, making the algebraic data type <em>generic</em> in terms of the content.
 The predefined collections are an example of this separation, as well as the <a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">generic org chart</a> example.</p>
 </section>
 </section>
 <section id="behaviors-on-algebraic-data-types">
-<h2><span class="section-number">4.3. </span>Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Behaviors on algebraic data types<a class="headerlink" href="#behaviors-on-algebraic-data-types" title="Link to this heading"></a></h2>
 <p>The following are additional examples of behaviors on algebraic data types.
 As expected, for recursive types, the behaviors are typically recursive as well.</p>
 <ul class="simple">
@@ -388,7 +391,7 @@ As expected, for recursive types, the behaviors are typically recursive as well.
 </ul>
 <p>In these examples, the traversal and processing concerns identified above remain combined.</p>
 <section id="behaviors-based-on-recursive-thinking">
-<h3><span class="section-number">4.3.1. </span>Behaviors based on recursive thinking<a class="headerlink" href="#behaviors-based-on-recursive-thinking" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.3.1. </span>Behaviors based on recursive thinking<a class="headerlink" href="#behaviors-based-on-recursive-thinking" title="Link to this heading"></a></h3>
 <p>To understand recursive thinking, let us explore the familiar <a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">shapes example</a>.
 We’ll start with a suitable algebraic type definition and some sample instances:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">Shape</span><span class="p">:</span>
@@ -423,7 +426,7 @@ This is incomplete but should compile;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countGroup</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">Shape</span><span class="p">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">s</span> <span class="n">match</span>
   <span class="k">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="mi">0</span>
   <span class="k">case</span> <span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-  <span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
     <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="n">shapes</span> <span class="n">do</span>
       <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -432,7 +435,7 @@ This is incomplete but should compile;
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">countGroup(g)</span></code> returns 2 as expected, though this is a Java-style, imperative implementation.
 Equivalently, we can use the <code class="docutils literal notranslate"><span class="pre">foreach</span></code> method instead of the so-called for comprehension:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
   <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
   <span class="n">shapes</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span>
     <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -441,7 +444,7 @@ Equivalently, we can use the <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 <p>Now…drum roll…we have an opportunity to convert this code into functional, applicative, immutable style:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
   <span class="mi">1</span> <span class="o">+</span> <span class="n">shapes</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">}</span> <span class="o">.</span><span class="n">sum</span>
 </pre></div>
 </div>
@@ -453,7 +456,7 @@ Equivalently, we can use the <code class="docutils literal notranslate"><span cl
 </ul>
 </section>
 <section id="separation-of-behavioral-concerns">
-<h3><span class="section-number">4.3.2. </span>Separation of behavioral concerns<a class="headerlink" href="#separation-of-behavioral-concerns" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.3.2. </span>Separation of behavioral concerns<a class="headerlink" href="#separation-of-behavioral-concerns" title="Link to this heading"></a></h3>
 <p>A question that comes to mind is whether they can be separated, similarly to the predefined higher-order methods on collections, such as <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, etc.
 These methods go a step further than the Visitor pattern or our equivalent recursive behaviors:
 They handle the <em>traversal</em> concern for us and separate it from the <em>processing</em> concern, which we handle by providing a suitable argument function.</p>
@@ -472,7 +475,7 @@ the <code class="docutils literal notranslate"><span class="pre">Y</span></code>
 </section>
 </section>
 <section id="a-closer-look-at-predefined-behaviors-on-lists">
-<h2><span class="section-number">4.4. </span>A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Link to this heading"></a></h2>
 <p>In this section, we take a look “under the hood” of some key predefined behaviors on lists.</p>
 <p>In terms of performance, we must keep in mind that <a class="reference external" href="http://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
 In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
@@ -509,14 +512,14 @@ Here are some examples:</p>
 </ul>
 </section>
 <section id="separation-of-concerns-at-the-type-level">
-<h2><span class="section-number">4.5. </span>Separation of concerns at the type level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.5. </span>Separation of concerns at the type level<a class="headerlink" href="#separation-of-concerns-at-the-type-level" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.</p>
 </div>
 <p>The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.</p>
 <section id="key-concepts">
-<h3><span class="section-number">4.5.1. </span>Key concepts<a class="headerlink" href="#key-concepts" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.5.1. </span>Key concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h3>
 <p>We first need to define some key concepts:</p>
 <ul>
 <li><p><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(Endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal notranslate"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws:</p>
@@ -546,7 +549,7 @@ We obtain this by applying the <code class="docutils literal notranslate"><span 
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">4.5.2. </span>Examples<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.5.2. </span>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></p></li>
@@ -555,7 +558,7 @@ We obtain this by applying the <code class="docutils literal notranslate"><span 
 <p>Some other examples are available <a class="reference external" href="https://github.com/lucproglangcourse/droste-explorations-scala/">here</a>.</p>
 </section>
 <section id="what-fix-does">
-<h3><span class="section-number">4.5.3. </span>What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.5.3. </span>What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> basically ties the “recursive knot” by applying the functor <code class="docutils literal notranslate"><span class="pre">F</span></code>  to itself.
 This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
 <p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal notranslate"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
@@ -579,7 +582,7 @@ This enables  us to define linked lists:</p>
 <p>That’s why we usually define such types recursively to begin with.</p>
 </section>
 <section id="generalized-fold-catamorphism">
-<h3><span class="section-number">4.5.4. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.5.4. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Link to this heading"></a></h3>
 <p>The next question is what the implementation of the universal fold method for <code class="docutils literal notranslate"><span class="pre">Fix</span></code> looks like, also known as the <em>catamorphism</em>.
 Continuing with our <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over <code class="docutils literal notranslate"><span class="pre">(Int,</span> <span class="pre">Option[A])</span></code> example, we perform recursion over this functor by using <code class="docutils literal notranslate"><span class="pre">map</span></code>, which preserves the first component and invokes a suitable <code class="docutils literal notranslate"><span class="pre">map</span></code> on the second component of the pair:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">])):</span>
@@ -606,7 +609,7 @@ Instead, the catamorphism takes care of the recursion.</p>
 <code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> is the <em>initial</em> <code class="docutils literal notranslate"><span class="pre">F</span></code>-algebra, and the catamorphism <code class="docutils literal notranslate"><span class="pre">cata</span></code> produces the unique structure-preserving mapping (homomorphism) between <code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> and <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
 </section>
 <section id="key-insights">
-<h3><span class="section-number">4.5.5. </span>Key insights<a class="headerlink" href="#key-insights" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.5.5. </span>Key insights<a class="headerlink" href="#key-insights" title="Link to this heading"></a></h3>
 <p>By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.</p>
 <ul class="simple">
 <li><p>non-generic:  <code class="docutils literal notranslate"><span class="pre">Nat</span></code>, <code class="docutils literal notranslate"><span class="pre">Expr</span></code>, <code class="docutils literal notranslate"><span class="pre">Shape</span></code>, etc.</p></li>
@@ -648,14 +651,14 @@ Some of our examples include implementations of <code class="docutils literal no
 </section>
 </section>
 <section id="other-useful-abstractions">
-<h2><span class="section-number">4.6. </span>Other useful abstractions<a class="headerlink" href="#other-useful-abstractions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.6. </span>Other useful abstractions<a class="headerlink" href="#other-useful-abstractions" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.</p>
 </div>
 <p>In this section, we will discuss a few more useful yet relatively simple abstractions.</p>
 <section id="monoid">
-<h3><span class="section-number">4.6.1. </span>Monoid<a class="headerlink" href="#monoid" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.6.1. </span>Monoid<a class="headerlink" href="#monoid" title="Link to this heading"></a></h3>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monoid_(disambiguation)">Monoid</a> is a type with an associative binary operation and an identity element.
 (This is equivalent to a semigroup with an identity element.)
 Examples include:</p>
@@ -669,7 +672,7 @@ Examples include:</p>
 <p>Examples of monoids using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc">here</a></p>
 </section>
 <section id="monad">
-<h3><span class="section-number">4.6.2. </span>Monad<a class="headerlink" href="#monad" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.6.2. </span>Monad<a class="headerlink" href="#monad" title="Link to this heading"></a></h3>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic collection) with two operations, <code class="docutils literal notranslate"><span class="pre">point</span></code> (also called <code class="docutils literal notranslate"><span class="pre">return</span></code> or <code class="docutils literal notranslate"><span class="pre">unit</span></code>) and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> (also called <code class="docutils literal notranslate"><span class="pre">bind</span></code>).
 Monads are an effective way to represent the <em>context</em> of a computation in which the computation is “wrapped”.
 The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
@@ -683,7 +686,7 @@ Examples include:</p>
 <p>Examples of monads using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc">here</a>.</p>
 </section>
 <section id="observations">
-<h3><span class="section-number">4.6.3. </span>Observations<a class="headerlink" href="#observations" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">4.6.3. </span>Observations<a class="headerlink" href="#observations" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>The Scala library includes various structures that are effectively monads, especially those just mentioned.
 What Scala does not define is a monad abstraction itself.</p></li>
@@ -695,7 +698,7 @@ They define these abstractions in such a way that we can retrofit existing types
 </section>
 </section>
 <section id="references">
-<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
 <div class="admonition-todo admonition" id="id12">
 <p class="admonition-title">Todo</p>
 <p>put chapter-level references here</p>

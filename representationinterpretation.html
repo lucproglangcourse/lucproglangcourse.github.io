@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5. Program Representation and Interpretation &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
@@ -11,12 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,14 +28,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Loyola University Chicago COMP 371/471 Lecture Notes
           </a>
               <div class="version">
                 1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -98,7 +101,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">5. </span>Program Representation and Interpretation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/representationinterpretation.rst.txt" rel="nofollow"> View page source</a>
@@ -110,11 +113,11 @@
            <div itemprop="articleBody">
              
   <section id="program-representation-and-interpretation">
-<h1><span class="section-number">5. </span>Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">5. </span>Program Representation and Interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Link to this heading"></a></h1>
 <p>In this chapter, we discuss how we can represent and ultimately execute or interpret programs in a particular language.
 To this end, we need to talk about the toolchain required to do so, as well as techniques for defining the meaning (semantics) of programs in our language.</p>
 <section id="programming-language-toolchains">
-<h2><span class="section-number">5.1. </span>Programming language toolchains<a class="headerlink" href="#programming-language-toolchains" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.1. </span>Programming language toolchains<a class="headerlink" href="#programming-language-toolchains" title="Link to this heading"></a></h2>
 <p>We will start with an overview of the phases of programming language <a class="reference external" href="http://en.wikipedia.org/wiki/Compiler">compilation</a>/<a class="reference external" href="http://en.wikipedia.org/wiki/Interpreter_(computing)">interpretation</a> toolchain:</p>
 <ul class="simple">
 <li><p>source code (string stored in file)</p></li>
@@ -132,7 +135,7 @@ To this end, we need to talk about the toolchain required to do so, as well as t
 </ul>
 <p>Reference: <a class="reference external" href="http://hjemmesider.diku.dk/~torbenm/Basics/">Mogensen</a></p>
 <section id="cross-compilation">
-<h3><span class="section-number">5.1.1. </span>Cross-compilation<a class="headerlink" href="#cross-compilation" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.1.1. </span>Cross-compilation<a class="headerlink" href="#cross-compilation" title="Link to this heading"></a></h3>
 <p>Cross-compilation is a useful technique when the target environment does not provide sufficient computational resources to compile software in the target environment itself.
 Common examples include mobile phones and other embedded devices.
 For example, one usually develops Android apps on a development machine, tests them on an Android virtual device (emulator), and deploys them to an actual phone or tablet.</p>
@@ -162,10 +165,10 @@ hello ETL!
 </section>
 </section>
 <section id="compiler-front-end-concepts-and-techniques">
-<h2><span class="section-number">5.2. </span>Compiler front-end concepts and techniques<a class="headerlink" href="#compiler-front-end-concepts-and-techniques" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.2. </span>Compiler front-end concepts and techniques<a class="headerlink" href="#compiler-front-end-concepts-and-techniques" title="Link to this heading"></a></h2>
 <p>In this section, we will discuss the key front-end stages, lexical analysis and syntax analysis, and related concepts and techniques.</p>
 <section id="lexical-analysis">
-<h3><span class="section-number">5.2.1. </span>Lexical analysis<a class="headerlink" href="#lexical-analysis" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.2.1. </span>Lexical analysis<a class="headerlink" href="#lexical-analysis" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>regular expressions, NFA, DFA (Mogensen ch. 2)</p></li>
 <li><p><a class="reference external" href="http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf">regular expressions</a></p></li>
@@ -173,7 +176,7 @@ hello ETL!
 </ul>
 </section>
 <section id="syntax-analysis">
-<h3><span class="section-number">5.2.2. </span>Syntax analysis<a class="headerlink" href="#syntax-analysis" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.2.2. </span>Syntax analysis<a class="headerlink" href="#syntax-analysis" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>context-free grammars, EBNF, parsing (Mogensen ch. 3)</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Compiler-compiler">parser generator</a></p></li>
@@ -181,7 +184,7 @@ hello ETL!
 </ul>
 </section>
 <section id="alternative-front-end-approaches">
-<h3><span class="section-number">5.2.3. </span>Alternative front-end approaches<a class="headerlink" href="#alternative-front-end-approaches" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.2.3. </span>Alternative front-end approaches<a class="headerlink" href="#alternative-front-end-approaches" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Parser_combinator">parser combinators</a></p></li>
 <li><p>Scala parser combinators</p>
@@ -204,7 +207,7 @@ hello ETL!
 </section>
 </section>
 <section id="programming-language-semantics">
-<h2><span class="section-number">5.3. </span>Programming language semantics<a class="headerlink" href="#programming-language-semantics" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.3. </span>Programming language semantics<a class="headerlink" href="#programming-language-semantics" title="Link to this heading"></a></h2>
 <p>Semantics, a formalization of the <em>meaning</em> of programs in a particular language, includes <em>static</em> and <em>dynamic</em> semantics.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Programming_language#Semantics">static semantics</a> (compile-time)</p>
@@ -228,7 +231,7 @@ hello ETL!
 </ul>
 </section>
 <section id="case-study-a-simple-imperative-language">
-<h2><span class="section-number">5.4. </span>Case study: a simple imperative language<a class="headerlink" href="#case-study-a-simple-imperative-language" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.4. </span>Case study: a simple imperative language<a class="headerlink" href="#case-study-a-simple-imperative-language" title="Link to this heading"></a></h2>
 <p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/imperative/SimpleImperative.java">Java implementation</a></p></li>
@@ -240,7 +243,7 @@ hello ETL!
 <li><p><a class="reference external" href="https://youtu.be/mj-tq_kdeF">implementation</a></p></li>
 </ul>
 <section id="objectives">
-<h3><span class="section-number">5.4.1. </span>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.4.1. </span>Objectives<a class="headerlink" href="#objectives" title="Link to this heading"></a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li><p>To understand an object-oriented programming language from the “inside”.</p></li>
@@ -248,7 +251,7 @@ hello ETL!
 </ul>
 </section>
 <section id="syntax">
-<h3><span class="section-number">5.4.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.4.2. </span>Syntax<a class="headerlink" href="#syntax" title="Link to this heading"></a></h3>
 <p>Our language has the following features:</p>
 <p>Integer expressions given by the BNF grammar:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="p">:</span><span class="o">:=</span> <span class="n">variable</span>
@@ -266,7 +269,7 @@ hello ETL!
 <p>In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like <cite>x + 3</cite>, whereas earlier we could only write expressions such as <cite>4 + 3</cite>. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.</p>
 </section>
 <section id="structured-operational-semantics-sos">
-<h3><span class="section-number">5.4.3. </span>Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.4.3. </span>Structured operational semantics (SOS)<a class="headerlink" href="#structured-operational-semantics-sos" title="Link to this heading"></a></h3>
 <p>We first formalize the intuitive execution semantics of the toy language. The point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. Since our toy language has variables, we need to keep track of the state of variables. We view variables as objects with two capabilities:</p>
 <ul class="simple">
 <li><p><cite>v.get()</cite> returns the current value of the variable</p></li>
@@ -294,17 +297,17 @@ hello ETL!
 <p>Note that the connection between the various statements is that they share a single store, ie. in the sequence of statements <cite>x = 2; y = x + 1</cite>, the second reference to <cite>x</cite> reflects the effect of the first assignment because of the (shared) store between the two assignment statements.</p>
 </section>
 <section id="the-interpreter-program">
-<h3><span class="section-number">5.4.4. </span>The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.4.4. </span>The interpreter program<a class="headerlink" href="#the-interpreter-program" title="Link to this heading"></a></h3>
 <p>We now go ahead and write the interpreter program.
 The entire code is available as part of the <a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/imperative">misc-scala</a> example.
 A similar example but based on F-algebras and with better runtime error handling is also available: <a class="reference external" href="https://github.com/lucproglangcourse/simpleimperative-algebraic-scala">simpleimperative-algebraic-scala</a>.</p>
 </section>
 </section>
 <section id="case-study-a-simple-imperative-language-with-records">
-<h2><span class="section-number">5.5. </span>Case study: a simple imperative language with records<a class="headerlink" href="#case-study-a-simple-imperative-language-with-records" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.5. </span>Case study: a simple imperative language with records<a class="headerlink" href="#case-study-a-simple-imperative-language-with-records" title="Link to this heading"></a></h2>
 <p>In this section, we discuss the design of an interpreter and programming environment for a simple imperative language with records (like classes with public fields and without methods).</p>
 <section id="id1">
-<h3><span class="section-number">5.5.1. </span>Objectives<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.5.1. </span>Objectives<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>We are leading toward building an interpreter for a language resembling JavaScript with object-like features. We are doing this with two aims in mind:</p>
 <ul class="simple">
 <li><p>To understand an object-oriented programming language from the “inside”.</p></li>
@@ -319,7 +322,7 @@ A similar example but based on F-algebras and with better runtime error handling
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">5.5.2. </span>Syntax<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.5.2. </span>Syntax<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>Our language has the following features:</p>
 <p>The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StudentCourseRecord</span> <span class="o">=</span> <span class="n">record</span>
@@ -425,12 +428,12 @@ A similar example but based on F-algebras and with better runtime error handling
 <img alt="_images/records5.png" src="_images/records5.png" />
 </section>
 <section id="id3">
-<h3><span class="section-number">5.5.3. </span>Implementation<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">5.5.3. </span>Implementation<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>The entire code for the implementation of the simple imperative language with records is available <a class="reference external" href="https://github.com/lucproglangcourse/misc-scala/tree/master/src/main/scala/records">here</a>.</p>
 </section>
 </section>
 <section id="type-systems">
-<h2><span class="section-number">5.6. </span>Type systems<a class="headerlink" href="#type-systems" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.6. </span>Type systems<a class="headerlink" href="#type-systems" title="Link to this heading"></a></h2>
 <p>Type systems are an important aspect of programming languages. We identify the following dimensions in the type system design space:</p>
 <ul class="simple">
 <li><p>static versus dynamic typing</p></li>
@@ -453,7 +456,7 @@ A similar example but based on F-algebras and with better runtime error handling
 </div>
 </section>
 <section id="domain-specific-languages">
-<h2><span class="section-number">5.7. </span>Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.7. </span>Domain-specific languages<a class="headerlink" href="#domain-specific-languages" title="Link to this heading"></a></h2>
 <p>Domain-specific languages are special-purpose languages for solving problems in particular domains.
 We identify the following dimensions:</p>
 <ul class="simple">

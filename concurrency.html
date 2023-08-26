@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>6. The Concurrent Programming Paradigm &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
@@ -11,12 +11,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -30,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Loyola University Chicago COMP 371/471 Lecture Notes
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Loyola University Chicago COMP 371/471 Lecture Notes
           </a>
               <div class="version">
                 1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -83,7 +86,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">6. </span>The Concurrent Programming Paradigm</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/concurrency.rst.txt" rel="nofollow"> View page source</a>
@@ -95,9 +98,9 @@
            <div itemprop="articleBody">
              
   <section id="the-concurrent-programming-paradigm">
-<h1><span class="section-number">6. </span>The Concurrent Programming Paradigm<a class="headerlink" href="#the-concurrent-programming-paradigm" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">6. </span>The Concurrent Programming Paradigm<a class="headerlink" href="#the-concurrent-programming-paradigm" title="Link to this heading"></a></h1>
 <section id="overview">
-<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>Why and when do we need concurrency?</p>
 <ul class="simple">
 <li><p>When it is a natural fit for the problem domain</p>
@@ -123,7 +126,7 @@
 </ul>
 </section>
 <section id="activity-terminology-and-concerns">
-<h2><span class="section-number">6.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>process: own memory</p></li>
 <li><p>thread: shared memory <em>and</em> “thread-local” state</p></li>
@@ -140,7 +143,7 @@
 </ul>
 </section>
 <section id="thread-safety">
-<h2><span class="section-number">6.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>nondeterminism</p>
 <ul>
@@ -156,7 +159,7 @@
 <li><p>root cause of thread safety problems</p></li>
 </ul>
 <section id="understanding-the-extent-of-nondeterminism">
-<h3><span class="section-number">6.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Permalink to this heading"></a></h3>
+<h3><span class="section-number">6.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Link to this heading"></a></h3>
 <p>Consider this small example of two concurrent increment operations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
 <span class="o">/*</span><span class="n">s1</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>          <span class="o">/*</span><span class="n">s2</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -190,7 +193,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </section>
 </section>
 <section id="dealing-with-shared-state">
-<h2><span class="section-number">6.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>mutual exclusion/locking</p></li>
 <li><p>confinement</p></li>
@@ -199,7 +202,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="conflicting-design-forces">
-<h2><span class="section-number">6.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>correctness/(thread-)safety</p></li>
 <li><p>liveness/deadlock</p>
@@ -218,7 +221,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="specific-concurrency-mechanisms">
-<h2><span class="section-number">6.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
 <p>Language constructs, patterns, building blocks:</p>
 <ul class="simple">
 <li><p>threads (familiar from 313/413)</p></li>
@@ -251,7 +254,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="references-concurrent-and-asynchronous-computing">
-<h2><span class="section-number">6.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Läufer and Thiruvathukal, <a class="reference external" href="https://arxiv.org/abs/1705.02899">CDER book chapter</a></p></li>
 <li><p>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></p></li>
