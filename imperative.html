@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. The Imperative and Object-Oriented Paradigms in Scala &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+  <title>3. The Imperative and Object-Oriented Paradigms in Scala &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. The Functional Programming Paradigm" href="functionalprogramming.html" />
-    <link rel="prev" title="3. Context and Background" href="background.html" /> 
+    <link rel="next" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" />
+    <link rel="prev" title="2. Context and Background" href="background.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,42 +46,41 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="meta.html">1. About the Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="background.html">3. Context and Background</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#options-for-running-scala-code">4.1. Options for running Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-role-of-console-applications">4.2. The role of console applications</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#console-applications-in-scala">4.2.1. Console applications in Scala</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-importance-of-constant-space-complexity">4.2.2. The importance of constant-space complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-role-of-console-applications">3.2. The role of console applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#console-applications-in-scala">3.2.1. Console applications in Scala</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.2.2. The importance of constant-space complexity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#choices-for-testing-scala-code">4.3. Choices for testing Scala code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-role-of-logging">4.4. The role of logging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#logging-in-scala">4.4.1. Logging in Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-role-of-logging">3.4. The role of logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">4.5. Defining domain models in imperative and object-oriented languages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#object-oriented-scala-as-a-better-java">4.5.1. Object-oriented Scala as a “better Java”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.5.1. Object-oriented Scala as a “better Java”</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#modularity-and-dependency-injection">4.6. Modularity and dependency injection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#design-goals">4.6.1. Design goals</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#scala-traits">4.6.2. Scala traits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#trait-based-dependency-injection">4.6.3. Trait-based dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modularity-and-dependency-injection">3.6. Modularity and dependency injection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#design-goals">3.6.1. Design goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scala-traits">3.6.2. Scala traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trait-based-dependency-injection">3.6.3. Trait-based dependency injection</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">5. The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">6. Program Representation and Interpretation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">7. The Concurrent Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">8. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">9. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Appendix: Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">11. Appendix: Course Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">12. Appendix: Course Syllabi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">13. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
 </ul>
 
         </div>
@@ -98,7 +97,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>The Imperative and Object-Oriented Paradigms in Scala</li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>The Imperative and Object-Oriented Paradigms in Scala</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/imperative.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -109,10 +108,10 @@
            <div itemprop="articleBody">
              
   <section id="the-imperative-and-object-oriented-paradigms-in-scala">
-<h1><span class="section-number">4. </span>The Imperative and Object-Oriented Paradigms in Scala<a class="headerlink" href="#the-imperative-and-object-oriented-paradigms-in-scala" title="Link to this heading"></a></h1>
+<h1><span class="section-number">3. </span>The Imperative and Object-Oriented Paradigms in Scala<a class="headerlink" href="#the-imperative-and-object-oriented-paradigms-in-scala" title="Link to this heading"></a></h1>
 <p>In this chapter, we discuss the imperative and object-oriented programming paradigms with examples in Scala.</p>
 <section id="options-for-running-scala-code">
-<h2><span class="section-number">4.1. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.1. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
 <p>In this section, we discuss the different options for running Scala code, including applications and tests.</p>
 <ul>
 <li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
@@ -203,7 +202,7 @@ $ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
 </ul>
 </section>
 <section id="the-role-of-console-applications">
-<h2><span class="section-number">4.2. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.2. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
 <p>Console applications have always been an important part of the UNIX command-line environment.
 The typical console application interacts with its environment in the following ways:</p>
 <ul class="simple">
@@ -245,7 +244,7 @@ We can also append to an existing file:</p>
 </div>
 <p>There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
 <section id="console-applications-in-scala">
-<h3><span class="section-number">4.2.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.2.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Link to this heading"></a></h3>
 <p>The following techniques are useful for creating console applications in Scala.
 As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
 <p>We can read the standard input as lines using this iterator:</p>
@@ -279,7 +278,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 </div>
 </section>
 <section id="the-importance-of-constant-space-complexity">
-<span id="subsecconstantspace"></span><h3><span class="section-number">4.2.2. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h3>
+<span id="subsecconstantspace"></span><h3><span class="section-number">3.2.2. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h3>
 <p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.</p>
 <p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
@@ -311,7 +310,7 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 </section>
 </section>
 <section id="choices-for-testing-scala-code">
-<h2><span class="section-number">4.3. </span>Choices for testing Scala code<a class="headerlink" href="#choices-for-testing-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.3. </span>Choices for testing Scala code<a class="headerlink" href="#choices-for-testing-scala-code" title="Link to this heading"></a></h2>
 <p>There are various basic techniques and libraries/frameworks for testing Scala code.</p>
 <p>The simplest way is to intersperse assertions within your code.
 This is particularly effective for scripts and worksheets:</p>
@@ -331,7 +330,7 @@ This is particularly effective for scripts and worksheets:</p>
 <p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>
 </section>
 <section id="the-role-of-logging">
-<h2><span class="section-number">4.4. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.4. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>):</p>
@@ -343,7 +342,7 @@ Logging can be challenging because it is a cross-cutting concern that arises thr
 <p><em>Logging frameworks</em> have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
 <section id="logging-in-scala">
-<h3><span class="section-number">4.4.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
 <p>For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
@@ -372,7 +371,7 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 </section>
 <section id="defining-domain-models-in-imperative-and-object-oriented-languages">
-<span id="secdomainmodelsoo"></span><h2><span class="section-number">4.5. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Link to this heading"></a></h2>
+<span id="secdomainmodelsoo"></span><h2><span class="section-number">3.5. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Link to this heading"></a></h2>
 <p>In imperative and object-oriented languages, the basic type abstractions are</p>
 <ul class="simple">
 <li><p>addressing: pointers, references</p></li>
@@ -420,7 +419,7 @@ To use log4s minimally, the following steps are required:</p>
 <li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java</a></p></li>
 </ul>
 <section id="object-oriented-scala-as-a-better-java">
-<h3><span class="section-number">4.5.1. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.1. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Link to this heading"></a></h3>
 <p>Scala offers various improvements over Java, including:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/first-look-at-types.html">unified types</a></p></li>
@@ -452,7 +451,7 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 </section>
 <section id="modularity-and-dependency-injection">
-<h2><span class="section-number">4.6. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.6. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To wrap your head around this section, you may want to start by recalling/reviewing the <a class="reference external" href="https://github.com/lucoodevcourse/stopwatch-android-java">stopwatch example</a> from COMP 313/413 (intermediate object-oriented programming).
@@ -462,7 +461,7 @@ After creating the instances of those components, you had to connect them to eac
 In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.</p>
 </div>
 <section id="design-goals">
-<h3><span class="section-number">4.6.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h3>
 <p>We pursue following design goals tied to the nonfunctional code quality requirements:</p>
 <ul class="simple">
 <li><p><em>testability</em></p></li>
@@ -478,7 +477,7 @@ In this section and the pertinent examples, we are achieving basically the same 
 <p>In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.</p>
 </section>
 <section id="scala-traits">
-<h3><span class="section-number">4.6.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Link to this heading"></a></h3>
 <p>Scala traits are <em>abstract</em> types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
 The <a class="reference external" href="http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/">Thin Cake idiom</a> shows how traits can help us achieve our design goals.</p>
@@ -522,7 +521,7 @@ in this case, the additional complexity introduced to achieve testability would 
 </div>
 </section>
 <section id="trait-based-dependency-injection">
-<h3><span class="section-number">4.6.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Link to this heading"></a></h3>
 <p>In the presence of modularity, <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of “finding” its dependency, i.e., performing <em>dependency lookup</em>.
 In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.</p>
 <p>The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
@@ -537,8 +536,8 @@ The actual “injection” takes place when we inject, say, <code class="docutil
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="background.html" class="btn btn-neutral float-left" title="3. Context and Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="functionalprogramming.html" class="btn btn-neutral float-right" title="5. The Functional Programming Paradigm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="background.html" class="btn btn-neutral float-left" title="2. Context and Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functionalprogramming.html" class="btn btn-neutral float-right" title="4. The Functional Programming Paradigm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
