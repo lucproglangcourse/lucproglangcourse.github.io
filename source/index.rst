@@ -37,7 +37,7 @@ Please submit `issues <https://github.com/lucproglangcourse/lucproglangcourse.gi
 
 
 Contents
-========
+--------
 
 .. toctree::
    :maxdepth: 2
@@ -58,7 +58,7 @@ Contents
    todo
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`search`
