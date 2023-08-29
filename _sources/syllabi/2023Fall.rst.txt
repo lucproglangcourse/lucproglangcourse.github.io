@@ -1,5 +1,5 @@
-Sections: 001 Fall 2023
-~~~~~~~~~~~~~~~~~~~~~~~
+Section: 001 Fall 2023
+~~~~~~~~~~~~~~~~~~~~~~
 
 - *General format:*
 
