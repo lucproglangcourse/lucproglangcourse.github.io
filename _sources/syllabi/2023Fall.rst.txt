@@ -20,7 +20,7 @@ Section: 001 Fall 2023
 - *Office hours:*
 
   - Tue 18:45-19:15 outside of Cuneo 002 or in Cuneo 003 (after class, no appointment required)
-  - Wed and Fri 13:30-15:30 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
+  - Wed and Fri 14:00-15:45 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
   - TA office hours TBD
 
 - *Required materials:*
