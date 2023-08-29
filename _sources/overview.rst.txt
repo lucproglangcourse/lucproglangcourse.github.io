@@ -38,7 +38,7 @@ You might find the following resources useful to get into the functional program
 
 - Presentation by Martin Odersky: Scala with Style `(YouTube) <http://www.youtube.com/watch?v=kkTFx3-duc8>`_
 - Interview with Simon Peyton-Jones on Functional Programming and Haskell `(SE Radio audio podcast) <http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell>`_
-- Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison `(visual presentation) <http://klaeufer.github.com/luc-amc.html>`_
+- Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison `(visual presentation) <_static/luc-amc.html>`_
 
 .. todo:: incorporate visual presentation here
 
