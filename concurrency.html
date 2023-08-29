@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. The Concurrent Programming Paradigm &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
+  <title>7. The Concurrent Programming Paradigm &mdash; Loyola University Chicago COMP 371/471 Lecture Notes v1.0</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Summary" href="summary.html" />
-    <link rel="prev" title="5. Program Representation and Interpretation" href="representationinterpretation.html" /> 
+    <link rel="next" title="8. Summary" href="summary.html" />
+    <link rel="prev" title="6. Program Representation and Interpretation" href="representationinterpretation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,30 +47,31 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">4. The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. The Concurrent Programming Paradigm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">6.1. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#activity-terminology-and-concerns">6.2. Activity terminology and concerns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#thread-safety">6.3. Thread safety</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#understanding-the-extent-of-nondeterminism">6.3.1. Understanding the extent of nondeterminism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta.html">1. About the Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">2. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">3. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">4. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">5. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">6. Program Representation and Interpretation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. The Concurrent Programming Paradigm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">7.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activity-terminology-and-concerns">7.2. Activity terminology and concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thread-safety">7.3. Thread safety</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-the-extent-of-nondeterminism">7.3.1. Understanding the extent of nondeterminism</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#dealing-with-shared-state">6.4. Dealing with shared state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conflicting-design-forces">6.5. (Conflicting) design forces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#specific-concurrency-mechanisms">6.6. Specific concurrency mechanisms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references-concurrent-and-asynchronous-computing">6.7. References: concurrent and asynchronous computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dealing-with-shared-state">7.4. Dealing with shared state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conflicting-design-forces">7.5. (Conflicting) design forces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specific-concurrency-mechanisms">7.6. Specific concurrency mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references-concurrent-and-asynchronous-computing">7.7. References: concurrent and asynchronous computing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">7. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">8. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">9. Appendix: Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">10. Appendix: Course Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">11. Appendix: Course Syllabi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">12. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">8. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">9. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">11. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">12. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">13. Appendix: TODO</a></li>
 </ul>
 
         </div>
@@ -87,7 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">6. </span>The Concurrent Programming Paradigm</li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>The Concurrent Programming Paradigm</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/concurrency.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -98,9 +99,9 @@
            <div itemprop="articleBody">
              
   <section id="the-concurrent-programming-paradigm">
-<h1><span class="section-number">6. </span>The Concurrent Programming Paradigm<a class="headerlink" href="#the-concurrent-programming-paradigm" title="Link to this heading"></a></h1>
+<h1><span class="section-number">7. </span>The Concurrent Programming Paradigm<a class="headerlink" href="#the-concurrent-programming-paradigm" title="Link to this heading"></a></h1>
 <section id="overview">
-<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>Why and when do we need concurrency?</p>
 <ul class="simple">
 <li><p>When it is a natural fit for the problem domain</p>
@@ -126,7 +127,7 @@
 </ul>
 </section>
 <section id="activity-terminology-and-concerns">
-<h2><span class="section-number">6.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>process: own memory</p></li>
 <li><p>thread: shared memory <em>and</em> “thread-local” state</p></li>
@@ -143,7 +144,7 @@
 </ul>
 </section>
 <section id="thread-safety">
-<h2><span class="section-number">6.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>nondeterminism</p>
 <ul>
@@ -159,7 +160,7 @@
 <li><p>root cause of thread safety problems</p></li>
 </ul>
 <section id="understanding-the-extent-of-nondeterminism">
-<h3><span class="section-number">6.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Link to this heading"></a></h3>
 <p>Consider this small example of two concurrent increment operations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
 <span class="o">/*</span><span class="n">s1</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>          <span class="o">/*</span><span class="n">s2</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -193,7 +194,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </section>
 </section>
 <section id="dealing-with-shared-state">
-<h2><span class="section-number">6.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>mutual exclusion/locking</p></li>
 <li><p>confinement</p></li>
@@ -202,7 +203,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="conflicting-design-forces">
-<h2><span class="section-number">6.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>correctness/(thread-)safety</p></li>
 <li><p>liveness/deadlock</p>
@@ -221,7 +222,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="specific-concurrency-mechanisms">
-<h2><span class="section-number">6.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
 <p>Language constructs, patterns, building blocks:</p>
 <ul class="simple">
 <li><p>threads (familiar from 313/413)</p></li>
@@ -254,7 +255,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="references-concurrent-and-asynchronous-computing">
-<h2><span class="section-number">6.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Läufer and Thiruvathukal, <a class="reference external" href="https://arxiv.org/abs/1705.02899">CDER book chapter</a></p></li>
 <li><p>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></p></li>
@@ -276,8 +277,8 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="representationinterpretation.html" class="btn btn-neutral float-left" title="5. Program Representation and Interpretation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="summary.html" class="btn btn-neutral float-right" title="7. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="representationinterpretation.html" class="btn btn-neutral float-left" title="6. Program Representation and Interpretation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="summary.html" class="btn btn-neutral float-right" title="8. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
