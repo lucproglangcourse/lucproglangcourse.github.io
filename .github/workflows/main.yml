@@ -68,4 +68,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            build/latex/LUCProgLangCourse.pdf
+            build/latex/proglang.pdf
