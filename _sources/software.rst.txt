@@ -46,22 +46,19 @@ Be sure to
 Gitpod (recommended)
 ````````````````````
 
-Gitpod is a cloud-based development environment based on Visual Studio
-Code running on Ubuntu LTS.
+Gitpod is a cloud-based development environment based on Visual Studio Code running on Ubuntu LTS.
 
-To launch, visit https://gitpod.io and log in using your GitHub
-account.
+To launch, visit https://gitpod.io and log in using your GitHub account.
 
-- The first time around, create a new workspace and select the GitHub
-  project you want to work on in the new workspace.
-- After that, your GitHub landing page will show your workspace(s).
-- For each new workspace, using the installed `SDKMAN!
-  <https://sdkman.io>`_, perform a one-time installation of java and `sbt
-  <https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html>`_.
-- Optionally, install the VS Code Scala and Metals extensions, as well
-  as any other desired extensions.
-- Now you should be able to work on the project by following the
-  instructions in the readme.
+- The first time around, create a new workspace and select the GitHub project (or paste the URL of a GitHub project) you want to work on in the new workspace; you should see this kind of configuration page:
+
+  .. image:: images/gitpod.png
+  
+- When you visit Gitpod again, your GitPod landing page will show your existing workspace(s) along with the option to create a new one.
+- For each new workspace, using the installed `SDKMAN! <https://sdkman.io>`_, perform a one-time installation of java and `sbt <https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html>`_
+  (unless the project is already configured to perform these steps automatically).
+- The VS Code Scala and Metals extensions seem to get installed automatically; otherwise you can install them manually along with any other desired extensions.
+- Now you should be able to work on the project by using the hamburger menu in the top left corner to open a terminal and following the instructions in the included README.
 
 
 Locally installed development environment
