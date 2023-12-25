@@ -142,7 +142,7 @@ GitHub
 
 - Create a GitHub account if you don't already have one.
 - Get the `GitHub Student Developer Pack <https://education.github.com/pack/join>`_ using your official ``@luc.edu`` address. This will give you free unlimited private repositories.
-- Find and follow a few practitioners you respect. For example, I follow `these developers <https://github.com/klaeufer/following>`_. You'll probably recognize a number of them.
+- Find and follow a few practitioners you respect. For example, I follow `these developers <https://github.com/klaeufer?tab=following>`_. You'll probably recognize a number of them.
 - Review `these notes <https://guides.github.com/activities/contributing-to-open-source>`_ to understand the community-based development process.
 - For credit toward class participation, create some meaningful `GitHub issues <https://guides.github.com/features/issues>`_ and/or `GitHub pull requests <https://help.github.com/articles/using-pull-requests>`_ for one or more of our `course examples <https://github.com/lucproglangcourse>`_. (Make sure to navigate to the original repos as these forks do not have their own issue trackers). These can be functional or nonfunctional enhancements, requests for clarification, etc.
 - To enhance your visibility in the professional community, start doing the same for some open-source projects you are interested in.
