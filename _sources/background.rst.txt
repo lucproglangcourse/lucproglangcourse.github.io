@@ -146,6 +146,6 @@ Before drawing any conclusions from these indices, it is important to understand
 
 - `PYPL PopularitY of Programming Language index <https://pypl.github.io>`_
 - `TIOBE programming community index <http://www.tiobe.com/tiobe-index>`_
-- `GitHub language popularity <https://octoverse.github.com/2022/top-programming-languages>`_
+- `GitHub language popularity <https://github.blog/2023-11-08-the-state-of-open-source-and-ai>`_ (scroll about half-way down to the relevant section)
 - `Stack Overflow developer survey <https://insights.stackoverflow.com/survey>`_
 - `Programming languages shootout benchmark <https://benchmarksgame-team.pages.debian.net/benchmarksgame/>`_
