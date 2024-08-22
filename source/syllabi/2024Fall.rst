@@ -78,7 +78,7 @@ Section: 001 Fall 2024
 
 - *Academic integrity:* `LUC <https://www.luc.edu/academics/catalog/undergrad/reg_academicintegrity.shtml>`_ | `CAS <https://www.luc.edu/cas/advising/academicintegritystatement/>`_ | `Grad <https://www.luc.edu/gradschool/academics_policies.shtml>`_
 - `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_371_001_3208_1246/>`_
-- `MS Team <https://teams.microsoft.com/l/channel/19%3AYG3pqsKZP0strXI4MRcBabjDxtdH-J4cH9QzUoPNa_I1%40thread.tacv2/Fall%202024?groupId=c4cd990e-f10c-4279-8e11-cd8f44b1a408&tenantId=&ngc=true&allowXTenantAccess=true>`_ *(mandatory subscription and participation in fall 2024 channel)*
+- `MS Team <https://teams.microsoft.com/l/channel/19%3Adb48be23e856472cb3337a006319cdda%40thread.tacv2/Fall%202024%20Section%20001?groupId=c4cd990e-f10c-4279-8e11-cd8f44b1a408&tenantId=021f4fe3-2b9c-4824-8378-bbcf9ec5accb>`_ *(mandatory subscription and participation in fall 2024 channel)*
 
 - Important dates (tentative) for quizzes and tests:
 
