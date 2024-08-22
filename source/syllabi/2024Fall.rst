@@ -1,0 +1,134 @@
+Section: 001 Fall 2024
+~~~~~~~~~~~~~~~~~~~~~~
+
+- *General format:*
+
+  - This is a *on-campus*, face-to-face class involving lectures, group activities, etc.
+  - I will make an effort to record all lectures for later viewing through Sakai/Panopto. In addition, some prerecorded videos are available through Panopto.
+  - To earn points for group activities or other in-class activities,
+    you are required to participate during class time (in person or remotely) or make up for the work outside of class.
+  - *Estimated workload: 9 to 12 hours per week including class time.*
+
+- *Class time and location (fall 2024):* Tue 16:15-18:45 in Cuneo 002, LSC
+
+- *Communication:* All communication regarding this class takes place in the classroom (verbal) and MS Teams (written). Most will be in the team-level channel specific to this term. For individual or group-level concerns, you may use direct individual or group messages in MS Teams; my user ID is **klaufer@luc.edu**. *(To help me prioritize your class-related communication, please DO NOT use email!)*
+
+- *Instructor:* `Konstantin Läufer <https://laufer.cs.luc.edu>`_ | `GitHub <https://github.com/klaeufer>`_ | `Google Scholar <http://scholar.google.com/citations?user=Rs0f_nMAAAAJ>`_ | `Rate My Prof <https://www.ratemyprofessors.com/ShowRatings.jsp?tid=287274>`_
+
+- *TA:* Eyad Fallatah
+
+- *Office hours:*
+
+  - Tue 18:45-19:15 outside of Cuneo 002 or in Cuneo 003 (after class, no appointment required)
+  - Wed and Fri 14:00-15:30 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
+  - TA office hours TBD
+
+- *Required materials:*
+
+  - :ref:`appendix-software`
+  - `These lecture notes <https://lucproglangcourse.github.io>`_
+  - `Prerecorded lecture videos in Panopto <https://luc.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?embedded=1#folderID=%22eed1f68e-518b-4dc4-80f1-ad8d016c5f4e%22>`_
+  - `Läufer and Thiruvathukal's book chapter on concurrency <https://arxiv.org/abs/1705.02899>`_
+  - `Scala tutorials <https://docs.scala-lang.org/tutorials.html>`_
+
+    - Scala for Java programmers
+    - Getting started with Scala in IntelliJ/sbt
+
+  - `Scala 3 book <https://docs.scala-lang.org/scala3/book/introduction.html>`_
+  - `Wampler's Programming Scala book <https://learning.oreilly.com/library/view/programming-scala-3rd/9781492077886>`_
+Section: 001 Fall 2022
+~~~~~~~~~~~~~~~~~~~~~~
+
+- *General format:*
+
+  - This is a *on-campus*, face-to-face class involving lectures, group activities, etc.
+  - I will make an effort to record all lectures for later viewing through Sakai/Panopto. In addition, some prerecorded videos are available through Panopto.
+  - To earn points for group activities or other in-class activities,
+    you are required to participate during class time (in person or remotely) or make up for the work outside of class.
+  - *Estimated workload: 9 to 12 hours per week including class time.*
+
+- *Class time and location (fall 2022):* Tue 16:15-18:45 in SES 122, LSC
+
+- *Communication:* All communication regarding this class takes place in the classroom (verbal) and MS Teams (written). Most will be in the team-level channel specific to this term. For individual or group-level concerns, you may use direct individual or group messages in MS Teams; my user ID is **klaufer@luc.edu**. *(To help me prioritize your class-related communication, please DO NOT use email!)*
+
+- *Instructor:* `Konstantin Läufer <https://laufer.cs.luc.edu>`_ | `GitHub <https://github.com/klaeufer>`_ | `Google Scholar <http://scholar.google.com/citations?user=Rs0f_nMAAAAJ>`_ | `Rate My Prof <https://www.ratemyprofessors.com/ShowRatings.jsp?tid=287274>`_
+
+- *TA:* Álvaro de Landaluce
+
+- *Office hours:*
+
+  - Tue 18:45-19:15 in SES 122 (after class, no appointment required)
+  - Thu 18:45-18:55 in Cuneo Hall 104 (after class, no appointment required)
+  - Wed and Fri 13:30-15:30 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
+  - TA office hours TBD
+
+- *Required materials:*
+
+  - :ref:`appendix-software`
+  - `These lecture notes <https://lucproglangcourse.github.io>`_
+  - `Prerecorded lecture videos in Panopto <https://luc.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?embedded=1#folderID=%22eed1f68e-518b-4dc4-80f1-ad8d016c5f4e%22>`_
+  - `Läufer and Thiruvathukal's book chapter on concurrency <https://arxiv.org/abs/1705.02899>`_
+  - `Scala tutorials <https://docs.scala-lang.org/tutorials.html>`_
+
+    - Scala for Java programmers
+    - Getting started with Scala in IntelliJ/sbt
+
+  - `Scala 3 book <https://docs.scala-lang.org/scala3/book/introduction.html>`_
+  - `Wampler's Programming Scala book <https://learning.oreilly.com/library/view/programming-scala-3rd/9781492077886>`_
+  - `Horstmann's Scala for the Impatient book (selected chapters) <https://learning.oreilly.com/library/view/scala-for-the/9780138033613/>`_
+  - `online Scala exercises by 47 Degrees <https://www.scala-exercises.org/>`_
+
+    - Scala tutorial
+    - Std Lib
+
+- *Additional resources:* :ref:`appendix-resources`
+
+- *Grading:*
+
+  Additive **point** system:
+
+  - 21 points: *quizzes* 0 3,  1-3 6 each
+  - 24 points: two *tests*, 12 each
+  - 37 points ug / 44 grad: *projects* 0a 2, 0b 3, 1a and 2a/b 6 each, 3a/b 7 each, 3c 7 (required for grad students) *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+  - 12 points: four *group activities*, 3 each
+  - 5 points: *presentation*
+  - 5 points: *participation* (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
+  - 7 points: starting baseline for undergrads
+  - 1 point extra credit: submission of course evaluation (submit screenshot of confirmation of submission) 
+  - various extra credit opportunities: project 3c 7 (ug), project 1b 6 (ug/grad)
+
+  **Max total: 111 points plus extra credit**
+
+  *Grading schema (in points):*
+
+  - A 100 points
+  - A- 96
+  - B+ 92
+  - B 88
+  - B- 84
+  - C+ 80
+  - C 75
+  - C- 70
+  - D+ 65
+  - D 60
+  - F < 60
+
+- *Academic integrity:* `LUC <https://www.luc.edu/academics/catalog/undergrad/reg_academicintegrity.shtml>`_ | `CAS <https://www.luc.edu/cas/advising/academicintegritystatement/>`_ | `Grad <https://www.luc.edu/gradschool/academics_policies.shtml>`_
+- `Sakai site for this section (gradebook) <https://sakai.luc.edu/portal/site/COMP_371_001_3208_1246/>`_
+- `MS Team <https://teams.microsoft.com/l/channel/19%3AYG3pqsKZP0strXI4MRcBabjDxtdH-J4cH9QzUoPNa_I1%40thread.tacv2/Fall%202024?groupId=c4cd990e-f10c-4279-8e11-cd8f44b1a408&tenantId=&ngc=true&allowXTenantAccess=true>`_ *(mandatory subscription and participation in fall 2024 channel)*
+
+- Important dates (tentative) for quizzes and tests:
+
+  - Week 3 - Tue 10 September: quiz 0
+  - Week 5 - Tue 24 September: quiz 1
+  - Week 7 - Tue 8 October: **NO CLASS (fall break)**
+  - Week 8 - Tue 15 October: test 1
+  - Week 10 - Tue 29 October: quiz 2
+  - Week 11 - Fri 1 November: *last day to withdraw with W instead of WF*
+  - Week 12 - Tue 12 November: test 2
+  - Week 13 - Tue 19 November:  **ONLINE SESSION (Thanksgiving break), details TBA**
+  - Week 16 (finals week) - Tue 10 December: *quiz 3 followed by class session*
+
+- *Recording of class meetings:* In this class, software will be used to record live class discussions. As a student in this class, your participation in live class discussions will be recorded. These recordings will be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
+
+- *Privacy Statement:* Assuring privacy among faculty and students engaged in online and face-to-face instructional activities helps promote open and robust conversations and mitigates concerns that comments made within the context of the class will be shared beyond the classroom. As such, recordings of instructional activities occurring in online or face-to-face classes may be used solely for internal class purposes by the faculty member and students registered for the course, and only during the period in which the course is offered. Students will be informed of such recordings by a statement in the syllabus for the course in which they will be recorded. Instructors who wish to make subsequent use of recordings that include student activity may do so only with informed written consent of the students involved or if all student activity is removed from the recording. Recordings including student activity that have been initiated by the instructor may be retained by the instructor only for individual use.
