@@ -122,7 +122,7 @@ Section: 001 Fall 2022
   - Week 3 - Tue 10 September: quiz 0
   - Week 5 - Tue 24 September: quiz 1
   - Week 7 - Tue 8 October: **NO CLASS (fall break)**
-  - Week 8 - Tue 15 October: test 1
+  - Week 8 - Tue 15 October: test 1 **ONLINE SESSION, details TBA**
   - Week 10 - Tue 29 October: quiz 2
   - Week 11 - Fri 1 November: *last day to withdraw with W instead of WF*
   - Week 12 - Tue 12 November: test 2
