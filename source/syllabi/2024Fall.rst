@@ -42,6 +42,8 @@ Section: 001 Fall 2024
     - Scala tutorial
     - Std Lib
 
+  - `Programming with Rust book <https://learning.oreilly.com/library/view/programming-with-rust/9780137889754/>`_
+
 - *Additional resources:* :ref:`appendix-resources`
 
 - *Grading:*
