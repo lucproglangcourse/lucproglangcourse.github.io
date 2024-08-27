@@ -31,7 +31,7 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
-    'sphinxcontrib.bibtex',
+#    'sphinxcontrib.bibtex',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode'
 ]
