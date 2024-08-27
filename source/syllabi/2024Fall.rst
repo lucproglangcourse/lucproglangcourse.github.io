@@ -19,7 +19,8 @@ Section: 001 Fall 2024
 
 - *Office hours:*
 
-  - Tue 18:45-19:15 outside of Cuneo 002 or in Cuneo 003 (after class, no appointment required)
+  - Tue 18:45-19:15 in Cuneo 002 (after class, no appointment required)
+  - Thu 18:45-19:15 in Mundelein 415 (after class, no appointment required)
   - Wed and Fri 14:00-15:30 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
   - TA office hours TBD
 
