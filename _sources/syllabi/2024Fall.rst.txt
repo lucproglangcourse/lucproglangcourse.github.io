@@ -17,7 +17,7 @@ Section: 001 Fall 2024
 
 - *Instructor:* `Konstantin Läufer <https://laufer.cs.luc.edu>`_ | `GitHub <https://github.com/klaeufer>`_ | `Google Scholar <http://scholar.google.com/citations?user=Rs0f_nMAAAAJ>`_ | `Rate My Prof <https://www.ratemyprofessors.com/ShowRatings.jsp?tid=287274>`_
 
-- *TA:* Eyad Fallatah
+- *TA:* Eric Pautsch (contact info and office hours TBA)
 
 - *Office hours:*
 
