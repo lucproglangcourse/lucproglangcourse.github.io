@@ -254,52 +254,8 @@
           <section id="context-and-background">
 <h1><span class="section-number">2. </span>Context and Background<a class="headerlink" href="#context-and-background" title="Link to this heading"></a></h1>
 <p>In this chapter, we establish a practical context and provide some background information for the study of programming languages.</p>
-<section id="overview-of-a-lightweight-development-process">
-<h2><span class="section-number">2.1. </span>Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Link to this heading"></a></h2>
-<p>A successful development process usually comprises these minimal elements:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a></p>
-<ul>
-<li><p>tests represent expectations of how the software should behave</p></li>
-<li><p>when expressed as code, these are</p>
-<ul>
-<li><p>fun to produce (like other coding)</p></li>
-<li><p>convenient to run frequently</p></li>
-</ul>
-</li>
-<li><p>fix system-under-test (SUT) (not tests themselves) until tests pass</p></li>
-<li><p>retest every time</p>
-<ul>
-<li><p>a feature is added</p></li>
-<li><p>the code is refactored</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.refactoring.com/">refactoring</a></p>
-<ul>
-<li><p>improve the quality of the code without changing its behavior</p>
-<ul>
-<li><p>macro level: nonfunctional requirements (quality factors)</p></li>
-<li><p>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://refactoring.com/catalog/">catalog of refactorings</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></p></li>
-</ul>
-<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates continuous integration using various hosted services:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</p></li>
-<li><p><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</p></li>
-<li><p><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</p></li>
-<li><p><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</p></li>
-</ul>
-<p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
-</section>
 <section id="software-requirements">
-<h2><span class="section-number">2.2. </span>Software requirements<a class="headerlink" href="#software-requirements" title="Link to this heading"></a></h2>
+<h2><span class="section-number">2.1. </span>Software requirements<a class="headerlink" href="#software-requirements" title="Link to this heading"></a></h2>
 <p>In most cases, we develop software to provide some form of value:</p>
 <ul class="simple">
 <li><p>learn a language, library, framework, platform, technique, or tool
@@ -353,6 +309,50 @@
 <figure class="align-default">
 <img alt="_images/KazmanQualityFactors.png" src="_images/KazmanQualityFactors.png" />
 </figure>
+</section>
+<section id="overview-of-a-lightweight-development-process">
+<h2><span class="section-number">2.2. </span>Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Link to this heading"></a></h2>
+<p>A successful development process usually comprises these minimal elements:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://martinfowler.com/bliki/SelfTestingCode.html">automated regression testing</a></p>
+<ul>
+<li><p>tests represent expectations of how the software should behave</p></li>
+<li><p>when expressed as code, these are</p>
+<ul>
+<li><p>fun to produce (like other coding)</p></li>
+<li><p>convenient to run frequently</p></li>
+</ul>
+</li>
+<li><p>fix system-under-test (SUT) (not tests themselves) until tests pass</p></li>
+<li><p>retest every time</p>
+<ul>
+<li><p>a feature is added</p></li>
+<li><p>the code is refactored</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.refactoring.com/">refactoring</a></p>
+<ul>
+<li><p>improve the quality of the code without changing its behavior</p>
+<ul>
+<li><p>macro level: nonfunctional requirements (quality factors)</p></li>
+<li><p>micro level: <a class="reference external" href="https://refactoring.guru/smells/smells">code smells</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://refactoring.com/catalog/">catalog of refactorings</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.martinfowler.com/articles/continuousIntegration.html">continuous integration</a></p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates continuous integration using various hosted services:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</p></li>
+<li><p><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</p></li>
+<li><p><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</p></li>
+<li><p><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
 </section>
 <section id="software-design-principles-and-patterns">
 <h2><span class="section-number">2.3. </span>Software design principles and patterns<a class="headerlink" href="#software-design-principles-and-patterns" title="Link to this heading"></a></h2>
@@ -465,8 +465,8 @@ Before drawing any conclusions from these indices, it is important to understand
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">2. Context and Background</a><ul>
-<li><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.1. Overview of a lightweight development process</a></li>
-<li><a class="reference internal" href="#software-requirements">2.2. Software requirements</a></li>
+<li><a class="reference internal" href="#software-requirements">2.1. Software requirements</a></li>
+<li><a class="reference internal" href="#overview-of-a-lightweight-development-process">2.2. Overview of a lightweight development process</a></li>
 <li><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
 <li><a class="reference internal" href="#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
 <li><a class="reference internal" href="#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
