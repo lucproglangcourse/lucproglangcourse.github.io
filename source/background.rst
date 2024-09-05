@@ -4,49 +4,6 @@ Context and Background
 In this chapter, we establish a practical context and provide some background information for the study of programming languages.
 
 
-Overview of a lightweight development process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A successful development process usually comprises these minimal elements:
-
-- `automated regression testing <https://martinfowler.com/bliki/SelfTestingCode.html>`_
-
-  - tests represent expectations of how the software should behave
-  - when expressed as code, these are
-
-    - fun to produce (like other coding)
-    - convenient to run frequently
-
-  - fix system-under-test (SUT) (not tests themselves) until tests pass
-
-  - retest every time
-
-    - a feature is added
-
-    - the code is refactored
-
-- `refactoring <https://www.refactoring.com/>`_
-
-  - improve the quality of the code without changing its behavior
-
-    - macro level: nonfunctional requirements (quality factors)
-
-    - micro level: `code smells <https://refactoring.guru/smells/smells>`_
-
-  - `catalog of refactorings <https://refactoring.com/catalog/>`_
-
-- `continuous integration <https://www.martinfowler.com/articles/continuousIntegration.html>`_
-
-The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates continuous integration using various hosted services:
-
-- `Travis CI <https://travis-ci.org/LoyolaChicagoCode/processtree-scala>`_: continuous integration
-- `Codecov <https://codecov.io/gh/LoyolaChicagoCode/processtree-scala>`_: test coverage
-- `Codacy <https://www.codacy.com/app/laufer/processtree-scala>`_: automated code review
-- `IssueStats <http://issuestats.com/github/LoyolaChicagoCode/processtree-scala>`_ and `IsItMaintained <http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala>`_: stats on issues and pull requests
-
-The `click counter <https://github.com/LoyolaChicagoCode/clickcounter-android-java>`_ example includes additional hosted continuous integration and delivery targets suitable for mobile app development.
-
-
 Software requirements
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -96,6 +53,49 @@ Several common questions and issues related to requirements arise:
 The following figure by Kazman relates unit operations (high-level generalizations of refactorings) and software quality factors (nonfunctional requirements).
 
 .. figure:: images/KazmanQualityFactors.png
+
+
+Overview of a lightweight development process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A successful development process usually comprises these minimal elements:
+
+- `automated regression testing <https://martinfowler.com/bliki/SelfTestingCode.html>`_
+
+  - tests represent expectations of how the software should behave
+  - when expressed as code, these are
+
+    - fun to produce (like other coding)
+    - convenient to run frequently
+
+  - fix system-under-test (SUT) (not tests themselves) until tests pass
+
+  - retest every time
+
+    - a feature is added
+
+    - the code is refactored
+
+- `refactoring <https://www.refactoring.com/>`_
+
+  - improve the quality of the code without changing its behavior
+
+    - macro level: nonfunctional requirements (quality factors)
+
+    - micro level: `code smells <https://refactoring.guru/smells/smells>`_
+
+  - `catalog of refactorings <https://refactoring.com/catalog/>`_
+
+- `continuous integration <https://www.martinfowler.com/articles/continuousIntegration.html>`_
+
+The `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates continuous integration using various hosted services:
+
+- `Travis CI <https://travis-ci.org/LoyolaChicagoCode/processtree-scala>`_: continuous integration
+- `Codecov <https://codecov.io/gh/LoyolaChicagoCode/processtree-scala>`_: test coverage
+- `Codacy <https://www.codacy.com/app/laufer/processtree-scala>`_: automated code review
+- `IssueStats <http://issuestats.com/github/LoyolaChicagoCode/processtree-scala>`_ and `IsItMaintained <http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala>`_: stats on issues and pull requests
+
+The `click counter <https://github.com/LoyolaChicagoCode/clickcounter-android-java>`_ example includes additional hosted continuous integration and delivery targets suitable for mobile app development.
 
 
 Software design principles and patterns
