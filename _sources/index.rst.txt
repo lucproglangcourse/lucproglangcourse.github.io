@@ -1,4 +1,4 @@
-Welcome to the Theory (and Practice) of Programming Languages!
+Lecture Notes: Theory (and Practice) of Programming Languages!
 ==============================================================
 
 COMP 371/471
