@@ -161,10 +161,9 @@ This gives you an iterator of strings with each item representing one line. When
 
 To break the standard input down further into words, we can use this recipe::
 
-    val words = {
+    val words =
       import scala.language.unsafeNulls
       lines.flatMap(l => l.split("(?U)[^\\p{Alpha}0-9']+"))
-    }    
 
 The result of ``l.split(regex)`` is an array of strings, where some of the strings or the entire array could possibly be ``null``. 
 While ``flatMap`` is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce ``null`` references.
