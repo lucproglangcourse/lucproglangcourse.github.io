@@ -1,7 +1,13 @@
 Welcome to the Theory (and Practice) of Programming Languages!
 ==============================================================
 
+COMP 371/471
+| `Department of Computer Science <http://luc.edu/cs>`_
+| `Loyola University Chicago <http://luc.edu>`_
+
 You have reached the home of the Programming Languages course (COMP 371/471) in the Computer Science Department of Loyola University Chicago.
+
+*Welcome! Wöllkomme! ¡Bienvenidos/as! Benvenuti/e!*
 
 .. warning::
 
