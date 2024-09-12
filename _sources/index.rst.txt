@@ -1,5 +1,5 @@
-Lecture Notes: Theory (and Practice) of Programming Languages!
-==============================================================
+Lecture Notes: Theory (and Practice) of Programming Languages
+=============================================================
 
 COMP 371/471
 | `Department of Computer Science <http://luc.edu/cs>`_
