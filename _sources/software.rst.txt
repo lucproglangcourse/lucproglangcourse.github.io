@@ -59,9 +59,9 @@ To launch, visit https://gitpod.io and log in using your GitHub account.
   (unless the project is already configured to perform these steps automatically).
 - The VS Code Scala and Metals extensions seem to get installed automatically; otherwise you can install them manually along with any other desired extensions.
 - Now you should be able to work on the project by using the hamburger menu in the top left corner to open a terminal and following the instructions in the included README.
-- Sometimes Gitpod loses changes made to the workspace itself, such as installing packages via `sdk`. 
-For example, it might no longer find `sbt`.
-In these cases, simply rerun `sdk install sbt` and `sbt reinstall java`.
+- Sometimes Gitpod loses changes made to the workspace itself, such as installing packages via ``sdk``. 
+For example, it might no longer find ``sbt``.
+In these cases, simply rerun ``sdk install sbt`` and ``sbt reinstall java``.
 
 
 Locally installed development environment
