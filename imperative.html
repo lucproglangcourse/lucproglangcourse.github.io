@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" /><link rel="prev" title="2. Context and Background" href="background.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>3. The Imperative and Object-Oriented Paradigms in Scala - Loyola University Chicago COMP 371/471 Lecture Notes v24f.3</title>
+        <title>3. The Imperative and Object-Oriented Paradigms in Scala - Loyola University Chicago COMP 371/471 Lecture Notes v24f.5</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.3</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.5</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.3</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.5</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -260,24 +260,24 @@
 <ul>
 <li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
 We can launch the Scala REPL and then evaluate definitions and expressions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scala
-Welcome to Scala 3.2.0 (17.0.4.1, Java OpenJDK 64-Bit Server VM).
-Type in expressions for evaluation. Or try :help.
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">scala</span>
+<span class="nc">Welcome</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nc">Scala</span><span class="w"> </span><span class="mf">3.2.0</span><span class="w"> </span><span class="p">(</span><span class="mf">17.0.4.1</span><span class="p">,</span><span class="w"> </span><span class="nc">Java</span><span class="w"> </span><span class="nc">OpenJDK</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span><span class="w"> </span><span class="nc">Server</span><span class="w"> </span><span class="nc">VM</span><span class="p">).</span>
+<span class="nc">Type</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">expressions</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">evaluation</span><span class="p">.</span><span class="w"> </span><span class="nc">Or</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">:</span><span class="n">help</span><span class="p">.</span>
 
-scala&gt; 3 + 4
-res0: Int = 7
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">res0</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
 
-scala&gt; def f(x: Int) = x + 2
-f: (x: Int)Int
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span><span class="nc">Int</span>
 
-scala&gt; f(3)
-res1: Int = 5
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">res1</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 
-scala&gt; val z = f(4)
-z: Int = 6
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">z</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span>
 
-scala&gt; Seq(1, 2, 3).map(f)
-res2: Seq[Int] = List(3, 4, 5)
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">res2</span><span class="p">:</span><span class="w"> </span><span class="nc">Seq</span><span class="p">[</span><span class="nc">Int</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This is a very effective, painless way to conduct initial explorations.
@@ -285,40 +285,40 @@ The drawback of this approach is a lack of support for <em>managed dependencies<
 In that case, starting the Scala REPL through sbt as discussed below is a much better choice.
 Managing the Scala/Java classpath manually is discouraged.</p>
 <p>You can also run simple scripts (with optional command-line arguments) directly through the scala interpreter. A <code class="docutils literal notranslate"><span class="pre">main</span></code> method or <code class="docutils literal notranslate"><span class="pre">&#64;main</span></code> annotation is required, e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &gt; blah.scala
-def main(args: Array[String]) = println(args.toList)
-$ scala blah.scala 1 2 3
-List(1, 2, 3)
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>blah.scala
+def<span class="w"> </span>main<span class="o">(</span>args:<span class="w"> </span>Array<span class="o">[</span>String<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>println<span class="o">(</span>args.toList<span class="o">)</span>
+$<span class="w"> </span>scala<span class="w"> </span>blah.scala<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+List<span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>In a Scala IDE such as IntelliJ IDEA, we can run Scala applications (classes/objects with a <code class="docutils literal notranslate"><span class="pre">main</span></code> method) and Scala tests from within the IDE. To pass command-line arguments to an application, we have to create a suitable run configuration.</p></li>
 <li><p>It is best to use <a class="reference external" href="https://www.scala-sbt.org/">sbt</a> (the Scala Build Tool) for projects with one or more external dependencies because of sbt’s (and similar build tools’) ability to manage these dependencies in a declarative way:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt test
-$ sbt run
-$ sbt &quot;run arg1 arg2 ...&quot;
-$ sbt &quot;runMain my.pkg.Main arg1 arg2 ...&quot;
-$ sbt test:run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span><span class="nb">test</span>
+$<span class="w"> </span>sbt<span class="w"> </span>run
+$<span class="w"> </span>sbt<span class="w"> </span><span class="s2">&quot;run arg1 arg2 ...&quot;</span>
+$<span class="w"> </span>sbt<span class="w"> </span><span class="s2">&quot;runMain my.pkg.Main arg1 arg2 ...&quot;</span>
+$<span class="w"> </span>sbt<span class="w"> </span>test:run
 </pre></div>
 </div>
 <p>In addition, sbt allows you to start a REPL that exposes the code in your project and its managed dependencies.
 This is the preferred way to explore existing libraries:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt console
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>console
 </pre></div>
 </div>
 <p>You can also pull in the additional dependencies from the test scope:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt test:console
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>test:console
 </pre></div>
 </div>
 <p>If you want to bypass your own code in case of, say, compile-time errors, you can use one of these tasks:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt consoleQuick
-$ sbt test:consoleQuick
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>consoleQuick
+$<span class="w"> </span>sbt<span class="w"> </span>test:consoleQuick
 </pre></div>
 </div>
 <p>In conjunction with a <a class="reference external" href="https://www.gnu.org/software/emacs">text editor</a>, sbt’s <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a> for testing will significantly shorten the edit-compile-run/test cycle, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt
 ...
-&gt; ~ test
+&gt;<span class="w"> </span>~<span class="w"> </span><span class="nb">test</span>
 </pre></div>
 </div>
 </li>
@@ -329,136 +329,30 @@ So you can start exploring something in a test and then move it into your produc
 <a class="reference external" href="https://github.com/lucproglangcourse/cs2-listperformance-scala/blob/main/src/test/scala/cs271/lab/list/TestList.scala">The list performance example</a> illustrates this approach.</p></li>
 <li><p>Finally, to turn an sbt-based Scala application into a script (console application) you can run outside sbt, you can use the <a class="reference external" href="https://github.com/sbt/sbt-native-packager">sbt-native-packager</a> plugin.
 To use this plugin, add this line to the end of <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enablePlugins</span><span class="p">(</span><span class="n">JavaAppPackaging</span><span class="p">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>enablePlugins<span class="o">(</span>JavaAppPackaging<span class="o">)</span>
 </pre></div>
 </div>
 <p>and this one to <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s2">&quot;com.typesafe.sbt&quot;</span> <span class="o">%</span> <span class="s2">&quot;sbt-native-packager&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.5&quot;</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s">&quot;com.typesafe.sbt&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;sbt-native-packager&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.7.5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, after any change to your sources, you can create/update the script and run it from the command line like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbt stage
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>stage
 ...
-$ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
+$<span class="w"> </span>./target/universal/stage/bin/myapp-scala<span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w"> </span>...
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
-<section id="the-role-of-console-applications">
-<h2><span class="section-number">3.2. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
-<p>Console applications have always been an important part of the UNIX command-line environment.
-The typical console application interacts with its environment in the following ways:</p>
-<ul class="simple">
-<li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
-<li><p><em>standard input</em> (stdin) for reading the input data</p></li>
-<li><p><em>standard output</em> (stdout) for writing the output data</p></li>
-<li><p><em>standard error</em> (stderr) for displaying error messages separately from the output data</p></li>
-</ul>
-<p>Applications written in this way can function as composable building blocks using UNIX pipes.
-Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
-<p>E.g., the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
-the <code class="docutils literal notranslate"><span class="pre">head</span></code> command outputs a finite prefix of its input,
-and the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command counts the number of characters, words, or lines:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yes</span> <span class="n">hello</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
-</pre></div>
-</div>
-<p>You may wonder how the upstream (left) stages in the pipeline know when to terminate.
-Concretely, how does the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command know to terminate after <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first ten lines.
-When <code class="docutils literal notranslate"><span class="pre">head</span></code> is done after reading and passing through the specified number of lines, it closes its input stream, and <code class="docutils literal notranslate"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
-The default response to this error signal is termination.
-For more details on <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code>, see <a class="reference external" href="https://unix.stackexchange.com/a/84828">this StackExchange response</a>.</p>
-<p>We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done
-</pre></div>
-</div>
-<p>These techniques are useful for producing test data for our own applications.
-To this end, we can redirect output to a newly created file using this syntax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n=0 ; while :; do echo $n ; ((n=n+1)) ; done &gt; testdata.txt
-</pre></div>
-</div>
-<p>If <code class="docutils literal notranslate"><span class="pre">testdata.txt</span></code> already exists, it will be overwritten when using this syntax.
-We can also append to an existing file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="o">&gt;&gt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>Similarly, we can redirect input from a file using this notation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">testdata</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
-<section id="console-applications-in-scala">
-<h3><span class="section-number">3.2.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Link to this heading"></a></h3>
-<p>The following techniques are useful for creating console applications in Scala.
-As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
-<p>We can read the standard input as lines using this iterator:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">lines</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Source</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">getLines</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
-<p>To break the standard input down further into words, we can use this recipe:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">words</span> <span class="o">=</span>
-  <span class="kn">import</span> <span class="nn">scala.language.unsafeNulls</span>
-  <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span> <span class="o">=&gt;</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;(?U)[^</span><span class="se">\\</span><span class="s2">p</span><span class="si">{Alpha}</span><span class="s2">0-9&#39;]+&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>The result of <code class="docutils literal notranslate"><span class="pre">l.split(regex)</span></code> is an array of strings, where some of the strings or the entire array could possibly be <code class="docutils literal notranslate"><span class="pre">null</span></code>.
-While <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce <code class="docutils literal notranslate"><span class="pre">null</span></code> references.
-Because we require explicit typing of null references (by adding <code class="docutils literal notranslate"><span class="pre">&quot;-Yexplicit-nulls&quot;</span></code> to the compiler options in <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>), the Scala compiler considers this code incorrect and indicates an error unless we locally enable this potentially unsafe use of implicit null references.</p>
-<p>By default, the Java virtual machine converts the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal to an <code class="docutils literal notranslate"><span class="pre">IOException</span></code>.
-In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout, which is is an instance of <code class="docutils literal notranslate"><span class="pre">PrintStream</span></code>.
-This class converts any <code class="docutils literal notranslate"><span class="pre">IOException</span></code> to a boolean flag accessible through its <code class="docutils literal notranslate"><span class="pre">checkError()</span></code> method.
-(See also <a class="reference external" href="https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe">this discussion</a> for more details.)</p>
-<p>Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.</p>
-<p>For example, this program reads one line at a time and prints the line count along with the line read.
-After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span> <span class="n">do</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="n">println</span><span class="p">((</span><span class="n">count</span><span class="p">,</span> <span class="n">line</span><span class="p">))</span>
-  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="the-importance-of-constant-space-complexity">
-<span id="subsecconstantspace"></span><h3><span class="section-number">3.2.2. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h3>
-<p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
-To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.</p>
-<p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">lines</span> <span class="n">do</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>By contrast, this version has linear-space complexity and may run out of space on a large volume of input data:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">val</span> <span class="n">listOfLines</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">toList</span>
-<span class="k">for</span> <span class="n">line</span> <span class="o">&lt;-</span> <span class="n">listOfLines</span> <span class="n">do</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-  <span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">scala</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">checkError</span><span class="p">()</span> <span class="n">then</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot; lines counted&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
-Iterators support most of the same behaviors as in-memory collections.</p>
-<p>To observe a program’s memory footprint over time, we would typically use a heap profiler.
-For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
-<p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
-By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
-<img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
-</section>
-</section>
 <section id="choices-for-testing-scala-code">
-<h2><span class="section-number">3.3. </span>Choices for testing Scala code<a class="headerlink" href="#choices-for-testing-scala-code" title="Link to this heading"></a></h2>
-<p>There are various basic techniques and libraries/frameworks for testing Scala code.</p>
+<h2><span class="section-number">3.2. </span>Choices for testing Scala code<a class="headerlink" href="#choices-for-testing-scala-code" title="Link to this heading"></a></h2>
+<p>Testing is an important, widely used practice within the software development lifecycle (SDLC).
+There are various basic techniques and libraries/frameworks for testing Scala code.</p>
 <p>The simplest way is to intersperse assertions within your code.
 This is particularly effective for scripts and worksheets:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">l</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="k">assert</span> <span class="p">{</span> <span class="n">l</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="n">assert</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The following testing libraries/frameworks work well with Scala.</p>
@@ -472,49 +366,248 @@ This is particularly effective for scripts and worksheets:</p>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
 <p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>
 </section>
+<section id="the-role-of-console-applications">
+<h2><span class="section-number">3.3. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
+<p>Console applications have always been an important part of the UNIX command-line environment.
+The typical console application interacts with its environment in the following ways:</p>
+<ul class="simple">
+<li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
+<li><p><em>standard input</em> (stdin) for reading the input data</p></li>
+<li><p><em>standard output</em> (stdout) for writing the output data</p></li>
+<li><p><em>standard error</em> (stderr) for displaying error messages separately from the output data</p></li>
+</ul>
+<p>Applications written in this way can function as composable building blocks using UNIX pipes.
+Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
+<p>E.g., the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
+the <code class="docutils literal notranslate"><span class="pre">head</span></code> command outputs a finite prefix of its input,
+and the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command counts the number of characters, words, or lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>yes<span class="w"> </span>hello<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</pre></div>
+</div>
+<p>You may wonder how the upstream (left) stages in the pipeline know when to terminate.
+Concretely, how does the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command know to terminate after <code class="docutils literal notranslate"><span class="pre">head</span></code> reads the first ten lines.
+When <code class="docutils literal notranslate"><span class="pre">head</span></code> is done after reading and passing through the specified number of lines, it closes its input stream, and <code class="docutils literal notranslate"><span class="pre">yes</span></code> will receive an error signal called <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> when it tries to write further data to that stream.
+The default response to this error signal is termination.
+For more details on <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code>, see <a class="reference external" href="https://unix.stackexchange.com/a/84828">this StackExchange response</a>.</p>
+<p>We can also use the control structures built into the shell. E.g., the following loop prints an infinite sequence of consecutive integers starting from 0:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">n</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span>:<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">((</span><span class="nv">n</span><span class="o">=</span>n+1<span class="o">))</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+<p>These techniques are useful for producing test data for our own applications.
+To this end, we can redirect output to a newly created file using this syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">n</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="w"> </span>:<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$n</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">((</span><span class="nv">n</span><span class="o">=</span>n+1<span class="o">))</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span>&gt;<span class="w"> </span>testdata.txt
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">testdata.txt</span></code> already exists, it will be overwritten when using this syntax.
+We can also append to an existing file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>...<span class="w"> </span>&gt;&gt;<span class="w"> </span>testdata.txt
+</pre></div>
+</div>
+<p>Similarly, we can redirect input from a file using this notation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>testdata.txt
+</pre></div>
+</div>
+<p>There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
+<section id="console-applications-in-scala">
+<h3><span class="section-number">3.3.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Link to this heading"></a></h3>
+<p>The following techniques are useful for creating console applications in Scala.
+As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
+<p>We can read the standard input as lines using this iterator:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
+<p>To break the standard input down further into words, we can use this recipe:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">language</span><span class="p">.</span><span class="n">unsafeNulls</span>
+<span class="w">  </span><span class="n">lines</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;(?U)[^\\p{Alpha}0-9&#39;]+&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The result of <code class="docutils literal notranslate"><span class="pre">l.split(regex)</span></code> is an array of strings, where some of the strings or the entire array could possibly be <code class="docutils literal notranslate"><span class="pre">null</span></code>.
+While <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce <code class="docutils literal notranslate"><span class="pre">null</span></code> references.
+Because we require explicit typing of null references (by adding <code class="docutils literal notranslate"><span class="pre">&quot;-Yexplicit-nulls&quot;</span></code> to the compiler options in <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>), the Scala compiler considers this code incorrect and indicates an error unless we enable this potentially unsafe use of implicit null references.</p>
+<p><em>To keep null safety in place as widely as possible, it is best to keep this import local to the block performing IO code.</em></p>
+<p>By default, the Java virtual machine converts the <code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code> error signal to an <code class="docutils literal notranslate"><span class="pre">IOException</span></code>.
+In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout, which is is an instance of <code class="docutils literal notranslate"><span class="pre">PrintStream</span></code>.
+This class converts any <code class="docutils literal notranslate"><span class="pre">IOException</span></code> to a boolean flag accessible through its <code class="docutils literal notranslate"><span class="pre">checkError()</span></code> method.
+(See also <a class="reference external" href="https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe">this discussion</a> for more details.)</p>
+<p>Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.</p>
+<p>For example, this program reads one line at a time and prints the line count along with the line read.
+After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="n">println</span><span class="p">((</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">))</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">sys</span><span class="p">.</span><span class="n">process</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">checkError</span><span class="p">()</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="command-line-argument-parsing">
+<h3><span class="section-number">3.3.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
+<p>A common concern when developing console applications is command-line argument and option parsing.
+As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code> at the time when we’re invoking the application.
+Importantly, these settings are separate from the application’s input data.</p>
+<p>E.g., in our <a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">sliding queue example</a>, we keep a sliding queue of the n most recent words read from the input;
+therefore, when invoking this application, we need to choose a specific value for n.
+This is something we would typically use command-line arguments for.</p>
+<p>Since the C language days, applications have received their command-line arguments as an array of strings;
+this is still the case in the Java/Scala world, where the main entry point receives the command-line arguments as a string array.
+We can examine these arguments programmatically, make sure there are the correct number of them, convert them to numbers as needed, etc.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// perform argument validity checking</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;usage: ./target/universal/stage/bin/consoleapp [ last_n_words ]&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// ...</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">lastNWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastNWords</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NumberFormatException</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Command-line arguments are very widely used, but it quickly becomes tedious to handle them when more than one or two arguments are required and when we want to have <em>named</em> arguments instead of position-based ones so we can provide them in any order.
+Unsurprisingly, as is the case for many common tasks or concerns not addressed by the standard library bundled with the language SDK, there are third-party libraries for handling command-line argument parsing.</p>
+<p>For example, we can use Li Haoyi’s <a class="reference external" href="https://github.com/com-lihaoyi/mainargs">mainargs</a> library by declaring this dependency in our build configuration</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;com.lihaoyi&quot;</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;mainargs&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;0.6.3&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// external entry point into Scala application</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="w"> </span><span class="nc">Array</span><span class="p">[</span><span class="nc">String</span><span class="p">]):</span><span class="w"> </span><span class="nc">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ParserForMethods</span><span class="p">(</span><span class="bp">this</span><span class="p">).</span><span class="n">runOrExit</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">toIndexedSeq</span><span class="p">)</span>
+
+<span class="c1">// internal main method with arguments annotated for parsing</span>
+<span class="nd">@main</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
+<span class="w">    </span><span class="nd">@arg</span><span class="p">(</span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;size of the sliding word cloud&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">cloudSize</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@arg</span><span class="p">(</span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;minimum word length to be considere&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">minLength</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@arg</span><span class="p">(</span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;size of the sliding FIFO queue&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">windowSize</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@arg</span><span class="p">(</span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;s&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;number of steps between word cloud updates&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">everyKSteps</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@arg</span><span class="p">(</span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;f&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;minimum frequency for a word to be included in the cloud&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">minFrequency</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span>
+
+<span class="w">  </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">f&quot;howMany=</span><span class="si">$</span><span class="n">cloudSize</span><span class="s"> minLength=</span><span class="si">$</span><span class="n">minLength</span><span class="s"> lastNWords=</span><span class="si">$</span><span class="n">windowSize</span><span class="s"> everyKSteps=</span><span class="si">$</span><span class="n">everyKSteps</span><span class="s"> minFrequency=</span><span class="si">$</span><span class="n">minFrequency</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// ...</span>
+</pre></div>
+</div>
+<p>Based on the formal argument names and their <code class="docutils literal notranslate"><span class="pre">&#64;arg</span></code> annotations, the library generates a parser that looks for the arguments based on their long or short names and associated values;
+arguments can have default values.
+In addition, the generated code can handle a <code class="docutils literal notranslate"><span class="pre">--help</span></code> option, which prints a UNIX-style usage summary.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./target/universal/stage/bin/myapp<span class="w"> </span>--<span class="w"> </span>--help
+run
+<span class="w">  </span>-c<span class="w"> </span>--cloud-size<span class="w"> </span>&lt;int&gt;<span class="w">     </span>size<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>sliding<span class="w"> </span>word<span class="w"> </span>cloud
+<span class="w">  </span>-l<span class="w"> </span>--min-length<span class="w"> </span>&lt;int&gt;<span class="w">     </span>minimum<span class="w"> </span>word<span class="w"> </span>length<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>considere
+<span class="w">  </span>-w<span class="w"> </span>--window-size<span class="w"> </span>&lt;int&gt;<span class="w">    </span>size<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>sliding<span class="w"> </span>FIFO<span class="w"> </span>queue
+<span class="w">  </span>-s<span class="w"> </span>--every-ksteps<span class="w"> </span>&lt;int&gt;<span class="w">   </span>number<span class="w"> </span>of<span class="w"> </span>steps<span class="w"> </span>between<span class="w"> </span>word<span class="w"> </span>cloud<span class="w"> </span>updates
+<span class="w">  </span>-f<span class="w"> </span>--min-frequency<span class="w"> </span>&lt;int&gt;<span class="w">  </span>minimum<span class="w"> </span>frequency<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>word<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>included<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>cloud
+</pre></div>
+</div>
+<p>For example, we could run the application with these arguments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./target/universal/stage/bin/myapp<span class="w"> </span>--<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>-l<span class="w"> </span><span class="m">2</span><span class="w"> </span>-w<span class="w"> </span><span class="m">5</span>
+</pre></div>
+</div>
+</section>
+<section id="finding-good-third-party-libraries">
+<h3><span class="section-number">3.3.3. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
+<p>For most programming languages, platforms, and other ecosystems, there are lists of “awesome” libraries and tools.
+For a particular language, search for “awesome” followed by the name of the language.</p>
+<p>In Scala’s case, we would come across this here list:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/lauris/awesome-scala">https://github.com/lauris/awesome-scala</a></p>
+</div></blockquote>
+<p>Within it, we can then look for the desired concern or purpose, such as “command line interfaces”, where we find mainargs among several other choices.
+It can be hard to choose a specific library;
+some typical criteria are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ease of use</p></li>
+<li><p>quality of documentation</p></li>
+<li><p>popularity</p></li>
+<li><p>active development status</p></li>
+<li><p>code quality</p></li>
+<li><p>number of dependencies (lower is usually better)</p></li>
+<li><p>security (absence of known vulnerabilities)</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
 <section id="the-role-of-logging">
 <h2><span class="section-number">3.4. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;something went wrong: &quot;</span> <span class="o">+</span> <span class="n">anObject</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nc">System</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;something went wrong: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">anObject</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This allows displaying (or redirecting) error messages separately from output data.</p>
 <p>For more complex projects, it is advantageous to be able to configure logging centrally, such as suppressing log messages below a certain <a class="reference external" href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels">log level</a> indicating the severity of the message, configuring the destination of the log messages, or disabling logging altogether.</p>
 <p><em>Logging frameworks</em> have arisen to address this need.
 Modern logging frameworks have very low performance overhead and are a convenient and effective way to achieve professional-grade <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a> with respect to logging.</p>
+<p>Proper logging is perhaps more important in applications where one doesn’t normally see the console output, such as apps with a graphical user interface and back-end server apps.
+In those cases, logging allows ongoing monitoring of app progress, as well as error analysis if something isn’t working.</p>
 <section id="logging-in-scala">
 <h3><span class="section-number">3.4.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
-<p>For example, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
+<p>A popular choice found on the <a class="reference external" href="https://github.com/lauris/awesome-scala">Awesome Scala</a> list, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
 <li><p>Add external dependencies for log4s and a simple slf4j backend implementation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;org.log4s&quot;</span> <span class="o">%%</span> <span class="s2">&quot;log4s&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.8.2&quot;</span><span class="p">,</span>
-<span class="s2">&quot;org.slf4j&quot;</span> <span class="o">%</span> <span class="s2">&quot;slf4j-simple&quot;</span> <span class="o">%</span> <span class="s2">&quot;1.7.30&quot;</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;org.log4s&quot;</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;log4s&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.8.2&quot;</span><span class="p">,</span>
+<span class="s">&quot;org.slf4j&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;slf4j-simple&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.7.30&quot;</span>
 </pre></div>
 </div>
 </li>
 <li><p>If you require a more verbose (lower severity) log level than the default of <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, such as <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, add a configuration file <code class="docutils literal notranslate"><span class="pre">src/main/resources/simplelogger.properties</span></code> with contents:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">org</span><span class="o">.</span><span class="n">slf4j</span><span class="o">.</span><span class="n">simpleLogger</span><span class="o">.</span><span class="n">defaultLogLevel</span> <span class="o">=</span> <span class="n">debug</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">org</span><span class="p">.</span><span class="n">slf4j</span><span class="p">.</span><span class="n">simpleLogger</span><span class="p">.</span><span class="n">defaultLogLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">debug</span>
 </pre></div>
 </div>
 </li>
 <li><p>Now you are ready to access and use your logger:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">val</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="n">log4s</span><span class="o">.</span><span class="n">getLogger</span>
-<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;howMany = $howMany minLength = $minLength lastNWords = $lastNWords&quot;</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">log4s</span><span class="p">.</span><span class="n">getLogger</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">f&quot;howMany = </span><span class="si">$</span><span class="n">howMany</span><span class="s"> minLength = </span><span class="si">$</span><span class="n">minLength</span><span class="s"> lastNWords = </span><span class="si">$</span><span class="n">lastNWords</span><span class="s">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This produces informative debugging output such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span><span class="p">]</span> <span class="n">DEBUG</span> <span class="n">edu</span><span class="o">.</span><span class="n">luc</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">cs371</span><span class="o">.</span><span class="n">topwords</span><span class="o">.</span><span class="n">TopWords</span> <span class="o">-</span> <span class="n">howMany</span> <span class="o">=</span> <span class="mi">10</span> <span class="n">minLength</span> <span class="o">=</span> <span class="mi">6</span> <span class="n">lastNWords</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>main<span class="o">]</span><span class="w"> </span>DEBUG<span class="w"> </span>edu.luc.cs.cs371.topwords.TopWords<span class="w"> </span>-<span class="w"> </span><span class="nv">howMany</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="nv">minLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="nv">lastNWords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 </section>
+<section id="the-importance-of-constant-space-complexity">
+<span id="subsecconstantspace"></span><h2><span class="section-number">3.5. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
+<p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
+To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
+<em>These considerations apply to any potentially long-running application, be it a console app, mobile app, or back-end service.</em></p>
+<p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">sys</span><span class="p">.</span><span class="n">process</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">checkError</span><span class="p">()</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; lines counted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By contrast, this version has linear-space complexity and may run out of space on a large volume of input data:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">listOfLines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">toList</span>
+<span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">listOfLines</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">sys</span><span class="p">.</span><span class="n">process</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">checkError</span><span class="p">()</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; lines counted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
+Iterators support most of the same behaviors as in-memory collections.</p>
+<p>To observe a program’s memory footprint over time, we would typically use a heap profiler.
+For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
+<p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
+By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
+<img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
+</section>
 <section id="defining-domain-models-in-imperative-and-object-oriented-languages">
-<span id="secdomainmodelsoo"></span><h2><span class="section-number">3.5. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Link to this heading"></a></h2>
+<span id="secdomainmodelsoo"></span><h2><span class="section-number">3.6. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Link to this heading"></a></h2>
 <p>In imperative and object-oriented languages, the basic type abstractions are</p>
 <ul class="simple">
 <li><p>addressing: pointers, references</p></li>
@@ -562,7 +655,7 @@ To use log4s minimally, the following steps are required:</p>
 <li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java</a></p></li>
 </ul>
 <section id="object-oriented-scala-as-a-better-java">
-<h3><span class="section-number">3.5.1. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.1. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Link to this heading"></a></h3>
 <p>Scala offers various improvements over Java, including:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/first-look-at-types.html">unified types</a></p></li>
@@ -594,7 +687,7 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 </section>
 <section id="modularity-and-dependency-injection">
-<h2><span class="section-number">3.6. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.7. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To wrap your head around this section, you may want to start by recalling/reviewing the <a class="reference external" href="https://github.com/lucoodevcourse/stopwatch-android-java">stopwatch example</a> from COMP 313/413 (intermediate object-oriented programming).
@@ -604,7 +697,7 @@ After creating the instances of those components, you had to connect them to eac
 In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.</p>
 </div>
 <section id="design-goals">
-<h3><span class="section-number">3.6.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.7.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h3>
 <p>We pursue following design goals tied to the nonfunctional code quality requirements:</p>
 <ul class="simple">
 <li><p><em>testability</em></p></li>
@@ -620,7 +713,7 @@ In this section and the pertinent examples, we are achieving basically the same 
 <p>In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.</p>
 </section>
 <section id="scala-traits">
-<h3><span class="section-number">3.6.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.7.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Link to this heading"></a></h3>
 <p>Scala traits are <em>abstract</em> types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
 The <a class="reference external" href="http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/">Thin Cake idiom</a> shows how traits can help us achieve our design goals.</p>
@@ -664,7 +757,7 @@ in this case, the additional complexity introduced to achieve testability would 
 </div>
 </section>
 <section id="trait-based-dependency-injection">
-<h3><span class="section-number">3.6.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.7.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Link to this heading"></a></h3>
 <p>In the presence of modularity, <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of “finding” its dependency, i.e., performing <em>dependency lookup</em>.
 In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.</p>
 <p>The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
@@ -704,7 +797,7 @@ The actual “injection” takes place when we inject, say, <code class="docutil
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2017-2023, Konstantin Läufer
+                Copyright &#169; 2017-2024, Konstantin Läufer
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -732,24 +825,26 @@ The actual “injection” takes place when we inject, say, <code class="docutil
             <ul>
 <li><a class="reference internal" href="#">3. The Imperative and Object-Oriented Paradigms in Scala</a><ul>
 <li><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
-<li><a class="reference internal" href="#the-role-of-console-applications">3.2. The role of console applications</a><ul>
-<li><a class="reference internal" href="#console-applications-in-scala">3.2.1. Console applications in Scala</a></li>
-<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.2.2. The importance of constant-space complexity</a></li>
+<li><a class="reference internal" href="#choices-for-testing-scala-code">3.2. Choices for testing Scala code</a></li>
+<li><a class="reference internal" href="#the-role-of-console-applications">3.3. The role of console applications</a><ul>
+<li><a class="reference internal" href="#console-applications-in-scala">3.3.1. Console applications in Scala</a></li>
+<li><a class="reference internal" href="#command-line-argument-parsing">3.3.2. Command-line argument parsing</a></li>
+<li><a class="reference internal" href="#finding-good-third-party-libraries">3.3.3. Finding good third-party libraries</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#choices-for-testing-scala-code">3.3. Choices for testing Scala code</a></li>
 <li><a class="reference internal" href="#the-role-of-logging">3.4. The role of logging</a><ul>
 <li><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.5. Defining domain models in imperative and object-oriented languages</a><ul>
-<li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.5.1. Object-oriented Scala as a “better Java”</a></li>
+<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.5. The importance of constant-space complexity</a></li>
+<li><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.6. Defining domain models in imperative and object-oriented languages</a><ul>
+<li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.6.1. Object-oriented Scala as a “better Java”</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#modularity-and-dependency-injection">3.6. Modularity and dependency injection</a><ul>
-<li><a class="reference internal" href="#design-goals">3.6.1. Design goals</a></li>
-<li><a class="reference internal" href="#scala-traits">3.6.2. Scala traits</a></li>
-<li><a class="reference internal" href="#trait-based-dependency-injection">3.6.3. Trait-based dependency injection</a></li>
+<li><a class="reference internal" href="#modularity-and-dependency-injection">3.7. Modularity and dependency injection</a><ul>
+<li><a class="reference internal" href="#design-goals">3.7.1. Design goals</a></li>
+<li><a class="reference internal" href="#scala-traits">3.7.2. Scala traits</a></li>
+<li><a class="reference internal" href="#trait-based-dependency-injection">3.7.3. Trait-based dependency injection</a></li>
 </ul>
 </li>
 </ul>
@@ -765,7 +860,7 @@ The actual “injection” takes place when we inject, say, <code class="docutil
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=b4cd56ce"></script>
+    <script src="_static/documentation_options.js?v=db3c421a"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
