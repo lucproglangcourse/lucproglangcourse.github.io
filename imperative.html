@@ -417,17 +417,18 @@ As in Java, command-line arguments are available to a Scala application as <code
 </pre></div>
 </div>
 <p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
-<p>To break the standard input down further into words, we can use this recipe:</p>
+<p>To break this iterator of lines down into an iterator of words, we can use this recipe:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">language</span><span class="p">.</span><span class="n">unsafeNulls</span>
 <span class="w">  </span><span class="n">lines</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;(?U)[^\\p{Alpha}0-9&#39;]+&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>The result of <code class="docutils literal notranslate"><span class="pre">l.split(regex)</span></code> is an array of strings, where some of the strings or the entire array could possibly be <code class="docutils literal notranslate"><span class="pre">null</span></code>.
+<p>(We’ll discuss <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> in detail later.)</p>
+<p>The result of <code class="docutils literal notranslate"><span class="pre">l.split(regex)</span></code> is an array of strings, where some of the strings or the entire array could possibly be <code class="docutils literal notranslate"><span class="pre">null</span></code> because <code class="docutils literal notranslate"><span class="pre">split</span></code> is a Java method, where the stated <code class="docutils literal notranslate"><span class="pre">String</span></code> type really means <code class="docutils literal notranslate"><span class="pre">String</span></code> or <code class="docutils literal notranslate"><span class="pre">null</span></code>.
 While <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce <code class="docutils literal notranslate"><span class="pre">null</span></code> references.
 Because we require <a class="reference external" href="https://docs.scala-lang.org/scala3/reference/experimental/explicit-nulls.html">explicit typing of null references</a> (by adding <code class="docutils literal notranslate"><span class="pre">&quot;-Yexplicit-nulls&quot;</span></code> to the compiler options in <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>), the Scala compiler considers this code incorrect and indicates an error unless we enable this potentially unsafe use of implicit null references.</p>
-<p><em>To keep null safety in place as widely as possible, it is best to keep this import local to the block(s) performing IO code.</em></p>
-<p>In some cases, it is more convenient to use the <code class="docutils literal notranslate"><span class="pre">.nn</span></code> extension method to disable null safety for a single expression, e.g.,</p>
+<p><em>To keep null safety in place as widely as possible, it is best to keep this import local to the block(s) performing IO code.
+In some cases, it is more convenient to use the ``.nn`` extension method to disable null safety for a single expression, e.g.,</em></p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nc">System</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;D&#39;oh!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>

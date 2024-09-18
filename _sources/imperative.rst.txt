@@ -219,7 +219,7 @@ We can read the standard input as lines using this iterator:
 
 This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this `concise reference <https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples>`_.)
 
-To break the standard input down further into words, we can use this recipe:
+To break this iterator of lines down into an iterator of words, we can use this recipe:
 
 .. code-block:: scala
 
@@ -227,13 +227,14 @@ To break the standard input down further into words, we can use this recipe:
     import scala.language.unsafeNulls
     lines.flatMap(l => l.split("(?U)[^\\p{Alpha}0-9']+"))
 
-The result of ``l.split(regex)`` is an array of strings, where some of the strings or the entire array could possibly be ``null``. 
+(We'll discuss ``flatMap`` in detail later.)
+
+The result of ``l.split(regex)`` is an array of strings, where some of the strings or the entire array could possibly be ``null`` because ``split`` is a Java method, where the stated ``String`` type really means ``String`` or ``null``. 
 While ``flatMap`` is supposed to preserve the element type of the transformed iterator, splitting the lines in this way could introduce ``null`` references.
 Because we require `explicit typing of null references <https://docs.scala-lang.org/scala3/reference/experimental/explicit-nulls.html>`_ (by adding ``"-Yexplicit-nulls"`` to the compiler options in ``build.sbt``), the Scala compiler considers this code incorrect and indicates an error unless we enable this potentially unsafe use of implicit null references.
 
-*To keep null safety in place as widely as possible, it is best to keep this import local to the block(s) performing IO code.*
-
-In some cases, it is more convenient to use the ``.nn`` extension method to disable null safety for a single expression, e.g.,
+*To keep null safety in place as widely as possible, it is best to keep this import local to the block(s) performing IO code.
+In some cases, it is more convenient to use the ``.nn`` extension method to disable null safety for a single expression, e.g.,*
 
 .. code-block:: scala
 
