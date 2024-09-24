@@ -91,7 +91,7 @@ Section: 001 Fall 2024
   - Week 8 - Tue 15 October: test 1 **ONLINE SESSION, details TBA**
   - Week 10 - Tue 29 October: quiz 2
   - Week 11 - Fri 1 November: *last day to withdraw with W instead of WF*
-  - Week 12 - Tue 12 November: test 2
+  - Week 13 - Tue 19 November: test 2
   - Week 14 - Tue 26 November:  **ONLINE SESSION (Thanksgiving break), details TBA**
   - Week 16 (finals week) - Tue 10 December: *quiz 3 followed by class session*
 

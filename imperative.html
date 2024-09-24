@@ -581,10 +581,14 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 <section id="the-importance-of-constant-space-complexity">
 <span id="subsecconstantspace"></span><h2><span class="section-number">3.5. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
-<p>Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
+<p>Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
 <em>These considerations apply to any potentially long-running application, be it a console app, mobile app, or back-end service.</em></p>
-<p>Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
+<section id="using-iterators-to-represent-indefinite-input">
+<h3><span class="section-number">3.5.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
+<p>In these scenarios, it is common to process an indefinite number of input items, one at a time, as long as more items are available from the input.
+Concretely, whenever possible, this means reading and processing one input item at a time and then forgetting about it, rather than first storing the entire input in memory and then processing it in bulk.
+This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
@@ -605,11 +609,33 @@ To achieve the nonfunctional requirements of reliability/availability and scalab
 </div>
 <p>In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
 Iterators support most of the same behaviors as in-memory collections.</p>
+</section>
+<section id="observing-a-program-s-memory-footprint-over-time">
+<h3><span class="section-number">3.5.2. </span>Observing a program’s memory footprint over time<a class="headerlink" href="#observing-a-program-s-memory-footprint-over-time" title="Link to this heading"></a></h3>
 <p>To observe a program’s memory footprint over time, we would typically use a heap profiler.
 For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
 <p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
 By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
 <img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
+<p>When working in a command-line environment, we can also use an interactive process viewer, such as <code class="docutils literal notranslate"><span class="pre">htop</span></code>, to observe a program’s memory footprint over time.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>add suitable htop screenshot</p>
+</div>
+</section>
+<section id="making-console-applications-testable">
+<h3><span class="section-number">3.5.3. </span>Making console applications testable<a class="headerlink" href="#making-console-applications-testable" title="Link to this heading"></a></h3>
+<p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we like to make our console applications testable.
+While we could use command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
+<p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code.
+In particular, how can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
+<p>The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.</p>
+<p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">https://github.com/lucproglangcourse/consoleapp-java</a></p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>add discussion of the two key design patterns</p>
+</div>
+</section>
 </section>
 <section id="defining-domain-models-in-imperative-and-object-oriented-languages">
 <span id="secdomainmodelsoo"></span><h2><span class="section-number">3.6. </span>Defining domain models in imperative and object-oriented languages<a class="headerlink" href="#defining-domain-models-in-imperative-and-object-oriented-languages" title="Link to this heading"></a></h2>
@@ -841,7 +867,12 @@ The actual “injection” takes place when we inject, say, <code class="docutil
 <li><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.5. The importance of constant-space complexity</a></li>
+<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.5. The importance of constant-space complexity</a><ul>
+<li><a class="reference internal" href="#using-iterators-to-represent-indefinite-input">3.5.1. Using iterators to represent indefinite input</a></li>
+<li><a class="reference internal" href="#observing-a-program-s-memory-footprint-over-time">3.5.2. Observing a program’s memory footprint over time</a></li>
+<li><a class="reference internal" href="#making-console-applications-testable">3.5.3. Making console applications testable</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#defining-domain-models-in-imperative-and-object-oriented-languages">3.6. Defining domain models in imperative and object-oriented languages</a><ul>
 <li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">3.6.1. Object-oriented Scala as a “better Java”</a></li>
 </ul>
