@@ -423,11 +423,17 @@ To use log4s minimally, the following steps are required:
 The importance of constant-space complexity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Common application scenarios involve large volumes of input data or infinite input streams, e.g., sensor data from an internet-of-things device.
+Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
 *These considerations apply to any potentially long-running application, be it a console app, mobile app, or back-end service.*
 
-Concretely, whenever possible, this means processing one input item at a time and then forgetting about it, rather than storing the entire input in memory. This version of a program that echoes back and counts its input lines has constant-space complexity:
+
+Using iterators to represent indefinite input
+`````````````````````````````````````````````
+
+In these scenarios, it is common to process an indefinite number of input items, one at a time, as long as more items are available from the input.
+Concretely, whenever possible, this means reading and processing one input item at a time and then forgetting about it, rather than first storing the entire input in memory and then processing it in bulk.
+This version of a program that echoes back and counts its input lines has constant-space complexity:
 
 .. code-block:: scala
 
@@ -453,6 +459,10 @@ By contrast, this version has linear-space complexity and may run out of space o
 In sum, to achieve constant-space complexity, it is usually best to represent the input data as an iterator instead of converting it to an in-memory collection such as a list.
 Iterators support most of the same behaviors as in-memory collections.
 
+
+Observing a program's memory footprint over time
+````````````````````````````````````````````````
+
 To observe a program's memory footprint over time, we would typically use a heap profiler.
 For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.
 
@@ -460,6 +470,26 @@ For example, the following heap profile (upper right section of the screenshot) 
 By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.
 
 .. image:: images/heapprofile.png
+
+When working in a command-line environment, we can also use an interactive process viewer, such as ``htop``, to observe a program's memory footprint over time.
+
+.. todo:: add suitable htop screenshot
+
+
+Making console applications testable
+````````````````````````````````````
+
+Recognizing the importance of *testability* as a static nonfunctional requirement, we like to make our console applications testable.
+While we could use command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
+
+A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code.
+In particular, how can we make our code testable *without* sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?
+
+The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.
+
+https://github.com/lucproglangcourse/consoleapp-java
+
+.. todo:: add discussion of the two key design patterns
 
 
 .. _secDomainModelsOO:
