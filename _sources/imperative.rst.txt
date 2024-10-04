@@ -147,6 +147,32 @@ The `echotest <https://github.com/lucproglangcourse/echotest-scala>`_ example sh
 For faster turnaround during development, we can combine these techniques with `triggered execution <https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html>`_.
 
 
+Measuring code coverage
+```````````````````````
+
+The *code coverage* of your tests indicates how thoroughly you're testing.
+Typically, you would use the `sbt scoverage plugin <https://github.com/scoverage/sbt-scoverage>`_ to meaasure what percentage of your main code are covered by your tests.
+
+.. code-block:: bash
+
+  $ sbt clean coverage test coverageReport
+
+Your test reports should then be available at
+
+.. code-block:: bash
+
+  target/scala-*/scoverage-report/index.html
+
+When you open this file in your web browser (or preview it in Gitpod using the `Live Preview extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_), you will see a navigable visualization of the code coverage report.
+
+If your coverage percentages appear low, you can make them more accurate by excluding classes you are not testing programmatically, such as those focused on providing a main method responsible mostly for I/O.
+
+.. code-block:: scala
+
+  coverageExcludedPackages := "<empty>;.*Main.*;"
+
+Additional information on testing is available in the corresponding section of the `COMP 335/435: Formal Methods lecture notes <https://lucformalmethodscourse.github.io/30-testing.html>`_.
+
 
 The role of console applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,6 +327,10 @@ For example, we can use Li Haoyi's `mainargs <https://github.com/com-lihaoyi/mai
 and 
 
 .. code-block:: scala
+
+  import mainargs.{main, arg, ParserForMethods, Flag}
+
+  // ...
 
   // external entry point into Scala application
   def main(args: Array[String]): Unit = ParserForMethods(this).runOrExit(args.toIndexedSeq)
