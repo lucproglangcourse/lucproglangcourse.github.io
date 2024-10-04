@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="4. The Functional Programming Paradigm" href="functionalprogramming.html" /><link rel="prev" title="2. Context and Background" href="background.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>3. The Imperative and Object-Oriented Paradigms in Scala - Loyola University Chicago COMP 371/471 Lecture Notes v24f.7</title>
+        <title>3. The Imperative and Object-Oriented Paradigms in Scala - Loyola University Chicago COMP 371/471 Lecture Notes v24f.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.7</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.8</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.7</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.8</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -372,13 +372,24 @@ Typically, you would use the <a class="reference external" href="https://github.
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>clean<span class="w"> </span>coverage<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverageReport
 </pre></div>
 </div>
-<p>Your test reports should then be available at</p>
+<p>Once these tasks complete, you should see the coverage percentages toward the end of the terminal output,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Statement<span class="w"> </span>coverage.:<span class="w"> </span><span class="m">50</span>.91%
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Branch<span class="w"> </span>coverage....:<span class="w"> </span><span class="m">50</span>.00%
+</pre></div>
+</div>
+<p>and your test reports should then be available at</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>target/scala-*/scoverage-report/index.html
 </pre></div>
 </div>
 <p>When you open this file in your web browser (or preview it in Gitpod using the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server">Live Preview extension</a>), you will see a navigable visualization of the code coverage report.</p>
-<p>If your coverage percentages appear low, you can make them more accurate by excluding classes you are not testing programmatically, such as those focused on providing a main method responsible mostly for I/O.</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">coverageExcludedPackages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&lt;empty&gt;;.*Main.*;&quot;</span>
+<img alt="_images/ScoverageOverview.png" src="_images/ScoverageOverview.png" />
+<p>Here you can drill into specific packages and classes.
+When looking at a class, you can switch between the source code view and an abstract statement view.</p>
+<img alt="_images/ScoverageCode.png" src="_images/ScoverageCode.png" />
+<img alt="_images/ScoverageStatements.png" src="_images/ScoverageStatements.png" />
+<p>If your coverage percentages appear low, you can make them more accurate by excluding classes you are not testing programmatically, such as those focused on providing a main method responsible mostly for I/O.
+(This works only with Scala version 3.4.2 or higher; also check <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code> to make sure you’re running the latest version of the sbt-scoverage plugin.)</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">ccoverageExcludedPackages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Additional information on testing is available in the corresponding section of the <a class="reference external" href="https://lucformalmethodscourse.github.io/30-testing.html">COMP 335/435: Formal Methods lecture notes</a>.</p>
@@ -921,7 +932,7 @@ The actual “injection” takes place when we inject, say, <code class="docutil
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=48bc4c69"></script>
+    <script src="_static/documentation_options.js?v=a0a6efab"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
