@@ -567,6 +567,10 @@ For example, if our app running interactively, we might automatically want to pr
 <p>To add this capability to a Java- or Scala-based console app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
 If you want to make your console app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
 JLine has excellent documentation; please look there for examples.</p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Determine whether JLine automatically suppresses prompts when redirecting stdin.</p>
+</div>
 </section>
 <section id="finding-good-third-party-libraries">
 <h3><span class="section-number">3.3.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
@@ -674,7 +678,7 @@ For programs running in the Java Virtual Machine (JVM), we can use the standalon
 By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
 <img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
 <p>When working in a command-line environment, we can also use an interactive process viewer, such as <code class="docutils literal notranslate"><span class="pre">htop</span></code>, to observe a program’s memory footprint over time.</p>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
 <p>add suitable htop screenshot</p>
 </div>
@@ -687,7 +691,7 @@ While we could use command-line tools to set up automatic testing of the end-to-
 In particular, how can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
 <p>The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.</p>
 <p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">https://github.com/lucproglangcourse/consoleapp-java</a></p>
-<div class="admonition-todo admonition" id="id6">
+<div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
 <p>add discussion of the two key design patterns</p>
 </div>

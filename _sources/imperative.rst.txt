@@ -412,6 +412,8 @@ To add this capability to a Java- or Scala-based console app, we can use the `JL
 If you want to make your console app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
 JLine has excellent documentation; please look there for examples.
 
+.. todo:: Determine whether JLine automatically suppresses prompts when redirecting stdin.
+
 
 Finding good third-party libraries
 ``````````````````````````````````
