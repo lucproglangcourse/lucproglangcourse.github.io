@@ -1,0 +1,608 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="5. The Functional Programming Paradigm" href="functionalprogramming.html" /><link rel="prev" title="3. The Imperative Programming Paradigm" href="imperative.html" />
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>4. The Object-Oriented Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v24f.11</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.11</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.11</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative Programming Paradigm</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">4. The Object-Oriented Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">5. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">6. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency.html">7. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">8. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles.html">9. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software.html">11. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syllabus.html">12. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">13. Appendix: TODO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/objectoriented.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="the-object-oriented-programming-paradigm">
+<h1><span class="section-number">4. </span>The Object-Oriented Programming Paradigm<a class="headerlink" href="#the-object-oriented-programming-paradigm" title="Link to this heading"></a></h1>
+<p>In this chapter, we recap the object-oriented programming paradigm with examples in Scala.
+As discussed, we take object-oriented code to mean code that includes definitions of domain models, i.e., basic domain- or application-specific abstractions, or uses object-oriented frameworks (as opposed to general-purpose object-oriented libraries).</p>
+<section id="making-console-applications-testable">
+<h2><span class="section-number">4.1. </span>Making console applications testable<a class="headerlink" href="#making-console-applications-testable" title="Link to this heading"></a></h2>
+<p>Marking the beginning of our transition to the object-oriented paradigm, we had to define a new abstractions (type)
+to make the <a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">sliding queue application</a> testable.
+In particular, we defined an <code class="docutils literal notranslate"><span class="pre">Observer</span></code> for decoupling the applications “business logic” from the decition whether to print recurring updates to the console (for production use) or to store them in a data structure (for testing).</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">OutputObserver</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{}</span>
+</pre></div>
+</div>
+<p>A <a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Predicate.html">predicate</a> (in Java) is an object with a single <code class="docutils literal notranslate"><span class="pre">test</span></code> method that takes one argument and returns a boolean result:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@FunctionalInterface</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Predicate</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The only reason to use this instead of not returning anything (return type <code class="docutils literal notranslate"><span class="pre">void</span></code>) is to give the caller access to possible I/O errors, upon which we might want to exit the application.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">OutputObserver</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">input</span>
+<span class="w">      </span><span class="p">.</span><span class="na">takeWhile</span><span class="p">(</span>
+<span class="w">          </span><span class="n">word</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">word</span><span class="p">);</span><span class="w"> </span><span class="c1">// the oldest item automatically gets evicted</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+<span class="w">          </span><span class="p">})</span>
+<span class="w">      </span><span class="p">.</span><span class="na">count</span><span class="p">();</span><span class="w"> </span><span class="c1">// forces evaluation of the entire stream</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By having factored the application’s main logic out to a method with input and output arguments, we can now invoke this logic in two different scenarios:</p>
+<ul>
+<li><p>For production use as a main program, we pass a stream representing stdin and an observer instance whose test method brings back the original behavior of printing the argument.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="n">OutputObserver</span><span class="w"> </span><span class="n">outputToConsole</span><span class="w"> </span><span class="o">=</span>
+<span class="n">value</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// terminate on I/O error such as SIGPIPE</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">checkError</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>For testing, we pass a stream representing our hardcoded test data and an observer instance whose test method stores the argument in a data structure, which we can inspect to verify the correct sequence of output values.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OutputToList</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">OutputObserver</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">snapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">snapshot</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A typical test would then look like this:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testSlidingWindowNonempty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">sut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SlidingQueue</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;qwer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;oiui&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;zxcv&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">outputToList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OutputToList</span><span class="p">();</span>
+<span class="w">  </span><span class="n">sut</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">outputToList</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outputToList</span><span class="p">.</span><span class="na">result</span><span class="p">;</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;qwer&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;qwer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;oiui&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;qwer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;oiui&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;zxcv&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Let’s take a moment to reflect by comparing the original straight-line, scripting-style version of the sliding queue application with this version.
+The original version was not as testable because of the interweaving of I/O with the application’s logical functionality.
+The current version meets our functional requirements, i.e., behaves in the same interactive way as the original version, but additionally meets our nonfunctional testability and scalability requirements.
+This sounds great, but where is the catch?</p>
+<p>Basically, the price of reconciling these forces pulling us in different directions is a significantly more complex design involving custom object-oriented abstractions, such as the <code class="docutils literal notranslate"><span class="pre">OutputObserver</span></code>.
+The endpoint of this journey thereby marks our transition to the object-oriented paradigm.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The test shown above only checks whether the total output is correct after processing the entire input given.
+So we still have to test the correct interactive behavior of our sliding queue logic, i.e., every time we consume an input value, we produce an output showing the updated queue.
+The <a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">console app</a> and <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators</a> examples illustrate how to set up a mini-framework for testing the interactive correctness of our code.</p>
+</div>
+</section>
+<section id="defining-domain-models-in-object-oriented-languages">
+<span id="secdomainmodelsoo"></span><h2><span class="section-number">4.2. </span>Defining domain models in object-oriented languages<a class="headerlink" href="#defining-domain-models-in-object-oriented-languages" title="Link to this heading"></a></h2>
+<p>In this section, we’ll discuss how to use object-oriented language constructs to define a domain model, i.e., a set of domain-specific building blocks for our application, in contrast with general-purpose library classes.</p>
+<p>In typical imperative languages, the basic type abstractions are</p>
+<ul class="simple">
+<li><p>Addressing: pointers, references</p></li>
+<li><p>Aggregation: structs/records, arrays</p>
+<ul>
+<li><p>Example: a node in a (singly) linked list, consisting of a value and a successor.</p></li>
+</ul>
+</li>
+<li><p>(Structural) recursion: defining a type in terms of itself, usually involves aggregation to be useful</p>
+<ul>
+<li><p>Example: a node in a linked list, whose successor is also a node in a linked list.</p></li>
+</ul>
+</li>
+</ul>
+<p>In typical object-oriented languages, the additional basic type abstractions are</p>
+<ul class="simple">
+<li><p>Variation: tagged unions, multiple implementations of an interface</p>
+<ul>
+<li><p>Example: mutable set abstraction</p>
+<ul>
+<li><p>add element</p></li>
+<li><p>remove element</p></li>
+<li><p>check whether an element is present</p></li>
+<li><p>check if empty</p></li>
+<li><p>how many elements</p></li>
+</ul>
+</li>
+<li><p>There are several possible implementations:</p>
+<ul>
+<li><p>reasonable: binary search tree, hash table, bit vector (for small underlying domains)</p></li>
+<li><p>less reasonable: array, linked list</p></li>
+<li><p>see also this <a class="reference external" href="http://docs.oracle.com/javase/tutorial/collections/implementations">table of collection implementations</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Genericity (type parameterization): when a type is parametric in terms of one or more type parameters</p>
+<ul>
+<li><p>Example: collections parametric in their element type.</p></li>
+</ul>
+</li>
+</ul>
+<p>These abstractions are often combined, e.g., aggregation, structural recursion, and genericity all together when defining a tree interface with implementation classes for leaves and interior nodes, where the data values have the same arbitrary type.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">Tree</span><span class="p">[</span><span class="nc">A</span><span class="p">]:</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Leaf</span><span class="p">[</span><span class="nc">A</span><span class="p">](</span><span class="kd">val</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nc">A</span><span class="p">)</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Tree</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Node</span><span class="p">[</span><span class="nc">A</span><span class="p">](</span><span class="kd">val</span><span class="w"> </span><span class="n">children</span><span class="p">:</span><span class="w"> </span><span class="nc">Tree</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Tree</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span>
+
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="nc">Tree</span><span class="p">.</span><span class="n">*</span>
+
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Node</span><span class="p">(</span><span class="nc">Node</span><span class="p">(</span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span><span class="w"> </span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">res0</span><span class="p">:</span><span class="w"> </span><span class="nc">Tree</span><span class="p">[</span><span class="nc">Int</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Node</span><span class="p">(</span><span class="nc">ArraySeq</span><span class="p">(</span><span class="nc">Node</span><span class="p">(</span><span class="nc">ArraySeq</span><span class="p">(</span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">4</span><span class="p">))),</span><span class="w"> </span><span class="nc">Leaf</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java</a></p></li>
+</ul>
+</section>
+<section id="object-oriented-scala-as-a-better-java">
+<h2><span class="section-number">4.3. </span>Object-oriented Scala as a “better Java”<a class="headerlink" href="#object-oriented-scala-as-a-better-java" title="Link to this heading"></a></h2>
+<p>Scala offers various improvements over Java, including:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/first-look-at-types.html">unified types</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-functions.html">standalone higher-order functions (lambdas)</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-objects.html">standalone objects</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-collections.html#tuples">tuples</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums">advanced enums</a>, <a class="reference external" href="https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes">case classes</a> and <a class="reference external" href="https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations">pattern matching</a></p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/domain-modeling-oop.html">traits</a>: generalization of interfaces and restricted form of abstract classes, can be combined/stacked</p></li>
+<li><p>package structure decoupled from folder hierarchy</p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/reference/other-new-features/explicit-nulls.html">null safety</a>: ensuring at compile-time that an expression cannot be null</p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html">multiversal equality</a>: making sure apples are compared only with other apples</p></li>
+<li><p><a class="reference external" href="https://earldouglas.com/posts/higher-kinded.html">higher-kinded types</a> (advanced topic)</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>More recent versions of Java, however, have started to echo some these advances:</p>
+<ul class="simple">
+<li><p>lambda expressions</p></li>
+<li><p>default methods in interfaces</p></li>
+<li><p>local type inference</p></li>
+<li><p>streams</p></li>
+<li><p>records</p></li>
+</ul>
+</div>
+<p>We will study these features as we encounter them.</p>
+<p>The following examples illustrate the use of Scala as a “better Java” and the transition to some of the above-mentioned improvements:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">https://github.com/lucproglangcourse/iterators-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">https://github.com/lucproglangcourse/shapes-oo-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">https://github.com/lucproglangcourse/expressions-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc">https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc</a></p></li>
+</ul>
+</section>
+<section id="modularity-and-dependency-injection">
+<h2><span class="section-number">4.4. </span>Modularity and dependency injection<a class="headerlink" href="#modularity-and-dependency-injection" title="Link to this heading"></a></h2>
+<p>Object-oriented language constructs can also help us organize the higher-level structure of our code to make the code “better” with respect to certain design principles and code quality requirements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To wrap your head around this section, you may want to start by recalling/reviewing the <a class="reference external" href="https://github.com/lucoodevcourse/stopwatch-android-java">stopwatch example</a> from COMP 313/413 (intermediate object-oriented programming).
+In that app, the model is rather complex and has three or four components that depend on each other.
+After creating the instances of those components, you had to connect them to each other using setters.
+<em>Does that ring a bell?</em>
+In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.</p>
+</div>
+<section id="design-goals">
+<h3><span class="section-number">4.4.1. </span>Design goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h3>
+<p>We pursue following design goals tied to the nonfunctional code quality requirements:</p>
+<ul class="simple">
+<li><p><em>testability</em></p></li>
+<li><p><em>modularity</em> for separation of concerns</p></li>
+<li><p><em>reusability</em> for avoidance of code duplication (“DRY”)</p></li>
+</ul>
+<p>In particular, to manage the growing complexity of a system, we usually try to decompose it into its design dimensions, e.g.,</p>
+<ul class="simple">
+<li><p>mixing and matching interfaces with multiple implementations</p></li>
+<li><p>running code in production versus testing</p></li>
+</ul>
+<p>We can recognize these in many common situations, including the examples listed below.</p>
+<p>In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.</p>
+</section>
+<section id="scala-traits">
+<h3><span class="section-number">4.4.2. </span>Scala traits<a class="headerlink" href="#scala-traits" title="Link to this heading"></a></h3>
+<p>Scala traits are <em>abstract</em> types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
+Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
+The <a class="reference external" href="http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/">Thin Cake idiom</a> shows how traits can help us achieve our design goals.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We deliberately call <em>Thin Cake</em> an <em>idiom</em> as opposed to a pattern because it is <em>language-specific</em>.</p>
+</div>
+<p>We will rely on the following examples for this section:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java-sbt">https://github.com/lucproglangcourse/consoleapp-java-sbt</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">https://github.com/lucproglangcourse/processtree-scala</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">https://github.com/lucproglangcourse/iterators-scala</a></p></li>
+</ul>
+<p>First, to achieve testability, we can define the desired functionality, such as <code class="docutils literal notranslate"><span class="pre">common.IO</span></code>, as its own trait instead of a concrete class or part of some other trait such as <code class="docutils literal notranslate"><span class="pre">common.Main</span></code>.
+Such traits are <em>providers</em> of some functionality, while building blocks that use this functionality are <em>clients</em>, such as``common.Main`` (on the production side) and <code class="docutils literal notranslate"><span class="pre">PrintSpec</span></code> (on the testing side).
+Specifically, in the process tree example, we use <code class="docutils literal notranslate"><span class="pre">PrintSpec</span></code> to test <code class="docutils literal notranslate"><span class="pre">common.IO</span></code> in isolation, independently of <code class="docutils literal notranslate"><span class="pre">common.Main</span></code>.</p>
+<p>To avoid code duplication in the presence of the design dimensions mentioned above, we can again leverage Scala traits as building blocks.
+Along some of the dimensions, there are three possible roles:</p>
+<ul class="simple">
+<li><p><em>provider</em>, e.g., the specific implementations <cite>MutableTreeBuilder</cite>, <cite>FoldTreeBuilder</cite>, etc.</p></li>
+<li><p><em>client</em>, e.g., the various main objects on the production side, and the <cite>TreeBuilderSpec</cite> on the testing side</p></li>
+<li><p><em>contract</em>, the common abstraction between provider and client, e.g., <cite>TreeBuilder</cite></p></li>
+</ul>
+<p>Usually, when there is a common contract, a provider <em>overrides</em> some or all of the abstract behaviors declared in the contract.
+Some building blocks have more than one role. E.g., <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> is a client of (depends on) <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> but provides the main application behavior that the concrete main objects need.
+Similarly, <code class="docutils literal notranslate"><span class="pre">TreeBuilderSpec</span></code> also depends on <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> but provides the test code that the concrete test classes (<code class="docutils literal notranslate"><span class="pre">Spec</span></code>) need.
+This arrangement enables us to mix-and-match the desired <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> implementation with either <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> for production or <code class="docutils literal notranslate"><span class="pre">TreeBuilderSpec</span></code> for testing.</p>
+<p>The following figure shows the roles of and relationships among the various building blocks of the process tree example.</p>
+<figure class="align-default">
+<img alt="_images/ProcessTreeTypeHierarchy.png" src="_images/ProcessTreeTypeHierarchy.png" />
+</figure>
+<p>The <a class="reference external" href="https://github.com/lucproglangcourse/iterators-scala">iterators example</a> includes additional instances of trait-based modularity in its <code class="docutils literal notranslate"><span class="pre">imperative/modular</span></code> package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For pedagogical reasons, the process tree and iterators examples are overengineered relative to their simple functionality:
+To increase confidence in the functional correctness of our code, we should test it;
+this requires testability, which drives the modularity we are seeing in these examples.
+In other words, the resulting design complexity is the cost of testability.
+On the other hand, a more realistic system would likely already have substantial design complexity in its core functionality for separation of concerns, maintainability, and other nonfunctional quality reasons;
+in this case, the additional complexity introduced to achieve testability would be comparatively small.</p>
+</div>
+</section>
+<section id="trait-based-dependency-injection">
+<h3><span class="section-number">4.4.3. </span>Trait-based dependency injection<a class="headerlink" href="#trait-based-dependency-injection" title="Link to this heading"></a></h3>
+<p>In the presence of modularity, <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of “finding” its dependency, i.e., performing <em>dependency lookup</em>.
+In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.</p>
+<p>The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
+To recap, <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> cannot run on its own but declares by extending <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> that it requires an implementation of the <code class="docutils literal notranslate"><span class="pre">buildTree</span></code> method.
+One of the <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> implementation traits, such as <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> can satisfy this dependency.
+The actual “injection” takes place when we inject, say, <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> into <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> in the definition of the concrete main object <code class="docutils literal notranslate"><span class="pre">fold.Main</span></code>.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="functionalprogramming.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">5. </span>The Functional Programming Paradigm</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="imperative.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">3. </span>The Imperative Programming Paradigm</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2024, Konstantin Läufer
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">4. The Object-Oriented Programming Paradigm</a><ul>
+<li><a class="reference internal" href="#making-console-applications-testable">4.1. Making console applications testable</a></li>
+<li><a class="reference internal" href="#defining-domain-models-in-object-oriented-languages">4.2. Defining domain models in object-oriented languages</a></li>
+<li><a class="reference internal" href="#object-oriented-scala-as-a-better-java">4.3. Object-oriented Scala as a “better Java”</a></li>
+<li><a class="reference internal" href="#modularity-and-dependency-injection">4.4. Modularity and dependency injection</a><ul>
+<li><a class="reference internal" href="#design-goals">4.4.1. Design goals</a></li>
+<li><a class="reference internal" href="#scala-traits">4.4.2. Scala traits</a></li>
+<li><a class="reference internal" href="#trait-based-dependency-injection">4.4.3. Trait-based dependency injection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=6ab14e2d"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
