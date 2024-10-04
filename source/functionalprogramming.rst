@@ -7,6 +7,9 @@ In this chapter, we study the functional programming paradigm, with examples and
 Solving problems using built-in types and behaviors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In this section, we'll first return to the scripting style for a bit but with a functional touch, which encourages the use of immutable references and data structures.
+Arguably, this makes it easier to understand program behavior, especially in the presence of concurrency, defined as more than one activity (task, thread, or process) going on at the same time.
+
 As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
 Many of these, especially collection types and certain utility types, are *algebraic data types*, discussed below in more detail:
 
@@ -32,21 +35,22 @@ Many of these, especially collection types and certain utility types, are *algeb
   - https://www.scala-lang.org/api/current/scala/util/Try.html
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/try.sc
 
-By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
-The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with
+By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple, a lightweight aggregation of heterogeneous types based on the Cartesian product.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with these behaviors:
 
 - important methods ``map``, ``take`` / ``drop``, ``filter`` / ``withFilter``, ``find``, ``flatMap``, ``sum``, ``foldLeft`` / ``foldRight``, ``scanLeft``, ``zip``, ``groupBy``, ``collect``
 - ``for`` comprehensions
 
 
-.. todo:: elaborate more on ``for`` comprehensions and ``flatMap``
+.. todo:: Elaborate more on ``for`` comprehensions and ``flatMap``
 
 
 Examples
 ````````
 
+Loop over all items in a finite collection or iterator using mutable state:
 
-Loop over all items in a finite collection or iterator using mutable state::
+.. code-block:: java
 
   final Iterator<String> incoming = ...;
   var sum = 0;
@@ -60,7 +64,9 @@ Loop over all items in a finite collection or iterator using mutable state::
 *What does this code compute?*
 
 
-Immutable equivalent using ``foldLeft``::
+Immutable equivalent using ``foldLeft``:
+
+.. code-block:: scala
 
   val (sum, count) = incoming.foldLeft {
     (0, 0)
@@ -70,7 +76,9 @@ Immutable equivalent using ``foldLeft``::
   val result = sum.toFloat / count
 
 Note that you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
-On the other hand, if ``incoming`` is a collection (always finite) instead of an iterator (potentially unbounded), you can use ``map`` and ``sum``, a specialized fold, for a terser equivalent::
+On the other hand, if ``incoming`` is a collection (always finite) instead of an iterator (potentially unbounded), you can use ``map`` and ``sum``, a specialized fold, for a terser equivalent:
+
+.. code-block:: scala
 
   val sum = incoming.map(s => s.length).sum
   val count = incoming.size
@@ -78,8 +86,9 @@ On the other hand, if ``incoming`` is a collection (always finite) instead of an
 
 This is equivalent to two consecutive loops, one for ``map`` and one for ``sum``.
 
+Unbounded loop until a condition is met:
 
-Unbounded loop until a condition is met::
+.. code-block:: java
 
   final var input = new Scanner(System.in);
   System.out.print("enter next expression: ");
@@ -89,7 +98,9 @@ Unbounded loop until a condition is met::
     System.out.print("enter next expression: ");
   }
 
-Immutable equivalent using ``continually``::
+Immutable equivalent using ``continually``:
+
+.. code-block:: scala
 
   Iterator continually {
     print("enter next expression: ")
@@ -110,7 +121,9 @@ Other important operations on collections
 - If we want to transform a *collection of result values* by independently applying the same function to each item while preserving the collection's skeletal structure, we can use ``map``.
 - If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
 
-The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective::
+The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective:
+
+.. code-block:: scala
 
    // map - the result is a nested collection
 
@@ -157,7 +170,9 @@ Dealing with successive failures
 ````````````````````````````````
 
 Trying successive choices until either one succeeds or there is none left and we have to give up.
-Nested ``try``-``catch`` statements are often used to achieve this::
+Nested ``try``-``catch`` statements are often used to achieve this:
+
+.. code-block:: java
 
   AuthorizeRequestStrategy authorizeRequest = null;
   try {
@@ -177,7 +192,9 @@ Nested ``try``-``catch`` statements are often used to achieve this::
     }
   }
 
-Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orElse``::
+Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orElse``:
+
+.. code-block:: scala
 
    val authorizeRequest = Try {
       logger.debug("looking for access token in property file")
@@ -245,12 +262,14 @@ related to those discussed in :ref:`secDomainModelsOO`:
 - type parameters (genericity)
 
 
-Using these building blocks, we can express the `Shape` domain model from the examples above as an algebraic data type::
+Using these building blocks, we can express the `Shape` domain model from the examples above as an algebraic data type:
 
-        Shape = Circle(Int)
-              | Rectangle(Int, Int)
-              | Group(Seq(Shape))
-              | Location(Int, Int, Shape)
+.. code-block:: haskell
+
+  Shape = Circle(Int)
+        | Rectangle(Int, Int)
+        | Group(Seq(Shape))
+        | Location(Int, Int, Shape)
 
 We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:
 
@@ -293,7 +312,9 @@ Behaviors based on recursive thinking
 `````````````````````````````````````
 
 To understand recursive thinking, let us explore the familiar `shapes example <https://github.com/lucproglangcourse/shapes-oo-scala>`_.
-We'll start with a suitable algebraic type definition and some sample instances::
+We'll start with a suitable algebraic type definition and some sample instances:
+
+.. code-block:: scala
 
     enum Shape:
       case Rectangle(width: Int, height: Int)
@@ -310,7 +331,9 @@ We'll start with a suitable algebraic type definition and some sample instances:
 
 Let's now try to implement a ``countGroup`` behavior.
 This is incomplete but should compile;
-``???`` is a convenient placeholder for "not yet implemented" (NYI)::
+``???`` is a convenient placeholder for "not yet implemented" (NYI).
+
+.. code-block:: scala
 
     def countGroup(s: Shape): Int = s match
       case Rectangle(w, h) => 0
@@ -324,7 +347,9 @@ Now we need to apply recursive thinking:
 - For location, the child might have group nodes.
 - For group, the current node is a group node, plus the children might have group nodes.
 
-Accordingly::
+Accordingly:
+
+.. code-block:: scala
 
     def countGroup(s: Shape): Int = s match
       case Rectangle(w, h) => 0
@@ -336,7 +361,9 @@ Accordingly::
         sum
 
 Now ``countGroup(g)`` returns 2 as expected, though this is a Java-style, imperative implementation.
-Equivalently, we can use the ``foreach`` method instead of the so-called for comprehension::
+Equivalently, we can use the ``foreach`` method instead of the so-called for comprehension:
+
+.. code-block:: scala
 
     case Group(shapes @ _*) =>
       var sum = 1
@@ -345,7 +372,9 @@ Equivalently, we can use the ``foreach`` method instead of the so-called for com
       }
       sum
 
-Now...drum roll...we have an opportunity to convert this code into functional, applicative, immutable style::
+Now...drum roll...we have an opportunity to convert this code into functional, applicative, immutable style:
+
+.. code-block:: scala
 
     case Group(shapes @ _*) =>
       1 + shapes.map { c => countGroup(c) } .sum
@@ -437,7 +466,9 @@ Key concepts
 
 We first need to define some key concepts:
 
-- `(Endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws::
+- `(Endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws:
+
+  .. code-block:: scala
 
     c.map(identity) == c
     c.map(g compose f) == c.map(f).map(g)
@@ -478,12 +509,15 @@ What ``Fix`` does
 This forms the *fixpoint* of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.
 
 For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor ``F[A] = (Int, Option[A])``.
-This enables  us to define linked lists::
+This enables  us to define linked lists:
+
+.. code-block:: scala
 
   (1, Some((2, Some((3, None)))))
 
+The problem is that the types of these lists are nested:
 
-The problem is that the types of these lists are nested::
+.. code-block:: scala
 
   scala> (1, Some((2, Some((3, None)))))
   res0: (Int, Some[(Int, Some[(Int, None.type)])]) = (1,Some((2,Some((3,None)))))
@@ -491,7 +525,9 @@ The problem is that the types of these lists are nested::
 
 so that lists of different lengths have different types.
 
-By using a suitable ``Fix`` over our functor, they all end up having the *same* type, namely ``Fix``::
+By using a suitable ``Fix`` over our functor, they all end up having the *same* type, namely ``Fix``:
+
+.. code-block:: scala
 
   case class Fix(unFix: (Int, Option[Fix]))
 
@@ -506,13 +542,16 @@ Generalized fold (catamorphism)
 ```````````````````````````````
 
 The next question is what the implementation of the universal fold method for ``Fix`` looks like, also known as the *catamorphism*.
-Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we perform recursion over this functor by using ``map``, which preserves the first component and invokes a suitable ``map`` on the second component of the pair::
+Continuing with our ``Fix`` over ``(Int, Option[A])`` example, we perform recursion over this functor by using ``map``, which preserves the first component and invokes a suitable ``map`` on the second component of the pair:
+
+.. code-block:: scala
 
   case class Fix(unFix: (Int, Option[Fix])):
     def cata[B](f: ((Int, Option[B])) => B): B = f((this.unFix._1, this.unFix._2.map(_.cata(f))))
 
+Now we can define *algebras* on our functor, such as:
 
-Now we can define *algebras* on our functor, such as::
+.. code-block:: scala
 
   def sum(arg: (Int, Option[Int])): Int = arg match
     case (i, None) => i
@@ -520,13 +559,13 @@ Now we can define *algebras* on our functor, such as::
 
   res1.cata(sum) // 6
 
-
 These are very similar to visitors without the responsibility to traverse the structure.
 That is why they are not recursive.
 Instead, the catamorphism takes care of the recursion.
 
+For an arbitrary functor ``F``, the code looks like this:
 
-For an arbitrary functor ``F``, the code looks like this::
+.. code-block:: scala
 
   case class Fix(unFix: F[Fix]):
     def cata[B](f: F[B] => B): B = f(this.unFix.map(_.cata(f)))
