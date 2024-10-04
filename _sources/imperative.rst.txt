@@ -386,6 +386,33 @@ For example, we could run the application with these arguments:
   $ ./target/universal/stage/bin/myapp -- -c 3 -l 2 -w 5  
 
 
+Determining whether an app is running interactively
+```````````````````````````````````````````````````
+
+In some cases, it's convenient to determine programmatically whether our console app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
+For example, if our app running interactively, we might automatically want to prompt the user for console input.
+
+We can use this technique to determine whether stdin is coming from the console.
+
+.. code-block:: scala
+
+  private def isInputFromTerminal: Boolean =
+    System.console() != null ||
+      System.getProperty("os.name").nn.toLowerCase.nn.contains("windows") &&
+        sys.process.stdin.available() == 0
+
+.. todo:: Verify that this works on Windows.
+
+
+Allowing the user to edit their input
+`````````````````````````````````````
+Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.
+
+To add this capability to a Java- or Scala-based console app, we can use the `JLine library <https://github.com/jline/jline3>`_, which is the Java equivalent of the `GNU Readline library <https://en.wikipedia.org/wiki/GNU_Readline>`_.
+If you want to make your console app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
+JLine has excellent documentation; please look there for examples.
+
+
 Finding good third-party libraries
 ``````````````````````````````````
 
