@@ -157,7 +157,15 @@ Typically, you would use the `sbt scoverage plugin <https://github.com/scoverage
 
   $ sbt clean coverage test coverageReport
 
-Your test reports should then be available at
+Once these tasks complete, you should see the coverage percentages toward the end of the terminal output,
+
+.. code-block:: bash
+
+  [info] Statement coverage.: 50.91%
+  [info] Branch coverage....: 50.00%
+
+
+and your test reports should then be available at
 
 .. code-block:: bash
 
@@ -165,11 +173,21 @@ Your test reports should then be available at
 
 When you open this file in your web browser (or preview it in Gitpod using the `Live Preview extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_), you will see a navigable visualization of the code coverage report.
 
+.. image:: images/ScoverageOverview.png
+
+Here you can drill into specific packages and classes.
+When looking at a class, you can switch between the source code view and an abstract statement view.
+
+.. image:: images/ScoverageCode.png
+
+.. image:: images/ScoverageStatements.png
+
 If your coverage percentages appear low, you can make them more accurate by excluding classes you are not testing programmatically, such as those focused on providing a main method responsible mostly for I/O.
+(This works only with Scala version 3.4.2 or higher; also check ``project/plugins.sbt`` to make sure you're running the latest version of the sbt-scoverage plugin.)
 
 .. code-block:: scala
 
-  coverageExcludedPackages := "<empty>;.*Main.*;"
+  ccoverageExcludedPackages := """.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*"""
 
 Additional information on testing is available in the corresponding section of the `COMP 335/435: Formal Methods lecture notes <https://lucformalmethodscourse.github.io/30-testing.html>`_.
 
