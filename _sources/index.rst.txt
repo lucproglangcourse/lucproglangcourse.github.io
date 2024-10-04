@@ -45,6 +45,8 @@ Please submit `issues <https://github.com/lucproglangcourse/lucproglangcourse.gi
 Contents
 --------
 
+.. todo:: Ensure proper structural mapping from Sphinx to LaTeX
+
 .. toctree::
    :maxdepth: 2
    :numbered:
