@@ -52,6 +52,7 @@ Contents
    overview
    background
    imperative
+   objectoriented
    functionalprogramming
    representationinterpretation
    concurrency

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="5. Program Representation and Interpretation" href="representationinterpretation.html" /><link rel="prev" title="3. The Imperative and Object-Oriented Paradigms in Scala" href="imperative.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="5. Program Representation and Interpretation" href="representationinterpretation.html" /><link rel="prev" title="3. The Imperative Programming Paradigm" href="imperative.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>4. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v24f.9</title>
+        <title>4. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v24f.10</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.9</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v24f.10</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.9</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v24f.10</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -201,7 +201,7 @@
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative and Object-Oriented Paradigms in Scala</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative Programming Paradigm</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">4. The Functional Programming Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">5. Program Representation and Interpretation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="concurrency.html">6. The Concurrent Programming Paradigm</a></li>
@@ -256,6 +256,8 @@
 <p>In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.</p>
 <section id="solving-problems-using-built-in-types-and-behaviors">
 <h2><span class="section-number">4.1. </span>Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Link to this heading"></a></h2>
+<p>In this section, we’ll first return to the scripting style for a bit but with a functional touch, which encourages the use of immutable references and data structures.
+Arguably, this makes it easier to understand program behavior, especially in the presence of concurrency, defined as more than one activity (task, thread, or process) going on at the same time.</p>
 <p>As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
 Many of these, especially collection types and certain utility types, are <em>algebraic data types</em>, discussed below in more detail:</p>
 <ul class="simple">
@@ -286,65 +288,65 @@ Many of these, especially collection types and certain utility types, are <em>al
 </ul>
 </li>
 </ul>
-<p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple.
-The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with</p>
+<p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple, a lightweight aggregation of heterogeneous types based on the Cartesian product.
+The main building blocks in scripting-style Scala are the collection and utility types we just mentioned, along with these behaviors:</p>
 <ul class="simple">
 <li><p>important methods <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code> / <code class="docutils literal notranslate"><span class="pre">drop</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> / <code class="docutils literal notranslate"><span class="pre">withFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> / <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">scanLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">collect</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions</p></li>
 </ul>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
+<p>Elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
 </div>
 <section id="examples">
 <h3><span class="section-number">4.1.1. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>Loop over all items in a finite collection or iterator using mutable state:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">incoming</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span>
-<span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">var</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">incoming</span><span class="o">.</span><span class="n">forEachRemaining</span><span class="p">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="p">{</span>
-  <span class="nb">sum</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
-  <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
-<span class="n">final</span> <span class="n">var</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span><span class="p">;</span>
+<span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><em>What does this code compute?</em></p>
 <p>Immutable equivalent using <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">foldLeft</span> <span class="p">{</span>
-  <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">}</span> <span class="p">{</span> <span class="n">case</span> <span class="p">((</span><span class="nb">sum</span><span class="p">,</span> <span class="n">count</span><span class="p">),</span> <span class="nb">next</span><span class="p">)</span> <span class="o">=&gt;</span>
-  <span class="p">(</span><span class="nb">sum</span> <span class="o">+</span> <span class="nb">next</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="p">(</span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming</span><span class="p">.</span><span class="n">foldLeft</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="p">((</span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="p">(</span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">next</span><span class="p">.</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">.</span><span class="n">toFloat</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span>
 </pre></div>
 </div>
 <p>Note that you cannot “un-fuse” this loop equivalent because the iterator is stateful and you can iterate through it only once.
 On the other hand, if <code class="docutils literal notranslate"><span class="pre">incoming</span></code> is a collection (always finite) instead of an iterator (potentially unbounded), you can use <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>, a specialized fold, for a terser equivalent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="nb">sum</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">s</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span>
-<span class="n">val</span> <span class="n">count</span> <span class="o">=</span> <span class="n">incoming</span><span class="o">.</span><span class="n">size</span>
-<span class="n">val</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">toFloat</span> <span class="o">/</span> <span class="n">count</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">).</span><span class="n">sum</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming</span><span class="p">.</span><span class="n">size</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">.</span><span class="n">toFloat</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span>
 </pre></div>
 </div>
 <p>This is equivalent to two consecutive loops, one for <code class="docutils literal notranslate"><span class="pre">map</span></code> and one for <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
 <p>Unbounded loop until a condition is met:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">var</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="o">.</span><span class="ow">in</span><span class="p">);</span>
-<span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
-<span class="k">while</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
-  <span class="n">final</span> <span class="n">var</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">nextLine</span><span class="p">();</span>
-  <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-  <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">);</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;enter next expression: &quot;</span><span class="p">);</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">hasNextLine</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+<span class="w">  </span><span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;enter next expression: &quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Immutable equivalent using <code class="docutils literal notranslate"><span class="pre">continually</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Iterator</span> <span class="n">continually</span> <span class="p">{</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;enter next expression: &quot;</span><span class="p">)</span>
-  <span class="n">StdIn</span><span class="o">.</span><span class="n">readLine</span><span class="p">()</span>
-<span class="p">}</span> <span class="n">takeWhile</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
-  <span class="n">line</span> <span class="o">!=</span> <span class="n">null</span>
-<span class="p">}</span> <span class="n">foreach</span> <span class="p">{</span> <span class="n">line</span> <span class="o">=&gt;</span>
-  <span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nc">Iterator</span><span class="w"> </span><span class="n">continually</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;enter next expression: &quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nc">StdIn</span><span class="p">.</span><span class="n">readLine</span><span class="p">()</span>
+<span class="p">}</span><span class="w"> </span><span class="n">takeWhile</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="n">line</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span><span class="w"> </span><span class="n">foreach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="n">processExpr</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -359,42 +361,42 @@ On the other hand, if <code class="docutils literal notranslate"><span class="pr
 <li><p>If we want to do the same as <code class="docutils literal notranslate"><span class="pre">map</span></code> but without introducing an additional level of structural nesting even though the function does so, we can use <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">map</span></code> followed by <code class="docutils literal notranslate"><span class="pre">flatten</span></code>.</p></li>
 </ul>
 <p>The following example illustrates the difference between <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> from an imperative perspective:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// map - the result is a nested collection
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// map - the result is a nested collection</span>
 
-scala&gt; Seq(&quot;hello world what up&quot;, &quot;hola mundo&quot;, &quot;hallo welt&quot;)
-res0: Seq[String] = List(hello world what up, hola mundo, hallo welt)
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Seq</span><span class="p">(</span><span class="s">&quot;hello world what up&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hola mundo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hallo welt&quot;</span><span class="p">)</span>
+<span class="n">res0</span><span class="p">:</span><span class="w"> </span><span class="nc">Seq</span><span class="p">[</span><span class="nc">String</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="n">hello</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="n">hola</span><span class="w"> </span><span class="n">mundo</span><span class="p">,</span><span class="w"> </span><span class="n">hallo</span><span class="w"> </span><span class="n">welt</span><span class="p">)</span>
 
-scala&gt; res0.map(s =&gt; s.split(&quot;\\s+&quot;))
-val res1: Seq[Array[String]] = List(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res0</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\\s+&quot;</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">res1</span><span class="p">:</span><span class="w"> </span><span class="nc">Seq</span><span class="p">[</span><span class="nc">Array</span><span class="p">[</span><span class="nc">String</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span><span class="n">hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">,</span><span class="w"> </span><span class="n">up</span><span class="p">),</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="n">hola</span><span class="p">,</span><span class="w"> </span><span class="n">mundo</span><span class="p">),</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="n">hallo</span><span class="p">,</span><span class="w"> </span><span class="n">welt</span><span class="p">))</span>
 
-scala&gt; val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
-resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">resultNested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">.</span><span class="n">empty</span><span class="p">[</span><span class="nc">Array</span><span class="p">[</span><span class="nc">String</span><span class="p">]]</span>
+<span class="n">resultNested</span><span class="p">:</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">[</span><span class="nc">Array</span><span class="p">[</span><span class="nc">String</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ArrayBuffer</span><span class="p">()</span>
 
-scala&gt; res0.foreach { line =&gt;
-     |   val words = line.split(&quot;\\s+&quot;)
-     |   resultNested += words
-     | }
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res0</span><span class="p">.</span><span class="n">foreach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\\s+&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="n">resultNested</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">words</span>
+<span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="p">}</span>
 
-scala&gt; resultNested
-res2: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resultNested</span>
+<span class="n">res2</span><span class="p">:</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">[</span><span class="nc">Array</span><span class="p">[</span><span class="nc">String</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ArrayBuffer</span><span class="p">(</span><span class="nc">Array</span><span class="p">(</span><span class="n">hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">,</span><span class="w"> </span><span class="n">up</span><span class="p">),</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="n">hola</span><span class="p">,</span><span class="w"> </span><span class="n">mundo</span><span class="p">),</span><span class="w"> </span><span class="nc">Array</span><span class="p">(</span><span class="n">hallo</span><span class="p">,</span><span class="w"> </span><span class="n">welt</span><span class="p">))</span>
 
-// flatMap - the result is a flat collection - this requires nested loops!
+<span class="c1">// flatMap - the result is a flat collection - this requires nested loops!</span>
 
-scala&gt; res0.flatMap(s =&gt; s.split(&quot;\\s+&quot;))
-val res3: Seq[String] = List(hello, world, what, up, hola, mundo, hallo, welt)
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res0</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\\s+&quot;</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">res3</span><span class="p">:</span><span class="w"> </span><span class="nc">Seq</span><span class="p">[</span><span class="nc">String</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="n">hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">,</span><span class="w"> </span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="n">hola</span><span class="p">,</span><span class="w"> </span><span class="n">mundo</span><span class="p">,</span><span class="w"> </span><span class="n">hallo</span><span class="p">,</span><span class="w"> </span><span class="n">welt</span><span class="p">)</span>
 
-scala&gt; val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
-resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">resultFlat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">.</span><span class="n">empty</span><span class="p">[</span><span class="nc">String</span><span class="p">]</span>
+<span class="n">resultFlat</span><span class="p">:</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">[</span><span class="nc">String</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ArrayBuffer</span><span class="p">()</span>
 
-scala&gt; res0.foreach { line =&gt;
-     |   val words = line.split(&quot;\\s+&quot;)
-     |   words.foreach { word =&gt;
-     |     resultFlat += word
-     |   }
-     | }
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res0</span><span class="p">.</span><span class="n">foreach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\\s+&quot;</span><span class="p">)</span>
+<span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="n">words</span><span class="p">.</span><span class="n">foreach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">     </span><span class="o">|</span><span class="w">     </span><span class="n">resultFlat</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">word</span>
+<span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="p">}</span>
+<span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="p">}</span>
 
-scala&gt; resultFlat
-res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resultFlat</span>
+<span class="n">res4</span><span class="p">:</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">ArrayBuffer</span><span class="p">[</span><span class="nc">String</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ArrayBuffer</span><span class="p">(</span><span class="n">hello</span><span class="p">,</span><span class="w"> </span><span class="n">world</span><span class="p">,</span><span class="w"> </span><span class="n">what</span><span class="p">,</span><span class="w"> </span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="n">hola</span><span class="p">,</span><span class="w"> </span><span class="n">mundo</span><span class="p">,</span><span class="w"> </span><span class="n">hallo</span><span class="p">,</span><span class="w"> </span><span class="n">welt</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note also that all of these are methods but look like control structures because of Scala’s syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.</p>
@@ -403,41 +405,41 @@ res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, w
 <h3><span class="section-number">4.1.3. </span>Dealing with successive failures<a class="headerlink" href="#dealing-with-successive-failures" title="Link to this heading"></a></h3>
 <p>Trying successive choices until either one succeeds or there is none left and we have to give up.
 Nested <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statements are often used to achieve this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorizeRequestStrategy</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-<span class="k">try</span> <span class="p">{</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token&quot;</span><span class="p">);</span>
-  <span class="o">...</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">);</span>
-  <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">);</span>
-<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">FileNotFoundException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">);</span>
-    <span class="n">final</span> <span class="n">var</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">);</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">);</span>
-    <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameter</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">final</span> <span class="n">NoSuchElementException</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
-  <span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorizeRequestStrategy</span><span class="w"> </span><span class="n">authorizeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&quot;looking for access token&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&quot;found access token&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">authorizeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">FileNotFoundException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&quot;looking for API key in environment&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">apiKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="na">env</span><span class="p">(</span><span class="s">&quot;API_KEY&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&quot;found API key&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">authorizeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">addQueryStringParameter</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">apiKey</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">NoSuchElementException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">&quot;no authorization information found, exiting&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Immutable equivalent using successive <code class="docutils literal notranslate"><span class="pre">Try</span></code> blocks, flat-chained using <code class="docutils literal notranslate"><span class="pre">orElse</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">authorizeRequest</span> <span class="o">=</span> <span class="n">Try</span> <span class="p">{</span>
-   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for access token in property file&quot;</span><span class="p">)</span>
-   <span class="o">...</span>
-   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found access token&quot;</span><span class="p">)</span>
-   <span class="n">val</span> <span class="n">authHeader</span> <span class="o">=</span> <span class="n">KeyAuthorization</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="s2">&quot;Bearer $accessToken&quot;</span>
-   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">)</span>
- <span class="p">}</span> <span class="n">orElse</span> <span class="n">Try</span> <span class="p">{</span>
-   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;looking for API key in environment&quot;</span><span class="p">)</span>
-   <span class="n">val</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="s2">&quot;API_KEY&quot;</span><span class="p">)</span>
-   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;found API key&quot;</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">WSRequest</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">addQueryStringParameters</span><span class="p">(</span><span class="s2">&quot;key&quot;</span> <span class="o">-&gt;</span> <span class="n">apiKey</span><span class="p">)</span>
- <span class="p">}</span> <span class="n">getOrElse</span> <span class="p">{</span>
-   <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;no authorization information found, exiting&quot;</span><span class="p">)</span>
-   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
- <span class="p">}</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">authorizeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;looking for access token in property file&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">...</span>
+<span class="w">   </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;found access token&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">KeyAuthorization</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">s&quot;Bearer </span><span class="si">$</span><span class="n">accessToken</span><span class="s">&quot;</span>
+<span class="w">   </span><span class="p">(</span><span class="n">request</span><span class="p">:</span><span class="w"> </span><span class="nc">WSRequest</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">addHttpHeaders</span><span class="p">(</span><span class="n">authHeader</span><span class="p">)</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">orElse</span><span class="w"> </span><span class="nc">Try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;looking for API key in environment&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="kd">val</span><span class="w"> </span><span class="n">apiKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">env</span><span class="p">(</span><span class="s">&quot;API_KEY&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;found API key&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="n">request</span><span class="p">:</span><span class="w"> </span><span class="nc">WSRequest</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">addQueryStringParameters</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">apiKey</span><span class="p">)</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">getOrElse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;no authorization information found, exiting&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">sys</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">401</span><span class="p">)</span>
+<span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
@@ -477,7 +479,7 @@ Earlier versions of the <a class="reference external" href="https://github.com/l
 <li><p>nonlinear structures: trees, graphs, many custom domain models</p></li>
 </ul>
 <p>The fundamental building blocks of these <em>algebraic data types</em> are
-related to those discussed in <a class="reference internal" href="imperative.html#secdomainmodelsoo"><span class="std std-ref">Defining domain models in imperative and object-oriented languages</span></a>:</p>
+related to those discussed in <span class="xref std std-ref">secDomainModelsOO</span>:</p>
 <ul class="simple">
 <li><p>(disjoint) sum: variation</p></li>
 <li><p>product (tuple, record) of a given arity: aggregation</p></li>
@@ -485,10 +487,10 @@ related to those discussed in <a class="reference internal" href="imperative.htm
 <li><p>type parameters (genericity)</p></li>
 </ul>
 <p>Using these building blocks, we can express the <cite>Shape</cite> domain model from the examples above as an algebraic data type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shape</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">Int</span><span class="p">)</span>
-      <span class="o">|</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)</span>
-      <span class="o">|</span> <span class="n">Group</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="n">Shape</span><span class="p">))</span>
-      <span class="o">|</span> <span class="n">Location</span><span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">Shape</span><span class="p">)</span>
+<div class="highlight-haskell notranslate"><div class="highlight"><pre><span></span><span class="kt">Shape</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="kt">Circle</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span>
+<span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="kt">Rectangle</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span>
+<span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="kt">Group</span><span class="p">(</span><span class="kt">Seq</span><span class="p">(</span><span class="kt">Shape</span><span class="p">))</span>
+<span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="kt">Location</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="kt">Shape</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can separately define behaviors on Shapes as functions. Here is an example that illustrates this approach:</p>
@@ -526,26 +528,26 @@ As expected, for recursive types, the behaviors are typically recursive as well.
 <h3><span class="section-number">4.3.1. </span>Behaviors based on recursive thinking<a class="headerlink" href="#behaviors-based-on-recursive-thinking" title="Link to this heading"></a></h3>
 <p>To understand recursive thinking, let us explore the familiar <a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">shapes example</a>.
 We’ll start with a suitable algebraic type definition and some sample instances:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">Shape</span><span class="p">:</span>
-  <span class="k">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
-  <span class="o">//</span> <span class="o">...</span>
-  <span class="k">case</span> <span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">)</span>
-  <span class="k">case</span> <span class="n">Group</span><span class="p">(</span><span class="n">shapes</span><span class="p">:</span> <span class="n">Shape</span><span class="o">*</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">Shape</span><span class="p">:</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Location</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="p">:</span><span class="w"> </span><span class="nc">Shape</span><span class="p">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">shapes</span><span class="p">:</span><span class="w"> </span><span class="nc">Shape</span><span class="o">*</span><span class="p">)</span>
 
-<span class="n">val</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">q</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
 
-<span class="n">val</span> <span class="n">g</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">Group</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">Location</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="nc">Location</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Let’s now try to implement a <code class="docutils literal notranslate"><span class="pre">countGroup</span></code> behavior.
 This is incomplete but should compile;
-<code class="docutils literal notranslate"><span class="pre">???</span></code> is a convenient placeholder for “not yet implemented” (NYI):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>def countGroup(s: Shape): Int = s match
-  case Rectangle(w, h) =&gt; 0
-  case Location(x, y, c) =&gt; ???
-  case Group(shapes @ _*) =&gt; ???
+<code class="docutils literal notranslate"><span class="pre">???</span></code> is a convenient placeholder for “not yet implemented” (NYI).</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">countGroup</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="nc">Shape</span><span class="p">):</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">match</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">???</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">shapes</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">_*</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">???</span>
 </pre></div>
 </div>
 <p>As expected, <code class="docutils literal notranslate"><span class="pre">countGroup</span></code> returns 0 for rectangles but would raise a <code class="docutils literal notranslate"><span class="pre">NYI</span></code> exception for group or location nodes.</p>
@@ -555,29 +557,29 @@ This is incomplete but should compile;
 <li><p>For group, the current node is a group node, plus the children might have group nodes.</p></li>
 </ul>
 <p>Accordingly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countGroup</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">Shape</span><span class="p">):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">s</span> <span class="n">match</span>
-  <span class="k">case</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="mi">0</span>
-  <span class="k">case</span> <span class="n">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-  <span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="o">&lt;-</span> <span class="n">shapes</span> <span class="n">do</span>
-      <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-    <span class="nb">sum</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">countGroup</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="nc">Shape</span><span class="p">):</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">match</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Rectangle</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Location</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">shapes</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">_*</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">shapes</span><span class="w"> </span><span class="k">do</span>
+<span class="w">      </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="w">    </span><span class="n">sum</span>
 </pre></div>
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">countGroup(g)</span></code> returns 2 as expected, though this is a Java-style, imperative implementation.
 Equivalently, we can use the <code class="docutils literal notranslate"><span class="pre">foreach</span></code> method instead of the so-called for comprehension:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
-  <span class="n">var</span> <span class="nb">sum</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="n">shapes</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span>
-    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-  <span class="p">}</span>
-  <span class="nb">sum</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">shapes</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">_*</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="n">shapes</span><span class="p">.</span><span class="n">foreach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">sum</span>
 </pre></div>
 </div>
 <p>Now…drum roll…we have an opportunity to convert this code into functional, applicative, immutable style:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="n">Group</span><span class="p">(</span><span class="n">shapes</span> <span class="o">@</span> <span class="k">_</span><span class="o">*</span><span class="p">)</span> <span class="o">=&gt;</span>
-  <span class="mi">1</span> <span class="o">+</span> <span class="n">shapes</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">c</span> <span class="o">=&gt;</span> <span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">}</span> <span class="o">.</span><span class="n">sum</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">shapes</span><span class="w"> </span><span class="o">@</span><span class="w"> </span><span class="n">_*</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">shapes</span><span class="p">.</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">countGroup</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">.</span><span class="n">sum</span>
 </pre></div>
 </div>
 <p>where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.</p>
@@ -655,8 +657,8 @@ Here are some examples:</p>
 <p>We first need to define some key concepts:</p>
 <ul>
 <li><p><a class="reference external" href="https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala">(Endo)functor</a>: a type constructor (generic collection) with a <code class="docutils literal notranslate"><span class="pre">map</span></code> method that satisfies <em>identity</em> and <em>composition</em> laws:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span>
-<span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span> <span class="n">compose</span> <span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="n">c</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">identity</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span>
+<span class="n">c</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Some familiar examples of endofunctors are</p>
@@ -695,20 +697,20 @@ We obtain this by applying the <code class="docutils literal notranslate"><span 
 This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
 <p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal notranslate"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
 This enables  us to define linked lists:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nc">None</span><span class="p">)))))</span>
 </pre></div>
 </div>
 <p>The problem is that the types of these lists are nested:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">)))))</span>
-<span class="n">res0</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Some</span><span class="p">[(</span><span class="n">Int</span><span class="p">,</span> <span class="kc">None</span><span class="o">.</span><span class="n">type</span><span class="p">)])])</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">)))))</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nc">None</span><span class="p">)))))</span>
+<span class="n">res0</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">[(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">[(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">None</span><span class="p">.</span><span class="k">type</span><span class="p">)])])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nc">Some</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="nc">Some</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="nc">None</span><span class="p">)))))</span>
 </pre></div>
 </div>
 <p>so that lists of different lengths have different types.</p>
 <p>By using a suitable <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over our functor, they all end up having the <em>same</em> type, namely <code class="docutils literal notranslate"><span class="pre">Fix</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">]))</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">Fix</span><span class="p">]))</span>
 
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">))))))))</span>
-<span class="n">res1</span><span class="p">:</span> <span class="n">Fix</span> <span class="o">=</span> <span class="n">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">Some</span><span class="p">(</span><span class="n">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">))))))))</span>
+<span class="n">scala</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="nc">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="nc">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nc">None</span><span class="p">))))))))</span>
+<span class="n">res1</span><span class="p">:</span><span class="w"> </span><span class="nc">Fix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Fix</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="nc">Some</span><span class="p">(</span><span class="nc">Fix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="nc">Some</span><span class="p">(</span><span class="nc">Fix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="nc">None</span><span class="p">))))))))</span>
 </pre></div>
 </div>
 <p>That’s why we usually define such types recursively to begin with.</p>
@@ -717,24 +719,24 @@ This enables  us to define linked lists:</p>
 <h3><span class="section-number">4.5.4. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Link to this heading"></a></h3>
 <p>The next question is what the implementation of the universal fold method for <code class="docutils literal notranslate"><span class="pre">Fix</span></code> looks like, also known as the <em>catamorphism</em>.
 Continuing with our <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over <code class="docutils literal notranslate"><span class="pre">(Int,</span> <span class="pre">Option[A])</span></code> example, we perform recursion over this functor by using <code class="docutils literal notranslate"><span class="pre">map</span></code>, which preserves the first component and invokes a suitable <code class="docutils literal notranslate"><span class="pre">map</span></code> on the second component of the pair:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Fix</span><span class="p">])):</span>
-  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="p">((</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">B</span><span class="p">]))</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">((</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_1</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">_2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">))))</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">Fix</span><span class="p">])):</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">cata</span><span class="p">[</span><span class="nc">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">B</span><span class="p">]))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nc">B</span><span class="p">):</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">((</span><span class="bp">this</span><span class="p">.</span><span class="n">unFix</span><span class="p">.</span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="bp">this</span><span class="p">.</span><span class="n">unFix</span><span class="p">.</span><span class="n">_2</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="p">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">))))</span>
 </pre></div>
 </div>
 <p>Now we can define <em>algebras</em> on our functor, such as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Option</span><span class="p">[</span><span class="n">Int</span><span class="p">])):</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">arg</span> <span class="n">match</span>
-  <span class="k">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">i</span>
-  <span class="k">case</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Some</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">=&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="n">s</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">Int</span><span class="p">])):</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k">match</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nc">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span>
 
-<span class="n">res1</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> <span class="o">//</span> <span class="mi">6</span>
+<span class="n">res1</span><span class="p">.</span><span class="n">cata</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span><span class="w"> </span><span class="c1">// 6</span>
 </pre></div>
 </div>
 <p>These are very similar to visitors without the responsibility to traverse the structure.
 That is why they are not recursive.
 Instead, the catamorphism takes care of the recursion.</p>
 <p>For an arbitrary functor <code class="docutils literal notranslate"><span class="pre">F</span></code>, the code looks like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="k">class</span> <span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">Fix</span><span class="p">]):</span>
-  <span class="k">def</span> <span class="nf">cata</span><span class="p">[</span><span class="n">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span> <span class="n">F</span><span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="p">):</span> <span class="n">B</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">unFix</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span><span class="w"> </span><span class="nc">F</span><span class="p">[</span><span class="nc">Fix</span><span class="p">]):</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">cata</span><span class="p">[</span><span class="nc">B</span><span class="p">](</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="nc">F</span><span class="p">[</span><span class="nc">B</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nc">B</span><span class="p">):</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="bp">this</span><span class="p">.</span><span class="n">unFix</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="p">.</span><span class="n">cata</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>For an arbitrary <em>carrier type</em> <code class="docutils literal notranslate"><span class="pre">B</span></code>, the argument <code class="docutils literal notranslate"><span class="pre">f</span></code> of type <code class="docutils literal notranslate"><span class="pre">F[B]</span> <span class="pre">=&gt;</span> <span class="pre">B</span></code> is an <code class="docutils literal notranslate"><span class="pre">F</span></code>-algebra.
@@ -859,7 +861,7 @@ They define these abstractions in such a way that we can retrofit existing types
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">3. </span>The Imperative and Object-Oriented Paradigms in Scala</div>
+                <div class="title"><span class="section-number">3. </span>The Imperative Programming Paradigm</div>
                 
               </div>
             </a>
@@ -940,7 +942,7 @@ They define these abstractions in such a way that we can retrofit existing types
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=04de6bb2"></script>
+    <script src="_static/documentation_options.js?v=cec9ca34"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

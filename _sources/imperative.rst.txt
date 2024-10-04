@@ -1,7 +1,13 @@
-The Imperative and Object-Oriented Paradigms in Scala
------------------------------------------------------
+The Imperative Programming Paradigm
+-----------------------------------
 
-In this chapter, we discuss the imperative and object-oriented programming paradigms with examples in Scala.
+In this chapter, we discuss the *imperative programming paradigm* with examples in Scala.
+To differentiate this from the object-oriented paradigm in practice, we define imperative code to mean code that uses a language's control-flow constructs along with its built-in types, including primitive types and built-in type abstractions for strings, collections, input/output, and other general-purpose building blocks.
+By contrast, we define object-oriented code to mean code that includes definitions of domain models or other new application-specific abstractions, or uses object-oriented frameworks (as opposed to lower-level, general-purpose object-oriented libraries).
+
+.. note:: Arguably, this definition of the imperative paradigm may be closer to a definition of the *scripting style* because most imperative languages do provide mechanisms for introducing new type abstractions. 
+  For pedagogical reasons, we will still discuss those capabilities the next chapter as part of the object-oriented paradigm.
+
 
 Options for running Scala code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,8 +126,8 @@ In this section, we discuss the different options for running Scala code, includ
     $ ./target/universal/stage/bin/myapp-scala arg1 arg2 ...
 
 
-Choices for testing Scala code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Techniques for testing Scala code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Testing is an important, widely used practice within the software development lifecycle (SDLC).
 There are various basic techniques and libraries/frameworks for testing Scala code.
@@ -537,10 +543,10 @@ In sum, to achieve constant-space complexity, it is usually best to represent th
 Iterators support most of the same behaviors as in-memory collections.
 
 
-Observing a program's memory footprint over time
-````````````````````````````````````````````````
+Monitoring a program's memory footprint over time
+`````````````````````````````````````````````````
 
-To observe a program's memory footprint over time, we would typically use a heap profiler.
+To monitor a program's memory footprint over time, we would typically use a heap profiler.
 For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.
 
 For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
@@ -548,185 +554,25 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 
 .. image:: images/heapprofile.png
 
-When working in a command-line environment, we can also use an interactive process viewer, such as ``htop``, to observe a program's memory footprint over time.
+When working in a command-line environment, we can also use an interactive process viewer, such as ``htop``, to monitor a program's memory footprint over time.
 
 .. todo:: add suitable htop screenshot
 
 
 Making console applications testable
-````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Recognizing the importance of *testability* as a static nonfunctional requirement, we like to make our console applications testable.
+Recognizing the importance of *testability* as a static nonfunctional requirement, we'd like to make our console applications testable.
 While we could use command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
 
-A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code.
+A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
 In particular, how can we make our code testable *without* sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?
 
 The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.
 
 https://github.com/lucproglangcourse/consoleapp-java
 
-.. todo:: add discussion of the two key design patterns
+Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving custom abstractions.
+The endpoint of this journey thereby marks our transition to the object-oriented paradigm.
 
-
-.. _secDomainModelsOO:
-
-Defining domain models in imperative and object-oriented languages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In imperative and object-oriented languages, the basic type abstractions are
-
-- addressing: pointers, references
-- aggregation: structs/records, arrays
-
-  - example: node in a linked list
-
-- variation: tagged unions, multiple implementations of an interface
-
-  - example: mutable set abstraction
-
-    - add element
-    - remove element
-    - check whether an element is present
-    - check if empty
-    - how many elements
-  - several possible implementations
-
-    - reasonable: binary search tree, hash table, bit vector (for small underlying domains)
-    - less reasonable: array, linked list
-    - see also this `table of collection implementations <http://docs.oracle.com/javase/tutorial/collections/implementations>`_
-
-- (structural) recursion: defining a type in terms of itself, usually involves aggregation and variation
-
-  - example: a tree interface with implementation classes for leaves and interior nodes
-
-- genericity (type parameterization): when a type is parametric in terms of one or more type parameters
-
-  - example: collections parametric in their element type
-
-In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:
-
-- https://github.com/lucoodevcourse/shapes-android-java
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
-- https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java
-
-Object-oriented Scala as a "better Java"
-````````````````````````````````````````
-
-Scala offers various improvements over Java, including:
-
-- `unified types <https://docs.scala-lang.org/scala3/book/first-look-at-types.html>`_
-- `standalone higher-order functions (lambdas) <https://docs.scala-lang.org/scala3/book/taste-functions.html>`_
-- `standalone objects <https://docs.scala-lang.org/scala3/book/taste-objects.html>`_
-- `tuples <https://docs.scala-lang.org/scala3/book/taste-collections.html#tuples>`_
-- `advanced enums <https://docs.scala-lang.org/scala3/book/taste-modeling.html#enums>`_, `case classes <https://docs.scala-lang.org/scala3/book/taste-modeling.html#case-classes>`_ and `pattern matching <https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html#modeling-the-operations>`_
-- `traits <https://docs.scala-lang.org/scala3/book/domain-modeling-oop.html>`_: generalization of interfaces and restricted form of abstract classes, can be combined/stacked
-- package structure decoupled from folder hierarchy
-- `null safety <https://docs.scala-lang.org/scala3/reference/other-new-features/explicit-nulls.html>`_: ensuring at compile-time that an expression cannot be null
-- `multiversal equality <https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html>`_: making sure apples are compared only with other apples
-- `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
-
-More recent versions of Java, however, have started to echo some these advances:
-
-- lambda expressions
-- default methods in interfaces
-- local type inference
-- streams
-
-We will study these features as we encounter them.
-
-The following examples illustrate the use of Scala as a "better Java" and the transition to some of the above-mentioned improvements:
-
-- https://github.com/lucproglangcourse/shapes-oo-scala
-- https://github.com/lucproglangcourse/expressions-scala
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchart.sc
-- https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc
-
-
-Modularity and dependency injection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note:: To wrap your head around this section, you may want to start by recalling/reviewing the `stopwatch example <https://github.com/lucoodevcourse/stopwatch-android-java>`_ from COMP 313/413 (intermediate object-oriented programming).
-  In that app, the model is rather complex and has three or four components that depend on each other.
-  After creating the instances of those components, you had to connect them to each other using setters.
-  *Does that ring a bell?*
-  In this section and the pertinent examples, we are achieving basically the same goal by plugging two or more Scala traits together declaratively.
-
-
-Design goals
-````````````
-
-We pursue following design goals tied to the nonfunctional code quality requirements:
-
-- *testability*
-- *modularity* for separation of concerns
-- *reusability* for avoidance of code duplication ("DRY")
-
-In particular, to manage the growing complexity of a system, we usually try to decompose it into its design dimensions, e.g.,
-
-- mixing and matching interfaces with multiple implementations
-- running code in production versus testing
-
-We can recognize these in many common situations, including the examples listed below.
-
-In object-oriented languages, we often use classes (and interfaces) as the main mechanism for achieving these design goals.
-
-
-Scala traits
-````````````
-
-Scala traits are *abstract* types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
-Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
-The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/>`_ shows how traits can help us achieve our design goals.
-
-.. note:: We deliberately call *Thin Cake* an *idiom* as opposed to a pattern because it is *language-specific*.
-
-We will rely on the following examples for this section:
-
-- https://github.com/lucproglangcourse/consoleapp-java-sbt
-- https://github.com/lucproglangcourse/processtree-scala
-- https://github.com/lucproglangcourse/iterators-scala
-
-First, to achieve testability, we can define the desired functionality, such as ``common.IO``, as its own trait instead of a concrete class or part of some other trait such as ``common.Main``.
-Such traits are *providers* of some functionality, while building blocks that use this functionality are *clients*, such as``common.Main`` (on the production side) and ``PrintSpec`` (on the testing side).
-Specifically, in the process tree example, we use ``PrintSpec`` to test ``common.IO`` in isolation, independently of ``common.Main``.
-
-To avoid code duplication in the presence of the design dimensions mentioned above, we can again leverage Scala traits as building blocks.
-Along some of the dimensions, there are three possible roles:
-
-- *provider*, e.g., the specific implementations `MutableTreeBuilder`, `FoldTreeBuilder`, etc.
-- *client*, e.g., the various main objects on the production side, and the `TreeBuilderSpec` on the testing side
-- *contract*, the common abstraction between provider and client, e.g., `TreeBuilder`
-
-Usually, when there is a common contract, a provider *overrides* some or all of the abstract behaviors declared in the contract.
-Some building blocks have more than one role. E.g., ``common.Main`` is a client of (depends on) ``TreeBuilder`` but provides the main application behavior that the concrete main objects need.
-Similarly, ``TreeBuilderSpec`` also depends on ``TreeBuilder`` but provides the test code that the concrete test classes (``Spec``) need.
-This arrangement enables us to mix-and-match the desired ``TreeBuilder`` implementation with either ``common.Main`` for production or ``TreeBuilderSpec`` for testing.
-
-
-The following figure shows the roles of and relationships among the various building blocks of the process tree example.
-
-.. figure:: images/ProcessTreeTypeHierarchy.png
-
-The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity in its ``imperative/modular`` package.
-
-
-.. note:: For pedagogical reasons, the process tree and iterators examples are overengineered relative to their simple functionality:
-	  To increase confidence in the functional correctness of our code, we should test it;
-	  this requires testability, which drives the modularity we are seeing in these examples.
-	  In other words, the resulting design complexity is the cost of testability.
-	  On the other hand, a more realistic system would likely already have substantial design complexity in its core functionality for separation of concerns, maintainability, and other nonfunctional quality reasons;
-	  in this case, the additional complexity introduced to achieve testability would be comparatively small.
-
-
-Trait-based dependency injection
-````````````````````````````````
-
-In the presence of modularity, `dependency injection <https://en.wikipedia.org/wiki/Dependency_injection>`_ (DI) is a technique for supplying a dependency to a client from outside, thereby relieving the client from the responsibility of "finding" its dependency, i.e., performing *dependency lookup*.
-In response to the popularity of dependency injection, numerous DI frameworks, such as Spring and Guice, have arisen.
-
-The Thin Cake idiom provides basic DI in Scala without the need for a DI framework.
-To recap, ``common.Main`` cannot run on its own but declares by extending ``TreeBuilder`` that it requires an implementation of the ``buildTree`` method.
-One of the ``TreeBuilder`` implementation traits, such as ``FoldTreeBuilder`` can satisfy this dependency.
-The actual "injection" takes place when we inject, say, ``FoldTreeBuilder`` into ``common.Main`` in the definition of the concrete main object ``fold.Main``.
+.. todo:: Add discussion of the two key design patterns.
