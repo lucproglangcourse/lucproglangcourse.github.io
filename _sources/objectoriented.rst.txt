@@ -264,7 +264,8 @@ The following figure shows the roles of and relationships among the various buil
 
 .. figure:: images/ProcessTreeTypeHierarchy.png
 
-The `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity in its ``imperative/modular`` package.
+The imperative versions of the `iterators example <https://github.com/lucproglangcourse/iterators-scala>`_ includes additional instances of trait-based modularity in its ``imperative/modular`` package.
+By contrast, the functional versions of this example rely on parameterized types (generics) to achieve a similar outcome.
 
 
 .. note:: For pedagogical reasons, the process tree and iterators examples are overengineered relative to their simple functionality:
