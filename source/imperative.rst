@@ -610,5 +610,3 @@ https://github.com/lucproglangcourse/consoleapp-java
 
 Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving custom abstractions.
 The endpoint of this journey thereby marks our transition to the object-oriented paradigm.
-
-.. todo:: Add discussion of the two key design patterns.
