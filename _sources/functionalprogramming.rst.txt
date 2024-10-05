@@ -338,7 +338,7 @@ This is incomplete but should compile;
     def countGroup(s: Shape): Int = s match
       case Rectangle(w, h) => 0
       case Location(x, y, c) => ???
-      case Group(shapes @ _*) => ???
+      case Group(shapes*) => ???
 
 As expected, ``countGroup`` returns 0 for rectangles but would raise a ``NYI`` exception for group or location nodes.
 
@@ -354,7 +354,7 @@ Accordingly:
     def countGroup(s: Shape): Int = s match
       case Rectangle(w, h) => 0
       case Location(x, y, c) => countGroup(c)
-      case Group(shapes @ _*) =>
+      case Group(shapes*) =>
         var sum = 1
         for c <- shapes do
           sum += countGroup(c)
@@ -365,7 +365,7 @@ Equivalently, we can use the ``foreach`` method instead of the so-called for com
 
 .. code-block:: scala
 
-    case Group(shapes @ _*) =>
+    case Group(shapes*) =>
       var sum = 1
       shapes.foreach { c =>
         sum += countGroup(c)
@@ -376,7 +376,7 @@ Now...drum roll...we have an opportunity to convert this code into functional, a
 
 .. code-block:: scala
 
-    case Group(shapes @ _*) =>
+    case Group(shapes*) =>
       1 + shapes.map { c => countGroup(c) } .sum
 
 where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.
