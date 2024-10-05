@@ -198,19 +198,55 @@ If your coverage percentages appear low, you can make them more accurate by excl
 Additional information on testing is available in the corresponding section of the `COMP 335/435: Formal Methods lecture notes <https://lucformalmethodscourse.github.io/30-testing.html>`_.
 
 
+End-to-end application testing
+``````````````````````````````
+
+Besides the familiar styles of unit testing, one could attempt to automate the process of end-to-end application testing.
+One approach would be to use shell scripts in conjunction with sample input and expected output files; 
+after running the application on the sample input, one could use a ``diff`` utility to compare the actual output to the expected output.
+
+This approach adds complexity in terms of maintaining an additional set of data files, however, and it is brittle in that the test may no longer be valid after changes in the output format of the application under test.
+Therefore, it is usually preferable to use the unit testing techniques described above at the data structure level as opposed to comparing formatted output.
+
+On the other hand, if one really wants to test the I/O code, one could set up programmatic end-to-end application tests as part of an automated test suite by redirecting the standard input and output to in-memory streams one can populate or examine programmatically.
+This approach appears to work within IDEs such as IntelliJ but not in a standalone invocation of sbt.
+
+.. code-block:: scala
+
+  @Test
+  def testMainEndToEnd: Unit =
+    val ba = new ByteArrayOutputStream
+    val os = new PrintStream(ba)
+    System.setOut(os) // redirect stdout to the in-memory stream
+    main.Main.main(Array.empty[String])
+    val lines =
+      import scala.language.unsafeNulls
+      ba.toString.lines.toList.asScala
+    assertEquals("hello", lines(0))
+    assertEquals("hello hello", lines(1))
+
+
 The role of console applications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Console applications have always been an important part of the UNIX command-line environment.
+Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.
+
 The typical console application interacts with its environment in the following ways:
 
+- *environment variables* defined in your system
 - zero or more application-specific *command-line arguments* for passing options to the application: ``app arg1 arg2 ...``
 - *standard input* (stdin) for reading the input data
 - *standard output* (stdout) for writing the output data
 - *standard error* (stderr) for displaying error messages separately from the output data
 
-Applications written in this way can function as composable building blocks using UNIX pipes.
-Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.
+From a Scala perspective, environment variables are accessible via the predefined ``sys.env`` map, e.g., ``sys.env("HOME")``, and command-line arguments are accessible via the main method's argument ``args`` (a string array).
+Similar mechanisms are available in Java and other JVM languages.
+
+.. note:: In addition, languages running on a Java Virtual Machine (JVM) support *properties* defined through command-line arguments of the form ``-Dmy.prop=someValue`` and accessible via, e.g., ``sys.props("my.prop")``.
+
+Applications that read and write from and to the standard data streams can function as composable building blocks using UNIX pipes.
+Using these standard I/O mechanisms is much more flexible than reading from or writing to specific files whose names are hardcoded in the program.
 
 E.g., the ``yes`` command outputs its arguments forever on consecutive output lines,
 the ``head`` command outputs a finite prefix of its input,
