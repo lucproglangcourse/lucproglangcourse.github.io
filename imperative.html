@@ -402,19 +402,50 @@ When looking at a class, you can switch between the source code view and an abst
 </div>
 <p>Additional information on testing is available in the corresponding section of the <a class="reference external" href="https://lucformalmethodscourse.github.io/30-testing.html">COMP 335/435: Formal Methods lecture notes</a>.</p>
 </section>
+<section id="end-to-end-application-testing">
+<h3><span class="section-number">3.2.2. </span>End-to-end application testing<a class="headerlink" href="#end-to-end-application-testing" title="Link to this heading"></a></h3>
+<p>Besides the familiar styles of unit testing, one could attempt to automate the process of end-to-end application testing.
+One approach would be to use shell scripts in conjunction with sample input and expected output files;
+after running the application on the sample input, one could use a <code class="docutils literal notranslate"><span class="pre">diff</span></code> utility to compare the actual output to the expected output.</p>
+<p>This approach adds complexity in terms of maintaining an additional set of data files, however, and it is brittle in that the test may no longer be valid after changes in the output format of the application under test.
+Therefore, it is usually preferable to use the unit testing techniques described above at the data structure level as opposed to comparing formatted output.</p>
+<p>On the other hand, if one really wants to test the I/O code, one could set up programmatic end-to-end application tests as part of an automated test suite by redirecting the standard input and output to in-memory streams one can populate or examine programmatically.
+This approach appears to work within IDEs such as IntelliJ but not in a standalone invocation of sbt.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nd">@Test</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">testMainEndToEnd</span><span class="p">:</span><span class="w"> </span><span class="nc">Unit</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">ByteArrayOutputStream</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">PrintStream</span><span class="p">(</span><span class="n">ba</span><span class="p">)</span>
+<span class="w">  </span><span class="nc">System</span><span class="p">.</span><span class="n">setOut</span><span class="p">(</span><span class="n">os</span><span class="p">)</span><span class="w"> </span><span class="c1">// redirect stdout to the in-memory stream</span>
+<span class="w">  </span><span class="n">main</span><span class="p">.</span><span class="nc">Main</span><span class="p">.</span><span class="n">main</span><span class="p">(</span><span class="nc">Array</span><span class="p">.</span><span class="n">empty</span><span class="p">[</span><span class="nc">String</span><span class="p">])</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">language</span><span class="p">.</span><span class="n">unsafeNulls</span>
+<span class="w">    </span><span class="n">ba</span><span class="p">.</span><span class="n">toString</span><span class="p">.</span><span class="n">lines</span><span class="p">.</span><span class="n">toList</span><span class="p">.</span><span class="n">asScala</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="s">&quot;hello hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lines</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="the-role-of-console-applications">
 <h2><span class="section-number">3.3. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
 <p>Console applications have always been an important part of the UNIX command-line environment.
-The typical console application interacts with its environment in the following ways:</p>
+Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.</p>
+<p>The typical console application interacts with its environment in the following ways:</p>
 <ul class="simple">
+<li><p><em>environment variables</em> defined in your system</p></li>
 <li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
 <li><p><em>standard input</em> (stdin) for reading the input data</p></li>
 <li><p><em>standard output</em> (stdout) for writing the output data</p></li>
 <li><p><em>standard error</em> (stderr) for displaying error messages separately from the output data</p></li>
 </ul>
-<p>Applications written in this way can function as composable building blocks using UNIX pipes.
-Using these standard I/O mechanisms is much more flexible than reading from or writing to files whose names are hardcoded in the program.</p>
+<p>From a Scala perspective, environment variables are accessible via the predefined <code class="docutils literal notranslate"><span class="pre">sys.env</span></code> map, e.g., <code class="docutils literal notranslate"><span class="pre">sys.env(&quot;HOME&quot;)</span></code>, and command-line arguments are accessible via the main method’s argument <code class="docutils literal notranslate"><span class="pre">args</span></code> (a string array).
+Similar mechanisms are available in Java and other JVM languages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition, languages running on a Java Virtual Machine (JVM) support <em>properties</em> defined through command-line arguments of the form <code class="docutils literal notranslate"><span class="pre">-Dmy.prop=someValue</span></code> and accessible via, e.g., <code class="docutils literal notranslate"><span class="pre">sys.props(&quot;my.prop&quot;)</span></code>.</p>
+</div>
+<p>Applications that read and write from and to the standard data streams can function as composable building blocks using UNIX pipes.
+Using these standard I/O mechanisms is much more flexible than reading from or writing to specific files whose names are hardcoded in the program.</p>
 <p>E.g., the <code class="docutils literal notranslate"><span class="pre">yes</span></code> command outputs its arguments forever on consecutive output lines,
 the <code class="docutils literal notranslate"><span class="pre">head</span></code> command outputs a finite prefix of its input,
 and the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command counts the number of characters, words, or lines:</p>
@@ -768,6 +799,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
 <li><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
 <li><a class="reference internal" href="#techniques-for-testing-scala-code">3.2. Techniques for testing Scala code</a><ul>
 <li><a class="reference internal" href="#measuring-code-coverage">3.2.1. Measuring code coverage</a></li>
+<li><a class="reference internal" href="#end-to-end-application-testing">3.2.2. End-to-end application testing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-role-of-console-applications">3.3. The role of console applications</a><ul>
