@@ -104,7 +104,7 @@ In this section, we discuss the different options for running Scala code, includ
   `The list performance example <https://github.com/lucproglangcourse/cs2-listperformance-scala/blob/main/src/test/scala/cs271/lab/list/TestList.scala>`_ illustrates this approach.
 
 
-- Finally, to turn an sbt-based Scala application into a script (console application) you can run outside sbt, you can use the `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_ plugin.
+- Finally, to turn an sbt-based Scala application into a script (command-line application) you can run outside sbt, you can use the `sbt-native-packager <https://github.com/sbt/sbt-native-packager>`_ plugin.
   To use this plugin, add this line to the end of ``build.sbt``:
 
   .. code-block:: bash
@@ -226,13 +226,13 @@ This approach appears to work within IDEs such as IntelliJ but not in a standalo
     assertEquals("hello hello", lines(1))
 
 
-The role of console applications
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The role of command-line applications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Console applications have always been an important part of the UNIX command-line environment.
+Command-line applications have always been an important part of the UNIX environment.
 Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.
 
-The typical console application interacts with its environment in the following ways:
+The typical command-line application interacts with its environment in the following ways:
 
 - *environment variables* defined in your system
 - zero or more application-specific *command-line arguments* for passing options to the application: ``app arg1 arg2 ...``
@@ -288,13 +288,13 @@ Similarly, we can redirect input from a file using this notation:
 
   $ wc -l < testdata.txt
 
-There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline ``p | q`` corresponds to the function composition ``q o p``.
+There is a close relationship between UNIX pipes and functional programming: When viewing a command-line application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline ``p | q`` corresponds to the function composition ``q o p``.
 
 
-Console applications in Scala
-`````````````````````````````
+Command-line applications in Scala
+``````````````````````````````````
 
-The following techniques are useful for creating console applications in Scala.
+The following techniques are useful for creating command-line applications in Scala.
 As in Java, command-line arguments are available to a Scala application as ``args`` of type ``Array[String]``.
 
 We can read the standard input as lines using this iterator:
@@ -331,7 +331,7 @@ In Scala, ``print`` and ``println`` print to stdout, which is is an instance of 
 This class converts any ``IOException`` to a boolean flag accessible through its ``checkError()`` method.
 (See also `this discussion <https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe>`_ for more details.)
 
-Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.
+Therefore, to use a Scala (or Java) command-line application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.
 
 For example, this program reads one line at a time and prints the line count along with the line read.
 After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program:
@@ -348,7 +348,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 Command-line argument parsing
 `````````````````````````````
 
-A common concern when developing console applications is command-line argument and option parsing.
+A common concern when developing command-line applications is argument and option parsing.
 As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form ``app arg1 arg2 ...`` at the time when we're invoking the application.
 Importantly, these settings are separate from the application's input data.
 
@@ -431,7 +431,7 @@ For example, we could run the application with these arguments:
 Determining whether an app is running interactively
 ```````````````````````````````````````````````````
 
-In some cases, it's convenient to determine programmatically whether our console app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
+In some cases, it's convenient to determine programmatically whether our command-line app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
 For example, if our app running interactively, we might automatically want to prompt the user for console input.
 
 We can use this technique to determine whether stdin is coming from the console.
@@ -450,8 +450,8 @@ Allowing the user to edit their input
 `````````````````````````````````````
 Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.
 
-To add this capability to a Java- or Scala-based console app, we can use the `JLine library <https://github.com/jline/jline3>`_, which is the Java equivalent of the `GNU Readline library <https://en.wikipedia.org/wiki/GNU_Readline>`_.
-If you want to make your console app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
+To add this capability to a Java- or Scala-based command-line app, we can use the `JLine library <https://github.com/jline/jline3>`_, which is the Java equivalent of the `GNU Readline library <https://en.wikipedia.org/wiki/GNU_Readline>`_.
+If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
 JLine has excellent documentation; please look there for examples.
 
 .. todo:: Determine whether JLine automatically suppresses prompts when redirecting stdin.
@@ -544,7 +544,7 @@ The importance of constant-space complexity
 
 Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
-*These considerations apply to any potentially long-running application, be it a console app, mobile app, or back-end service.*
+*These considerations apply to any potentially long-running application, be it a command-line app, mobile app, or back-end service.*
 
 
 Using iterators to represent indefinite input
@@ -595,11 +595,11 @@ When working in a command-line environment, we can also use an interactive proce
 .. todo:: add suitable htop screenshot
 
 
-Making console applications testable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Making command-line applications testable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Recognizing the importance of *testability* as a static nonfunctional requirement, we'd like to make our console applications testable.
-While we could use command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
+Recognizing the importance of *testability* as a static nonfunctional requirement, we'd like to make our command-line applications testable.
+While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
 
 A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
 In particular, how can we make our code testable *without* sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?
