@@ -335,7 +335,7 @@ There, you can develop your ideas and interact with the library APIs you want to
 For simple testing, you can intersperse assertions within your code or use the testing support provided by the chosen testing framework, e.g., <a class="reference external" href="https://junit.org/">JUnit</a> or <a class="reference external" href="https://www.scalatest.org/">ScalaTest</a>.
 So you can start exploring something in a test and then move it into your production code (<cite>main</cite> folder) when appropriate.
 <a class="reference external" href="https://github.com/lucproglangcourse/cs2-listperformance-scala/blob/main/src/test/scala/cs271/lab/list/TestList.scala">The list performance example</a> illustrates this approach.</p></li>
-<li><p>Finally, to turn an sbt-based Scala application into a script (console application) you can run outside sbt, you can use the <a class="reference external" href="https://github.com/sbt/sbt-native-packager">sbt-native-packager</a> plugin.
+<li><p>Finally, to turn an sbt-based Scala application into a script (command-line application) you can run outside sbt, you can use the <a class="reference external" href="https://github.com/sbt/sbt-native-packager">sbt-native-packager</a> plugin.
 To use this plugin, add this line to the end of <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>enablePlugins<span class="o">(</span>JavaAppPackaging<span class="o">)</span>
 </pre></div>
@@ -426,11 +426,11 @@ This approach appears to work within IDEs such as IntelliJ but not in a standalo
 </div>
 </section>
 </section>
-<section id="the-role-of-console-applications">
-<h2><span class="section-number">3.3. </span>The role of console applications<a class="headerlink" href="#the-role-of-console-applications" title="Link to this heading"></a></h2>
-<p>Console applications have always been an important part of the UNIX command-line environment.
+<section id="the-role-of-command-line-applications">
+<h2><span class="section-number">3.3. </span>The role of command-line applications<a class="headerlink" href="#the-role-of-command-line-applications" title="Link to this heading"></a></h2>
+<p>Command-line applications have always been an important part of the UNIX environment.
 Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.</p>
-<p>The typical console application interacts with its environment in the following ways:</p>
+<p>The typical command-line application interacts with its environment in the following ways:</p>
 <ul class="simple">
 <li><p><em>environment variables</em> defined in your system</p></li>
 <li><p>zero or more application-specific <em>command-line arguments</em> for passing options to the application: <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code></p></li>
@@ -475,10 +475,10 @@ We can also append to an existing file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&lt;<span class="w"> </span>testdata.txt
 </pre></div>
 </div>
-<p>There is a close relationship between UNIX pipes and functional programming: When viewing a console application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
-<section id="console-applications-in-scala">
-<h3><span class="section-number">3.3.1. </span>Console applications in Scala<a class="headerlink" href="#console-applications-in-scala" title="Link to this heading"></a></h3>
-<p>The following techniques are useful for creating console applications in Scala.
+<p>There is a close relationship between UNIX pipes and functional programming: When viewing a command-line application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
+<section id="command-line-applications-in-scala">
+<h3><span class="section-number">3.3.1. </span>Command-line applications in Scala<a class="headerlink" href="#command-line-applications-in-scala" title="Link to this heading"></a></h3>
+<p>The following techniques are useful for creating command-line applications in Scala.
 As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
 <p>We can read the standard input as lines using this iterator:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span><span class="p">()</span>
@@ -504,7 +504,7 @@ In some cases, it is more convenient to use the</em> <code class="docutils liter
 In Scala, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> print to stdout, which is is an instance of <code class="docutils literal notranslate"><span class="pre">PrintStream</span></code>.
 This class converts any <code class="docutils literal notranslate"><span class="pre">IOException</span></code> to a boolean flag accessible through its <code class="docutils literal notranslate"><span class="pre">checkError()</span></code> method.
 (See also <a class="reference external" href="https://stackoverflow.com/questions/62658078/jvm-not-killed-on-sigpipe">this discussion</a> for more details.)</p>
-<p>Therefore, to use a Scala (or Java) console application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.</p>
+<p>Therefore, to use a Scala (or Java) command-line application in a UNIX pipeline as an upstream component that produces an unbounded (potentially infinite) output sequence, we have to monitor this flag when printing to stdout and, if necessary, terminate execution.</p>
 <p>For example, this program reads one line at a time and prints the line count along with the line read.
 After printing, it checks whether an error occured and, if necessary, terminates execution by exiting the program:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -517,7 +517,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 </section>
 <section id="command-line-argument-parsing">
 <h3><span class="section-number">3.3.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
-<p>A common concern when developing console applications is command-line argument and option parsing.
+<p>A common concern when developing command-line applications is argument and option parsing.
 As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code> at the time when we’re invoking the application.
 Importantly, these settings are separate from the application’s input data.</p>
 <p>E.g., in our <a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">sliding queue example</a>, we keep a sliding queue of the n most recent words read from the input;
@@ -586,7 +586,7 @@ run
 </section>
 <section id="determining-whether-an-app-is-running-interactively">
 <h3><span class="section-number">3.3.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
-<p>In some cases, it’s convenient to determine programmatically whether our console app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
+<p>In some cases, it’s convenient to determine programmatically whether our command-line app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
 For example, if our app running interactively, we might automatically want to prompt the user for console input.</p>
 <p>We can use this technique to determine whether stdin is coming from the console.</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">isInputFromTerminal</span><span class="p">:</span><span class="w"> </span><span class="nc">Boolean</span><span class="w"> </span><span class="o">=</span>
@@ -603,8 +603,8 @@ For example, if our app running interactively, we might automatically want to pr
 <section id="allowing-the-user-to-edit-their-input">
 <h3><span class="section-number">3.3.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
 <p>Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.</p>
-<p>To add this capability to a Java- or Scala-based console app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
-If you want to make your console app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
+<p>To add this capability to a Java- or Scala-based command-line app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
+If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
 JLine has excellent documentation; please look there for examples.</p>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
@@ -682,7 +682,7 @@ To use log4s minimally, the following steps are required:</p>
 <span id="subsecconstantspace"></span><h2><span class="section-number">3.5. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
 <p>Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
-<em>These considerations apply to any potentially long-running application, be it a console app, mobile app, or back-end service.</em></p>
+<em>These considerations apply to any potentially long-running application, be it a command-line app, mobile app, or back-end service.</em></p>
 <section id="using-iterators-to-represent-indefinite-input">
 <h3><span class="section-number">3.5.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
 <p>In these scenarios, it is common to process an indefinite number of input items, one at a time, as long as more items are available from the input.
@@ -723,10 +723,10 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 </div>
 </section>
 </section>
-<section id="making-console-applications-testable">
-<h2><span class="section-number">3.6. </span>Making console applications testable<a class="headerlink" href="#making-console-applications-testable" title="Link to this heading"></a></h2>
-<p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we’d like to make our console applications testable.
-While we could use command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
+<section id="making-command-line-applications-testable">
+<h2><span class="section-number">3.6. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
+<p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we’d like to make our command-line applications testable.
+While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
 <p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
 In particular, how can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
 <p>The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.</p>
@@ -798,8 +798,8 @@ The endpoint of this journey thereby marks our transition to the object-oriented
 <li><a class="reference internal" href="#end-to-end-application-testing">3.2.2. End-to-end application testing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-role-of-console-applications">3.3. The role of console applications</a><ul>
-<li><a class="reference internal" href="#console-applications-in-scala">3.3.1. Console applications in Scala</a></li>
+<li><a class="reference internal" href="#the-role-of-command-line-applications">3.3. The role of command-line applications</a><ul>
+<li><a class="reference internal" href="#command-line-applications-in-scala">3.3.1. Command-line applications in Scala</a></li>
 <li><a class="reference internal" href="#command-line-argument-parsing">3.3.2. Command-line argument parsing</a></li>
 <li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.3.3. Determining whether an app is running interactively</a></li>
 <li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.3.4. Allowing the user to edit their input</a></li>
@@ -815,7 +815,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
 <li><a class="reference internal" href="#monitoring-a-program-s-memory-footprint-over-time">3.5.2. Monitoring a program’s memory footprint over time</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#making-console-applications-testable">3.6. Making console applications testable</a></li>
+<li><a class="reference internal" href="#making-command-line-applications-testable">3.6. Making command-line applications testable</a></li>
 </ul>
 </li>
 </ul>
