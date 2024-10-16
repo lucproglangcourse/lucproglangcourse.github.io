@@ -142,7 +142,7 @@ These abstractions are often combined, e.g., aggregation, structural recursion, 
 
 .. code-block:: scala
 
-  enum Tree[A]:
+  enum Tree[A] deriving CanEqual:
     case Leaf[A](val data: A) extends Tree[A]
     case Node[A](val children: Tree[A]*) extends Tree[A]
 
