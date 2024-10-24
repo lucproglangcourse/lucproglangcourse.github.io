@@ -53,7 +53,7 @@ jobs:
       - name: make latexpdf via TeXLive
         uses: xu-cheng/texlive-action@v2
         with:
-	  scheme: full
+          scheme: full
           run: |
             apk add make
             make -C build/latex
