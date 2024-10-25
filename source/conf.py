@@ -13,6 +13,9 @@
 
 import sys, os
 
+import subprocess
+from datetime import date
+
 import sphinx_rtd_theme
 
 # If extensions (or modules to document with autodoc) are in another directory,
