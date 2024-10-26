@@ -513,7 +513,7 @@ To use log4s minimally, the following steps are required:
 
   .. code-block:: scala
 
-    "org.log4s" %% "log4s" % "1.8.2",
+    "org.log4s" %% "log4s" % "1.10.0",
     "org.slf4j" % "slf4j-simple" % "1.7.30"
 
 - If you require a more verbose (lower severity) log level than the default of ``INFO``, such as ``DEBUG``, add a configuration file ``src/main/resources/simplelogger.properties`` with contents:
@@ -526,7 +526,10 @@ To use log4s minimally, the following steps are required:
 
   .. code-block:: scala
 
-    private val logger = org.log4s.getLogger
+    private val logger = 
+      import scala.language.unsafeNulls
+      org.log4s.getLogger
+    // ...
     logger.debug(f"howMany = $howMany minLength = $minLength lastNWords = $lastNWords")
 
 
@@ -606,7 +609,7 @@ In particular, how can we make our code testable *without* sacrificing the impor
 
 The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.
 
-https://github.com/lucproglangcourse/consoleapp-java
+  https://github.com/lucproglangcourse/consoleapp-java
 
 Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving custom abstractions.
 The endpoint of this journey thereby marks our transition to the object-oriented paradigm.
