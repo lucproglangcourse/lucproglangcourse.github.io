@@ -7,7 +7,7 @@ COMP 371/471
 
 You have reached the home of the Programming Languages course (COMP 371/471) in the Computer Science Department of Loyola University Chicago.
 
-*Welcome! Wöllkomme! ¡Bienvenidos/as! Benvenuti/e!*
+*Welcome! Willkumme! ¡Bienvenidos/as! Benvenuti/e!*
 
 .. warning::
 

@@ -138,7 +138,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title= "%(project)s v%(release)s" % vars()
+html_title= "%(project)s %(release)s" % vars()
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
