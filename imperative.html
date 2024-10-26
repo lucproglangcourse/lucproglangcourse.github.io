@@ -655,7 +655,7 @@ In those cases, logging allows ongoing monitoring of app progress, as well as er
 To use log4s minimally, the following steps are required:</p>
 <ul>
 <li><p>Add external dependencies for log4s and a simple slf4j backend implementation:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;org.log4s&quot;</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;log4s&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.8.2&quot;</span><span class="p">,</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;org.log4s&quot;</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="s">&quot;log4s&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.10.0&quot;</span><span class="p">,</span>
 <span class="s">&quot;org.slf4j&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;slf4j-simple&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.7.30&quot;</span>
 </pre></div>
 </div>
@@ -666,7 +666,10 @@ To use log4s minimally, the following steps are required:</p>
 </div>
 </li>
 <li><p>Now you are ready to access and use your logger:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">org</span><span class="p">.</span><span class="n">log4s</span><span class="p">.</span><span class="n">getLogger</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">language</span><span class="p">.</span><span class="n">unsafeNulls</span>
+<span class="w">  </span><span class="n">org</span><span class="p">.</span><span class="n">log4s</span><span class="p">.</span><span class="n">getLogger</span>
+<span class="c1">// ...</span>
 <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">f&quot;howMany = </span><span class="si">$</span><span class="n">howMany</span><span class="s"> minLength = </span><span class="si">$</span><span class="n">minLength</span><span class="s"> lastNWords = </span><span class="si">$</span><span class="n">lastNWords</span><span class="s">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -730,7 +733,9 @@ While we could use other command-line tools to set up automatic testing of the e
 <p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
 In particular, how can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
 <p>The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.</p>
-<p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">https://github.com/lucproglangcourse/consoleapp-java</a></p>
+<blockquote>
+<div><p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">https://github.com/lucproglangcourse/consoleapp-java</a></p>
+</div></blockquote>
 <p>Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving custom abstractions.
 The endpoint of this journey thereby marks our transition to the object-oriented paradigm.</p>
 </section>
