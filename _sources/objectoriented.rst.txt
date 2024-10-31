@@ -5,8 +5,8 @@ In this chapter, we recap the object-oriented programming paradigm with examples
 As discussed, we take object-oriented code to mean code that includes definitions of domain models, i.e., basic domain- or application-specific abstractions, or uses object-oriented frameworks (as opposed to general-purpose object-oriented libraries).
 
 
-Making console applications testable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Making command-line applications testable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Marking the beginning of our transition to the object-oriented paradigm, we had to define a new abstractions (type)
 to make the `sliding queue application <https://github.com/lucproglangcourse/consoleapp-java>`_ testable.
