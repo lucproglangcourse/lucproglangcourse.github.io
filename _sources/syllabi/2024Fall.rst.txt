@@ -55,14 +55,26 @@ Section: 001 Fall 2024
 
   - 21 points: *quizzes* 0 3,  1-3 6 each
   - 24 points: two *tests*, 12 each
-  - 37 points ug / 44 grad: *projects* 0a 2, 0b 3, 1a and 2a/b 6 each, 3a/b 7 each, 3c 7 (required for grad students) *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
-  - 12 points: four *group activities*, 3 each
+  - 40 points: *projects* *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+
+    - 0a 2
+    - 0b 3
+    - 1a 3
+    - 1b/c 6 each
+    - 2a 6
+    - 3a/b 7 each
+
+  - 5 points: *group activity 4*
   - 5 points: *presentation*
   - 5 points: *participation* (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
-  - 7 points: starting baseline for undergrads
-  - 1 point extra credit: submission of course evaluation (submit screenshot of confirmation of submission) 
-  - various extra credit opportunities: project 3c 7 (ug), project 1b 6 (ug/grad)
+  - 11 points: automatic starting baseline for undergrads **or** additional work for grad students *(extra credit opportunity for undergrads)*:
+  
+    - 2b 6 or 3c 7 *(extra credit for both)*
+    - research paper presentation 5
 
+  - 1 point *extra credit*: 0c early presentation topic selection
+  - 1 point *extra credit*: submission of course evaluation (submit screenshot of confirmation of submission) 
+  
   **Max total: 111 points plus extra credit**
 
   *Grading schema (in points):*
