@@ -16,15 +16,18 @@ Pros
 ````
 
 - consistent, cloud-based environment
+- out-of-the-box integration with GitHub
 
 
 Cons
 ````
 
 - requires good network connection
-- might lack code completion
+- might lack some code completion features
 - free plan might be underresourced (CPUs, RAM, disk space, etc.)
+- lack of integration with external GUI-based tools
 - won't support GUI or mobile development out of the box
+
 
 Zero-install option: Scastie
 ````````````````````````````
@@ -43,26 +46,31 @@ Be sure to
     "-language:strictEquality"
 
 
-Gitpod (recommended)
-````````````````````
+GitHub Codespaces (recommended)
+"""""""""""""""""""""""""""""""
 
-Gitpod is a cloud-based development environment based on Visual Studio Code running on Ubuntu LTS.
+GitHub Codespaces is a cloud-based, containerized development environment based on Visual Studio Code running on Ubuntu LTS and closely integrated with GitHub.
 
-To launch, visit https://gitpod.io and log in using your GitHub account.
+To use Codespaces, 
 
-- The first time around, create a new workspace and select the GitHub project (or paste the URL of a GitHub project) you want to work on in the new workspace; you should see this kind of configuration page:
+- Log into using your GitHub account and navigate to the desired repository.
+- Look for the blue "code" button and open the drop-down menu.
+- Select the Codespaces tab.
+- Create a new Codespace for this repo or open an existing one already linked to this repo.
+- You can also find your existing codespaces at https://github.com/codespaces.
 
-  .. image:: images/gitpod.png
-  
-- When you visit Gitpod again, your GitPod landing page will show your existing workspace(s) along with the option to create a new one.
-- For each new workspace, using the installed `SDKMAN! <https://sdkman.io>`_, perform a one-time installation of java and `sbt <https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html>`_
+For more information, please refer to `this reference <https://docs.github.com/en/codespaces>`_.
+
+For Scala development with Codespaces,
+
+- For each new codespace, using the installed `SDKMAN! <https://sdkman.io>`_, perform a one-time installation of `sbt <https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html>`_
   (unless the project is already configured to perform these steps automatically).
 - The VS Code Scala and Metals extensions seem to get installed automatically; otherwise you can install them manually along with any other desired extensions.
 - Now you should be able to work on the project by using the hamburger menu in the top left corner to open a terminal and following the instructions in the included README.
-- Sometimes Gitpod loses changes made to the workspace itself, such as installing packages via ``sdk``. 
+- Sometimes Codespaces loses changes made to the workspace itself, such as installing packages via ``sdk``. 
   For example, it might no longer find ``sbt``.
   In these cases, simply rerun ``sdk install sbt`` and ``sdk install java``.
-- The `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>` extension is recommended for opening HTML files directly within Gitpod.
+- The `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>` extension is recommended for opening HTML files directly within Codespaces.
 
 
 Locally installed development environment
@@ -89,7 +97,7 @@ Cons
 Required packages
 `````````````````
 
-- `Java 17 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
+- `Java 21 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional UNIX tools from the Windows Command Prompt*
