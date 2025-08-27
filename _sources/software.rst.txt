@@ -70,7 +70,7 @@ For Scala development with Codespaces,
 - Sometimes Codespaces loses changes made to the workspace itself, such as installing packages via ``sdk``. 
   For example, it might no longer find ``sbt``.
   In these cases, simply rerun ``sdk install sbt`` and ``sdk install java``.
-- The `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>` extension is recommended for opening HTML files directly within Codespaces.
+- The `Live Preview <https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server>`_ extension is recommended for opening HTML files directly within Codespaces.
 
 
 Locally installed development environment
