@@ -99,6 +99,7 @@ Section: 001 Fall 2025
   - Week 3 - Mon 8 September: quiz 0
   - Week 5 - Mon 22 September: quiz 1
   - Week 7 - Mon 6 October: **NO CLASS (fall break)**
+  - Week 8 - Mon 13 October: test 1
   - Week 10 - Mon 27 October: quiz 2
   - Week 11 - Fri 31 October: *last day to withdraw with W instead of WF*
   - Week 13 - Mon 17 November: test 2
