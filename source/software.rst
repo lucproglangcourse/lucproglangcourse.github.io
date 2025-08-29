@@ -101,12 +101,13 @@ Required packages
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional UNIX tools from the Windows Command Prompt*
-  - optional on any plaDecimaltform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
+  - optional on any platform, especially when not using IntelliJ IDEA: `some GUI-based Git client <https://git-scm.com/downloads/guis>`_
 
 
 - `sbt <https://www.scala-sbt.org/1.x/docs/Setup.html>`_ Scala build tool
 - `VisualVM <https://visualvm.github.io/>`_ visual heap profiling tool
 - *Mac and Linux users are strongly encouraged to use* `SDKMAN! <https://sdkman.io/>`_ *to manage their Java, sbt, VisualVM, and other command-line development tools.*
+- Windows users are strongly encouraged to use `WSL <https://docs.microsoft.com/en-us/windows/wsl/install>`_ (Windows Subsystem for Linux) to run a Linux environment on their Windows machines and then install SDKMAN! and the other command-line tools there.
 
 
 Choices of development environments
