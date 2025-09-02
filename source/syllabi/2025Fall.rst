@@ -101,10 +101,11 @@ Section: 001 Fall 2025
   - Week 7 - Mon 6 October: **NO CLASS (fall break)**
   - Week 8 - Mon 13 October: test 1
   - Week 10 - Mon 27 October: quiz 2
-  - Week 11 - Fri 31 October: *last day to withdraw with W instead of WF*
+  - Week 10 - Fri 31 October: *last day to withdraw with W instead of WF*
   - Week 13 - Mon 17 November: test 2
-  - Week 14 - Wed 26 November:  **NO CLASS (Thanksgiving break)**
-  - Week 15 - Mon 1 December:  **NO CLASS (async session - details will be available later)**
+  - Week 14 - Mon 24 November:  **ONLINE CLASS (details TBA)**
+  - Week 14 - Wed/Fri 26/28 November:  **NO CLASS (Thanksgiving break)**
+  - Week 15 - Mon 1 December:  **ASYNC CLASS (details will be available later)**
   - Week 16 (finals week) - *quiz 3 (take home) - NO FINAL EXAM*
 
 - *Recording of class meetings:* In this class, software will be used to record live class discussions. As a student in this class, your participation in live class discussions will be recorded. These recordings will be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
