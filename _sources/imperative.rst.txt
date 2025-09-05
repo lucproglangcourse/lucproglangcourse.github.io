@@ -2,7 +2,7 @@ The Imperative Programming Paradigm
 -----------------------------------
 
 In this chapter, we discuss the *imperative programming paradigm* with examples in Scala.
-To differentiate this from the object-oriented paradigm in practice, we define imperative code to mean code that uses a language's control-flow constructs along with its built-in types, including primitive types and built-in type abstractions for strings, collections, input/output, and other general-purpose building blocks.
+To differentiate this from the object-oriented paradigm in practice, we define imperative code to mean code that uses a language's mutable named state (variables) and control-flow constructs (conditionals, loops, procedural abstraction) along with its built-in types, including primitive types and built-in type abstractions for strings, collections, input/output, and other general-purpose building blocks.
 By contrast, we define object-oriented code to mean code that includes definitions of domain models or other new application-specific abstractions, or uses object-oriented frameworks (as opposed to lower-level, general-purpose object-oriented libraries).
 
 .. note:: Arguably, this definition of the imperative paradigm may be closer to a definition of the *scripting style* because most imperative languages do provide mechanisms for introducing new type abstractions. 
