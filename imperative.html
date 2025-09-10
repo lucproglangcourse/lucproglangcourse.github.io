@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="4. The Object-Oriented Programming Paradigm" href="objectoriented.html" /><link rel="prev" title="2. Context and Background" href="background.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.7</title>
+        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.7</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.7</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -261,8 +261,142 @@ By contrast, we define object-oriented code to mean code that includes definitio
 <p>Arguably, this definition of the imperative paradigm may be closer to a definition of the <em>scripting style</em> because most imperative languages do provide mechanisms for introducing new type abstractions.
 For pedagogical reasons, we will still discuss those capabilities the next chapter as part of the object-oriented paradigm.</p>
 </div>
+<section id="core-elements">
+<h2><span class="section-number">3.1. </span>Core elements<a class="headerlink" href="#core-elements" title="Link to this heading"></a></h2>
+<p>The imperative paradigm is characterized by <em>commands that change a program’s state</em>.
+A program in this style specifies <em>how</em> to achieve a desired result, step by step,
+through a sequence of statements that manipulate named mutable state.</p>
+<section id="named-mutable-state">
+<h3><span class="section-number">3.1.1. </span>Named Mutable State<a class="headerlink" href="#named-mutable-state" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Variables</strong> are identifiers bound to memory locations whose contents can be updated.</p></li>
+<li><p><strong>State</strong> refers to the current values of all variables at a given point in time.</p></li>
+<li><p>State changes are performed through assignment statements.</p></li>
+</ul>
+</section>
+<section id="control-flow">
+<h3><span class="section-number">3.1.2. </span>Control Flow<a class="headerlink" href="#control-flow" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sequential execution</strong>: statements run one after another in order.</p></li>
+<li><p><strong>Branching</strong>: conditional statements choose between alternative paths.</p></li>
+<li><p><strong>Repetition/Iteration</strong>: loops repeat computations until conditions are met.</p></li>
+</ul>
+</section>
+<section id="procedural-abstraction">
+<h3><span class="section-number">3.1.3. </span>Procedural Abstraction<a class="headerlink" href="#procedural-abstraction" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Procedures, functions, and methods</strong> group statements into reusable units.</p></li>
+<li><p><strong>Parameter passing</strong> mechanisms:</p>
+<ul>
+<li><p><em>Call by value</em>: actual argument evaluated and copied into the formal parameter.</p></li>
+<li><p><em>Call by reference</em>: actual argument passed as an address, allowing mutation.</p></li>
+<li><p><em>Call by name</em>: actual argument expression substituted into the procedure body (rare, but historically important, e.g., Algol 60).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="other-elements">
+<h3><span class="section-number">3.1.4. </span>Other Elements<a class="headerlink" href="#other-elements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Block structure and scope</strong>: delimit visibility and lifetime of variables.</p></li>
+<li><p><strong>Side effects</strong>: operations that modify state beyond returning values.</p></li>
+<li><p><strong>I/O as imperative commands</strong>: reading/writing inherently changes program state.</p></li>
+</ul>
+</section>
+<section id="examples-across-languages">
+<h3><span class="section-number">3.1.5. </span>Examples Across Languages<a class="headerlink" href="#examples-across-languages" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Element</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>Java</p></th>
+<th class="head"><p>Scala</p></th>
+<th class="head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Named mutable state</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Sequential execution</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">2;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">2;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">val</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Branching</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0:\n</span>&#160;&#160;&#160; <span class="pre">...\nelse:\n</span>&#160;&#160;&#160; <span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Iteration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(int</span> <span class="pre">i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(i</span> <span class="pre">&lt;-</span> <span class="pre">0</span> <span class="pre">until</span> <span class="pre">n)</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(n):</span> <span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Procedure / method</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">f(int</span> <span class="pre">x){</span> <span class="pre">return</span> <span class="pre">x+1;</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">f(int</span> <span class="pre">x){</span> <span class="pre">return</span> <span class="pre">x+1;</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x:Int)</span> <span class="pre">=</span> <span class="pre">x+1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x):</span> <span class="pre">return</span> <span class="pre">x+1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Call by value</p></td>
+<td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
+<td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
+<td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
+<td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Call by reference</p></td>
+<td><p>Pointers (<code class="docutils literal notranslate"><span class="pre">f(&amp;x)</span></code>)</p></td>
+<td><p>Not supported (simulated with mutable objects)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">var</span></code> parameters in Scala 2 (removed in 3)</p></td>
+<td><p>Not supported (mutable objects simulate)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Call by name</p></td>
+<td><p>Not supported</p></td>
+<td><p>Not supported</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x:</span> <span class="pre">=&gt;</span> <span class="pre">Int)</span></code> (lazy eval of argument)</p></td>
+<td><p>Not supported</p></td>
+</tr>
+<tr class="row-even"><td><p>Scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">val</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">}</span></code></p></td>
+<td><p>Indentation-based block</p></td>
+</tr>
+<tr class="row-odd"><td><p>Side effect</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x++</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x++</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="discussion">
+<h3><span class="section-number">3.1.6. </span>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h3>
+<p>Imperative constructs form the foundation of nearly all mainstream programming
+languages, even those that emphasize other paradigms. They provide a natural
+model of computation as a <em>state machine</em>: a program moves from one state to the next
+through explicit updates governed by control flow.</p>
+</section>
+</section>
 <section id="options-for-running-scala-code">
-<h2><span class="section-number">3.1. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.2. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
 <p>In this section, we discuss the different options for running Scala code, including applications and tests.</p>
 <ul>
 <li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
@@ -353,7 +487,7 @@ $<span class="w"> </span>./target/universal/stage/bin/myapp-scala<span class="w"
 </ul>
 </section>
 <section id="techniques-for-testing-scala-code">
-<h2><span class="section-number">3.2. </span>Techniques for testing Scala code<a class="headerlink" href="#techniques-for-testing-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.3. </span>Techniques for testing Scala code<a class="headerlink" href="#techniques-for-testing-scala-code" title="Link to this heading"></a></h2>
 <p>Testing is an important, widely used practice within the software development lifecycle (SDLC).
 There are various basic techniques and libraries/frameworks for testing Scala code.</p>
 <p>The simplest way is to intersperse assertions within your code.
@@ -373,7 +507,7 @@ This is particularly effective for scripts and worksheets:</p>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
 <p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>
 <section id="measuring-code-coverage">
-<h3><span class="section-number">3.2.1. </span>Measuring code coverage<a class="headerlink" href="#measuring-code-coverage" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.3.1. </span>Measuring code coverage<a class="headerlink" href="#measuring-code-coverage" title="Link to this heading"></a></h3>
 <p>The <em>code coverage</em> of your tests indicates how thoroughly you’re testing.
 Typically, you would use the <a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt scoverage plugin</a> to meaasure what percentage of your main code are covered by your tests.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>clean<span class="w"> </span>coverage<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverageReport
@@ -402,7 +536,7 @@ When looking at a class, you can switch between the source code view and an abst
 <p>Additional information on testing is available in the corresponding section of the <a class="reference external" href="https://lucformalmethodscourse.github.io/30-testing.html">COMP 335/435: Formal Methods lecture notes</a>.</p>
 </section>
 <section id="end-to-end-application-testing">
-<h3><span class="section-number">3.2.2. </span>End-to-end application testing<a class="headerlink" href="#end-to-end-application-testing" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.3.2. </span>End-to-end application testing<a class="headerlink" href="#end-to-end-application-testing" title="Link to this heading"></a></h3>
 <p>Besides the familiar styles of unit testing, one could attempt to automate the process of end-to-end application testing.
 One approach would be to use shell scripts in conjunction with sample input and expected output files;
 after running the application on the sample input, one could use a <code class="docutils literal notranslate"><span class="pre">diff</span></code> utility to compare the actual output to the expected output.</p>
@@ -426,7 +560,7 @@ This approach appears to work within IDEs such as IntelliJ but not in a standalo
 </section>
 </section>
 <section id="the-role-of-command-line-applications">
-<h2><span class="section-number">3.3. </span>The role of command-line applications<a class="headerlink" href="#the-role-of-command-line-applications" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.4. </span>The role of command-line applications<a class="headerlink" href="#the-role-of-command-line-applications" title="Link to this heading"></a></h2>
 <p>Command-line applications have always been an important part of the UNIX environment.
 Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.</p>
 <p>The typical command-line application interacts with its environment in the following ways:</p>
@@ -476,7 +610,7 @@ We can also append to an existing file:</p>
 </div>
 <p>There is a close relationship between UNIX pipes and functional programming: When viewing a command-line application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
 <section id="command-line-applications-in-scala">
-<h3><span class="section-number">3.3.1. </span>Command-line applications in Scala<a class="headerlink" href="#command-line-applications-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Command-line applications in Scala<a class="headerlink" href="#command-line-applications-in-scala" title="Link to this heading"></a></h3>
 <p>The following techniques are useful for creating command-line applications in Scala.
 As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
 <p>We can read the standard input as lines using this iterator:</p>
@@ -515,7 +649,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 </div>
 </section>
 <section id="command-line-argument-parsing">
-<h3><span class="section-number">3.3.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
 <p>A common concern when developing command-line applications is argument and option parsing.
 As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code> at the time when we’re invoking the application.
 Importantly, these settings are separate from the application’s input data.</p>
@@ -584,7 +718,7 @@ run
 </div>
 </section>
 <section id="determining-whether-an-app-is-running-interactively">
-<h3><span class="section-number">3.3.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
 <p>In some cases, it’s convenient to determine programmatically whether our command-line app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
 For example, if our app running interactively, we might automatically want to prompt the user for console input.</p>
 <p>We can use this technique to determine whether stdin is coming from the console.</p>
@@ -600,7 +734,7 @@ For example, if our app running interactively, we might automatically want to pr
 </div>
 </section>
 <section id="allowing-the-user-to-edit-their-input">
-<h3><span class="section-number">3.3.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
 <p>Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.</p>
 <p>To add this capability to a Java- or Scala-based command-line app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
 If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
@@ -611,7 +745,7 @@ JLine has excellent documentation; please look there for examples.</p>
 </div>
 </section>
 <section id="finding-good-third-party-libraries">
-<h3><span class="section-number">3.3.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
 <p>For most programming languages, platforms, and other ecosystems, there are lists of “awesome” libraries and tools.
 For a particular language, search for “awesome” followed by the name of the language.</p>
 <p>In Scala’s case, we would come across this here list:</p>
@@ -635,7 +769,7 @@ some typical criteria are:</p>
 </section>
 </section>
 <section id="the-role-of-logging">
-<h2><span class="section-number">3.4. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.5. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>):</p>
@@ -649,7 +783,7 @@ Modern logging frameworks have very low performance overhead and are a convenien
 <p>Proper logging is perhaps more important in applications where one doesn’t normally see the console output, such as apps with a graphical user interface and back-end server apps.
 In those cases, logging allows ongoing monitoring of app progress, as well as error analysis if something isn’t working.</p>
 <section id="logging-in-scala">
-<h3><span class="section-number">3.4.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
 <p>A popular choice found on the <a class="reference external" href="https://github.com/lauris/awesome-scala">Awesome Scala</a> list, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
@@ -681,12 +815,12 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 </section>
 <section id="the-importance-of-constant-space-complexity">
-<span id="subsecconstantspace"></span><h2><span class="section-number">3.5. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
+<span id="subsecconstantspace"></span><h2><span class="section-number">3.6. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
 <p>Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
 <em>These considerations apply to any potentially long-running application, be it a command-line app, mobile app, or back-end service.</em></p>
 <section id="using-iterators-to-represent-indefinite-input">
-<h3><span class="section-number">3.5.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
 <p>In these scenarios, it is common to process an indefinite number of input items, one at a time, as long as more items are available from the input.
 Concretely, whenever possible, this means reading and processing one input item at a time and then forgetting about it, rather than first storing the entire input in memory and then processing it in bulk.
 This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
@@ -712,7 +846,7 @@ This version of a program that echoes back and counts its input lines has consta
 Iterators support most of the same behaviors as in-memory collections.</p>
 </section>
 <section id="monitoring-a-program-s-memory-footprint-over-time">
-<h3><span class="section-number">3.5.2. </span>Monitoring a program’s memory footprint over time<a class="headerlink" href="#monitoring-a-program-s-memory-footprint-over-time" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.2. </span>Monitoring a program’s memory footprint over time<a class="headerlink" href="#monitoring-a-program-s-memory-footprint-over-time" title="Link to this heading"></a></h3>
 <p>To monitor a program’s memory footprint over time, we would typically use a heap profiler.
 For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
 <p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
@@ -726,7 +860,7 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 </section>
 </section>
 <section id="making-command-line-applications-testable">
-<h2><span class="section-number">3.6. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.7. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
 <p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we’d like to make our command-line applications testable.
 While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
 <p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
@@ -796,30 +930,39 @@ The endpoint of this journey thereby marks our transition to the object-oriented
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">3. The Imperative Programming Paradigm</a><ul>
-<li><a class="reference internal" href="#options-for-running-scala-code">3.1. Options for running Scala code</a></li>
-<li><a class="reference internal" href="#techniques-for-testing-scala-code">3.2. Techniques for testing Scala code</a><ul>
-<li><a class="reference internal" href="#measuring-code-coverage">3.2.1. Measuring code coverage</a></li>
-<li><a class="reference internal" href="#end-to-end-application-testing">3.2.2. End-to-end application testing</a></li>
+<li><a class="reference internal" href="#core-elements">3.1. Core elements</a><ul>
+<li><a class="reference internal" href="#named-mutable-state">3.1.1. Named Mutable State</a></li>
+<li><a class="reference internal" href="#control-flow">3.1.2. Control Flow</a></li>
+<li><a class="reference internal" href="#procedural-abstraction">3.1.3. Procedural Abstraction</a></li>
+<li><a class="reference internal" href="#other-elements">3.1.4. Other Elements</a></li>
+<li><a class="reference internal" href="#examples-across-languages">3.1.5. Examples Across Languages</a></li>
+<li><a class="reference internal" href="#discussion">3.1.6. Discussion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-role-of-command-line-applications">3.3. The role of command-line applications</a><ul>
-<li><a class="reference internal" href="#command-line-applications-in-scala">3.3.1. Command-line applications in Scala</a></li>
-<li><a class="reference internal" href="#command-line-argument-parsing">3.3.2. Command-line argument parsing</a></li>
-<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.3.3. Determining whether an app is running interactively</a></li>
-<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.3.4. Allowing the user to edit their input</a></li>
-<li><a class="reference internal" href="#finding-good-third-party-libraries">3.3.5. Finding good third-party libraries</a></li>
+<li><a class="reference internal" href="#options-for-running-scala-code">3.2. Options for running Scala code</a></li>
+<li><a class="reference internal" href="#techniques-for-testing-scala-code">3.3. Techniques for testing Scala code</a><ul>
+<li><a class="reference internal" href="#measuring-code-coverage">3.3.1. Measuring code coverage</a></li>
+<li><a class="reference internal" href="#end-to-end-application-testing">3.3.2. End-to-end application testing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-role-of-logging">3.4. The role of logging</a><ul>
-<li><a class="reference internal" href="#logging-in-scala">3.4.1. Logging in Scala</a></li>
+<li><a class="reference internal" href="#the-role-of-command-line-applications">3.4. The role of command-line applications</a><ul>
+<li><a class="reference internal" href="#command-line-applications-in-scala">3.4.1. Command-line applications in Scala</a></li>
+<li><a class="reference internal" href="#command-line-argument-parsing">3.4.2. Command-line argument parsing</a></li>
+<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.4.3. Determining whether an app is running interactively</a></li>
+<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.4.4. Allowing the user to edit their input</a></li>
+<li><a class="reference internal" href="#finding-good-third-party-libraries">3.4.5. Finding good third-party libraries</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.5. The importance of constant-space complexity</a><ul>
-<li><a class="reference internal" href="#using-iterators-to-represent-indefinite-input">3.5.1. Using iterators to represent indefinite input</a></li>
-<li><a class="reference internal" href="#monitoring-a-program-s-memory-footprint-over-time">3.5.2. Monitoring a program’s memory footprint over time</a></li>
+<li><a class="reference internal" href="#the-role-of-logging">3.5. The role of logging</a><ul>
+<li><a class="reference internal" href="#logging-in-scala">3.5.1. Logging in Scala</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#making-command-line-applications-testable">3.6. Making command-line applications testable</a></li>
+<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.6. The importance of constant-space complexity</a><ul>
+<li><a class="reference internal" href="#using-iterators-to-represent-indefinite-input">3.6.1. Using iterators to represent indefinite input</a></li>
+<li><a class="reference internal" href="#monitoring-a-program-s-memory-footprint-over-time">3.6.2. Monitoring a program’s memory footprint over time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-command-line-applications-testable">3.7. Making command-line applications testable</a></li>
 </ul>
 </li>
 </ul>
@@ -833,7 +976,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=a1ce9f5c"></script>
+    <script src="_static/documentation_options.js?v=49d43c9e"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
