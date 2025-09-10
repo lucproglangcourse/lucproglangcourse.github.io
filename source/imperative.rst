@@ -9,6 +9,119 @@ By contrast, we define object-oriented code to mean code that includes definitio
   For pedagogical reasons, we will still discuss those capabilities the next chapter as part of the object-oriented paradigm.
 
 
+Core elements
+~~~~~~~~~~~~~
+
+
+The imperative paradigm is characterized by *commands that change a program's state*. 
+A program in this style specifies *how* to achieve a desired result, step by step, 
+through a sequence of statements that manipulate named mutable state.
+
+
+Named Mutable State
+```````````````````
+- **Variables** are identifiers bound to memory locations whose contents can be updated.
+- **State** refers to the current values of all variables at a given point in time.
+- State changes are performed through assignment statements.
+
+Control Flow
+`````````````````````
+
+- **Sequential execution**: statements run one after another in order.
+- **Branching**: conditional statements choose between alternative paths.
+- **Repetition/Iteration**: loops repeat computations until conditions are met.
+
+Procedural Abstraction
+````````````````````````
+
+- **Procedures, functions, and methods** group statements into reusable units.
+- **Parameter passing** mechanisms:
+  
+  - *Call by value*: actual argument evaluated and copied into the formal parameter.
+  - *Call by reference*: actual argument passed as an address, allowing mutation.
+  - *Call by name*: actual argument expression substituted into the procedure body (rare, but historically important, e.g., Algol 60).
+
+Other Elements
+```````````````````````
+
+- **Block structure and scope**: delimit visibility and lifetime of variables.
+- **Side effects**: operations that modify state beyond returning values.
+- **I/O as imperative commands**: reading/writing inherently changes program state.
+
+Examples Across Languages
+``````````````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 20 20
+
+   * - Element
+     - C
+     - Java
+     - Scala
+     - Python
+   * - Named mutable state
+     - ``int x = 0; x = 5;``
+     - ``int x = 0; x = 5;``
+     - ``var x = 0; x = 5``
+     - ``x = 0; x = 5``
+   * - Sequential execution
+     - ``x = 1; y = 2;``
+     - ``x = 1; y = 2;``
+     - ``val a = 1; val b = 2``
+     - ``a = 1; b = 2``
+   * - Branching
+     - ``if (x > 0) {...} else {...}``
+     - ``if (x > 0) {...} else {...}``
+     - ``if (x > 0) ... else ...``
+     - ``if x > 0:\n    ...\nelse:\n    ...``
+   * - Iteration
+     - ``for (i=0;i<n;i++) {...}``
+     - ``for (int i=0;i<n;i++) {...}``
+     - ``for (i <- 0 until n) {...}``
+     - ``for i in range(n): ...``
+   * - Procedure / method
+     - ``int f(int x){ return x+1; }``
+     - ``int f(int x){ return x+1; }``
+     - ``def f(x:Int) = x+1``
+     - ``def f(x): return x+1``
+   * - Call by value
+     - Default (``f(x)``)
+     - Default (``f(x)``)
+     - Default (``f(x)``)
+     - Default (``f(x)``)
+   * - Call by reference
+     - Pointers (``f(&x)``)
+     - Not supported (simulated with mutable objects)
+     - ``var`` parameters in Scala 2 (removed in 3)
+     - Not supported (mutable objects simulate)
+   * - Call by name
+     - Not supported
+     - Not supported
+     - ``def f(x: => Int)`` (lazy eval of argument)
+     - Not supported
+   * - Scope
+     - ``{ int y = 0; }``
+     - ``{ int y = 0; }``
+     - ``{ val y = 0 }``
+     - Indentation-based block
+   * - Side effect
+     - ``x++``
+     - ``x++``
+     - ``x += 1``
+     - ``x += 1``
+
+Discussion
+````````````````````
+
+
+Imperative constructs form the foundation of nearly all mainstream programming 
+languages, even those that emphasize other paradigms. They provide a natural 
+model of computation as a *state machine*: a program moves from one state to the next 
+through explicit updates governed by control flow.
+
+
+
 Options for running Scala code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
