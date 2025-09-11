@@ -42,6 +42,22 @@ You can query for grandparents:
   ?- grandparent(john, susan).
   % Output: true.
 
+  ?- grandparent(mary, susan).
+  % Output: false.
+
+In the following queries, the variable `X` is used to find all possible values that satisfy the relationship. In Prolog, variables start with an uppercase letter and represent unknowns that Prolog tries to solve for.
+
+.. code-block:: prolog
+
+  ?- grandparent(john, X).
+  % Output: X = susan.
+
+  ?- grandparent(X, susan).
+  % Output: X = john.
+
+  ?- grandparent(susan, X).
+  % Output: false.
+
 
 8-Queens Example in Prolog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
