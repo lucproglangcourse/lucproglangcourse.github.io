@@ -131,7 +131,7 @@ The resources in this section cover fundamental models of computation, language 
 - `overview talk <http://klaeufer.github.io/luc-amc.html>`_ by Läufer and Thiruvathukal
 - `programming languages paradigms: diagram <https://www.info.ucl.ac.be/~pvr/paradigmsDIAGRAMeng108.jpg>`_ by Van Roy
 - `programming languages paradigms: book chapter <https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf>`_ by Van Roy
-- :doc:`principles` by MacLennan
+- :doc:`/80-principles` by MacLennan
 - `Turing completeness <https://en.wikipedia.org/wiki/Turing_completeness>`_
 - `Church-Turing thesis <https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis>`_
 

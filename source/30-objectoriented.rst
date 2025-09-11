@@ -5,6 +5,117 @@ In this chapter, we recap the object-oriented programming paradigm with examples
 As discussed, we take object-oriented code to mean code that includes definitions of domain models, i.e., basic domain- or application-specific abstractions, or uses object-oriented frameworks (as opposed to general-purpose object-oriented libraries).
 
 
+Core Elements
+~~~~~~~~~~~~~~~~~
+
+The object-oriented paradigm is characterized by **modeling computation in terms of objects**. 
+Objects encapsulate both state (fields) and behavior (methods), 
+and interact with one another through message passing (method calls).
+
+Encapsulation
+````````````````
+
+- **Objects** bundle data (fields) with the operations (methods) that manipulate that data.
+- Provides a unit of modularity and information hiding.
+
+Classes and Instances
+````````````````````````
+
+- **Classes** define the blueprint of objects.
+- **Instances** (objects) are created from classes.
+
+Inheritance
+``````````````
+- Mechanism to define new classes that reuse, extend, or modify behavior of existing classes.
+- Promotes code reuse and classification hierarchies.
+
+Polymorphism
+```````````````
+
+- The ability to treat objects of different classes uniformly through a common interface.
+- Achieved through method overriding and dynamic dispatch.
+
+Abstraction
+`````````````
+
+- **Abstract classes** and **interfaces/traits** define contracts without full implementation.
+- Supports flexible design and separation of concerns.
+
+Other Elements
+````````````````
+
+- **Message passing**: method invocation as the key interaction mechanism.
+- **Constructors/destructors**: control object lifecycle.
+- **Operator overloading** (in some languages like C++ and Scala).
+
+Examples Across Languages
+``````````````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 20 20
+
+   * - Element
+     - C++
+     - Java
+     - Scala
+     - Python
+   * - Class definition
+     - ``class Point { int x,y; };``
+     - ``class Point { int x, y; }``
+     - ``class Point(var x:Int, var y:Int)``
+     - ``class Point:\n    def __init__(self,x,y): ...``
+   * - Object creation
+     - ``Point p;``
+     - ``Point p = new Point();``
+     - ``val p = Point(0,0)``
+     - ``p = Point(0,0)``
+   * - Encapsulation
+     - ``private int x;``
+     - ``private int x;``
+     - ``private var x = 0``
+     - Convention: ``_x = 0``
+   * - Inheritance
+     - ``class C: public B { ... };``
+     - ``class C extends B { ... }``
+     - ``class C extends B``
+     - ``class C(B): ...``
+   * - Polymorphism (override)
+     - ``virtual void f();``
+     - ``@Override void f()`` 
+     - ``override def f = ...``
+     - ``def f(self): ...`` (runtime override)
+   * - Abstract / interface
+     - ``virtual void f()=0;``
+     - ``interface I { void f(); }``
+     - ``trait T { def f: Int }``
+     - Abstract base class (``abc`` module)
+   * - Message passing
+     - ``p.move(1,2);``
+     - ``p.move(1,2);``
+     - ``p.move(1,2)``
+     - ``p.move(1,2)``
+   * - Constructor
+     - ``Point(): x(0), y(0) {}``
+     - ``Point() { this.x=0; }``
+     - ``class C(x:Int)`` with body
+     - ``def __init__``
+   * - Destructor / finalizer
+     - ``~Point(){...}``
+     - ``protected void finalize(){}``
+     - ``def finalize() = ...`` (deprecated)
+     - ``__del__`` (rarely used)
+
+Discussion
+``````````````````
+
+Object-oriented programming emphasizes *modularity*, *reuse*, and *extensibility*.  
+It allows modeling of real-world entities and systems through interacting objects.  
+Despite paradigm shifts (functional, reactive, declarative), OOP remains dominant in 
+many mainstream languages, often blended with imperative and functional features.
+
+
+
 Making command-line applications testable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
