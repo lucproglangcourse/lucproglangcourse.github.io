@@ -12,10 +12,11 @@ By contrast, we define object-oriented code to mean code that includes definitio
 Core elements
 ~~~~~~~~~~~~~
 
-
 The imperative paradigm is characterized by *commands that change a program's state*. 
 A program in this style specifies *how* to achieve a desired result, step by step, 
 through a sequence of statements that manipulate named mutable state.
+
+This paradigm is closely tied to and naturally supported by the von Neumann machine architecture, where a processor fetches instructions and data from a memory, operates on the data, and writes the results back into memory. Computation is accomplished by making small incremental changes in the global memory. For more details, see also `this reference <https://unoapi.org/05-parallel/parallel.html#von-neumann-machines-and-their-limits>`_.
 
 
 Named Mutable State
@@ -96,7 +97,7 @@ Examples Across Languages
      - ``var`` parameters in Scala 2 (removed in 3)
      - Not supported (mutable objects simulate)
    * - Call by name
-     - Not supported
+     - Not directly supported (simulated with macros)
      - Not supported
      - ``def f(x: => Int)`` (lazy eval of argument)
      - Not supported

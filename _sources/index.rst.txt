@@ -51,20 +51,22 @@ Contents
    :maxdepth: 2
    :numbered:
 
-   overview
-   background
-   imperative
-   objectoriented
-   functionalprogramming
-   representationinterpretation
-   concurrency
-   summary
+   05-overview
+   10-background
+   20-imperative
+   30-objectoriented
+   40-functional
+   50-representationinterpretation
+   60-concurrency
+   70-logic
+   75-otherparadigms
+   78-summary
 
-   principles
-   resources
-   software 
-   syllabus
-   todo
+   80-principles
+   83-resources
+   85-software 
+   90-syllabus
+   95-todo
 
 Indices and tables
 ------------------

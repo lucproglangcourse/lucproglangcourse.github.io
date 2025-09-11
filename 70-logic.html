@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="9. Appendix: Programming Language Design Principles" href="principles.html" /><link rel="prev" title="7. The Concurrent Programming Paradigm" href="concurrency.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="9. Other Important Programming Paradigms" href="75-otherparadigms.html" /><link rel="prev" title="7. The Concurrent Programming Paradigm" href="60-concurrency.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>8. Summary - Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</title>
+        <title>8. The Logic Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.9</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.9</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.8</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.9</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -198,19 +198,21 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="background.html">2. Context and Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imperative.html">3. The Imperative Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="objectoriented.html">4. The Object-Oriented Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalprogramming.html">5. The Functional Programming Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="representationinterpretation.html">6. Program Representation and Interpretation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency.html">7. The Concurrent Programming Paradigm</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">8. Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="principles.html">9. Appendix: Programming Language Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Appendix: Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="software.html">11. Appendix: Course Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="syllabus.html">12. Appendix: Course Syllabi</a></li>
-<li class="toctree-l1"><a class="reference internal" href="todo.html">13. Appendix: TODO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-background.html">2. Context and Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-imperative.html">3. The Imperative Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-objectoriented.html">4. The Object-Oriented Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-functional.html">5. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50-representationinterpretation.html">6. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60-concurrency.html">7. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">8. The Logic Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="75-otherparadigms.html">9. Other Important Programming Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="78-summary.html">10. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-principles.html">11. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="83-resources.html">12. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="85-software.html">13. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90-syllabus.html">14. Appendix: Course Syllabi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95-todo.html">15. Appendix: TODO</a></li>
 </ul>
 
 </div>
@@ -231,7 +233,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/summary.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/70-logic.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -245,15 +247,59 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="summary">
-<h1><span class="section-number">8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
-<p>summary/recap goes here</p>
+          <section id="the-logic-programming-paradigm">
+<h1><span class="section-number">8. </span>The Logic Programming Paradigm<a class="headerlink" href="#the-logic-programming-paradigm" title="Link to this heading"></a></h1>
+<p>Logic programming is a programming paradigm based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.</p>
+<section id="hello-world-in-prolog">
+<h2><span class="section-number">8.1. </span>Hello World in Prolog<a class="headerlink" href="#hello-world-in-prolog" title="Link to this heading"></a></h2>
+<p>Prolog does not have traditional I/O, but you can define a simple fact and query it:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% hello_world.pl</span>
+<span class="nf">hello</span> <span class="o">:-</span> <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">&#39;Hello, world!&#39;</span><span class="p">),</span> <span class="s s-Atom">nl</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>To run the query:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="s s-Atom">hello</span><span class="p">.</span>
+<span class="c1">% Output: Hello, world!</span>
+</pre></div>
+</div>
+</section>
+<section id="queens-example-in-prolog">
+<h2><span class="section-number">8.2. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
+<p>The 8-queens problem is to place 8 queens on a chessboard so that no two queens threaten each other.</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% 8queens.pl</span>
+<span class="nf">safe</span><span class="p">([]).</span>
+<span class="nf">safe</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">])</span> <span class="p">:-</span> <span class="nf">safe</span><span class="p">(</span><span class="nv">Qs</span><span class="p">),</span> <span class="nf">no_attack</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span>
+
+<span class="nf">no_attack</span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="p">[],</span> <span class="k">_</span><span class="p">).</span>
+<span class="nf">no_attack</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="p">[</span><span class="nv">Q1</span><span class="p">|</span><span class="nv">Qs</span><span class="p">],</span> <span class="nv">D</span><span class="p">)</span> <span class="p">:-</span>
+  <span class="nv">Q</span> <span class="s s-Atom">=\=</span> <span class="nv">Q1</span><span class="p">,</span>
+  <span class="nf">abs</span><span class="p">(</span><span class="nv">Q</span> <span class="o">-</span> <span class="nv">Q1</span><span class="p">)</span> <span class="s s-Atom">=\=</span> <span class="nv">D</span><span class="p">,</span>
+  <span class="nv">D1</span> <span class="o">is</span> <span class="nv">D</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nf">no_attack</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">,</span> <span class="nv">D1</span><span class="p">).</span>
+
+<span class="nf">queens</span><span class="p">([],</span> <span class="p">[]).</span>
+<span class="nf">queens</span><span class="p">([</span><span class="nv">N</span><span class="p">|</span><span class="nv">Ns</span><span class="p">],</span> <span class="p">[</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">])</span> <span class="p">:-</span>
+  <span class="nf">queens</span><span class="p">(</span><span class="nv">Ns</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">),</span>
+  <span class="nf">member</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]),</span>
+  <span class="s s-Atom">\+</span> <span class="nf">member</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">),</span>
+  <span class="nf">safe</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">]).</span>
+
+<span class="nf">solve_queens</span><span class="p">(</span><span class="nv">Solution</span><span class="p">)</span> <span class="p">:-</span>
+  <span class="nf">queens</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="nv">Solution</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>To run the query:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nf">solve_queens</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
+<span class="c1">% S = [1, 5, 8, 6, 3, 7, 2, 4] .</span>
+</pre></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -261,16 +307,16 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="principles.html">
+          <a class="next-page" href="75-otherparadigms.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">9. </span>Appendix: Programming Language Design Principles</div>
+                <div class="title"><span class="section-number">9. </span>Other Important Programming Paradigms</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="concurrency.html">
+          <a class="prev-page" href="60-concurrency.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
@@ -299,15 +345,35 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">8. The Logic Programming Paradigm</a><ul>
+<li><a class="reference internal" href="#hello-world-in-prolog">8.1. Hello World in Prolog</a></li>
+<li><a class="reference internal" href="#queens-example-in-prolog">8.2. 8-Queens Example in Prolog</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=49d43c9e"></script>
+    <script src="_static/documentation_options.js?v=edacb887"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
