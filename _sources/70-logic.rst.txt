@@ -21,6 +21,28 @@ To run the query:
   ?- hello.
   % Output: Hello, world!
 
+
+Basic Facts and Rules Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is a simple Prolog program that defines family relationships:
+
+.. code-block:: prolog
+
+  % family.pl
+  parent(john, mary).
+  parent(mary, susan).
+
+  grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+
+You can query for grandparents:
+
+.. code-block:: prolog
+
+  ?- grandparent(john, susan).
+  % Output: true.
+
+
 8-Queens Example in Prolog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 

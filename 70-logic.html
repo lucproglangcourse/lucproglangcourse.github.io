@@ -269,8 +269,24 @@
 </pre></div>
 </div>
 </section>
+<section id="basic-facts-and-rules-example">
+<h2><span class="section-number">8.2. </span>Basic Facts and Rules Example<a class="headerlink" href="#basic-facts-and-rules-example" title="Link to this heading"></a></h2>
+<p>Here is a simple Prolog program that defines family relationships:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% family.pl</span>
+<span class="nf">parent</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">mary</span><span class="p">).</span>
+<span class="nf">parent</span><span class="p">(</span><span class="s s-Atom">mary</span><span class="p">,</span> <span class="s s-Atom">susan</span><span class="p">).</span>
+
+<span class="nf">grandparent</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">parent</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Z</span><span class="p">),</span> <span class="nf">parent</span><span class="p">(</span><span class="nv">Z</span><span class="p">,</span> <span class="nv">Y</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>You can query for grandparents:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nf">grandparent</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">susan</span><span class="p">).</span>
+<span class="c1">% Output: true.</span>
+</pre></div>
+</div>
+</section>
 <section id="queens-example-in-prolog">
-<h2><span class="section-number">8.2. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.3. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
 <p>The 8-queens problem is to place 8 queens on a chessboard so that no two queens threaten each other.</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% 8queens.pl</span>
 <span class="nf">safe</span><span class="p">([]).</span>
@@ -359,7 +375,8 @@
             <ul>
 <li><a class="reference internal" href="#">8. The Logic Programming Paradigm</a><ul>
 <li><a class="reference internal" href="#hello-world-in-prolog">8.1. Hello World in Prolog</a></li>
-<li><a class="reference internal" href="#queens-example-in-prolog">8.2. 8-Queens Example in Prolog</a></li>
+<li><a class="reference internal" href="#basic-facts-and-rules-example">8.2. Basic Facts and Rules Example</a></li>
+<li><a class="reference internal" href="#queens-example-in-prolog">8.3. 8-Queens Example in Prolog</a></li>
 </ul>
 </li>
 </ul>
