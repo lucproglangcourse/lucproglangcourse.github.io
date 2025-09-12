@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="6. Program Representation and Interpretation" href="50-representationinterpretation.html" /><link rel="prev" title="4. The Object-Oriented Programming Paradigm" href="30-objectoriented.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>5. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.14</title>
+        <title>5. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.14</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.14</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -261,54 +261,54 @@
 <p>The functional paradigm is characterized by <strong>computation as the evaluation of functions</strong>.
 Functions are <em>first-class citizens</em>, programs are expressed declaratively, and emphasis
 is placed on immutability and avoidance of side effects.</p>
-<section id="first-class-and-higher-order-functions">
-<h3><span class="section-number">5.1.1. </span>First-Class and Higher-Order Functions<a class="headerlink" href="#first-class-and-higher-order-functions" title="Link to this heading"></a></h3>
+<section id="expression-oriented-computation">
+<h3><span class="section-number">5.1.1. </span>Expression-Oriented Computation<a class="headerlink" href="#expression-oriented-computation" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Functions can be passed as arguments, returned as results, and stored in variables.</p></li>
-<li><p>Higher-order functions operate on other functions.</p></li>
+<li><p>Programs are built from expressions that yield values.</p></li>
+<li><p>No distinction between statements and expressions in purely functional languages.</p></li>
 </ul>
 </section>
 <section id="immutability">
 <h3><span class="section-number">5.1.2. </span>Immutability<a class="headerlink" href="#immutability" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Data is treated as immutable; instead of updating state, new values are constructed.</p></li>
-<li><p>Supports reasoning about programs mathematically.</p></li>
+<li><p>Variables are bound once and cannot be reassigned.</p></li>
+<li><p>Encourages referential transparency: expressions can be replaced with their values without changing program meaning.</p></li>
 </ul>
 </section>
-<section id="pure-functions">
-<h3><span class="section-number">5.1.3. </span>Pure Functions<a class="headerlink" href="#pure-functions" title="Link to this heading"></a></h3>
+<section id="first-class-and-higher-order-functions">
+<h3><span class="section-number">5.1.3. </span>First-Class and Higher-Order Functions<a class="headerlink" href="#first-class-and-higher-order-functions" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Functions that always return the same result for the same input (referential transparency).</p></li>
-<li><p>No hidden side effects such as I/O or mutation.</p></li>
+<li><p><strong>Functions as first-class values</strong>: can be passed as arguments, returned as results, and stored in data structures.</p></li>
+<li><p><strong>Higher-order functions</strong>: functions that take other functions as parameters or return them.</p></li>
 </ul>
 </section>
 <section id="recursion">
 <h3><span class="section-number">5.1.4. </span>Recursion<a class="headerlink" href="#recursion" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Primary mechanism for repetition and iteration.</p></li>
-<li><p>Eliminates need for explicit loops.</p></li>
+<li><p>Primary mechanism for repetition.</p></li>
+<li><p>Loops are replaced by recursive definitions.</p></li>
 </ul>
 </section>
-<section id="function-composition">
-<h3><span class="section-number">5.1.5. </span>Function Composition<a class="headerlink" href="#function-composition" title="Link to this heading"></a></h3>
+<section id="pattern-matching">
+<h3><span class="section-number">5.1.5. </span>Pattern Matching<a class="headerlink" href="#pattern-matching" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Functions can be combined into larger functions.</p></li>
-<li><p>Promotes modularity and code reuse.</p></li>
+<li><p>Provides a declarative way to deconstruct data structures and control flow.</p></li>
+<li><p>Enables concise handling of algebraic data types.</p></li>
 </ul>
 </section>
-<section id="lazy-evaluation-in-some-languages">
-<h3><span class="section-number">5.1.6. </span>Lazy Evaluation (in some languages)<a class="headerlink" href="#lazy-evaluation-in-some-languages" title="Link to this heading"></a></h3>
+<section id="lazy-evaluation">
+<h3><span class="section-number">5.1.6. </span>Lazy Evaluation<a class="headerlink" href="#lazy-evaluation" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Expressions are only evaluated when needed.</p></li>
-<li><p>Enables definition of infinite data structures.</p></li>
+<li><p>Expressions evaluated only when needed (default in Haskell).</p></li>
+<li><p>Can improve modularity and performance.</p></li>
 </ul>
 </section>
 <section id="other-elements">
 <h3><span class="section-number">5.1.7. </span>Other Elements<a class="headerlink" href="#other-elements" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><strong>Pattern matching</strong>: destructuring data to guide computation (e.g., Scala).</p></li>
-<li><p><strong>Anonymous functions (lambdas)</strong>: concise function definitions.</p></li>
-<li><p><strong>Closures</strong>: functions that capture variables from their lexical scope.</p></li>
+<li><p><strong>Closures</strong>: functions that capture their lexical environment.</p></li>
+<li><p><strong>Type inference</strong>: deduce function and variable types automatically (e.g., Haskell, Scala).</p></li>
+<li><p><strong>Purity</strong>: avoiding side effects; I/O and state modeled explicitly (monads, uniqueness types).</p></li>
 </ul>
 </section>
 <section id="examples-across-languages">
@@ -326,7 +326,7 @@ is placed on immutability and avoidance of side effects.</p>
 <tr class="row-odd"><th class="head"><p>Element</p></th>
 <th class="head"><p>Java</p></th>
 <th class="head"><p>Scala</p></th>
-<th class="head"><p>Python</p></th>
+<th class="head"><p>Haskell</p></th>
 <th class="head"><p>Scheme</p></th>
 </tr>
 </thead>
@@ -334,56 +334,44 @@ is placed on immutability and avoidance of side effects.</p>
 <tr class="row-even"><td><p>First-class function</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Function&lt;Integer,Integer&gt;</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x+1;</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">(x:Int)</span> <span class="pre">=&gt;</span> <span class="pre">x+1</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x+1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">x+1</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">f</span> <span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(+</span> <span class="pre">x</span> <span class="pre">1)))</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Higher-order function</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">list.stream().map(x-&gt;x+1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list.stream().map(x</span> <span class="pre">-&gt;</span> <span class="pre">x+1)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">List(1,2,3).map(_+1)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">map(lambda</span> <span class="pre">x:</span> <span class="pre">x+1,</span> <span class="pre">[1,2,3])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">(+1)</span> <span class="pre">[1,2,3]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(map</span> <span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(+</span> <span class="pre">x</span> <span class="pre">1))</span> <span class="pre">'(1</span> <span class="pre">2</span> <span class="pre">3))</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Immutability</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">int</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
-<td><p>Convention: avoid reassignment</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">x</span> <span class="pre">5)</span></code> (rebinding only)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">var</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">5</span> <span class="pre">in</span> <span class="pre">...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">y</span> <span class="pre">5)</span></code> (by convention immutable)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Pure function</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x*x</span></code> (no side effects)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">square(x:Int)=x*x</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">square(x):</span> <span class="pre">return</span> <span class="pre">x*x</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">(square</span> <span class="pre">x)</span> <span class="pre">(*</span> <span class="pre">x</span> <span class="pre">x))</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Recursion</p></td>
-<td><p><a href="#id1"><span class="problematic" id="id2">``</span></a>int fact(int n){ return n==0?1:n*fact(n-1);} ``</p></td>
+<tr class="row-odd"><td><p>Recursion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">fact(int</span> <span class="pre">n){</span> <span class="pre">return</span> <span class="pre">n==0?1:n*fact(n-1);</span> <span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">fact(n:Int):Int</span> <span class="pre">=</span> <span class="pre">if</span> <span class="pre">(n==0)</span> <span class="pre">1</span> <span class="pre">else</span> <span class="pre">n*fact(n-1)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">fact(n):</span> <span class="pre">return</span> <span class="pre">1</span> <span class="pre">if</span> <span class="pre">n==0</span> <span class="pre">else</span> <span class="pre">n*fact(n-1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fact</span> <span class="pre">0</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">fact</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">n*fact(n-1)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">(fact</span> <span class="pre">n)</span> <span class="pre">(if</span> <span class="pre">(=</span> <span class="pre">n</span> <span class="pre">0)</span> <span class="pre">1</span> <span class="pre">(*</span> <span class="pre">n</span> <span class="pre">(fact</span> <span class="pre">(-</span> <span class="pre">n</span> <span class="pre">1)))))</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Function composition</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">f.andThen(g)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">h</span> <span class="pre">=</span> <span class="pre">f</span> <span class="pre">andThen</span> <span class="pre">g</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">g(f(x))</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">h</span> <span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(g</span> <span class="pre">(f</span> <span class="pre">x))))</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Anonymous function</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x*x</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(x:Int)=&gt;x*x</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x*x</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(*</span> <span class="pre">x</span> <span class="pre">x))</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Closure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Function&lt;Integer,Integer&gt;</span> <span class="pre">adder(int</span> <span class="pre">y){</span> <span class="pre">return</span> <span class="pre">x-&gt;x+y;</span> <span class="pre">}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">adder(y:Int)</span> <span class="pre">=</span> <span class="pre">(x:Int)=&gt;x+y</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">adder(y):</span> <span class="pre">return</span> <span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x+y</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">(adder</span> <span class="pre">y)</span> <span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(+</span> <span class="pre">x</span> <span class="pre">y)))</span></code></p></td>
-</tr>
 <tr class="row-even"><td><p>Pattern matching</p></td>
-<td><p>Not supported</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">match</span> <span class="pre">{</span> <span class="pre">case</span> <span class="pre">0</span> <span class="pre">=&gt;</span> <span class="pre">&quot;zero&quot;;</span> <span class="pre">case</span> <span class="pre">_</span> <span class="pre">=&gt;</span> <span class="pre">&quot;nonzero&quot;</span> <span class="pre">}</span></code></p></td>
-<td><p>Simulated with <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">elif</span></code></p></td>
-<td><p>Simulated with <code class="docutils literal notranslate"><span class="pre">cond</span></code></p></td>
+<td><p>Not built-in</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">match</span> <span class="pre">{</span> <span class="pre">case</span> <span class="pre">0</span> <span class="pre">=&gt;</span> <span class="pre">1;</span> <span class="pre">case</span> <span class="pre">n</span> <span class="pre">=&gt;</span> <span class="pre">n*fact(n-1)</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fact</span> <span class="pre">0</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">fact</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">n*fact</span> <span class="pre">(n-1)</span></code></p></td>
+<td><p>Not built-in (simulate with cond)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lazy evaluation</p></td>
+<td><p>Streams (<code class="docutils literal notranslate"><span class="pre">Stream.of(1,2,3)</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LazyList.from(1)</span></code></p></td>
+<td><p>Default in Haskell</p></td>
+<td><p>Not default; can simulate with thunks</p></td>
+</tr>
+<tr class="row-even"><td><p>Closure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Function&lt;Integer,Integer&gt;</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">(x)</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">(x:Int)</span> <span class="pre">=&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">\x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(define</span> <span class="pre">f</span> <span class="pre">(lambda</span> <span class="pre">(x)</span> <span class="pre">(+</span> <span class="pre">x</span> <span class="pre">y)))</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -440,7 +428,7 @@ The main building blocks in scripting-style Scala are the collection and utility
 <li><p>important methods <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code> / <code class="docutils literal notranslate"><span class="pre">drop</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> / <code class="docutils literal notranslate"><span class="pre">withFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> / <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">scanLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">collect</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id3">
+<div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
 </div>
@@ -590,7 +578,7 @@ Nested <code class="docutils literal notranslate"><span class="pre">try</span></
 </div>
 <p>The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the <a class="reference external" href="https://github.com/lucproglangcourse/processtree-scala">process tree</a> example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.</p>
-<div class="admonition-todo admonition" id="id4">
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> with blocks for embedding stateful steps such as logging</p>
 </div>
@@ -823,13 +811,13 @@ Here are some examples:</p>
 We obtain this by applying the <code class="docutils literal notranslate"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal notranslate"><span class="pre">F</span></code>.</p></li>
 <li><p>We get our original recursive behaviors back by combining <code class="docutils literal notranslate"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <p>Practical applications</p>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">5.6.2. </span>Examples<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3><span class="section-number">5.6.2. </span>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></p></li>
@@ -979,7 +967,7 @@ They define these abstractions in such a way that we can retrofit existing types
 </section>
 <section id="references">
 <h2><span class="section-number">5.8. </span>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id14">
+<div class="admonition-todo admonition" id="id12">
 <p class="admonition-title">Todo</p>
 <p>put chapter-level references here</p>
 </div>
@@ -1043,12 +1031,12 @@ They define these abstractions in such a way that we can retrofit existing types
             <ul>
 <li><a class="reference internal" href="#">5. The Functional Programming Paradigm</a><ul>
 <li><a class="reference internal" href="#core-elements">5.1. Core Elements</a><ul>
-<li><a class="reference internal" href="#first-class-and-higher-order-functions">5.1.1. First-Class and Higher-Order Functions</a></li>
+<li><a class="reference internal" href="#expression-oriented-computation">5.1.1. Expression-Oriented Computation</a></li>
 <li><a class="reference internal" href="#immutability">5.1.2. Immutability</a></li>
-<li><a class="reference internal" href="#pure-functions">5.1.3. Pure Functions</a></li>
+<li><a class="reference internal" href="#first-class-and-higher-order-functions">5.1.3. First-Class and Higher-Order Functions</a></li>
 <li><a class="reference internal" href="#recursion">5.1.4. Recursion</a></li>
-<li><a class="reference internal" href="#function-composition">5.1.5. Function Composition</a></li>
-<li><a class="reference internal" href="#lazy-evaluation-in-some-languages">5.1.6. Lazy Evaluation (in some languages)</a></li>
+<li><a class="reference internal" href="#pattern-matching">5.1.5. Pattern Matching</a></li>
+<li><a class="reference internal" href="#lazy-evaluation">5.1.6. Lazy Evaluation</a></li>
 <li><a class="reference internal" href="#other-elements">5.1.7. Other Elements</a></li>
 <li><a class="reference internal" href="#examples-across-languages">5.1.8. Examples Across Languages</a></li>
 <li><a class="reference internal" href="#discussion">5.1.9. Discussion</a></li>
@@ -1074,7 +1062,7 @@ They define these abstractions in such a way that we can retrofit existing types
 <li><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">5.5. A closer look at predefined behaviors on lists</a></li>
 <li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">5.6. Separation of concerns at the type level</a><ul>
 <li><a class="reference internal" href="#key-concepts">5.6.1. Key concepts</a></li>
-<li><a class="reference internal" href="#id6">5.6.2. Examples</a></li>
+<li><a class="reference internal" href="#id4">5.6.2. Examples</a></li>
 <li><a class="reference internal" href="#what-fix-does">5.6.3. What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does</a></li>
 <li><a class="reference internal" href="#generalized-fold-catamorphism">5.6.4. Generalized fold (catamorphism)</a></li>
 <li><a class="reference internal" href="#key-insights">5.6.5. Key insights</a></li>
@@ -1100,7 +1088,7 @@ They define these abstractions in such a way that we can retrofit existing types
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=64e26663"></script>
+    <script src="_static/documentation_options.js?v=c09ae27a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
