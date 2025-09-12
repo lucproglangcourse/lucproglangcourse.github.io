@@ -5,7 +5,7 @@ In this chapter, we recap the object-oriented programming paradigm with examples
 As discussed, we take object-oriented code to mean code that includes definitions of domain models, i.e., basic domain- or application-specific abstractions, or uses object-oriented frameworks (as opposed to general-purpose object-oriented libraries).
 
 
-Core Elements
+Core elements
 ~~~~~~~~~~~~~~~~~
 
 The object-oriented paradigm is characterized by **modeling computation in terms of objects**. 
