@@ -11,48 +11,51 @@ The functional paradigm is characterized by **computation as the evaluation of f
 Functions are *first-class citizens*, programs are expressed declaratively, and emphasis 
 is placed on immutability and avoidance of side effects.
 
-First-Class and Higher-Order Functions
-````````````````````````````````````````
 
-- Functions can be passed as arguments, returned as results, and stored in variables.
-- Higher-order functions operate on other functions.
+Expression-Oriented Computation
+````````````````````````````````
+
+- Programs are built from expressions that yield values.
+- No distinction between statements and expressions in purely functional languages.
 
 Immutability
-````````````````
+````````````````````
 
-- Data is treated as immutable; instead of updating state, new values are constructed.
-- Supports reasoning about programs mathematically.
+- Variables are bound once and cannot be reassigned.
+- Encourages referential transparency: expressions can be replaced with their values without changing program meaning.
 
-Pure Functions
-````````````````
+First-Class and Higher-Order Functions
+``````````````````````````````````````
 
-- Functions that always return the same result for the same input (referential transparency).
-- No hidden side effects such as I/O or mutation.
+- **Functions as first-class values**: can be passed as arguments, returned as results, and stored in data structures.
+- **Higher-order functions**: functions that take other functions as parameters or return them.
+
 
 Recursion
-````````````
+``````````````
 
-- Primary mechanism for repetition and iteration.
-- Eliminates need for explicit loops.
+- Primary mechanism for repetition.
+- Loops are replaced by recursive definitions.
 
-Function Composition
-`````````````````````
+Pattern Matching
+`````````````````
 
-- Functions can be combined into larger functions.
-- Promotes modularity and code reuse.
+- Provides a declarative way to deconstruct data structures and control flow.
+- Enables concise handling of algebraic data types.
 
-Lazy Evaluation (in some languages)
-```````````````````````````````````
+Lazy Evaluation
+````````````````
 
-- Expressions are only evaluated when needed.
-- Enables definition of infinite data structures.
+- Expressions evaluated only when needed (default in Haskell).
+- Can improve modularity and performance.
 
 Other Elements
-```````````````
+``````````````
 
-- **Pattern matching**: destructuring data to guide computation (e.g., Scala).
-- **Anonymous functions (lambdas)**: concise function definitions.
-- **Closures**: functions that capture variables from their lexical scope.
+- **Closures**: functions that capture their lexical environment.
+- **Type inference**: deduce function and variable types automatically (e.g., Haskell, Scala).
+- **Purity**: avoiding side effects; I/O and state modeled explicitly (monads, uniqueness types).
+
 
 Examples Across Languages
 ```````````````````````````
@@ -64,53 +67,44 @@ Examples Across Languages
    * - Element
      - Java
      - Scala
-     - Python
+     - Haskell
      - Scheme
    * - First-class function
      - ``Function<Integer,Integer> f = x -> x+1;``
      - ``val f = (x:Int) => x+1``
-     - ``f = lambda x: x+1``
+     - ``f x = x+1``
      - ``(define f (lambda (x) (+ x 1)))``
    * - Higher-order function
-     - ``list.stream().map(x->x+1)``
+     - ``list.stream().map(x -> x+1)``
      - ``List(1,2,3).map(_+1)``
-     - ``map(lambda x: x+1, [1,2,3])``
+     - ``map (+1) [1,2,3]``
      - ``(map (lambda (x) (+ x 1)) '(1 2 3))``
    * - Immutability
-     - ``final int x = 5;``
-     - ``val x = 5``
-     - Convention: avoid reassignment
-     - ``(define x 5)`` (rebinding only)
-   * - Pure function
-     - ``x -> x*x`` (no side effects)
-     - ``def square(x:Int)=x*x``
-     - ``def square(x): return x*x``
-     - ``(define (square x) (* x x))``
+     - ``final var y = 5;``
+     - ``val y = 5``
+     - ``let y = 5 in ...``
+     - ``(define y 5)`` (by convention immutable)
    * - Recursion
-     - ``int fact(int n){ return n==0?1:n*fact(n-1);} ``
+     - ``int fact(int n){ return n==0?1:n*fact(n-1); }``
      - ``def fact(n:Int):Int = if (n==0) 1 else n*fact(n-1)``
-     - ``def fact(n): return 1 if n==0 else n*fact(n-1)``
+     - ``fact 0 = 1; fact n = n*fact(n-1)``
      - ``(define (fact n) (if (= n 0) 1 (* n (fact (- n 1)))))``
-   * - Function composition
-     - ``f.andThen(g)``
-     - ``val h = f andThen g``
-     - ``h = lambda x: g(f(x))``
-     - ``(define h (lambda (x) (g (f x))))``
-   * - Anonymous function
-     - ``x -> x*x``
-     - ``(x:Int)=>x*x``
-     - ``lambda x: x*x``
-     - ``(lambda (x) (* x x))``
-   * - Closure
-     - ``Function<Integer,Integer> adder(int y){ return x->x+y; }``
-     - ``def adder(y:Int) = (x:Int)=>x+y``
-     - ``def adder(y): return lambda x: x+y``
-     - ``(define (adder y) (lambda (x) (+ x y)))``
    * - Pattern matching
-     - Not supported
-     - ``x match { case 0 => "zero"; case _ => "nonzero" }``
-     - Simulated with ``if``/``elif``
-     - Simulated with ``cond``
+     - Not built-in
+     - ``x match { case 0 => 1; case n => n*fact(n-1) }``
+     - ``fact 0 = 1; fact n = n*fact (n-1)``
+     - Not built-in (simulate with cond)
+   * - Lazy evaluation
+     - Streams (``Stream.of(1,2,3)``)
+     - ``LazyList.from(1)``
+     - Default in Haskell
+     - Not default; can simulate with thunks
+   * - Closure
+     - ``Function<Integer,Integer> f = (x) -> x + y;``
+     - ``val f = (x:Int) => x + y``
+     - ``f = \x -> x + y``
+     - ``(define f (lambda (x) (+ x y)))``
+
 
 Discussion
 ````````````
