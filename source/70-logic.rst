@@ -4,6 +4,9 @@ The Logic Programming Paradigm
 
 Logic programming is a programming paradigm based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.
 
+.. note:: You can use SWI-Prolog, a popular and free Prolog implementation, to run these examples live. SWI-Prolog is available for Windows, macOS, and Linux; an online version is also available at `SWISH <https://swish.swi-prolog.org/>`_.
+
+
 Hello World in Prolog
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -93,3 +96,17 @@ To run the query:
 
   ?- solve_queens(S).
   % S = [1, 5, 8, 6, 3, 7, 2, 4] .
+
+To generate several solutions, use the semicolon (``;``) after each answer:
+
+.. code-block:: prolog
+
+  ?- solve_queens(S).
+  % S = [1, 5, 8, 6, 3, 7, 2, 4] ;
+  % S = [1, 6, 8, 3, 7, 4, 2, 5] ;
+  % S = [1, 7, 4, 6, 8, 2, 5, 3] ;
+  % S = [1, 7, 5, 8, 2, 4, 6, 3] ;
+  % ... (more solutions) ...
+  % false.
+
+In this example, the ``solve_queens/1`` predicate finds a valid arrangement of queens on the chessboard, represented as a list where the index represents the column and the value at that index represents the row of the queen in that column.
