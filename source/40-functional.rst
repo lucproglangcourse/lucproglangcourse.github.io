@@ -4,15 +4,125 @@ The Functional Programming Paradigm
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
 
-Core elements
-~~~~~~~~~~~~~
+Core Elements
+~~~~~~~~~~~~~~~~~~
 
-- **First-class functions**: Functions are treated as first-class citizens, meaning they can be passed as arguments, returned from other functions, and bound to variables.
-- **Immutability**: Data is immutable by default, promoting safer and more predictable code.
-- **Higher-order functions**: Functions that take other functions as parameters or return them as results.
-- **Lazy evaluation**: Computation can be deferred until the result is actually needed, allowing for more efficient resource usage.
-- **Pattern matching**: A powerful feature for deconstructing and matching complex data structures.
-- **Recursion**: Functions can call themselves to solve problems, often replacing traditional loops.
+The functional paradigm is characterized by **computation as the evaluation of functions**.  
+Functions are *first-class citizens*, programs are expressed declaratively, and emphasis 
+is placed on immutability and avoidance of side effects.
+
+First-Class and Higher-Order Functions
+````````````````````````````````````````
+
+- Functions can be passed as arguments, returned as results, and stored in variables.
+- Higher-order functions operate on other functions.
+
+Immutability
+````````````````
+
+- Data is treated as immutable; instead of updating state, new values are constructed.
+- Supports reasoning about programs mathematically.
+
+Pure Functions
+````````````````
+
+- Functions that always return the same result for the same input (referential transparency).
+- No hidden side effects such as I/O or mutation.
+
+Recursion
+````````````
+
+- Primary mechanism for repetition and iteration.
+- Eliminates need for explicit loops.
+
+Function Composition
+`````````````````````
+
+- Functions can be combined into larger functions.
+- Promotes modularity and code reuse.
+
+Lazy Evaluation (in some languages)
+```````````````````````````````````
+
+- Expressions are only evaluated when needed.
+- Enables definition of infinite data structures.
+
+Other Elements
+```````````````
+
+- **Pattern matching**: destructuring data to guide computation (e.g., Scala).
+- **Anonymous functions (lambdas)**: concise function definitions.
+- **Closures**: functions that capture variables from their lexical scope.
+
+Examples Across Languages
+```````````````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 20 20
+
+   * - Element
+     - Java
+     - Scala
+     - Python
+     - Scheme
+   * - First-class function
+     - ``Function<Integer,Integer> f = x -> x+1;``
+     - ``val f = (x:Int) => x+1``
+     - ``f = lambda x: x+1``
+     - ``(define f (lambda (x) (+ x 1)))``
+   * - Higher-order function
+     - ``list.stream().map(x->x+1)``
+     - ``List(1,2,3).map(_+1)``
+     - ``map(lambda x: x+1, [1,2,3])``
+     - ``(map (lambda (x) (+ x 1)) '(1 2 3))``
+   * - Immutability
+     - ``final int x = 5;``
+     - ``val x = 5``
+     - Convention: avoid reassignment
+     - ``(define x 5)`` (rebinding only)
+   * - Pure function
+     - ``x -> x*x`` (no side effects)
+     - ``def square(x:Int)=x*x``
+     - ``def square(x): return x*x``
+     - ``(define (square x) (* x x))``
+   * - Recursion
+     - ``int fact(int n){ return n==0?1:n*fact(n-1);} ``
+     - ``def fact(n:Int):Int = if (n==0) 1 else n*fact(n-1)``
+     - ``def fact(n): return 1 if n==0 else n*fact(n-1)``
+     - ``(define (fact n) (if (= n 0) 1 (* n (fact (- n 1)))))``
+   * - Function composition
+     - ``f.andThen(g)``
+     - ``val h = f andThen g``
+     - ``h = lambda x: g(f(x))``
+     - ``(define h (lambda (x) (g (f x))))``
+   * - Anonymous function
+     - ``x -> x*x``
+     - ``(x:Int)=>x*x``
+     - ``lambda x: x*x``
+     - ``(lambda (x) (* x x))``
+   * - Closure
+     - ``Function<Integer,Integer> adder(int y){ return x->x+y; }``
+     - ``def adder(y:Int) = (x:Int)=>x+y``
+     - ``def adder(y): return lambda x: x+y``
+     - ``(define (adder y) (lambda (x) (+ x y)))``
+   * - Pattern matching
+     - Not supported
+     - ``x match { case 0 => "zero"; case _ => "nonzero" }``
+     - Simulated with ``if``/``elif``
+     - Simulated with ``cond``
+
+Discussion
+````````````
+
+Functional programming emphasizes *declarative expression of computation* 
+rather than step-by-step instructions.  
+It enables equational reasoning, parallelization, and safer abstractions by 
+reducing reliance on mutable state.  
+
+Modern multiparadigm languages (Scala, Python, Java 8+) integrate functional 
+features, while classic functional languages like Scheme, Haskell, and ML 
+highlight the paradigm in its purest form.
 
 
 Solving problems using built-in types and behaviors
