@@ -259,22 +259,63 @@
 <section id="declarative-programming">
 <h2><span class="section-number">9.1. </span>Declarative Programming<a class="headerlink" href="#declarative-programming" title="Link to this heading"></a></h2>
 <p>Declarative programming focuses on what the program should accomplish rather than detailing how to achieve it. SQL and HTML are examples of declarative languages.</p>
+<p><strong>Example (SQL):</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">90</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Example (HTML):</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, world!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="reactive-programming">
 <h2><span class="section-number">9.2. </span>Reactive Programming<a class="headerlink" href="#reactive-programming" title="Link to this heading"></a></h2>
 <p>Reactive programming is oriented around data streams and the propagation of change. It is commonly used in user interfaces and real-time systems.</p>
+<p><strong>Paradigm-defining language:</strong> RxJS (Reactive Extensions for JavaScript)</p>
+<p><strong>Example (RxJS):</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromEvent</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
+<span class="nx">clicks</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Document clicked!&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
 </section>
 <section id="aspect-oriented-programming">
 <h2><span class="section-number">9.3. </span>Aspect-Oriented Programming<a class="headerlink" href="#aspect-oriented-programming" title="Link to this heading"></a></h2>
 <p>Aspect-oriented programming (AOP) aims to increase modularity by allowing the separation of cross-cutting concerns, such as logging or security.</p>
+<p><strong>Paradigm-defining language:</strong> AspectJ</p>
+<p><strong>Example (AspectJ):</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">aspect</span><span class="w"> </span><span class="n">LoggingAspect</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">before</span><span class="p">():</span><span class="w"> </span><span class="n">execution</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">MyClass</span><span class="p">.</span><span class="na">myMethod</span><span class="p">(..))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Method called!&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="dataflow-programming">
 <h2><span class="section-number">9.4. </span>Dataflow Programming<a class="headerlink" href="#dataflow-programming" title="Link to this heading"></a></h2>
 <p>Dataflow programming models programs as a directed graph of the data flowing between operations, making it suitable for parallel and distributed computing.</p>
+<p><strong>Paradigm-defining language:</strong> LabVIEW, TensorFlow</p>
+<p><strong>Example (TensorFlow, Python):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># Data flows from a and b to c</span>
+</pre></div>
+</div>
 </section>
 <section id="other-paradigms">
 <h2><span class="section-number">9.5. </span>Other Paradigms<a class="headerlink" href="#other-paradigms" title="Link to this heading"></a></h2>
 <p>There are several other paradigms, such as constraint programming, event-driven programming, and more, each with its own unique approach and use cases.</p>
+<p><strong>Constraint Programming (Prolog):</strong></p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">mary</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
+<span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
+<span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">wine</span><span class="p">).</span>
+</pre></div>
+</div>
+<p><strong>Event-driven Programming (JavaScript):</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Button clicked!&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
 </section>
 </section>
 
