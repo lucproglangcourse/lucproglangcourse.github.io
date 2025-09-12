@@ -4,6 +4,17 @@ The Functional Programming Paradigm
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
 
+Core elements
+~~~~~~~~~~~~~
+
+- **First-class functions**: Functions are treated as first-class citizens, meaning they can be passed as arguments, returned from other functions, and bound to variables.
+- **Immutability**: Data is immutable by default, promoting safer and more predictable code.
+- **Higher-order functions**: Functions that take other functions as parameters or return them as results.
+- **Lazy evaluation**: Computation can be deferred until the result is actually needed, allowing for more efficient resource usage.
+- **Pattern matching**: A powerful feature for deconstructing and matching complex data structures.
+- **Recursion**: Functions can call themselves to solve problems, often replacing traditional loops.
+
+
 Solving problems using built-in types and behaviors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
