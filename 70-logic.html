@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="9. Other Important Programming Paradigms" href="75-otherparadigms.html" /><link rel="prev" title="7. The Concurrent Programming Paradigm" href="60-concurrency.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>8. The Logic Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.11</title>
+        <title>8. The Logic Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.12</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.11</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.12</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.11</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.12</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -256,6 +256,10 @@
           <section id="the-logic-programming-paradigm">
 <h1><span class="section-number">8. </span>The Logic Programming Paradigm<a class="headerlink" href="#the-logic-programming-paradigm" title="Link to this heading"></a></h1>
 <p>Logic programming is a programming paradigm based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use SWI-Prolog, a popular and free Prolog implementation, to run these examples live. SWI-Prolog is available for Windows, macOS, and Linux; an online version is also available at <a class="reference external" href="https://swish.swi-prolog.org/">SWISH</a>.</p>
+</div>
 <section id="hello-world-in-prolog">
 <h2><span class="section-number">8.1. </span>Hello World in Prolog<a class="headerlink" href="#hello-world-in-prolog" title="Link to this heading"></a></h2>
 <p>Prolog does not have traditional I/O, but you can define a simple fact and query it:</p>
@@ -329,6 +333,17 @@
 <span class="c1">% S = [1, 5, 8, 6, 3, 7, 2, 4] .</span>
 </pre></div>
 </div>
+<p>To generate several solutions, use the semicolon (<code class="docutils literal notranslate"><span class="pre">;</span></code>) after each answer:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nf">solve_queens</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
+<span class="c1">% S = [1, 5, 8, 6, 3, 7, 2, 4] ;</span>
+<span class="c1">% S = [1, 6, 8, 3, 7, 4, 2, 5] ;</span>
+<span class="c1">% S = [1, 7, 4, 6, 8, 2, 5, 3] ;</span>
+<span class="c1">% S = [1, 7, 5, 8, 2, 4, 6, 3] ;</span>
+<span class="c1">% ... (more solutions) ...</span>
+<span class="c1">% false.</span>
+</pre></div>
+</div>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">solve_queens/1</span></code> predicate finds a valid arrangement of queens on the chessboard, represented as a list where the index represents the column and the value at that index represents the row of the queen in that column.</p>
 </section>
 </section>
 
@@ -404,7 +419,7 @@
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=3cebf8dd"></script>
+    <script src="_static/documentation_options.js?v=0b1372b7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
