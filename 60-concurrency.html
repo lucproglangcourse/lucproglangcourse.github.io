@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="8. The Logic Programming Paradigm" href="70-logic.html" /><link rel="prev" title="6. Program Representation and Interpretation" href="50-representationinterpretation.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>7. The Concurrent Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.21</title>
+        <title>7. The Concurrent Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.21</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.21</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -466,7 +466,38 @@ part simultaneously.</p></li>
 </tbody>
 </table>
 </div>
-</section>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" font-family="sans-serif" font-size="14">
+  <!-- Titles -->
+  <text x="150" y="20" text-anchor="middle" font-weight="bold" fill="currentColor">Concurrency (Interleaving)</text>
+  <text x="450" y="20" text-anchor="middle" font-weight="bold" fill="currentColor">Parallelism (Simultaneous)</text>
+
+  <!-- Concurrency timeline -->
+  <line x1="50" y1="60" x2="250" y2="60" stroke="currentColor" />
+  <line x1="50" y1="100" x2="250" y2="100" stroke="currentColor" />
+  <text x="40" y="65" text-anchor="end" fill="currentColor">Task A</text>
+  <text x="40" y="105" text-anchor="end" fill="currentColor">Task B</text>
+
+  <!-- Interleaved blocks -->
+  <rect x="50" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+  <rect x="90" y="90" width="40" height="20" fill="#9999ff" stroke="currentColor"/>
+  <rect x="130" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+  <rect x="170" y="90" width="40" height="20" fill="#9999ff" stroke="currentColor"/>
+  <rect x="210" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+
+  <!-- Parallelism timelines -->
+  <line x1="350" y1="60" x2="550" y2="60" stroke="currentColor" />
+  <line x1="350" y1="100" x2="550" y2="100" stroke="currentColor" />
+  <text x="340" y="65" text-anchor="end" fill="currentColor">Task A</text>
+  <text x="340" y="105" text-anchor="end" fill="currentColor">Task B</text>
+
+  <!-- Simultaneous blocks -->
+  <rect x="350" y="50" width="200" height="20" fill="#ff9999" stroke="currentColor"/>
+  <rect x="350" y="90" width="200" height="20" fill="#9999ff" stroke="currentColor"/>
+
+  <!-- Labels -->
+  <text x="150" y="140" text-anchor="middle" fill="currentColor">One core, time-sliced</text>
+  <text x="450" y="140" text-anchor="middle" fill="currentColor">Multiple cores, true overlap</text>
+</svg></section>
 <section id="id1">
 <h3><span class="section-number">7.2.4. </span>Discussion<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -762,7 +793,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=91bb8811"></script>
+    <script src="_static/documentation_options.js?v=a643027b"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
