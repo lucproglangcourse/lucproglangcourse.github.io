@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="8. The Logic Programming Paradigm" href="70-logic.html" /><link rel="prev" title="6. Program Representation and Interpretation" href="50-representationinterpretation.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>7. The Concurrent Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</title>
+        <title>7. The Concurrent Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.15</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -256,8 +256,140 @@
           <section id="the-concurrent-programming-paradigm">
 <h1><span class="section-number">7. </span>The Concurrent Programming Paradigm<a class="headerlink" href="#the-concurrent-programming-paradigm" title="Link to this heading"></a></h1>
 <p>In this chapter, we introduce the concurrent programming paradigm, which allows multiple computations to occur simultaneously or in overlapping time periods. This is particularly useful for applications that require responsiveness, such as user interfaces, or for leveraging multi-core processors to improve performance.</p>
-<section id="overview">
-<h2><span class="section-number">7.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<section id="core-elements">
+<h2><span class="section-number">7.1. </span>Core Elements<a class="headerlink" href="#core-elements" title="Link to this heading"></a></h2>
+<p>The concurrent paradigm is characterized by <strong>multiple sequences of execution
+(progressing independently, potentially interacting with each other)</strong>.
+Concurrency allows programs to handle multiple tasks at once, overlap computation
+with I/O, and exploit multicore architectures.</p>
+<section id="threads-and-shared-memory">
+<h3><span class="section-number">7.1.1. </span>Threads and Shared Memory<a class="headerlink" href="#threads-and-shared-memory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Threads</strong> represent independent flows of control within a program.</p></li>
+<li><p>Multiple threads share memory; synchronization mechanisms (locks, mutexes,
+condition variables) ensure consistency.</p></li>
+</ul>
+</section>
+<section id="synchronization">
+<h3><span class="section-number">7.1.2. </span>Synchronization<a class="headerlink" href="#synchronization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Mechanisms such as <strong>mutexes, semaphores, barriers, and monitors</strong> coordinate
+access to shared resources.</p></li>
+<li><p>Avoids race conditions, deadlocks, and data corruption.</p></li>
+</ul>
+</section>
+<section id="message-passing">
+<h3><span class="section-number">7.1.3. </span>Message Passing<a class="headerlink" href="#message-passing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Concurrency via communication rather than shared state.</p></li>
+<li><p>Examples: channels (Rust), actors (Scala Akka), message queues.</p></li>
+</ul>
+</section>
+<section id="futures-and-promises">
+<h3><span class="section-number">7.1.4. </span>Futures and Promises<a class="headerlink" href="#futures-and-promises" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Abstractions for values that may not yet be available.</p></li>
+<li><p>Simplify asynchronous programming by representing results of concurrent tasks.</p></li>
+</ul>
+</section>
+<section id="data-parallelism">
+<h3><span class="section-number">7.1.5. </span>Data Parallelism<a class="headerlink" href="#data-parallelism" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Operations automatically distributed over data structures.</p></li>
+<li><p>Examples: Java parallel streams, Scala parallel collections.</p></li>
+</ul>
+</section>
+<section id="actors-and-reactive-models">
+<h3><span class="section-number">7.1.6. </span>Actors and Reactive Models<a class="headerlink" href="#actors-and-reactive-models" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Concurrency modeled as independent <strong>actors</strong> that process messages sequentially.</p></li>
+<li><p>Strong isolation; avoids shared state issues.</p></li>
+</ul>
+</section>
+<section id="examples-across-languages">
+<h3><span class="section-number">7.1.7. </span>Examples Across Languages<a class="headerlink" href="#examples-across-languages" title="Link to this heading"></a></h3>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Element</p></th>
+<th class="head"><p>C/C++ (pthreads)</p></th>
+<th class="head"><p>Java</p></th>
+<th class="head"><p>Scala</p></th>
+<th class="head"><p>Rust</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Thread creation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pthread_create(&amp;tid,</span> <span class="pre">NULL,</span> <span class="pre">f,</span> <span class="pre">arg);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Thread(()</span> <span class="pre">-&gt;</span> <span class="pre">f()).start();</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Thread(()</span> <span class="pre">=&gt;</span> <span class="pre">f()).start()</span></code> or <code class="docutils literal notranslate"><span class="pre">Future</span> <span class="pre">{</span> <span class="pre">f()</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">thread::spawn(||</span> <span class="pre">f());</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mutex / lock</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pthread_mutex_lock(&amp;m);</span> <span class="pre">...</span> <span class="pre">pthread_mutex_unlock(&amp;m);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">synchronized(obj)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lock.synchronized</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">Mutex::new(...);</span></code> with <code class="docutils literal notranslate"><span class="pre">m.lock()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Condition variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pthread_cond_wait(&amp;cv,</span> <span class="pre">&amp;m);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wait()</span> <span class="pre">/</span> <span class="pre">notify()</span></code> on objects</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Await.result(future,</span> <span class="pre">timeout)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Condvar::wait(&amp;mut</span> <span class="pre">guard)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Message passing</p></td>
+<td><p>Not built-in (libraries required)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BlockingQueue.put(msg)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">actor</span> <span class="pre">!</span> <span class="pre">msg</span></code> (Akka)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">(tx,</span> <span class="pre">rx)</span> <span class="pre">=</span> <span class="pre">mpsc::channel();</span> <span class="pre">tx.send(msg);</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Futures / promises</p></td>
+<td><p>Not built-in</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CompletableFuture.supplyAsync(f)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">Future</span> <span class="pre">{</span> <span class="pre">compute</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">async</span> <span class="pre">{</span> <span class="pre">compute().await</span> <span class="pre">};</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Data parallelism</p></td>
+<td><p>OpenMP or TBB (library-based)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list.parallelStream().map(...)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List(...).par.map(...)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec.par_iter().map(...)</span></code> (with Rayon crate)</p></td>
+</tr>
+<tr class="row-even"><td><p>Actors</p></td>
+<td><p>Not standard</p></td>
+<td><p>Akka-like libraries available</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">akka.actor._</span></code> (full actor model)</p></td>
+<td><p>External crates (e.g., Actix)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="discussion">
+<h3><span class="section-number">7.1.8. </span>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h3>
+<p>Concurrency is <strong>not a single technique</strong>, but a family of approaches to
+overlapping computations.</p>
+<ul class="simple">
+<li><p>Low-level threads and locks offer flexibility but require careful handling of
+synchronization.</p></li>
+<li><p>Higher-level abstractions (futures, parallel collections, actors) increase
+safety and expressiveness.</p></li>
+<li><p>Languages like Rust enforce memory safety and data-race freedom at compile time,
+while Scala and Java provide rich libraries for structured concurrency.</p></li>
+<li><p>Choosing the right model depends on the problem: message-passing (actors, channels)
+suits distributed and reactive systems; data parallelism suits numerical workloads.</p></li>
+</ul>
+</section>
+</section>
+<section id="motivation">
+<h2><span class="section-number">7.2. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"></a></h2>
 <p>Why and when do we need concurrency?</p>
 <ul class="simple">
 <li><p>When it is a natural fit for the problem domain</p>
@@ -275,7 +407,7 @@
 </ul>
 </li>
 </ul>
-<p>Key considerations:</p>
+<p>These are some key concurrency considerations:</p>
 <ul class="simple">
 <li><p>physical (parallelism) versus logical concurrency</p></li>
 <li><p>speedup and when to expect it</p></li>
@@ -283,7 +415,8 @@
 </ul>
 </section>
 <section id="activity-terminology-and-concerns">
-<h2><span class="section-number">7.2. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.3. </span>Activity terminology and concerns<a class="headerlink" href="#activity-terminology-and-concerns" title="Link to this heading"></a></h2>
+<p>We distinguish several related concepts:</p>
 <ul class="simple">
 <li><p>process: own memory</p></li>
 <li><p>thread: shared memory <em>and</em> “thread-local” state</p></li>
@@ -300,7 +433,8 @@
 </ul>
 </section>
 <section id="thread-safety">
-<h2><span class="section-number">7.3. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.4. </span>Thread safety<a class="headerlink" href="#thread-safety" title="Link to this heading"></a></h2>
+<p>Thread safety is a property of code that guarantees safe execution by multiple threads at the same time. This is particularly important when threads share mutable state.</p>
 <ul class="simple">
 <li><p>nondeterminism</p>
 <ul>
@@ -316,7 +450,7 @@
 <li><p>root cause of thread safety problems</p></li>
 </ul>
 <section id="understanding-the-extent-of-nondeterminism">
-<h3><span class="section-number">7.3.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.4.1. </span>Understanding the extent of nondeterminism<a class="headerlink" href="#understanding-the-extent-of-nondeterminism" title="Link to this heading"></a></h3>
 <p>Consider this small example of two concurrent increment operations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">f1</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local1</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>    <span class="o">/*</span><span class="n">f2</span><span class="o">*/</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">local2</span> <span class="o">=</span> <span class="n">shared</span><span class="p">;</span>
 <span class="o">/*</span><span class="n">s1</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>          <span class="o">/*</span><span class="n">s2</span><span class="o">*/</span> <span class="n">shared</span> <span class="o">=</span> <span class="n">local2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -358,7 +492,8 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </section>
 </section>
 <section id="dealing-with-shared-state">
-<h2><span class="section-number">7.4. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.5. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
+<p>One of the main challenges of concurrent programming is dealing with shared mutable state. Several strategies exist:</p>
 <ul class="simple">
 <li><p>mutual exclusion/locking</p></li>
 <li><p>confinement</p></li>
@@ -367,7 +502,8 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="conflicting-design-forces">
-<h2><span class="section-number">7.5. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.6. </span>(Conflicting) design forces<a class="headerlink" href="#conflicting-design-forces" title="Link to this heading"></a></h2>
+<p>This gives rise to several conflicting design forces:</p>
 <ul class="simple">
 <li><p>correctness/(thread-)safety</p></li>
 <li><p>liveness/deadlock</p>
@@ -386,8 +522,8 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="specific-concurrency-mechanisms">
-<h2><span class="section-number">7.6. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
-<p>Language constructs, patterns, building blocks:</p>
+<h2><span class="section-number">7.7. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
+<p>Several specific concurrency mechanisms can come as anguage constructs, patterns, and other building blocks:</p>
 <ul class="simple">
 <li><p>threads (familiar from 313/413)</p></li>
 <li><p>monitors: synchronized/locks, wait/notify</p></li>
@@ -419,7 +555,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="references-concurrent-and-asynchronous-computing">
-<h2><span class="section-number">7.7. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.8. </span>References: concurrent and asynchronous computing<a class="headerlink" href="#references-concurrent-and-asynchronous-computing" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Läufer and Thiruvathukal, <a class="reference external" href="https://arxiv.org/abs/1705.02899">CDER book chapter</a></p></li>
 <li><p>Goetz et al., <a class="reference external" href="http://jcip.net.s3-website-us-east-1.amazonaws.com">JCIP</a></p></li>
@@ -493,16 +629,27 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">7. The Concurrent Programming Paradigm</a><ul>
-<li><a class="reference internal" href="#overview">7.1. Overview</a></li>
-<li><a class="reference internal" href="#activity-terminology-and-concerns">7.2. Activity terminology and concerns</a></li>
-<li><a class="reference internal" href="#thread-safety">7.3. Thread safety</a><ul>
-<li><a class="reference internal" href="#understanding-the-extent-of-nondeterminism">7.3.1. Understanding the extent of nondeterminism</a></li>
+<li><a class="reference internal" href="#core-elements">7.1. Core Elements</a><ul>
+<li><a class="reference internal" href="#threads-and-shared-memory">7.1.1. Threads and Shared Memory</a></li>
+<li><a class="reference internal" href="#synchronization">7.1.2. Synchronization</a></li>
+<li><a class="reference internal" href="#message-passing">7.1.3. Message Passing</a></li>
+<li><a class="reference internal" href="#futures-and-promises">7.1.4. Futures and Promises</a></li>
+<li><a class="reference internal" href="#data-parallelism">7.1.5. Data Parallelism</a></li>
+<li><a class="reference internal" href="#actors-and-reactive-models">7.1.6. Actors and Reactive Models</a></li>
+<li><a class="reference internal" href="#examples-across-languages">7.1.7. Examples Across Languages</a></li>
+<li><a class="reference internal" href="#discussion">7.1.8. Discussion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dealing-with-shared-state">7.4. Dealing with shared state</a></li>
-<li><a class="reference internal" href="#conflicting-design-forces">7.5. (Conflicting) design forces</a></li>
-<li><a class="reference internal" href="#specific-concurrency-mechanisms">7.6. Specific concurrency mechanisms</a></li>
-<li><a class="reference internal" href="#references-concurrent-and-asynchronous-computing">7.7. References: concurrent and asynchronous computing</a></li>
+<li><a class="reference internal" href="#motivation">7.2. Motivation</a></li>
+<li><a class="reference internal" href="#activity-terminology-and-concerns">7.3. Activity terminology and concerns</a></li>
+<li><a class="reference internal" href="#thread-safety">7.4. Thread safety</a><ul>
+<li><a class="reference internal" href="#understanding-the-extent-of-nondeterminism">7.4.1. Understanding the extent of nondeterminism</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dealing-with-shared-state">7.5. Dealing with shared state</a></li>
+<li><a class="reference internal" href="#conflicting-design-forces">7.6. (Conflicting) design forces</a></li>
+<li><a class="reference internal" href="#specific-concurrency-mechanisms">7.7. Specific concurrency mechanisms</a></li>
+<li><a class="reference internal" href="#references-concurrent-and-asynchronous-computing">7.8. References: concurrent and asynchronous computing</a></li>
 </ul>
 </li>
 </ul>
@@ -516,7 +663,7 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=c09ae27a"></script>
+    <script src="_static/documentation_options.js?v=f7626810"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
