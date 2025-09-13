@@ -3,8 +3,120 @@ The Concurrent Programming Paradigm
 
 In this chapter, we introduce the concurrent programming paradigm, which allows multiple computations to occur simultaneously or in overlapping time periods. This is particularly useful for applications that require responsiveness, such as user interfaces, or for leveraging multi-core processors to improve performance.
 
-Overview
-~~~~~~~~
+
+Core Elements
+~~~~~~~~~~~~~
+
+The concurrent paradigm is characterized by **multiple sequences of execution 
+(progressing independently, potentially interacting with each other)**.  
+Concurrency allows programs to handle multiple tasks at once, overlap computation 
+with I/O, and exploit multicore architectures.
+
+
+Threads and Shared Memory
+````````````````````````````````
+
+- **Threads** represent independent flows of control within a program.
+- Multiple threads share memory; synchronization mechanisms (locks, mutexes, 
+  condition variables) ensure consistency.
+
+Synchronization
+````````````````````````````````
+
+- Mechanisms such as **mutexes, semaphores, barriers, and monitors** coordinate 
+  access to shared resources.
+- Avoids race conditions, deadlocks, and data corruption.
+
+Message Passing
+```````````````````````````````
+
+- Concurrency via communication rather than shared state.
+- Examples: channels (Rust), actors (Scala Akka), message queues.
+
+Futures and Promises
+````````````````````````````````
+
+- Abstractions for values that may not yet be available.
+- Simplify asynchronous programming by representing results of concurrent tasks.
+
+Data Parallelism
+````````````````````````````````
+
+- Operations automatically distributed over data structures.
+- Examples: Java parallel streams, Scala parallel collections.
+
+Actors and Reactive Models
+````````````````````````````````
+
+- Concurrency modeled as independent **actors** that process messages sequentially.
+- Strong isolation; avoids shared state issues.
+
+Examples Across Languages
+````````````````````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 20 20
+
+   * - Element
+     - C/C++ (pthreads)
+     - Java
+     - Scala
+     - Rust
+   * - Thread creation
+     - ``pthread_create(&tid, NULL, f, arg);``
+     - ``new Thread(() -> f()).start();``
+     - ``new Thread(() => f()).start()`` or ``Future { f() }``
+     - ``thread::spawn(|| f());``
+   * - Mutex / lock
+     - ``pthread_mutex_lock(&m); ... pthread_mutex_unlock(&m);``
+     - ``synchronized(obj) { ... }``
+     - ``lock.synchronized { ... }``
+     - ``let m = Mutex::new(...);`` with ``m.lock()`` 
+   * - Condition variable
+     - ``pthread_cond_wait(&cv, &m);``
+     - ``wait() / notify()`` on objects
+     - ``Await.result(future, timeout)``
+     - ``Condvar::wait(&mut guard)`` 
+   * - Message passing
+     - Not built-in (libraries required)
+     - ``BlockingQueue.put(msg)``
+     - ``actor ! msg`` (Akka)
+     - ``let (tx, rx) = mpsc::channel(); tx.send(msg);`` 
+   * - Futures / promises
+     - Not built-in
+     - ``CompletableFuture.supplyAsync(f)``
+     - ``val f = Future { compute }``
+     - ``let f = async { compute().await };`` 
+   * - Data parallelism
+     - OpenMP or TBB (library-based)
+     - ``list.parallelStream().map(...)``
+     - ``List(...).par.map(...)``
+     - ``vec.par_iter().map(...)`` (with Rayon crate)
+   * - Actors
+     - Not standard
+     - Akka-like libraries available
+     - ``import akka.actor._`` (full actor model)
+     - External crates (e.g., Actix)
+
+Discussion
+````````````````````````````````
+
+Concurrency is **not a single technique**, but a family of approaches to 
+overlapping computations.  
+
+- Low-level threads and locks offer flexibility but require careful handling of 
+  synchronization.  
+- Higher-level abstractions (futures, parallel collections, actors) increase 
+  safety and expressiveness.  
+- Languages like Rust enforce memory safety and data-race freedom at compile time, 
+  while Scala and Java provide rich libraries for structured concurrency.  
+- Choosing the right model depends on the problem: message-passing (actors, channels) 
+  suits distributed and reactive systems; data parallelism suits numerical workloads.
+
+
+Motivation
+~~~~~~~~~~
 
 Why and when do we need concurrency?
 
@@ -21,7 +133,7 @@ Why and when do we need concurrency?
   - network services/distributed systems
 
 
-Key considerations:
+These are some key concurrency considerations:
 
 - physical (parallelism) versus logical concurrency
 - speedup and when to expect it
@@ -30,6 +142,8 @@ Key considerations:
 
 Activity terminology and concerns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We distinguish several related concepts:
 
 - process: own memory
 - thread: shared memory *and* "thread-local" state
@@ -46,6 +160,9 @@ Activity terminology and concerns
 
 Thread safety
 ~~~~~~~~~~~~~
+
+Thread safety is a property of code that guarantees safe execution by multiple threads at the same time. This is particularly important when threads share mutable state.
+
 
 - nondeterminism
 
@@ -117,6 +234,8 @@ Once we make each thread atomic, however, the number of interleavings shrinks dr
 Dealing with shared state
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+One of the main challenges of concurrent programming is dealing with shared mutable state. Several strategies exist:
+
 - mutual exclusion/locking
 - confinement
 - immutability
@@ -125,6 +244,8 @@ Dealing with shared state
 
 (Conflicting) design forces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This gives rise to several conflicting design forces:
 
 - correctness/(thread-)safety
 - liveness/deadlock
@@ -142,7 +263,7 @@ Dealing with shared state
 Specific concurrency mechanisms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Language constructs, patterns, building blocks:
+Several specific concurrency mechanisms can come as anguage constructs, patterns, and other building blocks:
 
 - threads (familiar from 313/413)
 - monitors: synchronized/locks, wait/notify
