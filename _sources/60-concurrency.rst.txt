@@ -1,10 +1,10 @@
 The Concurrent Programming Paradigm
 -----------------------------------
 
+In this chapter, we introduce the concurrent programming paradigm, which allows multiple computations to occur simultaneously or in overlapping time periods. This is particularly useful for applications that require responsiveness, such as user interfaces, or for leveraging multi-core processors to improve performance.
 
 Overview
 ~~~~~~~~
-
 
 Why and when do we need concurrency?
 
