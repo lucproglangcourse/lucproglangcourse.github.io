@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="9. Other Important Programming Paradigms" href="75-otherparadigms.html" /><link rel="prev" title="7. The Concurrent Programming Paradigm" href="60-concurrency.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>8. The Logic Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</title>
+        <title>8. The Logic Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.22</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -256,12 +256,76 @@
           <section id="the-logic-programming-paradigm">
 <h1><span class="section-number">8. </span>The Logic Programming Paradigm<a class="headerlink" href="#the-logic-programming-paradigm" title="Link to this heading"></a></h1>
 <p>In this chapter, we introduce the logic programming paradigm, which is based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can use SWI-Prolog, a popular and free Prolog implementation, to run these examples live. SWI-Prolog is available for Windows, macOS, and Linux; an online version is also available at <a class="reference external" href="https://swish.swi-prolog.org/">SWISH</a>.</p>
-</div>
+<section id="core-elements">
+<h2><span class="section-number">8.1. </span>Core Elements<a class="headerlink" href="#core-elements" title="Link to this heading"></a></h2>
+<p>The logic programming paradigm is characterized by <strong>computation as logical deduction</strong>.
+Programs are expressed as sets of <em>facts</em> and <em>rules</em>, and execution consists of
+querying these rules to derive conclusions. Rather than specifying <em>how</em> to compute,
+logic programs specify <em>what</em> relationships hold, leaving the search for solutions
+to the underlying inference engine.</p>
+<section id="facts">
+<h3><span class="section-number">8.1.1. </span>Facts<a class="headerlink" href="#facts" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Basic assertions about objects and relationships in the domain of discourse.</p></li>
+<li><p>Represent ground truths that the program can use in reasoning.</p></li>
+</ul>
+</section>
+<section id="rules">
+<h3><span class="section-number">8.1.2. </span>Rules<a class="headerlink" href="#rules" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Conditional statements (Horn clauses) that describe relationships between facts.</p></li>
+<li><p>Expressed as <code class="docutils literal notranslate"><span class="pre">Head</span> <span class="pre">:-</span> <span class="pre">Body</span></code>, meaning <em>Head is true if Body is true</em>.</p></li>
+</ul>
+</section>
+<section id="queries">
+<h3><span class="section-number">8.1.3. </span>Queries<a class="headerlink" href="#queries" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Questions posed to the inference engine.</p></li>
+<li><p>The engine attempts to satisfy queries using facts and rules.</p></li>
+</ul>
+</section>
+<section id="unification">
+<h3><span class="section-number">8.1.4. </span>Unification<a class="headerlink" href="#unification" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>A process of making two logical terms syntactically identical by finding
+consistent substitutions for variables.</p></li>
+<li><p>Drives both matching of queries with rules and parameter passing.</p></li>
+</ul>
+</section>
+<section id="backtracking">
+<h3><span class="section-number">8.1.5. </span>Backtracking<a class="headerlink" href="#backtracking" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The search mechanism for exploring alternative inference paths.</p></li>
+<li><p>If one path fails, the engine backtracks to try other possibilities.</p></li>
+</ul>
+</section>
+<section id="non-determinism">
+<h3><span class="section-number">8.1.6. </span>Non-Determinism<a class="headerlink" href="#non-determinism" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Multiple possible solutions may exist for a query.</p></li>
+<li><p>The inference engine can generate all solutions by systematically backtracking.</p></li>
+</ul>
+</section>
+<section id="declarative-semantics">
+<h3><span class="section-number">8.1.7. </span>Declarative Semantics<a class="headerlink" href="#declarative-semantics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Programs describe <em>what is true</em> rather than prescribing <em>how to compute</em>.</p></li>
+<li><p>Execution is a process of theorem proving, guided by the inference rules.</p></li>
+</ul>
+</section>
+<section id="other-elements">
+<h3><span class="section-number">8.1.8. </span>Other Elements<a class="headerlink" href="#other-elements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Negation as failure</strong>: something is assumed false if it cannot be proven true.</p></li>
+<li><p><strong>Constraint logic programming (CLP)</strong>: extends logic programming with constraints
+over domains such as integers, reals, or finite sets.</p></li>
+<li><p><strong>Meta-programming</strong>: programs can reason about themselves by treating rules and
+goals as data.</p></li>
+</ul>
+</section>
+</section>
 <section id="hello-world-in-prolog">
-<h2><span class="section-number">8.1. </span>Hello World in Prolog<a class="headerlink" href="#hello-world-in-prolog" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.2. </span>Hello World in Prolog<a class="headerlink" href="#hello-world-in-prolog" title="Link to this heading"></a></h2>
 <p>Prolog does not have traditional I/O, but you can define a simple fact and query it:</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% hello_world.pl</span>
 <span class="nf">hello</span> <span class="o">:-</span> <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">&#39;Hello, world!&#39;</span><span class="p">),</span> <span class="s s-Atom">nl</span><span class="p">.</span>
@@ -272,9 +336,13 @@
 <span class="c1">% Output: Hello, world!</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use SWI-Prolog, a popular and free Prolog implementation, to run the following examples live. SWI-Prolog is available for Windows, macOS, and Linux; an online version is also available at <a class="reference external" href="https://swish.swi-prolog.org/">SWISH</a>.</p>
+</div>
 </section>
 <section id="basic-facts-and-rules-example">
-<h2><span class="section-number">8.2. </span>Basic Facts and Rules Example<a class="headerlink" href="#basic-facts-and-rules-example" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.3. </span>Basic Facts and Rules Example<a class="headerlink" href="#basic-facts-and-rules-example" title="Link to this heading"></a></h2>
 <p>Here is a simple Prolog program that defines family relationships:</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% family.pl</span>
 <span class="nf">parent</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">mary</span><span class="p">).</span>
@@ -304,7 +372,7 @@
 </div>
 </section>
 <section id="queens-example-in-prolog">
-<h2><span class="section-number">8.3. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.4. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
 <p>The 8-queens problem is to place 8 queens on a chessboard so that no two queens threaten each other.</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% 8queens.pl</span>
 <span class="nf">safe</span><span class="p">([]).</span>
@@ -344,6 +412,36 @@
 </pre></div>
 </div>
 <p>In this example, the <code class="docutils literal notranslate"><span class="pre">solve_queens/1</span></code> predicate finds a valid arrangement of queens on the chessboard, represented as a list where the index represents the column and the value at that index represents the row of the queen in that column.</p>
+</section>
+<section id="performance-nondeterminism-and-the-cut-operator">
+<h2><span class="section-number">8.5. </span>Performance, nondeterminism, and the cut operator<a class="headerlink" href="#performance-nondeterminism-and-the-cut-operator" title="Link to this heading"></a></h2>
+<p>One of the most infamous features of Prolog is the <strong>cut</strong> operator, written as <code class="docutils literal notranslate"><span class="pre">!</span></code>.
+Its purpose is to <strong>prune the search space</strong> by committing the inference engine to
+choices made so far and preventing backtracking past that point.</p>
+<ul>
+<li><p><strong>Intended use</strong>: control search to improve efficiency or enforce determinism.</p></li>
+<li><p><strong>Semantics</strong>: when the engine encounters <code class="docutils literal notranslate"><span class="pre">!</span></code>, it succeeds immediately but
+discards all alternative choices that led to the current goal.</p></li>
+<li><p><strong>Example</strong>:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">max</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">,</span> <span class="nv">X</span><span class="p">)</span> <span class="p">:-</span> <span class="nv">X</span> <span class="o">&gt;=</span> <span class="nv">Y</span><span class="p">,</span> <span class="p">!.</span>
+<span class="nf">max</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">,</span> <span class="nv">Y</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>Here, if <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">&gt;=</span> <span class="pre">Y</span></code> holds, the cut commits to the first rule, preventing Prolog
+from also considering the second rule.</p>
+</li>
+<li><p><strong>Benefits</strong>:
+- Allows programmers to fine-tune performance.
+- Makes certain deterministic rules concise.</p></li>
+<li><p><strong>Problems</strong>:
+- Breaks declarative semantics: program meaning now depends on control strategy.
+- Can make logic programs harder to reason about and less portable.
+- Errors involving cut are often subtle and non-intuitive.</p></li>
+</ul>
+<p>Because of these drawbacks, the cut is often described as <em>“a necessary evil”</em> or
+<em>“Prolog’s goto statement”</em>. More modern logic programming systems (e.g., Mercury,
+constraint logic programming) try to avoid or replace cut with more principled
+mechanisms for controlling search and determinism.</p>
 </section>
 </section>
 
@@ -403,9 +501,21 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">8. The Logic Programming Paradigm</a><ul>
-<li><a class="reference internal" href="#hello-world-in-prolog">8.1. Hello World in Prolog</a></li>
-<li><a class="reference internal" href="#basic-facts-and-rules-example">8.2. Basic Facts and Rules Example</a></li>
-<li><a class="reference internal" href="#queens-example-in-prolog">8.3. 8-Queens Example in Prolog</a></li>
+<li><a class="reference internal" href="#core-elements">8.1. Core Elements</a><ul>
+<li><a class="reference internal" href="#facts">8.1.1. Facts</a></li>
+<li><a class="reference internal" href="#rules">8.1.2. Rules</a></li>
+<li><a class="reference internal" href="#queries">8.1.3. Queries</a></li>
+<li><a class="reference internal" href="#unification">8.1.4. Unification</a></li>
+<li><a class="reference internal" href="#backtracking">8.1.5. Backtracking</a></li>
+<li><a class="reference internal" href="#non-determinism">8.1.6. Non-Determinism</a></li>
+<li><a class="reference internal" href="#declarative-semantics">8.1.7. Declarative Semantics</a></li>
+<li><a class="reference internal" href="#other-elements">8.1.8. Other Elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world-in-prolog">8.2. Hello World in Prolog</a></li>
+<li><a class="reference internal" href="#basic-facts-and-rules-example">8.3. Basic Facts and Rules Example</a></li>
+<li><a class="reference internal" href="#queens-example-in-prolog">8.4. 8-Queens Example in Prolog</a></li>
+<li><a class="reference internal" href="#performance-nondeterminism-and-the-cut-operator">8.5. Performance, nondeterminism, and the cut operator</a></li>
 </ul>
 </li>
 </ul>
@@ -419,7 +529,7 @@
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=a643027b"></script>
+    <script src="_static/documentation_options.js?v=c9b216af"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
