@@ -115,6 +115,82 @@ overlapping computations.
   suits distributed and reactive systems; data parallelism suits numerical workloads.
 
 
+Concurrency vs. Parallelism
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although often used interchangeably, **concurrency** and **parallelism** are 
+related but distinct concepts in programming.
+
+Concurrency
+````````````
+
+- **Definition**: Structuring a program as multiple tasks that can make progress 
+  independently.  
+- Emphasis: *Dealing with many things at once* (logical composition).  
+- A concurrent system may run on a single processor by interleaving tasks 
+  (time slicing), or on multiple processors.  
+- **Example**:
+  
+  - A web server that handles thousands of client requests by overlapping 
+    network I/O with computation.
+  - Java: ``CompletableFuture.supplyAsync(...)`` to launch asynchronous tasks.
+  - Scala: ``Future { compute }`` with callback composition.
+  - Rust: ``async fn handler() { ... }`` executed on an async runtime.
+  - C/C++: cooperative scheduling or event loops layered on top of pthreads.
+
+Parallelism
+````````````
+
+- **Definition**: Using multiple processing units (cores, processors, machines) 
+  to perform computations simultaneously.  
+- Emphasis: *Doing many things at the same time* (physical execution).  
+- A parallel system requires hardware support for multiple execution units.  
+- **Example**:
+  
+  - A numerical algorithm that splits an array into parts and processes each 
+    part simultaneously.  
+  - Java: ``list.parallelStream().map(...)`` distributes work across cores.  
+  - Scala: ``List(...).par.map(...)`` uses parallel collections.  
+  - Rust: ``vec.par_iter().map(...)`` with the Rayon library.  
+  - C/C++: OpenMP pragmas (``#pragma omp parallel for``) for loop parallelism.
+
+Key Distinctions
+````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 25 35 35
+
+   * - Aspect
+     - Concurrency
+     - Parallelism
+   * - Primary goal
+     - Handle multiple tasks logically at once
+     - Speed up execution using multiple cores
+   * - Hardware requirement
+     - Not required (can be simulated on a single CPU)
+     - Requires multiple cores/CPUs or distributed systems
+   * - Typical mechanisms
+     - Threads, async/await, actors, channels
+     - Data parallel loops, SIMD, GPU kernels
+   * - Example use case
+     - Web server handling requests
+     - Matrix multiplication or image processing
+
+Discussion
+````````````
+
+- Concurrency is about **structure**: decomposing programs into independent 
+  activities that can interleave.  
+- Parallelism is about **execution**: exploiting hardware resources to 
+  perform computations faster.  
+- Many modern systems combine both:  
+  a concurrent web server (handling many connections) uses parallelism 
+  internally to process requests across CPU cores.
+
+
+
+
 Motivation
 ~~~~~~~~~~
 
