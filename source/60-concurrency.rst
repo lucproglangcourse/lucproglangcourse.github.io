@@ -177,6 +177,44 @@ Key Distinctions
      - Web server handling requests
      - Matrix multiplication or image processing
 
+
+.. raw:: html
+
+   <svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" font-family="sans-serif" font-size="14">
+     <!-- Titles -->
+     <text x="150" y="20" text-anchor="middle" font-weight="bold" fill="currentColor">Concurrency (Interleaving)</text>
+     <text x="450" y="20" text-anchor="middle" font-weight="bold" fill="currentColor">Parallelism (Simultaneous)</text>
+
+     <!-- Concurrency timeline -->
+     <line x1="50" y1="60" x2="250" y2="60" stroke="currentColor" />
+     <line x1="50" y1="100" x2="250" y2="100" stroke="currentColor" />
+     <text x="40" y="65" text-anchor="end" fill="currentColor">Task A</text>
+     <text x="40" y="105" text-anchor="end" fill="currentColor">Task B</text>
+
+     <!-- Interleaved blocks -->
+     <rect x="50" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+     <rect x="90" y="90" width="40" height="20" fill="#9999ff" stroke="currentColor"/>
+     <rect x="130" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+     <rect x="170" y="90" width="40" height="20" fill="#9999ff" stroke="currentColor"/>
+     <rect x="210" y="50" width="40" height="20" fill="#ff9999" stroke="currentColor"/>
+
+     <!-- Parallelism timelines -->
+     <line x1="350" y1="60" x2="550" y2="60" stroke="currentColor" />
+     <line x1="350" y1="100" x2="550" y2="100" stroke="currentColor" />
+     <text x="340" y="65" text-anchor="end" fill="currentColor">Task A</text>
+     <text x="340" y="105" text-anchor="end" fill="currentColor">Task B</text>
+
+     <!-- Simultaneous blocks -->
+     <rect x="350" y="50" width="200" height="20" fill="#ff9999" stroke="currentColor"/>
+     <rect x="350" y="90" width="200" height="20" fill="#9999ff" stroke="currentColor"/>
+
+     <!-- Labels -->
+     <text x="150" y="140" text-anchor="middle" fill="currentColor">One core, time-sliced</text>
+     <text x="450" y="140" text-anchor="middle" fill="currentColor">Multiple cores, true overlap</text>
+   </svg>
+
+
+
 Discussion
 ````````````
 
