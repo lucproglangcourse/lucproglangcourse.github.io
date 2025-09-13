@@ -79,4 +79,4 @@ Indices and tables
 .. todo:: add stuff from https://trello.com/c/kAMGZ4uf/28-add-in-next-iteration
 
 
-.. note:: AI Disclosure: This text contains a mix of original writing and programming with strategic use of ChatGPT via intentional prompting. All examples will be available in our repository with an appropriate build configurations and tests. We will also make our prompts and analysis available, similar to what we have done for our recent ongoing study of ChatGPT and Systems Programming. See https://doi.org/10.6084/m9.figshare.22257274.
+.. note:: AI Disclosure: This text contains a mix of original writing and programming with strategic use of ChatGPT via intentional prompting. All examples will be available in our repository with an appropriate build configurations and tests. We will also make our prompts and analysis available, similar to what my colleagues have done for their recent ongoing study of ChatGPT and Systems Programming. See https://doi.org/10.6084/m9.figshare.22257274.
