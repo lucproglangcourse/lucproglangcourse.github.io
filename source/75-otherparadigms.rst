@@ -1,7 +1,7 @@
 Other Important Programming Paradigms
 -------------------------------------
 
-This chapter introduces additional programming paradigms that are significant in the field of computer science but have not yet been covered in this book.
+In this chapter, we introduce additional programming paradigms that are significant in the field of computer science but have not yet been covered in this book.
 
 Declarative Programming
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,4 +85,3 @@ There are several other paradigms, such as constraint programming, event-driven 
 .. code-block:: javascript
 
   button.addEventListener('click', () => alert('Button clicked!'));
-  

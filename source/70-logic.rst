@@ -1,8 +1,7 @@
 The Logic Programming Paradigm
 ------------------------------
 
-
-Logic programming is a programming paradigm based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.
+In this chapter, we introduce the logic programming paradigm, which is based on formal logic. Programs are written as sets of facts and rules, and computation is performed by querying these facts and rules. Prolog is the most well-known logic programming language.
 
 .. note:: You can use SWI-Prolog, a popular and free Prolog implementation, to run these examples live. SWI-Prolog is available for Windows, macOS, and Linux; an online version is also available at `SWISH <https://swish.swi-prolog.org/>`_.
 
