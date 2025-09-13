@@ -4,6 +4,121 @@ The Functional Programming Paradigm
 In this chapter, we study the functional programming paradigm, with examples and projects mostly in Scala.
 
 
+Core Elements
+~~~~~~~~~~~~~~~~~~
+
+The functional paradigm is characterized by **computation as the evaluation of functions**.  
+Functions are *first-class citizens*, programs are expressed declaratively, and emphasis 
+is placed on immutability and avoidance of side effects.
+
+
+Expression-Oriented Computation
+````````````````````````````````
+
+- Programs are built from expressions that yield values.
+- No distinction between statements and expressions in purely functional languages.
+
+Immutability
+````````````````````
+
+- Variables are bound once and cannot be reassigned.
+- Encourages referential transparency: expressions can be replaced with their values without changing program meaning.
+
+First-Class and Higher-Order Functions
+``````````````````````````````````````
+
+- **Functions as first-class values**: can be passed as arguments, returned as results, and stored in data structures.
+- **Higher-order functions**: functions that take other functions as parameters or return them.
+
+
+Recursion
+``````````````
+
+- Primary mechanism for repetition.
+- Loops are replaced by recursive definitions.
+
+Pattern Matching
+`````````````````
+
+- Provides a declarative way to deconstruct data structures and control flow.
+- Enables concise handling of algebraic data types.
+
+Lazy Evaluation
+````````````````
+
+- Expressions evaluated only when needed (default in Haskell).
+- Can improve modularity and performance.
+
+Other Elements
+``````````````
+
+- **Closures**: functions that capture their lexical environment.
+- **Type inference**: deduce function and variable types automatically (e.g., Haskell, Scala).
+- **Purity**: avoiding side effects; I/O and state modeled explicitly (monads, uniqueness types).
+
+
+Examples Across Languages
+```````````````````````````
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 20 20 20
+
+   * - Element
+     - Java
+     - Scala
+     - Haskell
+     - Scheme
+   * - First-class function
+     - ``Function<Integer,Integer> f = x -> x+1;``
+     - ``val f = (x:Int) => x+1``
+     - ``f x = x+1``
+     - ``(define f (lambda (x) (+ x 1)))``
+   * - Higher-order function
+     - ``list.stream().map(x -> x+1)``
+     - ``List(1,2,3).map(_+1)``
+     - ``map (+1) [1,2,3]``
+     - ``(map (lambda (x) (+ x 1)) '(1 2 3))``
+   * - Immutability
+     - ``final var y = 5;``
+     - ``val y = 5``
+     - ``let y = 5 in ...``
+     - ``(define y 5)`` (by convention immutable)
+   * - Recursion
+     - ``int fact(int n){ return n==0?1:n*fact(n-1); }``
+     - ``def fact(n:Int):Int = if (n==0) 1 else n*fact(n-1)``
+     - ``fact 0 = 1; fact n = n*fact(n-1)``
+     - ``(define (fact n) (if (= n 0) 1 (* n (fact (- n 1)))))``
+   * - Pattern matching
+     - Not built-in
+     - ``x match { case 0 => 1; case n => n*fact(n-1) }``
+     - ``fact 0 = 1; fact n = n*fact (n-1)``
+     - Not built-in (simulate with cond)
+   * - Lazy evaluation
+     - Streams (``Stream.of(1,2,3)``)
+     - ``LazyList.from(1)``
+     - Default in Haskell
+     - Not default; can simulate with thunks
+   * - Closure
+     - ``Function<Integer,Integer> f = (x) -> x + y;``
+     - ``val f = (x:Int) => x + y``
+     - ``f = \x -> x + y``
+     - ``(define f (lambda (x) (+ x y)))``
+
+
+Discussion
+````````````
+
+Functional programming emphasizes *declarative expression of computation* 
+rather than step-by-step instructions.  
+It enables equational reasoning, parallelization, and safer abstractions by 
+reducing reliance on mutable state.  
+
+Modern multiparadigm languages (Scala, Python, Java 8+) integrate functional 
+features, while classic functional languages like Scheme, Haskell, and ML 
+highlight the paradigm in its purest form.
+
+
 Solving problems using built-in types and behaviors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
