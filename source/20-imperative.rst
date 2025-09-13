@@ -116,11 +116,99 @@ Discussion
 ````````````````````
 
 
-Imperative constructs form the foundation of nearly all mainstream programming 
-languages, even those that emphasize other paradigms. They provide a natural 
-model of computation as a *state machine*: a program moves from one state to the next 
-through explicit updates governed by control flow.
+Imperative constructs form the foundation of nearly all mainstream programming languages, even those that emphasize other paradigms. 
+They provide a natural model of computation as a *state machine*: a program moves from one state to the next through explicit updates governed by control flow.
 
+
+Solving problems using built-in types and behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section, we'll focus on solving problems using Scala's built-in types and behaviors. 
+As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.
+
+By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple, a lightweight aggregation of heterogeneous types based on the Cartesian product.
+
+
+Examples
+````````
+
+In Java, a typical program to loop over all items in a finite collection or iterator using mutable state would look like this:
+
+.. code-block:: java
+
+  final Iterator<String> incoming = ...; // e.g., from a List or Scanner
+  var sum = 0;
+  var count = 0;
+
+  incoming.forEachRemaining(s -> {
+    sum += s.length();
+    count += 1;
+  });
+
+  final var result = (float) sum / count;
+
+*What does this code compute?*
+
+The Scala equivalent using mutable state is:
+
+.. code-block:: scala
+
+  val incoming = scala.io.Source.stdin.getLines() // Scala equivalent of Java's Scanner
+  var sum = 0
+  var count = 0
+
+  incoming.foreach: s =>
+    sum += s.length
+    count += 1
+
+  val result = sum.toFloat / count
+
+
+Note that you cannot "un-fuse" this loop equivalent because the iterator over the input elements is stateful and you can iterate through it only once.
+We'll take closer look at iterators and collections in chapter :doc:`/40-functional`.
+
+
+To solve more interesting problems, we can combine these basic constructs with built-in structures and behaviors.
+
+In Java, we can use a `Scanner` with a custom delimiter to split input into words. 
+
+.. code-block:: java
+
+  final Iterator<String> incoming = 
+    new Scanner(System.in).useDelimiter("(?U)[^\\p{Alpha}0-9']+");
+  final Map<String, Integer> freq = new HashMap<>();
+
+  incoming.forEachRemaining(s -> {
+    final var word = s.toLowerCase();
+    if (!word.isEmpty()) {
+      freq.put(word, freq.getOrDefault(word, 0) + 1);
+    }
+  }
+
+  for (var entry : freq.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+  }
+
+*What does this code compute?*
+
+The Scala equivalent, using mutable collections, is:
+
+.. code-block:: scala
+
+  val lines = scala.io.Source.stdin.getLines
+  val words = lines.flatMap(l => l.split("(?U)[^\\p{Alpha}0-9']+"))
+  val freq = scala.collection.mutable.Map.empty[String, Int]
+
+  for w <- words do
+    val word = w.toLowerCase
+    freq(word) = freq.getOrElse(word, 0) + 1
+
+  for (word, count) <- freq do
+    println(s"$word: $count")
+
+
+These examples illustrate how to use imperative programming constructs along with built-in types and behaviors to solve problems effectively.
+In chapter :doc:`/40-functional`, we will explore how to define custom types and abstractions to model more complex domains and problems.
 
 
 Options for running Scala code

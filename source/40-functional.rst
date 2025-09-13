@@ -163,23 +163,25 @@ The main building blocks in scripting-style Scala are the collection and utility
 Examples
 ````````
 
-Loop over all items in a finite collection or iterator using mutable state:
+We recall this example of looping over all items in a finite collection or iterator using mutable state:
 
 .. code-block:: java
 
   final Iterator<String> incoming = ...;
   var sum = 0;
   var count = 0;
+
   incoming.forEachRemaining(s -> {
     sum += s.length();
     count += 1;
   });
+
   final var result = (float) sum / count;
 
 *What does this code compute?*
 
 
-Immutable equivalent using ``foldLeft``:
+In Scala, we can use an *immutable* equivalent using ``foldLeft``:
 
 .. code-block:: scala
 
@@ -190,7 +192,7 @@ Immutable equivalent using ``foldLeft``:
   }
   val result = sum.toFloat / count
 
-Note that you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
+As noted previously, you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
 On the other hand, if ``incoming`` is a collection (always finite) instead of an iterator (potentially unbounded), you can use ``map`` and ``sum``, a specialized fold, for a terser equivalent:
 
 .. code-block:: scala
@@ -201,11 +203,12 @@ On the other hand, if ``incoming`` is a collection (always finite) instead of an
 
 This is equivalent to two consecutive loops, one for ``map`` and one for ``sum``.
 
-Unbounded loop until a condition is met:
+It is also common to have unbounded loops until a condition is met, e.g., reading lines from standard input until end-of-file (EOF):
 
 .. code-block:: java
 
   final var input = new Scanner(System.in);
+
   System.out.print("enter next expression: ");
   while (input.hasNextLine()) {
     final var line = input.nextLine();
@@ -213,7 +216,7 @@ Unbounded loop until a condition is met:
     System.out.print("enter next expression: ");
   }
 
-Immutable equivalent using ``continually``:
+In Scala, we can use an *immutable* equivalent using ``Iterator`` with ``continually`` and ``takeWhile``:
 
 .. code-block:: scala
 
