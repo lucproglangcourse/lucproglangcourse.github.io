@@ -29,6 +29,7 @@ First-Class and Higher-Order Functions
 
 - **Functions as first-class values**: can be passed as arguments, returned as results, and stored in data structures.
 - **Higher-order functions**: functions that take other functions as parameters or return them.
+- **Lambdas**: functions can be created on-the-fly and capture their lexical environment (**closures**).
 
 
 Recursion
@@ -52,7 +53,6 @@ Lazy Evaluation
 Other Elements
 ``````````````
 
-- **Closures**: functions that capture their lexical environment.
 - **Type inference**: deduce function and variable types automatically (e.g., Haskell, Scala).
 - **Purity**: avoiding side effects; I/O and state modeled explicitly (monads, uniqueness types).
 
