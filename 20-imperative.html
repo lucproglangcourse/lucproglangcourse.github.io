@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="4. The Object-Oriented Programming Paradigm" href="30-objectoriented.html" /><link rel="prev" title="2. Context and Background" href="10-background.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</title>
+        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.18</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.18</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.16</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.18</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -392,14 +392,83 @@ through a sequence of statements that manipulate named mutable state.</p>
 </section>
 <section id="discussion">
 <h3><span class="section-number">3.1.6. </span>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h3>
-<p>Imperative constructs form the foundation of nearly all mainstream programming
-languages, even those that emphasize other paradigms. They provide a natural
-model of computation as a <em>state machine</em>: a program moves from one state to the next
-through explicit updates governed by control flow.</p>
+<p>Imperative constructs form the foundation of nearly all mainstream programming languages, even those that emphasize other paradigms.
+They provide a natural model of computation as a <em>state machine</em>: a program moves from one state to the next through explicit updates governed by control flow.</p>
+</section>
+</section>
+<section id="solving-problems-using-built-in-types-and-behaviors">
+<h2><span class="section-number">3.2. </span>Solving problems using built-in types and behaviors<a class="headerlink" href="#solving-problems-using-built-in-types-and-behaviors" title="Link to this heading"></a></h2>
+<p>In this section, we’ll focus on solving problems using Scala’s built-in types and behaviors.
+As do other languages, Scala provides an extensive library of predefined types and (generic) type constructors along with a rich set of behaviors.</p>
+<p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple, a lightweight aggregation of heterogeneous types based on the Cartesian product.</p>
+<section id="examples">
+<h3><span class="section-number">3.2.1. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<p>In Java, a typical program to loop over all items in a finite collection or iterator using mutable state would look like this:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// e.g., from a List or Scanner</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><em>What does this code compute?</em></p>
+<p>The Scala equivalent using mutable state is:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span><span class="p">()</span><span class="w"> </span><span class="c1">// Scala equivalent of Java&#39;s Scanner</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="n">incoming</span><span class="p">.</span><span class="n">foreach</span><span class="p">:</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">.</span><span class="n">toFloat</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span>
+</pre></div>
+</div>
+<p>Note that you cannot “un-fuse” this loop equivalent because the iterator over the input elements is stateful and you can iterate through it only once.
+We’ll take closer look at iterators and collections in chapter <a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>.</p>
+<p>To solve more interesting problems, we can combine these basic constructs with built-in structures and behaviors.</p>
+<p>In Java, we can use a <cite>Scanner</cite> with a custom delimiter to split input into words.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">).</span><span class="na">useDelimiter</span><span class="p">(</span><span class="s">&quot;(?U)[^\\p{Alpha}0-9&#39;]+&quot;</span><span class="p">);</span>
+<span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">word</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">freq</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">freq</span><span class="p">.</span><span class="na">getOrDefault</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">freq</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>What does this code compute?</em></p>
+<p>The Scala equivalent, using mutable collections, is:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;(?U)[^\\p{Alpha}0-9&#39;]+&quot;</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">collection</span><span class="p">.</span><span class="n">mutable</span><span class="p">.</span><span class="nc">Map</span><span class="p">.</span><span class="n">empty</span><span class="p">[</span><span class="nc">String</span><span class="p">,</span><span class="w"> </span><span class="nc">Int</span><span class="p">]</span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">word</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">toLowerCase</span>
+<span class="w">  </span><span class="n">freq</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">freq</span><span class="p">.</span><span class="n">getOrElse</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">println</span><span class="p">(</span><span class="s">s&quot;</span><span class="si">$</span><span class="n">word</span><span class="s">: </span><span class="si">$</span><span class="n">count</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These examples illustrate how to use imperative programming constructs along with built-in types and behaviors to solve problems effectively.
+In chapter <a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>, we will explore how to define custom types and abstractions to model more complex domains and problems.</p>
 </section>
 </section>
 <section id="options-for-running-scala-code">
-<h2><span class="section-number">3.2. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.3. </span>Options for running Scala code<a class="headerlink" href="#options-for-running-scala-code" title="Link to this heading"></a></h2>
 <p>In this section, we discuss the different options for running Scala code, including applications and tests.</p>
 <ul>
 <li><p>The simplest way to run Scala code fragments is through the Scala REPL (read-eval-print loop).
@@ -490,7 +559,7 @@ $<span class="w"> </span>./target/universal/stage/bin/myapp-scala<span class="w"
 </ul>
 </section>
 <section id="techniques-for-testing-scala-code">
-<h2><span class="section-number">3.3. </span>Techniques for testing Scala code<a class="headerlink" href="#techniques-for-testing-scala-code" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.4. </span>Techniques for testing Scala code<a class="headerlink" href="#techniques-for-testing-scala-code" title="Link to this heading"></a></h2>
 <p>Testing is an important, widely used practice within the software development lifecycle (SDLC).
 There are various basic techniques and libraries/frameworks for testing Scala code.</p>
 <p>The simplest way is to intersperse assertions within your code.
@@ -510,7 +579,7 @@ This is particularly effective for scripts and worksheets:</p>
 <p>The <a class="reference external" href="https://github.com/lucproglangcourse/echotest-scala">echotest</a> example shows some of these libraries in action.</p>
 <p>For faster turnaround during development, we can combine these techniques with <a class="reference external" href="https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html">triggered execution</a>.</p>
 <section id="measuring-code-coverage">
-<h3><span class="section-number">3.3.1. </span>Measuring code coverage<a class="headerlink" href="#measuring-code-coverage" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.1. </span>Measuring code coverage<a class="headerlink" href="#measuring-code-coverage" title="Link to this heading"></a></h3>
 <p>The <em>code coverage</em> of your tests indicates how thoroughly you’re testing.
 Typically, you would use the <a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt scoverage plugin</a> to meaasure what percentage of your main code are covered by your tests.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>clean<span class="w"> </span>coverage<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverageReport
@@ -539,7 +608,7 @@ When looking at a class, you can switch between the source code view and an abst
 <p>Additional information on testing is available in the corresponding section of the <a class="reference external" href="https://lucformalmethodscourse.github.io/30-testing.html">COMP 335/435: Formal Methods lecture notes</a>.</p>
 </section>
 <section id="end-to-end-application-testing">
-<h3><span class="section-number">3.3.2. </span>End-to-end application testing<a class="headerlink" href="#end-to-end-application-testing" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.4.2. </span>End-to-end application testing<a class="headerlink" href="#end-to-end-application-testing" title="Link to this heading"></a></h3>
 <p>Besides the familiar styles of unit testing, one could attempt to automate the process of end-to-end application testing.
 One approach would be to use shell scripts in conjunction with sample input and expected output files;
 after running the application on the sample input, one could use a <code class="docutils literal notranslate"><span class="pre">diff</span></code> utility to compare the actual output to the expected output.</p>
@@ -563,7 +632,7 @@ This approach appears to work within IDEs such as IntelliJ but not in a standalo
 </section>
 </section>
 <section id="the-role-of-command-line-applications">
-<h2><span class="section-number">3.4. </span>The role of command-line applications<a class="headerlink" href="#the-role-of-command-line-applications" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.5. </span>The role of command-line applications<a class="headerlink" href="#the-role-of-command-line-applications" title="Link to this heading"></a></h2>
 <p>Command-line applications have always been an important part of the UNIX environment.
 Each application typically focuses on a specific task, and several applications can be composed to solve a more complex task.</p>
 <p>The typical command-line application interacts with its environment in the following ways:</p>
@@ -613,7 +682,7 @@ We can also append to an existing file:</p>
 </div>
 <p>There is a close relationship between UNIX pipes and functional programming: When viewing a command-line application as a function that transforms its input to its output, UNIX pipes correspond to function composition. The pipeline <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">|</span> <span class="pre">q</span></code> corresponds to the function composition <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">o</span> <span class="pre">p</span></code>.</p>
 <section id="command-line-applications-in-scala">
-<h3><span class="section-number">3.4.1. </span>Command-line applications in Scala<a class="headerlink" href="#command-line-applications-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.1. </span>Command-line applications in Scala<a class="headerlink" href="#command-line-applications-in-scala" title="Link to this heading"></a></h3>
 <p>The following techniques are useful for creating command-line applications in Scala.
 As in Java, command-line arguments are available to a Scala application as <code class="docutils literal notranslate"><span class="pre">args</span></code> of type <code class="docutils literal notranslate"><span class="pre">Array[String]</span></code>.</p>
 <p>We can read the standard input as lines using this iterator:</p>
@@ -652,7 +721,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 </div>
 </section>
 <section id="command-line-argument-parsing">
-<h3><span class="section-number">3.4.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
 <p>A common concern when developing command-line applications is argument and option parsing.
 As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code> at the time when we’re invoking the application.
 Importantly, these settings are separate from the application’s input data.</p>
@@ -721,7 +790,7 @@ run
 </div>
 </section>
 <section id="determining-whether-an-app-is-running-interactively">
-<h3><span class="section-number">3.4.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
 <p>In some cases, it’s convenient to determine programmatically whether our command-line app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
 For example, if our app running interactively, we might automatically want to prompt the user for console input.</p>
 <p>We can use this technique to determine whether stdin is coming from the console.</p>
@@ -737,7 +806,7 @@ For example, if our app running interactively, we might automatically want to pr
 </div>
 </section>
 <section id="allowing-the-user-to-edit-their-input">
-<h3><span class="section-number">3.4.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
 <p>Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.</p>
 <p>To add this capability to a Java- or Scala-based command-line app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
 If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
@@ -748,7 +817,7 @@ JLine has excellent documentation; please look there for examples.</p>
 </div>
 </section>
 <section id="finding-good-third-party-libraries">
-<h3><span class="section-number">3.4.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
 <p>For most programming languages, platforms, and other ecosystems, there are lists of “awesome” libraries and tools.
 For a particular language, search for “awesome” followed by the name of the language.</p>
 <p>In Scala’s case, we would come across this here list:</p>
@@ -772,7 +841,7 @@ some typical criteria are:</p>
 </section>
 </section>
 <section id="the-role-of-logging">
-<h2><span class="section-number">3.5. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.6. </span>The role of logging<a class="headerlink" href="#the-role-of-logging" title="Link to this heading"></a></h2>
 <p>Logging is a common dynamic nonfunctional requirement that is useful throughout the lifecycle of a system.
 Logging can be challenging because it is a cross-cutting concern that arises throughout the codebase.</p>
 <p>In its simplest form, logging can consist of ordinary print statements, preferably to the <em>standard error</em> stream (<code class="docutils literal notranslate"><span class="pre">stderr</span></code>):</p>
@@ -786,7 +855,7 @@ Modern logging frameworks have very low performance overhead and are a convenien
 <p>Proper logging is perhaps more important in applications where one doesn’t normally see the console output, such as apps with a graphical user interface and back-end server apps.
 In those cases, logging allows ongoing monitoring of app progress, as well as error analysis if something isn’t working.</p>
 <section id="logging-in-scala">
-<h3><span class="section-number">3.5.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.6.1. </span>Logging in Scala<a class="headerlink" href="#logging-in-scala" title="Link to this heading"></a></h3>
 <p>A popular choice found on the <a class="reference external" href="https://github.com/lauris/awesome-scala">Awesome Scala</a> list, the <a class="reference external" href="https://github.com/Log4s/log4s">log4s</a> wrapper provides a convenient logging mechanism for Scala.
 To use log4s minimally, the following steps are required:</p>
 <ul>
@@ -818,12 +887,12 @@ To use log4s minimally, the following steps are required:</p>
 </section>
 </section>
 <section id="the-importance-of-constant-space-complexity">
-<span id="subsecconstantspace"></span><h2><span class="section-number">3.6. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
+<span id="subsecconstantspace"></span><h2><span class="section-number">3.7. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
 <p>Common application scenarios involve processing large volumes of input data or indefinite input streams, e.g., sensor data from an internet-of-things device.
 To achieve the nonfunctional requirements of reliability/availability and scalability for such applications, it is critical to ensure that the application does not exceed a constant memory footprint during its execution.
 <em>These considerations apply to any potentially long-running application, be it a command-line app, mobile app, or back-end service.</em></p>
 <section id="using-iterators-to-represent-indefinite-input">
-<h3><span class="section-number">3.6.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.7.1. </span>Using iterators to represent indefinite input<a class="headerlink" href="#using-iterators-to-represent-indefinite-input" title="Link to this heading"></a></h3>
 <p>In these scenarios, it is common to process an indefinite number of input items, one at a time, as long as more items are available from the input.
 Concretely, whenever possible, this means reading and processing one input item at a time and then forgetting about it, rather than first storing the entire input in memory and then processing it in bulk.
 This version of a program that echoes back and counts its input lines has constant-space complexity:</p>
@@ -849,7 +918,7 @@ This version of a program that echoes back and counts its input lines has consta
 Iterators support most of the same behaviors as in-memory collections.</p>
 </section>
 <section id="monitoring-a-program-s-memory-footprint-over-time">
-<h3><span class="section-number">3.6.2. </span>Monitoring a program’s memory footprint over time<a class="headerlink" href="#monitoring-a-program-s-memory-footprint-over-time" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.7.2. </span>Monitoring a program’s memory footprint over time<a class="headerlink" href="#monitoring-a-program-s-memory-footprint-over-time" title="Link to this heading"></a></h3>
 <p>To monitor a program’s memory footprint over time, we would typically use a heap profiler.
 For programs running in the Java Virtual Machine (JVM), we can use the standalone version of VisualVM.</p>
 <p>For example, the following heap profile (upper right section of the screenshot) shows a flat sawtooth pattern, suggesting constant space complexity even as we are processing more and more input items.
@@ -863,7 +932,7 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 </section>
 </section>
 <section id="making-command-line-applications-testable">
-<h2><span class="section-number">3.7. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
+<h2><span class="section-number">3.8. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
 <p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we’d like to make our command-line applications testable.
 While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
 <p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
@@ -942,30 +1011,34 @@ The endpoint of this journey thereby marks our transition to the object-oriented
 <li><a class="reference internal" href="#discussion">3.1.6. Discussion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#options-for-running-scala-code">3.2. Options for running Scala code</a></li>
-<li><a class="reference internal" href="#techniques-for-testing-scala-code">3.3. Techniques for testing Scala code</a><ul>
-<li><a class="reference internal" href="#measuring-code-coverage">3.3.1. Measuring code coverage</a></li>
-<li><a class="reference internal" href="#end-to-end-application-testing">3.3.2. End-to-end application testing</a></li>
+<li><a class="reference internal" href="#solving-problems-using-built-in-types-and-behaviors">3.2. Solving problems using built-in types and behaviors</a><ul>
+<li><a class="reference internal" href="#examples">3.2.1. Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-role-of-command-line-applications">3.4. The role of command-line applications</a><ul>
-<li><a class="reference internal" href="#command-line-applications-in-scala">3.4.1. Command-line applications in Scala</a></li>
-<li><a class="reference internal" href="#command-line-argument-parsing">3.4.2. Command-line argument parsing</a></li>
-<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.4.3. Determining whether an app is running interactively</a></li>
-<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.4.4. Allowing the user to edit their input</a></li>
-<li><a class="reference internal" href="#finding-good-third-party-libraries">3.4.5. Finding good third-party libraries</a></li>
+<li><a class="reference internal" href="#options-for-running-scala-code">3.3. Options for running Scala code</a></li>
+<li><a class="reference internal" href="#techniques-for-testing-scala-code">3.4. Techniques for testing Scala code</a><ul>
+<li><a class="reference internal" href="#measuring-code-coverage">3.4.1. Measuring code coverage</a></li>
+<li><a class="reference internal" href="#end-to-end-application-testing">3.4.2. End-to-end application testing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-role-of-logging">3.5. The role of logging</a><ul>
-<li><a class="reference internal" href="#logging-in-scala">3.5.1. Logging in Scala</a></li>
+<li><a class="reference internal" href="#the-role-of-command-line-applications">3.5. The role of command-line applications</a><ul>
+<li><a class="reference internal" href="#command-line-applications-in-scala">3.5.1. Command-line applications in Scala</a></li>
+<li><a class="reference internal" href="#command-line-argument-parsing">3.5.2. Command-line argument parsing</a></li>
+<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.5.3. Determining whether an app is running interactively</a></li>
+<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.5.4. Allowing the user to edit their input</a></li>
+<li><a class="reference internal" href="#finding-good-third-party-libraries">3.5.5. Finding good third-party libraries</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.6. The importance of constant-space complexity</a><ul>
-<li><a class="reference internal" href="#using-iterators-to-represent-indefinite-input">3.6.1. Using iterators to represent indefinite input</a></li>
-<li><a class="reference internal" href="#monitoring-a-program-s-memory-footprint-over-time">3.6.2. Monitoring a program’s memory footprint over time</a></li>
+<li><a class="reference internal" href="#the-role-of-logging">3.6. The role of logging</a><ul>
+<li><a class="reference internal" href="#logging-in-scala">3.6.1. Logging in Scala</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#making-command-line-applications-testable">3.7. Making command-line applications testable</a></li>
+<li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.7. The importance of constant-space complexity</a><ul>
+<li><a class="reference internal" href="#using-iterators-to-represent-indefinite-input">3.7.1. Using iterators to represent indefinite input</a></li>
+<li><a class="reference internal" href="#monitoring-a-program-s-memory-footprint-over-time">3.7.2. Monitoring a program’s memory footprint over time</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-command-line-applications-testable">3.8. Making command-line applications testable</a></li>
 </ul>
 </li>
 </ul>
@@ -979,7 +1052,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=f7626810"></script>
+    <script src="_static/documentation_options.js?v=bb004fcb"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
