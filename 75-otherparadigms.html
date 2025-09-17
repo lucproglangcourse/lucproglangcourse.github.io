@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="10. Summary" href="78-summary.html" /><link rel="prev" title="8. The Logic Programming Paradigm" href="70-logic.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>9. Other Important Programming Paradigms - Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</title>
+        <title>9. Other Important Programming Paradigms - Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.24</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -258,19 +258,83 @@
 <p>In this chapter, we introduce additional programming paradigms that are significant in the field of computer science but have not yet been covered in this book.</p>
 <section id="declarative-programming">
 <h2><span class="section-number">9.1. </span>Declarative Programming<a class="headerlink" href="#declarative-programming" title="Link to this heading"></a></h2>
-<p>Declarative programming focuses on what the program should accomplish rather than detailing how to achieve it. SQL and HTML are examples of declarative languages.</p>
-<p><strong>Example (SQL):</strong></p>
+<p>Declarative programming focuses on what the program should accomplish rather than detailing how to achieve it. SQL and XML, including HTML, are examples of declarative languages.</p>
+<ul class="simple">
+<li><p>Focus: specify desired results rather than control flow.</p></li>
+<li><p>Common uses: configuration, markup, query languages, and transformation languages.</p></li>
+<li><p>Strengths: concise, closer to domain concepts, often easier to reason about correctness.</p></li>
+<li><p>Weaknesses: can be less explicit about performance or control; tooling/optimization may hide important costs.</p></li>
+</ul>
+<p><strong>Example: SQL</strong></p>
+<p>SQL is a declarative query language for managing and retrieving data from relational databases.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">90</span><span class="p">;</span>
 </pre></div>
 </div>
-<p><strong>Example (HTML):</strong></p>
+<p><strong>Example: HTML</strong></p>
+<p>HTML is a declarative markup language for structuring and presenting content on the web.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, world!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Example: XML and XSLT</strong></p>
+<p>XML is a markup language for encoding documents in a format that is both human-readable and machine-readable.
+While HTML is a specific instance of XML used for web content, XML itself is more general-purpose and can be used to represent a wide variety of data structures.</p>
+<p>XSLT is a declarative language for pattern-driven, template-based transformation of XML documents into other XML, HTML, or text formats. Rather than writing imperative code to walk and manipulate a tree, you describe transformation rules and templates that match parts of the input.</p>
+<p>XPath is a language for selecting nodes from an XML document.
+It is often used within XSLT to navigate XML structures.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- students.xml (example input document) --&gt;</span>
+<span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;students&gt;</span>
+<span class="w">  </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;s001&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Mary<span class="w"> </span>Smith<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grade&gt;</span>95<span class="nt">&lt;/grade&gt;</span>
+<span class="w">    </span><span class="nt">&lt;major&gt;</span>Computer<span class="w"> </span>Science<span class="nt">&lt;/major&gt;</span>
+<span class="w">    </span><span class="nt">&lt;email&gt;</span>mary.smith@example.edu<span class="nt">&lt;/email&gt;</span>
+<span class="w">    </span><span class="nt">&lt;enrolled&gt;</span>2023-09-01<span class="nt">&lt;/enrolled&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/student&gt;</span>
+<span class="w">  </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;s002&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>John<span class="w"> </span>Doe<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grade&gt;</span>88<span class="nt">&lt;/grade&gt;</span>
+<span class="w">    </span><span class="nt">&lt;major&gt;</span>Mathematics<span class="nt">&lt;/major&gt;</span>
+<span class="w">    </span><span class="nt">&lt;email&gt;</span>john.doe@example.edu<span class="nt">&lt;/email&gt;</span>
+<span class="w">    </span><span class="nt">&lt;enrolled&gt;</span>2022-09-01<span class="nt">&lt;/enrolled&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/student&gt;</span>
+<span class="w">  </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;s003&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Alice<span class="w"> </span>Chen<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;grade&gt;</span>92<span class="nt">&lt;/grade&gt;</span>
+<span class="w">    </span><span class="nt">&lt;major&gt;</span>Physics<span class="nt">&lt;/major&gt;</span>
+<span class="w">    </span><span class="nt">&lt;email&gt;</span>alice.chen@example.edu<span class="nt">&lt;/email&gt;</span>
+<span class="w">    </span><span class="nt">&lt;enrolled&gt;</span>2023-01-15<span class="nt">&lt;/enrolled&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/student&gt;</span>
+<span class="nt">&lt;/students&gt;</span>
+
+<span class="cm">&lt;!-- transform.xslt (example stylesheet for transformation to HTML) --&gt;</span>
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;xsl:stylesheet</span><span class="w"> </span><span class="na">xmlns:xsl=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsl:template</span><span class="w"> </span><span class="na">match=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;html&gt;</span>
+<span class="w">      </span><span class="nt">&lt;body&gt;</span>
+<span class="w">        </span><span class="nt">&lt;h1&gt;</span>Students<span class="nt">&lt;/h1&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ul&gt;</span>
+<span class="w">          </span><span class="nt">&lt;xsl:for-each</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;students/student[grade &amp;gt; 90]&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;li&gt;&lt;xsl:value-of</span><span class="w"> </span><span class="na">select=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;&lt;/li&gt;</span>
+<span class="w">          </span><span class="nt">&lt;/xsl:for-each&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ul&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/body&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/html&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsl:template&gt;</span>
+<span class="nt">&lt;/xsl:stylesheet&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="reactive-programming">
 <h2><span class="section-number">9.2. </span>Reactive Programming<a class="headerlink" href="#reactive-programming" title="Link to this heading"></a></h2>
 <p>Reactive programming is oriented around data streams and the propagation of change. It is commonly used in user interfaces and real-time systems.</p>
+<ul class="simple">
+<li><p>Focus: streams of data, event propagation, and change propagation.</p></li>
+<li><p>Common uses: UIs, dashboards, real-time analytics, and asynchronous workflows.</p></li>
+<li><p>Strengths: models time-varying values naturally, simplifies composition of asynchronous events.</p></li>
+<li><p>Weaknesses: mental overhead for reasoning about time and backpressure; debugging can be tricky.</p></li>
+</ul>
 <p><strong>Paradigm-defining language:</strong> RxJS (Reactive Extensions for JavaScript)</p>
 <p><strong>Example (RxJS):</strong></p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromEvent</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
@@ -281,6 +345,12 @@
 <section id="aspect-oriented-programming">
 <h2><span class="section-number">9.3. </span>Aspect-Oriented Programming<a class="headerlink" href="#aspect-oriented-programming" title="Link to this heading"></a></h2>
 <p>Aspect-oriented programming (AOP) aims to increase modularity by allowing the separation of cross-cutting concerns, such as logging or security.</p>
+<ul class="simple">
+<li><p>Focus: separate cross-cutting concerns from core logic via aspects and advice.</p></li>
+<li><p>Common uses: logging, security, transaction management, and instrumentation.</p></li>
+<li><p>Strengths: keeps core code cleaner; centralized handling of orthogonal concerns.</p></li>
+<li><p>Weaknesses: can obscure control flow and make reasoning about behavior harder.</p></li>
+</ul>
 <p><strong>Paradigm-defining language:</strong> AspectJ</p>
 <p><strong>Example (AspectJ):</strong></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">aspect</span><span class="w"> </span><span class="n">LoggingAspect</span><span class="w"> </span><span class="p">{</span>
@@ -294,6 +364,12 @@
 <section id="dataflow-programming">
 <h2><span class="section-number">9.4. </span>Dataflow Programming<a class="headerlink" href="#dataflow-programming" title="Link to this heading"></a></h2>
 <p>Dataflow programming models programs as a directed graph of the data flowing between operations, making it suitable for parallel and distributed computing.</p>
+<ul class="simple">
+<li><p>Focus: data dependencies and flow rather than explicit control flow.</p></li>
+<li><p>Common uses: signal processing, stream processing, and parallel computation (e.g., TensorFlow graphs).</p></li>
+<li><p>Strengths: natural parallelism, clear depiction of dependencies.</p></li>
+<li><p>Weaknesses: can be less intuitive for control-heavy logic; graph management can be complex.</p></li>
+</ul>
 <p><strong>Paradigm-defining language:</strong> LabVIEW, TensorFlow</p>
 <p><strong>Example (TensorFlow, Python):</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
@@ -306,6 +382,10 @@
 <section id="other-paradigms">
 <h2><span class="section-number">9.5. </span>Other Paradigms<a class="headerlink" href="#other-paradigms" title="Link to this heading"></a></h2>
 <p>There are several other paradigms, such as constraint programming, event-driven programming, and more, each with its own unique approach and use cases.</p>
+<ul class="simple">
+<li><p>Constraint Programming (Prolog): express relations and let the solver find solutions.</p></li>
+<li><p>Event-driven Programming (JavaScript): drive computation by events and callbacks.</p></li>
+</ul>
 <p><strong>Constraint Programming (Prolog):</strong></p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">mary</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
 <span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
@@ -393,7 +473,7 @@
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=c9b216af"></script>
+    <script src="_static/documentation_options.js?v=6dca92b6"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
