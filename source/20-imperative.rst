@@ -813,5 +813,5 @@ The following example goes through several evolutions of a simple example to ill
 
   https://github.com/lucproglangcourse/consoleapp-java
 
-Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving custom abstractions.
+Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving higher-order parametrization and custom abstractions, which are hallmarks of object-oriented and functional programming.
 The endpoint of this journey thereby marks our transition to the object-oriented paradigm.
