@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="4. The Object-Oriented Programming Paradigm" href="30-objectoriented.html" /><link rel="prev" title="2. Context and Background" href="10-background.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</title>
+        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v25f.26</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v25f.26</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.25</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v25f.26</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -403,17 +403,25 @@ As do other languages, Scala provides an extensive library of predefined types a
 <p>By using Scala like a scripting language (such as Python or Ruby), one can solve many problems without even defining custom algebraic data types, except perhaps the occasional tuple, a lightweight aggregation of heterogeneous types based on the Cartesian product.</p>
 <section id="examples">
 <h3><span class="section-number">3.2.1. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
-<p>In Java, a typical program to loop over all items in a finite collection or iterator using mutable state would look like this:</p>
+<p>In Java, a typical program to loop over all items in an iterator using mutable state would look like this:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">final</span><span class="w"> </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// e.g., from a List or Scanner</span>
 <span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">incoming</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
 <span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
 <span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
 
 <span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Or more elegantly, using the <code class="docutils literal notranslate"><span class="pre">forEachRemaining</span></code> method, which combines <code class="docutils literal notranslate"><span class="pre">hasNext</span></code> and <code class="docutils literal notranslate"><span class="pre">next</span></code> and binds the next element to the argument <code class="docutils literal notranslate"><span class="pre">s</span></code> of the lambda (anonymous function):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
 </pre></div>
 </div>
 <p><em>What does this code compute?</em></p>
@@ -1052,7 +1060,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=6dca92b6"></script>
+    <script src="_static/documentation_options.js?v=5a3218dc"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
