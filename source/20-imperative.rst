@@ -132,7 +132,7 @@ By using Scala like a scripting language (such as Python or Ruby), one can solve
 Examples
 ````````
 
-In Java, a typical program to loop over all items in a finite collection or iterator using mutable state would look like this:
+In Java, a typical program to loop over all items in an iterator using mutable state would look like this:
 
 .. code-block:: java
 
@@ -140,12 +140,22 @@ In Java, a typical program to loop over all items in a finite collection or iter
   var sum = 0;
   var count = 0;
 
-  incoming.forEachRemaining(s -> {
+  while (incoming.hasNext()) {
+    final var s = incoming.next();
     sum += s.length();
     count += 1;
   });
 
   final var result = (float) sum / count;
+
+Or more elegantly, using the ``forEachRemaining`` method, which combines ``hasNext`` and ``next`` and binds the next element to the argument ``s`` of the lambda (anonymous function):
+  
+.. code-block:: java
+
+  incoming.forEachRemaining(s -> {
+    sum += s.length();
+    count += 1;
+  });
 
 *What does this code compute?*
 
