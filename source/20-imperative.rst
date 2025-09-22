@@ -810,8 +810,8 @@ When working in a command-line environment, we can also use an interactive proce
 .. todo:: add suitable htop screenshot
 
 
-Making command-line applications testable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Making command-line applications testable again
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Recognizing the importance of *testability* as a static nonfunctional requirement, we'd like to make our command-line applications testable.
 While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
