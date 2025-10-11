@@ -36,7 +36,8 @@ extensions = [
     'sphinx.ext.mathjax',
 #    'sphinxcontrib.bibtex',
     'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'sphinx_reredirects'
 ]
 
 todo_include_todos = True
@@ -319,3 +320,10 @@ epub_copyright = u'2017-2019, Konstantin Läufer'
 
 # Allow duplicate toc entries.
 #epub_tocdup = True
+
+
+# -- Options for sphinx_reredirect (redirects from outside)
+
+redirects = {
+     "functional.html": "40-functional.html"
+}

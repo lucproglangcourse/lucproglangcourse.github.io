@@ -1,4 +1,5 @@
 sphinx
+sphinx-reredirects
 sphinx-rtd-theme
 sphinxcontrib-bibtex
 furo
