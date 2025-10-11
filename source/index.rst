@@ -79,7 +79,7 @@ Indices and tables
 AI Disclosure
 -------------
 
-.. note:: AI Disclosure: This text contains a mix of original writing and programming with strategic use of ChatGPT via intentional prompting. Some examples will be available in our repository with an appropriate build configurations and tests. We may also make some prompts and analyses available, similar to what my colleagues have done for their recent ongoing study of ChatGPT and Systems Programming. See https://doi.org/10.6084/m9.figshare.22257274.
+This text contains a mix of original writing and programming with strategic use of ChatGPT via intentional prompting. Some examples will be available in our repository with an appropriate build configurations and tests. We may also make some prompts and analyses available, similar to what my colleagues have done for their recent ongoing study of ChatGPT and Systems Programming. See https://doi.org/10.6084/m9.figshare.22257274.
 
 
 .. todo:: add sample projects, activities, tests, and (tiered) master list for presentations
