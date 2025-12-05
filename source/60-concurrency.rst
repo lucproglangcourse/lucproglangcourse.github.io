@@ -364,7 +364,9 @@ This gives rise to several conflicting design forces:
 - correctness/(thread-)safety
 - liveness/deadlock
 
-  - `dining philosophers example <https://gist.github.com/klaeufer/39d03158c4b766ce3c1c669f0d8ab930>`_
+  - `dining philosophers problem <https://en.wikipedia.org/wiki/Dining_philosophers_problem>`_
+  - `interactive demo <https://nlp.nd.edu/justin/dining/interactiveExplanation.php>`_
+  - `Scala example <https://gist.github.com/klaeufer/39d03158c4b766ce3c1c669f0d8ab930>`_
 
 - fairness/starvation
 - performance
