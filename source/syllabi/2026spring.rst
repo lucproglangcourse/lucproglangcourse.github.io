@@ -20,7 +20,7 @@ Section: 001 Spring 2026
 
 - *Office hours:*
 
-  - for very short questions/matters, right after class outside of Cuneo 324, no appointment required
+  - for very short questions/matters, right after class outside of IES 122, no appointment required
   - MWF 14:00-15:00 in Doyle Hall 307 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
   - TA office hours TBD (see MS Teams announcements)
 
@@ -95,7 +95,7 @@ Section: 001 Spring 2026
 
 - Important dates (tentative) for quizzes and tests:
 
-  - Week 2 - Mon 19 January: **NO CLASS (Labor Day)**
+  - Week 2 - Mon 19 January: **NO CLASS (MLK Day)**
   - Week 3 - Mon 26 January: quiz 0
   - Week 5 - Mon 9 February: quiz 1
   - Week 7 - Mon 23 February: test 1
