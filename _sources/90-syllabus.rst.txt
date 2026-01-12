@@ -8,10 +8,10 @@ Course: COMP 371/471 Programming Languages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Prerequisites: 
-  `COMP 264 <https://academics.cs.luc.edu/courses/comp264.html>`_
+  `COMP 264 <https://catalog.luc.edu/course-search/?details&srcdb=2025&code=COMP%20264>`_
   *and*
-  `COMP 272 <https://academics.cs.luc.edu/courses/comp272.html>`_ | `400C <https://academics.cs.luc.edu/courses/comp400c.html>`_
-- Official course description: `COMP 371 <https://academics.cs.luc.edu/courses/comp371.html>`_ | `COMP 471 <https://academics.cs.luc.edu/courses/comp471.html>`_
+  `COMP 272 <https://catalog.luc.edu/course-search/?details&srcdb=2025&code=COMP%20272>`_ | `400C <https://catalog.luc.edu/course-search/?details&srcdb=2025&code=COMP%20400C>`_
+- Official course description: `COMP 371 <https://catalog.luc.edu/course-search/?details&srcdb=2025&code=COMP%20371>`_ | `COMP 471 <https://catalog.luc.edu/course-search/?details&srcdb=2025&code=COMP%20471>`_
 
 
 .. include:: syllabi/2026spring.rst
