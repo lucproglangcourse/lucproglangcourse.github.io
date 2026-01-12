@@ -21,8 +21,8 @@ Section: 001 Fall 2026
 - *Office hours:*
 
   - for very short questions/matters, right after class outside of Cuneo 324, no appointment required
-  - MWF 14:40-15:40 in Doyle Hall 203 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
-  - TA office hours TBD
+  - MWF 14:00-15:00 in Doyle Hall 307 or online (`by appointment via Calendly <https://calendly.com/laufer>`_)
+  - TA office hours TBD (see MS Teams announcements)
 
 - *Required materials:*
 
