@@ -1,5 +1,5 @@
-Section: 001 Fall 2026
-~~~~~~~~~~~~~~~~~~~~~~
+Section: 001 Spring 2026
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 - *General format:*
 
