@@ -39,7 +39,7 @@ It is not suitable for working on full-fledged Scala projects, however.
 To launch, visit https://scastie.scala-lang.org.
 Be sure to
 
-- choose target Scala 3 and Scala version 3.3.0
+- choose target Scala 3 and Scala version 3.3.7 LTS
 - add the following `scalacOptions` under build settings::
 
     "-Yexplicit-nulls",
@@ -97,7 +97,7 @@ Cons
 Required packages
 `````````````````
 
-- `Java 21 and/or newer JDK <http://www.oracle.com/technetwork/java/javase/downloads/>`_
+- `Java 21 or newer JDK (LTS release recommended) <http://www.oracle.com/technetwork/java/javase/downloads/>`_
 - `Git <http://git-scm.com/>`_ distributed version control system (usually preinstalled on Mac OS and Linux)
 
   - recommended installation option on Windows: *Use Git and optional UNIX tools from the Windows Command Prompt*
