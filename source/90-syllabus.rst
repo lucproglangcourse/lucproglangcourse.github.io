@@ -14,16 +14,8 @@ Course: COMP 371/471 Programming Languages
 - Official course description: `COMP 371 <https://academics.cs.luc.edu/courses/comp371.html>`_ | `COMP 471 <https://academics.cs.luc.edu/courses/comp471.html>`_
 
 
+.. include:: syllabi/2026spring.rst
 .. include:: syllabi/2025Fall.rst
-.. include:: syllabi/2024Fall.rst 
-.. include:: syllabi/2023Fall.rst 
-.. include:: syllabi/2022Fall.rst 
-.. include:: syllabi/2021Fall.rst 
-.. include:: syllabi/2020Fall.rst
-.. include:: syllabi/2019Fall.rst
-.. include:: syllabi/2018Fall.rst
-.. include:: syllabi/2018spring.rst
-.. include:: syllabi/2017spring.rst
 
 
 Detailed Course Outline
