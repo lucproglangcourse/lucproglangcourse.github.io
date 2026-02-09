@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="4. The Object-Oriented Programming Paradigm" href="30-objectoriented.html"><link rel="prev" title="2. Context and Background" href="10-background.html">
 
     <!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
-        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26sp.6</title>
+        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26sp.7</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -161,7 +161,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.6</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.7</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -182,7 +182,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.6</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.7</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -332,13 +332,13 @@ through a sequence of statements that manipulate named mutable state.</p>
 <tr class="row-even"><td><p>Branching</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">then</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0:\n</span>&#160;&#160;&#160; <span class="pre">...\nelse:\n</span>&#160;&#160;&#160; <span class="pre">...</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Iteration</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(int</span> <span class="pre">i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(i</span> <span class="pre">&lt;-</span> <span class="pre">0</span> <span class="pre">until</span> <span class="pre">n)</span> <span class="pre">{...}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">&lt;-</span> <span class="pre">0</span> <span class="pre">until</span> <span class="pre">n</span> <span class="pre">do</span> <span class="pre">...</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(n):</span> <span class="pre">...</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Procedure / method</p></td>
@@ -368,7 +368,7 @@ through a sequence of statements that manipulate named mutable state.</p>
 <tr class="row-even"><td><p>Scope</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">val</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">}</span></code></p></td>
+<td><p>Indentation-based block</p></td>
 <td><p>Indentation-based block</p></td>
 </tr>
 <tr class="row-odd"><td><p>Side effect</p></td>
@@ -935,7 +935,18 @@ By contrast, if the sawtooth pattern were sloping upward over time, space comple
 <p>Recognizing the importance of <em>testability</em> as a static nonfunctional requirement, we’d like to make our command-line applications testable.
 While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.</p>
 <p>A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
-In particular, how can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
+In the following example, updating the queue is part of the core logic of the application, but it is tangled with the input/output code that reads from the input and prints to the output:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">input</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">word</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">word</span><span class="p">);</span><span class="w"> </span><span class="c1">// the oldest item automatically gets evicted</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// terminate on I/O error such as SIGPIPE</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">checkError</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Goal:</strong> How can we make our code testable <em>without</em> sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?</p>
 <p>The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">https://github.com/lucproglangcourse/consoleapp-java</a></p>
@@ -1051,7 +1062,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=a4e02b6a"></script>
+    <script src="_static/documentation_options.js?v=0098af73"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
