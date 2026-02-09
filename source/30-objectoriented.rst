@@ -125,34 +125,31 @@ In particular, we defined an ``Observer`` for decoupling the applications "busin
 
 .. code-block:: java
 
-  interface OutputObserver extends Predicate<Queue<String>> {}
+  interface OutputObserver extends Consumer<Queue<String>> {}
 
-A `predicate <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Predicate.html>`_ (in Java) is an object with a single ``test`` method that takes one argument and returns a boolean result:
+A `consumer <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Consumer.html>`_ (in Java) is an object with a single ``accept`` method that takes one argument and performs an action on it without returning a value:
 
 .. code-block:: java
 
   @FunctionalInterface
-  public interface Predicate<T> {
-    boolean test(T t);
+  public interface Consumer<T> {
+    boolean accept(T t);
   }
 
-The only reason to use this instead of not returning anything (return type ``void``) is to give the caller access to possible I/O errors, upon which we might want to exit the application.
+Assuming that we have instance variables ``input`` of type ``Iterator<String>`` representing the input stream, ``queue`` of type ``Queue<String>`` representing the sliding queue, and output of type ``OutputObserver`` representing the output behavior, we can now factor the main logic of our application out to a ``process`` method without arguments.
 
 .. code-block:: java
 
-  public void process(final Stream<String> input, final OutputObserver output) {
-    input
-        .takeWhile(
-            word -> {
-              queue.add(word); // the oldest item automatically gets evicted
-              return output.test(queue);
-            })
-        .count(); // forces evaluation of the entire stream
+  public void process() {
+    input.forEachRemaining(word -> {
+      queue.add(word); // the oldest item automatically gets evicted
+      output.accept(queue); // send updated queue to output handler
+    });
   }
 
-By having factored the application's main logic out to a method with input and output arguments, we can now invoke this logic in two different scenarios:
+By having factored the application's main logic out in this way, we can now invoke this logic in two different scenarios:
 
-- For production use as a main program, we pass a stream representing stdin and an observer instance whose test method brings back the original behavior of printing the argument.
+- For production use as a main program, we pass a stream representing stdin and an observer instance whose ``accept`` method brings back the original behavior of printing the argument.
 
   .. code-block:: java
 
@@ -160,7 +157,9 @@ By having factored the application's main logic out to a method with input and o
     value -> {
       System.out.println(value);
       // terminate on I/O error such as SIGPIPE
-      return !System.out.checkError();
+      if (System.out.checkError()) {
+        System.exit(1);
+      }
     };
 
 - For testing, we pass a stream representing our hardcoded test data and an observer instance whose test method stores the argument in a data structure, which we can inspect to verify the correct sequence of output values.
@@ -172,10 +171,9 @@ By having factored the application's main logic out to a method with input and o
       final List<Queue<String>> result = new ArrayList<>();
 
       @Override
-      public boolean test(final Queue<String> value) {
+      public void accept(final Queue<String> value) {
         final var snapshot = new LinkedList<>(value);
         result.add(snapshot);
-        return true;
       }
     }
 

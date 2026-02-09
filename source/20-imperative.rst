@@ -74,12 +74,12 @@ Examples Across Languages
    * - Branching
      - ``if (x > 0) {...} else {...}``
      - ``if (x > 0) {...} else {...}``
-     - ``if (x > 0) ... else ...``
+     - ``if x > 0 then ... else ...``
      - ``if x > 0:\n    ...\nelse:\n    ...``
    * - Iteration
      - ``for (i=0;i<n;i++) {...}``
      - ``for (int i=0;i<n;i++) {...}``
-     - ``for (i <- 0 until n) {...}``
+     - ``for i <- 0 until n do ...``
      - ``for i in range(n): ...``
    * - Procedure / method
      - ``int f(int x){ return x+1; }``
@@ -104,7 +104,7 @@ Examples Across Languages
    * - Scope
      - ``{ int y = 0; }``
      - ``{ int y = 0; }``
-     - ``{ val y = 0 }``
+     - Indentation-based block
      - Indentation-based block
    * - Side effect
      - ``x++``
@@ -817,7 +817,20 @@ Recognizing the importance of *testability* as a static nonfunctional requiremen
 While we could use other command-line tools to set up automatic testing of the end-to-end functionality of our applications, we would also like to unit-test the logical functionality of our applications in isolation from input/output code.
 
 A key barrier to achieving this goal is the tangling (interweaving) of logical functionality and input/output in our code, i.e., there is a lack of separation of these two concerns.
-In particular, how can we make our code testable *without* sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?
+In the following example, updating the queue is part of the core logic of the application, but it is tangled with the input/output code that reads from the input and prints to the output:
+
+.. code-block:: java
+
+  input.forEachRemaining(word -> {
+    queue.add(word); // the oldest item automatically gets evicted
+    System.out.println(queue);
+    // terminate on I/O error such as SIGPIPE
+    if (System.out.checkError()) {
+      System.exit(1);
+    }
+  });
+
+**Goal:** How can we make our code testable *without* sacrificing the important dynamic nonfunctional requirement of a constant-space memory footprint?
 
 The following example goes through several evolutions of a simple example to illustrate the design tradeoffs involved in reconciling these conflicting forces, using suitable software design patterns.
 
