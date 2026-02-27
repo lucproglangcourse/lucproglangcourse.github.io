@@ -555,11 +555,11 @@ To look at the actual Scala library implementations of these functions, first fi
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
 Here are some examples:
 
-- `foreach <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L375>`_
+- `foreach <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L386>`_
 - `foldLeft <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L118>`_
-- `reverse <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L383>`_
-- `foldRight <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L393>`_
-- `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269>`_
+- `reverse <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L394>`_
+- `foldRight <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L404>`_
+- `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L280>`_
 - `length <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
 
