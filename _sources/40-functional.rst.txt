@@ -185,11 +185,9 @@ In Scala, we can use an *immutable* equivalent using ``foldLeft``:
 
 .. code-block:: scala
 
-  val (sum, count) = incoming.foldLeft {
-    (0, 0)
-  } { case ((sum, count), next) =>
-    (sum + next.length, count + 1)
-  }
+  val (sum, count) = incoming.foldLeft(0, 0):
+    case ((sum, count), next) =>
+      (sum + next.length, count + 1)
   val result = sum.toFloat / count
 
 As noted previously, you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
@@ -220,15 +218,14 @@ In Scala, we can use an *immutable* equivalent using ``Iterator`` with ``continu
 
 .. code-block:: scala
 
-  Iterator continually {
+  Iterator continually:
     print("enter next expression: ")
     StdIn.readLine()
-  } takeWhile { line =>
+  .takeWhile: line =>
     line != null
-  } foreach { line =>
+  .foreach: line =>
     processExpr(line)
-  }
-
+  
 
 Other important operations on collections
 `````````````````````````````````````````
@@ -254,11 +251,10 @@ The following example illustrates the difference between ``map`` and ``flatMap``
    scala> val resultNested = scala.collection.mutable.ArrayBuffer.empty[Array[String]]
    resultNested: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer()
 
-   scala> res0.foreach { line =>
+   scala> res0.foreach: line =>
 	|   val words = line.split("\\s+")
 	|   resultNested += words
-	| }
-
+	
    scala> resultNested
    res2: scala.collection.mutable.ArrayBuffer[Array[String]] = ArrayBuffer(Array(hello, world, what, up), Array(hola, mundo), Array(hallo, welt))
 
@@ -270,12 +266,10 @@ The following example illustrates the difference between ``map`` and ``flatMap``
    scala> val resultFlat = scala.collection.mutable.ArrayBuffer.empty[String]
    resultFlat: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer()
 
-   scala> res0.foreach { line =>
+   scala> res0.foreach: line =>
 	|   val words = line.split("\\s+")
-	|   words.foreach { word =>
+	|   words.foreach: word =>
 	|     resultFlat += word
-	|   }
-	| }
 
    scala> resultFlat
    res4: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(hello, world, what, up, hola, mundo, hallo, welt)
@@ -314,21 +308,21 @@ Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orEls
 
 .. code-block:: scala
 
-   val authorizeRequest = Try {
+   val authorizeRequest = Try:
       logger.debug("looking for access token in property file")
       ...
       logger.debug("found access token")
       val authHeader = KeyAuthorization -> s"Bearer $accessToken"
       (request: WSRequest) => request.addHttpHeaders(authHeader)
-    } orElse Try {
+    .orElse 
+     Try:
       logger.debug("looking for API key in environment")
       val apiKey = sys.env("API_KEY")
       logger.debug("found API key")
       (request: WSRequest) => request.addQueryStringParameters("key" -> apiKey)
-    } getOrElse {
+    .getOrElse:
       logger.debug("no authorization information found, exiting")
       sys.exit(401)
-    }
 
 
 The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
@@ -485,9 +479,8 @@ Equivalently, we can use the ``foreach`` method instead of the so-called for com
 
     case Group(shapes*) =>
       var sum = 1
-      shapes.foreach { c =>
+      shapes.foreach: c =>
         sum += countGroup(c)
-      }
       sum
 
 Now...drum roll...we have an opportunity to convert this code into functional, applicative, immutable style:
@@ -495,7 +488,7 @@ Now...drum roll...we have an opportunity to convert this code into functional, a
 .. code-block:: scala
 
     case Group(shapes*) =>
-      1 + shapes.map { c => countGroup(c) } .sum
+      1 + shapes.map(c => countGroup(c)).sum
 
 where map transforms each item in a collection with the result of applying the given function to the item and sum adds all the items in a collection.
 
@@ -555,11 +548,11 @@ To look at the actual Scala library implementations of these functions, first fi
 For performance reasons, these professional implementations tend to appear more complex than we might expect.
 Here are some examples:
 
-- `foreach <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L375>`_
+- `foreach <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L386>`_
 - `foldLeft <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L118>`_
-- `reverse <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L383>`_
-- `foldRight <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L393>`_
-- `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L269>`_
+- `reverse <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L394>`_
+- `foldRight <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L404>`_
+- `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L280>`_
 - `length <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
 
