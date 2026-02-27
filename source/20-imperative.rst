@@ -350,7 +350,7 @@ This is particularly effective for scripts and worksheets:
 .. code-block:: scala
 
   val l = List(1, 2, 3)
-  assert { l.contains(2) }
+  assert(l.contains(2))
 
 The following testing libraries/frameworks work well with Scala.
 
