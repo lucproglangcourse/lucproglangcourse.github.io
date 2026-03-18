@@ -403,7 +403,7 @@ Several specific concurrency mechanisms can come as anguage constructs, patterns
   - `example: concurrent web requests <https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97>`_
 
 - `actors <https://en.wikipedia.org/wiki/Actor_model>`_
-- `reactive streams <http://www.reactive-streams.org>`_ including `Akka streams <http://doc.akka.io/docs/akka/2.4.4/scala/stream>`_
+- `reactive streams <http://www.reactive-streams.org>`_ including `Akka streams <https://doc.akka.io/libraries/akka-core/current/stream/?language=scala>`_
 - `software transactional memory <https://en.wikipedia.org/wiki/Software_transactional_memory>`_
 
 
