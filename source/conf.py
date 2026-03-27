@@ -37,7 +37,8 @@ extensions = [
 #    'sphinxcontrib.bibtex',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinx_reredirects'
+    'sphinx_reredirects',
+    'sphinx_copybutton'
 ]
 
 todo_include_todos = True
