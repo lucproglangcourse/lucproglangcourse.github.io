@@ -102,7 +102,6 @@ Section: 001 Spring 2026
   - Week 8 - Mon-Fri 2-6 March: **NO CLASS (spring break)**
   - Week 10 - Mon 16 March: quiz 2
   - Week 11 - Mon 23 March: *last day to withdraw with W instead of WF*
-  - Week 11 - Mon-Fri 23-27 March: **ONLINE CLASS (Zoom) - details TBA**
   - Week 12 - Fri 3 April: **NO CLASS (Good Friday)**
   - Week 13 - Mon 6 April: **NO CLASS (Easter Monday)**
   - Week 13 - Wed 8 April: test 2
