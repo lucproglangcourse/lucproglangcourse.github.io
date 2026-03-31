@@ -74,6 +74,7 @@ Syntax analysis
 
 - context-free grammars, EBNF, parsing (Mogensen ch. 3)
 - `parser generator <https://en.wikipedia.org/wiki/Compiler-compiler>`_
+- `JavaCC <https://javacc.github.io/javacc/>`_
 - `scala-bison <https://github.com/djspiewak/scala-bison>`_
 
 
