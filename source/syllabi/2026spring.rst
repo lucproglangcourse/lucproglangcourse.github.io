@@ -105,7 +105,8 @@ Section: 001 Spring 2026
   - Week 12 - Fri 3 April: **NO CLASS (Good Friday)**
   - Week 13 - Mon 6 April: **NO CLASS (Easter Monday)**
   - Week 13 - Wed 8 April: test 2
-  - Week 16 (finals week) - *quiz 3 (take home) - NO IN-CLASS FINAL EXAM*
+  - Week 15 - Fri 24 April: quiz 3
+  - Week 16 (finals week): **NO FINAL EXAM OR CLASS SESSION**
 
 - *Recording of class meetings:* In this class, software may be used to record live class sessions. As a student in this class, your participation in live class discussions will be recorded. These recordings may be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
 
