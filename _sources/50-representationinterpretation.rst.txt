@@ -66,8 +66,8 @@ Lexical analysis
 ````````````````
 
 - regular expressions, NFA, DFA (Mogensen ch. 2)
-- `regular expressions <http://algs4.cs.princeton.edu/lectures/54RegularExpressions.pdf>`_
-- `regular expressions in Java <http://java.ociweb.com/javasig/knowledgebase/2005-05/JavaRegex.pdf>`_
+- `regular expressions <https://learning.oreilly.com/library/view/an-introduction-to/9781492082569>`_
+- `regular expressions in Java <https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/regex/Pattern.html>`_
 
 Syntax analysis
 ```````````````
