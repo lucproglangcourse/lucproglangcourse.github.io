@@ -517,6 +517,27 @@ We can read the standard input as lines using this iterator:
 
 This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this `concise reference <https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples>`_.)
 
+
+The role of EOF (end of file)
+`````````````````````````````
+
+When reading from a file, the iterator naturally exhausts itself when the end of the file is reached.
+When reading from an interactive terminal, the user signals end-of-input by pressing **Ctrl-D** (Unix/macOS) or **Ctrl-Z** (Windows), which sends an *EOF* (end-of-file) marker to the standard input stream.
+This is the standard Unix convention for signaling "I am done providing input."
+
+In batch pipelines, EOF is sent automatically when the upstream data source closes its output.
+For example, when you run:
+
+.. code-block:: bash
+
+  $ echo -e "hello\nworld" | myapp
+
+the shell closes the pipe—and thus sends EOF—as soon as ``echo`` finishes writing.
+Your Scala app's ``getLines()`` iterator will then return ``false`` from ``hasNext`` and the reading loop terminates cleanly.
+
+A common mistake is to assume that reading "nothing" means EOF; in fact, an empty line is still a valid line (an empty string), and only the exhaustion of the iterator signals EOF.
+
+
 To break this iterator of lines down into an iterator of words, we can use this recipe:
 
 .. code-block:: scala
@@ -664,9 +685,33 @@ Many REPLs, including the Python and Scala ones, allow the user to edit their in
 
 To add this capability to a Java- or Scala-based command-line app, we can use the `JLine library <https://github.com/jline/jline3>`_, which is the Java equivalent of the `GNU Readline library <https://en.wikipedia.org/wiki/GNU_Readline>`_.
 If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
-JLine has excellent documentation; please look there for examples.
 
-.. todo:: Determine whether JLine automatically suppresses prompts when redirecting stdin.
+To use JLine, add it to your ``build.sbt``::
+
+  "org.jline" % "jline" % "4.0.9"
+
+Here is a minimal example that uses JLine to read lines with an editable prompt in Scala:
+
+.. code-block:: scala
+
+  import org.jline.reader.LineReaderBuilder
+  import org.jline.terminal.TerminalBuilder
+
+  import scala.util.Success
+  import scala.util.Try
+
+  val terminal = TerminalBuilder.builder().system(true).build()
+  val reader = LineReaderBuilder.builder().terminal(terminal).build()
+
+  Iterator.continually:
+    Try(reader.readLine("Whatcha got? "))
+  .takeWhile:
+    line => line.isSuccess
+  .foreach:
+    case Success(line) => println(s"You said: $line")
+
+The ``Try`` wrapper around ``readLine`` ensures that an ``EndOfFileException`` (thrown when the user presses Ctrl-D / EOF) causes the iterator to stop cleanly via ``takeWhile``.
+JLine automatically suppresses the prompt when stdin is redirected from a file or pipe, so this code works correctly in both interactive and batch modes.
 
 
 Finding good third-party libraries
@@ -750,6 +795,43 @@ To use log4s minimally, the following steps are required:
   .. code-block:: bash
 
     [main] DEBUG edu.luc.cs.cs371.topwords.TopWords - howMany = 10 minLength = 6 lastNWords = 1000
+
+
+Reporting progress in console applications
+``````````````````````````````````````````
+
+For long-running console applications—such as those processing large files or performing iterative computations—it is useful to report progress to the user so they know the application is alive and can estimate how much longer it will take.
+
+The simplest form of progress reporting is to print periodic updates to ``stderr``:
+
+.. code-block:: scala
+
+  var count = 0
+  for item <- items do
+    count += 1
+    if count % 1000 == 0 then System.err.println(s"Processed $count items so far...")
+    // process item ...
+
+For a more polished, terminal-aware progress bar, the `progressbar <https://github.com/ctongfei/progressbar>`_ library provides a convenient solution.
+It displays a live-updating progress bar on the terminal but suppresses it automatically when output is redirected (non-interactive mode).
+
+Add the dependency to your ``build.sbt``::
+
+  "me.tongfei" % "progressbar" % "0.10.1"
+
+Then use it as follows:
+
+.. code-block:: scala
+
+  import me.tongfei.progressbar.ProgressBar
+
+  val pb = ProgressBar("Processing", items.size.toLong)
+  for item <- items do
+    pb.step()
+    // process item ...
+  pb.close()
+
+An example of progress reporting for a Monte Carlo simulation (where the total number of steps is known) can be found `here <https://github.com/LoyolaChicagoBooks/introds-scala-examples/blob/main/montecarlo-scala/GenerateDarts.scala#L28>`_.
 
 
 .. _subsecConstantSpace:

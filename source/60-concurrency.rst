@@ -252,6 +252,53 @@ These are some key concurrency considerations:
 - physical (parallelism) versus logical concurrency
 - speedup and when to expect it
 - data parallelism versus task parallelism
+- fine-grained versus coarse-grained concurrency
+
+
+Fine-grained vs. Coarse-grained Concurrency
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A useful organizing principle for concurrent systems—discussed by C.A.R. Hoare in the context of communicating sequential processes—is the granularity of the concurrent activities:
+
+**Fine-grained concurrency**
+  Multiple *threads* within the same process that communicate via *shared memory*.
+  Threads are lightweight (low overhead to create and switch), but coordinating shared memory requires careful synchronization (locks, mutexes, atomic variables) to avoid race conditions and deadlocks.
+
+  Typical use cases: parallel computation over in-memory data structures, GUI event loops, concurrent server request handling within a single JVM process.
+
+**Coarse-grained concurrency**
+  Multiple *processes*, each with its own private address space, that communicate via *inter-process communication (IPC)* mechanisms or shared external resources (databases, message queues, file systems, network sockets).
+  Processes are more isolated and fault-tolerant, but coordination is more expensive.
+
+  Typical use cases: microservices, shell pipelines, distributed systems, producer-consumer architectures built on message queues.
+
+.. list-table:: Fine-grained vs. Coarse-grained Concurrency
+   :header-rows: 1
+   :widths: 25 35 35
+
+   * -
+     - Fine-grained
+     - Coarse-grained
+   * - Unit of concurrency
+     - Thread
+     - Process
+   * - Communication
+     - Shared memory
+     - IPC, message queues, shared external resources
+   * - Isolation
+     - Low (shared address space)
+     - High (separate address spaces)
+   * - Overhead
+     - Low
+     - Higher
+   * - Failure isolation
+     - Weak (a crash affects the whole process)
+     - Strong (a crashed process does not affect others)
+   * - Scala/JVM examples
+     - ``Thread``, ``Future``, ``synchronized``
+     - shell pipelines, Akka remote actors, microservices
+
+In practice, most systems combine both granularities: a microservice (coarse-grained) may itself use a thread pool internally (fine-grained).
 
 
 Activity terminology and concerns
