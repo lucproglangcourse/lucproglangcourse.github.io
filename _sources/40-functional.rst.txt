@@ -41,8 +41,44 @@ Recursion
 Pattern Matching
 `````````````````
 
-- Provides a declarative way to deconstruct data structures and control flow.
-- Enables concise handling of algebraic data types.
+Pattern matching is a central feature of functional programming languages.
+It provides a concise, declarative way to inspect the *shape* of a value and simultaneously *bind* its components to names:
+
+.. code-block:: scala
+
+  val result: Option[Int] = Some(42)
+
+  result match
+    case Some(n) => println(s"got $n")
+    case None    => println("nothing")
+
+Unlike a sequence of ``if``-``else`` checks, pattern matching is:
+
+- **Exhaustiveness-checked**: the compiler warns if you miss a case (for sealed types).
+- **Structurally expressive**: you match and destructure in one step.
+- **Composable**: patterns can be nested.
+
+.. note:: **Partial functions and ``collect``**
+
+   A *partial function* of type ``PartialFunction[A, B]`` is a function that is only defined for *some* inputs of type ``A``.
+   In Scala, a ``match`` expression with fewer cases than possible inputs is, in effect, a partial function.
+
+   The ``collect`` method on collections applies a partial function and keeps only the results where it is defined:
+
+   .. code-block:: scala
+
+     val mixed: List[Any] = List(1, "hello", 2, "world", 3)
+
+     val ints: List[Int] = mixed.collect:
+       case n: Int => n
+     // List(1, 2, 3)
+
+     val doubled: List[Int] = mixed.collect:
+       case n: Int if n > 1 => n * 2
+     // List(4, 6)
+
+   ``collect`` is equivalent to ``filter`` followed by ``map``, but expressed as a single partial-function pattern.
+   Using partial functions with ``collect``, ``orElse``, and ``andThen`` gives a powerful compositional algebra for data transformation.
 
 Lazy Evaluation
 ````````````````
@@ -140,6 +176,31 @@ Many of these, especially collection types and certain utility types, are *algeb
   - https://www.scala-lang.org/api/current/scala/collection/Map.html
 
 - ``Option`` / ``Either``
+
+  .. note:: **``Option[A]``: the canonical way to represent an optional value**
+
+     ``Option[A]`` is one of the most important and pervasive types in Scala.
+     It represents a value that may or may not be present: ``Some(value)`` when it exists, ``None`` when it doesn't.
+     Use ``Option`` to eliminate ``null`` references and make the possible absence of a value *explicit in the type*.
+
+     Common uses:
+
+     - Return type of ``find``, ``get``, ``headOption``, ``lift``, etc.
+     - Wrapping potentially-absent configuration values or results of lookups.
+
+     Key operations: ``map``, ``flatMap``, ``getOrElse``, ``orElse``, ``fold``, ``filter``, ``foreach``, ``isDefined``, ``isEmpty``.
+
+     .. code-block:: scala
+
+       val scores: Map[String, Int] = Map("Alice" -> 95, "Bob" -> 82)
+
+       scores.get("Alice")          // Some(95)
+       scores.get("Carol")          // None
+       scores.get("Alice").map(_ * 2)        // Some(190)
+       scores.get("Carol").getOrElse(0)      // 0
+       scores.get("Carol").orElse(Some(-1))  // Some(-1)
+
+     ``Option`` is the simplest example of a *reified optional computation* and serves as an introduction to the wider family of effect types (``Try``, ``Either``, ``Future``).
 
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/option.sc
   - https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/either.sc
@@ -278,8 +339,141 @@ The following example illustrates the difference between ``map`` and ``flatMap``
 Note also that all of these are methods but look like control structures because of Scala's syntax, which allows you to omit the dot in certain cases of method selection and to use curly braces instead of round parentheses to delimit your argument list.
 
 
+Collection methods with a meaningful product type
+``````````````````````````````````````````````````
+
+Using a *product type* (case class) as the element type makes collection method examples more realistic and pedagogically compelling.
+Consider a ``Person`` domain model:
+
+.. code-block:: scala
+
+  case class Person(name: String, age: Int, city: String)
+
+  val people = List(
+    Person("Alice", 30, "Chicago"),
+    Person("Bob",   25, "Chicago"),
+    Person("Carol", 35, "New York"),
+    Person("Dave",  28, "Chicago"),
+    Person("Eve",   22, "New York"),
+  )
+
+**Projection** — extract a single field (analogous to SQL ``SELECT``):
+
+.. code-block:: scala
+
+  val names: List[String] = people.map(_.name)
+  // List(Alice, Bob, Carol, Dave, Eve)
+
+**Selection / filtering** — keep only records matching a predicate (analogous to SQL ``WHERE``):
+
+.. code-block:: scala
+
+  val chicagoans: List[Person] = people.filter(_.city == "Chicago")
+  // List(Person(Alice,30,Chicago), Person(Bob,25,Chicago), Person(Dave,28,Chicago))
+
+**Aggregation** — compute a summary value over a collection (analogous to SQL aggregate functions):
+
+.. code-block:: scala
+
+  val totalAge: Int    = people.map(_.age).sum               // 140
+  val averageAge: Double = totalAge.toDouble / people.size   // 28.0
+  val oldest: Person   = people.maxBy(_.age)                 // Person(Carol,35,New York)
+
+**Grouping** — partition records by a key (analogous to SQL ``GROUP BY``):
+
+.. code-block:: scala
+
+  val byCity: Map[String, List[Person]] = people.groupBy(_.city)
+  // Map(Chicago -> List(Alice, Bob, Dave), New York -> List(Carol, Eve))
+
+  val avgAgeByCity: Map[String, Double] =
+    byCity.map: (city, ps) =>
+      city -> ps.map(_.age).sum.toDouble / ps.size
+  // Map(Chicago -> 27.67, New York -> 28.5)
+
+These operations compose cleanly: ``filter`` followed by ``map`` is *selection then projection*; ``groupBy`` followed by ``map`` is *grouping then aggregation*—familiar ideas from relational databases, expressed as functional pipeline steps.
+Note also the connection to the `scalaworkshop tutorial <https://scalaworkshop.cs.luc.edu/>`_ for further exercises.
+
+
+``foldLeft`` vs. ``scanLeft``: accumulating vs. recording each step
+````````````````````````````````````````````````````````````````````
+
+Both ``foldLeft`` and ``scanLeft`` traverse a collection from left to right, combining each element with an accumulator.
+The key difference is:
+
+- ``foldLeft`` returns only the *final* accumulated value.
+- ``scanLeft`` returns a collection of *all intermediate* accumulated values, including the initial one.
+
+.. code-block:: scala
+
+  val nums = List(1, 2, 3, 4, 5)
+
+  // foldLeft: total sum — returns a single Int
+  val total: Int = nums.foldLeft(0)(_ + _)
+  // 15
+
+  // scanLeft: running totals — returns List[Int] with one more element than the input
+  val running: List[Int] = nums.scanLeft(0)(_ + _)
+  // List(0, 1, 3, 6, 10, 15)
+
+The imperative equivalent of ``scanLeft`` is a loop that *records* the accumulator at each step:
+
+.. code-block:: scala
+
+  val running = scala.collection.mutable.ArrayBuffer(0)
+  var acc = 0
+  for n <- nums do
+    acc += n
+    running += acc
+  // ArrayBuffer(0, 1, 3, 6, 10, 15)
+
+``scanLeft`` is useful whenever you need a *history* of accumulated values, such as computing a running balance, cumulative word counts, or prefix sums for range queries.
+
+
+Reification: making concepts first-class values
+`````````````````````````````````````````````````
+
+.. note:: **Definition (Reification)**
+
+   *Reification* is the process of making an abstract concept *concrete* and *explicit* by representing it as a first-class value in the programming language.
+   Something is *reified* when it can be stored in a variable, passed to a function, returned from a function, and manipulated like any other value.
+
+Reification is a powerful idea that appears throughout programming language design. One of the clearest examples is the treatment of *failure* and *exceptions*:
+
+- In imperative Java, an exception is *thrown* and *caught* via control flow (``throw`` / ``try``-``catch``). The exception is not a value—it cannot be stored in a variable or passed around as data.
+- In functional Scala, the ``Try[A]`` type *reifies* the possibility of failure as a first-class value: a computation that either succeeds with a value of type ``A`` (``Success(value)``) or fails with a ``Throwable`` (``Failure(exception)``).
+
+.. code-block:: scala
+
+  // Without reification: control-flow-based
+  val result: Int =
+    try Integer.parseInt(input)
+    catch case _: NumberFormatException => 0
+
+  // With reification: failure as a value
+  import scala.util.{ Try, Success, Failure }
+  val result: Try[Int] = Try(Integer.parseInt(input))
+  result match
+    case Success(n)  => println(s"parsed: $n")
+    case Failure(ex) => println(s"error: ${ex.getMessage}")
+
+Because ``Try[A]`` is a value, we can:
+
+- Store it in a collection, return it from a method, or pass it to a higher-order function.
+- Chain computations with ``map``, ``flatMap``, ``recover``, and ``orElse`` (see "Dealing with successive failures" below).
+- Reason about it equationally, just like any other data.
+
+The same principle applies to other *effect types*:
+
+- ``Option[A]`` reifies the possibility that a value may be absent.
+- ``Either[E, A]`` reifies the choice between two outcomes (often an error and a success).
+- ``Future[A]`` reifies the possibility that a computation will complete asynchronously.
+
+Reification is a recurring theme as programming languages gain expressive power: things that were formerly implicit (side effects, partiality, asynchrony) become explicit values that can be composed and reasoned about.
+
+
 Dealing with successive failures
-````````````````````````````````
+`````````````````````````````````
 
 Trying successive choices until either one succeeds or there is none left and we have to give up.
 Nested ``try``-``catch`` statements are often used to achieve this:
@@ -328,7 +522,38 @@ Immutable equivalent using successive ``Try`` blocks, flat-chained using ``orEls
 The more familiar one becomes with the various predefined building blocks, the more quickly and productively one can put together at least an initial solution to a problem.
 Earlier versions of the `process tree <https://github.com/lucproglangcourse/processtree-scala>`_ example illustrates this style, while later versions reflect greater emphasis on code quality, especially testability and avoidance of code duplication.
 
-.. todo:: ``for`` with blocks for embedding stateful steps such as logging
+
+Using ``for`` comprehensions with stateful steps
+`````````````````````````````````````````````````
+
+``for`` comprehensions are syntactic sugar over ``flatMap`` / ``map`` / ``foreach``, making sequences of transformations readable.
+They also work nicely when you want to embed *stateful side-effects* (like logging) inside an otherwise functional pipeline.
+
+For example, suppose we want to attempt two ways to obtain a configuration value, logging each attempt, and only fail if both options are exhausted:
+
+.. code-block:: scala
+
+  val result: Option[String] =
+    for
+      _      <- Some(logger.debug("trying primary source"))
+      value  <- primarySource.get("key")
+      _      <- Some(logger.debug(s"found value: $value"))
+    yield value
+
+The ``_  <- Some(...)`` idiom embeds a side-effect (here, logging) as a step inside the ``for`` comprehension: wrapping the effectful call in ``Some(...)`` gives it the correct type for the generator, while binding to ``_`` discards the unit result.
+
+Similarly, ``for`` comprehensions over ``Try`` allow you to sequence fallible steps cleanly:
+
+.. code-block:: scala
+
+  import scala.util.Try
+
+  val result: Try[Int] =
+    for
+      raw    <- Try(System.getenv("PORT"))
+      parsed <- Try(raw.toInt)
+    yield parsed
+
 
 
 Challenges
@@ -345,6 +570,93 @@ Some hints:
 - Look carefully at the respective domains and codomains (argument and result types). Can they fit?
 - Which is more general, ``map`` or ``fold``?
 
+
+
+Fibonacci and Sieve of Eratosthenes as functional examples
+``````````````````````````````````````````````````````````
+
+These two classic algorithms illustrate the progression from imperative to functional style and the power of lazy, corecursive streams.
+
+**Fibonacci numbers**
+
+The imperative version uses a simple loop with mutable state:
+
+.. code-block:: scala
+
+  def fibImperative(k: Int): BigInt =
+    var (m, n) = (BigInt(0), BigInt(1))
+    for _ <- 0 until k do
+      val tmp = m
+      m = n
+      n = tmp + n
+    m
+
+A naive recursive version is elegant but exponential in time:
+
+.. code-block:: scala
+
+  def fibNaive(k: Int): BigInt =
+    if k <= 0 then 0
+    else if k == 1 then 1
+    else fibNaive(k - 1) + fibNaive(k - 2)
+
+A tail-recursive (accumulator) version is efficient but does not memoize:
+
+.. code-block:: scala
+
+  @scala.annotation.tailrec
+  def fib(k: Int, i: Int = 0, m: BigInt = 0, n: BigInt = 1): BigInt =
+    if i >= k then m else fib(k, i + 1, n, m + n)
+
+As a corecursive ``LazyList`` (the stream approach), the sequence defines itself in terms of its own tail—this generates *all* Fibonacci numbers on demand:
+
+.. code-block:: scala
+
+  def fibFrom(a: BigInt, b: BigInt): LazyList[BigInt] = a #:: fibFrom(b, a + b)
+  val fibs: LazyList[BigInt] = fibFrom(0, 1)
+
+  fibs.take(10).toList  // List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+
+Using ``LazyList.iterate`` (an *anamorphism* — building a structure from a seed):
+
+.. code-block:: scala
+
+  val fibs: LazyList[BigInt] =
+    LazyList.iterate((BigInt(0), BigInt(1)))((m, n) => (n, m + n)).map(_._1)
+
+Similarly, ``Seq.unfold`` is the equivalent of ``LazyList.iterate`` for building *finite* sequences and is also an anamorphism:
+
+.. code-block:: scala
+
+  val firstTenFibs: Seq[BigInt] =
+    Seq.unfold((BigInt(0), BigInt(1))): (m, n) =>
+      Some((m, (n, m + n)))
+    .take(10)
+
+**Sieve of Eratosthenes**
+
+The classic sieve can be expressed as a corecursive stream.
+This ``Iterator``-based version produces an infinite stream of primes:
+
+.. code-block:: scala
+
+  def era(ns: Iterator[Int]): (Int, Iterator[Int]) =
+    val p = ns.next()
+    (p, ns.filter(_ % p != 0))
+
+  val primes: Iterator[Int] =
+    Iterator.iterate((0, Iterator.from(2)))((_, ns) => era(ns))
+      .drop(1)
+      .map(_._1)
+
+  primes.take(10).toList  // List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
+
+.. note::
+
+  Both Fibonacci and the Sieve are examples of *corecursion* (also called *anamorphism* or *unfold*):
+  instead of consuming a structure by recursing down to a base case (*catamorphism* / fold),
+  they *produce* a potentially infinite structure by repeatedly applying a step function to a seed.
+  ``LazyList.iterate`` and ``Seq.unfold`` are the canonical ways to express this pattern in Scala.
 
 
 Modularity and dependency injection in the functional style
@@ -577,26 +889,29 @@ Key concepts
 
 We first need to define some key concepts:
 
-- `(Endo)functor <https://hseeberger.wordpress.com/2010/11/25/introduction-to-category-theory-in-scala>`_: a type constructor (generic collection) with a ``map`` method that satisfies *identity* and *composition* laws:
+.. note:: **Definition (Endofunctor)**
 
-  .. code-block:: scala
+   An *(endo)functor* is a type constructor (generic collection) with a ``map`` method satisfying the *identity* and *composition* laws:
 
-    c.map(identity) == c
-    c.map(g compose f) == c.map(f).map(g)
+   .. code-block:: scala
 
-  Some familiar examples of endofunctors are
+     c.map(identity) == c
+     c.map(g compose f) == c.map(f).map(g)
 
-  - ``Option``
-  - ``List``
-  - generic trees such as `org chart <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_
+   Some familiar examples of endofunctors are ``Option``, ``List``, and generic trees such as the `org chart example <https://github.com/lucproglangcourse/misc-explorations-scala/blob/master/orgchartGeneric.sc>`_.
+
+.. note:: **Definition (F-algebra and catamorphism)**
+
+   An *F-algebra* is a pair ``(carrier, algebra)`` where ``carrier`` is a type and ``algebra :: F[carrier] => carrier`` maps the functor ``F`` applied to the carrier into the carrier.
+   A *catamorphism* (``cata``, generalized ``fold``) folds an F-algebraic structure down to a result value of type ``carrier``.
+
+.. note:: **Definition (F-coalgebra and anamorphism)**
+
+   An *F-coalgebra* is a pair ``(carrier, coalgebra)`` where ``coalgebra :: carrier => F[carrier]`` generates the next layer of the structure from a seed value.
+   An *anamorphism* (``unfold``) builds up a data structure from a seed using an F-coalgebra.
 
 - The ``Fix``-combinator handles the *recursion* concern *for structures* and separates it from the nature of the structure itself.
-- Generalized ``fold`` = *catamorphism* (``cata``) for *breaking down* a data structure to a result value.
-- `F-algebra <https://www.fpcomplete.com/user/bartosz/understanding-algebras>`_: This is the argument to ``fold``, which has a functor ``F`` and a carrier object, i.e., the result type of the fold.
-- ``unfold`` = *anamorphism* for *building up* a data structure from some other value.
-- *F-coalgebra*: This is the argument to ``unfold`` (generator), which also has a functor ``F`` and a carrier object, i.e., type of seed and generated values wrapped in the functor.
-- *Initial F-algebra*: This is the least fixpoint of our functor ``F`` and equivalent to our original recursive type.
-  We obtain this by applying the ``Fix``-combinator to ``F``.
+- *Initial F-algebra*: the least fixpoint of the functor ``F``, equivalent to our original recursive type, obtained by applying the ``Fix``-combinator to ``F``.
 - We get our original recursive behaviors back by combining ``cata`` and our specific F-algebraic version of the behavior.
 
 .. todo:: Practical applications

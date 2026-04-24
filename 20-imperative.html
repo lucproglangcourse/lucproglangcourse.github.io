@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="4. The Object-Oriented Programming Paradigm" href="30-objectoriented.html"><link rel="prev" title="2. Context and Background" href="10-background.html">
 
     <!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
-        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</title>
+        <title>3. The Imperative Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -162,7 +162,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -690,6 +690,20 @@ As in Java, command-line arguments are available to a Scala application as <code
 </pre></div>
 </div>
 <p>This gives you an iterator of strings with each item representing one line. When the iterator has no more items, you are done reading all the input. (See also this <a class="reference external" href="https://alvinalexander.com/scala/how-to-open-read-text-files-in-scala-cookbook-examples">concise reference</a>.)</p>
+</section>
+<section id="the-role-of-eof-end-of-file">
+<h3><span class="section-number">3.5.2. </span>The role of EOF (end of file)<a class="headerlink" href="#the-role-of-eof-end-of-file" title="Link to this heading"></a></h3>
+<p>When reading from a file, the iterator naturally exhausts itself when the end of the file is reached.
+When reading from an interactive terminal, the user signals end-of-input by pressing <strong>Ctrl-D</strong> (Unix/macOS) or <strong>Ctrl-Z</strong> (Windows), which sends an <em>EOF</em> (end-of-file) marker to the standard input stream.
+This is the standard Unix convention for signaling “I am done providing input.”</p>
+<p>In batch pipelines, EOF is sent automatically when the upstream data source closes its output.
+For example, when you run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;hello\nworld&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>myapp
+</pre></div>
+</div>
+<p>the shell closes the pipe—and thus sends EOF—as soon as <code class="docutils literal notranslate"><span class="pre">echo</span></code> finishes writing.
+Your Scala app’s <code class="docutils literal notranslate"><span class="pre">getLines()</span></code> iterator will then return <code class="docutils literal notranslate"><span class="pre">false</span></code> from <code class="docutils literal notranslate"><span class="pre">hasNext</span></code> and the reading loop terminates cleanly.</p>
+<p>A common mistake is to assume that reading “nothing” means EOF; in fact, an empty line is still a valid line (an empty string), and only the exhaustion of the iterator signals EOF.</p>
 <p>To break this iterator of lines down into an iterator of words, we can use this recipe:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">language</span><span class="p">.</span><span class="n">unsafeNulls</span>
@@ -721,7 +735,7 @@ After printing, it checks whether an error occured and, if necessary, terminates
 </div>
 </section>
 <section id="command-line-argument-parsing">
-<h3><span class="section-number">3.5.2. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.3. </span>Command-line argument parsing<a class="headerlink" href="#command-line-argument-parsing" title="Link to this heading"></a></h3>
 <p>A common concern when developing command-line applications is argument and option parsing.
 As briefly mentioned above, arguments and options are application-specific settings we can pass an application in the form <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">arg1</span> <span class="pre">arg2</span> <span class="pre">...</span></code> at the time when we’re invoking the application.
 Importantly, these settings are separate from the application’s input data.</p>
@@ -790,7 +804,7 @@ run
 </div>
 </section>
 <section id="determining-whether-an-app-is-running-interactively">
-<h3><span class="section-number">3.5.3. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.4. </span>Determining whether an app is running interactively<a class="headerlink" href="#determining-whether-an-app-is-running-interactively" title="Link to this heading"></a></h3>
 <p>In some cases, it’s convenient to determine programmatically whether our command-line app is running interactively, i.e., reading from the console, or running in batch mode, where its standard input has been redirected from a file.
 For example, if our app running interactively, we might automatically want to prompt the user for console input.</p>
 <p>We can use this technique to determine whether stdin is coming from the console.</p>
@@ -806,18 +820,37 @@ For example, if our app running interactively, we might automatically want to pr
 </div>
 </section>
 <section id="allowing-the-user-to-edit-their-input">
-<h3><span class="section-number">3.5.4. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.5. </span>Allowing the user to edit their input<a class="headerlink" href="#allowing-the-user-to-edit-their-input" title="Link to this heading"></a></h3>
 <p>Many REPLs, including the Python and Scala ones, allow the user to edit their input in various ways, including scrolling through the input history using the up and down arrows, adding or deleting characters from the input line, etc.</p>
 <p>To add this capability to a Java- or Scala-based command-line app, we can use the <a class="reference external" href="https://github.com/jline/jline3">JLine library</a>, which is the Java equivalent of the <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Readline">GNU Readline library</a>.
-If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.
-JLine has excellent documentation; please look there for examples.</p>
-<div class="admonition-todo admonition" id="id5">
-<p class="admonition-title">Todo</p>
-<p>Determine whether JLine automatically suppresses prompts when redirecting stdin.</p>
+If you want to make your command-line app convenient to use and give it a professional touch, consider using JLine instead of basic console input.</p>
+<p>To use JLine, add it to your <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;org.jline&quot;</span> <span class="o">%</span> <span class="s2">&quot;jline&quot;</span> <span class="o">%</span> <span class="s2">&quot;4.0.9&quot;</span>
+</pre></div>
 </div>
+<p>Here is a minimal example that uses JLine to read lines with an editable prompt in Scala:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">org</span><span class="p">.</span><span class="nn">jline</span><span class="p">.</span><span class="nn">reader</span><span class="p">.</span><span class="nc">LineReaderBuilder</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">org</span><span class="p">.</span><span class="nn">jline</span><span class="p">.</span><span class="nn">terminal</span><span class="p">.</span><span class="nc">TerminalBuilder</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">util</span><span class="p">.</span><span class="nc">Success</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">scala</span><span class="p">.</span><span class="nn">util</span><span class="p">.</span><span class="nc">Try</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="n">terminal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">TerminalBuilder</span><span class="p">.</span><span class="n">builder</span><span class="p">().</span><span class="n">system</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="n">build</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">LineReaderBuilder</span><span class="p">.</span><span class="n">builder</span><span class="p">().</span><span class="n">terminal</span><span class="p">(</span><span class="n">terminal</span><span class="p">).</span><span class="n">build</span><span class="p">()</span>
+
+<span class="nc">Iterator</span><span class="p">.</span><span class="n">continually</span><span class="p">:</span>
+<span class="w">  </span><span class="nc">Try</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">readLine</span><span class="p">(</span><span class="s">&quot;Whatcha got? &quot;</span><span class="p">))</span>
+<span class="p">.</span><span class="n">takeWhile</span><span class="p">:</span>
+<span class="w">  </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">isSuccess</span>
+<span class="p">.</span><span class="n">foreach</span><span class="p">:</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Success</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="s">s&quot;You said: </span><span class="si">$</span><span class="n">line</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Try</span></code> wrapper around <code class="docutils literal notranslate"><span class="pre">readLine</span></code> ensures that an <code class="docutils literal notranslate"><span class="pre">EndOfFileException</span></code> (thrown when the user presses Ctrl-D / EOF) causes the iterator to stop cleanly via <code class="docutils literal notranslate"><span class="pre">takeWhile</span></code>.
+JLine automatically suppresses the prompt when stdin is redirected from a file or pipe, so this code works correctly in both interactive and batch modes.</p>
 </section>
 <section id="finding-good-third-party-libraries">
-<h3><span class="section-number">3.5.5. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
+<h3><span class="section-number">3.5.6. </span>Finding good third-party libraries<a class="headerlink" href="#finding-good-third-party-libraries" title="Link to this heading"></a></h3>
 <p>For most programming languages, platforms, and other ecosystems, there are lists of “awesome” libraries and tools.
 For a particular language, search for “awesome” followed by the name of the language.</p>
 <p>In Scala’s case, we would come across this here list:</p>
@@ -885,6 +918,35 @@ To use log4s minimally, the following steps are required:</p>
 </li>
 </ul>
 </section>
+<section id="reporting-progress-in-console-applications">
+<h3><span class="section-number">3.6.2. </span>Reporting progress in console applications<a class="headerlink" href="#reporting-progress-in-console-applications" title="Link to this heading"></a></h3>
+<p>For long-running console applications—such as those processing large files or performing iterative computations—it is useful to report progress to the user so they know the application is alive and can estimate how much longer it will take.</p>
+<p>The simplest form of progress reporting is to print periodic updates to <code class="docutils literal notranslate"><span class="pre">stderr</span></code>:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nc">System</span><span class="p">.</span><span class="n">err</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">s&quot;Processed </span><span class="si">$</span><span class="n">count</span><span class="s"> items so far...&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// process item ...</span>
+</pre></div>
+</div>
+<p>For a more polished, terminal-aware progress bar, the <a class="reference external" href="https://github.com/ctongfei/progressbar">progressbar</a> library provides a convenient solution.
+It displays a live-updating progress bar on the terminal but suppresses it automatically when output is redirected (non-interactive mode).</p>
+<p>Add the dependency to your <code class="docutils literal notranslate"><span class="pre">build.sbt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;me.tongfei&quot;</span> <span class="o">%</span> <span class="s2">&quot;progressbar&quot;</span> <span class="o">%</span> <span class="s2">&quot;0.10.1&quot;</span>
+</pre></div>
+</div>
+<p>Then use it as follows:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">me</span><span class="p">.</span><span class="nn">tongfei</span><span class="p">.</span><span class="nn">progressbar</span><span class="p">.</span><span class="nc">ProgressBar</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ProgressBar</span><span class="p">(</span><span class="s">&quot;Processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">toLong</span><span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="n">pb</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">// process item ...</span>
+<span class="n">pb</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An example of progress reporting for a Monte Carlo simulation (where the total number of steps is known) can be found <a class="reference external" href="https://github.com/LoyolaChicagoBooks/introds-scala-examples/blob/main/montecarlo-scala/GenerateDarts.scala#L28">here</a>.</p>
+</section>
 </section>
 <section id="the-importance-of-constant-space-complexity">
 <span id="subsecconstantspace"></span><h2><span class="section-number">3.7. </span>The importance of constant-space complexity<a class="headerlink" href="#the-importance-of-constant-space-complexity" title="Link to this heading"></a></h2>
@@ -925,7 +987,7 @@ For programs running in the Java Virtual Machine (JVM), we can use the standalon
 By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
 <img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
 <p>When working in a command-line environment, we can also use an interactive process viewer, such as <code class="docutils literal notranslate"><span class="pre">htop</span></code>, to monitor a program’s memory footprint over time.</p>
-<div class="admonition-todo admonition" id="id6">
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <p>add suitable htop screenshot</p>
 </div>
@@ -1034,14 +1096,16 @@ The endpoint of this journey thereby marks our transition to the object-oriented
 </li>
 <li><a class="reference internal" href="#the-role-of-command-line-applications">3.5. The role of command-line applications</a><ul>
 <li><a class="reference internal" href="#command-line-applications-in-scala">3.5.1. Command-line applications in Scala</a></li>
-<li><a class="reference internal" href="#command-line-argument-parsing">3.5.2. Command-line argument parsing</a></li>
-<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.5.3. Determining whether an app is running interactively</a></li>
-<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.5.4. Allowing the user to edit their input</a></li>
-<li><a class="reference internal" href="#finding-good-third-party-libraries">3.5.5. Finding good third-party libraries</a></li>
+<li><a class="reference internal" href="#the-role-of-eof-end-of-file">3.5.2. The role of EOF (end of file)</a></li>
+<li><a class="reference internal" href="#command-line-argument-parsing">3.5.3. Command-line argument parsing</a></li>
+<li><a class="reference internal" href="#determining-whether-an-app-is-running-interactively">3.5.4. Determining whether an app is running interactively</a></li>
+<li><a class="reference internal" href="#allowing-the-user-to-edit-their-input">3.5.5. Allowing the user to edit their input</a></li>
+<li><a class="reference internal" href="#finding-good-third-party-libraries">3.5.6. Finding good third-party libraries</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-role-of-logging">3.6. The role of logging</a><ul>
 <li><a class="reference internal" href="#logging-in-scala">3.6.1. Logging in Scala</a></li>
+<li><a class="reference internal" href="#reporting-progress-in-console-applications">3.6.2. Reporting progress in console applications</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-importance-of-constant-space-complexity">3.7. The importance of constant-space complexity</a><ul>
@@ -1063,7 +1127,7 @@ The endpoint of this journey thereby marks our transition to the object-oriented
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=6bea8913"></script>
+    <script src="_static/documentation_options.js?v=f975cfa6"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

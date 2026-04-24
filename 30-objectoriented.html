@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="5. The Functional Programming Paradigm" href="40-functional.html"><link rel="prev" title="3. The Imperative Programming Paradigm" href="20-imperative.html">
 
     <!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
-        <title>4. The Object-Oriented Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</title>
+        <title>4. The Object-Oriented Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -162,7 +162,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26sp.15</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.1</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -645,6 +645,34 @@ To recap, <code class="docutils literal notranslate"><span class="pre">common.Ma
 One of the <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> implementation traits, such as <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> can satisfy this dependency.
 The actual “injection” takes place when we inject, say, <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code> into <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> in the definition of the concrete main object <code class="docutils literal notranslate"><span class="pre">fold.Main</span></code>.</p>
 </section>
+<section id="the-dependency-inversion-principle">
+<h3><span class="section-number">4.5.4. </span>The Dependency Inversion Principle<a class="headerlink" href="#the-dependency-inversion-principle" title="Link to this heading"></a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Dependency Inversion Principle</a> (DIP), one of the SOLID design principles, states:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces/traits).</p></li>
+<li><p>Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.</p></li>
+</ul>
+</div>
+<p>Applying these ideas to the process tree and iterators examples, we can map the roles as follows:</p>
+<ul class="simple">
+<li><p><strong>High-level modules</strong>: <code class="docutils literal notranslate"><span class="pre">common.Main</span></code>, <code class="docutils literal notranslate"><span class="pre">TreeBuilderSpec</span></code>—these orchestrate the overall application logic.</p></li>
+<li><p><strong>Low-level modules</strong>: <code class="docutils literal notranslate"><span class="pre">MutableTreeBuilder</span></code>, <code class="docutils literal notranslate"><span class="pre">FoldTreeBuilder</span></code>—these are specific implementations of a building-block behavior.</p></li>
+<li><p><strong>Abstractions</strong>: the <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code> trait—this is the shared contract that both the high-level and low-level modules depend on.</p></li>
+<li><p><strong>Details</strong>: the concrete implementations such as <code class="docutils literal notranslate"><span class="pre">MutableTreeBuilder</span></code>—these know <em>how</em> to build a tree but are not imported by high-level modules directly.</p></li>
+</ul>
+<p>Rather than thinking in a strict binary high/low-level classification, it can be more illuminating to arrange the building blocks along a <em>continuum</em> from high-level (closer to application intent) to low-level (closer to implementation mechanics):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fold.Main / mutable.Main   ← concrete main objects (highest level, wires everything together)
+common.Main                ← application behavior (high-level client)
+TreeBuilder                ← abstraction / contract
+FoldTreeBuilder / MutableTreeBuilder  ← implementation details (low-level providers)
+</pre></div>
+</div>
+<p>The key insight: <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> depends only on the <em>abstraction</em> <code class="docutils literal notranslate"><span class="pre">TreeBuilder</span></code>, not on any concrete implementation.
+The concrete <code class="docutils literal notranslate"><span class="pre">fold.Main</span></code> object is the only place where the two sides are connected (“injected”).
+This arrangement means we can swap in a different implementation—or a test double—without changing <code class="docutils literal notranslate"><span class="pre">common.Main</span></code> at all.</p>
+</section>
 </section>
 </section>
 
@@ -722,6 +750,7 @@ The actual “injection” takes place when we inject, say, <code class="docutil
 <li><a class="reference internal" href="#design-goals">4.5.1. Design goals</a></li>
 <li><a class="reference internal" href="#scala-traits">4.5.2. Scala traits</a></li>
 <li><a class="reference internal" href="#trait-based-dependency-injection">4.5.3. Trait-based dependency injection</a></li>
+<li><a class="reference internal" href="#the-dependency-inversion-principle">4.5.4. The Dependency Inversion Principle</a></li>
 </ul>
 </li>
 </ul>
@@ -737,7 +766,7 @@ The actual “injection” takes place when we inject, say, <code class="docutil
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=6bea8913"></script>
+    <script src="_static/documentation_options.js?v=f975cfa6"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

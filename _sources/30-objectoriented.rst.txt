@@ -395,3 +395,36 @@ The Thin Cake idiom provides basic DI in Scala without the need for a DI framewo
 To recap, ``common.Main`` cannot run on its own but declares by extending ``TreeBuilder`` that it requires an implementation of the ``buildTree`` method.
 One of the ``TreeBuilder`` implementation traits, such as ``FoldTreeBuilder`` can satisfy this dependency.
 The actual "injection" takes place when we inject, say, ``FoldTreeBuilder`` into ``common.Main`` in the definition of the concrete main object ``fold.Main``.
+
+
+The Dependency Inversion Principle
+````````````````````````````````````
+
+The `Dependency Inversion Principle <https://en.wikipedia.org/wiki/Dependency_inversion_principle>`_ (DIP), one of the SOLID design principles, states:
+
+.. note::
+
+   - High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces/traits).
+   - Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+
+Applying these ideas to the process tree and iterators examples, we can map the roles as follows:
+
+- **High-level modules**: ``common.Main``, ``TreeBuilderSpec``—these orchestrate the overall application logic.
+- **Low-level modules**: ``MutableTreeBuilder``, ``FoldTreeBuilder``—these are specific implementations of a building-block behavior.
+- **Abstractions**: the ``TreeBuilder`` trait—this is the shared contract that both the high-level and low-level modules depend on.
+- **Details**: the concrete implementations such as ``MutableTreeBuilder``—these know *how* to build a tree but are not imported by high-level modules directly.
+
+Rather than thinking in a strict binary high/low-level classification, it can be more illuminating to arrange the building blocks along a *continuum* from high-level (closer to application intent) to low-level (closer to implementation mechanics):
+
+::
+
+  fold.Main / mutable.Main   ← concrete main objects (highest level, wires everything together)
+  common.Main                ← application behavior (high-level client)
+  TreeBuilder                ← abstraction / contract
+  FoldTreeBuilder / MutableTreeBuilder  ← implementation details (low-level providers)
+
+The key insight: ``common.Main`` depends only on the *abstraction* ``TreeBuilder``, not on any concrete implementation.
+The concrete ``fold.Main`` object is the only place where the two sides are connected ("injected").
+This arrangement means we can swap in a different implementation—or a test double—without changing ``common.Main`` at all.
+
+
