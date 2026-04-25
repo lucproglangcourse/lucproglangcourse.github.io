@@ -1091,34 +1091,105 @@ Examples include:
 
 The *monoid laws* arise from the monoid's definition: the operation must be associative, and the identity element must be a left and right identity.
 
-Examples of monoids using the Scalaz library are available `here <https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc>`_
+The `Cats <https://typelevel.org/cats/>`_ library provides a ``Monoid`` typeclass along with instances for common types:
+
+.. code-block:: scala
+
+  import cats.Monoid
+  import cats.syntax.semigroup.*   // enables |+| operator
+
+  // Monoid[Int] uses addition; empty = 0
+  Monoid[Int].combine(3, 4)              // 7
+  Monoid[Int].empty                      // 0
+  Monoid[Int].combineAll(List(1, 2, 3))  // 6
+
+  // Monoid[String] uses concatenation; empty = ""
+  Monoid[String].combine("hello", " world")  // "hello world"
+
+  // |+| is the infix alias for combine
+  "foo" |+| "bar"          // "foobar"
+  List(1, 2) |+| List(3)  // List(1, 2, 3)
+
+  // Any type with a Monoid can be folded for free
+  def sum[A: Monoid](xs: List[A]): A = xs.foldLeft(Monoid[A].empty)(_ |+| _)
+  sum(List("a", "b", "c"))  // "abc"
+  sum(List(1, 2, 3))        // 6
+
+The ``[A: Monoid]`` context bound in ``sum`` above is the *typeclass pattern*: the function works for any type ``A`` as long as a ``Monoid[A]`` instance is available.
 
 
 Monad
 `````
 
-A `Monad <https://en.wikipedia.org/wiki/Monad_(functional_programming)>`_ is a type constructor (generic collection) with two operations, ``point`` (also called ``return`` or ``unit``) and ``flatMap`` (also called ``bind``).
-Monads are an effective way to represent the *context* of a computation in which the computation is "wrapped".
-The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
-Examples include:
+A `Monad <https://en.wikipedia.org/wiki/Monad_(functional_programming)>`_ is a type constructor (generic container) with two operations:
 
-- ``Option`` and ``Try``: potential failure in a computation
-- ``List``: nondeterminism in a computation, meaning that the computation might have multiple results
-- ``Id``: the identity monad, a wrapper that doesn't actually do anything
-- ``Future``: the computation takes place asynchronously (in the background)
+- ``pure`` (also called ``point``, ``return``, or ``unit``): lifts a plain value into the context — e.g., ``Some(x)``, ``List(x)``.
+- ``flatMap`` (also called ``bind``): sequences a context-aware computation — i.e., applies a function that itself returns a wrapped value.
 
-Examples of monads using the Scalaz library are available `here <https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc>`_.
+Monads represent the *context* in which a computation runs, allowing the concern of context management to be separated from the computation itself. The wrapper types introduced earlier in this chapter are all monads:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * - Type
+     - Context
+     - What ``flatMap`` does
+   * - ``Option[A]``
+     - Possible absence of a value
+     - Short-circuits to ``None`` if any step is absent
+   * - ``Try[A]``
+     - Possible failure with an exception
+     - Short-circuits to ``Failure`` if any step throws
+   * - ``Either[E, A]``
+     - Possible failure with an error value
+     - Short-circuits to ``Left`` if any step fails
+   * - ``List[A]``
+     - Nondeterminism (multiple possible results)
+     - Applies the function to every element and concatenates results
+   * - ``Future[A]``
+     - Asynchronous (background) computation
+     - Sequences the next step to run after this one completes
+   * - ``Id[A]``
+     - No context (identity)
+     - Equivalent to plain function application
+
+The Scala standard library does not define a unified ``Monad`` abstraction — it simply provides ``flatMap`` and ``map`` on each type individually. Cats provides the abstraction explicitly, allowing generic code to work with any monad:
+
+.. code-block:: scala
+
+  import cats.Monad
+  import cats.syntax.flatMap.*   // enables >>= / flatMap syntax
+  import cats.syntax.functor.*   // enables map syntax
+
+  // Option as a Monad
+  val m = Monad[Option]
+  m.pure(42)                                   // Some(42)
+  m.flatMap(Some(3))(x => Some(x * 2))         // Some(6)
+  m.flatMap(None: Option[Int])(_ => Some(0))   // None
+
+  // for-comprehension desugars to flatMap + map (works for any Monad)
+  def addIfPresent[F[_]: Monad](fa: F[Int], fb: F[Int]): F[Int] =
+    for
+      a <- fa
+      b <- fb
+    yield a + b
+
+  addIfPresent(Some(3), Some(4))   // Some(7)
+  addIfPresent(Some(3), None)      // None
+  addIfPresent(List(1, 2), List(10, 20))
+  // List(11, 21, 12, 22)  — all combinations (nondeterminism)
+
+The ``[F[_]: Monad]`` context bound makes ``addIfPresent`` work for *any* monad — ``Option``, ``List``, ``Either``, ``Future``, or a custom type — without changing the implementation.
 
 
 Observations
 ````````````
 
-- The Scala library includes various structures that are effectively monads, especially those just mentioned.
-  What Scala does not define is a monad abstraction itself.
-- This is where libraries like Scalaz or Cats come in:
-  They define these abstractions in such a way that we can retrofit existing types or our own types to become instances of the desired abstractions, using the *Typeclass pattern*, a technique for representing Haskell-style typeclasses.
-- Examples of the Typeclass pattern are the ``Functor`` and ``Traverse`` instances in our expressions and shapes examples.
-- A good reference for learning Scalaz, a library that defines these various abstractions, is available `here <http://eed3si9n.com/learning-scalaz>`_.
+- The Scala standard library provides ``flatMap`` and ``map`` on many types, making ``for`` comprehensions work uniformly. What it does not define is a common ``Monad`` abstraction across those types.
+- The `Cats <https://typelevel.org/cats/>`_ library fills this gap using the *typeclass pattern*: it defines ``Monad[F[_]]`` as a typeclass and provides instances for ``Option``, ``List``, ``Either``, ``Future``, ``Id``, and many others, as well as tools for defining your own instances.
+- Examples of the typeclass pattern we have already seen in this chapter are the ``Functor`` and ``Traverse`` instances in the expressions and shapes examples.
+- The `Cats documentation <https://typelevel.org/cats/>`_ is the primary reference for these abstractions.
 
 
 References

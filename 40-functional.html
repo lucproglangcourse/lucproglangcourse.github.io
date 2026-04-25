@@ -1207,31 +1207,112 @@ Examples include:</p>
 <li><p>strings with concatenation and the empty string</p></li>
 </ul>
 <p>The <em>monoid laws</em> arise from the monoid’s definition: the operation must be associative, and the identity element must be a left and right identity.</p>
-<p>Examples of monoids using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monoid.sc">here</a></p>
+<p>The <a class="reference external" href="https://typelevel.org/cats/">Cats</a> library provides a <code class="docutils literal notranslate"><span class="pre">Monoid</span></code> typeclass along with instances for common types:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">cats</span><span class="p">.</span><span class="nc">Monoid</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">cats</span><span class="p">.</span><span class="nn">syntax</span><span class="p">.</span><span class="nn">semigroup</span><span class="p">.</span><span class="n">*</span><span class="w">   </span><span class="c1">// enables |+| operator</span>
+
+<span class="c1">// Monoid[Int] uses addition; empty = 0</span>
+<span class="nc">Monoid</span><span class="p">[</span><span class="nc">Int</span><span class="p">].</span><span class="n">combine</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w">              </span><span class="c1">// 7</span>
+<span class="nc">Monoid</span><span class="p">[</span><span class="nc">Int</span><span class="p">].</span><span class="n">empty</span><span class="w">                      </span><span class="c1">// 0</span>
+<span class="nc">Monoid</span><span class="p">[</span><span class="nc">Int</span><span class="p">].</span><span class="n">combineAll</span><span class="p">(</span><span class="nc">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w">  </span><span class="c1">// 6</span>
+
+<span class="c1">// Monoid[String] uses concatenation; empty = &quot;&quot;</span>
+<span class="nc">Monoid</span><span class="p">[</span><span class="nc">String</span><span class="p">].</span><span class="n">combine</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; world&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// &quot;hello world&quot;</span>
+
+<span class="c1">// |+| is the infix alias for combine</span>
+<span class="s">&quot;foo&quot;</span><span class="w"> </span><span class="o">|+|</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="w">          </span><span class="c1">// &quot;foobar&quot;</span>
+<span class="nc">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|+|</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">  </span><span class="c1">// List(1, 2, 3)</span>
+
+<span class="c1">// Any type with a Monoid can be folded for free</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">[</span><span class="nc">A</span><span class="p">:</span><span class="w"> </span><span class="nc">Monoid</span><span class="p">](</span><span class="n">xs</span><span class="p">:</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]):</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xs</span><span class="p">.</span><span class="n">foldLeft</span><span class="p">(</span><span class="nc">Monoid</span><span class="p">[</span><span class="nc">A</span><span class="p">].</span><span class="n">empty</span><span class="p">)(</span><span class="n">_</span><span class="w"> </span><span class="o">|+|</span><span class="w"> </span><span class="n">_</span><span class="p">)</span>
+<span class="n">sum</span><span class="p">(</span><span class="nc">List</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">))</span><span class="w">  </span><span class="c1">// &quot;abc&quot;</span>
+<span class="n">sum</span><span class="p">(</span><span class="nc">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w">        </span><span class="c1">// 6</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">[A:</span> <span class="pre">Monoid]</span></code> context bound in <code class="docutils literal notranslate"><span class="pre">sum</span></code> above is the <em>typeclass pattern</em>: the function works for any type <code class="docutils literal notranslate"><span class="pre">A</span></code> as long as a <code class="docutils literal notranslate"><span class="pre">Monoid[A]</span></code> instance is available.</p>
 </section>
 <section id="monad">
 <h3><span class="section-number">5.7.2. </span>Monad<a class="headerlink" href="#monad" title="Link to this heading"></a></h3>
-<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic collection) with two operations, <code class="docutils literal notranslate"><span class="pre">point</span></code> (also called <code class="docutils literal notranslate"><span class="pre">return</span></code> or <code class="docutils literal notranslate"><span class="pre">unit</span></code>) and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> (also called <code class="docutils literal notranslate"><span class="pre">bind</span></code>).
-Monads are an effective way to represent the <em>context</em> of a computation in which the computation is “wrapped”.
-The monad abstraction thereby enables one to separate the concerns of the computation itself and its context.
-Examples include:</p>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">Monad</a> is a type constructor (generic container) with two operations:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Option</span></code> and <code class="docutils literal notranslate"><span class="pre">Try</span></code>: potential failure in a computation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">List</span></code>: nondeterminism in a computation, meaning that the computation might have multiple results</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Id</span></code>: the identity monad, a wrapper that doesn’t actually do anything</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Future</span></code>: the computation takes place asynchronously (in the background)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pure</span></code> (also called <code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code>, or <code class="docutils literal notranslate"><span class="pre">unit</span></code>): lifts a plain value into the context — e.g., <code class="docutils literal notranslate"><span class="pre">Some(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">List(x)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flatMap</span></code> (also called <code class="docutils literal notranslate"><span class="pre">bind</span></code>): sequences a context-aware computation — i.e., applies a function that itself returns a wrapped value.</p></li>
 </ul>
-<p>Examples of monads using the Scalaz library are available <a class="reference external" href="https://github.com/lucproglangcourse/scalaz-explorations-scala/tree/master/monad.sc">here</a>.</p>
+<p>Monads represent the <em>context</em> in which a computation runs, allowing the concern of context management to be separated from the computation itself. The wrapper types introduced earlier in this chapter are all monads:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Context</p></th>
+<th class="head"><p>What <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Option[A]</span></code></p></td>
+<td><p>Possible absence of a value</p></td>
+<td><p>Short-circuits to <code class="docutils literal notranslate"><span class="pre">None</span></code> if any step is absent</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Try[A]</span></code></p></td>
+<td><p>Possible failure with an exception</p></td>
+<td><p>Short-circuits to <code class="docutils literal notranslate"><span class="pre">Failure</span></code> if any step throws</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Either[E,</span> <span class="pre">A]</span></code></p></td>
+<td><p>Possible failure with an error value</p></td>
+<td><p>Short-circuits to <code class="docutils literal notranslate"><span class="pre">Left</span></code> if any step fails</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">List[A]</span></code></p></td>
+<td><p>Nondeterminism (multiple possible results)</p></td>
+<td><p>Applies the function to every element and concatenates results</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Future[A]</span></code></p></td>
+<td><p>Asynchronous (background) computation</p></td>
+<td><p>Sequences the next step to run after this one completes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Id[A]</span></code></p></td>
+<td><p>No context (identity)</p></td>
+<td><p>Equivalent to plain function application</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The Scala standard library does not define a unified <code class="docutils literal notranslate"><span class="pre">Monad</span></code> abstraction — it simply provides <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> and <code class="docutils literal notranslate"><span class="pre">map</span></code> on each type individually. Cats provides the abstraction explicitly, allowing generic code to work with any monad:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nn">cats</span><span class="p">.</span><span class="nc">Monad</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">cats</span><span class="p">.</span><span class="nn">syntax</span><span class="p">.</span><span class="nn">flatMap</span><span class="p">.</span><span class="n">*</span><span class="w">   </span><span class="c1">// enables &gt;&gt;= / flatMap syntax</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">cats</span><span class="p">.</span><span class="nn">syntax</span><span class="p">.</span><span class="nn">functor</span><span class="p">.</span><span class="n">*</span><span class="w">   </span><span class="c1">// enables map syntax</span>
+
+<span class="c1">// Option as a Monad</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monad</span><span class="p">[</span><span class="nc">Option</span><span class="p">]</span>
+<span class="n">m</span><span class="p">.</span><span class="n">pure</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span><span class="w">                                   </span><span class="c1">// Some(42)</span>
+<span class="n">m</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="nc">Some</span><span class="p">(</span><span class="mi">3</span><span class="p">))(</span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w">         </span><span class="c1">// Some(6)</span>
+<span class="n">m</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="nc">None</span><span class="p">:</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">Int</span><span class="p">])(</span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="w">   </span><span class="c1">// None</span>
+
+<span class="c1">// for-comprehension desugars to flatMap + map (works for any Monad)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">addIfPresent</span><span class="p">[</span><span class="nc">F</span><span class="p">[</span><span class="n">_</span><span class="p">]:</span><span class="w"> </span><span class="nc">Monad</span><span class="p">](</span><span class="n">fa</span><span class="p">:</span><span class="w"> </span><span class="nc">F</span><span class="p">[</span><span class="nc">Int</span><span class="p">],</span><span class="w"> </span><span class="n">fb</span><span class="p">:</span><span class="w"> </span><span class="nc">F</span><span class="p">[</span><span class="nc">Int</span><span class="p">]):</span><span class="w"> </span><span class="nc">F</span><span class="p">[</span><span class="nc">Int</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="k">for</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fa</span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fb</span>
+<span class="w">  </span><span class="k">yield</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>
+
+<span class="n">addIfPresent</span><span class="p">(</span><span class="nc">Some</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="nc">Some</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="w">   </span><span class="c1">// Some(7)</span>
+<span class="n">addIfPresent</span><span class="p">(</span><span class="nc">Some</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="nc">None</span><span class="p">)</span><span class="w">      </span><span class="c1">// None</span>
+<span class="n">addIfPresent</span><span class="p">(</span><span class="nc">List</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span>
+<span class="c1">// List(11, 21, 12, 22)  — all combinations (nondeterminism)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">[F[_]:</span> <span class="pre">Monad]</span></code> context bound makes <code class="docutils literal notranslate"><span class="pre">addIfPresent</span></code> work for <em>any</em> monad — <code class="docutils literal notranslate"><span class="pre">Option</span></code>, <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Either</span></code>, <code class="docutils literal notranslate"><span class="pre">Future</span></code>, or a custom type — without changing the implementation.</p>
 </section>
 <section id="observations">
 <h3><span class="section-number">5.7.3. </span>Observations<a class="headerlink" href="#observations" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>The Scala library includes various structures that are effectively monads, especially those just mentioned.
-What Scala does not define is a monad abstraction itself.</p></li>
-<li><p>This is where libraries like Scalaz or Cats come in:
-They define these abstractions in such a way that we can retrofit existing types or our own types to become instances of the desired abstractions, using the <em>Typeclass pattern</em>, a technique for representing Haskell-style typeclasses.</p></li>
-<li><p>Examples of the Typeclass pattern are the <code class="docutils literal notranslate"><span class="pre">Functor</span></code> and <code class="docutils literal notranslate"><span class="pre">Traverse</span></code> instances in our expressions and shapes examples.</p></li>
-<li><p>A good reference for learning Scalaz, a library that defines these various abstractions, is available <a class="reference external" href="http://eed3si9n.com/learning-scalaz">here</a>.</p></li>
+<li><p>The Scala standard library provides <code class="docutils literal notranslate"><span class="pre">flatMap</span></code> and <code class="docutils literal notranslate"><span class="pre">map</span></code> on many types, making <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions work uniformly. What it does not define is a common <code class="docutils literal notranslate"><span class="pre">Monad</span></code> abstraction across those types.</p></li>
+<li><p>The <a class="reference external" href="https://typelevel.org/cats/">Cats</a> library fills this gap using the <em>typeclass pattern</em>: it defines <code class="docutils literal notranslate"><span class="pre">Monad[F[_]]</span></code> as a typeclass and provides instances for <code class="docutils literal notranslate"><span class="pre">Option</span></code>, <code class="docutils literal notranslate"><span class="pre">List</span></code>, <code class="docutils literal notranslate"><span class="pre">Either</span></code>, <code class="docutils literal notranslate"><span class="pre">Future</span></code>, <code class="docutils literal notranslate"><span class="pre">Id</span></code>, and many others, as well as tools for defining your own instances.</p></li>
+<li><p>Examples of the typeclass pattern we have already seen in this chapter are the <code class="docutils literal notranslate"><span class="pre">Functor</span></code> and <code class="docutils literal notranslate"><span class="pre">Traverse</span></code> instances in the expressions and shapes examples.</p></li>
+<li><p>The <a class="reference external" href="https://typelevel.org/cats/">Cats documentation</a> is the primary reference for these abstractions.</p></li>
 </ul>
 </section>
 </section>
