@@ -218,7 +218,23 @@ The main building blocks in scripting-style Scala are the collection and utility
 - ``for`` comprehensions
 
 
-.. todo:: Elaborate more on ``for`` comprehensions and ``flatMap``
+.. rubric:: ``for`` comprehensions and ``flatMap``
+
+A ``for`` comprehension is syntactic sugar that desugars into calls to ``flatMap``, ``map``, ``withFilter``, and ``foreach``. The translation is:
+
+.. code-block:: scala
+
+  // for comprehension:
+  for
+    x <- xs
+    y <- f(x)
+    if p(y)
+  yield g(x, y)
+
+  // desugars to:
+  xs.flatMap(x => f(x).withFilter(y => p(y)).map(y => g(x, y)))
+
+This means ``for`` comprehensions work with *any* type that provides ``flatMap``/``map`` — not just collections, but also ``Option``, ``Try``, ``Future``, and custom effect types. The ``yield`` keyword corresponds to ``map``; omitting it corresponds to ``foreach``.
 
 
 Examples
@@ -867,6 +883,8 @@ Here are some examples:
 - `map <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L280>`_
 - `length <https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47>`_
 
+.. note:: The Scala standard library source is available at https://github.com/scala/scala3 (Scala 3) and https://github.com/scala/scala (Scala 2). Collection operations like ``foreach``, ``foldLeft``, ``map``, and ``foldRight`` are defined in the ``scala.collection`` package; the `Scala 3 collection API documentation <https://scala-lang.org/api/3.x/>`_ is the most up-to-date reference.
+
 
 For more details on space complexity and tail recursion, please take a look at these references:
 
@@ -914,7 +932,14 @@ We first need to define some key concepts:
 - *Initial F-algebra*: the least fixpoint of the functor ``F``, equivalent to our original recursive type, obtained by applying the ``Fix``-combinator to ``F``.
 - We get our original recursive behaviors back by combining ``cata`` and our specific F-algebraic version of the behavior.
 
-.. todo:: Practical applications
+Practical applications
+``````````````````````
+
+F-algebras are used in practice wherever a program needs to separate the *shape* of a recursive data structure from the *logic* that processes it:
+
+- **Error-accumulating validation** (Cats ``Validated``): instead of failing fast on the first error (as ``Either`` does), an F-algebra-based approach accumulates all validation errors using a semigroup.
+- **Recursive data processing with the Droste library**: the `Droste <https://github.com/higherkindness/droste>`_ library for Scala provides generic ``cata``, ``ana``, ``hylo``, and ``para`` operators over any fixpoint type, enabling concise, reusable recursion schemes.
+- **Compiler IR transformations**: the tree-rewriting passes in production compilers (e.g., optimisation, CPS conversion) are naturally expressed as catamorphisms over the abstract syntax tree functor.
 
 
 Examples
@@ -923,7 +948,7 @@ Examples
 It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:
 
 - `expressions-scala <https://github.com/lucproglangcourse/expressions-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_
--  Project 1a (shapes) versus Project 1b (shapes redone using F-algebras) on Sakai
+- `shapes-oo-scala <https://github.com/lucproglangcourse/shapes-oo-scala>`_ versus `expressions-algebraic-scala <https://github.com/lucproglangcourse/expressions-algebraic-scala>`_: the conventional recursive-ADT approach (shapes-oo) and the F-algebraic approach (expressions-algebraic) placed side by side. In the F-algebraic version, the recursive knot is untied by separating the functor ``ShapeF`` from its fixpoint ``Fix[ShapeF]``, so that behaviours (evaluation, printing) can be expressed as non-recursive F-algebras.
 
 Some other examples are available `here <https://github.com/lucproglangcourse/droste-explorations-scala/>`_.
 
@@ -1099,4 +1124,11 @@ Observations
 References
 ~~~~~~~~~~
 
-.. todo:: put chapter-level references here
+- Jeremy Gibbons, *Origami Programming* (2003): `PDF <http://www.cs.ox.ac.uk/publications/publication2335-abstract.html>`_ — introduces folds and unfolds as general-purpose programming patterns.
+- Luca Cardelli and Peter Wegner, *On Understanding Types, Data Abstraction, and Polymorphism* (1985): `PDF <http://lucacardelli.name/papers/onunderstanding.a4.pdf>`_ — foundational paper on parametric and subtype polymorphism.
+- Typelevel `Cats documentation <https://typelevel.org/cats/>`_ — practical guide to functors, monads, and related abstractions in Scala.
+- `Droste recursion-schemes library <https://github.com/higherkindness/droste>`_ — Scala implementation of catamorphisms and anamorphisms.
+- Bartosz Milewski, *Category Theory for Programmers* (2018): `online <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>`_ — accessible introduction to the categorical foundations of functional programming.
+- `Scala 3 official documentation <https://docs.scala-lang.org/scala3/book/>`_ — authoritative reference for all language features used in this chapter.
+- Runar Bjarnason and Paul Chiusano, *Functional Programming in Scala* (Manning, 2014) — deep treatment of pure FP patterns including monads and monad transformers.
+- `Learn You a Haskell for Great Good! <http://learnyouahaskell.com/chapters>`_ — approachable introduction to Haskell and typeclasses that illuminates Scala's abstractions.

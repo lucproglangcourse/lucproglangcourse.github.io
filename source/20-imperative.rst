@@ -144,7 +144,7 @@ In Java, a typical program to loop over all items in an iterator using mutable s
     final var s = incoming.next();
     sum += s.length();
     count += 1;
-  });
+  }
 
   final var result = (float) sum / count;
 
@@ -152,12 +152,20 @@ Or more elegantly, using the ``forEachRemaining`` method, which combines ``hasNe
   
 .. code-block:: java
 
+  // Java lambdas cannot capture mutable local variables directly;
+  // use a one-element array as a mutable container.
+  final int[] sum = {0}, count = {0};
   incoming.forEachRemaining(s -> {
-    sum += s.length();
-    count += 1;
+    sum[0] += s.length();
+    count[0] += 1;
   });
+  final var result = (float) sum[0] / count[0];
 
 *What does this code compute?*
+
+.. admonition:: Answer
+
+   Both the while-loop and the ``forEachRemaining`` versions compute the *average string length* of the incoming elements: the total number of characters across all strings divided by the number of strings.
 
 The Scala equivalent using mutable state is:
 
@@ -200,6 +208,10 @@ In Java, we can use a `Scanner` with a custom delimiter to split input into word
   }
 
 *What does this code compute?*
+
+.. admonition:: Answer
+
+   This code computes a *word-frequency histogram*: it reads all whitespace/punctuation-separated tokens from standard input, converts each to lower case, and counts how many times each distinct word appears. The result is a map from word to count.
 
 The Scala equivalent, using mutable collections, is:
 
@@ -327,7 +339,9 @@ In this section, we discuss the different options for running Scala code, includ
 
   .. code-block:: scala
 
-    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.7.5")
+    addSbtPlugin("com.github.sbt" % "sbt-native-packager" % "1.10.4")
+
+  .. note:: Always check the `sbt-native-packager releases page <https://github.com/sbt/sbt-native-packager/releases>`_ for the current version, as it updates frequently.
 
   Then, after any change to your sources, you can create/update the script and run it from the command line like so:
 
@@ -676,7 +690,7 @@ We can use this technique to determine whether stdin is coming from the console.
       System.getProperty("os.name").nn.toLowerCase.nn.contains("windows") &&
         sys.process.stdin.available() == 0
 
-.. todo:: Verify that this works on Windows.
+.. note:: The ``isInputFromTerminal`` function works on macOS and Linux. On Windows, terminal detection via ``System.console()`` behaves similarly for the JVM, but ANSI escape codes (used for progress bars and coloured output) require either Windows Terminal or a `Jansi <https://github.com/fusesource/jansi>`_-enabled environment. For portable behaviour, consider the `junixsocket <https://kohlschutter.github.io/junixsocket/>`_ or `jline <https://github.com/jline/jline3>`_ libraries, which abstract over platform differences.
 
 
 Allowing the user to edit their input

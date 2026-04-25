@@ -3,8 +3,9 @@
 Appendix: Resources
 -------------------
 
-.. todo:: consider moving most of these into the corresponding
-	  chapters as "further reading"
+.. note:: Paradigm-specific resources are listed in the corresponding chapters' "References" or "Further reading" sections. This appendix collects all resources in one place for easy reference.
+
+   *URLs were verified in early 2026; search by title if a link is no longer active.*
 
 Key resources
 ~~~~~~~~~~~~~
@@ -40,7 +41,7 @@ Recommended/supplementary texts
 
 - **Basics of Compiler Design**
   *By: Torben Mogensen*
-  `available online <http://hjemmesider.diku.dk/~torbenm/Basics/>`_
+  `available online (2024 revision) <http://hjemmesider.diku.dk/~torbenm/Basics/>`_
 
 
 - **Learning Concurrent Programming in Scala**
@@ -101,13 +102,15 @@ Additional texts on Scala
 Online Scala resources
 ~~~~~~~~~~~~~~~~~~~~~~
 
+.. note:: The resources below vary in Scala version coverage. Resources marked [Scala 3] target current Scala; others may use Scala 2 syntax. For current Scala 3 documentation, start with the `official Scala 3 book <https://docs.scala-lang.org/scala3/book/>`_ and `Scala 3 tour <https://docs.scala-lang.org/scala3/>`_. [Scala 3]
+
 - `Scala Exercises by 47 Degrees (interactive tutorial, recommended) <https://www.scala-exercises.org>`_
 - `SIGCSE Scala workshop <http://scalaworkshop.com/html>`_
 - `The Neophyte's Guide to Scala <http://danielwestheide.com/scala/neophytes.html>`_
-- `Twitter Scala School <http://twitter.github.io/scala_school/>`_
+- `Twitter Scala School <http://twitter.github.io/scala_school/>`_ *(Scala 2; syntax may differ from Scala 3)*
 - `Scala resources from an Applied Text Analysis course <http://ata-s12.utcompling.com/links>`_
 - `Scala documentation site <http://docs.scala-lang.org>`_
-- `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_
+- `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_ *(Scala 2, 2006; for current equivalents use the official Scala 3 tour)*
 - `Scala API documentation <http://www.scala-lang.org/api/current/#package>`_
 - `Scala style guide <http://docs.scala-lang.org/style>`_
 - `Scala Cookbook (recommended) <http://scalacookbook.com/>`_
@@ -145,7 +148,7 @@ Other resources
   *By: Federico Biancuzzi; Shane Warden*
   Publisher: O'Reilly Media, Inc.
   Pub. Date: March 27, 2009
-  `available free on EBL <http://www.luc.eblib.com.flagship.luc.edu/patron/FullRecord.aspx?p=443225>`_
+  `available on O'Reilly Learning <https://learning.oreilly.com/library/view/masterminds-of-programming/9780596801670/>`_
 
 - **Programming Language Pragmatics** (3rd ed.)
   *By: Michael L. Scott*

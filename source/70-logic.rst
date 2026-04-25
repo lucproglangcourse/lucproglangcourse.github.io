@@ -38,6 +38,7 @@ Unification
 - A process of making two logical terms syntactically identical by finding 
   consistent substitutions for variables.  
 - Drives both matching of queries with rules and parameter passing.
+  See also pattern matching in :doc:`/40-functional`, which uses a similar idea of matching terms by structure.
 
 Backtracking
 ``````````````````````````````
@@ -63,15 +64,21 @@ Other Elements
 - **Negation as failure**: something is assumed false if it cannot be proven true.  
 - **Constraint logic programming (CLP)**: extends logic programming with constraints 
   over domains such as integers, reals, or finite sets.  
+  For a broader overview of constraint programming, see :doc:`/75-otherparadigms`.
 - **Meta-programming**: programs can reason about themselves by treating rules and 
   goals as data.
 
 
 
+.. note:: **Logic programming vs. other paradigms**
+
+   Unlike *imperative* programs that specify *how* to compute (step-by-step state changes), and unlike *functional* programs that express *what* to compute (as a composition of functions), logic programs specify *what relationships hold* and let the inference engine find solutions. This makes logic programming naturally *relational*: a predicate such as ``grandparent(X, Y)`` can be queried in multiple directions — "who are X's grandchildren?", "who are Y's grandparents?", or "are X and Y related?" — without writing separate functions for each direction. See also the discussion of unification in :doc:`/50-representationinterpretation` and constraint programming in :doc:`/75-otherparadigms`.
+
+
 Hello World in Prolog
 ~~~~~~~~~~~~~~~~~~~~~
 
-Prolog does not have traditional I/O, but you can define a simple fact and query it:
+Prolog programs are *query-driven* rather than entry-point-driven: instead of a ``main`` method, you issue a query at the top level and the inference engine searches for solutions. Prolog does support I/O predicates (``write/1``, ``nl/0``, ``read/1``, ``format/2``, etc.); the ``hello/0`` fact below uses them:
 
 .. code-block:: prolog
 
@@ -131,6 +138,12 @@ In the following queries, the variable `X` is used to find all possible values t
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The 8-queens problem is to place 8 queens on a chessboard so that no two queens threaten each other.
+
+The 8-queens solution uses a *generate-and-test* strategy: ``member/2`` generates candidate row positions for each queen on backtracking, and ``safe/1`` tests that no two queens attack each other. Prolog's backtracking automatically explores the search tree: if placing a queen in a given row leads to a conflict, Prolog undoes that choice (backtracks) and tries the next candidate.
+
+.. note:: **Tracing the first few steps**
+
+   Prolog first tries ``Q = 1`` for the first queen (column 1). It then recursively tries to place the remaining queens. If ``safe`` fails at any point, Prolog backtracks and tries ``Q = 2`` for the conflicting queen, then ``Q = 3``, etc. The first complete solution found is ``[1, 5, 8, 6, 3, 7, 2, 4]``.
 
 .. code-block:: prolog
 
@@ -210,3 +223,21 @@ Because of these drawbacks, the cut is often described as *"a necessary evil"* o
 *"Prolog’s goto statement"*. More modern logic programming systems (e.g., Mercury, 
 constraint logic programming) try to avoid or replace cut with more principled 
 mechanisms for controlling search and determinism.
+
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Logic programming offers a radically different model of computation: programs declare *what is true* rather than prescribing *how to compute*. Prolog's execution model — depth-first search with backtracking, driven by unification — makes it natural for problems that can be expressed as constraint satisfaction, pattern matching, or rule-based reasoning: parsing, type inference, planning, and natural language processing.
+
+Compared with the functional paradigm (:doc:`/40-functional`), logic programming is also declarative, but *relational* rather than functional: predicates relate arguments bidirectionally, whereas functions map inputs to outputs unidirectionally. Compared with the imperative paradigm (:doc:`/20-imperative`), logic programs have no explicit control flow; the inference engine determines the order of evaluation.
+
+The cut operator (``!``) is the main escape hatch from pure declarative semantics, trading predictability for performance. Modern systems such as Mercury and Constraint Logic Programming (CLP) provide more principled alternatives.
+
+Further reading:
+
+- Sterling and Shapiro, *The Art of Prolog* (2nd ed., MIT Press, 1994) — comprehensive treatment of Prolog programming techniques.
+- `SWI-Prolog manual <https://www.swi-prolog.org/pldoc/>`_ — reference documentation for the most widely used Prolog implementation.
+- Bratko, *Prolog Programming for Artificial Intelligence* (4th ed., Pearson, 2011) — applications of Prolog to AI problems.
+- `SWISH online Prolog environment <https://swish.swi-prolog.org/>`_ — run Prolog programs in your browser.
+- `miniKanren <http://minikanren.org/>`_ — a relational programming language embeddable in Scheme, Clojure, and other languages, inspired by Prolog but with a cleaner semantics.
