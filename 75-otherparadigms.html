@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="10. Summary" href="78-summary.html"><link rel="prev" title="8. The Logic Programming Paradigm" href="70-logic.html">
 
     <!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
-        <title>9. Other Important Programming Paradigms - Loyola University Chicago COMP 371/471 Lecture Notes v26f.3</title>
+        <title>9. Other Important Programming Paradigms - Loyola University Chicago COMP 371/471 Lecture Notes v26f.4</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -162,7 +162,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.3</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.4</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.3</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.4</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -387,29 +387,8 @@ It is often used within XSLT to navigate XML structures.</p>
 </pre></div>
 </div>
 </section>
-<section id="other-paradigms">
-<h2><span class="section-number">9.5. </span>Other Paradigms<a class="headerlink" href="#other-paradigms" title="Link to this heading"></a></h2>
-<p>There are several other paradigms worth noting:</p>
-<section id="constraint-programming">
-<h3><span class="section-number">9.5.1. </span>Constraint Programming<a class="headerlink" href="#constraint-programming" title="Link to this heading"></a></h3>
-<p>Constraint programming extends logic programming by allowing variables to be constrained over a domain (e.g., integers, reals, finite sets) and using specialised solvers to find solutions. SWI-Prolog’s <code class="docutils literal notranslate"><span class="pre">clpfd</span></code> library is a widely used constraint solver:</p>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
-
-<span class="c1">% Find two numbers X and Y that sum to 10 and are both between 1 and 9</span>
-<span class="nf">solve</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span>
-    <span class="nv">X</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
-    <span class="nv">Y</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
-    <span class="nv">X</span> <span class="o">+</span> <span class="nv">Y</span> <span class="s s-Atom">#=</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="nf">label</span><span class="p">([</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">]).</span>
-
-<span class="c1">% Query: ?- solve(X, Y).</span>
-<span class="c1">% X = 1, Y = 9 ; X = 2, Y = 8 ; ...</span>
-</pre></div>
-</div>
-<p>See also the discussion of Prolog and backtracking in <a class="reference internal" href="70-logic.html"><span class="doc">The Logic Programming Paradigm</span></a>.</p>
-</section>
 <section id="event-driven-programming">
-<h3><span class="section-number">9.5.2. </span>Event-driven Programming<a class="headerlink" href="#event-driven-programming" title="Link to this heading"></a></h3>
+<h2><span class="section-number">9.5. </span>Event-driven Programming<a class="headerlink" href="#event-driven-programming" title="Link to this heading"></a></h2>
 <p>Event-driven programming drives computation through events (user interactions, messages, timers) and callbacks. It is the dominant model in UI frameworks and server-side I/O (Node.js):</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Node.js HTTP server: execution is driven by incoming request events</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
@@ -425,6 +404,23 @@ It is often used within XSLT to navigate XML structures.</p>
 </div>
 <p>Event-driven programming is closely related to the reactive paradigm (see above), with the key difference that reactive programming typically provides composable operators (<code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">merge</span></code>) over streams of events, whereas plain event-driven code uses ad-hoc callbacks.</p>
 </section>
+<section id="constraint-programming">
+<h2><span class="section-number">9.6. </span>Constraint Programming<a class="headerlink" href="#constraint-programming" title="Link to this heading"></a></h2>
+<p>Constraint programming extends logic programming by allowing variables to be constrained over a domain (e.g., integers, reals, finite sets) and using specialised solvers to find solutions. SWI-Prolog’s <code class="docutils literal notranslate"><span class="pre">clpfd</span></code> library is a widely used constraint solver:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
+
+<span class="c1">% Find two numbers X and Y that sum to 10 and are both between 1 and 9</span>
+<span class="nf">solve</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nv">X</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
+    <span class="nv">Y</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
+    <span class="nv">X</span> <span class="o">+</span> <span class="nv">Y</span> <span class="s s-Atom">#=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nf">label</span><span class="p">([</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">]).</span>
+
+<span class="c1">% Query: ?- solve(X, Y).</span>
+<span class="c1">% X = 1, Y = 9 ; X = 2, Y = 8 ; ...</span>
+</pre></div>
+</div>
+<p>See also the discussion of Prolog and backtracking in <a class="reference internal" href="70-logic.html"><span class="doc">The Logic Programming Paradigm</span></a>.</p>
 </section>
 </section>
 
@@ -488,11 +484,8 @@ It is often used within XSLT to navigate XML structures.</p>
 <li><a class="reference internal" href="#reactive-programming">9.2. Reactive Programming</a></li>
 <li><a class="reference internal" href="#aspect-oriented-programming">9.3. Aspect-Oriented Programming</a></li>
 <li><a class="reference internal" href="#dataflow-programming">9.4. Dataflow Programming</a></li>
-<li><a class="reference internal" href="#other-paradigms">9.5. Other Paradigms</a><ul>
-<li><a class="reference internal" href="#constraint-programming">9.5.1. Constraint Programming</a></li>
-<li><a class="reference internal" href="#event-driven-programming">9.5.2. Event-driven Programming</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#event-driven-programming">9.5. Event-driven Programming</a></li>
+<li><a class="reference internal" href="#constraint-programming">9.6. Constraint Programming</a></li>
 </ul>
 </li>
 </ul>
@@ -506,7 +499,7 @@ It is often used within XSLT to navigate XML structures.</p>
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=6af5c1d5"></script>
+    <script src="_static/documentation_options.js?v=a17c5118"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
