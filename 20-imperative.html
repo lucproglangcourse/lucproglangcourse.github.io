@@ -450,7 +450,7 @@ We’ll take closer look at iterators and collections in chapter <a class="refer
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">word</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">freq</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">freq</span><span class="p">.</span><span class="na">getOrDefault</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="p">});</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">freq</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span>
@@ -597,7 +597,7 @@ This is particularly effective for scripts and worksheets:</p>
 <section id="measuring-code-coverage">
 <h3><span class="section-number">3.4.1. </span>Measuring code coverage<a class="headerlink" href="#measuring-code-coverage" title="Link to this heading"></a></h3>
 <p>The <em>code coverage</em> of your tests indicates how thoroughly you’re testing.
-Typically, you would use the <a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt scoverage plugin</a> to meaasure what percentage of your main code are covered by your tests.</p>
+Typically, you would use the <a class="reference external" href="https://github.com/scoverage/sbt-scoverage">sbt scoverage plugin</a> to measure what percentage of your main code are covered by your tests.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>clean<span class="w"> </span>coverage<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverageReport
 </pre></div>
 </div>
@@ -618,7 +618,7 @@ When looking at a class, you can switch between the source code view and an abst
 <img alt="_images/ScoverageStatements.png" src="_images/ScoverageStatements.png" />
 <p>If your coverage percentages appear low, you can make them more accurate by excluding classes you are not testing programmatically, such as those focused on providing a main method responsible mostly for I/O.
 (This works only with Scala version 3.4.2 or higher; also check <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code> to make sure you’re running the latest version of the sbt-scoverage plugin.)</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">ccoverageExcludedPackages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*&quot;&quot;&quot;</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">coverageExcludedPackages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Additional information on testing is available in the corresponding section of the <a class="reference external" href="https://lucformalmethodscourse.github.io/30-testing.html">COMP 335/435: Formal Methods lecture notes</a>.</p>

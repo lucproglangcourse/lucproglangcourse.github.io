@@ -463,7 +463,7 @@ A similar example but based on F-algebras and with better runtime error handling
 <section id="id2">
 <h3><span class="section-number">6.5.2. </span>Syntax<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>Our language has the following features:</p>
-<p>The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
+<p>The syntactic features of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StudentCourseRecord</span> <span class="o">=</span> <span class="n">record</span>
     <span class="nb">int</span> <span class="n">firstExamScore</span><span class="p">;</span>
     <span class="nb">int</span> <span class="n">secondExamScore</span><span class="p">;</span>
@@ -533,7 +533,7 @@ A similar example but based on F-algebras and with better runtime error handling
     <span class="o">|</span>       <span class="k">while</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">do</span> <span class="n">S</span>
 </pre></div>
 </div>
-<p>We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation, we extend the memory store to map identifiers not only to integer variable objects but also to record objects, each of which maps field names to their corresponding variable objects.</p>
+<p>We first formalize the intuitive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation, we extend the memory store to map identifiers not only to integer variable objects but also to record objects, each of which maps field names to their corresponding variable objects.</p>
 <p>Recall that we viewed variables as objects with two capabilities:</p>
 <ul class="simple">
 <li><p>get() returns the current value of the variable</p></li>
@@ -550,7 +550,7 @@ A similar example but based on F-algebras and with better runtime error handling
 </ul>
 <p>These evaluation rules are written out precisely in the following picture.</p>
 <img alt="_images/records3.png" src="_images/records3.png" />
-<p>Our earlier rules for evaluating R-values are presented again below..</p>
+<p>Our earlier rules for evaluating R-values are presented again below.</p>
 <ul class="simple">
 <li><p>Evaluating an L-value. In our setup, every L-value (say l) is a variable object that is obtained from the store M. Execute l.get() to compute the return value. This rule subsumes the earlier case for variables.</p></li>
 <li><p>Evaluating e1 + e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 + v2.</p></li>

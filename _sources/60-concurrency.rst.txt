@@ -433,7 +433,7 @@ This gives rise to several conflicting design forces:
 Specific concurrency mechanisms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Several specific concurrency mechanisms can come as anguage constructs, patterns, and other building blocks:
+Several specific concurrency mechanisms can come as language constructs, patterns, and other building blocks:
 
 - threads (familiar from 313/413)
 - monitors: synchronized/locks, wait/notify
