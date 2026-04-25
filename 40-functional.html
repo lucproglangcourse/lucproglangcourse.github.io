@@ -1001,7 +1001,7 @@ the <code class="docutils literal notranslate"><span class="pre">Y</span></code>
 <section id="a-closer-look-at-predefined-behaviors-on-lists">
 <h2><span class="section-number">5.5. </span>A closer look at predefined behaviors on lists<a class="headerlink" href="#a-closer-look-at-predefined-behaviors-on-lists" title="Link to this heading"></a></h2>
 <p>In this section, we take a look “under the hood” of some key predefined behaviors on lists.</p>
-<p>In terms of performance, we must keep in mind that <a class="reference external" href="http://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
+<p>In terms of performance, we must keep in mind that <a class="reference external" href="https://www.scala-lang.org/api/current/scala/collection/immutable/List.html">lists are head/tail-optimized</a>.
 In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
 In practice, acceptable performance usually means linear time for behavior where we process the entire list.</p>
 <p>In addition, we need to be aware of <em>space complexity</em>.
@@ -1173,7 +1173,7 @@ When does the recursion terminate?</p></li>
 <ul class="simple">
 <li><p><a class="reference external" href="https://typelevel.org/cats">Cats library of high-level abstractions</a></p></li>
 <li><p><a class="reference external" href="https://github.com/higherkindness/droste">Droste library of recursion schemes</a></p></li>
-<li><p>Various other <a class="reference external" href="http://typelevel.org/projects">Typelevel.scala projects</a></p></li>
+<li><p>Various other <a class="reference external" href="https://typelevel.org/projects">Typelevel.scala projects</a></p></li>
 </ul>
 <p>For more details on F-algebras and datatype-generic programming, please take a look at these references:</p>
 <ul class="simple">

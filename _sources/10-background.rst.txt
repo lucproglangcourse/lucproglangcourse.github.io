@@ -119,7 +119,7 @@ Software design principles and patterns
 
 The software development community has identified various principles intended to guide the design and development process, for example:
 
-- `DRY <http://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`_ (don't repeat yourself)
+- `DRY <https://en.wikipedia.org/wiki/Don%27t_repeat_yourself>`_ (don't repeat yourself)
 - `SoC <https://en.wikipedia.org/wiki/Separation_of_concerns>`_ (separation of concerns)
 - `SOLID <https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)>`_
 

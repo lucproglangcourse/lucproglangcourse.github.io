@@ -66,7 +66,7 @@ The course begins with context and background (software engineering practices, l
 Bloom's taxonomy
 ~~~~~~~~~~~~~~~~
 
-The letters refer to the successive levels of learning from the cognitive domain of `Bloom's taxonomy <http://en.wikipedia.org/wiki/Bloom's_taxonomy#Cognitive>`_:
+The letters refer to the successive levels of learning from the cognitive domain of `Bloom's taxonomy <https://en.wikipedia.org/wiki/Bloom's_taxonomy#Cognitive>`_:
 
 - K: know/remember the term
 - C: comprehend/understand the concept
