@@ -853,7 +853,7 @@ A closer look at predefined behaviors on lists
 
 In this section, we take a look "under the hood" of some key predefined behaviors on lists.
 
-In terms of performance, we must keep in mind that `lists are head/tail-optimized <http://www.scala-lang.org/api/current/scala/collection/immutable/List.html>`_.
+In terms of performance, we must keep in mind that `lists are head/tail-optimized <https://www.scala-lang.org/api/current/scala/collection/immutable/List.html>`_.
 In other words, these are basically singly-linked lists, so any behaviors where we access the first node of the list are constant-time, while behaviors involving nodes further down in the list are linear-time.
 In practice, acceptable performance usually means linear time for behavior where we process the entire list.
 
@@ -1054,7 +1054,7 @@ On the behavioral side, we recognize the great potential for code reuse resultin
 
 - `Cats library of high-level abstractions <https://typelevel.org/cats>`_
 - `Droste library of recursion schemes <https://github.com/higherkindness/droste>`_
--  Various other `Typelevel.scala projects <http://typelevel.org/projects>`_
+-  Various other `Typelevel.scala projects <https://typelevel.org/projects>`_
 
 For more details on F-algebras and datatype-generic programming, please take a look at these references:
 

@@ -110,9 +110,9 @@ Online Scala resources
 - `Twitter Scala School <http://twitter.github.io/scala_school/>`_ *(Scala 2; syntax may differ from Scala 3)*
 - `Scala resources from an Applied Text Analysis course <http://ata-s12.utcompling.com/links>`_
 - `Scala documentation site <http://docs.scala-lang.org>`_
-- `A Scala Tutorial for Java programmers <http://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_ *(Scala 2, 2006; for current equivalents use the official Scala 3 tour)*
-- `Scala API documentation <http://www.scala-lang.org/api/current/#package>`_
-- `Scala style guide <http://docs.scala-lang.org/style>`_
+- `A Scala Tutorial for Java programmers <https://www.scala-lang.org/docu/files/ScalaTutorial.pdf>`_ *(Scala 2, 2006; for current equivalents use the official Scala 3 tour)*
+- `Scala API documentation <https://www.scala-lang.org/api/current/#package>`_
+- `Scala style guide <https://docs.scala-lang.org/style>`_
 - `Scala Cookbook (recommended) <http://scalacookbook.com/>`_
 - `parboiled2 parser generator <https://github.com/sirthias/parboiled2>`_
 - `Cats documentation <https://typelevel.org/cats/>`_ — typeclass abstractions (Functor, Monoid, Monad, etc.) for Scala (advanced)
@@ -128,7 +128,7 @@ Resources on program representation and interpretation
 - `Extended BNF <https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form>`_
 - `Parser generators <https://en.wikipedia.org/wiki/Compiler-compiler>`_
 - `Parser combinators <https://en.wikipedia.org/wiki/Parser_combinator>`_
-- `Parsing expression grammars (PEGs) <http://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
+- `Parsing expression grammars (PEGs) <https://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
 - `Interpreters <https://en.wikipedia.org/wiki/Interpreter_(computing)>`_
 
 Other resources

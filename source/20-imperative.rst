@@ -248,19 +248,19 @@ In this section, we discuss the different options for running Scala code, includ
     Type in expressions for evaluation. Or try :help.
 
     scala> 3 + 4
-    res0: Int = 7
+    val res0: Int = 7
 
     scala> def f(x: Int) = x + 2
-    f: (x: Int)Int
+    def f(x: Int): Int
 
     scala> f(3)
-    res1: Int = 5
+    val res1: Int = 5
 
     scala> val z = f(4)
-    z: Int = 6
+    val z: Int = 6
 
     scala> Seq(1, 2, 3).map(f)
-    res2: Seq[Int] = List(3, 4, 5)
+    val res2: Seq[Int] = List(3, 4, 5)
 
 
   This is a very effective, painless way to conduct initial explorations.

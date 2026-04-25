@@ -440,19 +440,19 @@ Several specific concurrency mechanisms can come as language constructs, pattern
 - fully synchronized object (pattern/building blocks)
 - Android (also familiar from 313/413)
 
-  - `AsyncTask <http://developer.android.com/reference/android/os/AsyncTask.html>`_ *(deprecated in Android API 30; prefer* `Kotlin coroutines <https://developer.android.com/kotlin/coroutines>`_ *or* `WorkManager <https://developer.android.com/topic/libraries/architecture/workmanager>`_ *)*
-  - `ThreadPoolExecutor <http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html>`_
+  - `AsyncTask <https://developer.android.com/reference/android/os/AsyncTask.html>`_ *(deprecated in Android API 30; prefer* `Kotlin coroutines <https://developer.android.com/kotlin/coroutines>`_ *or* `WorkManager <https://developer.android.com/topic/libraries/architecture/workmanager>`_ *)*
+  - `ThreadPoolExecutor <https://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html>`_
 
-- `java.util.concurrent <https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html>`_
+- `java.util.concurrent <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/package-summary.html>`_
 
   - atomic variables
   - thread-safe collections
   - FIFO locks
   - ...
 
-- `Scala parallel collections <http://docs.scala-lang.org/overviews/parallel-collections/overview.html>`_
-- `futures and promises intro <http://docs.scala-lang.org/overviews/core/futures.html>`_
-- `composable futures in Scala/Akka <http://doc.akka.io/docs/akka/current/scala/futures.html>`_
+- `Scala parallel collections <https://docs.scala-lang.org/overviews/parallel-collections/overview.html>`_
+- `futures and promises intro <https://docs.scala-lang.org/overviews/core/futures.html>`_
+- `composable futures in Scala/Akka <https://doc.akka.io/docs/akka/current/scala/futures.html>`_
 
   .. note:: As of 2022, Akka is under a commercial license (Lightbend). The open-source Scala ecosystem has largely shifted to `Cats Effect <https://typelevel.org/cats-effect/>`_ and `ZIO <https://zio.dev/>`_ for structured concurrency. Both provide safe, composable, and purely functional abstractions for asynchronous and concurrent programming.
 
@@ -470,10 +470,10 @@ References: concurrent and asynchronous computing
 - Goetz et al., `JCIP <http://jcip.net.s3-website-us-east-1.amazonaws.com>`_
 - Doug Lea, `CPJ <http://gee.cs.oswego.edu/dl/cpj>`_
 - Thiruvathukal and Christopher, `HPJPC <https://code.google.com/p/hpjpc/>`_
-- `SE Radio episode on concurrency: part 1 <http://feedproxy.google.com/~r/se-radio/~3/lJLihLsyf0M/>`_
-- `SE Radio episode on concurrency: part 2 <http://feedproxy.google.com/~r/se-radio/~3/Wh7E6YT1_JI/>`_
-- `SE Radio episode on concurrency: part 3 <http://feedproxy.google.com/~r/se-radio/~3/WZ7h3kzRARY/>`_
-- `SE Radio episode on concurrency: part 4 <http://feedproxy.google.com/~r/se-radio/~3/bqICWnvwuGw/>`_
+- `SE Radio episode 12: Concurrency pt. 1 <https://se-radio.net/2006/04/episode-12-concurrency-pt-1/>`_
+- `SE Radio episode 19: Concurrency pt. 2 <https://se-radio.net/2006/06/episode-19-concurrency-pt-2/>`_
+- `SE Radio episode 29: Concurrency pt. 3 <https://se-radio.net/2006/09/episode-29-concurrency-pt-3/>`_
+- `SE Radio episode 348: Riccardo Terrell on Concurrency <https://se-radio.net/2018/12/se-radio-episode-348-riccardo-terrell-on-concurrency/>`_
 - `futures and promises overview <http://arild.github.io/scala-workshop/#/12>`_
 - `RxJava/RxScala <https://github.com/ReactiveX/RxScala>`_
 - `asynchronous programming video <https://www.youtube.com/watch?v=UKjcJ13bD3s>`_

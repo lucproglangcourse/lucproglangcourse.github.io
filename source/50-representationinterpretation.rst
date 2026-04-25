@@ -8,7 +8,7 @@ To this end, we need to talk about the toolchain required to do so, as well as t
 Programming language toolchains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We will start with an overview of the phases of programming language `compilation <http://en.wikipedia.org/wiki/Compiler>`_/`interpretation <http://en.wikipedia.org/wiki/Interpreter_(computing)>`_ toolchain:
+We will start with an overview of the phases of programming language `compilation <https://en.wikipedia.org/wiki/Compiler>`_/`interpretation <https://en.wikipedia.org/wiki/Interpreter_(computing)>`_ toolchain:
 
 - source code (string stored in file)
 - *lexical analysis*
@@ -91,7 +91,7 @@ Alternative front-end approaches
   - `Getting-started guide <https://github.com/scala/scala-parser-combinators/blob/main/docs/Getting_Started.md>`_
   - `simple expression combinator parser example <https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala>`_
 
-- `parsing expression grammars <http://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
+- `parsing expression grammars <https://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
 - `From EBNF to PEG <http://ceur-ws.org/Vol-928/0324.pdf>`_
 - Parboiled 2 PEG library
 
@@ -105,12 +105,12 @@ Programming language semantics
 
 Semantics, a formalization of the *meaning* of programs in a particular language, includes *static* and *dynamic* semantics.
 
-- `static semantics <http://en.wikipedia.org/wiki/Programming_language#Semantics>`_ (compile-time)
+- `static semantics <https://en.wikipedia.org/wiki/Programming_language#Semantics>`_ (compile-time)
 
   - flow analysis
   - typing
 
-- `dynamic semantics <http://en.wikipedia.org/wiki/Semantics_of_programming_languages>`_ (run-time)
+- `dynamic semantics <https://en.wikipedia.org/wiki/Semantics_of_programming_languages>`_ (run-time)
 
   - denotational
   - operational, e.g. our interpreters
@@ -119,7 +119,7 @@ Semantics, a formalization of the *meaning* of programs in a particular language
 The Interpreter pattern is related to the discussion of dynamic semantics.
 
 - http://c2.com/cgi/wiki?InterpreterPattern
-- http://en.wikipedia.org/wiki/Interpreter_pattern
+- https://en.wikipedia.org/wiki/Interpreter_pattern
 
 
 Case study: a simple imperative language
@@ -387,11 +387,11 @@ Type systems are an important aspect of programming languages. We identify the f
 
 Additional information is available here:
 
-- `design space and tradeoffs <http://en.wikipedia.org/wiki/Type_system>`_
-- `representative examples <http://en.wikipedia.org/wiki/Comparison_of_type_systems>`_
+- `design space and tradeoffs <https://en.wikipedia.org/wiki/Type_system>`_
+- `representative examples <https://en.wikipedia.org/wiki/Comparison_of_type_systems>`_
 - `comprehensive list <https://en.wikipedia.org/wiki/Comparison_of_programming_languages_by_type_system>`_
 - `presentation slides 10-29 <http://klaeufer.github.io/luc-amc.html#(10)>`_
-- `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
+- `performance implications/shootout <https://benchmarksgame-team.pages.debian.net/benchmarksgame/which-programs-are-fastest.html>`_
 
 
 .. note:: **Cardelli/Wegner polymorphism taxonomy**
@@ -440,8 +440,8 @@ In addition, there is a continuum between APIs and internal DSLs.
 Additional information is available here:
 
 - http://c2.com/cgi/wiki?DomainSpecificLanguage
-- http://martinfowler.com/bliki/FluentInterface.html
-- http://martinfowler.com/bliki/DomainSpecificLanguage.html
-- http://martinfowler.com/books/dsl.html
-- http://en.wikipedia.org/wiki/Domain-specific_language
+- https://martinfowler.com/bliki/FluentInterface.html
+- https://martinfowler.com/bliki/DomainSpecificLanguage.html
+- https://martinfowler.com/books/dsl.html
+- https://en.wikipedia.org/wiki/Domain-specific_language
 - `SE Radio episode 182 <http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/>`_
