@@ -897,7 +897,7 @@ For more details on space complexity and tail recursion, please take a look at t
 Separation of concerns at the type level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.
+.. note:: This section is aimed primarily at graduate students, but advanced undergraduates are encouraged to work through it as well.
 
 The overall approach is to separate recursion from structure by formalizing algebraic data types as initial F-algebras.
 
@@ -1072,7 +1072,7 @@ Some of our examples include implementations of ``traverse``.
 Other useful abstractions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: This section is aimed at primarily at graduate students, but advanced undergradutes are encouraged to work through it as well.
+.. note:: This section is aimed primarily at graduate students, but advanced undergraduates are encouraged to work through it as well.
 
 In this section, we will discuss a few more useful yet relatively simple abstractions.
 

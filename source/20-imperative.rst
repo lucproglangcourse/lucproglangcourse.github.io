@@ -201,7 +201,7 @@ In Java, we can use a `Scanner` with a custom delimiter to split input into word
     if (!word.isEmpty()) {
       freq.put(word, freq.getOrDefault(word, 0) + 1);
     }
-  }
+  });
 
   for (var entry : freq.entrySet()) {
     System.out.println(entry.getKey() + ": " + entry.getValue());
@@ -383,7 +383,7 @@ Measuring code coverage
 ```````````````````````
 
 The *code coverage* of your tests indicates how thoroughly you're testing.
-Typically, you would use the `sbt scoverage plugin <https://github.com/scoverage/sbt-scoverage>`_ to meaasure what percentage of your main code are covered by your tests.
+Typically, you would use the `sbt scoverage plugin <https://github.com/scoverage/sbt-scoverage>`_ to measure what percentage of your main code are covered by your tests.
 
 .. code-block:: bash
 
@@ -419,7 +419,7 @@ If your coverage percentages appear low, you can make them more accurate by excl
 
 .. code-block:: scala
 
-  ccoverageExcludedPackages := """.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*"""
+  coverageExcludedPackages := """.*\.simple\..*;.*\.common.*;.*\.Main;benchmark\..*"""
 
 Additional information on testing is available in the corresponding section of the `COMP 335/435: Formal Methods lecture notes <https://lucformalmethodscourse.github.io/30-testing.html>`_.
 

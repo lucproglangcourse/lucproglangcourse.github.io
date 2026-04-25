@@ -244,7 +244,7 @@ Our language has the following features:
 
 
 
-The syntactic feautures of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by::
+The syntactic features of our language are captured by the following grammar. For motivation, the sort of program that we are interested is exemplified by::
 
     StudentCourseRecord = record
         int firstExamScore;
@@ -322,7 +322,7 @@ Statements are given by the BNF grammar::
      	|	while (e) do S
 
 
-We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation, we extend the memory store to map identifiers not only to integer variable objects but also to record objects, each of which maps field names to their corresponding variable objects.
+We first formalize the intuitive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation, we extend the memory store to map identifiers not only to integer variable objects but also to record objects, each of which maps field names to their corresponding variable objects.
 
 Recall that we viewed variables as objects with two capabilities:
 
@@ -346,7 +346,7 @@ These evaluation rules are written out precisely in the following picture.
 
 .. image:: images/records3.png
 
-Our earlier rules for evaluating R-values are presented again below..
+Our earlier rules for evaluating R-values are presented again below.
 
 - Evaluating an L-value. In our setup, every L-value (say l) is a variable object that is obtained from the store M. Execute l.get() to compute the return value. This rule subsumes the earlier case for variables.
 - Evaluating e1 + e2: Evaluate e1 first, say to yield value v1. Evaluate e2 next, say to yield value v2. The required result is v1 + v2.
