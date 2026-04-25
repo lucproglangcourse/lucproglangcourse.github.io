@@ -115,8 +115,8 @@ Online Scala resources
 - `Scala style guide <http://docs.scala-lang.org/style>`_
 - `Scala Cookbook (recommended) <http://scalacookbook.com/>`_
 - `parboiled2 parser generator <https://github.com/sirthias/parboiled2>`_
-- `scalaz API documentation (advanced) <http://docs.typelevel.org/api/scalaz/stable/7.1.0-M3/doc>`_
-- `scalaz cheat sheet (advanced) <http://eed3si9n.com/scalaz-cheat-sheet>`_
+- `Cats documentation <https://typelevel.org/cats/>`_ — typeclass abstractions (Functor, Monoid, Monad, etc.) for Scala (advanced)
+- `Cats Cheat Sheet <https://typelevel.org/cats/cheatsheet.html>`_ — quick reference for Cats typeclasses and combinators (advanced)
 
 Resources on program representation and interpretation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
