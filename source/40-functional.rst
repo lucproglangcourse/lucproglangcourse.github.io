@@ -1175,10 +1175,9 @@ The Scala standard library does not define a unified ``Monad`` abstraction — i
       b <- fb
     yield a + b
 
-  addIfPresent(Some(3), Some(4))   // Some(7)
-  addIfPresent(Some(3), None)      // None
-  addIfPresent(List(1, 2), List(10, 20))
-  // List(11, 21, 12, 22)  — all combinations (nondeterminism)
+  addIfPresent(Option(3), Option(4))      // Some(7)
+  addIfPresent(Option(3), None)           // None
+  addIfPresent(List(1, 2), List(10, 20))  // List(11, 21, 12, 22)  — all combinations (nondeterminism)
 
 The ``[F[_]: Monad]`` context bound makes ``addIfPresent`` work for *any* monad — ``Option``, ``List``, ``Either``, ``Future``, or a custom type — without changing the implementation.
 
