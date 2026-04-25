@@ -248,6 +248,7 @@
           <section id="other-important-programming-paradigms">
 <h1><span class="section-number">9. </span>Other Important Programming Paradigms<a class="headerlink" href="#other-important-programming-paradigms" title="Link to this heading"></a></h1>
 <p>In this chapter, we introduce additional programming paradigms that are significant in the field of computer science but have not yet been covered in this book.</p>
+<p>Several paradigms covered in earlier chapters — functional (<a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>) and logic (<a class="reference internal" href="70-logic.html"><span class="doc">The Logic Programming Paradigm</span></a>) — are also broadly declarative. The paradigms discussed in this chapter either complement those (reactive, dataflow) or extend them in specific directions (AOP, constraint programming). Connections to earlier material are noted as they arise.</p>
 <section id="declarative-programming">
 <h2><span class="section-number">9.1. </span>Declarative Programming<a class="headerlink" href="#declarative-programming" title="Link to this heading"></a></h2>
 <p>Declarative programming focuses on what the program should accomplish rather than detailing how to achieve it. SQL and XML, including HTML, are examples of declarative languages.</p>
@@ -327,7 +328,11 @@ It is often used within XSLT to navigate XML structures.</p>
 <li><p>Strengths: models time-varying values naturally, simplifies composition of asynchronous events.</p></li>
 <li><p>Weaknesses: mental overhead for reasoning about time and backpressure; debugging can be tricky.</p></li>
 </ul>
-<p><strong>Paradigm-defining language:</strong> RxJS (Reactive Extensions for JavaScript)</p>
+<p><strong>Representative framework/library:</strong> RxJS (Reactive Extensions for JavaScript)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>RxJS is a <em>library</em>, not a language. The reactive paradigm is most clearly expressed at the language level in <a class="reference external" href="https://elm-lang.org/">Elm</a> (which enforces pure functional reactive programming) and in Haskell’s <code class="docutils literal notranslate"><span class="pre">reactive-banana</span></code> and <code class="docutils literal notranslate"><span class="pre">reflex</span></code> libraries. ReactiveX (Rx) is a cross-language API specification implemented as libraries for JavaScript (RxJS), Java (RxJava), Scala (RxScala), and many others.</p>
+</div>
 <p><strong>Example (RxJS):</strong></p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">clicks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromEvent</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;click&#39;</span><span class="p">);</span>
 <span class="nx">clicks</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Document clicked!&#39;</span><span class="p">));</span>
@@ -345,12 +350,17 @@ It is often used within XSLT to navigate XML structures.</p>
 </ul>
 <p><strong>Paradigm-defining language:</strong> AspectJ</p>
 <p><strong>Example (AspectJ):</strong></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">aspect</span><span class="w"> </span><span class="n">LoggingAspect</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="n">before</span><span class="p">():</span><span class="w"> </span><span class="n">execution</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">MyClass</span><span class="p">.</span><span class="na">myMethod</span><span class="p">(..))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Method called!&quot;</span><span class="p">);</span>
-<span class="w">   </span><span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Valid AspectJ syntax (compiled with ajc, the AspectJ compiler):</span>
+<span class="n">aspect</span><span class="w"> </span><span class="n">LoggingAspect</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">before</span><span class="p">()</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">execution</span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">MyClass</span><span class="p">.</span><span class="na">myMethod</span><span class="p">(..))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Method called!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AspectJ extends Java syntax and requires the AspectJ compiler (<code class="docutils literal notranslate"><span class="pre">ajc</span></code>) rather than <code class="docutils literal notranslate"><span class="pre">javac</span></code>. For projects that use Spring, the equivalent Spring AOP annotation approach (<code class="docutils literal notranslate"><span class="pre">&#64;Aspect</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;Before</span></code>) is often preferred as it integrates with the standard Java toolchain.</p>
 </div>
 </section>
 <section id="dataflow-programming">
@@ -365,29 +375,56 @@ It is often used within XSLT to navigate XML structures.</p>
 <p><strong>Paradigm-defining language:</strong> LabVIEW, TensorFlow</p>
 <p><strong>Example (TensorFlow, Python):</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># Data flows from a and b to c</span>
+
+<span class="c1"># In TensorFlow 2.x, @tf.function defers execution as a computation graph,</span>
+<span class="c1"># illustrating dataflow: c depends on a and b, not on control flow.</span>
+<span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># tf.Tensor(5, shape=(), dtype=int32)</span>
 </pre></div>
 </div>
 </section>
 <section id="other-paradigms">
 <h2><span class="section-number">9.5. </span>Other Paradigms<a class="headerlink" href="#other-paradigms" title="Link to this heading"></a></h2>
-<p>There are several other paradigms, such as constraint programming, event-driven programming, and more, each with its own unique approach and use cases.</p>
-<ul class="simple">
-<li><p>Constraint Programming (Prolog): express relations and let the solver find solutions.</p></li>
-<li><p>Event-driven Programming (JavaScript): drive computation by events and callbacks.</p></li>
-</ul>
-<p><strong>Constraint Programming (Prolog):</strong></p>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">mary</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
-<span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">pizza</span><span class="p">).</span>
-<span class="nf">likes</span><span class="p">(</span><span class="s s-Atom">john</span><span class="p">,</span> <span class="s s-Atom">wine</span><span class="p">).</span>
+<p>There are several other paradigms worth noting:</p>
+<section id="constraint-programming">
+<h3><span class="section-number">9.5.1. </span>Constraint Programming<a class="headerlink" href="#constraint-programming" title="Link to this heading"></a></h3>
+<p>Constraint programming extends logic programming by allowing variables to be constrained over a domain (e.g., integers, reals, finite sets) and using specialised solvers to find solutions. SWI-Prolog’s <code class="docutils literal notranslate"><span class="pre">clpfd</span></code> library is a widely used constraint solver:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="p">:-</span> <span class="nf">use_module</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="s s-Atom">clpfd</span><span class="p">)).</span>
+
+<span class="c1">% Find two numbers X and Y that sum to 10 and are both between 1 and 9</span>
+<span class="nf">solve</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nv">X</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
+    <span class="nv">Y</span> <span class="s s-Atom">in</span> <span class="mf">1..9</span><span class="p">,</span>
+    <span class="nv">X</span> <span class="o">+</span> <span class="nv">Y</span> <span class="s s-Atom">#=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nf">label</span><span class="p">([</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">]).</span>
+
+<span class="c1">% Query: ?- solve(X, Y).</span>
+<span class="c1">% X = 1, Y = 9 ; X = 2, Y = 8 ; ...</span>
 </pre></div>
 </div>
-<p><strong>Event-driven Programming (JavaScript):</strong></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Button clicked!&#39;</span><span class="p">));</span>
+<p>See also the discussion of Prolog and backtracking in <a class="reference internal" href="70-logic.html"><span class="doc">The Logic Programming Paradigm</span></a>.</p>
+</section>
+<section id="event-driven-programming">
+<h3><span class="section-number">9.5.2. </span>Event-driven Programming<a class="headerlink" href="#event-driven-programming" title="Link to this heading"></a></h3>
+<p>Event-driven programming drives computation through events (user interactions, messages, timers) and callbacks. It is the dominant model in UI frameworks and server-side I/O (Node.js):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Node.js HTTP server: execution is driven by incoming request events</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+
+<span class="c1">// Browser: UI event drives a callback</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Button clicked!&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
+<p>Event-driven programming is closely related to the reactive paradigm (see above), with the key difference that reactive programming typically provides composable operators (<code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, <code class="docutils literal notranslate"><span class="pre">merge</span></code>) over streams of events, whereas plain event-driven code uses ad-hoc callbacks.</p>
+</section>
 </section>
 </section>
 
@@ -451,7 +488,11 @@ It is often used within XSLT to navigate XML structures.</p>
 <li><a class="reference internal" href="#reactive-programming">9.2. Reactive Programming</a></li>
 <li><a class="reference internal" href="#aspect-oriented-programming">9.3. Aspect-Oriented Programming</a></li>
 <li><a class="reference internal" href="#dataflow-programming">9.4. Dataflow Programming</a></li>
-<li><a class="reference internal" href="#other-paradigms">9.5. Other Paradigms</a></li>
+<li><a class="reference internal" href="#other-paradigms">9.5. Other Paradigms</a><ul>
+<li><a class="reference internal" href="#constraint-programming">9.5.1. Constraint Programming</a></li>
+<li><a class="reference internal" href="#event-driven-programming">9.5.2. Event-driven Programming</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

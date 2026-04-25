@@ -121,7 +121,7 @@ Making command-line applications testable
 
 Marking the beginning of our transition to the object-oriented paradigm, we had to define a new abstractions (type)
 to make the `sliding queue application <https://github.com/lucproglangcourse/consoleapp-java>`_ testable.
-In particular, we defined an ``Observer`` for decoupling the applications "business logic" from the decition whether to print recurring updates to the console (for production use) or to store them in a data structure (for testing).
+In particular, we defined an ``Observer`` for decoupling the applications "business logic" from the decision whether to print recurring updates to the console (for production use) or to store them in a data structure (for testing).
 
 .. code-block:: java
 
@@ -133,7 +133,7 @@ A `consumer <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/u
 
   @FunctionalInterface
   public interface Consumer<T> {
-    boolean accept(T t);
+    void accept(T t); // performs an action on its argument; returns nothing
   }
 
 Assuming that we have instance variables ``input`` of type ``Iterator<String>`` representing the input stream, ``queue`` of type ``Queue<String>`` representing the sliding queue, and output of type ``OutputObserver`` representing the output behavior, we can now factor the main logic of our application out to a ``process`` method without arguments.
@@ -263,10 +263,10 @@ These abstractions are often combined, e.g., aggregation, structural recursion, 
 
 In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:
 
-- https://github.com/lucoodevcourse/shapes-android-java
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java
-- https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java
-- https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java
+- `shapes-android-java <https://github.com/lucoodevcourse/shapes-android-java>`_: Composite pattern applied to a graphical shape hierarchy in Android; shows how a tree of shapes can be drawn and transformed uniformly.
+- `SimpleExpressions.java <https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java>`_: a minimal arithmetic expression tree with direct recursive evaluation.
+- `VisitorExpressions.java <https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java>`_: the same expression hierarchy with the Visitor pattern, separating traversal (evaluation, printing) from the data structure itself.
+- `Tree.java <https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java>`_: a generic binary tree with search, illustrating recursive structure and generic types in Java.
 
 
 Object-oriented Scala as a "better Java"
@@ -285,13 +285,17 @@ Scala offers various improvements over Java, including:
 - `multiversal equality <https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html>`_: making sure apples are compared only with other apples
 - `higher-kinded types <https://earldouglas.com/posts/higher-kinded.html>`_ (advanced topic)
 
-.. todo:: More recent versions of Java, however, have started to echo some these advances:
+.. note:: More recent versions of Java (Java 8 and later) have started to echo some of these advances:
 
-  - lambda expressions
-  - default methods in interfaces
-  - local type inference
-  - streams
-  - records
+   - lambda expressions (Java 8)
+   - default methods in interfaces (Java 8)
+   - local type inference with ``var`` (Java 10)
+   - streams (Java 8)
+   - records (Java 16)
+   - sealed classes (Java 17)
+   - pattern matching in ``switch`` (Java 21)
+
+   These additions narrow the gap between Java and Scala, though Scala's trait system, algebraic data types, and advanced type system features remain more expressive.
 
 
 We will study these features as we encounter them.
@@ -343,6 +347,21 @@ Scala traits
 Scala traits are *abstract* types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
 The `Thin Cake idiom <http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/>`_ shows how traits can help us achieve our design goals.
+
+.. note:: **The diamond problem and Scala's linearisation**
+
+   When a class mixes in multiple traits that define the same method, the question arises: which implementation is used? This is the classical *diamond problem* of multiple inheritance. Scala resolves it through *C3 linearisation*: traits are ordered from right to left in the ``extends``/``with`` clause, with the class itself last. The first definition found in this order wins.
+
+   .. code-block:: scala
+
+     trait A { def greet(): String = "Hello from A" }
+     trait B extends A { override def greet() = "Hello from B" }
+     trait C extends A { override def greet() = "Hello from C" }
+
+     class D extends A with B with C
+     println(D().greet())  // "Hello from C" — C is rightmost, wins
+
+   For the full rules, see the `Scala 3 documentation on trait linearisation <https://docs.scala-lang.org/scala3/reference/other-new-features/trait-parameters.html>`_.
 
 .. note:: We deliberately call *Thin Cake* an *idiom* as opposed to a pattern because it is *language-specific*.
 

@@ -281,7 +281,8 @@ to the underlying inference engine.</p>
 <ul class="simple">
 <li><p>A process of making two logical terms syntactically identical by finding
 consistent substitutions for variables.</p></li>
-<li><p>Drives both matching of queries with rules and parameter passing.</p></li>
+<li><p>Drives both matching of queries with rules and parameter passing.
+See also pattern matching in <a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>, which uses a similar idea of matching terms by structure.</p></li>
 </ul>
 </section>
 <section id="backtracking">
@@ -310,15 +311,21 @@ consistent substitutions for variables.</p></li>
 <ul class="simple">
 <li><p><strong>Negation as failure</strong>: something is assumed false if it cannot be proven true.</p></li>
 <li><p><strong>Constraint logic programming (CLP)</strong>: extends logic programming with constraints
-over domains such as integers, reals, or finite sets.</p></li>
+over domains such as integers, reals, or finite sets.
+For a broader overview of constraint programming, see <a class="reference internal" href="75-otherparadigms.html"><span class="doc">Other Important Programming Paradigms</span></a>.</p></li>
 <li><p><strong>Meta-programming</strong>: programs can reason about themselves by treating rules and
 goals as data.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Logic programming vs. other paradigms</strong></p>
+<p>Unlike <em>imperative</em> programs that specify <em>how</em> to compute (step-by-step state changes), and unlike <em>functional</em> programs that express <em>what</em> to compute (as a composition of functions), logic programs specify <em>what relationships hold</em> and let the inference engine find solutions. This makes logic programming naturally <em>relational</em>: a predicate such as <code class="docutils literal notranslate"><span class="pre">grandparent(X,</span> <span class="pre">Y)</span></code> can be queried in multiple directions — “who are X’s grandchildren?”, “who are Y’s grandparents?”, or “are X and Y related?” — without writing separate functions for each direction. See also the discussion of unification in <a class="reference internal" href="50-representationinterpretation.html"><span class="doc">Program Representation and Interpretation</span></a> and constraint programming in <a class="reference internal" href="75-otherparadigms.html"><span class="doc">Other Important Programming Paradigms</span></a>.</p>
+</div>
 </section>
 </section>
 <section id="hello-world-in-prolog">
 <h2><span class="section-number">8.2. </span>Hello World in Prolog<a class="headerlink" href="#hello-world-in-prolog" title="Link to this heading"></a></h2>
-<p>Prolog does not have traditional I/O, but you can define a simple fact and query it:</p>
+<p>Prolog programs are <em>query-driven</em> rather than entry-point-driven: instead of a <code class="docutils literal notranslate"><span class="pre">main</span></code> method, you issue a query at the top level and the inference engine searches for solutions. Prolog does support I/O predicates (<code class="docutils literal notranslate"><span class="pre">write/1</span></code>, <code class="docutils literal notranslate"><span class="pre">nl/0</span></code>, <code class="docutils literal notranslate"><span class="pre">read/1</span></code>, <code class="docutils literal notranslate"><span class="pre">format/2</span></code>, etc.); the <code class="docutils literal notranslate"><span class="pre">hello/0</span></code> fact below uses them:</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% hello_world.pl</span>
 <span class="nf">hello</span> <span class="o">:-</span> <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">&#39;Hello, world!&#39;</span><span class="p">),</span> <span class="s s-Atom">nl</span><span class="p">.</span>
 </pre></div>
@@ -366,6 +373,12 @@ goals as data.</p></li>
 <section id="queens-example-in-prolog">
 <h2><span class="section-number">8.4. </span>8-Queens Example in Prolog<a class="headerlink" href="#queens-example-in-prolog" title="Link to this heading"></a></h2>
 <p>The 8-queens problem is to place 8 queens on a chessboard so that no two queens threaten each other.</p>
+<p>The 8-queens solution uses a <em>generate-and-test</em> strategy: <code class="docutils literal notranslate"><span class="pre">member/2</span></code> generates candidate row positions for each queen on backtracking, and <code class="docutils literal notranslate"><span class="pre">safe/1</span></code> tests that no two queens attack each other. Prolog’s backtracking automatically explores the search tree: if placing a queen in a given row leads to a conflict, Prolog undoes that choice (backtracks) and tries the next candidate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Tracing the first few steps</strong></p>
+<p>Prolog first tries <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">1</span></code> for the first queen (column 1). It then recursively tries to place the remaining queens. If <code class="docutils literal notranslate"><span class="pre">safe</span></code> fails at any point, Prolog backtracks and tries <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">2</span></code> for the conflicting queen, then <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">3</span></code>, etc. The first complete solution found is <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">5,</span> <span class="pre">8,</span> <span class="pre">6,</span> <span class="pre">3,</span> <span class="pre">7,</span> <span class="pre">2,</span> <span class="pre">4]</span></code>.</p>
+</div>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% 8queens.pl</span>
 <span class="nf">safe</span><span class="p">([]).</span>
 <span class="nf">safe</span><span class="p">([</span><span class="nv">Q</span><span class="p">|</span><span class="nv">Qs</span><span class="p">])</span> <span class="p">:-</span> <span class="nf">safe</span><span class="p">(</span><span class="nv">Qs</span><span class="p">),</span> <span class="nf">no_attack</span><span class="p">(</span><span class="nv">Q</span><span class="p">,</span> <span class="nv">Qs</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span>
@@ -434,6 +447,20 @@ from also considering the second rule.</p>
 <em>“Prolog’s goto statement”</em>. More modern logic programming systems (e.g., Mercury,
 constraint logic programming) try to avoid or replace cut with more principled
 mechanisms for controlling search and determinism.</p>
+</section>
+<section id="summary-and-further-reading">
+<h2><span class="section-number">8.6. </span>Summary and further reading<a class="headerlink" href="#summary-and-further-reading" title="Link to this heading"></a></h2>
+<p>Logic programming offers a radically different model of computation: programs declare <em>what is true</em> rather than prescribing <em>how to compute</em>. Prolog’s execution model — depth-first search with backtracking, driven by unification — makes it natural for problems that can be expressed as constraint satisfaction, pattern matching, or rule-based reasoning: parsing, type inference, planning, and natural language processing.</p>
+<p>Compared with the functional paradigm (<a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>), logic programming is also declarative, but <em>relational</em> rather than functional: predicates relate arguments bidirectionally, whereas functions map inputs to outputs unidirectionally. Compared with the imperative paradigm (<a class="reference internal" href="20-imperative.html"><span class="doc">The Imperative Programming Paradigm</span></a>), logic programs have no explicit control flow; the inference engine determines the order of evaluation.</p>
+<p>The cut operator (<code class="docutils literal notranslate"><span class="pre">!</span></code>) is the main escape hatch from pure declarative semantics, trading predictability for performance. Modern systems such as Mercury and Constraint Logic Programming (CLP) provide more principled alternatives.</p>
+<p>Further reading:</p>
+<ul class="simple">
+<li><p>Sterling and Shapiro, <em>The Art of Prolog</em> (2nd ed., MIT Press, 1994) — comprehensive treatment of Prolog programming techniques.</p></li>
+<li><p><a class="reference external" href="https://www.swi-prolog.org/pldoc/">SWI-Prolog manual</a> — reference documentation for the most widely used Prolog implementation.</p></li>
+<li><p>Bratko, <em>Prolog Programming for Artificial Intelligence</em> (4th ed., Pearson, 2011) — applications of Prolog to AI problems.</p></li>
+<li><p><a class="reference external" href="https://swish.swi-prolog.org/">SWISH online Prolog environment</a> — run Prolog programs in your browser.</p></li>
+<li><p><a class="reference external" href="http://minikanren.org/">miniKanren</a> — a relational programming language embeddable in Scheme, Clojure, and other languages, inspired by Prolog but with a cleaner semantics.</p></li>
+</ul>
 </section>
 </section>
 
@@ -508,6 +535,7 @@ mechanisms for controlling search and determinism.</p>
 <li><a class="reference internal" href="#basic-facts-and-rules-example">8.3. Basic Facts and Rules Example</a></li>
 <li><a class="reference internal" href="#queens-example-in-prolog">8.4. 8-Queens Example in Prolog</a></li>
 <li><a class="reference internal" href="#performance-nondeterminism-and-the-cut-operator">8.5. Performance, nondeterminism, and the cut operator</a></li>
+<li><a class="reference internal" href="#summary-and-further-reading">8.6. Summary and further reading</a></li>
 </ul>
 </li>
 </ul>

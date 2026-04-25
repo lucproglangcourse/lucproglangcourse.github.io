@@ -387,14 +387,14 @@ many mainstream languages, often blended with imperative and functional features
 <h2><span class="section-number">4.2. </span>Making command-line applications testable<a class="headerlink" href="#making-command-line-applications-testable" title="Link to this heading"></a></h2>
 <p>Marking the beginning of our transition to the object-oriented paradigm, we had to define a new abstractions (type)
 to make the <a class="reference external" href="https://github.com/lucproglangcourse/consoleapp-java">sliding queue application</a> testable.
-In particular, we defined an <code class="docutils literal notranslate"><span class="pre">Observer</span></code> for decoupling the applications “business logic” from the decition whether to print recurring updates to the console (for production use) or to store them in a data structure (for testing).</p>
+In particular, we defined an <code class="docutils literal notranslate"><span class="pre">Observer</span></code> for decoupling the applications “business logic” from the decision whether to print recurring updates to the console (for production use) or to store them in a data structure (for testing).</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">OutputObserver</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{}</span>
 </pre></div>
 </div>
 <p>A <a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Consumer.html">consumer</a> (in Java) is an object with a single <code class="docutils literal notranslate"><span class="pre">accept</span></code> method that takes one argument and performs an action on it without returning a value:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@FunctionalInterface</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Consumer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w"> </span><span class="c1">// performs an action on its argument; returns nothing</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -522,10 +522,10 @@ The <a class="reference external" href="https://github.com/lucproglangcourse/con
 </div>
 <p>In an object-oriented language, we commonly use a combination of design patterns (based on these basic abstractions) to represent domain model structures and associated behaviors:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">https://github.com/lucoodevcourse/shapes-android-java</a></p></li>
-<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java</a></p></li>
-<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java</a></p></li>
-<li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/shapes-android-java">shapes-android-java</a>: Composite pattern applied to a graphical shape hierarchy in Android; shows how a tree of shapes can be drawn and transformed uniformly.</p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/expressions/SimpleExpressions.java">SimpleExpressions.java</a>: a minimal arithmetic expression tree with direct recursive evaluation.</p></li>
+<li><p><a class="reference external" href="https://github.com/LoyolaChicagoCode/misc-java/blob/master/src/main/java/vexpressions/VisitorExpressions.java">VisitorExpressions.java</a>: the same expression hierarchy with the Visitor pattern, separating traversal (evaluation, printing) from the data structure itself.</p></li>
+<li><p><a class="reference external" href="https://github.com/lucoodevcourse/misc-java/tree/master/src/main/java/treesearch/Tree.java">Tree.java</a>: a generic binary tree with search, illustrating recursive structure and generic types in Java.</p></li>
 </ul>
 </section>
 <section id="object-oriented-scala-as-a-better-java">
@@ -543,16 +543,19 @@ The <a class="reference external" href="https://github.com/lucproglangcourse/con
 <li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/ca-multiversal-equality.html">multiversal equality</a>: making sure apples are compared only with other apples</p></li>
 <li><p><a class="reference external" href="https://earldouglas.com/posts/higher-kinded.html">higher-kinded types</a> (advanced topic)</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>More recent versions of Java, however, have started to echo some these advances:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More recent versions of Java (Java 8 and later) have started to echo some of these advances:</p>
 <ul class="simple">
-<li><p>lambda expressions</p></li>
-<li><p>default methods in interfaces</p></li>
-<li><p>local type inference</p></li>
-<li><p>streams</p></li>
-<li><p>records</p></li>
+<li><p>lambda expressions (Java 8)</p></li>
+<li><p>default methods in interfaces (Java 8)</p></li>
+<li><p>local type inference with <code class="docutils literal notranslate"><span class="pre">var</span></code> (Java 10)</p></li>
+<li><p>streams (Java 8)</p></li>
+<li><p>records (Java 16)</p></li>
+<li><p>sealed classes (Java 17)</p></li>
+<li><p>pattern matching in <code class="docutils literal notranslate"><span class="pre">switch</span></code> (Java 21)</p></li>
 </ul>
+<p>These additions narrow the gap between Java and Scala, though Scala’s trait system, algebraic data types, and advanced type system features remain more expressive.</p>
 </div>
 <p>We will study these features as we encounter them.</p>
 <p>The following examples illustrate the use of Scala as a “better Java” and the transition to some of the above-mentioned improvements:</p>
@@ -596,6 +599,20 @@ In this section and the pertinent examples, we are achieving basically the same 
 <p>Scala traits are <em>abstract</em> types that can serve as fully abstract interfaces as well as partially implemented, composable building blocks (mixins).
 Unlike Java interfaces (prior to Java 8), Scala traits can have method implementations (and state).
 The <a class="reference external" href="http://www.warski.org/blog/2014/02/using-scala-traits-as-modules-or-the-thin-cake-pattern/">Thin Cake idiom</a> shows how traits can help us achieve our design goals.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>The diamond problem and Scala’s linearisation</strong></p>
+<p>When a class mixes in multiple traits that define the same method, the question arises: which implementation is used? This is the classical <em>diamond problem</em> of multiple inheritance. Scala resolves it through <em>C3 linearisation</em>: traits are ordered from right to left in the <code class="docutils literal notranslate"><span class="pre">extends</span></code>/<code class="docutils literal notranslate"><span class="pre">with</span></code> clause, with the class itself last. The first definition found in this order wins.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">trait</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">():</span><span class="w"> </span><span class="nc">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello from A&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">trait</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello from B&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">trait</span><span class="w"> </span><span class="nc">C</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello from C&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">C</span>
+<span class="n">println</span><span class="p">(</span><span class="nc">D</span><span class="p">().</span><span class="n">greet</span><span class="p">())</span><span class="w">  </span><span class="c1">// &quot;Hello from C&quot; — C is rightmost, wins</span>
+</pre></div>
+</div>
+<p>For the full rules, see the <a class="reference external" href="https://docs.scala-lang.org/scala3/reference/other-new-features/trait-parameters.html">Scala 3 documentation on trait linearisation</a>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We deliberately call <em>Thin Cake</em> an <em>idiom</em> as opposed to a pattern because it is <em>language-specific</em>.</p>

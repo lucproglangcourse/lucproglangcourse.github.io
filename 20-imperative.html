@@ -404,19 +404,27 @@ As do other languages, Scala provides an extensive library of predefined types a
 <span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incoming</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
 <span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
 <span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">});</span>
+<span class="p">}</span>
 
 <span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Or more elegantly, using the <code class="docutils literal notranslate"><span class="pre">forEachRemaining</span></code> method, which combines <code class="docutils literal notranslate"><span class="pre">hasNext</span></code> and <code class="docutils literal notranslate"><span class="pre">next</span></code> and binds the next element to the argument <code class="docutils literal notranslate"><span class="pre">s</span></code> of the lambda (anonymous function):</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
-<span class="w">  </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Java lambdas cannot capture mutable local variables directly;</span>
+<span class="c1">// use a one-element array as a mutable container.</span>
+<span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">incoming</span><span class="p">.</span><span class="na">forEachRemaining</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">sum</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+<span class="w">  </span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
+<span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">count</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><em>What does this code compute?</em></p>
+<div class="admonition-answer admonition">
+<p class="admonition-title">Answer</p>
+<p>Both the while-loop and the <code class="docutils literal notranslate"><span class="pre">forEachRemaining</span></code> versions compute the <em>average string length</em> of the incoming elements: the total number of characters across all strings divided by the number of strings.</p>
+</div>
 <p>The Scala equivalent using mutable state is:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">incoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span><span class="p">()</span><span class="w"> </span><span class="c1">// Scala equivalent of Java&#39;s Scanner</span>
 <span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -450,6 +458,10 @@ We’ll take closer look at iterators and collections in chapter <a class="refer
 </pre></div>
 </div>
 <p><em>What does this code compute?</em></p>
+<div class="admonition-answer admonition">
+<p class="admonition-title">Answer</p>
+<p>This code computes a <em>word-frequency histogram</em>: it reads all whitespace/punctuation-separated tokens from standard input, converts each to lower case, and counts how many times each distinct word appears. The result is a map from word to count.</p>
+</div>
 <p>The Scala equivalent, using mutable collections, is:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scala</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="nc">Source</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">getLines</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;(?U)[^\\p{Alpha}0-9&#39;]+&quot;</span><span class="p">))</span>
@@ -546,8 +558,12 @@ To use this plugin, add this line to the end of <code class="docutils literal no
 </pre></div>
 </div>
 <p>and this one to <code class="docutils literal notranslate"><span class="pre">project/plugins.sbt</span></code>:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s">&quot;com.typesafe.sbt&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;sbt-native-packager&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.7.5&quot;</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">addSbtPlugin</span><span class="p">(</span><span class="s">&quot;com.github.sbt&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;sbt-native-packager&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="s">&quot;1.10.4&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Always check the <a class="reference external" href="https://github.com/sbt/sbt-native-packager/releases">sbt-native-packager releases page</a> for the current version, as it updates frequently.</p>
 </div>
 <p>Then, after any change to your sources, you can create/update the script and run it from the command line like so:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbt<span class="w"> </span>stage
@@ -814,9 +830,9 @@ For example, if our app running interactively, we might automatically want to pr
 <span class="w">      </span><span class="n">sys</span><span class="p">.</span><span class="n">process</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">available</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>Verify that this works on Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">isInputFromTerminal</span></code> function works on macOS and Linux. On Windows, terminal detection via <code class="docutils literal notranslate"><span class="pre">System.console()</span></code> behaves similarly for the JVM, but ANSI escape codes (used for progress bars and coloured output) require either Windows Terminal or a <a class="reference external" href="https://github.com/fusesource/jansi">Jansi</a>-enabled environment. For portable behaviour, consider the <a class="reference external" href="https://kohlschutter.github.io/junixsocket/">junixsocket</a> or <a class="reference external" href="https://github.com/jline/jline3">jline</a> libraries, which abstract over platform differences.</p>
 </div>
 </section>
 <section id="allowing-the-user-to-edit-their-input">
@@ -987,7 +1003,7 @@ For programs running in the Java Virtual Machine (JVM), we can use the standalon
 By contrast, if the sawtooth pattern were sloping upward over time, space complexity would increase as we are processing our input, suggesting some function that grows in terms of the input size n.</p>
 <img alt="_images/heapprofile.png" src="_images/heapprofile.png" />
 <p>When working in a command-line environment, we can also use an interactive process viewer, such as <code class="docutils literal notranslate"><span class="pre">htop</span></code>, to monitor a program’s memory footprint over time.</p>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <p>add suitable htop screenshot</p>
 </div>

@@ -39,7 +39,7 @@ It is not suitable for working on full-fledged Scala projects, however.
 To launch, visit https://scastie.scala-lang.org.
 Be sure to
 
-- choose target Scala 3 and Scala version 3.3.7 LTS
+- choose target Scala 3 and the latest available Scala 3 LTS version (Scastie's version list is updated regularly; always choose the most recent 3.x LTS entry)
 - add the following `scalacOptions` under build settings::
 
     "-Yexplicit-nulls",
@@ -117,8 +117,7 @@ Choices of development environments
 
   - check specific prerequisite details for your platform
   - for the following steps, make sure you have no projects open and are looking at the welcome window as in the attached screenshot
-  - *Scala plugin installation:* IntelliJ IDEA > Configure (bottom right) > Plugins > Browse repositories > find and right-click Scala > download and install > close repository browser > OK to restart IDEA
-    Because Scala 3 is still evolving, JetBrains recommend setting the IntelliJ Scala plugin to the nightly channel for more frequent updates. For details, visit `this blog post <https://blog.jetbrains.com/scala/2020/03/17/scala-3-support-in-intellij-scala-plugin/>`_.
+  - *Scala plugin installation (current IntelliJ IDEA):* Go to **File > Settings** (Windows/Linux) or **IntelliJ IDEA > Preferences** (macOS), open the **Plugins** tab, search for "Scala" in the **Marketplace**, click **Install**, and restart IntelliJ IDEA. Alternatively, IntelliJ IDEA will automatically prompt you to install the Scala plugin when you first open a ``.scala`` or ``build.sbt`` file.
   - *JDK configuration*: IntelliJ IDEA > Configure > Project Defaults > Project Structure > Platform Settings > SDKs > + > JDK > navigate to the installation directory of your most recent JDK > OK
 
 - `Visual Studio Code <https://code.visualstudio.com/>`_ alternative based on your preference and/or experience
@@ -154,7 +153,7 @@ GitHub
 `GitHub <https://github.com>`_ is a provider of hosted Git repositories, which emphasizes community and collaboration. For this reason, we use it to host our course examples.
 
 - Create a GitHub account if you don't already have one.
-- Get the `GitHub Student Developer Pack <https://education.github.com/pack/join>`_ using your official ``@luc.edu`` address. This will give you free unlimited private repositories.
+- Get the `GitHub Student Developer Pack <https://education.github.com/pack/join>`_ using your official ``@luc.edu`` address. This gives you access to GitHub Copilot (free for verified students), additional CI/CD minutes, and a range of third-party developer tools at no cost. See the `current benefit list <https://education.github.com/pack>`_ for up-to-date details, as benefits change regularly.
 - Find and follow a few practitioners you respect. For example, I follow `these developers <https://github.com/klaeufer?tab=following>`_. You'll probably recognize a number of them.
 - Review `these notes <https://guides.github.com/activities/contributing-to-open-source>`_ to understand the community-based development process.
 - For credit toward class participation, create some meaningful `GitHub issues <https://guides.github.com/features/issues>`_ and/or `GitHub pull requests <https://help.github.com/articles/using-pull-requests>`_ for one or more of our `course examples <https://github.com/lucproglangcourse>`_. (Make sure to navigate to the original repos as these forks do not have their own issue trackers). These can be functional or nonfunctional enhancements, requests for clarification, etc.
@@ -169,9 +168,38 @@ You may find both of these cheat sheets useful:
 Remote participation
 ~~~~~~~~~~~~~~~~~~~~
 
-This software allows you to participating in class remotely in case of weather emergencies, pandemics, etc.
-For security and privacy reasons, be sure to update it frequently.
+When class is held remotely (e.g., due to weather emergencies or other circumstances), participation will use the video conferencing tool specified on the course syllabus. Keep that tool updated for security and privacy reasons.
 
-- `Zoom <https://luc.zoom.us>`_
 
-In case of a Zoom outage, we will fall back to MS Teams chat and reorganize from there.
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+Common setup issues and their solutions:
+
+**sbt not found after reopening a Codespace**
+  Codespace workspaces can lose installed packages between sessions. Reinstall with:
+
+  .. code-block:: bash
+
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    sdk install sbt
+    sdk install java 21.0.2-tem  # or whichever version your project requires
+
+**Metals (VS Code Scala extension) not importing the project**
+  Delete the Metals and Bloop caches and reimport:
+
+  .. code-block:: bash
+
+    rm -rf .metals/ .bloop/ project/project/ project/target/
+    # Then: VS Code command palette → Metals: Import build
+
+**Java version mismatch**
+  Check that ``java -version`` matches the Java version expected by your ``build.sbt``. If not:
+
+  .. code-block:: bash
+
+    sdk list java          # see available versions
+    sdk use java 21.0.2-tem
+
+**sbt downloads dependencies slowly on first run**
+  This is normal: sbt resolves and downloads all project dependencies from Maven Central on the first build. Subsequent builds use a local cache (``~/.ivy2`` and ``~/.sbt``).

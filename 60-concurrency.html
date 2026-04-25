@@ -543,9 +543,9 @@ Processes are more isolated and fault-tolerant, but coordination is more expensi
 <p>Typical use cases: microservices, shell pipelines, distributed systems, producer-consumer architectures built on message queues.</p>
 </dd>
 </dl>
-<div class="table-wrapper colwidths-given docutils container" id="id3">
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Fine-grained vs. Coarse-grained Concurrency</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<div class="table-wrapper colwidths-given docutils container" id="id4">
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Fine-grained vs. Coarse-grained Concurrency</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 26.3%" />
 <col style="width: 36.8%" />
@@ -661,17 +661,18 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 \end{matrix}\end{split}\]</div>
 </div>
 <p>Therefore, we cannot attempt to comprehend, let alone enumerate, all possible interleavings. Instead, we need to think in terms of constraints, e.g., f1 always happens before s1, and f2 always happens before s2.</p>
+<p>This combinatorial explosion is known as the <em>state-space explosion problem</em> — the fundamental reason that exhaustive testing of concurrent programs is infeasible even for small numbers of threads and steps. It motivates the use of <em>model checking</em> tools (such as TLA+, SPIN, or Java Pathfinder) that can systematically explore the state space without exhaustive enumeration, and <em>type-based approaches</em> (such as Rust’s ownership system) that statically rule out data races.</p>
 <p>Once we make each thread atomic, however, the number of interleavings shrinks dramatically to <span class="math notranslate nohighlight">\(k!\)</span>.</p>
 </section>
 </section>
 <section id="dealing-with-shared-state">
 <h2><span class="section-number">7.7. </span>Dealing with shared state<a class="headerlink" href="#dealing-with-shared-state" title="Link to this heading"></a></h2>
-<p>One of the main challenges of concurrent programming is dealing with shared mutable state. Several strategies exist:</p>
+<p>One of the main challenges of concurrent programming is dealing with shared mutable state. Several complementary strategies exist:</p>
 <ul class="simple">
-<li><p>mutual exclusion/locking</p></li>
-<li><p>confinement</p></li>
-<li><p>immutability</p></li>
-<li><p>case study: GUIs and the single-threaded rule</p></li>
+<li><p><strong>Mutual exclusion (locking)</strong>: protect shared state with a lock so that only one thread accesses it at a time. In Java/Scala, <code class="docutils literal notranslate"><span class="pre">synchronized</span></code> blocks or <code class="docutils literal notranslate"><span class="pre">java.util.concurrent.locks.ReentrantLock</span></code> provide this guarantee. The risk is <em>deadlock</em> if two threads each hold a lock the other needs.</p></li>
+<li><p><strong>Confinement</strong>: ensure that mutable state is never shared between threads in the first place. Thread-local storage (<code class="docutils literal notranslate"><span class="pre">java.lang.ThreadLocal</span></code>) confines data to a single thread. The actor model (see <a class="reference internal" href="#specific-concurrency-mechanisms"><span class="std std-ref">Specific concurrency mechanisms</span></a>) achieves confinement at a higher level by giving each actor its own private state.</p></li>
+<li><p><strong>Immutability</strong>: use data structures that cannot be modified after creation. Immutable data can be shared freely between threads without synchronisation. Functional programming’s emphasis on immutable values (see <a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>) is therefore directly beneficial for concurrent programming.</p></li>
+<li><p><strong>Single-threaded rule (GUI applications)</strong>: most GUI frameworks (Android, Swing, JavaFX) require that all UI updates happen on a dedicated <em>UI thread</em>. Background work runs on other threads; results are posted back to the UI thread via <code class="docutils literal notranslate"><span class="pre">runOnUiThread</span></code> (Android) or <code class="docutils literal notranslate"><span class="pre">SwingUtilities.invokeLater</span></code> (Swing). Violating this rule leads to subtle, hard-to-reproduce rendering bugs.</p></li>
 </ul>
 </section>
 <section id="conflicting-design-forces">
@@ -697,20 +698,20 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 </ul>
 </section>
 <section id="specific-concurrency-mechanisms">
-<h2><span class="section-number">7.9. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
+<span id="id3"></span><h2><span class="section-number">7.9. </span>Specific concurrency mechanisms<a class="headerlink" href="#specific-concurrency-mechanisms" title="Link to this heading"></a></h2>
 <p>Several specific concurrency mechanisms can come as anguage constructs, patterns, and other building blocks:</p>
-<ul class="simple">
+<ul>
 <li><p>threads (familiar from 313/413)</p></li>
 <li><p>monitors: synchronized/locks, wait/notify</p></li>
 <li><p>fully synchronized object (pattern/building blocks)</p></li>
 <li><p>Android (also familiar from 313/413)</p>
-<ul>
-<li><p><a class="reference external" href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a></p></li>
+<ul class="simple">
+<li><p><a class="reference external" href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> <em>(deprecated in Android API 30; prefer</em> <a class="reference external" href="https://developer.android.com/kotlin/coroutines">Kotlin coroutines</a> <em>or</em> <a class="reference external" href="https://developer.android.com/topic/libraries/architecture/workmanager">WorkManager</a> <em>)</em></p></li>
 <li><p><a class="reference external" href="http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html">java.util.concurrent</a></p>
-<ul>
+<ul class="simple">
 <li><p>atomic variables</p></li>
 <li><p>thread-safe collections</p></li>
 <li><p>FIFO locks</p></li>
@@ -720,7 +721,11 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 <li><p><a class="reference external" href="http://docs.scala-lang.org/overviews/parallel-collections/overview.html">Scala parallel collections</a></p></li>
 <li><p><a class="reference external" href="http://docs.scala-lang.org/overviews/core/futures.html">futures and promises intro</a></p></li>
 <li><p><a class="reference external" href="http://doc.akka.io/docs/akka/current/scala/futures.html">composable futures in Scala/Akka</a></p>
-<ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of 2022, Akka is under a commercial license (Lightbend). The open-source Scala ecosystem has largely shifted to <a class="reference external" href="https://typelevel.org/cats-effect/">Cats Effect</a> and <a class="reference external" href="https://zio.dev/">ZIO</a> for structured concurrency. Both provide safe, composable, and purely functional abstractions for asynchronous and concurrent programming.</p>
+</div>
+<ul class="simple">
 <li><p><a class="reference external" href="https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97">example: concurrent web requests</a></p></li>
 </ul>
 </li>

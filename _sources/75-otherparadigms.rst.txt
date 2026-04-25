@@ -3,6 +3,8 @@ Other Important Programming Paradigms
 
 In this chapter, we introduce additional programming paradigms that are significant in the field of computer science but have not yet been covered in this book.
 
+Several paradigms covered in earlier chapters — functional (:doc:`/40-functional`) and logic (:doc:`/70-logic`) — are also broadly declarative. The paradigms discussed in this chapter either complement those (reactive, dataflow) or extend them in specific directions (AOP, constraint programming). Connections to earlier material are noted as they arise.
+
 Declarative Programming
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -94,7 +96,9 @@ Reactive programming is oriented around data streams and the propagation of chan
 - Strengths: models time-varying values naturally, simplifies composition of asynchronous events.
 - Weaknesses: mental overhead for reasoning about time and backpressure; debugging can be tricky.
 
-**Paradigm-defining language:** RxJS (Reactive Extensions for JavaScript)
+**Representative framework/library:** RxJS (Reactive Extensions for JavaScript)
+
+.. note:: RxJS is a *library*, not a language. The reactive paradigm is most clearly expressed at the language level in `Elm <https://elm-lang.org/>`_ (which enforces pure functional reactive programming) and in Haskell's ``reactive-banana`` and ``reflex`` libraries. ReactiveX (Rx) is a cross-language API specification implemented as libraries for JavaScript (RxJS), Java (RxJava), Scala (RxScala), and many others.
 
 **Example (RxJS):**
 
@@ -119,11 +123,14 @@ Aspect-oriented programming (AOP) aims to increase modularity by allowing the se
 
 .. code-block:: java
 
+  // Valid AspectJ syntax (compiled with ajc, the AspectJ compiler):
   aspect LoggingAspect {
-     before(): execution(* MyClass.myMethod(..)) {
-        System.out.println("Method called!");
-     }
+      before() : execution(* MyClass.myMethod(..)) {
+          System.out.println("Method called!");
+      }
   }
+
+.. note:: AspectJ extends Java syntax and requires the AspectJ compiler (``ajc``) rather than ``javac``. For projects that use Spring, the equivalent Spring AOP annotation approach (``@Aspect``, ``@Before``) is often preferred as it integrates with the standard Java toolchain.
 
 Dataflow Programming
 ~~~~~~~~~~~~~~~~~~~~
@@ -142,28 +149,58 @@ Dataflow programming models programs as a directed graph of the data flowing bet
 .. code-block:: python
 
   import tensorflow as tf
-  a = tf.constant(2)
-  b = tf.constant(3)
-  c = a + b  # Data flows from a and b to c
+
+  # In TensorFlow 2.x, @tf.function defers execution as a computation graph,
+  # illustrating dataflow: c depends on a and b, not on control flow.
+  @tf.function
+  def add(a, b):
+      return a + b
+
+  result = add(tf.constant(2), tf.constant(3))
+  print(result)  # tf.Tensor(5, shape=(), dtype=int32)
 
 Other Paradigms
 ~~~~~~~~~~~~~~~
 
-There are several other paradigms, such as constraint programming, event-driven programming, and more, each with its own unique approach and use cases.
+There are several other paradigms worth noting:
 
-- Constraint Programming (Prolog): express relations and let the solver find solutions.
-- Event-driven Programming (JavaScript): drive computation by events and callbacks.
+Constraint Programming
+``````````````````````
 
-**Constraint Programming (Prolog):**
+Constraint programming extends logic programming by allowing variables to be constrained over a domain (e.g., integers, reals, finite sets) and using specialised solvers to find solutions. SWI-Prolog's ``clpfd`` library is a widely used constraint solver:
 
 .. code-block:: prolog
 
-  likes(mary, pizza).
-  likes(john, pizza).
-  likes(john, wine).
+  :- use_module(library(clpfd)).
 
-**Event-driven Programming (JavaScript):**
+  % Find two numbers X and Y that sum to 10 and are both between 1 and 9
+  solve(X, Y) :-
+      X in 1..9,
+      Y in 1..9,
+      X + Y #= 10,
+      label([X, Y]).
+
+  % Query: ?- solve(X, Y).
+  % X = 1, Y = 9 ; X = 2, Y = 8 ; ...
+
+See also the discussion of Prolog and backtracking in :doc:`/70-logic`.
+
+Event-driven Programming
+````````````````````````
+
+Event-driven programming drives computation through events (user interactions, messages, timers) and callbacks. It is the dominant model in UI frameworks and server-side I/O (Node.js):
 
 .. code-block:: javascript
 
-  button.addEventListener('click', () => alert('Button clicked!'));
+  // Node.js HTTP server: execution is driven by incoming request events
+  const http = require('http');
+  const server = http.createServer((req, res) => {
+    res.end('Hello, world!');
+  });
+  server.listen(3000);
+
+  // Browser: UI event drives a callback
+  document.querySelector('button')
+    .addEventListener('click', () => alert('Button clicked!'));
+
+Event-driven programming is closely related to the reactive paradigm (see above), with the key difference that reactive programming typically provides composable operators (``map``, ``filter``, ``merge``) over streams of events, whereas plain event-driven code uses ad-hoc callbacks.

@@ -388,6 +388,8 @@ As the number of threads and/or their number of steps grow beyond two, the numbe
 
 Therefore, we cannot attempt to comprehend, let alone enumerate, all possible interleavings. Instead, we need to think in terms of constraints, e.g., f1 always happens before s1, and f2 always happens before s2.
 
+This combinatorial explosion is known as the *state-space explosion problem* — the fundamental reason that exhaustive testing of concurrent programs is infeasible even for small numbers of threads and steps. It motivates the use of *model checking* tools (such as TLA+, SPIN, or Java Pathfinder) that can systematically explore the state space without exhaustive enumeration, and *type-based approaches* (such as Rust's ownership system) that statically rule out data races.
+
 Once we make each thread atomic, however, the number of interleavings shrinks dramatically to :math:`k!`.
 
 
@@ -395,12 +397,15 @@ Once we make each thread atomic, however, the number of interleavings shrinks dr
 Dealing with shared state
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One of the main challenges of concurrent programming is dealing with shared mutable state. Several strategies exist:
+One of the main challenges of concurrent programming is dealing with shared mutable state. Several complementary strategies exist:
 
-- mutual exclusion/locking
-- confinement
-- immutability
-- case study: GUIs and the single-threaded rule
+- **Mutual exclusion (locking)**: protect shared state with a lock so that only one thread accesses it at a time. In Java/Scala, ``synchronized`` blocks or ``java.util.concurrent.locks.ReentrantLock`` provide this guarantee. The risk is *deadlock* if two threads each hold a lock the other needs.
+
+- **Confinement**: ensure that mutable state is never shared between threads in the first place. Thread-local storage (``java.lang.ThreadLocal``) confines data to a single thread. The actor model (see :ref:`specific-concurrency-mechanisms`) achieves confinement at a higher level by giving each actor its own private state.
+
+- **Immutability**: use data structures that cannot be modified after creation. Immutable data can be shared freely between threads without synchronisation. Functional programming's emphasis on immutable values (see :doc:`/40-functional`) is therefore directly beneficial for concurrent programming.
+
+- **Single-threaded rule (GUI applications)**: most GUI frameworks (Android, Swing, JavaFX) require that all UI updates happen on a dedicated *UI thread*. Background work runs on other threads; results are posted back to the UI thread via ``runOnUiThread`` (Android) or ``SwingUtilities.invokeLater`` (Swing). Violating this rule leads to subtle, hard-to-reproduce rendering bugs.
 
 
 (Conflicting) design forces
@@ -423,6 +428,8 @@ This gives rise to several conflicting design forces:
   - jitter
 
 
+.. _specific-concurrency-mechanisms:
+
 Specific concurrency mechanisms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -433,7 +440,7 @@ Several specific concurrency mechanisms can come as anguage constructs, patterns
 - fully synchronized object (pattern/building blocks)
 - Android (also familiar from 313/413)
 
-  - `AsyncTask <http://developer.android.com/reference/android/os/AsyncTask.html>`_
+  - `AsyncTask <http://developer.android.com/reference/android/os/AsyncTask.html>`_ *(deprecated in Android API 30; prefer* `Kotlin coroutines <https://developer.android.com/kotlin/coroutines>`_ *or* `WorkManager <https://developer.android.com/topic/libraries/architecture/workmanager>`_ *)*
   - `ThreadPoolExecutor <http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html>`_
 
 - `java.util.concurrent <https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html>`_
@@ -446,6 +453,8 @@ Several specific concurrency mechanisms can come as anguage constructs, patterns
 - `Scala parallel collections <http://docs.scala-lang.org/overviews/parallel-collections/overview.html>`_
 - `futures and promises intro <http://docs.scala-lang.org/overviews/core/futures.html>`_
 - `composable futures in Scala/Akka <http://doc.akka.io/docs/akka/current/scala/futures.html>`_
+
+  .. note:: As of 2022, Akka is under a commercial license (Lightbend). The open-source Scala ecosystem has largely shifted to `Cats Effect <https://typelevel.org/cats-effect/>`_ and `ZIO <https://zio.dev/>`_ for structured concurrency. Both provide safe, composable, and purely functional abstractions for asynchronous and concurrent programming.
 
   - `example: concurrent web requests <https://gist.github.com/klaeufer/3d6a15837bae8d7d5dd07ad9f0db9b97>`_
 

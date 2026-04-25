@@ -173,7 +173,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -240,14 +240,142 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="summary">
 <h1><span class="section-number">10. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h1>
-<p>summary/recap goes here</p>
+<p>This chapter brings together the major themes of the course and reflects on the relationships among the paradigms studied.</p>
+<section id="revisiting-the-learning-outcomes">
+<h2><span class="section-number">10.1. </span>Revisiting the learning outcomes<a class="headerlink" href="#revisiting-the-learning-outcomes" title="Link to this heading"></a></h2>
+<p>At the start of the course (<a class="reference internal" href="05-overview.html"><span class="doc">Overview</span></a>) we identified five overarching learning outcomes. Here is where each was addressed:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Learning outcome</p></th>
+<th class="head"><p>Primary chapter(s)</p></th>
+<th class="head"><p>Key takeaway</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Overview of programming paradigms</p></td>
+<td><p><a class="reference internal" href="10-background.html"><span class="doc">Context and Background</span></a>, <a class="reference internal" href="75-otherparadigms.html"><span class="doc">Other Important Programming Paradigms</span></a></p></td>
+<td><p>Paradigms are mental models of computation; each emphasises different abstractions and tradeoffs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Understanding of the PL design space</p></td>
+<td><p><a class="reference internal" href="10-background.html"><span class="doc">Context and Background</span></a>, <a class="reference internal" href="80-principles.html"><span class="doc">Appendix: Programming Language Design Principles</span></a></p></td>
+<td><p>Language design is guided by principles such as orthogonality, abstraction, and security; these create a structured design space with known tradeoffs.</p></td>
+</tr>
+<tr class="row-even"><td><p>Proficiency in functional programming</p></td>
+<td><p><a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a></p></td>
+<td><p>Functional programming de-emphasises mutable state in favour of immutable values, higher-order functions, algebraic data types, and composable effect types.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Understanding of program representation and interpretation</p></td>
+<td><p><a class="reference internal" href="50-representationinterpretation.html"><span class="doc">Program Representation and Interpretation</span></a></p></td>
+<td><p>Programs can be represented as abstract syntax trees; interpreters and compilers process these representations using structured operational semantics or type-directed translation.</p></td>
+</tr>
+<tr class="row-even"><td><p>Basic competence in concurrent programming</p></td>
+<td><p><a class="reference internal" href="60-concurrency.html"><span class="doc">The Concurrent Programming Paradigm</span></a></p></td>
+<td><p>Concurrency introduces nondeterminism and shared-state hazards; strategies include mutual exclusion, confinement, immutability, and higher-level abstractions such as actors and futures.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="paradigm-comparison">
+<h2><span class="section-number">10.2. </span>Paradigm comparison<a class="headerlink" href="#paradigm-comparison" title="Link to this heading"></a></h2>
+<p>Each paradigm studied in this course has a characteristic <em>primary abstraction</em> and <em>execution model</em>:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 20.0%" />
+<col style="width: 16.0%" />
+<col style="width: 23.0%" />
+<col style="width: 23.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paradigm</p></th>
+<th class="head"><p>Primary abstraction</p></th>
+<th class="head"><p>Mutability</p></th>
+<th class="head"><p>Execution model</p></th>
+<th class="head"><p>Representative languages</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Imperative</p></td>
+<td><p>Statement / variable</p></td>
+<td><p>Central (state = memory)</p></td>
+<td><p>Sequential steps</p></td>
+<td><p>C, Java, Python</p></td>
+</tr>
+<tr class="row-odd"><td><p>Object-oriented</p></td>
+<td><p>Object / message</p></td>
+<td><p>Encapsulated</p></td>
+<td><p>Method dispatch</p></td>
+<td><p>Java, C++, Python, Scala</p></td>
+</tr>
+<tr class="row-even"><td><p>Functional</p></td>
+<td><p>Function / value</p></td>
+<td><p>Discouraged (immutable preferred)</p></td>
+<td><p>Expression evaluation</p></td>
+<td><p>Haskell, Scala, Clojure, F#</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logic</p></td>
+<td><p>Predicate / relation</p></td>
+<td><p>Absent (pure logic)</p></td>
+<td><p>Query / unification / backtracking</p></td>
+<td><p>Prolog, Mercury</p></td>
+</tr>
+<tr class="row-even"><td><p>Concurrent</p></td>
+<td><p>Thread / actor / future</p></td>
+<td><p>Shared (hazardous) or confined</p></td>
+<td><p>Interleaved / parallel steps</p></td>
+<td><p>Java, Scala, Go, Erlang</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="choosing-a-paradigm">
+<h2><span class="section-number">10.3. </span>Choosing a paradigm<a class="headerlink" href="#choosing-a-paradigm" title="Link to this heading"></a></h2>
+<p>In practice, modern languages support multiple paradigms. The choice of which paradigm to emphasise depends on the problem structure:</p>
+<ul class="simple">
+<li><p><strong>Prefer functional style</strong> when state is the primary source of bugs, when the computation is naturally expressed as data transformation, or when parallelism and concurrency are needed — immutability eliminates data-race hazards.</p></li>
+<li><p><strong>Prefer object-oriented style</strong> when the domain has a rich type hierarchy, when encapsulation of mutable state is necessary, or when working within an OO framework or platform.</p></li>
+<li><p><strong>Prefer logic programming</strong> when the problem is naturally expressed as constraint satisfaction, pattern matching over relational data, or rule-based reasoning (e.g., expert systems, type checkers, planners).</p></li>
+<li><p><strong>Prefer concurrent abstractions</strong> (actors, futures, reactive streams) when the problem involves multiple independent, long-running activities, I/O-bound tasks, or event-driven workflows.</p></li>
+<li><p><strong>Combine paradigms</strong> when no single paradigm is dominant — Scala, for example, blends OO and functional programming seamlessly, and Scala’s actors (or Cats Effect) add principled concurrency on top.</p></li>
+</ul>
+</section>
+<section id="cross-cutting-themes">
+<h2><span class="section-number">10.4. </span>Cross-cutting themes<a class="headerlink" href="#cross-cutting-themes" title="Link to this heading"></a></h2>
+<p>Several themes recur across the paradigms:</p>
+<p><strong>Separation of concerns.</strong>
+Whether via modules and traits (OO), pure functions and effect types (functional), or aspects (AOP), the goal is to isolate distinct responsibilities so they can be developed, tested, and reasoned about independently.</p>
+<p><strong>Representation and interpretation.</strong>
+Every paradigm requires that programs be represented as data (as ASTs, as Prolog term databases, as F-algebra fixpoints) before they can be interpreted, compiled, or transformed. The program-representation chapter (<a class="reference internal" href="50-representationinterpretation.html"><span class="doc">Program Representation and Interpretation</span></a>) shows this explicitly for an imperative toy language; the same idea underlies Prolog’s meta-programming and Scala’s macros.</p>
+<p><strong>The cost of expressiveness.</strong>
+More expressive paradigms (logic, dependent types, higher-order functions) allow more to be <em>expressed</em> statically but may make <em>execution</em> less predictable or require more sophisticated tooling. Language design is a continuous negotiation between these forces.</p>
+</section>
+<section id="further-directions">
+<h2><span class="section-number">10.5. </span>Further directions<a class="headerlink" href="#further-directions" title="Link to this heading"></a></h2>
+<p>Students wishing to deepen their knowledge of programming languages and paradigms may find the following resources useful:</p>
+<ul class="simple">
+<li><p><strong>Types and Programming Languages</strong> by Benjamin Pierce (MIT Press, 2002): the standard graduate-level text on type theory, covering the lambda calculus, type safety, subtyping, and polymorphism.</p></li>
+<li><p><strong>Structure and Interpretation of Computer Programs (SICP)</strong> by Abelson and Sussman (<a class="reference external" href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">online</a>): a classic treatment of functional programming, metacircular evaluation, and language implementation using Scheme.</p></li>
+<li><p><a class="reference external" href="https://www.haskell.org/">Haskell</a>: the canonical pure functional programming language; studying it illuminates the design choices in Scala’s functional features.</p></li>
+<li><p><a class="reference external" href="http://minikanren.org/">miniKanren</a> / <a class="reference external" href="https://github.com/clojure/core.logic">core.logic</a>: relational programming embedded in Scheme and Clojure; a modern, minimalist take on logic programming.</p></li>
+<li><p><strong>Contributing to course examples</strong>: the course examples live at <a class="reference external" href="https://github.com/lucproglangcourse">https://github.com/lucproglangcourse</a>. Opening issues, submitting pull requests, and experimenting with new features is an excellent way to consolidate and apply what you have learned.</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -293,8 +421,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">10. Summary</a><ul>
+<li><a class="reference internal" href="#revisiting-the-learning-outcomes">10.1. Revisiting the learning outcomes</a></li>
+<li><a class="reference internal" href="#paradigm-comparison">10.2. Paradigm comparison</a></li>
+<li><a class="reference internal" href="#choosing-a-paradigm">10.3. Choosing a paradigm</a></li>
+<li><a class="reference internal" href="#cross-cutting-themes">10.4. Cross-cutting themes</a></li>
+<li><a class="reference internal" href="#further-directions">10.5. Further directions</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -87,7 +87,8 @@ Alternative front-end approaches
 
   - `Horstmann ch. 20 <https://learning.oreilly.com/library/view/scala-for-the/9780134540627/ch20.html>`_
   - `Odersky et al. ch. 33 <https://learning.oreilly.com/library/view/programming-in-scala/9780981531687/combinator-parsing.html>`_
-  -  `API <http://www.scala-lang.org/api/current/scala-parser-combinators) [tutorial](https://wiki.scala-lang.org/display/SW/Parser+Combinators--Getting+Started>`_
+  - `API documentation <https://scala.github.io/scala-parser-combinators/api/latest/>`_
+  - `Getting-started guide <https://github.com/scala/scala-parser-combinators/blob/main/docs/Getting_Started.md>`_
   - `simple expression combinator parser example <https://github.com/lucproglangcourse/expressions-scala/blob/master/src/main/scala/CombinatorParser.scala>`_
 
 - `parsing expression grammars <http://en.wikipedia.org/wiki/Parsing_expression_grammar>`_
@@ -163,12 +164,14 @@ Statements given by the BNF grammar::
       |   while (e) S
 
 
-In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like `x + 3`, whereas earlier we could only write expressions such as `4 + 3`. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the gurad expression evaluates to a non-zero integer value.
+In the context of the lectures so far, we have made the following changes. We have added variables to expressions, thus we can handle cases like `x + 3`, whereas earlier we could only write expressions such as `4 + 3`. We have also introduced the assignment statement as a way to change the contents of a variable. In addition, we allow statements to be put in sequence. We also permit simple while expressions, where the guard is an expression and the loop body is executed while the guard expression evaluates to a non-zero integer value.
 
 Structured operational semantics (SOS)
 ``````````````````````````````````````
 
 We first formalize the intuitive execution semantics of the toy language. The point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. Since our toy language has variables, we need to keep track of the state of variables. We view variables as objects with two capabilities:
+
+.. note:: We write *M* for the *memory store* (also called *state* or *store*), a map from identifiers to variable objects. We use this term consistently throughout the chapter.
 
 - `v.get()` returns the current value of the variable
 - `v.set(int i)` changes the current value of the variable to that of `i`
@@ -319,7 +322,7 @@ Statements are given by the BNF grammar::
      	|	while (e) do S
 
 
-We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation
+We first formalize the intutive execution semantics of the toy language. As before, the point of doing this is to present the basic ideas in the interpreter without getting tied up in the programming details of the interpreter. In any case, these details are presented later in this lecture. In particular, in this initial first cut, we will begin by ignoring declarations. Also, in this new presentation, we extend the memory store to map identifiers not only to integer variable objects but also to record objects, each of which maps field names to their corresponding variable objects.
 
 Recall that we viewed variables as objects with two capabilities:
 
@@ -391,7 +394,31 @@ Additional information is available here:
 - `performance implications/shootout <http://benchmarksgame.alioth.debian.org/u64q/which-programs-are-fastest.php>`_
 
 
-.. todo:: elaborate on the design space for polymorphism (Cardelli/Wegner)
+.. note:: **Cardelli/Wegner polymorphism taxonomy**
+
+   Cardelli and Wegner (1985) identified four fundamental kinds of polymorphism:
+
+   .. list-table::
+      :header-rows: 1
+      :widths: 25 40 35
+
+      * - Kind
+        - Description
+        - Example
+      * - Parametric
+        - A single function works for all types (type variable)
+        - Java generics: ``List<T>``; Scala: ``def id[A](x: A): A = x``
+      * - Inclusion (subtype)
+        - A function works for a type and all its subtypes
+        - Java/Scala method override and dynamic dispatch
+      * - Overloading (ad hoc)
+        - Different functions share a name, resolved by argument types
+        - Scala ``+`` on ``Int`` vs. ``String``
+      * - Coercion
+        - An argument is implicitly converted to the expected type
+        - Scala implicit conversions; Java widening conversions (``int`` → ``double``)
+
+   These four kinds are largely orthogonal and can combine. For example, Scala's typeclass pattern achieves parametric polymorphism (via type parameters) combined with ad-hoc polymorphism (via given instances).
 
 
 

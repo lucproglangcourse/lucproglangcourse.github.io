@@ -31,30 +31,34 @@ We deliberately chose the learning outcomes for this course to complement other 
 
 In this course, we will pursue two overarching learning outcomes and three more specific ones:
 
-- an overview of programming paradigms
-- an understanding of the programming language design space
-- proficiency in functional programming
-- an understanding of program representation and interpretation/execution
-- basic competence in concurrent programming
+- an overview of programming paradigms (see :doc:`/10-background`, :doc:`/75-otherparadigms`)
+- an understanding of the programming language design space (see :doc:`/10-background`, :doc:`/80-principles`)
+- proficiency in functional programming (see :doc:`/40-functional`)
+- an understanding of program representation and interpretation/execution (see :doc:`/50-representationinterpretation`)
+- basic competence in concurrent programming (see :doc:`/60-concurrency`)
 
 Given the widespread availability in multi-core hardware ranging from mobile devices to enterprise servers, there is a growing interest in programming paradigms and techniques that will take advantage of this hardware. Functional programming, which de-emphasizes mutable state, in conjunction with suitable concurrency constructs, is particularly useful. We will also "look under the hood" by studying how to represent programs and interpret, execute, or otherwise process those representations.
 
 
-Some starting points for functional programming
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Resources
+~~~~~~~~~
 
-You might find the following resources useful to get into the functional programming mindset:
+For paradigm-specific reading lists and recommended texts, see :doc:`/83-resources`.
+
+You might also find the following general resources useful as starting points:
 
 - Presentation by Martin Odersky: Scala with Style `(YouTube) <http://www.youtube.com/watch?v=kkTFx3-duc8>`_
 - Interview with Simon Peyton-Jones on Functional Programming and Haskell `(SE Radio audio podcast) <http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell>`_
-- Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison `(visual presentation) <_static/luc-amc.html>`_
+- Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming `(visual presentation) <_static/luc-amc.html>`_
 
-.. todo:: incorporate visual presentation here
+The presentation covers three main arguments: the promise of statically typed functional programming for program correctness; the broader context of modern multi-core hardware and cloud computing; and a comparison of languages (Scala, Haskell, Clojure) in this light.
 
 Course outline
 ~~~~~~~~~~~~~~
 
 Here is a more detailed course outline (subject to revision).
+
+The course begins with context and background (software engineering practices, language paradigms), then surveys the major paradigms in depth: imperative, object-oriented, functional, logic, and concurrent. We then "look under the hood" at program representation and interpretation. A final chapter surveys additional paradigms (reactive, dataflow, AOP) before concluding with cross-cutting principles.
 
 .. include:: detailedoutline.txt
 
@@ -69,4 +73,19 @@ The letters refer to the successive levels of learning from the cognitive domain
 - A: apply the technique
 - analyze/evaluate/create (advanced levels)
 
-.. todo:: map Bloom levels to course outline
+.. list-table:: Learning outcomes mapped to Bloom levels
+   :header-rows: 1
+   :widths: 60 40
+
+   * - Learning outcome
+     - Bloom level(s)
+   * - Overview of programming paradigms
+     - K, C
+   * - Understanding of the PL design space
+     - K, C
+   * - Proficiency in functional programming
+     - C, A
+   * - Understanding of program representation and interpretation
+     - C, A
+   * - Basic competence in concurrent programming
+     - C, A

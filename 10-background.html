@@ -248,6 +248,17 @@
           <section id="context-and-background">
 <h1><span class="section-number">2. </span>Context and Background<a class="headerlink" href="#context-and-background" title="Link to this heading"></a></h1>
 <p>In this chapter, we establish a practical context and provide some background information for the study of programming languages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Key terms used in this chapter:</strong></p>
+<ul class="simple">
+<li><p><em>Functional requirement (FR)</em>: a specification of what the system must do — the mapping from inputs to outputs or observable behaviours.</p></li>
+<li><p><em>Nonfunctional requirement (NFR)</em>: a quality attribute of the system itself, such as testability, performance, reliability, or maintainability.</p></li>
+<li><p><em>Refactoring</em>: improving the internal structure of code without changing its external behaviour. Refactoring improves NFRs such as maintainability and testability.</p></li>
+<li><p><em>Continuous integration (CI)</em>: the practice of automatically building and testing the system each time code is committed, catching integration errors early.</p></li>
+<li><p><em>Programming paradigm</em>: a fundamental style of programming that reflects a model of computation. Different paradigms provide different abstractions; see the <a class="reference internal" href="#programming-language-history-and-paradigms"><span class="std std-ref">Programming language history and paradigms</span></a> section below.</p></li>
+</ul>
+</div>
 <section id="software-requirements">
 <h2><span class="section-number">2.1. </span>Software requirements<a class="headerlink" href="#software-requirements" title="Link to this heading"></a></h2>
 <p>In most cases, we develop software to provide some form of value:</p>
@@ -299,10 +310,14 @@
 <li><p><em>BUFD versus MVP</em></p></li>
 <li><p><em>how do testing and refactoring relate to requirements?</em></p></li>
 </ul>
-<p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) and software quality factors (nonfunctional requirements).</p>
-<figure class="align-default">
-<img alt="_images/KazmanQualityFactors.png" src="_images/KazmanQualityFactors.png" />
+<p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) to software quality factors (nonfunctional requirements). Each arrow indicates that applying the unit operation (e.g., <em>modularize</em>, <em>abstract</em>) tends to improve the corresponding quality factor (e.g., maintainability, testability). Notably, <em>modularize</em> simultaneously improves both maintainability and testability.</p>
+<figure class="align-center" id="id2">
+<img alt="Kazman diagram showing unit operations (generalised refactorings) mapped to the software quality factors they improve" src="_images/KazmanQualityFactors.png" />
+<figcaption>
+<p><span class="caption-text"><em>Kazman et al.</em>: unit operations and the quality factors they improve.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
 </figure>
+<p>As we will see throughout the course, programming language features directly support or hinder the satisfaction of NFRs. Static type systems improve reliability by catching errors at compile time. Immutability and pure functions improve testability by eliminating hidden state. Built-in concurrency primitives improve scalability. The language design chapters will repeatedly refer back to these requirements as motivation for language features.</p>
 </section>
 <section id="overview-of-a-lightweight-development-process">
 <h2><span class="section-number">2.2. </span>Overview of a lightweight development process<a class="headerlink" href="#overview-of-a-lightweight-development-process" title="Link to this heading"></a></h2>
@@ -344,7 +359,6 @@
 <li><p><a class="reference external" href="https://travis-ci.org/LoyolaChicagoCode/processtree-scala">Travis CI</a>: continuous integration</p></li>
 <li><p><a class="reference external" href="https://codecov.io/gh/LoyolaChicagoCode/processtree-scala">Codecov</a>: test coverage</p></li>
 <li><p><a class="reference external" href="https://www.codacy.com/app/laufer/processtree-scala">Codacy</a>: automated code review</p></li>
-<li><p><a class="reference external" href="http://issuestats.com/github/LoyolaChicagoCode/processtree-scala">IssueStats</a> and <a class="reference external" href="http://isitmaintained.com/project/LoyolaChicagoCode/processtree-scala">IsItMaintained</a>: stats on issues and pull requests</p></li>
 </ul>
 <p>The <a class="reference external" href="https://github.com/LoyolaChicagoCode/clickcounter-android-java">click counter</a> example includes additional hosted continuous integration and delivery targets suitable for mobile app development.</p>
 </section>
@@ -374,7 +388,7 @@
 </div>
 </section>
 <section id="programming-language-history-and-paradigms">
-<h2><span class="section-number">2.4. </span>Programming language history and paradigms<a class="headerlink" href="#programming-language-history-and-paradigms" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2><span class="section-number">2.4. </span>Programming language history and paradigms<a class="headerlink" href="#programming-language-history-and-paradigms" title="Link to this heading"></a></h2>
 <p>The resources in this section cover fundamental models of computation, language paradigms, and language principles.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://klaeufer.github.io/luc-amc.html">overview talk</a> by Läufer and Thiruvathukal</p></li>
@@ -384,10 +398,16 @@
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Turing_completeness">Turing completeness</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a></p></li>
 </ul>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>expand into a proper section</p>
-</div>
+<p>A <em>programming paradigm</em> is a fundamental style or approach to programming that reflects a mental model of computation. It determines what abstractions are available, how state and control flow are managed, and what kinds of problems a language is best suited for. Peter Van Roy’s paradigm diagram (linked above) organises over 30 paradigms by their core features.</p>
+<p>The major paradigms covered in this course are:</p>
+<ul class="simple">
+<li><p><strong>Imperative</strong> (<a class="reference internal" href="20-imperative.html"><span class="doc">The Imperative Programming Paradigm</span></a>): computation as a sequence of state-changing statements; the dominant paradigm in languages like C, Java, and Python.</p></li>
+<li><p><strong>Object-oriented</strong> (<a class="reference internal" href="30-objectoriented.html"><span class="doc">The Object-Oriented Programming Paradigm</span></a>): computation modelled through objects that encapsulate state and behaviour; extends the imperative paradigm with encapsulation, inheritance, and polymorphism.</p></li>
+<li><p><strong>Functional</strong> (<a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>): computation as the evaluation of mathematical functions; emphasises immutability, higher-order functions, and algebraic data types; exemplified by Haskell, Scala, and Clojure.</p></li>
+<li><p><strong>Logic</strong> (<a class="reference internal" href="70-logic.html"><span class="doc">The Logic Programming Paradigm</span></a>): computation as logical deduction; programs are sets of facts and rules and execution is query-driven; exemplified by Prolog.</p></li>
+<li><p><strong>Concurrent</strong> (<a class="reference internal" href="60-concurrency.html"><span class="doc">The Concurrent Programming Paradigm</span></a>): computation as multiple simultaneous activities; raises issues of synchronisation, shared state, and nondeterminism.</p></li>
+</ul>
+<p>A foundational theoretical result bounds all of these paradigms: the <em>Church-Turing thesis</em> states that every effectively computable function can be computed by a Turing machine (or equivalently, by a lambda calculus expression, or by a recursive function). A language capable of expressing every Turing-computable function is called <em>Turing complete</em>. Understanding this equivalence helps explain why paradigms differ in expressiveness of style but not in fundamental computational power.</p>
 </section>
 <section id="popularity-indices-and-performance-comparisons">
 <h2><span class="section-number">2.5. </span>Popularity indices and performance comparisons<a class="headerlink" href="#popularity-indices-and-performance-comparisons" title="Link to this heading"></a></h2>
@@ -400,6 +420,10 @@ Before drawing any conclusions from these indices, it is important to understand
 <li><p><a class="reference external" href="https://insights.stackoverflow.com/survey">Stack Overflow developer survey</a></p></li>
 <li><p><a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/">Programming languages shootout benchmark</a></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When consulting any popularity or performance index, ask: <em>What is the data source?</em> (search queries, job postings, GitHub commits, or benchmark runs each capture different things.) <em>What counts as “a language”?</em> (Some indices conflate dialects or treat Jupyter notebooks as Python.) <em>Does the index weight by project size or contributor count?</em> Understanding methodology prevents over-interpreting rankings. The PYPL and TIOBE indices publish their methodology; always read it before drawing conclusions.</p>
+</div>
 </section>
 </section>
 

@@ -474,10 +474,20 @@ The main building blocks in scripting-style Scala are the collection and utility
 <li><p>important methods <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code> / <code class="docutils literal notranslate"><span class="pre">drop</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code> / <code class="docutils literal notranslate"><span class="pre">withFilter</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code> / <code class="docutils literal notranslate"><span class="pre">foldRight</span></code>, <code class="docutils literal notranslate"><span class="pre">scanLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">collect</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>Elaborate more on <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
+<p class="rubric"><code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions and <code class="docutils literal notranslate"><span class="pre">flatMap</span></code></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehension is syntactic sugar that desugars into calls to <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">withFilter</span></code>, and <code class="docutils literal notranslate"><span class="pre">foreach</span></code>. The translation is:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// for comprehension:</span>
+<span class="k">for</span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">xs</span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="k">yield</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1">// desugars to:</span>
+<span class="n">xs</span><span class="p">.</span><span class="n">flatMap</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">withFilter</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">y</span><span class="p">)).</span><span class="n">map</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span>
+</pre></div>
 </div>
+<p>This means <code class="docutils literal notranslate"><span class="pre">for</span></code> comprehensions work with <em>any</em> type that provides <code class="docutils literal notranslate"><span class="pre">flatMap</span></code>/<code class="docutils literal notranslate"><span class="pre">map</span></code> — not just collections, but also <code class="docutils literal notranslate"><span class="pre">Option</span></code>, <code class="docutils literal notranslate"><span class="pre">Try</span></code>, <code class="docutils literal notranslate"><span class="pre">Future</span></code>, and custom effect types. The <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword corresponds to <code class="docutils literal notranslate"><span class="pre">map</span></code>; omitting it corresponds to <code class="docutils literal notranslate"><span class="pre">foreach</span></code>.</p>
 <section id="examples">
 <h3><span class="section-number">5.2.1. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p>We recall this example of looping over all items in a finite collection or iterator using mutable state:</p>
@@ -1018,6 +1028,10 @@ Here are some examples:</p>
 <li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/immutable/List.scala#L280">map</a></p></li>
 <li><p><a class="reference external" href="https://github.com/scala/scala/blob/v2.12.4/src/library/scala/collection/LinearSeqOptimized.scala#L47">length</a></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Scala standard library source is available at <a class="reference external" href="https://github.com/scala/scala3">https://github.com/scala/scala3</a> (Scala 3) and <a class="reference external" href="https://github.com/scala/scala">https://github.com/scala/scala</a> (Scala 2). Collection operations like <code class="docutils literal notranslate"><span class="pre">foreach</span></code>, <code class="docutils literal notranslate"><span class="pre">foldLeft</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, and <code class="docutils literal notranslate"><span class="pre">foldRight</span></code> are defined in the <code class="docutils literal notranslate"><span class="pre">scala.collection</span></code> package; the <a class="reference external" href="https://scala-lang.org/api/3.x/">Scala 3 collection API documentation</a> is the most up-to-date reference.</p>
+</div>
 <p>For more details on space complexity and tail recursion, please take a look at these references:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://kartikiyer.com/2020/08/04/tail-recursion-in-scala">Tail Recursion in Scala</a></p></li>
@@ -1062,22 +1076,27 @@ An <em>anamorphism</em> (<code class="docutils literal notranslate"><span class=
 <li><p><em>Initial F-algebra</em>: the least fixpoint of the functor <code class="docutils literal notranslate"><span class="pre">F</span></code>, equivalent to our original recursive type, obtained by applying the <code class="docutils literal notranslate"><span class="pre">Fix</span></code>-combinator to <code class="docutils literal notranslate"><span class="pre">F</span></code>.</p></li>
 <li><p>We get our original recursive behaviors back by combining <code class="docutils literal notranslate"><span class="pre">cata</span></code> and our specific F-algebraic version of the behavior.</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<p>Practical applications</p>
-</div>
 </section>
-<section id="id3">
-<h3><span class="section-number">5.6.2. </span>Examples<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="practical-applications">
+<h3><span class="section-number">5.6.2. </span>Practical applications<a class="headerlink" href="#practical-applications" title="Link to this heading"></a></h3>
+<p>F-algebras are used in practice wherever a program needs to separate the <em>shape</em> of a recursive data structure from the <em>logic</em> that processes it:</p>
+<ul class="simple">
+<li><p><strong>Error-accumulating validation</strong> (Cats <code class="docutils literal notranslate"><span class="pre">Validated</span></code>): instead of failing fast on the first error (as <code class="docutils literal notranslate"><span class="pre">Either</span></code> does), an F-algebra-based approach accumulates all validation errors using a semigroup.</p></li>
+<li><p><strong>Recursive data processing with the Droste library</strong>: the <a class="reference external" href="https://github.com/higherkindness/droste">Droste</a> library for Scala provides generic <code class="docutils literal notranslate"><span class="pre">cata</span></code>, <code class="docutils literal notranslate"><span class="pre">ana</span></code>, <code class="docutils literal notranslate"><span class="pre">hylo</span></code>, and <code class="docutils literal notranslate"><span class="pre">para</span></code> operators over any fixpoint type, enabling concise, reusable recursion schemes.</p></li>
+<li><p><strong>Compiler IR transformations</strong>: the tree-rewriting passes in production compilers (e.g., optimisation, CPS conversion) are naturally expressed as catamorphisms over the abstract syntax tree functor.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3><span class="section-number">5.6.3. </span>Examples<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>It is perhaps best to look at some conventional and F-algebra-based examples side-by-side:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/lucproglangcourse/expressions-scala">expressions-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a></p></li>
-<li><p>Project 1a (shapes) versus Project 1b (shapes redone using F-algebras) on Sakai</p></li>
+<li><p><a class="reference external" href="https://github.com/lucproglangcourse/shapes-oo-scala">shapes-oo-scala</a> versus <a class="reference external" href="https://github.com/lucproglangcourse/expressions-algebraic-scala">expressions-algebraic-scala</a>: the conventional recursive-ADT approach (shapes-oo) and the F-algebraic approach (expressions-algebraic) placed side by side. In the F-algebraic version, the recursive knot is untied by separating the functor <code class="docutils literal notranslate"><span class="pre">ShapeF</span></code> from its fixpoint <code class="docutils literal notranslate"><span class="pre">Fix[ShapeF]</span></code>, so that behaviours (evaluation, printing) can be expressed as non-recursive F-algebras.</p></li>
 </ul>
 <p>Some other examples are available <a class="reference external" href="https://github.com/lucproglangcourse/droste-explorations-scala/">here</a>.</p>
 </section>
 <section id="what-fix-does">
-<h3><span class="section-number">5.6.3. </span>What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.6.4. </span>What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does<a class="headerlink" href="#what-fix-does" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> basically ties the “recursive knot” by applying the functor <code class="docutils literal notranslate"><span class="pre">F</span></code>  to itself.
 This forms the <em>fixpoint</em> of the functor, allowing all structures built from the functor to have the same type, as opposed to nested types corresponding to the nesting of the structure.</p>
 <p>For instance, we can represent the familiar aggregation of an item and an (optional) next node using the functor <code class="docutils literal notranslate"><span class="pre">F[A]</span> <span class="pre">=</span> <span class="pre">(Int,</span> <span class="pre">Option[A])</span></code>.
@@ -1101,7 +1120,7 @@ This enables  us to define linked lists:</p>
 <p>That’s why we usually define such types recursively to begin with.</p>
 </section>
 <section id="generalized-fold-catamorphism">
-<h3><span class="section-number">5.6.4. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.6.5. </span>Generalized fold (catamorphism)<a class="headerlink" href="#generalized-fold-catamorphism" title="Link to this heading"></a></h3>
 <p>The next question is what the implementation of the universal fold method for <code class="docutils literal notranslate"><span class="pre">Fix</span></code> looks like, also known as the <em>catamorphism</em>.
 Continuing with our <code class="docutils literal notranslate"><span class="pre">Fix</span></code> over <code class="docutils literal notranslate"><span class="pre">(Int,</span> <span class="pre">Option[A])</span></code> example, we perform recursion over this functor by using <code class="docutils literal notranslate"><span class="pre">map</span></code>, which preserves the first component and invokes a suitable <code class="docutils literal notranslate"><span class="pre">map</span></code> on the second component of the pair:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Fix</span><span class="p">(</span><span class="n">unFix</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">,</span><span class="w"> </span><span class="nc">Option</span><span class="p">[</span><span class="nc">Fix</span><span class="p">])):</span>
@@ -1128,7 +1147,7 @@ Instead, the catamorphism takes care of the recursion.</p>
 <code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> is the <em>initial</em> <code class="docutils literal notranslate"><span class="pre">F</span></code>-algebra, and the catamorphism <code class="docutils literal notranslate"><span class="pre">cata</span></code> produces the unique structure-preserving mapping (homomorphism) between <code class="docutils literal notranslate"><span class="pre">Fix[F]</span></code> and <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
 </section>
 <section id="key-insights">
-<h3><span class="section-number">5.6.5. </span>Key insights<a class="headerlink" href="#key-insights" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.6.6. </span>Key insights<a class="headerlink" href="#key-insights" title="Link to this heading"></a></h3>
 <p>By taking an F-algebraic perspective on recursive algebraic data types, we are able to recognize previously non-obvious structural commonalities among them.</p>
 <ul class="simple">
 <li><p>non-generic:  <code class="docutils literal notranslate"><span class="pre">Nat</span></code>, <code class="docutils literal notranslate"><span class="pre">Expr</span></code>, <code class="docutils literal notranslate"><span class="pre">Shape</span></code>, etc.</p></li>
@@ -1218,10 +1237,16 @@ They define these abstractions in such a way that we can retrofit existing types
 </section>
 <section id="references">
 <h2><span class="section-number">5.8. </span>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
-<div class="admonition-todo admonition" id="id11">
-<p class="admonition-title">Todo</p>
-<p>put chapter-level references here</p>
-</div>
+<ul class="simple">
+<li><p>Jeremy Gibbons, <em>Origami Programming</em> (2003): <a class="reference external" href="http://www.cs.ox.ac.uk/publications/publication2335-abstract.html">PDF</a> — introduces folds and unfolds as general-purpose programming patterns.</p></li>
+<li><p>Luca Cardelli and Peter Wegner, <em>On Understanding Types, Data Abstraction, and Polymorphism</em> (1985): <a class="reference external" href="http://lucacardelli.name/papers/onunderstanding.a4.pdf">PDF</a> — foundational paper on parametric and subtype polymorphism.</p></li>
+<li><p>Typelevel <a class="reference external" href="https://typelevel.org/cats/">Cats documentation</a> — practical guide to functors, monads, and related abstractions in Scala.</p></li>
+<li><p><a class="reference external" href="https://github.com/higherkindness/droste">Droste recursion-schemes library</a> — Scala implementation of catamorphisms and anamorphisms.</p></li>
+<li><p>Bartosz Milewski, <em>Category Theory for Programmers</em> (2018): <a class="reference external" href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">online</a> — accessible introduction to the categorical foundations of functional programming.</p></li>
+<li><p><a class="reference external" href="https://docs.scala-lang.org/scala3/book/">Scala 3 official documentation</a> — authoritative reference for all language features used in this chapter.</p></li>
+<li><p>Runar Bjarnason and Paul Chiusano, <em>Functional Programming in Scala</em> (Manning, 2014) — deep treatment of pure FP patterns including monads and monad transformers.</p></li>
+<li><p><a class="reference external" href="http://learnyouahaskell.com/chapters">Learn You a Haskell for Great Good!</a> — approachable introduction to Haskell and typeclasses that illuminates Scala’s abstractions.</p></li>
+</ul>
 </section>
 </section>
 
@@ -1318,10 +1343,11 @@ They define these abstractions in such a way that we can retrofit existing types
 <li><a class="reference internal" href="#a-closer-look-at-predefined-behaviors-on-lists">5.5. A closer look at predefined behaviors on lists</a></li>
 <li><a class="reference internal" href="#separation-of-concerns-at-the-type-level">5.6. Separation of concerns at the type level</a><ul>
 <li><a class="reference internal" href="#key-concepts">5.6.1. Key concepts</a></li>
-<li><a class="reference internal" href="#id3">5.6.2. Examples</a></li>
-<li><a class="reference internal" href="#what-fix-does">5.6.3. What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does</a></li>
-<li><a class="reference internal" href="#generalized-fold-catamorphism">5.6.4. Generalized fold (catamorphism)</a></li>
-<li><a class="reference internal" href="#key-insights">5.6.5. Key insights</a></li>
+<li><a class="reference internal" href="#practical-applications">5.6.2. Practical applications</a></li>
+<li><a class="reference internal" href="#id1">5.6.3. Examples</a></li>
+<li><a class="reference internal" href="#what-fix-does">5.6.4. What <code class="docutils literal notranslate"><span class="pre">Fix</span></code> does</a></li>
+<li><a class="reference internal" href="#generalized-fold-catamorphism">5.6.5. Generalized fold (catamorphism)</a></li>
+<li><a class="reference internal" href="#key-insights">5.6.6. Key insights</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#other-useful-abstractions">5.7. Other useful abstractions</a><ul>

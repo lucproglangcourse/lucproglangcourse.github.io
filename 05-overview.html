@@ -272,30 +272,29 @@
 <p>We deliberately chose the learning outcomes for this course to complement other courses in your computer science or software engineering curriculum. Upon entering this course, you will already be familiar with the imperative and object-oriented paradigms, coming from languages such as Java, C++, C#, or Python. Most likely, you will also be familiar with basic machine architecture and memory management using C or C++.</p>
 <p>In this course, we will pursue two overarching learning outcomes and three more specific ones:</p>
 <ul class="simple">
-<li><p>an overview of programming paradigms</p></li>
-<li><p>an understanding of the programming language design space</p></li>
-<li><p>proficiency in functional programming</p></li>
-<li><p>an understanding of program representation and interpretation/execution</p></li>
-<li><p>basic competence in concurrent programming</p></li>
+<li><p>an overview of programming paradigms (see <a class="reference internal" href="10-background.html"><span class="doc">Context and Background</span></a>, <a class="reference internal" href="75-otherparadigms.html"><span class="doc">Other Important Programming Paradigms</span></a>)</p></li>
+<li><p>an understanding of the programming language design space (see <a class="reference internal" href="10-background.html"><span class="doc">Context and Background</span></a>, <a class="reference internal" href="80-principles.html"><span class="doc">Appendix: Programming Language Design Principles</span></a>)</p></li>
+<li><p>proficiency in functional programming (see <a class="reference internal" href="40-functional.html"><span class="doc">The Functional Programming Paradigm</span></a>)</p></li>
+<li><p>an understanding of program representation and interpretation/execution (see <a class="reference internal" href="50-representationinterpretation.html"><span class="doc">Program Representation and Interpretation</span></a>)</p></li>
+<li><p>basic competence in concurrent programming (see <a class="reference internal" href="60-concurrency.html"><span class="doc">The Concurrent Programming Paradigm</span></a>)</p></li>
 </ul>
 <p>Given the widespread availability in multi-core hardware ranging from mobile devices to enterprise servers, there is a growing interest in programming paradigms and techniques that will take advantage of this hardware. Functional programming, which de-emphasizes mutable state, in conjunction with suitable concurrency constructs, is particularly useful. We will also “look under the hood” by studying how to represent programs and interpret, execute, or otherwise process those representations.</p>
 </section>
-<section id="some-starting-points-for-functional-programming">
-<h2><span class="section-number">1.4. </span>Some starting points for functional programming<a class="headerlink" href="#some-starting-points-for-functional-programming" title="Link to this heading"></a></h2>
-<p>You might find the following resources useful to get into the functional programming mindset:</p>
+<section id="resources">
+<h2><span class="section-number">1.4. </span>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<p>For paradigm-specific reading lists and recommended texts, see <a class="reference internal" href="83-resources.html"><span class="doc">Appendix: Resources</span></a>.</p>
+<p>You might also find the following general resources useful as starting points:</p>
 <ul class="simple">
 <li><p>Presentation by Martin Odersky: Scala with Style <a class="reference external" href="http://www.youtube.com/watch?v=kkTFx3-duc8">(YouTube)</a></p></li>
 <li><p>Interview with Simon Peyton-Jones on Functional Programming and Haskell <a class="reference external" href="http://www.se-radio.net/episode-108-simon-peyton-jones-on-functional-programming-and-haskell">(SE Radio audio podcast)</a></p></li>
-<li><p>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming: Broader Context and Language Comparison <a class="reference external" href="_static/luc-amc.html">(visual presentation)</a></p></li>
+<li><p>Presentation by Läufer, Thiruvathukal, and Kaylor: The Promise of Statically Typed Functional Programming <a class="reference external" href="_static/luc-amc.html">(visual presentation)</a></p></li>
 </ul>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Todo</p>
-<p>incorporate visual presentation here</p>
-</div>
+<p>The presentation covers three main arguments: the promise of statically typed functional programming for program correctness; the broader context of modern multi-core hardware and cloud computing; and a comparison of languages (Scala, Haskell, Clojure) in this light.</p>
 </section>
 <section id="course-outline">
 <h2><span class="section-number">1.5. </span>Course outline<a class="headerlink" href="#course-outline" title="Link to this heading"></a></h2>
 <p>Here is a more detailed course outline (subject to revision).</p>
+<p>The course begins with context and background (software engineering practices, language paradigms), then surveys the major paradigms in depth: imperative, object-oriented, functional, logic, and concurrent. We then “look under the hood” at program representation and interpretation. A final chapter surveys additional paradigms (reactive, dataflow, AOP) before concluding with cross-cutting principles.</p>
 <ul class="simple">
 <li><p>business and software engineering contexts (1 week)</p>
 <ul>
@@ -390,9 +389,36 @@
 <li><p>A: apply the technique</p></li>
 <li><p>analyze/evaluate/create (advanced levels)</p></li>
 </ul>
-<div class="admonition-todo admonition" id="id3">
-<p class="admonition-title">Todo</p>
-<p>map Bloom levels to course outline</p>
+<div class="table-wrapper colwidths-given docutils container" id="id2">
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Learning outcomes mapped to Bloom levels</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Learning outcome</p></th>
+<th class="head"><p>Bloom level(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Overview of programming paradigms</p></td>
+<td><p>K, C</p></td>
+</tr>
+<tr class="row-odd"><td><p>Understanding of the PL design space</p></td>
+<td><p>K, C</p></td>
+</tr>
+<tr class="row-even"><td><p>Proficiency in functional programming</p></td>
+<td><p>C, A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Understanding of program representation and interpretation</p></td>
+<td><p>C, A</p></td>
+</tr>
+<tr class="row-even"><td><p>Basic competence in concurrent programming</p></td>
+<td><p>C, A</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -456,7 +482,7 @@
 <li><a class="reference internal" href="#course-information">1.1. Course Information</a></li>
 <li><a class="reference internal" href="#motivation">1.2. Motivation</a></li>
 <li><a class="reference internal" href="#key-learning-outcomes">1.3. Key learning outcomes</a></li>
-<li><a class="reference internal" href="#some-starting-points-for-functional-programming">1.4. Some starting points for functional programming</a></li>
+<li><a class="reference internal" href="#resources">1.4. Resources</a></li>
 <li><a class="reference internal" href="#course-outline">1.5. Course outline</a></li>
 <li><a class="reference internal" href="#bloom-s-taxonomy">1.6. Bloom’s taxonomy</a></li>
 </ul>
