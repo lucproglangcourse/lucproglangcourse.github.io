@@ -159,13 +159,30 @@ Dataflow programming models programs as a directed graph of the data flowing bet
   result = add(tf.constant(2), tf.constant(3))
   print(result)  # tf.Tensor(5, shape=(), dtype=int32)
 
-Other Paradigms
-~~~~~~~~~~~~~~~
 
-There are several other paradigms worth noting:
+Event-driven Programming
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event-driven programming drives computation through events (user interactions, messages, timers) and callbacks. It is the dominant model in UI frameworks and server-side I/O (Node.js):
+
+.. code-block:: javascript
+
+  // Node.js HTTP server: execution is driven by incoming request events
+  const http = require('http');
+  const server = http.createServer((req, res) => {
+    res.end('Hello, world!');
+  });
+  server.listen(3000);
+
+  // Browser: UI event drives a callback
+  document.querySelector('button')
+    .addEventListener('click', () => alert('Button clicked!'));
+
+Event-driven programming is closely related to the reactive paradigm (see above), with the key difference that reactive programming typically provides composable operators (``map``, ``filter``, ``merge``) over streams of events, whereas plain event-driven code uses ad-hoc callbacks.
+
 
 Constraint Programming
-``````````````````````
+~~~~~~~~~~~~~~~~~~~~~~
 
 Constraint programming extends logic programming by allowing variables to be constrained over a domain (e.g., integers, reals, finite sets) and using specialised solvers to find solutions. SWI-Prolog's ``clpfd`` library is a widely used constraint solver:
 
@@ -184,23 +201,3 @@ Constraint programming extends logic programming by allowing variables to be con
   % X = 1, Y = 9 ; X = 2, Y = 8 ; ...
 
 See also the discussion of Prolog and backtracking in :doc:`/70-logic`.
-
-Event-driven Programming
-````````````````````````
-
-Event-driven programming drives computation through events (user interactions, messages, timers) and callbacks. It is the dominant model in UI frameworks and server-side I/O (Node.js):
-
-.. code-block:: javascript
-
-  // Node.js HTTP server: execution is driven by incoming request events
-  const http = require('http');
-  const server = http.createServer((req, res) => {
-    res.end('Hello, world!');
-  });
-  server.listen(3000);
-
-  // Browser: UI event drives a callback
-  document.querySelector('button')
-    .addEventListener('click', () => alert('Button clicked!'));
-
-Event-driven programming is closely related to the reactive paradigm (see above), with the key difference that reactive programming typically provides composable operators (``map``, ``filter``, ``merge``) over streams of events, whereas plain event-driven code uses ad-hoc callbacks.
