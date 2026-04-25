@@ -1,0 +1,646 @@
+CRITICAL TECHNICAL EDITOR REVIEW
+Programming Languages Course Textbook
+COMP 371/471, Loyola University Chicago
+Review date: 2026-04-24 (revision b)
+Reviewer: independent technical review pass
+===========================================================================
+
+This review is a fresh critical pass of the entire textbook as it stands at
+commit 53114e5. It is independent of REVIEW-20260424.md (the earlier
+chapter-by-chapter review) and focuses on technical accuracy, prose quality,
+structural coherence, image quality, pedagogical effectiveness, and
+cross-cutting consistency. Proposed corrections are shown inline; none are
+applied in this file.
+
+===========================================================================
+I. CROSS-CUTTING ISSUES (affects all or many chapters)
+===========================================================================
+
+1. HEADING-LEVEL INCONSISTENCY
+   Several chapters use subtly different RST underline widths for the same
+   heading level (e.g., backtick fences versus single backticks versus
+   tilde fences), which can cause Sphinx to silently assign wrong hierarchy
+   levels and break the table-of-contents nesting.  A single canonical
+   hierarchy must be enforced across the entire book:
+       Chapter title:   ---  (from toctree directive)
+       Section:         ~~~
+       Subsection:      ``` (backtick fence)
+   All chapters currently follow this pattern, but the number of backtick
+   characters used in closing fences occasionally varies; this should be
+   audited.
+
+2. "ie." vs. "i.e." INCONSISTENCY
+   The abbreviation for "that is" appears as "ie." in older passages
+   (ch. 50 passim) and "i.e." in newer passages.  Chicago Manual of Style
+   and most style guides require "i.e." with periods and a comma before it:
+   ", i.e., ...".  All occurrences of bare "ie." should be replaced.
+   Occurrences found: source/50-representationinterpretation.rst lines
+   193, 208, 325, 336 (approximately).
+
+3. MISSING INDEX ENTRIES (open issue #26)
+   The textbook has no `.. index::` directives anywhere.  The HTML build
+   therefore produces an empty index.  At minimum, key technical terms
+   introduced with emphasis in each chapter (e.g., *pattern matching*,
+   *monad*, *unification*, *deadlock*, *actor model*) should each have a
+   corresponding `.. index::` entry near their point of first definition.
+
+4. MISSING EXERCISES (open issue #37)
+   No chapter has a dedicated "Exercises" or "Review questions" section.
+   Without exercises, students have no way to self-assess comprehension.
+   Even a short list of 3–5 questions per chapter (conceptual, analytical,
+   and coding) would substantially improve pedagogical value.
+
+5. SCALA VERSION CURRENCY IN REPL TRANSCRIPTS
+   Several REPL session transcripts (ch. 20) show Scala 2 prompt behaviour,
+   e.g.:
+       f: (x: Int)Int          ← Scala 2 REPL output format
+   Scala 3 REPL output omits the type signature prefix; the equivalent is:
+       def f(x: Int): Int
+   These transcripts should be updated to reflect Scala 3.x output.
+
+6. DEAD OR FRAGILE LINK PATTERNS
+   - feedproxy.google.com links in ch. 60 (SE Radio episodes, lines ~473-476)
+     redirect through a defunct Google service.  These URLs almost certainly
+     no longer work.  Replace with direct seradio.net or direct podcast URLs.
+   - The java.util.concurrent link in ch. 60 (line ~446) targets the Java 8
+     API docs.  Should be updated to https://docs.oracle.com/en/java/javase/21/
+     (or the current LTS version).
+   - The benchmarksgame alioth.debian.org link in ch. 50 (line ~394) is dead;
+     the project moved to benchmarksgame-team.pages.debian.net.
+   - AMC presentation slides link in ch. 50 (klaeufer.github.io/luc-amc.html)
+     should be verified as live.
+
+7. INCONSISTENT OXFORD COMMA USAGE
+   Some sentences use the Oxford (serial) comma and others do not.  Pick one
+   style and apply it throughout.  Recommendation: use the Oxford comma
+   consistently (it is standard in technical writing).
+
+8. COURSE NUMBER REFERENCES
+   The text occasionally references "313/413" (e.g., ch. 60 "familiar from
+   313/413") without explanation.  Readers who are not Loyola students will
+   not know what these numbers refer to.  Either expand to the full course
+   name/number or remove the internal reference and replace with a more
+   portable phrase such as "familiar from an operating systems course".
+
+9. PLURAL POSSESSIVES
+   Several sentences use "language's" or "library's" correctly, but a few
+   use awkward constructions such as "languages'" where the antecedent is
+   singular.  A copy-edit pass is recommended.
+
+10. REGISTER CONSISTENCY
+    Most of the book uses formal third-person register, but some
+    newly-added passages switch to an informal "you" register
+    (e.g., ch. 85 Troubleshooting section).  The Troubleshooting section is
+    actually appropriate in second person, but chs. 20, 30, and 40 also
+    contain a few sentences in second person that should be made consistent
+    with the surrounding formal prose.
+
+===========================================================================
+II. CHAPTER 05 — OVERVIEW
+===========================================================================
+
+1. BLOOM'S TAXONOMY TABLE: "Apply" COLUMN
+   The "Apply" column lists "use language features", which is too vague to
+   be an assessable learning outcome.  Replace with concrete verbs:
+   "implement programs in at least three paradigms" or similar.
+
+2. MISSING FORWARD REFERENCES FOR KEY TERMS
+   Terms such as "algebraic data types", "catamorphism", and "monad" appear
+   in the overview's learning outcomes table but are not linked to the
+   chapters where they are defined.  Add cross-references (`:ref:` or
+   `:doc:`) so students can find definitions immediately.
+
+3. COURSE PREREQUISITES NOT STATED
+   The overview does not explicitly state the prerequisite knowledge
+   (e.g., Java, data structures, some exposure to functional concepts).
+   Students will benefit from a two-sentence prerequisites note.
+
+4. "PARADIGM" NOT DEFINED AT FIRST OCCURRENCE
+   The word "paradigm" is central to the book but is never formally defined
+   in the overview chapter.  A one-sentence definition ("a paradigm is a
+   fundamental style or approach to programming that shapes how programs are
+   structured and reasoned about") should appear here.
+
+5. OMISSION OF Haskell FROM LANGUAGE COVERAGE
+   The overview lists Scala, Java, Prolog, and Python as illustrative
+   languages, but Haskell is referenced repeatedly in chapters 40 and 83.
+   Either add Haskell to the language list or note that Haskell examples are
+   included where they clarify functional concepts.
+
+===========================================================================
+III. CHAPTER 10 — BACKGROUND
+===========================================================================
+
+1. KazmanQualityFactors.png — IMAGE QUALITY
+   This image is a photograph of a table (or a low-resolution slide
+   screenshot).  The text in the image is not screen-reader accessible and
+   will look blurry in print.  Replace with an RST `.. list-table::` that
+   reproduces the Kazman quality-factor matrix (Separation, Abstraction,
+   Compression, Uniform Composition, Replication, Resource Sharing) in
+   proper HTML/PDF form.
+
+2. ProcessTreeTypeHierarchy.png — IMAGE QUALITY
+   This appears to be a hand-drawn module-dependency diagram.  Replace with
+   a simple text-based diagram (ASCII art or a proper `graphviz` or `mermaid`
+   diagram) so the information is accessible and searchable.
+
+3. VON NEUMANN PARAGRAPH
+   The single paragraph describing the von Neumann machine architecture is
+   thin.  The chapter 20 link to unoapi.org for further reading is placed
+   in ch. 20 rather than here, where the background concept actually
+   belongs.  Consider either moving the reference here or expanding the
+   background paragraph.
+
+4. "METHODOLOGY" SECTION LABEL
+   The section currently labelled "Methodology" (or the equivalent) does
+   not clearly explain *which* methodology — it appears to conflate the
+   course's pedagogical methodology with a description of the software
+   engineering process.  The section title and first sentence should be
+   more specific.
+
+5. NO DEFINITION OF "PARADIGM" (see also ch. 05 issue #4)
+   Same issue as in ch. 05.  This is the background chapter and the ideal
+   place to define the term.
+
+===========================================================================
+IV. CHAPTER 20 — IMPERATIVE PROGRAMMING
+===========================================================================
+
+1. BUG: MISSING ");" IN Java WORD-FREQUENCY EXAMPLE (HIGH PRIORITY)
+   In the Java word-frequency code block, the `forEachRemaining` call is
+   never closed:
+
+       incoming.forEachRemaining(s -> {
+         ...
+       }                           ← missing ");"
+
+   The closing `}` closes the lambda body but the method call itself is
+   missing the `)` and `;`.  The corrected last line of the lambda should
+   be `  });`.  This is a compilation error; the code as written would not
+   compile.
+
+2. TYPO: "meaasure" → "measure" (line ~386)
+   In the `Measuring code coverage` subsection:
+   "uses Scoverage to *meaasure* what percentage" → "measure"
+
+3. TYPO / BUG: "ccoverageExcludedPackages" (line ~422)
+   The sbt setting key is `coverageExcludedPackages` (one `c`), not
+   `ccoverageExcludedPackages`.  The extra `c` at the beginning is a typo
+   that would cause an `sbt` build failure.
+
+4. SCALA 2 REPL OUTPUT IN CODE TRANSCRIPT (line ~253-254)
+   The transcript:
+       scala> def f(x: Int) = x + 2
+       f: (x: Int)Int
+   uses Scala 2 REPL format.  Scala 3 REPL displays:
+       def f(x: Int): Int
+   Update the transcript to reflect the current Scala 3 REPL behaviour.
+
+5. SCALA 2 @main / SCRIPT SYNTAX (lines ~271-278)
+   The script example:
+       def main(args: Array[String]) = println(args.toList)
+   is Scala 2 syntax for a top-level main.  In Scala 3, a top-level main
+   function uses the `@main` annotation:
+       @main def hello(args: String*) = println(args.toList)
+   The example should use Scala 3 syntax (or note the version difference).
+
+6. Scoverage IMAGES — STALE TOOL VERSION
+   The three Scoverage screenshots (ScoverageOverview.png,
+   ScoverageCode.png, ScoverageStatements.png) appear to show an older
+   version of the Scoverage UI.  While the concept they illustrate is
+   timeless, the screenshots should be retaken with the current version of
+   the plugin (or replaced with a concise text description to avoid the
+   screenshot-staleness problem).
+
+7. heapprofile.png — PURPOSE UNCLEAR IN PROSE
+   The heap profile screenshot appears without sufficient context: the
+   surrounding prose does not explain what specific profiling session
+   generated it, what the student is expected to observe, or what
+   conclusion to draw.  Add two or three sentences of interpretive prose
+   before or after the image.
+
+===========================================================================
+V. CHAPTER 30 — OBJECT-ORIENTED PROGRAMMING
+===========================================================================
+
+1. MISSING `@Test` ANNOTATION IN TEST CODE EXAMPLE (line ~184)
+   The `testSlidingWindowNonempty` method is shown without a `@Test`
+   annotation.  JUnit 5 requires `@Test` (from `org.junit.jupiter.api.Test`)
+   or `@Test` (from `org.junit.Test` for JUnit 4) to recognise the method
+   as a test.  As written, the test would silently not run.  Add
+   `@Test` above the method signature or explain the testing framework
+   being used.
+
+2. `Process` HIERARCHY IMAGE (ProcessTreeTypeHierarchy.png)
+   Same issue as noted in ch. 10: hand-drawn diagram should be replaced with
+   a typeset alternative.  (The reference may actually be in this chapter
+   rather than ch. 10; verify placement.)
+
+3. MULTIPLE INHERITANCE / MIXIN NOT DISCUSSED
+   The chapter discusses single inheritance and interfaces/traits, but does
+   not mention mixin composition (Scala traits with implementation) or the
+   linearization algorithm.  The note about linearization order that was
+   added in a prior edit is present but brief; it could benefit from a
+   worked example: two traits each providing a `toString` override, showing
+   how `super` dispatches along the linearization chain.
+
+4. TABLE ROW: SCALA `var` CALL-BY-REFERENCE CLAIM (ch. 20 table, echoed in ch. 30)
+   The table in ch. 20 states that Scala 2 supported call-by-reference via
+   `var` parameters and that this was removed in Scala 3.  Strictly speaking,
+   Scala *never* supported call-by-reference in the C/Pascal sense; `var`
+   parameters in Scala 2 were `scala.reflect`-based compiler magic that
+   desugared to a `Ref` wrapper and were indeed removed.  The cell text
+   should be more precise: "Scala 2 supported ``var`` parameters via
+   compiler desugaring (not true call-by-reference); removed in Scala 3."
+
+5. JAVA EVOLUTION NOTE: RECORDS AND SEALED CLASSES
+   The chapter discusses Java's `final` fields, `interface`, and lambdas but
+   does not mention Java 16+ records (`record Point(int x, int y) {}`) or
+   Java 17+ sealed classes — both of which directly parallel Scala's case
+   classes and sealed traits and would be very instructive in a comparative
+   context.
+
+===========================================================================
+VI. CHAPTER 40 — FUNCTIONAL PROGRAMMING
+===========================================================================
+
+1. HANGING BULLET POINT WITHOUT CONTEXT (line ~1050)
+   The question
+       - Is ``cata`` tail-recursive? Can or should it be?
+   appears as a bare bullet with no preceding framing (e.g., "Consider the
+   following question:") and no answer or reference.  Either move it to a
+   dedicated "Exercises" section, provide an inline answer, or remove it.
+
+2. DOUBLE "AT" TYPO (line ~1075)
+   "aimed *at* primarily *at* graduate students" → "aimed primarily at
+   graduate students"
+
+3. MONAD FOR-COMPREHENSION EXAMPLE: MISLEADING COMMENT
+   The comment in the Monad code example:
+       // for-comprehension desugars to flatMap + map (works for any Monad)
+   is slightly inaccurate: a for-comprehension with only one generator
+   (`for { x <- fa } yield f(x)`) desugars to `map` alone, not `flatMap`.
+   The comment should say: "for-comprehensions with multiple generators
+   desugar to `flatMap` calls; the final `yield` desugars to `map`."
+
+4. `addIfPresent` RETURN TYPE FOR `List` SURPRISING
+   The example shows:
+       addIfPresent(List(1, 2), List(10, 20))  // List(11, 21, 12, 22)
+   While correct, this is the *Cartesian product* behaviour of the List
+   monad, which is counterintuitive for students expecting element-wise
+   addition.  A brief explanatory note ("The List monad models
+   nondeterminism: each combination of one element from each list is
+   explored") should be added immediately after this line.
+
+5. SECTION TRANSITION FROM ADTs TO F-ALGEBRAS ABRUPT
+   The jump from the "Algebraic data types and pattern matching" subsection
+   directly to the F-algebra case study is abrupt: no motivating paragraph
+   explains *why* F-algebras are a generalisation of ADTs or what problem
+   they solve beyond what plain case classes already provide.  One
+   transitional paragraph would substantially improve the narrative flow.
+
+===========================================================================
+VII. CHAPTER 50 — PROGRAM REPRESENTATION AND INTERPRETATION
+===========================================================================
+
+1. SOS RULES AS IMAGES — ACCESSIBILITY AND MAINTAINABILITY (HIGH PRIORITY)
+   The structured operational semantics rules (evaluation.png, execution1.png,
+   execution2.png, records1.png through records5.png) are all screenshots of
+   old presentation slides.  These images:
+   - Are not accessible to screen readers.
+   - Cannot be scaled or reflowed for mobile/print.
+   - Cannot be searched.
+   - Are visually inconsistent with the surrounding typeset text.
+   Recommendation: replace every image-based SOS rule with proper RST `.. math::`
+   directives using LaTeX notation.  For example, the evaluation rule for
+   constants should appear as:
+       .. math::
+          \frac{}{\langle c, M \rangle \Downarrow c} \quad \text{(const)}
+   This is the single most significant quality issue in the entire book.
+
+2. TYPO: "feautures" → "features" (line ~247)
+   "The syntactic *feautures* of our language" → "features"
+
+3. TYPO: "intutive" → "intuitive" (line ~325)
+   "We first formalize the *intutive* execution semantics" → "intuitive"
+
+4. DOUBLE PERIOD: "Our earlier rules for evaluating R-values are presented again below.."
+   (line ~349) — remove one period.
+
+5. DesignSpaceTypeSystems.jpg — IMAGE QUALITY
+   This is a photograph of a whiteboard (blurry, low contrast).  Replace
+   with a typeset `.. list-table::` or `.. csv-table::` showing the
+   static/dynamic × strong/weak grid with representative languages in each
+   cell (Python, JavaScript in dynamic corners; Java, Haskell in static
+   corners; C in the weak-static corner, etc.).
+
+6. DesignSpaceDSL.jpg and APIvsDSL.jpg — IMAGE QUALITY
+   Same issue: these are whiteboard photos.  The conceptual content
+   (domain / external DSL / embedded DSL / API taxonomy) should be
+   expressed as a text-based or SVG diagram.
+
+7. CROSS-COMPILATION EXAMPLE VERY DATED
+   The cross-compilation example (GCC 4.8, OpenWrt 15.05.1, uClibc) is from
+   approximately 2015 and references a travel router that is no longer
+   available.  Update the example to use a more current toolchain (e.g.,
+   Raspberry Pi cross-compilation with GCC 12+, or WASM as a
+   cross-compilation target).
+
+8. SCREENCAST LINKS NOT VERIFIED
+   The two "foundations" and "implementation" screencast links (YouTube)
+   for the simple imperative language case study should be verified as
+   still active; YouTube links are among the most frequently dead links
+   in academic materials.
+
+===========================================================================
+VIII. CHAPTER 60 — CONCURRENT PROGRAMMING
+===========================================================================
+
+1. TYPO: "anguage" → "a language" (line ~436)
+   "can come as *anguage* constructs" → "can come as language constructs"
+
+2. INLINE SVG BLOCK (lines ~183-214): PORTABILITY CONCERN
+   The `.. raw:: html` SVG block showing concurrency vs. parallelism
+   timelines will not render in the PDF/LaTeX builder and will be completely
+   absent in any non-HTML output.  Replace with an ASCII art diagram or a
+   `.. only:: html` / `.. only:: latex` pair with appropriate alternatives.
+   The diagram is illustrative but not critical; at minimum, add a fallback
+   text description for non-HTML builds.
+
+3. DEAD LINKS: SE Radio feedproxy.google.com (lines ~473-476)
+   All four SE Radio episode links use feedproxy.google.com, which no
+   longer works.  The actual episodes should be found on seradio.net or
+   the Software Engineering Radio podcast feed and the URLs updated.
+
+4. STALE java.util.concurrent JAVADOC LINK (line ~446)
+   Points to Java 8 API docs (javase/8/docs/...).  Update to Java 21 (LTS):
+   https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/package-summary.html
+
+5. INCOMPLETE BULLET LIST FOR SPECIFIC MECHANISMS
+   Lines 438-451 use a bullet list that mixes high-level patterns
+   ("monitors") with low-level specifics ("wait/notify") and Android
+   platform items ("AsyncTask") without structural organisation.  Group the
+   items into: (a) JVM concurrency primitives, (b) higher-level JVM
+   abstractions, (c) Android-specific, (d) purely functional alternatives.
+
+6. MATH MATRIX RENDERING (lines ~381-386)
+   The `.. math::` matrix uses a bare `\begin{matrix}` without `\begin{array}`
+   column separators, which renders correctly but somewhat unusually.
+   Use `\begin{array}{r|rrr}` for a header separator line to make the
+   table visually clearer.
+
+7. COURSE-NUMBER INTERNAL REFERENCE (line ~438)
+   "familiar from 313/413" — see cross-cutting issue #8.
+
+===========================================================================
+IX. CHAPTER 70 — LOGIC PROGRAMMING
+===========================================================================
+
+1. 8-QUEENS SOLUTION COMPLETENESS
+   The `queens` predicate generates queens in column order but uses
+   `\+ member(Q, Qs)` to avoid row repetition.  However, `safe/1` is
+   already defined and called to check diagonal attacks.  The use of both
+   `\+ member` and `safe` together is correct but slightly redundant: a
+   single `safe` check is sufficient if `member` generates without
+   repetition.  Add a clarifying comment in the code or a note explaining
+   why both checks appear.
+
+2. VARIABLE NAMING CONVENTION NOT EXPLAINED
+   The chapter states (line ~123) "In Prolog, variables start with an
+   uppercase letter".  It does not mention the anonymous variable `_` or
+   the convention of starting non-binding singleton variables with `_` to
+   suppress the singleton-variable warning.  A brief note would help
+   students reading real Prolog code.
+
+3. "NEGATION AS FAILURE" MENTIONED BUT NOT DEMONSTRATED
+   The "Other Elements" list mentions negation as failure (`\+`) but
+   provides no example.  This is a non-trivial semantic concept
+   (closed-world assumption); a small example (e.g., "if it cannot be
+   proven that John is a student, assume he is not") would aid understanding.
+
+4. CLP(FD) EXAMPLE IS IN CHAPTER 75, NOT HERE
+   The `clpfd` Prolog example is in ch. 75 (Other Paradigms).  A
+   cross-reference pointing from ch. 70 to ch. 75 for this example is
+   present (via the "Other Elements" bullet), but the cross-reference
+   could be more explicit: "see the CLP(FD) example in
+   :ref:`ch. 75 <constraint-programming>`".
+
+5. NO DISCUSSION OF PROLOG's ARITHMETIC LIMITATIONS
+   The examples use `is/2` for arithmetic but do not explain that Prolog
+   arithmetic is not relational (unlike CLP): `X is 3 + 4` works but
+   `3 + 4 is X` fails, which surprises students coming from algebra.
+   A short note would prevent a common misconception.
+
+===========================================================================
+X. CHAPTER 75 — OTHER PARADIGMS
+===========================================================================
+
+1. XSLT EXAMPLE DISPROPORTIONATELY LONG
+   The XSLT/XPath example (lines ~44-87) is 44 lines of XML/XSLT for a
+   "hello, world"-level concept.  Students are unlikely to study XSLT in
+   depth in this course; trim the example to 10-15 lines (e.g., a minimal
+   transformation of a single-element XML to HTML) and move the full
+   example to a linked GitHub gist.
+
+2. TENSORFLOW EXAMPLE REQUIRES HEAVY DEPENDENCY
+   The TensorFlow/dataflow example is pedagogically sound but requires
+   `import tensorflow as tf`, which is a large installation.  Add a note
+   pointing students to Google Colab as the zero-install way to run it,
+   or provide a pure-Python alternative (e.g., using a DAG simulation with
+   plain dicts) to illustrate the dataflow concept without the dependency.
+
+3. LABVIEW LISTED AS PARADIGM-DEFINING FOR DATAFLOW
+   LabVIEW is a proprietary, expensive tool.  In a course context, listing
+   it alongside TensorFlow without noting that students will not use it may
+   be confusing.  Either remove LabVIEW (TensorFlow is sufficient) or add
+   a note: "LabVIEW is a commercial visual dataflow language; TensorFlow
+   is the accessible open-source alternative for this course."
+
+4. ASPECT-ORIENTED EXAMPLE REQUIRES `ajc` COMPILER
+   The AspectJ example is flagged with a note about `ajc`, but does not
+   explain how to install `ajc` or where the Spring AOP alternative is
+   documented.  Add a pointer to the Spring AOP quick-start guide.
+
+5. DECLARATIVE vs. FUNCTIONAL DISTINCTION BLURRED
+   The chapter opens by noting that functional and logic programming are
+   "broadly declarative" but then introduces a "Declarative Programming"
+   section that covers SQL, HTML, and XSLT — without clearly explaining
+   how these differ from functional programming in terms of declarativeness.
+   Add one sentence drawing the distinction: functional programming is
+   declarative about *computation* (what to compute); SQL/HTML/XSLT are
+   declarative about *structure or data* (what to represent or query).
+
+===========================================================================
+XI. CHAPTER 78 — SUMMARY
+===========================================================================
+
+1. PARADIGM COMPARISON TABLE MISSING
+   The summary chapter provides prose comparison but no tabular overview
+   comparing all paradigms across dimensions (e.g., primary abstraction,
+   key mechanism, representative language, when to choose).  A single
+   comprehensive comparison table here would be a high-value addition for
+   exam preparation and quick reference.
+
+2. CROSS-REFERENCES TO CHAPTERS IN SUMMARY ARE IMPLICIT
+   The summary discusses each paradigm but does not use `:doc:` or `:ref:`
+   cross-references to link back to the chapters.  Students reading the
+   summary should be able to click through to the relevant chapter.
+
+3. NO GUIDANCE ON MULTI-PARADIGM DESIGN
+   The summary correctly notes that modern languages blend paradigms but
+   does not provide any guidance on *when to choose* which paradigm for
+   a given problem.  A brief decision heuristic (one paragraph or a
+   bulleted list) would give students something concrete to take away.
+
+===========================================================================
+XII. CHAPTER 80 — DESIGN PRINCIPLES
+===========================================================================
+
+1. PRINCIPLES NOT NAMED CONSISTENTLY WITH LITERATURE
+   The design principles discussed (separation of concerns, abstraction,
+   modularity, etc.) are named slightly differently in different sections,
+   and the names do not always match those used in the Kazman quality-
+   factor framework referenced in ch. 10.  Align the terminology across
+   ch. 10 and ch. 80.
+
+2. "SEEALSO" BLOCK REFERENCES NEED ANCHORS
+   The `.. seealso::` block references other chapters by title only.  Use
+   `:doc:` directives so the references become hyperlinks.
+
+3. EXAMPLES FOR PRINCIPLES ARE ASYMMETRIC
+   Some principles (e.g., separation of concerns) receive a worked code
+   example; others (e.g., uniformity / least surprise) receive only prose.
+   Apply the same treatment to all: brief prose definition + one-line
+   counter-example + one-line preferred example.
+
+===========================================================================
+XIII. APPENDIX 83 — RESOURCES
+===========================================================================
+
+1. BROKEN LINKS NOT MARKED
+   Several links listed here are known to be stale or have been marked
+   "(may be outdated)" in other chapters, but the Resources appendix
+   itself does not consistently flag these.  The preamble note says "URLs
+   were verified in early 2026"; a date stamp and a one-sentence note on
+   how to report broken links would help.
+
+2. PROKOPEC CONCURRENCY BOOK: 2014 PUBLICATION DATE
+   "Learning Concurrent Programming in Scala" (2014) predates Scala 3 and
+   modern structured-concurrency libraries (Cats Effect, ZIO).  Add a note
+   that this reference is useful for foundational concepts but does not
+   cover Scala 3 syntax or the modern purely-functional concurrency
+   ecosystem.
+
+3. MISSING REFERENCE FOR CATS EFFECT / ZIO
+   Chapter 60 notes the shift to Cats Effect and ZIO (with a note), but
+   no corresponding reference for either library appears in the Resources
+   appendix.  Add:
+     - Cats Effect documentation: https://typelevel.org/cats-effect/
+     - ZIO documentation: https://zio.dev/
+
+4. HORSTMANN SCALA BOOK EDITION
+   "Scala for the Impatient" is listed as the Second Edition (December
+   2016, covering Scala 2).  A Scala 3 edition ("Scala 3 for the
+   Impatient", 2022) now exists and should be the primary reference.
+
+===========================================================================
+XIV. APPENDIX 85 — COURSE SOFTWARE
+===========================================================================
+
+1. GITPOD SCREENSHOT STALE
+   The gitpod.png screenshot shows the old Gitpod workspace UI.  Gitpod
+   has since redesigned its interface significantly.  Either update the
+   screenshot or replace it with text instructions that are not UI-dependent.
+
+2. CODESPACES INSTRUCTIONS USE MODAL VERBS INCONSISTENTLY
+   Some steps say "you can" and others say "you should" for the same class
+   of action (e.g., installing extensions).  Decide which are required and
+   which are optional; use "must"/"should" for required steps and "can"/
+   "may" for optional ones.
+
+3. TROUBLESHOOTING SECTION: "sbt not found" FIX INCOMPLETE
+   The fix installs `sbt` and `java` but does not call `sdk use sbt` to
+   make the newly installed version active in the current shell.  Add
+   `sdk use sbt` and `sdk use java <version>` after the install commands.
+
+4. SCASTIE VERSION NOTE
+   The instructions say "choose the most recent 3.x LTS entry" without
+   defining what LTS means for Scala (Long-Term Support releases are 3.3.x).
+   Clarify: "choose Scala 3.3.x (the current LTS line)".
+
+===========================================================================
+XV. OVERALL STRUCTURAL ASSESSMENT
+===========================================================================
+
+STRENGTHS:
+- The chapter ordering (imperative → OO → functional → representation →
+  concurrent → logic → other) follows a coherent pedagogical progression.
+- The consistent use of comparison tables (language × feature) across
+  paradigm chapters (chs. 20, 30, 40, 60) is effective and should be
+  extended to the logic and other-paradigms chapters.
+- The F-algebra and typeclass material in ch. 40 is at a graduate-course
+  level and is technically sound after the recent cats rewrite.
+- The new Concurrency/Parallelism distinction section in ch. 60 with the
+  inline SVG diagram shows good pedagogical instinct (even if the SVG has
+  portability issues noted above).
+- Cross-references between chapters have improved markedly; the network of
+  `:doc:` links makes the text feel like a coherent book rather than
+  isolated lecture notes.
+
+WEAKNESSES:
+1. The image-based SOS rules in ch. 50 are the single biggest remaining
+   quality gap.  Converting these to LaTeX `.. math::` blocks would require
+   one focused session of work but would dramatically raise the
+   professional quality of the book.
+
+2. No exercises anywhere.  This is a significant omission for a textbook.
+   Even five review questions per chapter would double the pedagogical value.
+
+3. Several chapters (50, 60) have the feel of "compiled lecture notes"
+   more than a coherent textbook chapter: bullet lists of links without
+   integrating prose, phrases like "familiar from 313/413" that presuppose
+   a specific institutional context, and lists of "TODO" items that were
+   not fully resolved.
+
+4. The concurrency chapter (60) is the most structurally uneven: the
+   opening Core Elements + Examples table is well-structured, but the
+   second half of the chapter reverts to link-list format that is less
+   integrated with the surrounding prose.
+
+5. The book needs a consistent running example (or small set of examples)
+   that appears in each chapter to show how each paradigm approaches the
+   *same* problem differently.  Currently each chapter uses its own bespoke
+   examples, which makes paradigm comparison harder.  A single example —
+   e.g., "compute word-frequency histogram" — appearing in imperative,
+   functional, and logic variants would be a powerful pedagogical device.
+
+===========================================================================
+PRIORITY RANKING OF FIXES
+===========================================================================
+
+IMMEDIATE (correctness bugs):
+  [CH20-BUG-1] Missing ");" in Java forEachRemaining call
+  [CH20-BUG-3] "ccoverageExcludedPackages" typo (extra 'c')
+
+HIGH (quality/accessibility):
+  [CH50-SOS]   Replace all SOS rule images with LaTeX math directives
+  [CH50-IMG]   Replace whiteboard photo type-system diagram with table
+  [XCUT-IDX]   Add index directives throughout
+  [XCUT-EX]    Add exercises to each chapter
+
+MEDIUM (accuracy/currency):
+  [CH20-SCALA3] Update REPL transcripts to Scala 3 format
+  [CH60-LINKS]  Fix dead SE Radio and Java 8 API links
+  [CH60-SVG]    Add non-HTML fallback for SVG diagram
+  [CH30-JAVA]   Add Java records/sealed classes comparison
+  [CH83-BOOKS]  Update Scala book edition, add Cats Effect / ZIO refs
+
+LOW (style/polish):
+  [XCUT-IE]     Normalise "ie." → "i.e."
+  [XCUT-OXF]    Apply Oxford comma consistently
+  [XCUT-REG]    Normalise register (formal vs. second person)
+  [XCUT-313]    Replace internal course-number references
+
+===========================================================================
+END OF REVIEW
+===========================================================================
