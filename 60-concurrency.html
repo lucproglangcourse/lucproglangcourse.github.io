@@ -380,12 +380,39 @@ suits distributed and reactive systems; data parallelism suits numerical workloa
 </ul>
 </section>
 </section>
+<section id="motivation">
+<h2><span class="section-number">7.2. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"></a></h2>
+<p>Why and when do we need concurrency?</p>
+<ul class="simple">
+<li><p>When it is a natural fit for the problem domain</p>
+<ul>
+<li><p>multiple autonomous behaviors/simulations</p></li>
+<li><p>user interfaces: timed events, background activities</p></li>
+</ul>
+</li>
+<li><p>When the technical solution domain requires it</p>
+<ul>
+<li><p>more efficient use of available resources: asynchronous computing</p></li>
+<li><p>graphical user interfaces: queuing of low-level input events</p></li>
+<li><p>multi-core systems</p></li>
+<li><p>network services/distributed systems</p></li>
+</ul>
+</li>
+</ul>
+<p>These are some key concurrency considerations:</p>
+<ul class="simple">
+<li><p>physical (parallelism) versus logical concurrency</p></li>
+<li><p>speedup and when to expect it</p></li>
+<li><p>data parallelism versus task parallelism</p></li>
+<li><p>fine-grained versus coarse-grained concurrency</p></li>
+</ul>
+</section>
 <section id="concurrency-vs-parallelism">
-<h2><span class="section-number">7.2. </span>Concurrency vs. Parallelism<a class="headerlink" href="#concurrency-vs-parallelism" title="Link to this heading"></a></h2>
+<h2><span class="section-number">7.3. </span>Concurrency vs. Parallelism<a class="headerlink" href="#concurrency-vs-parallelism" title="Link to this heading"></a></h2>
 <p>Although often used interchangeably, <strong>concurrency</strong> and <strong>parallelism</strong> are
 related but distinct concepts in programming.</p>
 <section id="concurrency">
-<h3><span class="section-number">7.2.1. </span>Concurrency<a class="headerlink" href="#concurrency" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.3.1. </span>Concurrency<a class="headerlink" href="#concurrency" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Definition</strong>: Structuring a program as multiple tasks that can make progress
 independently.</p></li>
@@ -405,7 +432,7 @@ network I/O with computation.</p></li>
 </ul>
 </section>
 <section id="parallelism">
-<h3><span class="section-number">7.2.2. </span>Parallelism<a class="headerlink" href="#parallelism" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.3.2. </span>Parallelism<a class="headerlink" href="#parallelism" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Definition</strong>: Using multiple processing units (cores, processors, machines)
 to perform computations simultaneously.</p></li>
@@ -424,7 +451,7 @@ part simultaneously.</p></li>
 </ul>
 </section>
 <section id="key-distinctions">
-<h3><span class="section-number">7.2.3. </span>Key Distinctions<a class="headerlink" href="#key-distinctions" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.3.3. </span>Key Distinctions<a class="headerlink" href="#key-distinctions" title="Link to this heading"></a></h3>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -491,7 +518,7 @@ part simultaneously.</p></li>
   <text x="450" y="140" text-anchor="middle" fill="currentColor">Multiple cores, true overlap</text>
 </svg></section>
 <section id="id1">
-<h3><span class="section-number">7.2.4. </span>Discussion<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<h3><span class="section-number">7.3.4. </span>Discussion<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Concurrency is about <strong>structure</strong>: decomposing programs into independent
 activities that can interleave.</p></li>
@@ -502,33 +529,6 @@ a concurrent web server (handling many connections) uses parallelism
 internally to process requests across CPU cores.</p></li>
 </ul>
 </section>
-</section>
-<section id="motivation">
-<h2><span class="section-number">7.3. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"></a></h2>
-<p>Why and when do we need concurrency?</p>
-<ul class="simple">
-<li><p>When it is a natural fit for the problem domain</p>
-<ul>
-<li><p>multiple autonomous behaviors/simulations</p></li>
-<li><p>user interfaces: timed events, background activities</p></li>
-</ul>
-</li>
-<li><p>When the technical solution domain requires it</p>
-<ul>
-<li><p>more efficient use of available resources: asynchronous computing</p></li>
-<li><p>graphical user interfaces: queuing of low-level input events</p></li>
-<li><p>multi-core systems</p></li>
-<li><p>network services/distributed systems</p></li>
-</ul>
-</li>
-</ul>
-<p>These are some key concurrency considerations:</p>
-<ul class="simple">
-<li><p>physical (parallelism) versus logical concurrency</p></li>
-<li><p>speedup and when to expect it</p></li>
-<li><p>data parallelism versus task parallelism</p></li>
-<li><p>fine-grained versus coarse-grained concurrency</p></li>
-</ul>
 </section>
 <section id="fine-grained-vs-coarse-grained-concurrency">
 <h2><span class="section-number">7.4. </span>Fine-grained vs. Coarse-grained Concurrency<a class="headerlink" href="#fine-grained-vs-coarse-grained-concurrency" title="Link to this heading"></a></h2>
@@ -820,14 +820,14 @@ n = 4 &amp; 70 &amp; 34650 &amp; 63063000
 <li><a class="reference internal" href="#discussion">7.1.8. Discussion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#concurrency-vs-parallelism">7.2. Concurrency vs. Parallelism</a><ul>
-<li><a class="reference internal" href="#concurrency">7.2.1. Concurrency</a></li>
-<li><a class="reference internal" href="#parallelism">7.2.2. Parallelism</a></li>
-<li><a class="reference internal" href="#key-distinctions">7.2.3. Key Distinctions</a></li>
-<li><a class="reference internal" href="#id1">7.2.4. Discussion</a></li>
+<li><a class="reference internal" href="#motivation">7.2. Motivation</a></li>
+<li><a class="reference internal" href="#concurrency-vs-parallelism">7.3. Concurrency vs. Parallelism</a><ul>
+<li><a class="reference internal" href="#concurrency">7.3.1. Concurrency</a></li>
+<li><a class="reference internal" href="#parallelism">7.3.2. Parallelism</a></li>
+<li><a class="reference internal" href="#key-distinctions">7.3.3. Key Distinctions</a></li>
+<li><a class="reference internal" href="#id1">7.3.4. Discussion</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#motivation">7.3. Motivation</a></li>
 <li><a class="reference internal" href="#fine-grained-vs-coarse-grained-concurrency">7.4. Fine-grained vs. Coarse-grained Concurrency</a></li>
 <li><a class="reference internal" href="#activity-terminology-and-concerns">7.5. Activity terminology and concerns</a></li>
 <li><a class="reference internal" href="#thread-safety">7.6. Thread safety</a><ul>
