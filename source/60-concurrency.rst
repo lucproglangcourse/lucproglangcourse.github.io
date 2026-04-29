@@ -115,6 +115,32 @@ overlapping computations.
   suits distributed and reactive systems; data parallelism suits numerical workloads.
 
 
+Motivation
+~~~~~~~~~~
+
+Why and when do we need concurrency?
+
+- When it is a natural fit for the problem domain
+
+  - multiple autonomous behaviors/simulations
+  - user interfaces: timed events, background activities
+
+- When the technical solution domain requires it
+
+  - more efficient use of available resources: asynchronous computing
+  - graphical user interfaces: queuing of low-level input events
+  - multi-core systems
+  - network services/distributed systems
+
+
+These are some key concurrency considerations:
+
+- physical (parallelism) versus logical concurrency
+- speedup and when to expect it
+- data parallelism versus task parallelism
+- fine-grained versus coarse-grained concurrency
+
+
 Concurrency vs. Parallelism
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -225,34 +251,6 @@ Discussion
 - Many modern systems combine both:  
   a concurrent web server (handling many connections) uses parallelism 
   internally to process requests across CPU cores.
-
-
-
-
-Motivation
-~~~~~~~~~~
-
-Why and when do we need concurrency?
-
-- When it is a natural fit for the problem domain
-
-  - multiple autonomous behaviors/simulations
-  - user interfaces: timed events, background activities
-
-- When the technical solution domain requires it
-
-  - more efficient use of available resources: asynchronous computing
-  - graphical user interfaces: queuing of low-level input events
-  - multi-core systems
-  - network services/distributed systems
-
-
-These are some key concurrency considerations:
-
-- physical (parallelism) versus logical concurrency
-- speedup and when to expect it
-- data parallelism versus task parallelism
-- fine-grained versus coarse-grained concurrency
 
 
 Fine-grained vs. Coarse-grained Concurrency
