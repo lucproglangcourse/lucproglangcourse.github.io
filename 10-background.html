@@ -311,10 +311,10 @@
 <li><p><em>how do testing and refactoring relate to requirements?</em></p></li>
 </ul>
 <p>The following figure by Kazman relates unit operations (high-level generalizations of refactorings) to software quality factors (nonfunctional requirements). Each arrow indicates that applying the unit operation (e.g., <em>modularize</em>, <em>abstract</em>) tends to improve the corresponding quality factor (e.g., maintainability, testability). Notably, <em>modularize</em> simultaneously improves both maintainability and testability.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <img alt="Kazman diagram showing unit operations (generalised refactorings) mapped to the software quality factors they improve" src="_images/KazmanQualityFactors.png" />
 <figcaption>
-<p><span class="caption-text"><em>Kazman et al.</em>: unit operations and the quality factors they improve.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-text"><em>Kazman et al.</em>: unit operations and the quality factors they improve.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>As we will see throughout the course, programming language features directly support or hinder the satisfaction of NFRs. Static type systems improve reliability by catching errors at compile time. Immutability and pure functions improve testability by eliminating hidden state. Built-in concurrency primitives improve scalability. The language design chapters will repeatedly refer back to these requirements as motivation for language features.</p>
@@ -425,6 +425,19 @@ Before drawing any conclusions from these indices, it is important to understand
 <p>When consulting any popularity or performance index, ask: <em>What is the data source?</em> (search queries, job postings, GitHub commits, or benchmark runs each capture different things.) <em>What counts as “a language”?</em> (Some indices conflate dialects or treat Jupyter notebooks as Python.) <em>Does the index weight by project size or contributor count?</em> Understanding methodology prevents over-interpreting rankings. The PYPL and TIOBE indices publish their methodology; always read it before drawing conclusions.</p>
 </div>
 </section>
+<section id="summary-and-further-reading">
+<h2><span class="section-number">2.6. </span>Summary and further reading<a class="headerlink" href="#summary-and-further-reading" title="Link to this heading"></a></h2>
+<p>This chapter establishes the conceptual and practical context for the rest of the book. Software requirements — both functional and nonfunctional — motivate language and paradigm choices throughout the course: testability drives separation of concerns, performance motivates complexity analysis, and maintainability favors clean, modular designs. Lightweight development practices (automated testing, refactoring, continuous integration) and SOLID design principles and patterns recur in every paradigm chapter as the standards against which code quality is measured.</p>
+<p>The programming language history and paradigms section shows that no single paradigm is universal: imperative, object-oriented, functional, logic, and concurrent programming each reflect a distinct model of computation, and real systems routinely combine them. Because all Turing-complete languages share the same fundamental expressive power, the interesting questions are about expressiveness of <em>style</em>, safety guarantees, and fit to the problem domain — themes developed in depth throughout the book.</p>
+<p>Further reading:</p>
+<ul class="simple">
+<li><p>Robert W. Sebesta, <em>Concepts of Programming Languages</em> (12th ed., Pearson) — accessible survey of language design, paradigms, and implementation.</p></li>
+<li><p>Peter Van Roy and Seif Haridi, <em>Concepts, Techniques, and Models of Computer Programming</em> (MIT Press, 2004) — systematic treatment of paradigms organised around the concept diagram linked in this chapter.</p></li>
+<li><p>Martin Fowler, <em>Refactoring: Improving the Design of Existing Code</em> (2nd ed., Addison-Wesley, 2018) — the standard reference on refactoring and code smells.</p></li>
+<li><p>Robert C. Martin, <em>Clean Code</em> (Prentice Hall, 2008) — practical guidance on writing maintainable code aligned with the NFRs discussed here.</p></li>
+<li><p><a class="reference external" href="https://www.thoughtworks.com/radar">ThoughtWorks Technology Radar</a> — regularly updated survey of languages, frameworks, and tools, useful for understanding current industry practice.</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -488,6 +501,7 @@ Before drawing any conclusions from these indices, it is important to understand
 <li><a class="reference internal" href="#software-design-principles-and-patterns">2.3. Software design principles and patterns</a></li>
 <li><a class="reference internal" href="#programming-language-history-and-paradigms">2.4. Programming language history and paradigms</a></li>
 <li><a class="reference internal" href="#popularity-indices-and-performance-comparisons">2.5. Popularity indices and performance comparisons</a></li>
+<li><a class="reference internal" href="#summary-and-further-reading">2.6. Summary and further reading</a></li>
 </ul>
 </li>
 </ul>

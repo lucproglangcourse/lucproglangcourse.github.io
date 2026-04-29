@@ -180,3 +180,19 @@ Before drawing any conclusions from these indices, it is important to understand
 .. note::
 
    When consulting any popularity or performance index, ask: *What is the data source?* (search queries, job postings, GitHub commits, or benchmark runs each capture different things.) *What counts as "a language"?* (Some indices conflate dialects or treat Jupyter notebooks as Python.) *Does the index weight by project size or contributor count?* Understanding methodology prevents over-interpreting rankings. The PYPL and TIOBE indices publish their methodology; always read it before drawing conclusions.
+
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This chapter establishes the conceptual and practical context for the rest of the book. Software requirements — both functional and nonfunctional — motivate language and paradigm choices throughout the course: testability drives separation of concerns, performance motivates complexity analysis, and maintainability favors clean, modular designs. Lightweight development practices (automated testing, refactoring, continuous integration) and SOLID design principles and patterns recur in every paradigm chapter as the standards against which code quality is measured.
+
+The programming language history and paradigms section shows that no single paradigm is universal: imperative, object-oriented, functional, logic, and concurrent programming each reflect a distinct model of computation, and real systems routinely combine them. Because all Turing-complete languages share the same fundamental expressive power, the interesting questions are about expressiveness of *style*, safety guarantees, and fit to the problem domain — themes developed in depth throughout the book.
+
+Further reading:
+
+- Robert W. Sebesta, *Concepts of Programming Languages* (12th ed., Pearson) — accessible survey of language design, paradigms, and implementation.
+- Peter Van Roy and Seif Haridi, *Concepts, Techniques, and Models of Computer Programming* (MIT Press, 2004) — systematic treatment of paradigms organised around the concept diagram linked in this chapter.
+- Martin Fowler, *Refactoring: Improving the Design of Existing Code* (2nd ed., Addison-Wesley, 2018) — the standard reference on refactoring and code smells.
+- Robert C. Martin, *Clean Code* (Prentice Hall, 2008) — practical guidance on writing maintainable code aligned with the NFRs discussed here.
+- `ThoughtWorks Technology Radar <https://www.thoughtworks.com/radar>`_ — regularly updated survey of languages, frameworks, and tools, useful for understanding current industry practice.
