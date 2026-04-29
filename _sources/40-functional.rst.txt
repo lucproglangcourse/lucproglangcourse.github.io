@@ -1191,8 +1191,14 @@ Observations
 - The `Cats documentation <https://typelevel.org/cats/>`_ is the primary reference for these abstractions.
 
 
-References
-~~~~~~~~~~
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The functional paradigm treats computation as the evaluation of mathematical functions, emphasizing immutability, first-class and higher-order functions, recursion, and algebraic data types. These properties enable equational reasoning, compositional design, and strong static guarantees via the type system. Compared with the imperative paradigm (:doc:`/20-imperative`), functional code avoids mutable state and side effects; compared with the object-oriented paradigm (:doc:`/30-objectoriented`), it shifts the emphasis from class hierarchies to function composition and algebraic structure.
+
+Scala supports the full spectrum from basic functional idioms — pattern matching, case classes, immutable collections, and for-comprehensions — to category-theoretic abstractions such as functors, monads, and recursion schemes, especially when combined with the Cats and Droste libraries. These abstractions appear throughout the representation and interpretation (:doc:`/50-representationinterpretation`) and concurrency (:doc:`/60-concurrency`) chapters as well.
+
+Further reading:
 
 - Jeremy Gibbons, *Origami Programming* (2003): `PDF <http://www.cs.ox.ac.uk/publications/publication2335-abstract.html>`_ — introduces folds and unfolds as general-purpose programming patterns.
 - Luca Cardelli and Peter Wegner, *On Understanding Types, Data Abstraction, and Polymorphism* (1985): `PDF <http://lucacardelli.name/papers/onunderstanding.a4.pdf>`_ — foundational paper on parametric and subtype polymorphism.

@@ -934,3 +934,19 @@ The following example goes through several evolutions of a simple example to ill
 
 Upon reflection, this journey also leads us away from simple, straight-line imperative or scripting code toward a more complex design involving higher-order parametrization and custom abstractions, which are hallmarks of object-oriented and functional programming.
 The endpoint of this journey thereby marks our transition to the object-oriented paradigm.
+
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The imperative paradigm is the foundational model of computation, directly reflecting the von Neumann machine architecture. Its core ideas — named mutable state, sequencing, branching, iteration, and procedural abstraction — appear in virtually every programming language and provide the baseline against which other paradigms are defined.
+
+Working with built-in types and the Scala REPL or scripting tools offers a low-friction entry point into practical programming. As applications grow, concerns such as testability, constant-space complexity, and the separation of logic from I/O motivate the richer abstractions explored in the object-oriented (:doc:`/30-objectoriented`) and functional (:doc:`/40-functional`) chapters. The journey from a straight-line script to a testable, memory-efficient application already hints at these richer paradigms.
+
+Further reading:
+
+- Robert W. Sebesta, *Concepts of Programming Languages* (12th ed., Pearson) — broad survey of imperative, procedural, and other language paradigms.
+- Donald E. Knuth, *The Art of Computer Programming* (Vols. 1–4, Addison-Wesley) — deep treatment of algorithms and data structures from an imperative perspective.
+- `Scala 3 official documentation <https://docs.scala-lang.org/scala3/book/>`_ — authoritative reference for the Scala language used throughout this chapter.
+- `ScalaTest documentation <https://www.scalatest.org/>`_ — reference for the testing framework used in the examples.
+- Gamma et al., *Design Patterns: Elements of Reusable Object-Oriented Software* (Addison-Wesley, 1994) — the canonical catalog of patterns that arise as simple scripts evolve into larger designs.
