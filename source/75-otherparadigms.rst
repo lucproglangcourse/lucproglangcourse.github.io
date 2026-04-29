@@ -201,3 +201,19 @@ Constraint programming extends logic programming by allowing variables to be con
   % X = 1, Y = 9 ; X = 2, Y = 8 ; ...
 
 See also the discussion of Prolog and backtracking in :doc:`/70-logic`.
+
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Beyond the core paradigms covered in earlier chapters, declarative, reactive, aspect-oriented, dataflow, event-driven, and constraint programming offer specialized models well suited to particular problem domains. Declarative programming — exemplified by SQL, XSLT, and HTML — describes *what* is desired rather than *how* to achieve it, a theme shared with the functional (:doc:`/40-functional`) and logic (:doc:`/70-logic`) paradigms. Reactive programming brings composable stream operators to continuous event processing. Aspect-oriented programming addresses cross-cutting concerns — logging, security, transactions — that resist modular encapsulation in purely OO or functional designs. Dataflow and event-driven models reflect the structure of many real-world systems, from signal processing pipelines to graphical user interfaces and web servers. Constraint programming extends logic programming with domain-specific solvers for combinatorial search problems.
+
+In practice, modern languages and frameworks borrow freely from multiple paradigms simultaneously. A Scala web service, for instance, may combine OO domain modelling, functional data transformation, reactive stream processing, and actor-based concurrency — making paradigm literacy essential for any serious practitioner.
+
+Further reading:
+
+- Martin Fowler, *Domain-Specific Languages* (Addison-Wesley, 2010) — comprehensive guide to internal and external DSL design and implementation.
+- Stephen Blackheath and Anthony Jones, *Functional Reactive Programming* (Manning, 2016) — approachable introduction to FRP concepts and their application.
+- `ReactiveX documentation <https://reactivex.io/>`_ — reference for the Rx family of reactive programming libraries (RxJava, RxScala, RxJS, and others).
+- `SWI-Prolog CLP(FD) documentation <https://www.swi-prolog.org/man/clpfd.html>`_ — constraint logic programming over finite domains.
+- `Cats Effect documentation <https://typelevel.org/cats-effect/>`_ and `ZIO documentation <https://zio.dev/>`_ — structured, functional concurrency and effectful reactive programming in Scala.

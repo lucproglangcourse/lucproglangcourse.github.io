@@ -445,3 +445,19 @@ Additional information is available here:
 - https://martinfowler.com/books/dsl.html
 - https://en.wikipedia.org/wiki/Domain-specific_language
 - `SE Radio episode 182 <http://feedproxy.google.com/~r/se-radio/~3/2VCOnKZ97MU/>`_
+
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This chapter connects the study of programming paradigms to the mechanisms that make programs executable and meaningful. A language toolchain — lexer, parser, type checker, and interpreter or compiler — transforms source text into something a machine can evaluate. Formal semantics (operational, denotational, and axiomatic) provide rigorous frameworks for specifying and reasoning about program behavior, complementing the informal descriptions given in the paradigm chapters.
+
+Type systems add static guarantees that eliminate entire classes of runtime errors and guide program construction. Domain-specific languages extend these ideas to specialized vocabularies, either embedded within a host language (internal DSLs built on the functional and object-oriented abstractions of earlier chapters) or implemented as standalone tools. Together, these techniques are the foundation of programming language design and implementation, and they recur throughout the study of every paradigm in this book.
+
+Further reading:
+
+- Alfred V. Aho, Monica S. Lam, Ravi Sethi, and Jeffrey D. Ullman, *Compilers: Principles, Techniques, and Tools* (2nd ed., Addison-Wesley, 2006) — the authoritative reference on lexing, parsing, semantic analysis, and code generation.
+- Benjamin C. Pierce, *Types and Programming Languages* (MIT Press, 2002) — comprehensive treatment of type theory and its applications.
+- Glynn Winskel, *The Formal Semantics of Programming Languages* (MIT Press, 1993) — rigorous introduction to denotational and operational semantics.
+- Terence Parr, *The Definitive ANTLR 4 Reference* (Pragmatic Bookshelf, 2013) — practical guide to parser generation with ANTLR.
+- Martin Fowler, *Domain-Specific Languages* (Addison-Wesley, 2010) — comprehensive guide to internal and external DSL design patterns.

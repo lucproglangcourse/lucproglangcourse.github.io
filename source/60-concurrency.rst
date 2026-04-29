@@ -461,8 +461,14 @@ Several specific concurrency mechanisms can come as language constructs, pattern
 - `software transactional memory <https://en.wikipedia.org/wiki/Software_transactional_memory>`_
 
 
-References: concurrent and asynchronous computing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The concurrent programming paradigm addresses the coordination of multiple simultaneous activities. Key challenges — shared state, race conditions, deadlock, and the tension between safety and liveness — arise regardless of the specific mechanism used: threads and locks, futures and promises, actors, reactive streams, or software transactional memory. The distinction between concurrency (managing multiple interleaved activities) and parallelism (executing them simultaneously for performance) is an important organizing principle.
+
+Modern Scala ecosystems have largely shifted toward purely functional, composable concurrency abstractions via `Cats Effect <https://typelevel.org/cats-effect/>`_ and `ZIO <https://zio.dev/>`_, which provide structured concurrency and resource safety by construction, and avoid the subtle bugs that accompany unstructured thread and lock programming. These abstractions build on the functional paradigm (:doc:`/40-functional`) and are well suited to the reactive and event-driven styles discussed in the other paradigms chapter (:doc:`/75-otherparadigms`).
+
+Further reading:
 
 - Läufer and Thiruvathukal, `CDER book chapter <https://arxiv.org/abs/1705.02899>`_
 - Goetz et al., `JCIP <http://jcip.net.s3-website-us-east-1.amazonaws.com>`_

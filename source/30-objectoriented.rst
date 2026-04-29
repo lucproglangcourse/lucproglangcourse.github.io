@@ -447,3 +447,19 @@ The concrete ``fold.Main`` object is the only place where the two sides are conn
 This arrangement means we can swap in a different implementation—or a test double—without changing ``common.Main`` at all.
 
 
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The object-oriented paradigm extends the imperative model by organizing code around objects — bundles of state and behavior — that communicate through method invocation (message passing). Encapsulation, inheritance, and polymorphism enable the definition of reusable domain models and frameworks, and are the building blocks of many widely used languages and ecosystems.
+
+Scala's combination of classes, traits, case classes, and higher-order capabilities makes it well suited for idiomatic OO design, including clean separation of interface from implementation, dependency injection via the Thin Cake pattern, and progressive refinement of abstractions. Design principles such as SOLID — and in particular the Dependency Inversion Principle — guide the construction of maintainable, modular systems. The endpoint of this chapter, reached by applying these principles, prepares the ground for the functional paradigm (:doc:`/40-functional`), where abstraction is taken further through higher-order functions and algebraic data types.
+
+Further reading:
+
+- Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, *Design Patterns: Elements of Reusable Object-Oriented Software* (Addison-Wesley, 1994) — the canonical catalog of OO design patterns.
+- Robert C. Martin, *Clean Architecture* (Prentice Hall, 2017) — design principles, including SOLID, applied to system-level structure.
+- Martin Odersky, Lex Spoon, and Bill Venners, *Programming in Scala* (5th ed., Artima) — authoritative Scala reference covering classes, traits, and the object model.
+- `Scala 3 official documentation <https://docs.scala-lang.org/scala3/book/>`_ — language reference for features used in this chapter.
+- Wikipedia, `SOLID <https://en.wikipedia.org/wiki/SOLID>`_ and `Dependency injection <https://en.wikipedia.org/wiki/Dependency_injection>`_ — accessible overviews of key OO design principles.
+
+
