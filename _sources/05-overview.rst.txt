@@ -7,8 +7,7 @@ In this chapter, we provide an outline of the course, along with a brief motivat
 Course Information
 ~~~~~~~~~~~~~~~~~~
 
-- `COMP 371 course description <https://academics.cs.luc.edu/courses/comp371.html>`_
-- `COMP 471 course description <https://academics.cs.luc.edu/courses/comp471.html>`_
+- `COMP 371/471 course descriptions <https://catalog.luc.edu/course-descriptions/comp/>`_
 - `Department of Computer Science <http://luc.edu/cs>`_
 - `Loyola University Chicago <http://luc.edu>`_
 
