@@ -471,9 +471,10 @@ Modern Scala ecosystems have largely shifted toward purely functional, composabl
 Further reading:
 
 - Läufer and Thiruvathukal, `CDER book chapter <https://arxiv.org/abs/1705.02899>`_
-- Goetz et al., `JCIP <http://jcip.net.s3-website-us-east-1.amazonaws.com>`_
-- Doug Lea, `CPJ <http://gee.cs.oswego.edu/dl/cpj>`_
-- Thiruvathukal and Christopher, `HPJPC <https://code.google.com/p/hpjpc/>`_
+- Goetz et al., `Java Concurrency in Practice (JCIP) <https://jcip.net/>`_
+- Doug Lea, `Concurrent Programming in Java (CPJ) <http://gee.cs.oswego.edu/dl/cpj>`_
+- Thiruvathukal and Christopher, `High-Performance Java Platform Computing (HPJPC) <https://github.com/loyolachicagocode/hpjpc-source-java>`_
+- George K. Thiruvathukal, `Distributed Systems Lecture Notes: Concurrency and Threads chapter <https://ds.cs.luc.edu/concurrency/concurrency.html>`_
 - `SE Radio episode 12: Concurrency pt. 1 <https://se-radio.net/2006/04/episode-12-concurrency-pt-1/>`_
 - `SE Radio episode 19: Concurrency pt. 2 <https://se-radio.net/2006/06/episode-19-concurrency-pt-2/>`_
 - `SE Radio episode 29: Concurrency pt. 3 <https://se-radio.net/2006/09/episode-29-concurrency-pt-3/>`_
