@@ -53,6 +53,7 @@ Contents
 
    05-overview
    10-background
+   15-ai
    20-imperative
    30-objectoriented
    40-functional
