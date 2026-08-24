@@ -214,16 +214,7 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-# Workaround for a Sphinx/LaTeX bug where \sphinxmidrule (used in tables)
-# can recursively expand into itself, blowing up TeX's input stack
-# ("TeX capacity exceeded ... input stack size=10000") and aborting the
-# PDF build with no output. Redefining it as a plain \hline avoids the
-# recursion.
-'preamble': r'''
-\makeatletter
-\def\sphinxmidrule{\hline}
-\makeatother
-''',
+#'preamble': '',
 
 # Pin the admonition icon package instead of letting Sphinx auto-detect
 # whichever fontawesome{,5,6,7} package happens to be installed on the
@@ -232,6 +223,17 @@ latex_elements = {
 # PDF build breakage when a newer fontawesome package appeared upstream).
 'sphinxsetup': 'iconpackage=none',
 }
+
+# Sphinx's default latex_table_style is ['booktabs', 'colorrows']. The
+# 'colorrows' style makes Sphinx's LaTeX table code do
+# \global\CT@everycr{\the\everycr}, which becomes a self-referential loop
+# with TeX Live 2026's updated array/colortbl packages (they unify
+# \CT@everycr and \everycr), causing "TeX capacity exceeded, sorry [input
+# stack size=10000]" at \sphinxmidrule and no PDF output. This is a known
+# upstream bug (sphinx-doc/sphinx#14465), fixed in Sphinx but only in an
+# unreleased 9.1.1. Dropping 'colorrows' avoids the recursion; remove this
+# override once the fix has shipped in a released Sphinx version.
+latex_table_style = ['booktabs']
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
