@@ -18,6 +18,14 @@
     - SOLID
     - GoF/POSA
 
+  - the role of AI in software engineering
+
+    - AI-assisted requirements analysis and specification
+    - AI-assisted design, implementation, testing, and refactoring
+    - human–AI collaboration and the changing role of the software engineer
+    - verification, security, and accountability for AI-generated artifacts
+    - transparency, provenance, privacy, and professional responsibility
+
 - imperative and object-oriented programming (2 weeks)
 
   - console applications
@@ -25,7 +33,6 @@
   - logging
   - domain modeling
   - using traits for modularity and dependency injection
-
 
 - functional programming (4 weeks)
 
