@@ -1,0 +1,1489 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="4. The Imperative Programming Paradigm" href="20-imperative.html"><link rel="prev" title="2. Context and Background" href="10-background.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>3. Studying Programming Languages with AI - Loyola University Chicago COMP 371/471 Lecture Notes v26f.11</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.11</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.11</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="05-overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-background.html">2. Context and Background</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">3. Studying Programming Languages with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-imperative.html">4. The Imperative Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-objectoriented.html">5. The Object-Oriented Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-functional.html">6. The Functional Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50-representationinterpretation.html">7. Program Representation and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60-concurrency.html">8. The Concurrent Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70-logic.html">9. The Logic Programming Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="75-otherparadigms.html">10. Other Important Programming Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="78-summary.html">11. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-principles.html">12. Appendix: Programming Language Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="83-resources.html">13. Appendix: Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="85-software.html">14. Appendix: Course Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90-syllabus.html">15. Appendix: Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="95-todo.html">16. Appendix: TODO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/15-ai.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="studying-programming-languages-with-ai">
+<h1><span class="section-number">3. </span>Studying Programming Languages with AI<a class="headerlink" href="#studying-programming-languages-with-ai" title="Link to this heading"></a></h1>
+<p>Generative artificial intelligence has changed how programmers search for
+information, explore designs, write code, and diagnose failures. A student can
+now request an implementation in an unfamiliar language and receive a
+plausible-looking answer in seconds. This is useful, but it does not make the
+study of programming languages obsolete. It makes judgment about programming
+languages more important.</p>
+<p>This course is organized around programming paradigms rather than around a
+catalog of language features. Our goal is not merely to produce programs that
+appear to work. We want to understand how a program represents data, controls
+computation, manages effects, composes behaviors, and supports claims about
+correctness. Those questions remain difficult even when some code is generated
+for us.</p>
+<p>In this chapter, we develop a disciplined approach to using AI while studying
+programming languages. We will use AI as a tutor, critic, pair programmer, and
+experimental subject. We will not treat it as an authority.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>The governing principle</strong></p>
+<p>AI can reduce <em>accidental difficulty</em>, such as remembering syntax or
+producing routine boilerplate. It must not remove the <em>essential
+difficulty</em> of understanding semantics, selecting abstractions, evaluating
+tradeoffs, and defending a solution.</p>
+</div>
+<section id="why-ai-changes-the-study-of-programming-languages">
+<h2><span class="section-number">3.1. </span>Why AI changes the study of programming languages<a class="headerlink" href="#why-ai-changes-the-study-of-programming-languages" title="Link to this heading"></a></h2>
+<p>Programming has always involved tools. Compilers check syntax and types,
+debuggers expose runtime state, test frameworks compare observed and expected
+behavior, and documentation describes language and library contracts.
+Generative AI joins this collection of tools, but it differs from most of them
+in an important respect: it can produce a fluent answer without having
+established that the answer is true.</p>
+<p>A compiler normally either accepts or rejects a particular program according
+to a language implementation. A test reports what happened for a particular
+execution. A language model instead produces a likely continuation of the
+context it has received. Its answer may contain a useful explanation, an
+invented API, a subtly incorrect type, and a valid test all at once.</p>
+<p>This creates an apparent paradox. Code is becoming cheaper to produce, yet the
+skills taught in a programming languages course are becoming more valuable.
+When candidate programs are abundant, a programmer must be able to:</p>
+<ul class="simple">
+<li><p>determine what problem a candidate program actually solves;</p></li>
+<li><p>recognize the paradigm it really uses, rather than the paradigm named in its
+explanation;</p></li>
+<li><p>distinguish syntax, static semantics, dynamic semantics, and implementation
+behavior;</p></li>
+<li><p>design checks that are independent of the generated answer;</p></li>
+<li><p>analyze complexity, effects, termination, and concurrency properties; and</p></li>
+<li><p>explain why one design is preferable to plausible alternatives.</p></li>
+</ul>
+<p>An AI system can produce a candidate. It cannot assume responsibility for that
+candidate. A student who submits a program remains responsible for every
+claim, design decision, dependency, and consequential line of code in it.</p>
+</section>
+<section id="learning-outcomes">
+<h2><span class="section-number">3.2. </span>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Link to this heading"></a></h2>
+<p>After completing this chapter, you should be able to:</p>
+<ul class="simple">
+<li><p>explain a useful working model of how a generative language model produces
+programming-related responses;</p></li>
+<li><p>distinguish assistance, delegation, verification, and substitution of
+understanding;</p></li>
+<li><p>supply enough context for a programming-language question to be meaningful;</p></li>
+<li><p>request answers whose assumptions and reasoning can be inspected;</p></li>
+<li><p>evaluate generated code using requirements, types, tests, semantics, and
+empirical evidence;</p></li>
+<li><p>recognize when code violates the requested programming paradigm;</p></li>
+<li><p>compare candidate solutions in terms of correctness, idiomaticity,
+complexity, testability, and maintainability;</p></li>
+<li><p>document consequential AI use reproducibly and honestly; and</p></li>
+<li><p>demonstrate the same underlying concepts independently when required.</p></li>
+</ul>
+<p>In terms of the cognitive levels introduced in the overview, remembering
+terminology is only the beginning. Productive AI use requires comprehension
+and application, while supervising and evaluating generated work exercises the
+advanced levels of analysis, evaluation, and creation.</p>
+</section>
+<section id="a-working-mental-model">
+<h2><span class="section-number">3.3. </span>A working mental model<a class="headerlink" href="#a-working-mental-model" title="Link to this heading"></a></h2>
+<section id="prediction-is-not-proof">
+<h3><span class="section-number">3.3.1. </span>Prediction is not proof<a class="headerlink" href="#prediction-is-not-proof" title="Link to this heading"></a></h3>
+<p>A large language model processes a context and predicts tokens that form a
+likely continuation. Its training allows it to reproduce many useful patterns:
+syntax, common APIs, explanatory structures, algorithms, and even styles of
+reasoning. This makes the result useful, but not self-authenticating.</p>
+<p>Consider the request:</p>
+<blockquote>
+<div><p>Explain whether this Scala function is tail-recursive.</p>
+</div></blockquote>
+<p>The response may correctly identify the recursive call, or it may mistake a
+recursive call followed by addition for a tail call. The confidence and polish
+of the prose do not distinguish these cases. The relevant evidence comes from
+the definition of tail position, a manual analysis of the function, and
+possibly the Scala compiler’s <cite>&#64;tailrec</cite> check.</p>
+<p>This leads to an important distinction:</p>
+<ul class="simple">
+<li><p><strong>Plausibility</strong> concerns whether an answer resembles things that are often
+correct.</p></li>
+<li><p><strong>Validity</strong> concerns whether the answer follows from the relevant
+definitions, contracts, or observations.</p></li>
+</ul>
+<p>AI is unusually good at producing plausibility. This course trains us to
+establish validity.</p>
+</section>
+<section id="context-is-part-of-the-computation">
+<h3><span class="section-number">3.3.2. </span>Context is part of the computation<a class="headerlink" href="#context-is-part-of-the-computation" title="Link to this heading"></a></h3>
+<p>An AI response depends on the context supplied to the model. That context may
+include the prompt, earlier conversation, selected source files, diagnostics,
+test results, and material retrieved from external sources. Missing,
+irrelevant, stale, or contradictory context can all degrade the result.</p>
+<p>For example, asking for “a Scala parser” leaves several important questions
+unanswered:</p>
+<ul class="simple">
+<li><p>Which Scala version?</p></li>
+<li><p>What grammar should be accepted?</p></li>
+<li><p>Should invalid input produce exceptions or values such as <cite>Either</cite>?</p></li>
+<li><p>Is the goal to practice parser combinators, use a library, or implement a
+recursive-descent parser?</p></li>
+<li><p>Are whitespace and operator precedence significant?</p></li>
+<li><p>Which dependencies are already available?</p></li>
+</ul>
+<p>A longer prompt is not automatically a better prompt. The useful context is
+the smallest context that accurately states the task, constraints, and
+available evidence.</p>
+</section>
+<section id="models-tools-and-agents">
+<h3><span class="section-number">3.3.3. </span>Models, tools, and agents<a class="headerlink" href="#models-tools-and-agents" title="Link to this heading"></a></h3>
+<p>A conversational model can suggest text or code. An AI coding agent may also
+read files, edit a repository, run a compiler, execute tests, or inspect
+diagnostics. Tool use creates a feedback loop:</p>
+<ol class="arabic simple">
+<li><p>propose a change;</p></li>
+<li><p>observe the result of a tool;</p></li>
+<li><p>revise the proposal; and</p></li>
+<li><p>repeat until a stopping condition is reached.</p></li>
+</ol>
+<p>This loop is stronger than one-shot generation because some claims are tested
+against the actual environment. It still does not guarantee correctness.
+Visible tests may be incomplete, a command may not have run, warnings may have
+been ignored, or the agent may have changed a test instead of fixing the
+program.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tool output is evidence only for what the tool actually checked. “The test
+suite passed” is not evidence that an untested requirement holds, and
+“the program compiled” is not evidence that it computes the right result.</p>
+</div>
+</section>
+<section id="characteristic-failure-modes">
+<h3><span class="section-number">3.3.4. </span>Characteristic failure modes<a class="headerlink" href="#characteristic-failure-modes" title="Link to this heading"></a></h3>
+<p>Common failures include:</p>
+<ul class="simple">
+<li><p><strong>fabrication:</strong> inventing a language feature, library function, citation, or
+tool result;</p></li>
+<li><p><strong>requirement drift:</strong> quietly solving an easier or different problem;</p></li>
+<li><p><strong>paradigm drift:</strong> using mutation in a supposedly functional solution, or
+encoding procedural control in a supposedly declarative program;</p></li>
+<li><p><strong>false explanation:</strong> producing working code with an incorrect account of
+why it works;</p></li>
+<li><p><strong>overfitting:</strong> changing code until visible examples pass without
+understanding the general rule;</p></li>
+<li><p><strong>code inflation:</strong> introducing layers, classes, or dependencies that the
+problem does not require;</p></li>
+<li><p><strong>local inconsistency:</strong> contradicting an earlier answer or using incompatible
+versions of an API; and</p></li>
+<li><p><strong>automation bias:</strong> encouraging the reader to accept an answer because it
+arrived quickly and looks complete.</p></li>
+</ul>
+<p>These are not reasons to avoid AI altogether. They are reasons to use it in a
+workflow that expects fallibility.</p>
+</section>
+</section>
+<section id="modes-of-ai-use-in-this-course">
+<h2><span class="section-number">3.4. </span>Modes of AI use in this course<a class="headerlink" href="#modes-of-ai-use-in-this-course" title="Link to this heading"></a></h2>
+<p>Not every learning activity should use AI in the same way. Each assignment,
+activity, or assessment may designate one of the following modes.</p>
+<section id="independent-mode">
+<h3><span class="section-number">3.4.1. </span>Independent mode<a class="headerlink" href="#independent-mode" title="Link to this heading"></a></h3>
+<p>In independent mode, generative assistance is not used. Compilers, prescribed
+documentation, and other explicitly permitted tools may still be available.
+This mode establishes what you can recognize, explain, and do yourself.</p>
+<p>Independent work is particularly appropriate for:</p>
+<ul class="simple">
+<li><p>short concept checks;</p></li>
+<li><p>code reading and execution tracing;</p></li>
+<li><p>explaining a type or semantic rule;</p></li>
+<li><p>implementing a small example under time constraints; and</p></li>
+<li><p>oral explanation or live modification of submitted work.</p></li>
+</ul>
+</section>
+<section id="consultative-mode">
+<h3><span class="section-number">3.4.2. </span>Consultative mode<a class="headerlink" href="#consultative-mode" title="Link to this heading"></a></h3>
+<p>In consultative mode, AI may ask questions, explain a concept, give a hint, or
+critique your work, but it may not produce the artifact you submit.</p>
+<p>A useful consultative request is:</p>
+<blockquote>
+<div><p>Do not solve the problem. Ask me one question at a time that will help me
+discover whether my recursive case makes progress.</p>
+</div></blockquote>
+</section>
+<section id="collaborative-mode">
+<h3><span class="section-number">3.4.3. </span>Collaborative mode<a class="headerlink" href="#collaborative-mode" title="Link to this heading"></a></h3>
+<p>In collaborative mode, AI may contribute ideas, tests, explanations, or code.
+You must inspect, verify, revise, and disclose consequential assistance. Group
+projects will often use this mode because supervising automated contributions
+is part of contemporary software development.</p>
+</section>
+<section id="ai-intensive-mode">
+<h3><span class="section-number">3.4.4. </span>AI-intensive mode<a class="headerlink" href="#ai-intensive-mode" title="Link to this heading"></a></h3>
+<p>In AI-intensive mode, the use and evaluation of AI are themselves learning
+objectives. You might compare generated solutions across paradigms, measure
+failure rates, construct adversarial examples, or evaluate whether a model’s
+explanation agrees with its program.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The permitted mode is a property of the activity, not of the student or the
+tool. If the mode is not stated clearly, ask before using generative
+assistance on assessed work.</p>
+</div>
+<p>The reason for multiple modes is straightforward. Learning a technique,
+practicing it, producing a software asset, and demonstrating individual
+mastery are different activities. A tool that is valuable for one may defeat
+the purpose of another.</p>
+</section>
+</section>
+<section id="a-disciplined-learning-cycle">
+<h2><span class="section-number">3.5. </span>A disciplined learning cycle<a class="headerlink" href="#a-disciplined-learning-cycle" title="Link to this heading"></a></h2>
+<p>We will repeatedly use the following cycle:</p>
+<blockquote>
+<div><p><strong>attempt, ask, inspect, verify, revise, explain</strong></p>
+</div></blockquote>
+<section id="attempt-before-assistance">
+<h3><span class="section-number">3.5.1. </span>Attempt before assistance<a class="headerlink" href="#attempt-before-assistance" title="Link to this heading"></a></h3>
+<p>Before consulting AI:</p>
+<ul class="simple">
+<li><p>restate the problem in your own words;</p></li>
+<li><p>identify the relevant paradigm and concepts;</p></li>
+<li><p>predict the shape of a solution;</p></li>
+<li><p>write down what you know and what remains uncertain; and</p></li>
+<li><p>make a bounded initial attempt.</p></li>
+</ul>
+<p>The attempt need not be long. Its purpose is to activate your own model of the
+problem and give you something against which to compare the response. Without
+an initial prediction, it is easy to mistake recognition of an answer for
+understanding of it.</p>
+</section>
+<section id="ask-at-the-right-level">
+<h3><span class="section-number">3.5.2. </span>Ask at the right level<a class="headerlink" href="#ask-at-the-right-level" title="Link to this heading"></a></h3>
+<p>Ask for the least powerful form of assistance likely to unblock you:</p>
+<ol class="arabic simple">
+<li><p>a terminology or syntax reminder;</p></li>
+<li><p>a conceptual hint;</p></li>
+<li><p>a question about your reasoning;</p></li>
+<li><p>critique of a proposed design;</p></li>
+<li><p>a small worked example;</p></li>
+<li><p>comparison of alternatives;</p></li>
+<li><p>a partial implementation; or</p></li>
+<li><p>a complete candidate solution.</p></li>
+</ol>
+<p>Suppose you are learning folds. “Write this with <cite>foldLeft</cite>” jumps directly to
+a result. A more educational sequence is:</p>
+<blockquote>
+<div><p>What accumulator invariant would allow this list function to be expressed
+as a left fold? Do not write the final Scala expression.</p>
+</div></blockquote>
+<p>After stating the invariant yourself, you can ask the model to critique it.</p>
+</section>
+<section id="inspect-the-response">
+<h3><span class="section-number">3.5.3. </span>Inspect the response<a class="headerlink" href="#inspect-the-response" title="Link to this heading"></a></h3>
+<p>Do not read a generated response as an indivisible answer. Decompose it:</p>
+<ul class="simple">
+<li><p>What factual claims does it make?</p></li>
+<li><p>What requirements does it assume?</p></li>
+<li><p>Which language version and library contracts does it rely on?</p></li>
+<li><p>Which parts are explanations, and which parts are evidence?</p></li>
+<li><p>Which constructs are unfamiliar?</p></li>
+<li><p>What cases or tradeoffs are missing?</p></li>
+</ul>
+<p>For generated code, inspect the diff rather than merely running the final
+repository. A large rewrite can hide changes to behavior, dependencies, tests,
+or public interfaces.</p>
+</section>
+<section id="verify-independently">
+<h3><span class="section-number">3.5.4. </span>Verify independently<a class="headerlink" href="#verify-independently" title="Link to this heading"></a></h3>
+<p>Choose checks that are independent of the response:</p>
+<ul class="simple">
+<li><p>compile with warnings enabled;</p></li>
+<li><p>run existing tests;</p></li>
+<li><p>derive new tests directly from the requirements;</p></li>
+<li><p>add boundary, malformed-input, and adversarial cases;</p></li>
+<li><p>trace a small execution by hand;</p></li>
+<li><p>compare types and contracts with authoritative documentation;</p></li>
+<li><p>measure performance rather than inferring it from style; and</p></li>
+<li><p>analyze termination, effects, and synchronization explicitly.</p></li>
+</ul>
+<p>Asking the same model “Are you sure?” is not independent verification. The
+model may repeat the same error more confidently.</p>
+</section>
+<section id="revise-and-internalize">
+<h3><span class="section-number">3.5.5. </span>Revise and internalize<a class="headerlink" href="#revise-and-internalize" title="Link to this heading"></a></h3>
+<p>Fix defects, remove unnecessary complexity, and express the result in a style
+consistent with the intended paradigm. Then reduce your dependence on the
+generated artifact:</p>
+<ul class="simple">
+<li><p>reconstruct the important part without looking;</p></li>
+<li><p>explain each representation and control-flow choice;</p></li>
+<li><p>make a small modification;</p></li>
+<li><p>predict the effect of that modification before running it; and</p></li>
+<li><p>solve a related transfer problem.</p></li>
+</ul>
+<p>If you cannot explain or modify the result, it is not yet evidence of your
+learning.</p>
+</section>
+</section>
+<section id="asking-productive-questions">
+<h2><span class="section-number">3.6. </span>Asking productive questions<a class="headerlink" href="#asking-productive-questions" title="Link to this heading"></a></h2>
+<section id="supply-a-specification">
+<h3><span class="section-number">3.6.1. </span>Supply a specification<a class="headerlink" href="#supply-a-specification" title="Link to this heading"></a></h3>
+<p>Good AI interactions begin with the same ingredients as good software
+development:</p>
+<ul class="simple">
+<li><p>functional requirements;</p></li>
+<li><p>nonfunctional requirements;</p></li>
+<li><p>language and version;</p></li>
+<li><p>relevant types and interfaces;</p></li>
+<li><p>examples and counterexamples;</p></li>
+<li><p>the intended paradigm;</p></li>
+<li><p>prohibited shortcuts; and</p></li>
+<li><p>a definition of success.</p></li>
+</ul>
+<p>For example:</p>
+<blockquote>
+<div><p>In Scala 3, define a total function that returns the height of an immutable
+binary tree represented by the algebraic data type below. Use structural
+recursion and pattern matching. Do not use mutation, null, exceptions, or a
+library tree. First state the base case and explain why every recursive call
+is made on a smaller tree. Do not write code yet.</p>
+</div></blockquote>
+<p>This request makes the conceptual goal inspectable. It also prevents a
+plausible solution from silently changing the representation or error model.</p>
+</section>
+<section id="request-checkable-reasoning">
+<h3><span class="section-number">3.6.2. </span>Request checkable reasoning<a class="headerlink" href="#request-checkable-reasoning" title="Link to this heading"></a></h3>
+<p>Useful requests include:</p>
+<ul class="simple">
+<li><p>“List your assumptions before proposing a solution.”</p></li>
+<li><p>“Give a counterexample to this claim.”</p></li>
+<li><p>“Predict the compiler error and explain which typing rule causes it.”</p></li>
+<li><p>“Derive tests from these requirements, including cases that distinguish the
+two proposed implementations.”</p></li>
+<li><p>“Separate syntax errors, static semantic errors, and runtime errors.”</p></li>
+<li><p>“Identify which statements are uncertain and how I could verify them.”</p></li>
+</ul>
+<p>Requests for hidden internal reasoning are neither necessary nor sufficient.
+What we need is a concise, checkable justification: definitions, invariants,
+types, cases, observations, and references that can be evaluated independently.</p>
+</section>
+<section id="use-dialogue-rather-than-repeated-generation">
+<h3><span class="section-number">3.6.3. </span>Use dialogue rather than repeated generation<a class="headerlink" href="#use-dialogue-rather-than-repeated-generation" title="Link to this heading"></a></h3>
+<p>Programming-language concepts benefit from dialogue:</p>
+<ul class="simple">
+<li><p><strong>Socratic tutoring:</strong> the model asks you to predict before explaining;</p></li>
+<li><p><strong>progressive hints:</strong> assistance becomes more explicit only as needed;</p></li>
+<li><p><strong>explain-back:</strong> you explain a concept and ask for targeted critique;</p></li>
+<li><p><strong>adversarial review:</strong> the model tries to construct a counterexample;</p></li>
+<li><p><strong>comparison:</strong> multiple representations are evaluated against one rubric;
+and</p></li>
+<li><p><strong>reset:</strong> a confused conversation is replaced with a clean, verified
+context.</p></li>
+</ul>
+<p>Repeatedly requesting a new complete solution is usually less educational than
+interrogating one candidate deeply.</p>
+</section>
+</section>
+<section id="the-evidence-ladder">
+<h2><span class="section-number">3.7. </span>The evidence ladder<a class="headerlink" href="#the-evidence-ladder" title="Link to this heading"></a></h2>
+<p>Claims require evidence, but not all evidence is equally strong. A useful
+ladder, from weaker to stronger, is:</p>
+<ol class="arabic simple">
+<li><p>the response sounds convincing;</p></li>
+<li><p>the code resembles familiar code;</p></li>
+<li><p>the model gives a consistent explanation;</p></li>
+<li><p>the program parses, type-checks, or compiles;</p></li>
+<li><p>selected examples pass;</p></li>
+<li><p>independently derived and adversarial tests pass;</p></li>
+<li><p>static checks exclude relevant classes of errors;</p></li>
+<li><p>the behavior follows from a semantic argument; and</p></li>
+<li><p>a property is proved, exhaustively checked, or otherwise established within
+clearly stated assumptions.</p></li>
+</ol>
+<p>The ladder is not a universal ranking of tools. It reminds us to match evidence
+to claims.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>Compilation is strong evidence about syntax and static typing, but weak
+evidence about functional correctness.</p></li>
+<li><p>Unit tests provide evidence about executed cases, but generally do not prove
+termination.</p></li>
+<li><p>A benchmark measures particular executions on a particular configuration; it
+does not by itself establish asymptotic complexity.</p></li>
+<li><p>A test suite that passes once is weak evidence of freedom from data races.</p></li>
+<li><p>A proof is only as relevant as its assumptions and its connection to the
+implemented program.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Use an external oracle</strong></p>
+<p>An oracle is a source against which a claim can be checked: a compiler, a
+specification, an independently derived expected result, a reference
+implementation, a property, or a proof. The model that generated a claim is
+not an independent oracle for that claim.</p>
+</div>
+</section>
+<section id="using-ai-across-programming-paradigms">
+<h2><span class="section-number">3.8. </span>Using AI across programming paradigms<a class="headerlink" href="#using-ai-across-programming-paradigms" title="Link to this heading"></a></h2>
+<p>The most important question is not “Did the code run?” but “What computational
+model does the code express?” The following sections apply the learning cycle
+to the paradigms studied in this course.</p>
+<section id="imperative-programming">
+<h3><span class="section-number">3.8.1. </span>Imperative programming<a class="headerlink" href="#imperative-programming" title="Link to this heading"></a></h3>
+<p>Imperative programs describe computation through commands and changes of
+state. When inspecting generated imperative code:</p>
+<ul class="simple">
+<li><p>identify every mutable location;</p></li>
+<li><p>trace state changes for a small input;</p></li>
+<li><p>look for aliases and hidden global state;</p></li>
+<li><p>state loop invariants and termination measures;</p></li>
+<li><p>separate input/output from core behavior;</p></li>
+<li><p>check constant-space requirements explicitly; and</p></li>
+<li><p>determine whether error handling preserves the required state.</p></li>
+</ul>
+<p>AI is useful for producing a state-transition table. Given a loop, ask it to
+list the values of relevant variables before and after each iteration. Then
+check the table yourself. A fabricated trace is often easier to detect than a
+fabricated paragraph.</p>
+<p>Be alert to unnecessary abstraction. A generated answer may wrap a short loop
+in several classes because such code is common in its training data. Evaluate
+the design against the actual requirements rather than against the amount of
+code produced.</p>
+</section>
+<section id="object-oriented-programming">
+<h3><span class="section-number">3.8.2. </span>Object-oriented programming<a class="headerlink" href="#object-oriented-programming" title="Link to this heading"></a></h3>
+<p>Object-oriented programs organize state and behavior around objects,
+responsibilities, interfaces, and dynamic dispatch. Generated code may be
+“class-shaped procedural code”: it contains classes but does not use
+object-oriented decomposition meaningfully.</p>
+<p>Ask:</p>
+<ul class="simple">
+<li><p>Which object owns each responsibility?</p></li>
+<li><p>Which invariants does each object protect?</p></li>
+<li><p>Is inheritance expressing a genuine subtype relation?</p></li>
+<li><p>Could composition express the relationship more clearly?</p></li>
+<li><p>Are dependencies explicit and substitutable?</p></li>
+<li><p>Can core behavior be tested without performing input/output?</p></li>
+<li><p>Does a named design pattern solve a recurring problem, or merely decorate
+the solution?</p></li>
+</ul>
+<p>AI can generate several domain models quickly. This is valuable if the models
+are treated as competing hypotheses. Compare them using one rubric: cohesion,
+coupling, testability, extensibility under a specified change, and faithfulness
+to the domain.</p>
+</section>
+<section id="functional-programming">
+<h3><span class="section-number">3.8.3. </span>Functional programming<a class="headerlink" href="#functional-programming" title="Link to this heading"></a></h3>
+<p>Functional programming emphasizes expressions, immutable values, algebraic
+data types, higher-order functions, and controlled effects. Generated code
+often uses functional-looking syntax while retaining imperative structure.</p>
+<p>When evaluating a functional solution:</p>
+<ul class="simple">
+<li><p>identify all effects and where they occur;</p></li>
+<li><p>reject hidden mutation when immutability is a requirement;</p></li>
+<li><p>check that pattern matches cover every constructor;</p></li>
+<li><p>identify the base case and the smaller recursive subproblem;</p></li>
+<li><p>analyze termination and stack use;</p></li>
+<li><p>state the accumulator invariant for a fold;</p></li>
+<li><p>distinguish <cite>map</cite>, <cite>flatMap</cite>, <cite>fold</cite>, and traversal by their types and
+meanings; and</p></li>
+<li><p>use equational reasoning where possible.</p></li>
+</ul>
+<p>Consider:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">Int</span><span class="p">]):</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">xs</span><span class="w"> </span><span class="k">match</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nc">Nil</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">xt</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An AI system might call this tail-recursive because the recursive call is
+visually last on the line. It is not in tail position: addition remains to be
+performed after the recursive call returns. The language concept, not the
+layout, decides the question. The compiler’s <cite>&#64;tailrec</cite> annotation can serve
+as an additional check.</p>
+<p>AI can be particularly helpful for comparing direct recursion with folds.
+Require the response to state the recursive structure and accumulator
+invariant before producing the higher-order version.</p>
+</section>
+<section id="program-representation-and-interpretation">
+<h3><span class="section-number">3.8.4. </span>Program representation and interpretation<a class="headerlink" href="#program-representation-and-interpretation" title="Link to this heading"></a></h3>
+<p>Language implementation exposes a useful boundary between fluent description
+and precise meaning. AI can propose grammars, abstract syntax trees, typing
+rules, and interpreters, but each proposal must agree with the others.</p>
+<p>Check:</p>
+<ul class="simple">
+<li><p>Does the grammar generate exactly the intended forms?</p></li>
+<li><p>Does the parser preserve precedence and associativity?</p></li>
+<li><p>Is every abstract-syntax constructor handled?</p></li>
+<li><p>Are malformed programs rejected deliberately?</p></li>
+<li><p>Do static rules agree with runtime behavior?</p></li>
+<li><p>Does the interpreter implement the stated evaluation order?</p></li>
+<li><p>Are environments, stores, values, and effects kept distinct?</p></li>
+</ul>
+<p>Suppose a generated interpreter claims to implement short-circuit Boolean
+conjunction but evaluates both operands before applying <cite>&amp;&amp;</cite>. Ordinary tests
+on pure operands will pass. A test whose second operand fails or changes state
+distinguishes the claimed semantics from the implemented semantics.</p>
+<p>Treat an AI-generated language feature as a proposal for a language design.
+Before implementing it, require concrete syntax, abstract syntax, static
+semantics, dynamic semantics, examples, and rejected examples.</p>
+</section>
+<section id="concurrent-programming">
+<h3><span class="section-number">3.8.5. </span>Concurrent programming<a class="headerlink" href="#concurrent-programming" title="Link to this heading"></a></h3>
+<p>Concurrency is especially resistant to “it worked when I ran it” reasoning.
+Generated concurrent code may compile and pass many tests while containing a
+race, deadlock, lost update, blocking operation, or broken cancellation
+protocol.</p>
+<p>Require an explicit account of:</p>
+<ul class="simple">
+<li><p>activities and their lifetimes;</p></li>
+<li><p>shared mutable state;</p></li>
+<li><p>synchronization or message-passing relationships;</p></li>
+<li><p>permitted orderings;</p></li>
+<li><p>safety properties;</p></li>
+<li><p>progress properties;</p></li>
+<li><p>failure propagation; and</p></li>
+<li><p>cancellation and resource cleanup.</p></li>
+</ul>
+<p>Ask the model to construct schedules, but verify them manually. For two
+unsynchronized increments, enumerate the reads and writes that lead to a lost
+update. For a locking design, draw the lock-order graph. For futures, identify
+which execution context runs each continuation and where blocking can occur.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never accept “thread-safe” as a conclusion without an argument tied to a
+defined safety property and suitable evidence. A passing sequential test
+suite is not such evidence.</p>
+</div>
+<p>Functional techniques can reduce the concurrent state space by eliminating
+shared mutation. They do not remove all problems: ordering, resource use,
+failure, backpressure, and cancellation still require reasoning.</p>
+</section>
+<section id="logic-and-other-declarative-paradigms">
+<h3><span class="section-number">3.8.6. </span>Logic and other declarative paradigms<a class="headerlink" href="#logic-and-other-declarative-paradigms" title="Link to this heading"></a></h3>
+<p>In logic programming, distinguish declarative meaning from search behavior.
+Generated Prolog may state plausible facts and rules while depending
+accidentally on goal order, non-logical predicates, or the cut operator.</p>
+<p>Check:</p>
+<ul class="simple">
+<li><p>Are facts, rules, and queries clearly distinguished?</p></li>
+<li><p>Does the rule express the intended logical relation?</p></li>
+<li><p>Are variables sufficiently instantiated?</p></li>
+<li><p>Does search terminate for the intended query modes?</p></li>
+<li><p>Is a cut preserving meaning or merely hiding unwanted solutions?</p></li>
+<li><p>How does clause and goal order affect execution?</p></li>
+</ul>
+<p>For reactive, dataflow, event-driven, and constraint-based programs, identify
+the corresponding model of dependency and control. Do not allow familiar
+imperative mechanisms to pass as a different paradigm merely because an API
+uses the right vocabulary.</p>
+</section>
+</section>
+<section id="paradigm-translation-as-a-stress-test">
+<h2><span class="section-number">3.9. </span>Paradigm translation as a stress test<a class="headerlink" href="#paradigm-translation-as-a-stress-test" title="Link to this heading"></a></h2>
+<p>One of the best uses of AI in this course is to request multiple solutions to
+the same problem. The speed of generation allows us to spend more time
+comparing computational models.</p>
+<p>A useful activity is:</p>
+<ol class="arabic simple">
+<li><p>state one set of requirements;</p></li>
+<li><p>obtain imperative, object-oriented, functional, and logic-programming
+candidates;</p></li>
+<li><p>identify how each represents data, state, control, effects, and failure;</p></li>
+<li><p>test all candidates against the same examples;</p></li>
+<li><p>identify superficial translations that retain the source paradigm; and</p></li>
+<li><p>explain what each paradigm makes easier or harder to express.</p></li>
+</ol>
+<p>A mechanical translation from a mutable loop to a recursive function may
+still carry an imperative model of state. Likewise, placing a function in a
+class does not make its decomposition object-oriented. Translation failures
+are valuable: they reveal both model limitations and weaknesses in our own
+definitions of the paradigms.</p>
+</section>
+<section id="ai-as-tutor-critic-pair-programmer-and-subject">
+<h2><span class="section-number">3.10. </span>AI as tutor, critic, pair programmer, and subject<a class="headerlink" href="#ai-as-tutor-critic-pair-programmer-and-subject" title="Link to this heading"></a></h2>
+<section id="tutor">
+<h3><span class="section-number">3.10.1. </span>Tutor<a class="headerlink" href="#tutor" title="Link to this heading"></a></h3>
+<p>As a tutor, AI can explain terminology, generate small examples, ask questions,
+and adjust the level of detail. The most useful tutoring preserves productive
+struggle. Ask for predictions, hints, and feedback before requesting a worked
+solution.</p>
+<p>The risks are premature explanation and learned dependence. If every pause is
+immediately filled by a generated answer, you lose opportunities to retrieve,
+connect, and test your own knowledge.</p>
+</section>
+<section id="critic">
+<h3><span class="section-number">3.10.2. </span>Critic<a class="headerlink" href="#critic" title="Link to this heading"></a></h3>
+<p>Critique is often more educational than generation because you retain
+ownership of the initial model. AI can:</p>
+<ul class="simple">
+<li><p>identify unclear requirements;</p></li>
+<li><p>question an invariant;</p></li>
+<li><p>propose boundary cases;</p></li>
+<li><p>compare a design with a stated principle;</p></li>
+<li><p>locate duplication or hidden coupling; and</p></li>
+<li><p>suggest a simpler counterexample.</p></li>
+</ul>
+<p>Criticism must also be verified. A model may object to valid code or recommend
+a change that violates a deliberate constraint.</p>
+</section>
+<section id="pair-programmer">
+<h3><span class="section-number">3.10.3. </span>Pair programmer<a class="headerlink" href="#pair-programmer" title="Link to this heading"></a></h3>
+<p>As a pair programmer, AI can perform bounded tasks while you maintain the
+design:</p>
+<ul class="simple">
+<li><p>implement one function from an existing interface;</p></li>
+<li><p>add tests for one requirement;</p></li>
+<li><p>explain a compiler diagnostic;</p></li>
+<li><p>propose a local refactoring; or</p></li>
+<li><p>review a small diff.</p></li>
+</ul>
+<p>Keep tasks small enough to inspect. Establish checkpoints with a clean build
+and passing tests. A sequence of locally plausible edits can otherwise produce
+a globally incoherent design.</p>
+</section>
+<section id="experimental-subject">
+<h3><span class="section-number">3.10.4. </span>Experimental subject<a class="headerlink" href="#experimental-subject" title="Link to this heading"></a></h3>
+<p>AI systems themselves can be studied empirically. A sound comparison requires:</p>
+<ul class="simple">
+<li><p>a question stated before observing the results;</p></li>
+<li><p>controlled inputs;</p></li>
+<li><p>a rubric defined in advance;</p></li>
+<li><p>multiple cases or repetitions;</p></li>
+<li><p>recorded model and configuration information when available;</p></li>
+<li><p>independent evaluation; and</p></li>
+<li><p>reporting of variation and limitations.</p></li>
+</ul>
+<p>For example, compare how consistently several prompts produce exhaustive
+pattern matching for the same algebraic data type. Do not generalize from one
+impressive or embarrassing transcript to all models or all programming tasks.</p>
+</section>
+</section>
+<section id="verification-techniques">
+<h2><span class="section-number">3.11. </span>Verification techniques<a class="headerlink" href="#verification-techniques" title="Link to this heading"></a></h2>
+<section id="requirements-based-testing">
+<h3><span class="section-number">3.11.1. </span>Requirements-based testing<a class="headerlink" href="#requirements-based-testing" title="Link to this heading"></a></h3>
+<p>Derive tests from requirements, not from the implementation. Every test should
+make clear which requirement it exercises. Include:</p>
+<ul class="simple">
+<li><p>ordinary examples;</p></li>
+<li><p>boundaries and empty structures;</p></li>
+<li><p>malformed input;</p></li>
+<li><p>duplicate or repeated values;</p></li>
+<li><p>very small and very large cases;</p></li>
+<li><p>failure and cancellation paths; and</p></li>
+<li><p>combinations likely to expose interactions.</p></li>
+</ul>
+<p>If AI generates both implementation and tests from the same interpretation, a
+misread requirement may be reproduced in both. Independent derivation matters.</p>
+</section>
+<section id="property-based-and-metamorphic-testing">
+<h3><span class="section-number">3.11.2. </span>Property-based and metamorphic testing<a class="headerlink" href="#property-based-and-metamorphic-testing" title="Link to this heading"></a></h3>
+<p>Example-based tests check selected input-output pairs. Properties describe
+relationships across many inputs.</p>
+<p>For a list reversal function, useful properties include:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>reverse(reverse(xs)) == xs
+length(reverse(xs)) == length(xs)
+</pre></div>
+</div>
+<p>For a sorting function:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sorted(sort(xs))
+multiset(sort(xs)) == multiset(xs)
+sort(sort(xs)) == sort(xs)
+</pre></div>
+</div>
+<p>AI can suggest properties, but a property may be too weak. For example,
+“the result is sorted” does not prevent a faulty sorting function from
+returning the empty list for every input.</p>
+<p>Metamorphic testing is useful when an exact expected result is difficult to
+compute. It checks how output should change when input is transformed. Adding
+an unreachable clause to a program, renaming a bound variable consistently,
+or permuting independent inputs may preserve specified behavior.</p>
+</section>
+<section id="differential-and-mutation-testing">
+<h3><span class="section-number">3.11.3. </span>Differential and mutation testing<a class="headerlink" href="#differential-and-mutation-testing" title="Link to this heading"></a></h3>
+<p>Differential testing compares multiple implementations or language
+implementations on the same inputs. Agreement is useful evidence when the
+implementations are genuinely independent; identical generated solutions may
+share the same defect.</p>
+<p>Mutation testing makes small deliberate changes to a program and checks
+whether the test suite detects them. Surviving mutants reveal weak tests. This
+is particularly helpful when generated tests look comprehensive but merely
+repeat the examples in the prompt.</p>
+</section>
+<section id="static-checks-and-semantic-arguments">
+<h3><span class="section-number">3.11.4. </span>Static checks and semantic arguments<a class="headerlink" href="#static-checks-and-semantic-arguments" title="Link to this heading"></a></h3>
+<p>Use the language implementation:</p>
+<ul class="simple">
+<li><p>enable warnings;</p></li>
+<li><p>prefer precise types;</p></li>
+<li><p>use exhaustivity and unreachable-case checks;</p></li>
+<li><p>use annotations such as <cite>&#64;tailrec</cite> where appropriate;</p></li>
+<li><p>inspect inferred types rather than guessing them; and</p></li>
+<li><p>treat suppression of warnings as a change requiring justification.</p></li>
+</ul>
+<p>Static checks establish only the properties they are designed to establish.
+For stronger claims, use semantic reasoning: induction over an algebraic data
+type, a loop invariant, a simulation of interpreter transitions, or a
+happens-before argument for concurrent code.</p>
+</section>
+<section id="performance-and-resource-behavior">
+<h3><span class="section-number">3.11.5. </span>Performance and resource behavior<a class="headerlink" href="#performance-and-resource-behavior" title="Link to this heading"></a></h3>
+<p>Generated code often includes unsupported performance claims. Separate:</p>
+<ul class="simple">
+<li><p>asymptotic analysis;</p></li>
+<li><p>constant factors;</p></li>
+<li><p>allocation and memory retention;</p></li>
+<li><p>stack usage;</p></li>
+<li><p>latency and throughput; and</p></li>
+<li><p>behavior on a particular runtime and workload.</p></li>
+</ul>
+<p>Analyze before benchmarking, then measure a controlled workload. Record the
+environment and avoid conclusions broader than the experiment supports.</p>
+</section>
+</section>
+<section id="a-worked-example-from-plausible-to-justified">
+<h2><span class="section-number">3.12. </span>A worked example: from plausible to justified<a class="headerlink" href="#a-worked-example-from-plausible-to-justified" title="Link to this heading"></a></h2>
+<p>Suppose the requirement is:</p>
+<blockquote>
+<div><p>Define a Scala 3 function <cite>deduplicate</cite> that preserves the first occurrence
+of each element in a list. Use immutable data and support arbitrary element
+types. Discuss time and space complexity.</p>
+</div></blockquote>
+<p>An AI-generated candidate might be:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">deduplicate</span><span class="p">[</span><span class="nc">A</span><span class="p">](</span><span class="n">xs</span><span class="p">:</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]):</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">xs</span><span class="p">.</span><span class="n">distinct</span>
+</pre></div>
+</div>
+<p>This may be correct under the library contract, but it avoids several
+questions relevant to a programming-languages course. What typeclass or
+equality operation is required? Is the exercise about using the library or
+implementing the behavior? What complexity does this library implementation
+provide? Does “arbitrary” permit types with unusual equality behavior?</p>
+<p>A second generated candidate might be:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">deduplicate</span><span class="p">[</span><span class="nc">A</span><span class="p">](</span><span class="n">xs</span><span class="p">:</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]):</span><span class="w"> </span><span class="nc">List</span><span class="p">[</span><span class="nc">A</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">xs</span><span class="p">.</span><span class="n">foldLeft</span><span class="p">(</span><span class="nc">List</span><span class="p">.</span><span class="n">empty</span><span class="p">[</span><span class="nc">A</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">:+</span><span class="w"> </span><span class="n">x</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This version makes the behavior visible and preserves order, but repeated
+<cite>contains</cite> and append operations make it quadratic in the length of the list.
+It is immutable, yet not necessarily an acceptable design.</p>
+<p>A stronger investigation proceeds as follows:</p>
+<ol class="arabic simple">
+<li><p>Clarify whether library <cite>distinct</cite> is permitted.</p></li>
+<li><p>Write examples before choosing an implementation:</p>
+<ul class="simple">
+<li><p><cite>Nil</cite> becomes <cite>Nil</cite>;</p></li>
+<li><p><cite>List(1)</cite> remains <cite>List(1)</cite>;</p></li>
+<li><p><cite>List(1, 2, 1, 3, 2)</cite> becomes <cite>List(1, 2, 3)</cite>.</p></li>
+</ul>
+</li>
+<li><p>Add properties:</p>
+<ul class="simple">
+<li><p>the result contains no duplicates;</p></li>
+<li><p>every result element appears in the input;</p></li>
+<li><p>the result preserves first-occurrence order;</p></li>
+<li><p>applying <cite>deduplicate</cite> twice has the same result as applying it once.</p></li>
+</ul>
+</li>
+<li><p>Analyze the operations used by each candidate.</p></li>
+<li><p>Consider a design with a set of observed elements and a reversed
+accumulator or a suitable builder.</p></li>
+<li><p>State the accumulator invariant.</p></li>
+<li><p>Verify equality and ordering behavior against the relevant Scala contracts.</p></li>
+<li><p>Benchmark only after the asymptotic analysis.</p></li>
+<li><p>Reconstruct the chosen algorithm without consulting the generated code.</p></li>
+</ol>
+<p>The lesson is not that one particular implementation is always best. The
+lesson is that an apparently complete answer opens a sequence of language,
+library, representation, and complexity questions.</p>
+</section>
+<section id="unproductive-patterns-and-better-replacements">
+<h2><span class="section-number">3.13. </span>Unproductive patterns and better replacements<a class="headerlink" href="#unproductive-patterns-and-better-replacements" title="Link to this heading"></a></h2>
+<section id="solve-this">
+<h3><span class="section-number">3.13.1. </span>“Solve this”<a class="headerlink" href="#solve-this" title="Link to this heading"></a></h3>
+<p>This request supplies neither a learning goal nor a stopping point. Replace it
+with a specification and an appropriate assistance level:</p>
+<blockquote>
+<div><p>I have identified the base case but not the recursive invariant. Ask me
+questions; do not provide code.</p>
+</div></blockquote>
+</section>
+<section id="regenerate-until-tests-pass">
+<h3><span class="section-number">3.13.2. </span>Regenerate until tests pass<a class="headerlink" href="#regenerate-until-tests-pass" title="Link to this heading"></a></h3>
+<p>Repeated regeneration can accidentally reach code that satisfies visible
+tests without revealing why earlier versions failed. Instead, classify the
+failure, state the violated invariant, and make the smallest justified change.</p>
+</section>
+<section id="ask-the-model-to-certify-itself">
+<h3><span class="section-number">3.13.3. </span>Ask the model to certify itself<a class="headerlink" href="#ask-the-model-to-certify-itself" title="Link to this heading"></a></h3>
+<p>“Check your answer carefully” may improve a response, but it is not independent
+evidence. Use a compiler, specification, test oracle, proof obligation, or
+independent implementation.</p>
+</section>
+<section id="accept-unfamiliar-complete-code">
+<h3><span class="section-number">3.13.4. </span>Accept unfamiliar complete code<a class="headerlink" href="#accept-unfamiliar-complete-code" title="Link to this heading"></a></h3>
+<p>If a solution contains constructs you cannot explain, reduce it. Ask for a
+smaller example of the construct, consult authoritative documentation, and
+rebuild the solution in stages.</p>
+</section>
+<section id="confuse-vocabulary-with-a-paradigm">
+<h3><span class="section-number">3.13.5. </span>Confuse vocabulary with a paradigm<a class="headerlink" href="#confuse-vocabulary-with-a-paradigm" title="Link to this heading"></a></h3>
+<p>Labels such as “functional,” “reactive,” and “thread-safe” are claims, not
+evidence. Inspect representation, state, control, effects, and composition.</p>
+</section>
+<section id="use-only-generated-tests">
+<h3><span class="section-number">3.13.6. </span>Use only generated tests<a class="headerlink" href="#use-only-generated-tests" title="Link to this heading"></a></h3>
+<p>Generated tests often mirror the generated implementation. Derive additional
+tests independently and include cases intended to falsify the solution.</p>
+</section>
+<section id="continue-a-polluted-conversation">
+<h3><span class="section-number">3.13.7. </span>Continue a polluted conversation<a class="headerlink" href="#continue-a-polluted-conversation" title="Link to this heading"></a></h3>
+<p>Long interactions accumulate assumptions and errors. When the conversation
+becomes confused, preserve verified facts and start again with a clean,
+minimal context.</p>
+</section>
+</section>
+<section id="transparency-and-reproducibility">
+<h2><span class="section-number">3.14. </span>Transparency and reproducibility<a class="headerlink" href="#transparency-and-reproducibility" title="Link to this heading"></a></h2>
+<section id="what-to-record">
+<h3><span class="section-number">3.14.1. </span>What to record<a class="headerlink" href="#what-to-record" title="Link to this heading"></a></h3>
+<p>For consequential AI assistance, record:</p>
+<ul class="simple">
+<li><p>the tool and model, when known;</p></li>
+<li><p>the date and relevant configuration;</p></li>
+<li><p>significant prompts or task instructions;</p></li>
+<li><p>source files or other material supplied as context;</p></li>
+<li><p>generated or materially changed portions of the work;</p></li>
+<li><p>suggestions you rejected for substantive reasons;</p></li>
+<li><p>verification performed; and</p></li>
+<li><p>unresolved concerns.</p></li>
+</ul>
+<p>Do not confuse volume with transparency. Thousands of lines of raw transcript
+may obscure the important decisions. Preserve enough information to explain
+how AI affected the work and to reproduce important interactions when
+practical.</p>
+</section>
+<section id="a-lightweight-ai-use-statement">
+<h3><span class="section-number">3.14.2. </span>A lightweight AI-use statement<a class="headerlink" href="#a-lightweight-ai-use-statement" title="Link to this heading"></a></h3>
+<p>A concise statement can answer five questions:</p>
+<ol class="arabic simple">
+<li><p>What assistance did I use?</p></li>
+<li><p>Where did it materially affect the work?</p></li>
+<li><p>What did I accept, modify, or reject?</p></li>
+<li><p>How did I verify the result?</p></li>
+<li><p>What did I learn or remain uncertain about?</p></li>
+</ol>
+<p>For example:</p>
+<blockquote>
+<div><p>I used a generative coding assistant to propose boundary cases for the
+parser and to critique my initial error representation. I added three of
+its seven proposed tests after checking them against the grammar. I rejected
+two tests that assumed unary minus, which is not in the language. I wrote
+the parser implementation and verified it using the expanded test suite and
+manual AST traces.</p>
+</div></blockquote>
+<p>Disclosure is necessary, but it does not by itself establish mastery. A
+complete transcript cannot substitute for understanding, and an independent
+mastery check may still be required.</p>
+</section>
+</section>
+<section id="privacy-security-ownership-and-responsibility">
+<h2><span class="section-number">3.15. </span>Privacy, security, ownership, and responsibility<a class="headerlink" href="#privacy-security-ownership-and-responsibility" title="Link to this heading"></a></h2>
+<p>AI use occurs within legal, institutional, professional, and ethical
+constraints.</p>
+<section id="protect-data-and-systems">
+<h3><span class="section-number">3.15.1. </span>Protect data and systems<a class="headerlink" href="#protect-data-and-systems" title="Link to this heading"></a></h3>
+<p>Do not submit:</p>
+<ul class="simple">
+<li><p>passwords, tokens, or private keys;</p></li>
+<li><p>private student or personnel information;</p></li>
+<li><p>confidential employer or research data;</p></li>
+<li><p>proprietary source code without authorization; or</p></li>
+<li><p>security-sensitive details whose disclosure is prohibited.</p></li>
+</ul>
+<p>Inspect generated commands before running them. Verify file paths and targets
+before accepting operations that delete, overwrite, publish, deploy, purchase,
+or message. Treat generated dependencies as untrusted until their identity,
+license, maintenance status, and security implications have been checked.</p>
+</section>
+<section id="ownership-and-provenance">
+<h3><span class="section-number">3.15.2. </span>Ownership and provenance<a class="headerlink" href="#ownership-and-provenance" title="Link to this heading"></a></h3>
+<p>Generated code may resemble training examples, reproduce common text, or
+suggest material whose origin is unclear. Follow assignment rules, licenses,
+and citation requirements. Attribute sources you actually rely on. Do not cite
+a paper or documentation page that you have not opened and checked.</p>
+<p>Rules concerning AI output, copyright, privacy, and professional practice
+continue to evolve. Consult the current course, university, workplace, and
+jurisdictional guidance for consequential work.</p>
+</section>
+<section id="fairness-accessibility-and-costs">
+<h3><span class="section-number">3.15.3. </span>Fairness, accessibility, and costs<a class="headerlink" href="#fairness-accessibility-and-costs" title="Link to this heading"></a></h3>
+<p>AI can improve access by explaining unfamiliar terminology, transforming
+representations, and supporting iterative questions. It can also reproduce
+bias, provide uneven quality across languages, and create inequity when some
+students have access to stronger paid tools.</p>
+<p>Course requirements should therefore identify the necessary capabilities, not
+assume access to a particular commercial product. Students should have a
+non-AI path for learning and a reasonable way to complete AI-required
+activities with institutionally supported tools.</p>
+</section>
+<section id="professional-responsibility">
+<h3><span class="section-number">3.15.4. </span>Professional responsibility<a class="headerlink" href="#professional-responsibility" title="Link to this heading"></a></h3>
+<p>Consequences remain with people and organizations. The more consequential the
+software, the stronger the required review, testing, traceability, and domain
+expertise. Speed of generation is not a reason to lower an engineering
+standard.</p>
+</section>
+</section>
+<section id="preserving-individual-mastery">
+<h2><span class="section-number">3.16. </span>Preserving individual mastery<a class="headerlink" href="#preserving-individual-mastery" title="Link to this heading"></a></h2>
+<p>This course remains demanding because understanding remains demanding. We
+will preserve individual mastery through activities such as:</p>
+<ul class="simple">
+<li><p>closed-AI quizzes and tests;</p></li>
+<li><p>code reading and execution prediction;</p></li>
+<li><p>oral explanation;</p></li>
+<li><p>live modification of submitted work;</p></li>
+<li><p>small implementations completed independently;</p></li>
+<li><p>diagnosis of intentionally flawed generated code;</p></li>
+<li><p>defense of representation and paradigm choices; and</p></li>
+<li><p>transfer of a technique to an unfamiliar problem.</p></li>
+</ul>
+<p>The standard is not memorizing every library function. The standard is
+retaining enough conceptual and operational command to recognize, evaluate,
+repair, and defend a solution without outsourcing judgment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you used AI to produce a project, you should expect to explain any part
+of that project, predict the effect of a change, and implement a smaller
+related task independently.</p>
+</div>
+</section>
+<section id="course-workflow-and-recurring-checkpoints">
+<h2><span class="section-number">3.17. </span>Course workflow and recurring checkpoints<a class="headerlink" href="#course-workflow-and-recurring-checkpoints" title="Link to this heading"></a></h2>
+<p>A substantial AI-assisted project should include:</p>
+<ol class="arabic simple">
+<li><p>an initial independent problem statement or design;</p></li>
+<li><p>a declared AI-use mode;</p></li>
+<li><p>requirements and a verification plan;</p></li>
+<li><p>bounded AI-assisted iterations;</p></li>
+<li><p>review of accepted and rejected suggestions;</p></li>
+<li><p>independent verification;</p></li>
+<li><p>a concise AI-use statement; and</p></li>
+<li><p>an individual mastery check.</p></li>
+</ol>
+<p>Graduate-level work may add a controlled empirical comparison, review relevant
+research literature, formalize a stronger correctness claim, or analyze model
+behavior across multiple languages or paradigms.</p>
+</section>
+<section id="activities-and-discussion-questions">
+<h2><span class="section-number">3.18. </span>Activities and discussion questions<a class="headerlink" href="#activities-and-discussion-questions" title="Link to this heading"></a></h2>
+<p>The following activities can be adapted to individual or group work:</p>
+<ul class="simple">
+<li><p>Classify sample tasks into independent, consultative, collaborative, and
+AI-intensive modes.</p></li>
+<li><p>Rank programming claims by the evidence needed to support them.</p></li>
+<li><p>Find the imperative core hidden in purportedly functional code.</p></li>
+<li><p>Compare two generated explanations of structural recursion.</p></li>
+<li><p>Construct a counterexample that a generated test suite missed.</p></li>
+<li><p>Predict a compiler result before asking the compiler.</p></li>
+<li><p>Repair a hallucinated Scala or Prolog API.</p></li>
+<li><p>Translate one solution across paradigms and audit whether the computational
+model really changed.</p></li>
+<li><p>Review an AI transcript for moments where the student surrendered judgment.</p></li>
+<li><p>Write a lightweight AI-use statement for a sample commit.</p></li>
+<li><p>Compare generated and independently written tests using mutation testing.</p></li>
+<li><p>Ask an AI system to extend a toy language, then check whether its grammar,
+AST, typing rules, and interpreter agree.</p></li>
+</ul>
+<p>Discussion questions:</p>
+<ol class="arabic simple">
+<li><p>Which parts of programming-language expertise become more valuable when
+code generation becomes inexpensive?</p></li>
+<li><p>When does removing accidental difficulty improve learning, and when does it
+remove necessary practice?</p></li>
+<li><p>What evidence would convince you that generated concurrent code is safe?</p></li>
+<li><p>Can a generated program be correct while its explanation is wrong? What
+should be graded in that case?</p></li>
+<li><p>Which course outcomes can be assessed through an AI-assisted project, and
+which require an independent check?</p></li>
+<li><p>How should expectations differ between a novice learning a paradigm and an
+experienced programmer using AI professionally?</p></li>
+</ol>
+</section>
+<section id="operational-checklist">
+<h2><span class="section-number">3.19. </span>Operational checklist<a class="headerlink" href="#operational-checklist" title="Link to this heading"></a></h2>
+<section id="before-using-ai">
+<h3><span class="section-number">3.19.1. </span>Before using AI<a class="headerlink" href="#before-using-ai" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>What are the functional and nonfunctional requirements?</p></li>
+<li><p>Which paradigm and concepts are being practiced?</p></li>
+<li><p>Which AI-use mode applies?</p></li>
+<li><p>What do I currently believe?</p></li>
+<li><p>What is the least assistance I need?</p></li>
+<li><p>Is the context safe and appropriate to share?</p></li>
+</ul>
+</section>
+<section id="after-receiving-a-response">
+<h3><span class="section-number">3.19.2. </span>After receiving a response<a class="headerlink" href="#after-receiving-a-response" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>What assumptions did the response make?</p></li>
+<li><p>Did it change a requirement?</p></li>
+<li><p>Which paradigm does the code actually express?</p></li>
+<li><p>Which constructs or claims are unfamiliar?</p></li>
+<li><p>What evidence is offered?</p></li>
+<li><p>What independent oracle can check each important claim?</p></li>
+<li><p>What cases are missing?</p></li>
+</ul>
+</section>
+<section id="before-submitting-work">
+<h3><span class="section-number">3.19.3. </span>Before submitting work<a class="headerlink" href="#before-submitting-work" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Does the complete project build and pass independently derived tests?</p></li>
+<li><p>Have I checked types, warnings, effects, complexity, and relevant failure
+behavior?</p></li>
+<li><p>Can I explain and modify the result?</p></li>
+<li><p>Could I solve a smaller related problem without AI?</p></li>
+<li><p>Have I documented consequential assistance?</p></li>
+<li><p>Are any uncertainties still hidden?</p></li>
+</ul>
+</section>
+</section>
+<section id="summary-and-further-reading">
+<h2><span class="section-number">3.20. </span>Summary and further reading<a class="headerlink" href="#summary-and-further-reading" title="Link to this heading"></a></h2>
+<p>Generative AI is valuable in the study of programming languages when it
+expands the number of ideas we can examine without replacing the reasoning
+that makes the examination meaningful. Its outputs are candidates and
+conjectures. Requirements, language definitions, types, tests, semantics,
+measurements, and proofs provide evidence.</p>
+<p>Our recurring workflow is:</p>
+<blockquote>
+<div><p><strong>attempt, ask, inspect, verify, revise, explain</strong></p>
+</div></blockquote>
+<p>Across paradigms, inspect representation, state, control, effects, and
+composition. Across assignments, distinguish learning, practice, production,
+and demonstration of mastery. Use AI transparently, protect sensitive
+information, and retain responsibility for the result.</p>
+<p>The following resources provide useful starting points:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1145/3442188.3445922">Bender et al., On the Dangers of Stochastic Parrots</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1109/SP46214.2022.9833571">Pearce et al., Asleep at the Keyboard? Assessing the Security of GitHub
+Copilot’s Code Contributions</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1145/3491101.3519665">Vaithilingam, Zhang, and Glassman, Expectation vs. Experience</a></p></li>
+<li><p><a class="reference external" href="https://unesdoc.unesco.org/ark:/48223/pf0000386693">UNESCO, Guidance for Generative AI in Education and Research</a></p></li>
+<li><p><a class="reference external" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a></p></li>
+<li><p><a class="reference external" href="https://www.acm.org/code-of-ethics">ACM Code of Ethics and Professional Conduct</a></p></li>
+</ul>
+<p>Product capabilities and institutional policies change more quickly than the
+principles in this chapter. Current tool instructions and course-specific
+rules should therefore be maintained in the course software and syllabus
+materials.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="20-imperative.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">4. </span>The Imperative Programming Paradigm</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="10-background.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">2. </span>Context and Background</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-Present, Konstantin Läufer
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">3. Studying Programming Languages with AI</a><ul>
+<li><a class="reference internal" href="#why-ai-changes-the-study-of-programming-languages">3.1. Why AI changes the study of programming languages</a></li>
+<li><a class="reference internal" href="#learning-outcomes">3.2. Learning outcomes</a></li>
+<li><a class="reference internal" href="#a-working-mental-model">3.3. A working mental model</a><ul>
+<li><a class="reference internal" href="#prediction-is-not-proof">3.3.1. Prediction is not proof</a></li>
+<li><a class="reference internal" href="#context-is-part-of-the-computation">3.3.2. Context is part of the computation</a></li>
+<li><a class="reference internal" href="#models-tools-and-agents">3.3.3. Models, tools, and agents</a></li>
+<li><a class="reference internal" href="#characteristic-failure-modes">3.3.4. Characteristic failure modes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modes-of-ai-use-in-this-course">3.4. Modes of AI use in this course</a><ul>
+<li><a class="reference internal" href="#independent-mode">3.4.1. Independent mode</a></li>
+<li><a class="reference internal" href="#consultative-mode">3.4.2. Consultative mode</a></li>
+<li><a class="reference internal" href="#collaborative-mode">3.4.3. Collaborative mode</a></li>
+<li><a class="reference internal" href="#ai-intensive-mode">3.4.4. AI-intensive mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-disciplined-learning-cycle">3.5. A disciplined learning cycle</a><ul>
+<li><a class="reference internal" href="#attempt-before-assistance">3.5.1. Attempt before assistance</a></li>
+<li><a class="reference internal" href="#ask-at-the-right-level">3.5.2. Ask at the right level</a></li>
+<li><a class="reference internal" href="#inspect-the-response">3.5.3. Inspect the response</a></li>
+<li><a class="reference internal" href="#verify-independently">3.5.4. Verify independently</a></li>
+<li><a class="reference internal" href="#revise-and-internalize">3.5.5. Revise and internalize</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asking-productive-questions">3.6. Asking productive questions</a><ul>
+<li><a class="reference internal" href="#supply-a-specification">3.6.1. Supply a specification</a></li>
+<li><a class="reference internal" href="#request-checkable-reasoning">3.6.2. Request checkable reasoning</a></li>
+<li><a class="reference internal" href="#use-dialogue-rather-than-repeated-generation">3.6.3. Use dialogue rather than repeated generation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-evidence-ladder">3.7. The evidence ladder</a></li>
+<li><a class="reference internal" href="#using-ai-across-programming-paradigms">3.8. Using AI across programming paradigms</a><ul>
+<li><a class="reference internal" href="#imperative-programming">3.8.1. Imperative programming</a></li>
+<li><a class="reference internal" href="#object-oriented-programming">3.8.2. Object-oriented programming</a></li>
+<li><a class="reference internal" href="#functional-programming">3.8.3. Functional programming</a></li>
+<li><a class="reference internal" href="#program-representation-and-interpretation">3.8.4. Program representation and interpretation</a></li>
+<li><a class="reference internal" href="#concurrent-programming">3.8.5. Concurrent programming</a></li>
+<li><a class="reference internal" href="#logic-and-other-declarative-paradigms">3.8.6. Logic and other declarative paradigms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#paradigm-translation-as-a-stress-test">3.9. Paradigm translation as a stress test</a></li>
+<li><a class="reference internal" href="#ai-as-tutor-critic-pair-programmer-and-subject">3.10. AI as tutor, critic, pair programmer, and subject</a><ul>
+<li><a class="reference internal" href="#tutor">3.10.1. Tutor</a></li>
+<li><a class="reference internal" href="#critic">3.10.2. Critic</a></li>
+<li><a class="reference internal" href="#pair-programmer">3.10.3. Pair programmer</a></li>
+<li><a class="reference internal" href="#experimental-subject">3.10.4. Experimental subject</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verification-techniques">3.11. Verification techniques</a><ul>
+<li><a class="reference internal" href="#requirements-based-testing">3.11.1. Requirements-based testing</a></li>
+<li><a class="reference internal" href="#property-based-and-metamorphic-testing">3.11.2. Property-based and metamorphic testing</a></li>
+<li><a class="reference internal" href="#differential-and-mutation-testing">3.11.3. Differential and mutation testing</a></li>
+<li><a class="reference internal" href="#static-checks-and-semantic-arguments">3.11.4. Static checks and semantic arguments</a></li>
+<li><a class="reference internal" href="#performance-and-resource-behavior">3.11.5. Performance and resource behavior</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-worked-example-from-plausible-to-justified">3.12. A worked example: from plausible to justified</a></li>
+<li><a class="reference internal" href="#unproductive-patterns-and-better-replacements">3.13. Unproductive patterns and better replacements</a><ul>
+<li><a class="reference internal" href="#solve-this">3.13.1. “Solve this”</a></li>
+<li><a class="reference internal" href="#regenerate-until-tests-pass">3.13.2. Regenerate until tests pass</a></li>
+<li><a class="reference internal" href="#ask-the-model-to-certify-itself">3.13.3. Ask the model to certify itself</a></li>
+<li><a class="reference internal" href="#accept-unfamiliar-complete-code">3.13.4. Accept unfamiliar complete code</a></li>
+<li><a class="reference internal" href="#confuse-vocabulary-with-a-paradigm">3.13.5. Confuse vocabulary with a paradigm</a></li>
+<li><a class="reference internal" href="#use-only-generated-tests">3.13.6. Use only generated tests</a></li>
+<li><a class="reference internal" href="#continue-a-polluted-conversation">3.13.7. Continue a polluted conversation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transparency-and-reproducibility">3.14. Transparency and reproducibility</a><ul>
+<li><a class="reference internal" href="#what-to-record">3.14.1. What to record</a></li>
+<li><a class="reference internal" href="#a-lightweight-ai-use-statement">3.14.2. A lightweight AI-use statement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#privacy-security-ownership-and-responsibility">3.15. Privacy, security, ownership, and responsibility</a><ul>
+<li><a class="reference internal" href="#protect-data-and-systems">3.15.1. Protect data and systems</a></li>
+<li><a class="reference internal" href="#ownership-and-provenance">3.15.2. Ownership and provenance</a></li>
+<li><a class="reference internal" href="#fairness-accessibility-and-costs">3.15.3. Fairness, accessibility, and costs</a></li>
+<li><a class="reference internal" href="#professional-responsibility">3.15.4. Professional responsibility</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preserving-individual-mastery">3.16. Preserving individual mastery</a></li>
+<li><a class="reference internal" href="#course-workflow-and-recurring-checkpoints">3.17. Course workflow and recurring checkpoints</a></li>
+<li><a class="reference internal" href="#activities-and-discussion-questions">3.18. Activities and discussion questions</a></li>
+<li><a class="reference internal" href="#operational-checklist">3.19. Operational checklist</a><ul>
+<li><a class="reference internal" href="#before-using-ai">3.19.1. Before using AI</a></li>
+<li><a class="reference internal" href="#after-receiving-a-response">3.19.2. After receiving a response</a></li>
+<li><a class="reference internal" href="#before-submitting-work">3.19.3. Before submitting work</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary-and-further-reading">3.20. Summary and further reading</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="_static/documentation_options.js?v=e00abf56"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

@@ -1,0 +1,1164 @@
+Studying Programming Languages with AI
+---------------------------------------
+
+Generative artificial intelligence has changed how programmers search for
+information, explore designs, write code, and diagnose failures. A student can
+now request an implementation in an unfamiliar language and receive a
+plausible-looking answer in seconds. This is useful, but it does not make the
+study of programming languages obsolete. It makes judgment about programming
+languages more important.
+
+This course is organized around programming paradigms rather than around a
+catalog of language features. Our goal is not merely to produce programs that
+appear to work. We want to understand how a program represents data, controls
+computation, manages effects, composes behaviors, and supports claims about
+correctness. Those questions remain difficult even when some code is generated
+for us.
+
+In this chapter, we develop a disciplined approach to using AI while studying
+programming languages. We will use AI as a tutor, critic, pair programmer, and
+experimental subject. We will not treat it as an authority.
+
+.. note:: **The governing principle**
+
+   AI can reduce *accidental difficulty*, such as remembering syntax or
+   producing routine boilerplate. It must not remove the *essential
+   difficulty* of understanding semantics, selecting abstractions, evaluating
+   tradeoffs, and defending a solution.
+
+Why AI changes the study of programming languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Programming has always involved tools. Compilers check syntax and types,
+debuggers expose runtime state, test frameworks compare observed and expected
+behavior, and documentation describes language and library contracts.
+Generative AI joins this collection of tools, but it differs from most of them
+in an important respect: it can produce a fluent answer without having
+established that the answer is true.
+
+A compiler normally either accepts or rejects a particular program according
+to a language implementation. A test reports what happened for a particular
+execution. A language model instead produces a likely continuation of the
+context it has received. Its answer may contain a useful explanation, an
+invented API, a subtly incorrect type, and a valid test all at once.
+
+This creates an apparent paradox. Code is becoming cheaper to produce, yet the
+skills taught in a programming languages course are becoming more valuable.
+When candidate programs are abundant, a programmer must be able to:
+
+- determine what problem a candidate program actually solves;
+- recognize the paradigm it really uses, rather than the paradigm named in its
+  explanation;
+- distinguish syntax, static semantics, dynamic semantics, and implementation
+  behavior;
+- design checks that are independent of the generated answer;
+- analyze complexity, effects, termination, and concurrency properties; and
+- explain why one design is preferable to plausible alternatives.
+
+An AI system can produce a candidate. It cannot assume responsibility for that
+candidate. A student who submits a program remains responsible for every
+claim, design decision, dependency, and consequential line of code in it.
+
+Learning outcomes
+~~~~~~~~~~~~~~~~~
+
+After completing this chapter, you should be able to:
+
+- explain a useful working model of how a generative language model produces
+  programming-related responses;
+- distinguish assistance, delegation, verification, and substitution of
+  understanding;
+- supply enough context for a programming-language question to be meaningful;
+- request answers whose assumptions and reasoning can be inspected;
+- evaluate generated code using requirements, types, tests, semantics, and
+  empirical evidence;
+- recognize when code violates the requested programming paradigm;
+- compare candidate solutions in terms of correctness, idiomaticity,
+  complexity, testability, and maintainability;
+- document consequential AI use reproducibly and honestly; and
+- demonstrate the same underlying concepts independently when required.
+
+In terms of the cognitive levels introduced in the overview, remembering
+terminology is only the beginning. Productive AI use requires comprehension
+and application, while supervising and evaluating generated work exercises the
+advanced levels of analysis, evaluation, and creation.
+
+A working mental model
+~~~~~~~~~~~~~~~~~~~~~~
+
+Prediction is not proof
+````````````````````````````````````````````````````````````
+
+A large language model processes a context and predicts tokens that form a
+likely continuation. Its training allows it to reproduce many useful patterns:
+syntax, common APIs, explanatory structures, algorithms, and even styles of
+reasoning. This makes the result useful, but not self-authenticating.
+
+Consider the request:
+
+   Explain whether this Scala function is tail-recursive.
+
+The response may correctly identify the recursive call, or it may mistake a
+recursive call followed by addition for a tail call. The confidence and polish
+of the prose do not distinguish these cases. The relevant evidence comes from
+the definition of tail position, a manual analysis of the function, and
+possibly the Scala compiler's `@tailrec` check.
+
+This leads to an important distinction:
+
+- **Plausibility** concerns whether an answer resembles things that are often
+  correct.
+- **Validity** concerns whether the answer follows from the relevant
+  definitions, contracts, or observations.
+
+AI is unusually good at producing plausibility. This course trains us to
+establish validity.
+
+Context is part of the computation
+````````````````````````````````````````````````````````````
+
+An AI response depends on the context supplied to the model. That context may
+include the prompt, earlier conversation, selected source files, diagnostics,
+test results, and material retrieved from external sources. Missing,
+irrelevant, stale, or contradictory context can all degrade the result.
+
+For example, asking for “a Scala parser” leaves several important questions
+unanswered:
+
+- Which Scala version?
+- What grammar should be accepted?
+- Should invalid input produce exceptions or values such as `Either`?
+- Is the goal to practice parser combinators, use a library, or implement a
+  recursive-descent parser?
+- Are whitespace and operator precedence significant?
+- Which dependencies are already available?
+
+A longer prompt is not automatically a better prompt. The useful context is
+the smallest context that accurately states the task, constraints, and
+available evidence.
+
+Models, tools, and agents
+````````````````````````````````````````````````````````````
+
+A conversational model can suggest text or code. An AI coding agent may also
+read files, edit a repository, run a compiler, execute tests, or inspect
+diagnostics. Tool use creates a feedback loop:
+
+#. propose a change;
+#. observe the result of a tool;
+#. revise the proposal; and
+#. repeat until a stopping condition is reached.
+
+This loop is stronger than one-shot generation because some claims are tested
+against the actual environment. It still does not guarantee correctness.
+Visible tests may be incomplete, a command may not have run, warnings may have
+been ignored, or the agent may have changed a test instead of fixing the
+program.
+
+.. note::
+
+   Tool output is evidence only for what the tool actually checked. “The test
+   suite passed” is not evidence that an untested requirement holds, and
+   “the program compiled” is not evidence that it computes the right result.
+
+Characteristic failure modes
+````````````````````````````````````````````````````````````
+
+Common failures include:
+
+- **fabrication:** inventing a language feature, library function, citation, or
+  tool result;
+- **requirement drift:** quietly solving an easier or different problem;
+- **paradigm drift:** using mutation in a supposedly functional solution, or
+  encoding procedural control in a supposedly declarative program;
+- **false explanation:** producing working code with an incorrect account of
+  why it works;
+- **overfitting:** changing code until visible examples pass without
+  understanding the general rule;
+- **code inflation:** introducing layers, classes, or dependencies that the
+  problem does not require;
+- **local inconsistency:** contradicting an earlier answer or using incompatible
+  versions of an API; and
+- **automation bias:** encouraging the reader to accept an answer because it
+  arrived quickly and looks complete.
+
+These are not reasons to avoid AI altogether. They are reasons to use it in a
+workflow that expects fallibility.
+
+Modes of AI use in this course
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Not every learning activity should use AI in the same way. Each assignment,
+activity, or assessment may designate one of the following modes.
+
+Independent mode
+````````````````````````````````````````````````````````````
+
+In independent mode, generative assistance is not used. Compilers, prescribed
+documentation, and other explicitly permitted tools may still be available.
+This mode establishes what you can recognize, explain, and do yourself.
+
+Independent work is particularly appropriate for:
+
+- short concept checks;
+- code reading and execution tracing;
+- explaining a type or semantic rule;
+- implementing a small example under time constraints; and
+- oral explanation or live modification of submitted work.
+
+Consultative mode
+````````````````````````````````````````````````````````````
+
+In consultative mode, AI may ask questions, explain a concept, give a hint, or
+critique your work, but it may not produce the artifact you submit.
+
+A useful consultative request is:
+
+   Do not solve the problem. Ask me one question at a time that will help me
+   discover whether my recursive case makes progress.
+
+Collaborative mode
+````````````````````````````````````````````````````````````
+
+In collaborative mode, AI may contribute ideas, tests, explanations, or code.
+You must inspect, verify, revise, and disclose consequential assistance. Group
+projects will often use this mode because supervising automated contributions
+is part of contemporary software development.
+
+AI-intensive mode
+````````````````````````````````````````````````````````````
+
+In AI-intensive mode, the use and evaluation of AI are themselves learning
+objectives. You might compare generated solutions across paradigms, measure
+failure rates, construct adversarial examples, or evaluate whether a model's
+explanation agrees with its program.
+
+.. note::
+
+   The permitted mode is a property of the activity, not of the student or the
+   tool. If the mode is not stated clearly, ask before using generative
+   assistance on assessed work.
+
+The reason for multiple modes is straightforward. Learning a technique,
+practicing it, producing a software asset, and demonstrating individual
+mastery are different activities. A tool that is valuable for one may defeat
+the purpose of another.
+
+A disciplined learning cycle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We will repeatedly use the following cycle:
+
+   **attempt, ask, inspect, verify, revise, explain**
+
+Attempt before assistance
+````````````````````````````````````````````````````````````
+
+Before consulting AI:
+
+- restate the problem in your own words;
+- identify the relevant paradigm and concepts;
+- predict the shape of a solution;
+- write down what you know and what remains uncertain; and
+- make a bounded initial attempt.
+
+The attempt need not be long. Its purpose is to activate your own model of the
+problem and give you something against which to compare the response. Without
+an initial prediction, it is easy to mistake recognition of an answer for
+understanding of it.
+
+Ask at the right level
+````````````````````````````````````````````````````````````
+
+Ask for the least powerful form of assistance likely to unblock you:
+
+#. a terminology or syntax reminder;
+#. a conceptual hint;
+#. a question about your reasoning;
+#. critique of a proposed design;
+#. a small worked example;
+#. comparison of alternatives;
+#. a partial implementation; or
+#. a complete candidate solution.
+
+Suppose you are learning folds. “Write this with `foldLeft`” jumps directly to
+a result. A more educational sequence is:
+
+   What accumulator invariant would allow this list function to be expressed
+   as a left fold? Do not write the final Scala expression.
+
+After stating the invariant yourself, you can ask the model to critique it.
+
+Inspect the response
+````````````````````````````````````````````````````````````
+
+Do not read a generated response as an indivisible answer. Decompose it:
+
+- What factual claims does it make?
+- What requirements does it assume?
+- Which language version and library contracts does it rely on?
+- Which parts are explanations, and which parts are evidence?
+- Which constructs are unfamiliar?
+- What cases or tradeoffs are missing?
+
+For generated code, inspect the diff rather than merely running the final
+repository. A large rewrite can hide changes to behavior, dependencies, tests,
+or public interfaces.
+
+Verify independently
+````````````````````````````````````````````````````````````
+
+Choose checks that are independent of the response:
+
+- compile with warnings enabled;
+- run existing tests;
+- derive new tests directly from the requirements;
+- add boundary, malformed-input, and adversarial cases;
+- trace a small execution by hand;
+- compare types and contracts with authoritative documentation;
+- measure performance rather than inferring it from style; and
+- analyze termination, effects, and synchronization explicitly.
+
+Asking the same model “Are you sure?” is not independent verification. The
+model may repeat the same error more confidently.
+
+Revise and internalize
+````````````````````````````````````````````````````````````
+
+Fix defects, remove unnecessary complexity, and express the result in a style
+consistent with the intended paradigm. Then reduce your dependence on the
+generated artifact:
+
+- reconstruct the important part without looking;
+- explain each representation and control-flow choice;
+- make a small modification;
+- predict the effect of that modification before running it; and
+- solve a related transfer problem.
+
+If you cannot explain or modify the result, it is not yet evidence of your
+learning.
+
+Asking productive questions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Supply a specification
+````````````````````````````````````````````````````````````
+
+Good AI interactions begin with the same ingredients as good software
+development:
+
+- functional requirements;
+- nonfunctional requirements;
+- language and version;
+- relevant types and interfaces;
+- examples and counterexamples;
+- the intended paradigm;
+- prohibited shortcuts; and
+- a definition of success.
+
+For example:
+
+   In Scala 3, define a total function that returns the height of an immutable
+   binary tree represented by the algebraic data type below. Use structural
+   recursion and pattern matching. Do not use mutation, null, exceptions, or a
+   library tree. First state the base case and explain why every recursive call
+   is made on a smaller tree. Do not write code yet.
+
+This request makes the conceptual goal inspectable. It also prevents a
+plausible solution from silently changing the representation or error model.
+
+Request checkable reasoning
+````````````````````````````````````````````````````````````
+
+Useful requests include:
+
+- “List your assumptions before proposing a solution.”
+- “Give a counterexample to this claim.”
+- “Predict the compiler error and explain which typing rule causes it.”
+- “Derive tests from these requirements, including cases that distinguish the
+  two proposed implementations.”
+- “Separate syntax errors, static semantic errors, and runtime errors.”
+- “Identify which statements are uncertain and how I could verify them.”
+
+Requests for hidden internal reasoning are neither necessary nor sufficient.
+What we need is a concise, checkable justification: definitions, invariants,
+types, cases, observations, and references that can be evaluated independently.
+
+Use dialogue rather than repeated generation
+````````````````````````````````````````````````````````````
+
+Programming-language concepts benefit from dialogue:
+
+- **Socratic tutoring:** the model asks you to predict before explaining;
+- **progressive hints:** assistance becomes more explicit only as needed;
+- **explain-back:** you explain a concept and ask for targeted critique;
+- **adversarial review:** the model tries to construct a counterexample;
+- **comparison:** multiple representations are evaluated against one rubric;
+  and
+- **reset:** a confused conversation is replaced with a clean, verified
+  context.
+
+Repeatedly requesting a new complete solution is usually less educational than
+interrogating one candidate deeply.
+
+The evidence ladder
+~~~~~~~~~~~~~~~~~~~
+
+Claims require evidence, but not all evidence is equally strong. A useful
+ladder, from weaker to stronger, is:
+
+#. the response sounds convincing;
+#. the code resembles familiar code;
+#. the model gives a consistent explanation;
+#. the program parses, type-checks, or compiles;
+#. selected examples pass;
+#. independently derived and adversarial tests pass;
+#. static checks exclude relevant classes of errors;
+#. the behavior follows from a semantic argument; and
+#. a property is proved, exhaustively checked, or otherwise established within
+   clearly stated assumptions.
+
+The ladder is not a universal ranking of tools. It reminds us to match evidence
+to claims.
+
+For example:
+
+- Compilation is strong evidence about syntax and static typing, but weak
+  evidence about functional correctness.
+- Unit tests provide evidence about executed cases, but generally do not prove
+  termination.
+- A benchmark measures particular executions on a particular configuration; it
+  does not by itself establish asymptotic complexity.
+- A test suite that passes once is weak evidence of freedom from data races.
+- A proof is only as relevant as its assumptions and its connection to the
+  implemented program.
+
+.. note:: **Use an external oracle**
+
+   An oracle is a source against which a claim can be checked: a compiler, a
+   specification, an independently derived expected result, a reference
+   implementation, a property, or a proof. The model that generated a claim is
+   not an independent oracle for that claim.
+
+Using AI across programming paradigms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The most important question is not “Did the code run?” but “What computational
+model does the code express?” The following sections apply the learning cycle
+to the paradigms studied in this course.
+
+Imperative programming
+````````````````````````````````````````````````````````````
+
+Imperative programs describe computation through commands and changes of
+state. When inspecting generated imperative code:
+
+- identify every mutable location;
+- trace state changes for a small input;
+- look for aliases and hidden global state;
+- state loop invariants and termination measures;
+- separate input/output from core behavior;
+- check constant-space requirements explicitly; and
+- determine whether error handling preserves the required state.
+
+AI is useful for producing a state-transition table. Given a loop, ask it to
+list the values of relevant variables before and after each iteration. Then
+check the table yourself. A fabricated trace is often easier to detect than a
+fabricated paragraph.
+
+Be alert to unnecessary abstraction. A generated answer may wrap a short loop
+in several classes because such code is common in its training data. Evaluate
+the design against the actual requirements rather than against the amount of
+code produced.
+
+Object-oriented programming
+````````````````````````````````````````````````````````````
+
+Object-oriented programs organize state and behavior around objects,
+responsibilities, interfaces, and dynamic dispatch. Generated code may be
+“class-shaped procedural code”: it contains classes but does not use
+object-oriented decomposition meaningfully.
+
+Ask:
+
+- Which object owns each responsibility?
+- Which invariants does each object protect?
+- Is inheritance expressing a genuine subtype relation?
+- Could composition express the relationship more clearly?
+- Are dependencies explicit and substitutable?
+- Can core behavior be tested without performing input/output?
+- Does a named design pattern solve a recurring problem, or merely decorate
+  the solution?
+
+AI can generate several domain models quickly. This is valuable if the models
+are treated as competing hypotheses. Compare them using one rubric: cohesion,
+coupling, testability, extensibility under a specified change, and faithfulness
+to the domain.
+
+Functional programming
+````````````````````````````````````````````````````````````
+
+Functional programming emphasizes expressions, immutable values, algebraic
+data types, higher-order functions, and controlled effects. Generated code
+often uses functional-looking syntax while retaining imperative structure.
+
+When evaluating a functional solution:
+
+- identify all effects and where they occur;
+- reject hidden mutation when immutability is a requirement;
+- check that pattern matches cover every constructor;
+- identify the base case and the smaller recursive subproblem;
+- analyze termination and stack use;
+- state the accumulator invariant for a fold;
+- distinguish `map`, `flatMap`, `fold`, and traversal by their types and
+  meanings; and
+- use equational reasoning where possible.
+
+Consider:
+
+.. code-block:: scala
+
+   def sum(xs: List[Int]): Int =
+     xs match
+       case Nil     => 0
+       case x :: xt => x + sum(xt)
+
+An AI system might call this tail-recursive because the recursive call is
+visually last on the line. It is not in tail position: addition remains to be
+performed after the recursive call returns. The language concept, not the
+layout, decides the question. The compiler's `@tailrec` annotation can serve
+as an additional check.
+
+AI can be particularly helpful for comparing direct recursion with folds.
+Require the response to state the recursive structure and accumulator
+invariant before producing the higher-order version.
+
+Program representation and interpretation
+````````````````````````````````````````````````````````````
+
+Language implementation exposes a useful boundary between fluent description
+and precise meaning. AI can propose grammars, abstract syntax trees, typing
+rules, and interpreters, but each proposal must agree with the others.
+
+Check:
+
+- Does the grammar generate exactly the intended forms?
+- Does the parser preserve precedence and associativity?
+- Is every abstract-syntax constructor handled?
+- Are malformed programs rejected deliberately?
+- Do static rules agree with runtime behavior?
+- Does the interpreter implement the stated evaluation order?
+- Are environments, stores, values, and effects kept distinct?
+
+Suppose a generated interpreter claims to implement short-circuit Boolean
+conjunction but evaluates both operands before applying `&&`. Ordinary tests
+on pure operands will pass. A test whose second operand fails or changes state
+distinguishes the claimed semantics from the implemented semantics.
+
+Treat an AI-generated language feature as a proposal for a language design.
+Before implementing it, require concrete syntax, abstract syntax, static
+semantics, dynamic semantics, examples, and rejected examples.
+
+Concurrent programming
+````````````````````````````````````````````````````````````
+
+Concurrency is especially resistant to “it worked when I ran it” reasoning.
+Generated concurrent code may compile and pass many tests while containing a
+race, deadlock, lost update, blocking operation, or broken cancellation
+protocol.
+
+Require an explicit account of:
+
+- activities and their lifetimes;
+- shared mutable state;
+- synchronization or message-passing relationships;
+- permitted orderings;
+- safety properties;
+- progress properties;
+- failure propagation; and
+- cancellation and resource cleanup.
+
+Ask the model to construct schedules, but verify them manually. For two
+unsynchronized increments, enumerate the reads and writes that lead to a lost
+update. For a locking design, draw the lock-order graph. For futures, identify
+which execution context runs each continuation and where blocking can occur.
+
+.. warning::
+
+   Never accept “thread-safe” as a conclusion without an argument tied to a
+   defined safety property and suitable evidence. A passing sequential test
+   suite is not such evidence.
+
+Functional techniques can reduce the concurrent state space by eliminating
+shared mutation. They do not remove all problems: ordering, resource use,
+failure, backpressure, and cancellation still require reasoning.
+
+Logic and other declarative paradigms
+````````````````````````````````````````````````````````````
+
+In logic programming, distinguish declarative meaning from search behavior.
+Generated Prolog may state plausible facts and rules while depending
+accidentally on goal order, non-logical predicates, or the cut operator.
+
+Check:
+
+- Are facts, rules, and queries clearly distinguished?
+- Does the rule express the intended logical relation?
+- Are variables sufficiently instantiated?
+- Does search terminate for the intended query modes?
+- Is a cut preserving meaning or merely hiding unwanted solutions?
+- How does clause and goal order affect execution?
+
+For reactive, dataflow, event-driven, and constraint-based programs, identify
+the corresponding model of dependency and control. Do not allow familiar
+imperative mechanisms to pass as a different paradigm merely because an API
+uses the right vocabulary.
+
+Paradigm translation as a stress test
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One of the best uses of AI in this course is to request multiple solutions to
+the same problem. The speed of generation allows us to spend more time
+comparing computational models.
+
+A useful activity is:
+
+#. state one set of requirements;
+#. obtain imperative, object-oriented, functional, and logic-programming
+   candidates;
+#. identify how each represents data, state, control, effects, and failure;
+#. test all candidates against the same examples;
+#. identify superficial translations that retain the source paradigm; and
+#. explain what each paradigm makes easier or harder to express.
+
+A mechanical translation from a mutable loop to a recursive function may
+still carry an imperative model of state. Likewise, placing a function in a
+class does not make its decomposition object-oriented. Translation failures
+are valuable: they reveal both model limitations and weaknesses in our own
+definitions of the paradigms.
+
+AI as tutor, critic, pair programmer, and subject
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tutor
+````````````````````````````````````````````````````````````
+
+As a tutor, AI can explain terminology, generate small examples, ask questions,
+and adjust the level of detail. The most useful tutoring preserves productive
+struggle. Ask for predictions, hints, and feedback before requesting a worked
+solution.
+
+The risks are premature explanation and learned dependence. If every pause is
+immediately filled by a generated answer, you lose opportunities to retrieve,
+connect, and test your own knowledge.
+
+Critic
+````````````````````````````````````````````````````````````
+
+Critique is often more educational than generation because you retain
+ownership of the initial model. AI can:
+
+- identify unclear requirements;
+- question an invariant;
+- propose boundary cases;
+- compare a design with a stated principle;
+- locate duplication or hidden coupling; and
+- suggest a simpler counterexample.
+
+Criticism must also be verified. A model may object to valid code or recommend
+a change that violates a deliberate constraint.
+
+Pair programmer
+````````````````````````````````````````````````````````````
+
+As a pair programmer, AI can perform bounded tasks while you maintain the
+design:
+
+- implement one function from an existing interface;
+- add tests for one requirement;
+- explain a compiler diagnostic;
+- propose a local refactoring; or
+- review a small diff.
+
+Keep tasks small enough to inspect. Establish checkpoints with a clean build
+and passing tests. A sequence of locally plausible edits can otherwise produce
+a globally incoherent design.
+
+Experimental subject
+````````````````````````````````````````````````````````````
+
+AI systems themselves can be studied empirically. A sound comparison requires:
+
+- a question stated before observing the results;
+- controlled inputs;
+- a rubric defined in advance;
+- multiple cases or repetitions;
+- recorded model and configuration information when available;
+- independent evaluation; and
+- reporting of variation and limitations.
+
+For example, compare how consistently several prompts produce exhaustive
+pattern matching for the same algebraic data type. Do not generalize from one
+impressive or embarrassing transcript to all models or all programming tasks.
+
+Verification techniques
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Requirements-based testing
+````````````````````````````````````````````````````````````
+
+Derive tests from requirements, not from the implementation. Every test should
+make clear which requirement it exercises. Include:
+
+- ordinary examples;
+- boundaries and empty structures;
+- malformed input;
+- duplicate or repeated values;
+- very small and very large cases;
+- failure and cancellation paths; and
+- combinations likely to expose interactions.
+
+If AI generates both implementation and tests from the same interpretation, a
+misread requirement may be reproduced in both. Independent derivation matters.
+
+Property-based and metamorphic testing
+````````````````````````````````````````````````````````````
+
+Example-based tests check selected input-output pairs. Properties describe
+relationships across many inputs.
+
+For a list reversal function, useful properties include:
+
+.. code-block:: text
+
+   reverse(reverse(xs)) == xs
+   length(reverse(xs)) == length(xs)
+
+For a sorting function:
+
+.. code-block:: text
+
+   sorted(sort(xs))
+   multiset(sort(xs)) == multiset(xs)
+   sort(sort(xs)) == sort(xs)
+
+AI can suggest properties, but a property may be too weak. For example,
+“the result is sorted” does not prevent a faulty sorting function from
+returning the empty list for every input.
+
+Metamorphic testing is useful when an exact expected result is difficult to
+compute. It checks how output should change when input is transformed. Adding
+an unreachable clause to a program, renaming a bound variable consistently,
+or permuting independent inputs may preserve specified behavior.
+
+Differential and mutation testing
+````````````````````````````````````````````````````````````
+
+Differential testing compares multiple implementations or language
+implementations on the same inputs. Agreement is useful evidence when the
+implementations are genuinely independent; identical generated solutions may
+share the same defect.
+
+Mutation testing makes small deliberate changes to a program and checks
+whether the test suite detects them. Surviving mutants reveal weak tests. This
+is particularly helpful when generated tests look comprehensive but merely
+repeat the examples in the prompt.
+
+Static checks and semantic arguments
+````````````````````````````````````````````````````````````
+
+Use the language implementation:
+
+- enable warnings;
+- prefer precise types;
+- use exhaustivity and unreachable-case checks;
+- use annotations such as `@tailrec` where appropriate;
+- inspect inferred types rather than guessing them; and
+- treat suppression of warnings as a change requiring justification.
+
+Static checks establish only the properties they are designed to establish.
+For stronger claims, use semantic reasoning: induction over an algebraic data
+type, a loop invariant, a simulation of interpreter transitions, or a
+happens-before argument for concurrent code.
+
+Performance and resource behavior
+````````````````````````````````````````````````````````````
+
+Generated code often includes unsupported performance claims. Separate:
+
+- asymptotic analysis;
+- constant factors;
+- allocation and memory retention;
+- stack usage;
+- latency and throughput; and
+- behavior on a particular runtime and workload.
+
+Analyze before benchmarking, then measure a controlled workload. Record the
+environment and avoid conclusions broader than the experiment supports.
+
+A worked example: from plausible to justified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Suppose the requirement is:
+
+   Define a Scala 3 function `deduplicate` that preserves the first occurrence
+   of each element in a list. Use immutable data and support arbitrary element
+   types. Discuss time and space complexity.
+
+An AI-generated candidate might be:
+
+.. code-block:: scala
+
+   def deduplicate[A](xs: List[A]): List[A] =
+     xs.distinct
+
+This may be correct under the library contract, but it avoids several
+questions relevant to a programming-languages course. What typeclass or
+equality operation is required? Is the exercise about using the library or
+implementing the behavior? What complexity does this library implementation
+provide? Does “arbitrary” permit types with unusual equality behavior?
+
+A second generated candidate might be:
+
+.. code-block:: scala
+
+   def deduplicate[A](xs: List[A]): List[A] =
+     xs.foldLeft(List.empty[A]) { (result, x) =>
+       if result.contains(x) then result else result :+ x
+     }
+
+This version makes the behavior visible and preserves order, but repeated
+`contains` and append operations make it quadratic in the length of the list.
+It is immutable, yet not necessarily an acceptable design.
+
+A stronger investigation proceeds as follows:
+
+#. Clarify whether library `distinct` is permitted.
+#. Write examples before choosing an implementation:
+
+   - `Nil` becomes `Nil`;
+   - `List(1)` remains `List(1)`;
+   - `List(1, 2, 1, 3, 2)` becomes `List(1, 2, 3)`.
+
+#. Add properties:
+
+   - the result contains no duplicates;
+   - every result element appears in the input;
+   - the result preserves first-occurrence order;
+   - applying `deduplicate` twice has the same result as applying it once.
+
+#. Analyze the operations used by each candidate.
+#. Consider a design with a set of observed elements and a reversed
+   accumulator or a suitable builder.
+#. State the accumulator invariant.
+#. Verify equality and ordering behavior against the relevant Scala contracts.
+#. Benchmark only after the asymptotic analysis.
+#. Reconstruct the chosen algorithm without consulting the generated code.
+
+The lesson is not that one particular implementation is always best. The
+lesson is that an apparently complete answer opens a sequence of language,
+library, representation, and complexity questions.
+
+Unproductive patterns and better replacements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+“Solve this”
+````````````````````````````````````````````````````````````
+
+This request supplies neither a learning goal nor a stopping point. Replace it
+with a specification and an appropriate assistance level:
+
+   I have identified the base case but not the recursive invariant. Ask me
+   questions; do not provide code.
+
+Regenerate until tests pass
+````````````````````````````````````````````````````````````
+
+Repeated regeneration can accidentally reach code that satisfies visible
+tests without revealing why earlier versions failed. Instead, classify the
+failure, state the violated invariant, and make the smallest justified change.
+
+Ask the model to certify itself
+````````````````````````````````````````````````````````````
+
+“Check your answer carefully” may improve a response, but it is not independent
+evidence. Use a compiler, specification, test oracle, proof obligation, or
+independent implementation.
+
+Accept unfamiliar complete code
+````````````````````````````````````````````````````````````
+
+If a solution contains constructs you cannot explain, reduce it. Ask for a
+smaller example of the construct, consult authoritative documentation, and
+rebuild the solution in stages.
+
+Confuse vocabulary with a paradigm
+````````````````````````````````````````````````````````````
+
+Labels such as “functional,” “reactive,” and “thread-safe” are claims, not
+evidence. Inspect representation, state, control, effects, and composition.
+
+Use only generated tests
+````````````````````````````````````````````````````````````
+
+Generated tests often mirror the generated implementation. Derive additional
+tests independently and include cases intended to falsify the solution.
+
+Continue a polluted conversation
+````````````````````````````````````````````````````````````
+
+Long interactions accumulate assumptions and errors. When the conversation
+becomes confused, preserve verified facts and start again with a clean,
+minimal context.
+
+Transparency and reproducibility
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What to record
+````````````````````````````````````````````````````````````
+
+For consequential AI assistance, record:
+
+- the tool and model, when known;
+- the date and relevant configuration;
+- significant prompts or task instructions;
+- source files or other material supplied as context;
+- generated or materially changed portions of the work;
+- suggestions you rejected for substantive reasons;
+- verification performed; and
+- unresolved concerns.
+
+Do not confuse volume with transparency. Thousands of lines of raw transcript
+may obscure the important decisions. Preserve enough information to explain
+how AI affected the work and to reproduce important interactions when
+practical.
+
+A lightweight AI-use statement
+````````````````````````````````````````````````````````````
+
+A concise statement can answer five questions:
+
+#. What assistance did I use?
+#. Where did it materially affect the work?
+#. What did I accept, modify, or reject?
+#. How did I verify the result?
+#. What did I learn or remain uncertain about?
+
+For example:
+
+   I used a generative coding assistant to propose boundary cases for the
+   parser and to critique my initial error representation. I added three of
+   its seven proposed tests after checking them against the grammar. I rejected
+   two tests that assumed unary minus, which is not in the language. I wrote
+   the parser implementation and verified it using the expanded test suite and
+   manual AST traces.
+
+Disclosure is necessary, but it does not by itself establish mastery. A
+complete transcript cannot substitute for understanding, and an independent
+mastery check may still be required.
+
+Privacy, security, ownership, and responsibility
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+AI use occurs within legal, institutional, professional, and ethical
+constraints.
+
+Protect data and systems
+````````````````````````````````````````````````````````````
+
+Do not submit:
+
+- passwords, tokens, or private keys;
+- private student or personnel information;
+- confidential employer or research data;
+- proprietary source code without authorization; or
+- security-sensitive details whose disclosure is prohibited.
+
+Inspect generated commands before running them. Verify file paths and targets
+before accepting operations that delete, overwrite, publish, deploy, purchase,
+or message. Treat generated dependencies as untrusted until their identity,
+license, maintenance status, and security implications have been checked.
+
+Ownership and provenance
+````````````````````````````````````````````````````````````
+
+Generated code may resemble training examples, reproduce common text, or
+suggest material whose origin is unclear. Follow assignment rules, licenses,
+and citation requirements. Attribute sources you actually rely on. Do not cite
+a paper or documentation page that you have not opened and checked.
+
+Rules concerning AI output, copyright, privacy, and professional practice
+continue to evolve. Consult the current course, university, workplace, and
+jurisdictional guidance for consequential work.
+
+Fairness, accessibility, and costs
+````````````````````````````````````````````````````````````
+
+AI can improve access by explaining unfamiliar terminology, transforming
+representations, and supporting iterative questions. It can also reproduce
+bias, provide uneven quality across languages, and create inequity when some
+students have access to stronger paid tools.
+
+Course requirements should therefore identify the necessary capabilities, not
+assume access to a particular commercial product. Students should have a
+non-AI path for learning and a reasonable way to complete AI-required
+activities with institutionally supported tools.
+
+Professional responsibility
+````````````````````````````````````````````````````````````
+
+Consequences remain with people and organizations. The more consequential the
+software, the stronger the required review, testing, traceability, and domain
+expertise. Speed of generation is not a reason to lower an engineering
+standard.
+
+Preserving individual mastery
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This course remains demanding because understanding remains demanding. We
+will preserve individual mastery through activities such as:
+
+- closed-AI quizzes and tests;
+- code reading and execution prediction;
+- oral explanation;
+- live modification of submitted work;
+- small implementations completed independently;
+- diagnosis of intentionally flawed generated code;
+- defense of representation and paradigm choices; and
+- transfer of a technique to an unfamiliar problem.
+
+The standard is not memorizing every library function. The standard is
+retaining enough conceptual and operational command to recognize, evaluate,
+repair, and defend a solution without outsourcing judgment.
+
+.. note::
+
+   If you used AI to produce a project, you should expect to explain any part
+   of that project, predict the effect of a change, and implement a smaller
+   related task independently.
+
+Course workflow and recurring checkpoints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A substantial AI-assisted project should include:
+
+#. an initial independent problem statement or design;
+#. a declared AI-use mode;
+#. requirements and a verification plan;
+#. bounded AI-assisted iterations;
+#. review of accepted and rejected suggestions;
+#. independent verification;
+#. a concise AI-use statement; and
+#. an individual mastery check.
+
+Graduate-level work may add a controlled empirical comparison, review relevant
+research literature, formalize a stronger correctness claim, or analyze model
+behavior across multiple languages or paradigms.
+
+Activities and discussion questions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following activities can be adapted to individual or group work:
+
+- Classify sample tasks into independent, consultative, collaborative, and
+  AI-intensive modes.
+- Rank programming claims by the evidence needed to support them.
+- Find the imperative core hidden in purportedly functional code.
+- Compare two generated explanations of structural recursion.
+- Construct a counterexample that a generated test suite missed.
+- Predict a compiler result before asking the compiler.
+- Repair a hallucinated Scala or Prolog API.
+- Translate one solution across paradigms and audit whether the computational
+  model really changed.
+- Review an AI transcript for moments where the student surrendered judgment.
+- Write a lightweight AI-use statement for a sample commit.
+- Compare generated and independently written tests using mutation testing.
+- Ask an AI system to extend a toy language, then check whether its grammar,
+  AST, typing rules, and interpreter agree.
+
+Discussion questions:
+
+#. Which parts of programming-language expertise become more valuable when
+   code generation becomes inexpensive?
+#. When does removing accidental difficulty improve learning, and when does it
+   remove necessary practice?
+#. What evidence would convince you that generated concurrent code is safe?
+#. Can a generated program be correct while its explanation is wrong? What
+   should be graded in that case?
+#. Which course outcomes can be assessed through an AI-assisted project, and
+   which require an independent check?
+#. How should expectations differ between a novice learning a paradigm and an
+   experienced programmer using AI professionally?
+
+Operational checklist
+~~~~~~~~~~~~~~~~~~~~~
+
+Before using AI
+````````````````````````````````````````````````````````````
+
+- What are the functional and nonfunctional requirements?
+- Which paradigm and concepts are being practiced?
+- Which AI-use mode applies?
+- What do I currently believe?
+- What is the least assistance I need?
+- Is the context safe and appropriate to share?
+
+After receiving a response
+````````````````````````````````````````````````````````````
+
+- What assumptions did the response make?
+- Did it change a requirement?
+- Which paradigm does the code actually express?
+- Which constructs or claims are unfamiliar?
+- What evidence is offered?
+- What independent oracle can check each important claim?
+- What cases are missing?
+
+Before submitting work
+````````````````````````````````````````````````````````````
+
+- Does the complete project build and pass independently derived tests?
+- Have I checked types, warnings, effects, complexity, and relevant failure
+  behavior?
+- Can I explain and modify the result?
+- Could I solve a smaller related problem without AI?
+- Have I documented consequential assistance?
+- Are any uncertainties still hidden?
+
+Summary and further reading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Generative AI is valuable in the study of programming languages when it
+expands the number of ideas we can examine without replacing the reasoning
+that makes the examination meaningful. Its outputs are candidates and
+conjectures. Requirements, language definitions, types, tests, semantics,
+measurements, and proofs provide evidence.
+
+Our recurring workflow is:
+
+   **attempt, ask, inspect, verify, revise, explain**
+
+Across paradigms, inspect representation, state, control, effects, and
+composition. Across assignments, distinguish learning, practice, production,
+and demonstration of mastery. Use AI transparently, protect sensitive
+information, and retain responsibility for the result.
+
+The following resources provide useful starting points:
+
+- `Bender et al., On the Dangers of Stochastic Parrots
+  <https://doi.org/10.1145/3442188.3445922>`_
+- `Pearce et al., Asleep at the Keyboard? Assessing the Security of GitHub
+  Copilot's Code Contributions <https://doi.org/10.1109/SP46214.2022.9833571>`_
+- `Vaithilingam, Zhang, and Glassman, Expectation vs. Experience
+  <https://doi.org/10.1145/3491101.3519665>`_
+- `UNESCO, Guidance for Generative AI in Education and Research
+  <https://unesdoc.unesco.org/ark:/48223/pf0000386693>`_
+- `NIST AI Risk Management Framework
+  <https://www.nist.gov/itl/ai-risk-management-framework>`_
+- `ACM Code of Ethics and Professional Conduct
+  <https://www.acm.org/code-of-ethics>`_
+
+Product capabilities and institutional policies change more quickly than the
+principles in this chapter. Current tool instructions and course-specific
+rules should therefore be maintained in the course software and syllabus
+materials.
