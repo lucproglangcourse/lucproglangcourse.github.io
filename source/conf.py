@@ -214,7 +214,16 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-#'preamble': '',
+# Workaround for a Sphinx/LaTeX bug where \sphinxmidrule (used in tables)
+# can recursively expand into itself, blowing up TeX's input stack
+# ("TeX capacity exceeded ... input stack size=10000") and aborting the
+# PDF build with no output. Redefining it as a plain \hline avoids the
+# recursion.
+'preamble': r'''
+\makeatletter
+\def\sphinxmidrule{\hline}
+\makeatother
+''',
 
 # Pin the admonition icon package instead of letting Sphinx auto-detect
 # whichever fontawesome{,5,6,7} package happens to be installed on the
