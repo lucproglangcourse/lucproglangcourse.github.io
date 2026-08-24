@@ -8,6 +8,9 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,7 +31,7 @@ jobs:
 
       - name: Get pip cache dir
         id: pip-cache
-        run: echo "::set-output name=dir::$(pip cache dir)"
+        run: echo "dir=$(pip cache dir)" >> "$GITHUB_OUTPUT"
 
       - name: Cache dependencies
         uses: actions/cache@v6
@@ -54,9 +57,13 @@ jobs:
         uses: xu-cheng/texlive-action@v3
         with:
           scheme: full
+          # Pin the TeXLive release so CI doesn't silently pick up a newer
+          # "latest" TeXLive snapshot (with different bundled packages, e.g.
+          # fontawesome variants) than what was last verified to work.
+          texlive_version: 2026
           run: |
             apk add --no-cache make
-            make -C build/latex
+            make -C build/latex all-pdf
 
       - name: Publish HTML to GitHub Pages 
         uses: peaceiris/actions-gh-pages@v4

@@ -136,7 +136,6 @@ html_theme_options = {
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -217,11 +216,12 @@ latex_elements = {
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
 
-   'preamble': r'''
-    \makeatletter
-    \def\sphinxmidrule{\hline}
-    \makeatother
-    ''',
+# Pin the admonition icon package instead of letting Sphinx auto-detect
+# whichever fontawesome{,5,6,7} package happens to be installed on the
+# TeXLive distribution doing the build (this differs between local
+# TeXLive installs and the one baked into CI containers, and has caused
+# PDF build breakage when a newer fontawesome package appeared upstream).
+'sphinxsetup': 'iconpackage=none',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
