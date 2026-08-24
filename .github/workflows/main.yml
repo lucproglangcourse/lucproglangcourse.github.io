@@ -46,6 +46,12 @@ jobs:
           make html
           echo lucproglangcourse.github.io > build/html/CNAME
 
+      - name: Publish HTML to GitHub Pages 
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/html
+
       - name: Generate LaTeX using Sphinx
         run: |
           make latex
@@ -57,12 +63,6 @@ jobs:
           run: |
             apk add make
             make -C build/latex
-
-      - name: Publish HTML to GitHub Pages 
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/html
 
       - name: Publish PDF to GitHub Releases
         uses: softprops/action-gh-release@v3
