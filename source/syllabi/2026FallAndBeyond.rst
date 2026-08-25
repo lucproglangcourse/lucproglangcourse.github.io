@@ -6,7 +6,7 @@ Syllabus
   - This is a *on-campus*, face-to-face class involving lectures, group activities, etc.
   - To earn points for group activities or other in-class activities, you are required to participate during class time (in person or remotely) or make up for the work outside of class.
   - If you have a scheduled absence, please ask a classmate to record the session for you and/or share their notes. In addition, some prerecorded videos are available through Panopto or YouTube.
-  - The university's statement about the observation of religious holidays is available [here](https://www.luc.edu/academicaffairs/homenews/honoringstudentreligiousobservances.shtml).
+  - The university's statement about the observation of religious holidays is available `here <https://www.luc.edu/academicaffairs/homenews/honoringstudentreligiousobservances.shtml>`_.
 
 - *Estimated workload: 9 to 12 hours per week including class time.*
 
