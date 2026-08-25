@@ -92,13 +92,13 @@ Syllabus
 
 - Important dates (tentative) for quizzes and tests:
 
-  - Week 3 - Mon 26 January: quiz 0
-  - Week 5 - Mon 9 February: quiz 1
-  - Week 7 - Mon 23 February: test 1
-  - Week 10 - Mon 16 March: quiz 2
-  - Week 11 - *last day to withdraw with W instead of WF*
-  - Week 13 - Wed 8 April: test 2
-  - Week 15 - Wed 22 April: quiz 3
+  - Week 3: quiz 0
+  - Week 5: quiz 1
+  - Week 7: test 1
+  - Week 10: quiz 2
+  - Week 11: *last day to withdraw with W instead of WF*
+  - Week 13: test 2
+  - Week 15: quiz 3
   - Week 16 (finals week): **NO FINAL EXAM OR CLASS SESSION**
 
 - *Recording of class meetings:* In this class, software may be used to record live class sessions. As a student in this class, your participation in live class discussions will be recorded. These recordings may be made available only to students enrolled in the class, to assist those who cannot attend the live session or to serve as a resource for those who would like to review content that was presented. All recordings will become unavailable to students in the class when the course has concluded. The use of all video recordings will be in keeping with the University Privacy Statement shown below.
