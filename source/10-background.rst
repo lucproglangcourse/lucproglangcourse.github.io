@@ -89,6 +89,8 @@ A successful development process usually comprises these minimal elements:
 
   - retest every time
 
+    - a bug is fixed
+
     - a feature is added
 
     - the code is refactored
