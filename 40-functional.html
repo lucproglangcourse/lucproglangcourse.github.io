@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="7. Program Representation and Interpretation" href="50-representationinterpretation.html"><link rel="prev" title="5. The Object-Oriented Programming Paradigm" href="30-objectoriented.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>6. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26f.21</title>
+        <title>6. The Functional Programming Paradigm - Loyola University Chicago COMP 371/471 Lecture Notes v26f.22</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -162,7 +162,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.21</div></a>
+      <a href="index.html"><div class="brand">Loyola University Chicago COMP 371/471 Lecture Notes v26f.22</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.21</span>
+  <span class="sidebar-brand-text">Loyola University Chicago COMP 371/471 Lecture Notes v26f.22</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -516,9 +516,9 @@ This function takes the old state <code class="docutils literal notranslate"><sp
 <p>For the specific example above, the equivalent of the iterative example would be to successively apply the <code class="docutils literal notranslate"><span class="pre">step</span></code> function to each string in the iterator, starting with the initial state <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">step0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">step1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step0</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)</span><span class="w">  </span><span class="c1">// (5, 1)</span>
-<span class="kd">val</span><span class="w"> </span><span class="n">step2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step1</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">)</span><span class="w">     </span><span class="c1">// (10, 2)</span>
-<span class="kd">val</span><span class="w"> </span><span class="n">step3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step2</span><span class="p">,</span><span class="w"> </span><span class="s">"what"</span><span class="p">)</span><span class="w">      </span><span class="c1">// (14, 3)</span>
-<span class="kd">val</span><span class="w"> </span><span class="n">step4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step3</span><span class="p">,</span><span class="w"> </span><span class="s">"up"</span><span class="p">)</span><span class="w">        </span><span class="c1">// (16, 4)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">step2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step1</span><span class="p">,</span><span class="w"> </span><span class="s">"world"</span><span class="p">)</span><span class="w">  </span><span class="c1">// (10, 2)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">step3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step2</span><span class="p">,</span><span class="w"> </span><span class="s">"what"</span><span class="p">)</span><span class="w">   </span><span class="c1">// (14, 3)</span>
+<span class="kd">val</span><span class="w"> </span><span class="n">step4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="n">step3</span><span class="p">,</span><span class="w"> </span><span class="s">"up"</span><span class="p">)</span><span class="w">     </span><span class="c1">// (16, 4)</span>
 </pre></div>
 </div>
 <p>But this is not yet as general as our loop in the Java example above.
@@ -1475,7 +1475,7 @@ Examples include:</p>
   </div>
 </div><script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="_static/documentation_options.js?v=4d5acf9a"></script>
+    <script src="_static/documentation_options.js?v=7aa245f0"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
