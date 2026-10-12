@@ -274,9 +274,9 @@ For the specific example above, the equivalent of the iterative example would be
 
   val step0 = (0, 0)
   val step1 = step(step0, "hello")  // (5, 1)
-  val step2 = step(step1, "world")     // (10, 2)
-  val step3 = step(step2, "what")      // (14, 3)
-  val step4 = step(step3, "up")        // (16, 4)
+  val step2 = step(step1, "world")  // (10, 2)
+  val step3 = step(step2, "what")   // (14, 3)
+  val step4 = step(step3, "up")     // (16, 4)
 
 But this is not yet as general as our loop in the Java example above.
 To get to that level, we can use a *fold* to successively apply the ``step`` function to each string in the iterator, starting with the initial state ``(0, 0)``:
