@@ -180,7 +180,7 @@ Many of these, especially collection types and certain utility types, are *algeb
   .. note:: **Option[A]: the canonical way to represent an optional value**
 
      ``Option[A]`` is one of the most important and pervasive types in Scala.
-     Equivalent to a list contains at most a single value, ``Option`` represents a value that may or may not be present: ``Some(value)`` when it exists, ``None`` when it doesn't.
+     Equivalent to a list that contains at most a single value, ``Option`` represents a value that may or may not be present: ``Some(value)`` when it exists, ``None`` when it doesn't.
      Use ``Option`` to eliminate ``null`` references and make the possible absence of a value *explicit in the type*.
 
      Common uses:
