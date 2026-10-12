@@ -335,45 +335,75 @@ through a sequence of statements that manipulate named mutable state.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">{...}</span> <span class="pre">else</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">then</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0:\n</span>&#160;&#160;&#160; <span class="pre">...\nelse:\n</span>&#160;&#160;&#160; <span class="pre">...</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0:</span></code></div>
+<div class="line-block">
+<div class="line">…</div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">else:</span></code></div>
+<div class="line-block">
+<div class="line">…</div>
+</div>
+</div>
+</td>
 </tr>
-<tr class="row-odd"><td><p>Iteration</p></td>
+<tr class="row-odd"><td><p>Switching</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">switch</span> <span class="pre">(x)</span> <span class="pre">{</span> <span class="pre">case</span> <span class="pre">1:</span> <span class="pre">...;</span> <span class="pre">break;</span> <span class="pre">default:</span> <span class="pre">...;</span> <span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">switch</span> <span class="pre">(x)</span> <span class="pre">{</span> <span class="pre">case</span> <span class="pre">1:</span> <span class="pre">...;</span> <span class="pre">break;</span> <span class="pre">default:</span> <span class="pre">...;</span> <span class="pre">}</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">match</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">1</span> <span class="pre">=&gt;</span> <span class="pre">...</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">_</span> <span class="pre">=&gt;</span> <span class="pre">...</span></code></div>
+</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">match</span> <span class="pre">x:</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">1:</span> <span class="pre">...</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">_:</span> <span class="pre">...</span></code></div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Iteration</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(int</span> <span class="pre">i=0;i&lt;n;i++)</span> <span class="pre">{...}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">&lt;-</span> <span class="pre">0</span> <span class="pre">until</span> <span class="pre">n</span> <span class="pre">do</span> <span class="pre">...</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(n):</span> <span class="pre">...</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>Procedure / method</p></td>
+<tr class="row-odd"><td><p>Procedure / method</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">f(int</span> <span class="pre">x){</span> <span class="pre">return</span> <span class="pre">x+1;</span> <span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">f(int</span> <span class="pre">x){</span> <span class="pre">return</span> <span class="pre">x+1;</span> <span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x:Int)</span> <span class="pre">=</span> <span class="pre">x+1</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x):</span> <span class="pre">return</span> <span class="pre">x+1</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Call by value</p></td>
+<tr class="row-even"><td><p>Call by value</p></td>
 <td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
 <td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
 <td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
 <td><p>Default (<code class="docutils literal notranslate"><span class="pre">f(x)</span></code>)</p></td>
 </tr>
-<tr class="row-even"><td><p>Call by reference</p></td>
+<tr class="row-odd"><td><p>Call by reference</p></td>
 <td><p>Pointers (<code class="docutils literal notranslate"><span class="pre">f(&amp;x)</span></code>)</p></td>
 <td><p>Not supported (simulated with mutable objects)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">var</span></code> parameters in Scala 2 (removed in 3)</p></td>
+<td><p>Not supported (<code class="docutils literal notranslate"><span class="pre">var</span></code> parameters removed in Scala 3)</p></td>
 <td><p>Not supported (mutable objects simulate)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Call by name</p></td>
+<tr class="row-even"><td><p>Call by name</p></td>
 <td><p>Not directly supported (simulated with macros)</p></td>
 <td><p>Not supported</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x:</span> <span class="pre">=&gt;</span> <span class="pre">Int)</span></code> (lazy eval of argument)</p></td>
 <td><p>Not supported</p></td>
 </tr>
-<tr class="row-even"><td><p>Scope</p></td>
+<tr class="row-odd"><td><p>Scope</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">int</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">}</span></code></p></td>
 <td><p>Indentation-based block</p></td>
 <td><p>Indentation-based block</p></td>
 </tr>
-<tr class="row-odd"><td><p>Side effect</p></td>
+<tr class="row-even"><td><p>Side effect</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x++</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x++</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">1</span></code></p></td>

@@ -75,7 +75,19 @@ Examples Across Languages
      - ``if (x > 0) {...} else {...}``
      - ``if (x > 0) {...} else {...}``
      - ``if x > 0 then ... else ...``
-     - ``if x > 0:\n    ...\nelse:\n    ...``
+     - | ``if x > 0:``
+       |     ...
+       | ``else:``
+       |     ...
+   * - Switching
+     - ``switch (x) { case 1: ...; break; default: ...; }``
+     - ``switch (x) { case 1: ...; break; default: ...; }``
+     - | ``x match``
+       |   ``case 1 => ...``
+       |   ``case _ => ...``
+     - | ``match x:``
+       |   ``case 1: ...``
+       |   ``case _: ...``
    * - Iteration
      - ``for (i=0;i<n;i++) {...}``
      - ``for (int i=0;i<n;i++) {...}``
@@ -94,7 +106,7 @@ Examples Across Languages
    * - Call by reference
      - Pointers (``f(&x)``)
      - Not supported (simulated with mutable objects)
-     - ``var`` parameters in Scala 2 (removed in 3)
+     - Not supported (``var`` parameters removed in Scala 3)
      - Not supported (mutable objects simulate)
    * - Call by name
      - Not directly supported (simulated with macros)
