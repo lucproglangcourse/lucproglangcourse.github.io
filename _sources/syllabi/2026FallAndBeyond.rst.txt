@@ -52,27 +52,27 @@ Syllabus
 
   - 21 points: *quizzes* 0 3,  1-3 6 each
   - 24 points: two *tests*, 12 each
-  - 40 points: *projects* *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
+  - 41 points: *projects* *(Percentage effort on each group project will be measured by an end-of-term questionnaire. Group project grades and/or final course grades may be adjusted to account for significant discrepancies in effort among group members.)*
 
     - 0a 2
     - 0b 3
-    - 1a 3
-    - 1b/c 6 each
-    - 2a 6
-    - 3a/b 7 each
+    - 1a 6
+    - 2a 3
+    - 2b 6
+    - 3a/b/c 7 each
 
   - 12 points: *group activities* 1-4 *3 each*
   - 5 points: *presentation*
   - 5 points: *participation* (in-class and online, including announcements of and reports from relevant professional events, GitHub issues and PRs for course examples, etc.)
   - 11 points: automatic starting baseline for undergrads **or** additional work for grad students *(extra credit opportunity for undergrads)*:
   
-    - 2b 6 or 3c 7 *(extra credit for both)*
+    - 1b 6
     - research paper presentation 5
 
   - 1 point *extra credit*: 0c early presentation topic selection
   - 1 point *extra credit*: submission of course evaluation (submit screenshot of confirmation of submission) 
   
-  **Max total: 118 points plus extra credit**
+  **Max total: 119 points plus extra credit**
 
   *Grading schema (in points):*
 
