@@ -257,17 +257,44 @@ We recall this example of looping over all items in a finite collection or itera
 
 *What does this code compute?*
 
+Specifically, if ``incoming`` were ``Iterator("hello", "world", "what", "up")``, the result would be ``4.0``.
 
-In Scala, we can use an *immutable* equivalent using ``foldLeft``:
+Let's now explore the functional equivalent using an immutable *tuple* to hold the state instead of mutable variables.
+This function takes the old state ``(sum, count)`` and the next string, and returns the values for sum and count after processing the next string:
+
+.. code-block:: scala
+
+  def step(old: (Int, Int), next: String) = old match
+    case (sum, count) =>
+      (sum + next.length, count + 1)
+
+For the specific example above, the equivalent of the iterative example would be to successively apply the ``step`` function to each string in the iterator, starting with the initial state ``(0, 0)``:
+
+.. code-block:: scala
+
+  val step0 = (0, 0)
+  val step1 = step(step0, "hello")  // (5, 1)
+  val step2 = step(step1, "world")  // (10, 2)
+  val step3 = step(step2, "what")   // (14, 3)
+  val step4 = step(step3, "up")     // (16, 4)
+
+But this is not yet as general as our loop in the Java example above.
+To get to that level, we can use a *fold* to successively apply the ``step`` function to each string in the iterator, starting with the initial state ``(0, 0)``:
+
+.. code-block:: scala
+
+  val (sum, count) = incoming.foldLeft(0, 0)(step)
+  val result = sum.toFloat / count
+
+Without a separate definition of ``step``, we can also use a *pattern-matching lambda* directly in the ``foldLeft`` call:
 
 .. code-block:: scala
 
   val (sum, count) = incoming.foldLeft(0, 0):
     case ((sum, count), next) =>
       (sum + next.length, count + 1)
-  val result = sum.toFloat / count
 
-As noted previously, you cannot "un-fuse" this loop equivalent because the iterator is stateful and you can iterate through it only once.
+As noted previously, you cannot "un-fuse" this loop equivalent, i.e., compute sum and count separately, because the iterator is stateful and you can iterate through it only once.
 On the other hand, if ``incoming`` is a collection (always finite) instead of an iterator (potentially unbounded), you can use ``map`` and ``sum``, a specialized fold, for a terser equivalent:
 
 .. code-block:: scala
@@ -304,14 +331,14 @@ In Scala, we can use an *immutable* equivalent using ``Iterator`` with ``continu
     processExpr(line)
   
 
-Other important operations on collections
-`````````````````````````````````````````
+Other important operations on collections and iterators
+```````````````````````````````````````````````````````
 
 - When the body of the iteration produces a *side effect* such as output, we can use ``foreach`` instead of ``continually``.
 - If we want to compute a *result value*, we can use ``foldLeft`` instead of ``foreach``.
 - If we want to compute a *sequence of result values*, one for each original item, we can use ``scanLeft`` (examples are available `here <https://github.com/lucproglangcourse/iterators-scala>`_).
 - If we want to transform a *collection of result values* by independently applying the same function to each item while preserving the collection's skeletal structure, we can use ``map``.
-- If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
+- If we want to do the same as ``map`` but without introducing an additional level of structural nesting even though the item transformation function does so, we can use ``flatMap``, which flattens the inner structure into the outer; an example is the splitting of lines to words seen in the section on console applications. ``flatMap`` is equivalent to ``map`` followed by ``flatten``.
 
 The following example illustrates the difference between ``map`` and ``flatMap`` from an imperative perspective:
 
