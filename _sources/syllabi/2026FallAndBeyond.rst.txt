@@ -96,7 +96,7 @@ Syllabus
   - Week 5: quiz 1
   - Week 7: test 1
   - Week 10: quiz 2
-  - Week 11: *last day to withdraw with W instead of WF*
+  - Week 10: *last day to withdraw with W instead of WF*
   - Week 13: test 2
   - Week 15: quiz 3
   - Week 16 (finals week): **NO FINAL EXAM OR CLASS SESSION**
